@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理員登入 - Hygiene First</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.1);
+        }
+
+        .login-btn {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: var(--dark-orange);
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .forgot-password a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password a:hover {
+            color: var(--primary-color);
+        }
+
+        .back-to-site {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-to-site a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .back-to-site a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>管理員登入</h1>
+            <p>請輸入您的管理員帳號和密碼</p>
+        </div>
+        
+        <form class="login-form" id="adminLoginForm">
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="管理員帳號" required>
+                <div class="error-message" id="usernameError"></div>
+            </div>
+            
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="密碼" required>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+            
+            <button type="submit" class="login-btn">登入</button>
+            
+            <div class="error-message" id="loginError"></div>
+        </form>
+        
+        <div class="forgot-password">
+            <a href="#" id="forgotPasswordLink">忘記密碼？</a>
+        </div>
+        
+        <div class="back-to-site">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i>
+                返回網站首頁
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('adminLoginForm');
+            const usernameError = document.getElementById('usernameError');
+            const passwordError = document.getElementById('passwordError');
+            const loginError = document.getElementById('loginError');
+            
+            loginForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Reset error messages
+                usernameError.classList.remove('show');
+                passwordError.classList.remove('show');
+                loginError.classList.remove('show');
+                
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value;
+                
+                // Basic validation
+                let isValid = true;
+                
+                if (!username) {
+                    usernameError.textContent = '請輸入管理員帳號';
+                    usernameError.classList.add('show');
+                    isValid = false;
+                }
+                
+                if (!password) {
+                    passwordError.textContent = '請輸入密碼';
+                    passwordError.classList.add('show');
+                    isValid = false;
+                }
+                
+                if (!isValid) return;
+                
+                try {
+                    // Here you would typically make an API call to your backend
+                    // For now, we'll simulate a successful login
+                    const response = await simulateLogin(username, password);
+                    
+                    if (response.success) {
+                        // Store the token in localStorage
+                        localStorage.setItem('adminToken', response.token);
+                        // Redirect to admin panel
+                        window.location.href = 'admin-panel.html';
+                    } else {
+                        loginError.textContent = response.message || '登入失敗，請檢查帳號密碼';
+                        loginError.classList.add('show');
+                    }
+                } catch (error) {
+                    loginError.textContent = '系統錯誤，請稍後再試';
+                    loginError.classList.add('show');
+                    console.error('Login error:', error);
+                }
+            });
+            
+            // Simulate login API call
+            function simulateLogin(username, password) {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        // This is just for demonstration
+                        // In a real application, you would validate against your backend
+                        if (username === 'admin' && password === 'admin123') {
+                            resolve({
+                                success: true,
+                                token: 'dummy-token-' + Date.now()
+                            });
+                        } else {
+                            resolve({
+                                success: false,
+                                message: '帳號或密碼錯誤'
+                            });
+                        }
+                    }, 1000);
+                });
+            }
+            
+            // Forgot password link
+            document.getElementById('forgotPasswordLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('請聯絡系統管理員重置密碼');
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <!-- Homepage -->
+    <url>
+        <loc>https://hygienefirst.com/index.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/index-zh.html"/>
+    </url>
+    
+    <!-- Chinese Homepage -->
+    <url>
+        <loc>https://hygienefirst.com/index-zh.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://hygienefirst.com/index.html"/>
+    </url>
+    
+    <!-- Services Page -->
+    <url>
+        <loc>https://hygienefirst.com/services.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/services-zh.html"/>
+    </url>
+    
+    <!-- Chinese Services Page -->
+    <url>
+        <loc>https://hygienefirst.com/services-zh.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://hygienefirst.com/services.html"/>
+    </url>
+    
+    <!-- Contact Page -->
+    <url>
+        <loc>https://hygienefirst.com/contact.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/contact-zh.html"/>
+    </url>
+    
+    <!-- Chinese Contact Page -->
+    <url>
+        <loc>https://hygienefirst.com/contact-zh.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://hygienefirst.com/contact.html"/>
+    </url>
+    
+    <!-- Basic Cleaning Service -->
+    <url>
+        <loc>https://hygienefirst.com/services/basic-cleaning.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/services/basic-cleaning-zh.html"/>
+    </url>
+    
+    <!-- Chinese Basic Cleaning Service -->
+    <url>
+        <loc>https://hygienefirst.com/services/basic-cleaning-zh.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://hygienefirst.com/services/basic-cleaning.html"/>
+    </url>
+    
+    <!-- Deep Cleaning Service -->
+    <url>
+        <loc>https://hygienefirst.com/services/deep-cleaning.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/services/deep-cleaning-zh.html"/>
+    </url>
+    
+    <!-- Chinese Deep Cleaning Service -->
+    <url>
+        <loc>https://hygienefirst.com/services/deep-cleaning-zh.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://hygienefirst.com/services/deep-cleaning.html"/>
+    </url>
+    
+    <!-- Premium Cleaning Service -->
+    <url>
+        <loc>https://hygienefirst.com/services/premium-cleaning.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/services/premium-cleaning-zh.html"/>
+    </url>
+    
+    <!-- Chinese Premium Cleaning Service -->
+    <url>
+        <loc>https://hygienefirst.com/services/premium-cleaning-zh.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://hygienefirst.com/services/premium-cleaning.html"/>
+    </url>
+    
+    <!-- About Us Page -->
+    <url>
+        <loc>https://hygienefirst.com/about.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/about-zh.html"/>
+    </url>
+    
+    <!-- Chinese About Us Page -->
+    <url>
+        <loc>https://hygienefirst.com/about-zh.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://hygienefirst.com/about.html"/>
+    </url>
+    
+    <!-- FAQ Page -->
+    <url>
+        <loc>https://hygienefirst.com/faq.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/faq-zh.html"/>
+    </url>
+    
+    <!-- Chinese FAQ Page -->
+    <url>
+        <loc>https://hygienefirst.com/faq-zh.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://hygienefirst.com/faq.html"/>
+    </url>
+    
+    <!-- Privacy Policy -->
+    <url>
+        <loc>https://hygienefirst.com/privacy-policy.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/privacy-policy-zh.html"/>
+    </url>
+    
+    <!-- Chinese Privacy Policy -->
+    <url>
+        <loc>https://hygienefirst.com/privacy-policy-zh.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://hygienefirst.com/privacy-policy.html"/>
+    </url>
+    
+    <!-- Terms and Conditions -->
+    <url>
+        <loc>https://hygienefirst.com/terms.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/terms-zh.html"/>
+    </url>
+    
+    <!-- Chinese Terms and Conditions -->
+    <url>
+        <loc>https://hygienefirst.com/terms-zh.html</loc>
+        <lastmod>2023-08-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://hygienefirst.com/terms.html"/>
+    </url>
+</urlset> 

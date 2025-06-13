@@ -1,0 +1,37 @@
+# Robots.txt for Hygiene First
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://hygienefirst.com/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+
+# Allow important pages
+Allow: /index.html
+Allow: /services.html
+Allow: /contact.html
+Allow: /about.html
+Allow: /index-zh.html
+Allow: /services-zh.html
+Allow: /contact-zh.html
+Allow: /about-zh.html
+
+# Crawl delay for specific bots
+User-agent: Googlebot
+Crawl-delay: 1
+
+User-agent: Bingbot
+Crawl-delay: 2
+
+User-agent: Baiduspider
+Crawl-delay: 5
+
+# Disallow certain file types
+Disallow: /*.json$
+Disallow: /*.xml$
+Allow: /sitemap.xml 

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理後台 - Hygiene First</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Admin Panel Specific Styles */
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .admin-panel {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+        }
+        
+        .admin-sidebar {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .admin-nav-item {
+            margin-bottom: 10px;
+        }
+        
+        .admin-nav-item a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .admin-nav-item a:hover,
+        .admin-nav-item a.active {
+            background-color: #e0e0e0;
+        }
+        
+        .admin-nav-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .admin-content {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .admin-section {
+            margin-bottom: 30px;
+        }
+        
+        .admin-section h2 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .booking-card {
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .booking-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .booking-status.pending {
+            background-color: #ffe082;
+            color: #7f6000;
+        }
+        
+        .booking-status.confirmed {
+            background-color: #a5d6a7;
+            color: #1b5e20;
+        }
+        
+        .booking-status.completed {
+            background-color: #90caf9;
+            color: #0d47a1;
+        }
+        
+        .booking-status.cancelled {
+            background-color: #ef9a9a;
+            color: #b71c1c;
+        }
+        
+        .booking-details {
+            margin-bottom: 15px;
+        }
+        
+        .booking-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .booking-actions button {
+            padding: 6px 12px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .booking-actions button:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .booking-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .booking-filters select,
+        .booking-filters input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .staff-card {
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .staff-management-section,
+        .bookings-management-section {
+            margin-top: 30px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .reminder-settings {
+            margin-top: 30px;
+        }
+        
+        .reminder-form {
+            background-color: #f9f9f9;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Hygiene First Company Limited</a>
+            </div>
+            <nav>
+                <ul class="main-menu">
+                    <li><a href="index.html">回到網站</a></li>
+                    <li><a href="#" class="cta-btn">登出</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>管理後台</h1>
+            <div class="admin-user">
+                <span>管理員，您好！</span>
+            </div>
+        </div>
+        
+        <div class="admin-panel">
+            <div class="admin-sidebar">
+                <h3>管理選單</h3>
+                <ul class="admin-nav">
+                    <li class="admin-nav-item">
+                        <a href="#dashboard" class="active">
+                            <i class="fas fa-tachometer-alt"></i>總覽
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#bookings">
+                            <i class="fas fa-calendar-check"></i>預約管理
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#staff">
+                            <i class="fas fa-user-nurse"></i>醫護人員管理
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#services">
+                            <i class="fas fa-hand-holding-medical"></i>服務管理
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#reminders">
+                            <i class="fas fa-bell"></i>提醒設定
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#reports">
+                            <i class="fas fa-chart-bar"></i>報表分析
+                        </a>
+                    </li>
+                    <li class="admin-nav-item">
+                        <a href="#settings">
+                            <i class="fas fa-cog"></i>系統設定
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="admin-content">
+                <!-- Dashboard Section -->
+                <div class="admin-section active" id="dashboard-section">
+                    <h2>總覽</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="stat-value">28</div>
+                            <div class="stat-label">今日預約</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="stat-value">15</div>
+                            <div class="stat-label">可用醫護人員</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-procedures"></i>
+                            </div>
+                            <div class="stat-value">124</div>
+                            <div class="stat-label">本月服務數</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-thumbs-up"></i>
+                            </div>
+                            <div class="stat-value">98%</div>
+                            <div class="stat-label">客戶滿意度</div>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-bookings">
+                        <h3>最近預約</h3>
+                        <div class="bookings-list">
+                            <!-- Bookings will be populated by JS -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bookings Management Section -->
+                <div class="admin-section" id="bookings-section">
+                    <h2>預約管理</h2>
+                    
+                    <div class="booking-filters">
+                        <select class="status-filter">
+                            <option value="all">所有狀態</option>
+                            <option value="pending">待處理</option>
+                            <option value="confirmed">已確認</option>
+                            <option value="completed">已完成</option>
+                            <option value="cancelled">已取消</option>
+                        </select>
+                        <input type="date" class="date-filter" placeholder="按日期篩選">
+                        <button class="refresh-bookings">刷新</button>
+                    </div>
+                    
+                    <div class="bookings-list">
+                        <!-- Will be populated by JS -->
+                    </div>
+                </div>
+                
+                <!-- Staff Management Section -->
+                <div class="admin-section" id="staff-section">
+                    <h2>醫護人員管理</h2>
+                    
+                    <div class="staff-actions">
+                        <button class="add-staff-btn">新增醫護人員</button>
+                    </div>
+                    
+                    <div class="staff-list">
+                        <!-- Staff cards will be populated by JS -->
+                    </div>
+                </div>
+                
+                <!-- Service Management Section -->
+                <div class="admin-section" id="services-section">
+                    <h2>服務管理</h2>
+                    
+                    <div class="service-list">
+                        <!-- Service cards will be populated by JS -->
+                        <div class="service-card">
+                            <div class="service-header">
+                                <h3>基本居家護理</h3>
+                                <span class="service-price">NT$ 2,500</span>
+                            </div>
+                            <div class="service-description">
+                                <p>基礎健康評估、生活協助和個人衛生護理，適合需要輕度支援的長者。</p>
+                            </div>
+                            <div class="service-actions">
+                                <button class="edit-service-btn">編輯</button>
+                                <button class="delete-service-btn">刪除</button>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-header">
+                                <h3>進階居家護理</h3>
+                                <span class="service-price">NT$ 4,500</span>
+                            </div>
+                            <div class="service-description">
+                                <p>專業健康評估、傷口護理、藥物管理和生命徵象監測，適合需要更多醫療照護的患者。</p>
+                            </div>
+                            <div class="service-actions">
+                                <button class="edit-service-btn">編輯</button>
+                                <button class="delete-service-btn">刪除</button>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-header">
+                                <h3>專業醫療護理</h3>
+                                <span class="service-price">NT$ 6,800</span>
+                            </div>
+                            <div class="service-description">
+                                <p>高級全天候照護，由專業醫護團隊提供，適合有複雜醫療需求的患者。</p>
+                            </div>
+                            <div class="service-actions">
+                                <button class="edit-service-btn">編輯</button>
+                                <button class="delete-service-btn">刪除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reminders Section -->
+                <div class="admin-section" id="reminders-section">
+                    <h2>提醒設定</h2>
+                    
+                    <div class="reminder-settings">
+                        <h3>自動提醒設定</h3>
+                        <p>設定何時發送自動提醒給客戶</p>
+                        
+                        <div class="reminder-form">
+                            <div class="form-group">
+                                <label>預約前提醒</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="remind-1day" checked>
+                                        <label for="remind-1day">1天前</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="remind-3hours" checked>
+                                        <label for="remind-3hours">3小時前</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="remind-custom">
+                                        <label for="remind-custom">自訂</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>提醒方式</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="remind-email" checked>
+                                        <label for="remind-email">電子郵件</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="remind-sms" checked>
+                                        <label for="remind-sms">簡訊</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>提醒訊息</label>
+                                <textarea rows="4" placeholder="在這裡編輯提醒訊息的模板">親愛的{客戶名稱}，提醒您已預約於{日期}{時間}的{服務名稱}服務。若需變更，請提前聯絡我們，謝謝。</textarea>
+                            </div>
+                            
+                            <button class="save-reminders-btn">儲存設定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/85295024162" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-text">Chat with us</span>
+        </a>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Admin panel navigation
+            const navLinks = document.querySelectorAll('.admin-nav-item a');
+            const adminSections = document.querySelectorAll('.admin-section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Get target section ID
+                    const targetId = this.getAttribute('href').substring(1) + '-section';
+                    
+                    // Hide all sections
+                    adminSections.forEach(section => section.classList.remove('active'));
+                    
+                    // Show target section
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+            
+            // Populate bookings list with sample data
+            populateBookingsList();
+            
+            // Populate staff list with sample data
+            populateStaffList();
+            
+            function populateBookingsList() {
+                const bookingsLists = document.querySelectorAll('.bookings-list');
+                
+                // Sample booking data
+                const sampleBookings = [
+                    {
+                        id: 'BK1001',
+                        service: '基本居家護理',
+                        date: '2023/06/15',
+                        time: '09:00',
+                        name: '王小明',
+                        phone: '0912-345-678',
+                        status: 'confirmed',
+                        assignedStaff: {
+                            name: '陳護理師'
+                        }
+                    },
+                    {
+                        id: 'BK1002',
+                        service: '進階居家護理',
+                        date: '2023/06/16',
+                        time: '14:00',
+                        name: '李小花',
+                        phone: '0923-456-789',
+                        status: 'pending',
+                        assignedStaff: null
+                    },
+                    {
+                        id: 'BK1003',
+                        service: '專業醫療護理',
+                        date: '2023/06/17',
+                        time: '11:00',
+                        name: '陳大明',
+                        phone: '0934-567-890',
+                        status: 'completed',
+                        assignedStaff: {
+                            name: '林醫護人員'
+                        }
+                    }
+                ];
+                
+                // Generate booking cards for each list
+                bookingsLists.forEach(list => {
+                    list.innerHTML = sampleBookings.map(booking => `
+                        <div class="booking-card" data-booking-id="${booking.id}">
+                            <div class="booking-header">
+                                <h4>預約 #${booking.id}</h4>
+                                <span class="booking-status ${booking.status}">${getStatusText(booking.status)}</span>
+                            </div>
+                            <div class="booking-details">
+                                <p><strong>服務:</strong> ${booking.service}</p>
+                                <p><strong>日期時間:</strong> ${booking.date} ${booking.time}</p>
+                                <p><strong>客戶:</strong> ${booking.name} (${booking.phone})</p>
+                                <p><strong>指派人員:</strong> ${booking.assignedStaff ? booking.assignedStaff.name : '未指派'}</p>
+                            </div>
+                            <div class="booking-actions">
+                                <button class="view-details-btn">查看詳情</button>
+                                <button class="change-status-btn">變更狀態</button>
+                                ${!booking.assignedStaff ? '<button class="assign-staff-btn">指派人員</button>' : ''}
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    // Add event listeners to buttons
+                    addBookingActionListeners(list);
+                });
+            }
+            
+            function populateStaffList() {
+                const staffList = document.querySelector('.staff-list');
+                if (!staffList) return;
+                
+                // Sample staff data
+                const sampleStaff = [
+                    {
+                        id: 1,
+                        name: '王護理師',
+                        specialties: ['基本居家護理', '進階居家護理'],
+                        availability: 'full',
+                        bookingsCount: 12
+                    },
+                    {
+                        id: 2,
+                        name: '陳醫師',
+                        specialties: ['進階居家護理', '專業醫療護理'],
+                        availability: 'partial',
+                        bookingsCount: 8
+                    },
+                    {
+                        id: 3,
+                        name: '林醫護人員',
+                        specialties: ['基本居家護理', '疫苗接種'],
+                        availability: 'full',
+                        bookingsCount: 15
+                    },
+                    {
+                        id: 4,
+                        name: '張護理師',
+                        specialties: ['進階居家護理', '慢性病管理'],
+                        availability: 'full',
+                        bookingsCount: 10
+                    },
+                    {
+                        id: 5,
+                        name: '黃物理治療師',
+                        specialties: ['復健治療', '術後照護'],
+                        availability: 'partial',
+                        bookingsCount: 6
+                    }
+                ];
+                
+                // Generate staff cards
+                staffList.innerHTML = sampleStaff.map(staff => `
+                    <div class="staff-card" data-staff-id="${staff.id}">
+                        <div class="staff-header">
+                            <h3>${staff.name}</h3>
+                            <span class="staff-availability ${staff.availability}">${
+                                staff.availability === 'full' ? '全時可用' : '部分時段可用'
+                            }</span>
+                        </div>
+                        <div class="staff-details">
+                            <p><strong>專長:</strong> ${staff.specialties.join(', ')}</p>
+                            <p><strong>本月預約數:</strong> ${staff.bookingsCount}</p>
+                        </div>
+                        <div class="staff-actions">
+                            <button class="edit-staff-btn">編輯</button>
+                            <button class="view-schedule-btn">查看排程</button>
+                            <button class="assign-booking-btn">指派預約</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            function addBookingActionListeners(bookingsList) {
+                // View details buttons
+                bookingsList.querySelectorAll('.view-details-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const bookingId = this.closest('.booking-card').getAttribute('data-booking-id');
+                        console.log('View details for booking:', bookingId);
+                        alert('查看預約詳情: ' + bookingId);
+                    });
+                });
+                
+                // Change status buttons
+                bookingsList.querySelectorAll('.change-status-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const bookingId = this.closest('.booking-card').getAttribute('data-booking-id');
+                        console.log('Change status for booking:', bookingId);
+                        alert('變更預約狀態: ' + bookingId);
+                    });
+                });
+                
+                // Assign staff buttons
+                bookingsList.querySelectorAll('.assign-staff-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const bookingId = this.closest('.booking-card').getAttribute('data-booking-id');
+                        console.log('Assign staff for booking:', bookingId);
+                        alert('指派人員給預約: ' + bookingId);
+                    });
+                });
+            }
+            
+            function getStatusText(status) {
+                switch(status) {
+                    case 'pending': return '待處理';
+                    case 'confirmed': return '已確認';
+                    case 'completed': return '已完成';
+                    case 'cancelled': return '已取消';
+                    default: return status;
+                }
+            }
+            
+            // Add event listeners to admin-wide buttons
+            const addStaffBtn = document.querySelector('.add-staff-btn');
+            if (addStaffBtn) {
+                addStaffBtn.addEventListener('click', function() {
+                    alert('新增醫護人員功能');
+                });
+            }
+            
+            const saveRemindersBtn = document.querySelector('.save-reminders-btn');
+            if (saveRemindersBtn) {
+                saveRemindersBtn.addEventListener('click', function() {
+                    alert('提醒設定已保存');
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
