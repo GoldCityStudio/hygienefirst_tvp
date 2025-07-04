@@ -604,7 +604,238 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 3000);
         });
     }
+
+    // Contact Page Functionality
+    const organizationForm = document.querySelector('.organization-form');
+    
+    if (organizationForm) {
+        organizationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (validateForm(this)) {
+                submitForm(this);
+            }
+        });
+    }
+    
+    // Smooth Scrolling for Contact Page
+    const contactLinks = document.querySelectorAll('a[href^="#"]');
+    contactLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Form Input Focus Effects
+    const formInputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+    formInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', function() {
+            this.parentElement.classList.remove('focused');
+            validateField(this);
+        });
+        
+        input.addEventListener('input', function() {
+            if (this.parentElement.classList.contains('error')) {
+                validateField(this);
+            }
+        });
+    });
+    
+    // Contact Info Item Hover Effects
+    const contactInfoItems = document.querySelectorAll('.contact-info-item');
+    contactInfoItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(10px) scale(1.02)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0) scale(1)';
+        });
+    });
+    
+    // Animation on Scroll for Contact Page
+    const contactObserverOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const contactObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, contactObserverOptions);
+    
+    const contactAnimatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+    contactAnimatedElements.forEach(el => {
+        contactObserver.observe(el);
+    });
 });
+
+// Form Validation Functions
+function validateForm(form) {
+    let isValid = true;
+    const inputs = form.querySelectorAll('input, select, textarea');
+    
+    inputs.forEach(input => {
+        if (!validateField(input)) {
+            isValid = false;
+        }
+    });
+    
+    return isValid;
+}
+
+function validateField(field) {
+    const formGroup = field.parentElement;
+    const errorMessage = formGroup.querySelector('.error-message');
+    const successMessage = formGroup.querySelector('.success-message');
+    
+    // Remove existing messages
+    if (errorMessage) errorMessage.remove();
+    if (successMessage) successMessage.remove();
+    
+    // Remove existing classes
+    formGroup.classList.remove('error', 'success');
+    
+    // Validation rules
+    const value = field.value.trim();
+    const type = field.type;
+    const required = field.hasAttribute('required');
+    
+    // Required field validation
+    if (required && !value) {
+        showFieldError(formGroup, '此欄位為必填項目');
+        return false;
+    }
+    
+    // Email validation
+    if (type === 'email' && value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            showFieldError(formGroup, '請輸入有效的電子郵件地址');
+            return false;
+        }
+    }
+    
+    // Phone validation
+    if (field.name === 'phone' && value) {
+        const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+        if (!phoneRegex.test(value) || value.length < 8) {
+            showFieldError(formGroup, '請輸入有效的電話號碼');
+            return false;
+        }
+    }
+    
+    // Textarea validation
+    if (field.tagName === 'TEXTAREA' && value) {
+        if (value.length < 10) {
+            showFieldError(formGroup, '訊息內容至少需要10個字符');
+            return false;
+        }
+    }
+    
+    // Show success state
+    if (value) {
+        showFieldSuccess(formGroup, '格式正確');
+    }
+    
+    return true;
+}
+
+function showFieldError(formGroup, message) {
+    formGroup.classList.add('error');
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    formGroup.appendChild(errorDiv);
+}
+
+function showFieldSuccess(formGroup, message) {
+    formGroup.classList.add('success');
+    const successDiv = document.createElement('div');
+    successDiv.className = 'success-message';
+    successDiv.textContent = message;
+    formGroup.appendChild(successDiv);
+}
+
+function submitForm(form) {
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    
+    // Show loading state
+    submitBtn.classList.add('loading');
+    submitBtn.textContent = '提交中...';
+    submitBtn.disabled = true;
+    
+    // Simulate form submission (replace with actual submission logic)
+    setTimeout(() => {
+        // Show success message
+        showFormSuccess(form);
+        
+        // Reset form
+        form.reset();
+        
+        // Reset button
+        submitBtn.classList.remove('loading');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        
+        // Remove success message after 5 seconds
+        setTimeout(() => {
+            const successMessage = document.querySelector('.form-success-message');
+            if (successMessage) {
+                successMessage.remove();
+            }
+        }, 5000);
+    }, 2000);
+}
+
+function showFormSuccess(form) {
+    // Remove existing success message
+    const existingMessage = document.querySelector('.form-success-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    // Create success message
+    const successDiv = document.createElement('div');
+    successDiv.className = 'form-success-message';
+    successDiv.style.cssText = `
+        background: #d4edda;
+        color: #155724;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        border: 1px solid #c3e6cb;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    `;
+    successDiv.innerHTML = `
+        <span style="font-size: 1.2rem;">✓</span>
+        <span>表單提交成功！我們會盡快回覆您。</span>
+    `;
+    
+    // Insert at the beginning of the form
+    form.insertBefore(successDiv, form.firstChild);
+    
+    // Scroll to success message
+    successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
 
 // Add the booking modal functionality
 function setupBookingModal() {
