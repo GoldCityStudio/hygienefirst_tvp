@@ -126,8 +126,7 @@
     <!-- 頁面橫幅 -->
     <section class="page-banner">
         <div class="container">
-            <h1>聯繫我們</h1>
-            <p>我們的團隊隨時為您提供協助</p>
+            <h1>聯絡我們</h1>
         </div>
     </section>
 
@@ -135,81 +134,111 @@
     <section class="contact-section">
         <div class="container">
             <div class="contact-content">
-                <div class="contact-form-container">
-                    <h2>Hygiene First</h2>
-                    <p>請填寫以下表單，我們將儘快回覆您</p>
+                <!-- 左側聯繫信息 -->
+                <div class="contact-info-card">
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <img src="images/Contact.png" alt="電話" onerror="this.style.display='none'">
+                        </div>
+                        <div class="contact-details">
+                            <h3>電話</h3>
+                            <p>2827 8889</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <img src="images/Mial.png" alt="電郵" onerror="this.style.display='none'">
+                        </div>
+                        <div class="contact-details">
+                            <h3>電郵</h3>
+                            <p>careteam@hygienefirstgroup.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <img src="images/Address.png" alt="地址" onerror="this.style.display='none'">
+                        </div>
+                        <div class="contact-details">
+                            <h3>地址</h3>
+                            <p>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右側表單 -->
+                <div class="contact-form-card">
+                    <h2>給我們發送電子郵件</h2>
                     <form class="contact-form">
                         <div class="form-group">
-                            <label for="name">姓名</label>
-                            <input type="text" id="name" name="name" placeholder="您的全名" required>
+                            <label for="name">姓名 *</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">電子郵件</label>
-                            <input type="email" id="email" name="email" placeholder="您的電子郵件" required>
+                            <label for="email">電郵 *</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">電話</label>
-                            <input type="tel" id="phone" name="phone" placeholder="您的聯繫電話">
+                            <label for="phone">電話 *</label>
+                            <input type="tel" id="phone" name="phone" required>
                         </div>
                         <div class="form-group">
-                            <label for="service">服務項目</label>
-                            <select id="service" name="service">
-                                <option value="">請選擇服務項目</option>
-                                <option value="home-care">居家護理服務</option>
-                                <option value="medical-staff">醫護人員派送服務</option>
-                                <option value="waste-collection">醫療及化學廢物收集服務</option>
-                                <option value="elderly-care">長者社區照顧服務劵</option>
-                                <option value="custom">其他客製化服務</option>
-                            </select>
+                            <label for="message">查詢內容</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="message">訊息</label>
-                            <textarea id="message" name="message" placeholder="請告訴我們您的需求或問題" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="submit-btn">發送訊息</button>
+                            <button type="submit" class="submit-btn">提交</button>
                         </div>
                     </form>
                 </div>
-                <div class="contact-info">
-                    <h2>聯繫方式</h2>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <i class="fas fa-phone-alt"></i>
-                            <div>
-                                <h3>電話</h3>
-                                <p>2827 8889</p>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h3>電子郵件</h3>
-                                <p>careteam@hygienefirstgroup.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h3>地址</h3>
-                                <p>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <h3>營業時間</h3>
-                                <p>週一至週日: 8:00 - 21:00</p>
+            </div>
+
+            <!-- 所屬機構資料表單 -->
+            <div class="organization-form-section">
+                <h2>所屬機構資料</h2>
+                <form class="organization-form">
+                    <div class="form-group">
+                        <label for="org-name">機構名稱 *</label>
+                        <input type="text" id="org-name" name="org-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="employee-name">員工姓名 *</label>
+                        <input type="text" id="employee-name" name="employee-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">評分（1分最低，10分最高）</label>
+                        <div class="rating-container">
+                            <div class="rating-options">
+                                <input type="radio" id="rating1" name="rating" value="1">
+                                <label for="rating1">1</label>
+                                <input type="radio" id="rating2" name="rating" value="2">
+                                <label for="rating2">2</label>
+                                <input type="radio" id="rating3" name="rating" value="3">
+                                <label for="rating3">3</label>
+                                <input type="radio" id="rating4" name="rating" value="4">
+                                <label for="rating4">4</label>
+                                <input type="radio" id="rating5" name="rating" value="5">
+                                <label for="rating5">5</label>
+                                <input type="radio" id="rating6" name="rating" value="6">
+                                <label for="rating6">6</label>
+                                <input type="radio" id="rating7" name="rating" value="7">
+                                <label for="rating7">7</label>
+                                <input type="radio" id="rating8" name="rating" value="8">
+                                <label for="rating8">8</label>
+                                <input type="radio" id="rating9" name="rating" value="9">
+                                <label for="rating9">9</label>
+                                <input type="radio" id="rating10" name="rating" value="10">
+                                <label for="rating10">10</label>
                             </div>
                         </div>
                     </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-line"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <div class="form-group">
+                        <label for="image-upload">上載圖片（*如有-到此網站上傳後把link貼上 <a href="https://wetransfer.com/" target="_blank">https://wetransfer.com/</a>)</label>
+                        <input type="text" id="image-upload" name="image-upload" placeholder="請貼上圖片連結">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">提交</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
