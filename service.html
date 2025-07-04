@@ -100,7 +100,7 @@
 
         .service-card__icon i {
             font-size: 2.5rem;
-            color: #007bff;
+            color: var(--primary-color) !important;
         }
 
         .service-card__content {
@@ -142,7 +142,7 @@
         }
 
         .service-price h4 {
-            color: #007bff;
+            color: var(--primary-color) !important;
             font-size: 1.5rem;
             margin: 0.5rem 0;
         }
@@ -158,11 +158,20 @@
         }
 
         .btn--secondary {
-            background: #007bff;
+            background: var(--primary-color);
             color: #fff;
         }
 
         .btn--secondary:hover {
+            background: #0056b3;
+        }
+
+        .btn--primary {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn--primary:hover {
             background: #0056b3;
         }
 
@@ -228,26 +237,27 @@
 
     <main id="main-content">
         <!-- 頁面橫幅 -->
-        <section class="page-banner" style="background-image: url('images/services-banner.jpg');">
-            <div class="container">
-                <div class="page-banner__content">
-                    <h1>我們的服務</h1>
-                    <p>專業、高效、可信賴的醫療護理解決方案</p>
+        <section class="page-banner" style="background-image: url('images/services-banner.jpg'); position: relative;">
+            <div class="banner-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--primary-color) 0%,var(--secondary-color) 100%);z-index:1;"></div>
+            <div class="container" style="position:relative;z-index:2;">
+                <div class="page-banner__content" style="text-align:center;">
+                    <h1 class="theme-title">我們的服務</h1>
+                    <p class="theme-subtitle">專業、高效、可信賴的醫療護理解決方案</p>
                 </div>
             </div>
         </section>
 
         <!-- 服務分類 -->
-        <section class="service-categories">
+        <section class="service-categories" style="background:linear-gradient(135deg,var(--background-light) 0%,#fff 100%);padding-bottom:3rem;">
             <div class="container">
-                <div class="section-header">
-                    <h2>專業醫療護理服務選項</h2>
-                    <p>根據您的需求選擇最適合的服務方案</p>
+                <div class="section-header" style="margin-bottom:2.5rem;">
+                    <h2 class="theme-title">專業醫療護理服務選項</h2>
+                    <p class="theme-subtitle">根據您的需求選擇最適合的服務方案</p>
                 </div>
-                <div class="service-tabs">
-                    <button class="service-tab active" data-tab="residential">居家醫療</button>
-                    <button class="service-tab" data-tab="commercial">機構醫療</button>
-                    <button class="service-tab" data-tab="specialized">專業護理</button>
+                <div class="service-tabs" style="display:flex;gap:1.5rem;justify-content:center;margin-bottom:2.5rem;">
+                    <button class="service-tab active">居家醫療</button>
+                    <button class="service-tab">機構醫療</button>
+                    <button class="service-tab">專業護理</button>
                 </div>
                 
                 <div class="service-content active" id="residential">
