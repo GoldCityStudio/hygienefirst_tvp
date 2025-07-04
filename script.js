@@ -363,140 +363,180 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form validation and submission feedback
-    const contactForm = document.getElementById('contactForm');
+    // Form validation and submission
+    const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simple validation
+            // Basic form validation
+            const requiredFields = this.querySelectorAll('[required]');
             let isValid = true;
-            const requiredFields = contactForm.querySelectorAll('[required]');
             
             requiredFields.forEach(field => {
                 if (!field.value.trim()) {
                     isValid = false;
-                    field.classList.add('error');
-                    
-                    // Create or update error message
-                    let errorMsg = field.parentNode.querySelector('.error-message');
-                    if (!errorMsg) {
-                        errorMsg = document.createElement('div');
-                        errorMsg.className = 'error-message';
-                        field.parentNode.appendChild(errorMsg);
-                    }
-                    errorMsg.textContent = '此欄位為必填';
+                    field.style.borderColor = '#dc3545';
+                    field.style.boxShadow = '0 0 0 3px rgba(220, 53, 69, 0.1)';
                 } else {
-                    field.classList.remove('error');
-                    const errorMsg = field.parentNode.querySelector('.error-message');
-                    if (errorMsg) {
-                        errorMsg.remove();
-                    }
+                    field.style.borderColor = '#e0e0e0';
+                    field.style.boxShadow = 'none';
                 }
-                
-                // Email validation
-                if (field.type === 'email' && field.value.trim()) {
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(field.value.trim())) {
-                        isValid = false;
-                        field.classList.add('error');
-                        
-                        let errorMsg = field.parentNode.querySelector('.error-message');
-                        if (!errorMsg) {
-                            errorMsg = document.createElement('div');
-                            errorMsg.className = 'error-message';
-                            field.parentNode.appendChild(errorMsg);
-                        }
-                        errorMsg.textContent = '請輸入有效的電子郵件地址';
-                    }
-                }
-                
-                // Phone validation
-                if (field.id === 'phone' && field.value.trim()) {
-                    const phoneRegex = /^[0-9\-\+\s\(\)]{8,15}$/;
-                    if (!phoneRegex.test(field.value.trim())) {
-                        isValid = false;
-                        field.classList.add('error');
-                        
-                        let errorMsg = field.parentNode.querySelector('.error-message');
-                        if (!errorMsg) {
-                            errorMsg = document.createElement('div');
-                            errorMsg.className = 'error-message';
-                            field.parentNode.appendChild(errorMsg);
-                        }
-                        errorMsg.textContent = '請輸入有效的電話號碼';
-                    }
-                }
-            });
-            
-            // Remove error state on input
-            requiredFields.forEach(field => {
-                field.addEventListener('input', function() {
-                    this.classList.remove('error');
-                    const errorMsg = this.parentNode.querySelector('.error-message');
-                    if (errorMsg) {
-                        errorMsg.remove();
-                    }
-                });
             });
             
             if (isValid) {
-                // Show loading state
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                submitBtn.classList.add('loading');
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '提交中...';
+                // Show success message
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
                 
-                // Simulate form submission (replace with actual AJAX submission in production)
+                submitBtn.textContent = '提交中...';
+                submitBtn.disabled = true;
+                
+                // Simulate form submission
                 setTimeout(() => {
-                    // Hide form and show success message
-                    contactForm.style.display = 'none';
+                    submitBtn.textContent = '提交成功！';
+                    submitBtn.style.background = '#28a745';
                     
-                    const successMessage = document.createElement('div');
-                    successMessage.className = 'success-message';
-                    successMessage.innerHTML = `
-                        <i class="fas fa-check-circle"></i>
-                        <h3>表單提交成功！</h3>
-                        <p>感謝您的訊息，我們將盡快與您聯絡。</p>
-                    `;
-                    
-                    contactForm.parentNode.appendChild(successMessage);
-                    
-                    // Scroll to success message
-                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    
-                    // Reset the form in the background
-                    contactForm.reset();
-                    submitBtn.classList.remove('loading');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '提交';
-                }, 1500);
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                        this.reset();
+                    }, 2000);
+                }, 1000);
             }
         });
     }
     
-    // Animate form fields focus/blur effects
-    const formInputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
-    
-    formInputs.forEach(input => {
-        // Add active class to parent when input is focused
-        input.addEventListener('focus', function() {
-            this.parentNode.classList.add('active');
-        });
-        
-        // Remove active class when input loses focus and has no value
-        input.addEventListener('blur', function() {
-            if (!this.value.trim()) {
-                this.parentNode.classList.remove('active');
+    // Animate elements on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
-        
-        // Check initial state (for cases where browser autofills fields)
-        if (input.value.trim()) {
-            input.parentNode.classList.add('active');
-        }
+    }, observerOptions);
+
+    // Observe elements for animation
+    const animateElements = document.querySelectorAll('.detail-card, .service-option-card, .process-step, .faq-item');
+    
+    animateElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
     });
+
+    // Service option card interactions
+    const serviceOptionCards = document.querySelectorAll('.service-option-card');
+    
+    serviceOptionCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // Payment table row hover effects
+    const paymentTableRows = document.querySelectorAll('.payment-table tbody tr');
+    
+    paymentTableRows.forEach(row => {
+        row.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        row.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+
+    // Download button interactions
+    const downloadButtons = document.querySelectorAll('.download-buttons .btn');
+    
+    downloadButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Add click animation
+            this.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+            
+            // Show download message
+            const originalText = this.textContent;
+            this.textContent = '準備下載...';
+            
+            setTimeout(() => {
+                this.textContent = originalText;
+            }, 1000);
+        });
+    });
+
+    // Hero button interactions
+    const heroButtons = document.querySelectorAll('.hero-buttons .btn');
+    
+    heroButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    // Add CSS for ripple effect
+    const style = document.createElement('style');
+    style.textContent = `
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
 
     // Initialize new systems
     initializeOrderAssignmentSystem();
