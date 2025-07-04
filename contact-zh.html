@@ -138,7 +138,8 @@
                 <div class="contact-info-card">
                     <div class="contact-info-item">
                         <div class="contact-icon">
-                            <img src="images/Contact.png" alt="電話" onerror="this.style.display='none'">
+                            <img src="images/Contact.png" alt="電話" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                            <span class="icon-fallback" style="display:none;"><i class="fas fa-phone"></i></span>
                         </div>
                         <div class="contact-details">
                             <h3>電話</h3>
@@ -147,16 +148,18 @@
                     </div>
                     <div class="contact-info-item">
                         <div class="contact-icon">
-                            <img src="images/Mial.png" alt="電郵" onerror="this.style.display='none'">
+                            <img src="images/Mial.png" alt="電郵" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                            <span class="icon-fallback" style="display:none;"><i class="fas fa-envelope"></i></span>
                         </div>
                         <div class="contact-details">
                             <h3>電郵</h3>
-                            <p>careteam@hygienefirstgroup.com</p>
+                            <p style="word-break: break-all;">careteam@hygienefirstgroup.com</p>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <div class="contact-icon">
-                            <img src="images/Address.png" alt="地址" onerror="this.style.display='none'">
+                            <img src="images/Address.png" alt="地址" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                            <span class="icon-fallback" style="display:none;"><i class="fas fa-map-marker-alt"></i></span>
                         </div>
                         <div class="contact-details">
                             <h3>地址</h3>
@@ -166,7 +169,7 @@
                 </div>
 
                 <!-- 右側表單 -->
-                <div class="contact-form-card">
+                <div class="contact-form-card" style="margin-top: 32px;">
                     <h2>給我們發送電子郵件</h2>
                     <form class="contact-form">
                         <div class="form-group">
