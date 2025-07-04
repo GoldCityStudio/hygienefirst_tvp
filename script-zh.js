@@ -56,47 +56,85 @@ document.addEventListener('DOMContentLoaded', function() {
     // 評價輪播
     const testimonialSlider = document.querySelector('.testimonial-slider');
     if (testimonialSlider) {
-        let currentSlide = 0;
-        const slides = testimonialSlider.querySelectorAll('.testimonial-item');
-        const dots = document.querySelector('.slider-dots');
+        const testimonialsContainer = testimonialSlider.querySelector('.testimonials-container');
+        const testimonials = testimonialSlider.querySelectorAll('.testimonial');
         
-        // 創建導航點
-        if (dots && slides.length > 0) {
-            for (let i = 0; i < slides.length; i++) {
-                const dot = document.createElement('span');
-                dot.classList.add('dot');
-                if (i === 0) dot.classList.add('active');
-                dot.dataset.slide = i;
-                dot.addEventListener('click', function() {
-                    goToSlide(parseInt(this.dataset.slide));
+        if (testimonials.length > 1) {
+            let currentIndex = 0;
+            const interval = 2500; // 2.5秒間隔
+            const cardsPerView = 2.5; // 顯示2.5張卡片
+
+            // 顯示指定索引開始的評價
+            function showTestimonials(startIndex) {
+                testimonials.forEach((testimonial, i) => {
+                    if (i >= startIndex && i < startIndex + cardsPerView) {
+                        testimonial.classList.add('active');
+                    } else {
+                        testimonial.classList.remove('active');
+                    }
                 });
-                dots.appendChild(dot);
+
+                // 計算變換以顯示正確的卡片
+                const cardWidth = testimonials[0].offsetWidth + 30; // 包含邊距
+                const transformX = -startIndex * cardWidth;
+                testimonialsContainer.style.transform = `translateX(${transformX}px)`;
             }
-        }
+
+            // 下一組評價
+            function nextTestimonials() {
+                currentIndex = (currentIndex + 1) % Math.ceil(testimonials.length / cardsPerView);
+                showTestimonials(currentIndex * cardsPerView);
+                updateDots();
+            }
+
+            // 初始化 - 顯示第一組評價
+            showTestimonials(0);
         
-        // 設置輪播自動播放
-        const interval = setInterval(nextSlide, 5000);
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            goToSlide(currentSlide);
-        }
-        
-        function goToSlide(n) {
-            slides.forEach((slide, index) => {
-                slide.style.transform = `translateX(${100 * (index - n)}%)`;
+            // 開始自動播放
+            const autoplayInterval = setInterval(nextTestimonials, interval);
+
+            // 滑鼠懸停時暫停
+            testimonialSlider.addEventListener('mouseenter', () => {
+                clearInterval(autoplayInterval);
             });
-            
-            // 更新導航點
-            if (dots) {
-                const activeDot = dots.querySelector('.dot.active');
-                if (activeDot) activeDot.classList.remove('active');
-                dots.querySelectorAll('.dot')[n].classList.add('active');
+
+            // 滑鼠離開時恢復
+            testimonialSlider.addEventListener('mouseleave', () => {
+                setInterval(nextTestimonials, interval);
+            });
+
+            // 添加導航點
+            const dotsContainer = document.createElement('div');
+            dotsContainer.className = 'testimonial-dots';
+            const totalSlides = Math.ceil(testimonials.length / cardsPerView);
+
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = `testimonial-dot ${i === 0 ? 'active' : ''}`;
+                
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    showTestimonials(currentIndex * cardsPerView);
+                    updateDots();
+                });
+                
+                dotsContainer.appendChild(dot);
             }
+
+            testimonialSlider.appendChild(dotsContainer);
+
+            function updateDots() {
+                const dots = dotsContainer.querySelectorAll('.testimonial-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
         }
         
-        // 初始化輪播
-        goToSlide(0);
+            // 處理視窗大小調整
+            window.addEventListener('resize', () => {
+                showTestimonials(currentIndex * cardsPerView);
+            });
+        }
     }
     
     // 表單驗證

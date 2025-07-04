@@ -25,12 +25,12 @@
         <lastmod>2023-08-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/services-zh.html"/>
+        <xhtml:link rel="alternate" hreflang="zh-tw" href="https://hygienefirst.com/service.html"/>
     </url>
     
     <!-- Chinese Services Page -->
     <url>
-        <loc>https://hygienefirst.com/services-zh.html</loc>
+        <loc>https://hygienefirst.com/service.html</loc>
         <lastmod>2023-08-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>

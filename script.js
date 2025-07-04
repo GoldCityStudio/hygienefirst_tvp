@@ -864,7 +864,94 @@ function setupCalendar() {
 
 // Setup for testimonial slider
 function setupTestimonialSlider() {
-    // ... existing code ...
+    const testimonialSlider = document.querySelector('.testimonial-slider');
+    if (!testimonialSlider) return;
+
+    const testimonialsContainer = testimonialSlider.querySelector('.testimonials-container');
+    const testimonials = testimonialSlider.querySelectorAll('.testimonial');
+    if (testimonials.length <= 1) return;
+
+    let currentIndex = 0;
+    const interval = 2500; // 2.5 seconds between slides
+    const cardsPerView = 2.5; // Show 2.5 cards at a time
+
+    // Function to show testimonials starting from a specific index
+    function showTestimonials(startIndex) {
+        testimonials.forEach((testimonial, i) => {
+            if (i >= startIndex && i < startIndex + cardsPerView) {
+                testimonial.classList.add('active');
+            } else {
+                testimonial.classList.remove('active');
+            }
+        });
+
+        // Calculate the transform to show the correct cards
+        const cardWidth = testimonials[0].offsetWidth + 30; // Include margin
+        const transformX = -startIndex * cardWidth;
+        testimonialsContainer.style.transform = `translateX(${transformX}px)`;
+    }
+
+    // Function to go to next set of testimonials
+    function nextTestimonials() {
+        currentIndex = (currentIndex + 1) % Math.ceil(testimonials.length / cardsPerView);
+        showTestimonials(currentIndex * cardsPerView);
+        updateDots();
+    }
+
+    // Function to go to previous set of testimonials
+    function prevTestimonials() {
+        currentIndex = (currentIndex - 1 + Math.ceil(testimonials.length / cardsPerView)) % Math.ceil(testimonials.length / cardsPerView);
+        showTestimonials(currentIndex * cardsPerView);
+        updateDots();
+    }
+
+    // Initialize - show first set of testimonials
+    showTestimonials(0);
+
+    // Start autoplay
+    const autoplayInterval = setInterval(nextTestimonials, interval);
+
+    // Pause autoplay on hover
+    testimonialSlider.addEventListener('mouseenter', () => {
+        clearInterval(autoplayInterval);
+    });
+
+    // Resume autoplay when mouse leaves
+    testimonialSlider.addEventListener('mouseleave', () => {
+        setInterval(nextTestimonials, interval);
+    });
+
+    // Add navigation dots
+    const dotsContainer = document.createElement('div');
+    dotsContainer.className = 'testimonial-dots';
+    const totalSlides = Math.ceil(testimonials.length / cardsPerView);
+
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = `testimonial-dot ${i === 0 ? 'active' : ''}`;
+        
+        dot.addEventListener('click', () => {
+            currentIndex = i;
+            showTestimonials(currentIndex * cardsPerView);
+            updateDots();
+        });
+        
+        dotsContainer.appendChild(dot);
+    }
+
+    testimonialSlider.appendChild(dotsContainer);
+
+    function updateDots() {
+        const dots = dotsContainer.querySelectorAll('.testimonial-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        showTestimonials(currentIndex * cardsPerView);
+    });
 }
 
 // Healthcare Staff Management and Order Assignment System

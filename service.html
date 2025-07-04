@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hygiene First提供專業的醫療護理服務，包括居家醫療照護、健康評估、專業護理、復健治療和照護人員培訓。我們的專業醫護團隊為您提供最高品質的醫療護理解決方案。">
+    <meta name="keywords" content="醫療護理,居家醫療照護,健康評估,專業護理,復健治療,照護人員培訓,香港醫療護理,醫護服務,護理服務,醫療照護">
+    <meta name="author" content="Hygiene First">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Hygiene First - 專業醫療護理服務">
+    <meta property="og:description" content="專業的醫療護理服務，包括居家醫療照護、健康評估、專業護理、復健治療和照護人員培訓。安全、專業且可靠的醫療護理解決方案。">
+    <meta property="og:image" content="https://www.hygienefirst.com/images/og-image.jpg">
+    <meta property="og:url" content="https://www.hygienefirst.com/zh-tw">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_TW">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hygiene First - 專業醫療護理服務">
+    <meta name="twitter:description" content="專業的醫療護理服務，包括居家醫療照護、健康評估、專業護理、復健治療和照護人員培訓。安全、專業且可靠的醫療護理解決方案。">
+    <meta name="twitter:image" content="https://www.hygienefirst.com/images/twitter-image.jpg">
+    <link rel="canonical" href="https://www.hygienefirst.com/zh-tw" />
+    <link rel="alternate" hreflang="en" href="https://www.hygienefirst.com" />
+    <link rel="alternate" hreflang="zh-TW" href="https://www.hygienefirst.com/zh-tw" />
+    <title>我們的服務 - Hygiene First</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="enhanced-styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
+    
+    <!-- Structured Data for Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Hygiene First",
+        "url": "https://www.hygienefirst.com/zh-tw",
+        "logo": "https://www.hygienefirst.com/images/logo.png",
+        "image": "https://www.hygienefirst.com/images/building.jpg",
+        "description": "專業的醫療護理服務，包括居家醫療照護、健康評估、專業護理、復健治療和照護人員培訓。",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "香港九龍尖沙咀廣東道30號新港中心1座12樓",
+            "addressLocality": "香港",
+            "addressRegion": "九龍",
+            "postalCode": "",
+            "addressCountry": "HK"
+        },
+        "telephone": "+852-2345-6789",
+        "email": "info@hygienefirst.hk",
+        "openingHours": "Mo-Su 09:00-18:00",
+        "priceRange": "$$",
+        "sameAs": [
+            "https://www.facebook.com/hygienefirst",
+            "https://www.instagram.com/hygienefirst",
+            "https://twitter.com/hygienefirst",
+            "https://www.linkedin.com/company/hygienefirst"
+        ]
+    }
+    </script>
+    <style>
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card__icon {
+            background: #f8f9fa;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .service-card__icon i {
+            font-size: 2.5rem;
+            color: #007bff;
+        }
+
+        .service-card__content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card__content h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            flex-grow: 1;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-price {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .service-price span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .service-price h4 {
+            color: #007bff;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn--secondary {
+            background: #007bff;
+            color: #fff;
+        }
+
+        .btn--secondary:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="zh">
+    <a href="#main-content" class="skip-link">跳到主要內容</a>
+    <div class="overlay"></div>
+    <div class="page-transition"></div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://static.wixstatic.com/media/f05284_3647ed5067de49c38c32522636dd8932~mv2.png/v1/fill/w_730,h_124,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo.png" alt="Hygiene First Company Limited" style="max-height: 50px; width: auto;">
+                </a>
+            </div>
+            <nav>
+                <ul class="main-menu">
+                    <li class="dropdown">
+                        <a href="about.html">關於我們</a>
+                        <div class="dropdown-content">
+                            <a href="about.html#features">我們的特色</a>
+                            <a href="about.html#testimonials">客戶評價</a>
+                            <a href="about.html#quality">服務品質承諾</a>
+                            <a href="about.html#media">媒體中心</a>
+                            <a href="blog.html">Hygiene First  部落格</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="service.html">醫療護理服務</a>
+                        <div class="dropdown-content">
+                            <a href="service.html#home-care">居家醫療照護</a>
+                            <a href="service.html#health-assessment">健康評估</a>
+                            <a href="service.html#nursing">專業護理</a>
+                            <a href="service.html#rehabilitation">復健治療</a>
+                            <a href="service.html#caregiver-training">照護人員培訓</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="news.html">最新消息</a>
+                    </li>
+                    <li>
+                        <a href="community-zh.html">社區計劃</a>
+                    </li>
+                    <li>
+                        <a href="contact-zh.html" class="cta-btn booking-btn">預約服務</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- 頁面橫幅 -->
+        <section class="page-banner" style="background-image: url('images/services-banner.jpg');">
+            <div class="container">
+                <div class="page-banner__content">
+                    <h1>我們的服務</h1>
+                    <p>專業、高效、可信賴的醫療護理解決方案</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服務分類 -->
+        <section class="service-categories">
+            <div class="container">
+                <div class="section-header">
+                    <h2>專業醫療護理服務選項</h2>
+                    <p>根據您的需求選擇最適合的服務方案</p>
+                </div>
+                <div class="service-tabs">
+                    <button class="service-tab active" data-tab="residential">居家醫療</button>
+                    <button class="service-tab" data-tab="commercial">機構醫療</button>
+                    <button class="service-tab" data-tab="specialized">專業護理</button>
+                </div>
+                
+                <div class="service-content active" id="residential">
+                    <div class="service-grid">
+                        <div class="service-card">
+                            <div class="service-card__icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="service-card__content">
+                                <h3>基本居家護理</h3>
+                                <p>全面照顧您的日常生活需求，包括生活協助、基本健康監測和個人衛生護理。適合需要輕度支援的長者。</p>
+                                <ul class="service-features">
+                                    <li>基本健康檢查</li>
+                                    <li>個人衛生照護</li>
+                                    <li>日常生活協助</li>
+                                    <li>簡單藥物提醒</li>
+                                    <li>陪伴服務</li>
+                                </ul>
+                                <div class="service-price">
+                                    <span>起價</span>
+                                    <h4>HKD 625</h4>
+                                </div>
+                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-card__icon">
+                                <i class="fas fa-user-nurse"></i>
+                            </div>
+                            <div class="service-card__content">
+                                <h3>進階居家護理</h3>
+                                <p>全方位的居家護理服務，由專業護理人員提供，適合需要更多醫療照護的患者。</p>
+                                <ul class="service-features">
+                                    <li>所有基本護理項目</li>
+                                    <li>專業健康評估</li>
+                                    <li>傷口護理</li>
+                                    <li>藥物管理</li>
+                                    <li>生命徵象監測</li>
+                                    <li>營養和飲食指導</li>
+                                </ul>
+                                <div class="service-price">
+                                    <span>起價</span>
+                                    <h4>HKD 1,125</h4>
+                                </div>
+                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-card__icon">
+                                <i class="fas fa-hand-holding-medical"></i>
+                            </div>
+                            <div class="service-card__content">
+                                <h3>高級全天候照護</h3>
+                                <p>我們最全面的居家醫療護理服務，提供24小時專業照護，適合有複雜醫療需求的患者。</p>
+                                <ul class="service-features">
+                                    <li>所有進階護理項目</li>
+                                    <li>24小時專業護理</li>
+                                    <li>高級醫療器材操作</li>
+                                    <li>復健輔助</li>
+                                    <li>專業醫護團隊支援</li>
+                                    <li>緊急醫療應變處理</li>
+                                </ul>
+                                <div class="service-price">
+                                    <span>起價</span>
+                                    <h4>HKD 875</h4>
+                                </div>
+                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-content" id="commercial">
+                    <div class="service-grid">
+                        <div class="service-card">
+                            <div class="service-card__icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="service-card__content">
+                                <h3>機構醫療人員派遣</h3>
+                                <p>為醫療機構提供合格的醫護人員，包括護士、照護員和醫療助理，以確保機構運作順暢。</p>
+                                <ul class="service-features">
+                                    <li>專業護理人員派遣</li>
+                                    <li>醫療助理支援</li>
+                                    <li>短期與長期合約</li>
+                                    <li>人員資格審核</li>
+                                    <li>全天候支援服務</li>
+                                </ul>
+                                <div class="service-price">
+                                    <span>起價</span>
+                                    <h4>HKD 1,000</h4>
+                                </div>
+                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-card__icon">
+                                <i class="fas fa-clinic-medical"></i>
+                            </div>
+                            <div class="service-card__content">
+                                <h3>養老院/安養中心支援</h3>
+                                <p>為養老院和安養機構提供專業醫療團隊支援，確保長者獲得適當的照護。</p>
+                                <ul class="service-features">
+                                    <li>專業護理團隊</li>
+                                    <li>醫療評估和建議</li>
+                                    <li>健康監測系統</li>
+                                    <li>員工培訓與指導</li>
+                                    <li>緊急醫療支援</li>
+                                </ul>
+                                <div class="service-price">
+                                    <span>起價</span>
+                                    <h4>HKD 1,375</h4>
+                                </div>
+                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-card__icon">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <div class="service-card__content">
+                                <h3>醫院臨時人力支援</h3>
+                                <p>為醫院提供臨時醫護人員，協助應對人力短缺或需求高峰期。</p>
+                                <ul class="service-features">
+                                    <li>短期專業護理人員</li>
+                                    <li>急診科支援</li>
+                                    <li>特殊醫療專科支援</li>
+                                    <li>快速人員配置</li>
+                                    <li>靈活排班安排</li>
+                                    <li>品質保證承諾</li>
+                                </ul>
+                                <div class="service-price">
+                                    <span>起價</span>
+                                    <h4>HKD 1,250</h4>
+                                </div>
+                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-content" id="specialized">
+                    <div class="service-grid">
+                        <div class="service-card">
+                            <div class="service-card__icon">
+                                <i class="fas fa-procedures"></i>
+                            </div>
+                            <div class="service-card__content">
+                                <h3>術後照護</h3>
+                                <p>為手術後的患者提供專業的復原照護服務，確保順利康復。</p>
+                                <ul class="service-features">
+                                    <li>專業術後護理</li>
+                                    <li>傷口管理與更換</li>
+                                    <li>疼痛管理協助</li>
+                                    <li>活動能力恢復指導</li>
+                                    <li>藥物管理</li>
+                                </ul>
+                                <div class="service-price">
+                                    <span>起價</span>
+                                    <h4>HKD 1,050</h4>
+                                </div>
+                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-card__icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="service-card__content">
+                                <h3>慢性病管理</h3>
+                                <p>為慢性病患者提供專業的健康管理，幫助控制病情並提高生活品質。</p>
+                                <ul class="service-features">
+                                    <li>個人化健康計劃</li>
+                                    <li>定期健康評估</li>
+                                    <li>藥物療效監測</li>
+                                    <li>生活方式指導</li>
+                                    <li>醫療協調服務</li>
+                                </ul>
+                                <div class="service-price">
+                                    <span>起價</span>
+                                    <h4>HKD 950</h4>
+                                </div>
+                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-card__icon">
+                                <i class="fas fa-shield-virus"></i>
+                            </div>
+                            <div class="service-card__content">
+                                <h3>疫苗接種服務</h3>
+                                <p>專業的疫苗接種服務，可在家中或機構進行，確保安全有效。</p>
+                                <ul class="service-features">
+                                    <li>上門疫苗接種</li>
+                                    <li>專業疫苗儲存和處理</li>
+                                    <li>接種前評估</li>
+                                    <li>疫苗接種證明</li>
+                                    <li>後續觀察與支援</li>
+                                </ul>
+                                <div class="service-price">
+                                    <span>起價</span>
+                                    <h4>HKD 1,000</h4>
+                                </div>
+                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 客製化服務 -->
+        <section class="custom-services">
+            <div class="container">
+                <div class="custom-services__content">
+                    <div class="custom-services__text">
+                        <h2>尋找客製化醫療護理解決方案？</h2>
+                        <p>我們了解每位病患都有獨特的需求。我們的專家團隊可以為您量身定制醫療護理計劃，無論是特殊疾病、復健需求還是長期照護，我們都能提供專業解決方案。</p>
+                        <ul class="custom-services__list">
+                            <li><i class="fas fa-check"></i> 根據您的需求和預算調整服務</li>
+                            <li><i class="fas fa-check"></i> 針對特殊疾病的專業護理</li>
+                            <li><i class="fas fa-check"></i> 個人化照護計劃</li>
+                            <li><i class="fas fa-check"></i> 靈活的服務時間安排</li>
+                        </ul>
+                        <a href="contact-zh.html" class="btn btn--primary">聯絡我們討論您的需求</a>
+                    </div>
+                    <div class="custom-services__image">
+                        <img src="images/custom-healthcare.jpg" alt="客製化醫療護理服務">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 定價方案 -->
+        <section class="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2>我們的定價方案</h2>
+                    <p>透明的價格，無隱藏收費</p>
+                </div>
+                <div class="pricing-table">
+                    <div class="pricing-plan">
+                        <div class="pricing-plan__header">
+                            <h3>基本照護方案</h3>
+                            <div class="pricing-plan__price">
+                                <span class="price">HKD 625</span>
+                                <span class="period">/ 次</span>
+                            </div>
+                        </div>
+                        <div class="pricing-plan__features">
+                            <ul>
+                                <li>基本居家照護</li>
+                                <li>2小時服務</li>
+                                <li>基本健康檢查</li>
+                                <li>生活協助</li>
+                                <li>陪伴服務</li>
+                                <li class="not-included">藥物管理</li>
+                                <li class="not-included">專業護理處置</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-plan__cta">
+                            <a href="contact-zh.html" class="btn btn--secondary">選擇方案</a>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-plan featured">
+                        <div class="pricing-plan__badge">最受歡迎</div>
+                        <div class="pricing-plan__header">
+                            <h3>標準護理方案</h3>
+                            <div class="pricing-plan__price">
+                                <span class="price">HKD 1,125</span>
+                                <span class="period">/ 次</span>
+                            </div>
+                        </div>
+                        <div class="pricing-plan__features">
+                            <ul>
+                                <li>專業居家護理</li>
+                                <li>4小時服務</li>
+                                <li>全面健康評估</li>
+                                <li>藥物管理</li>
+                                <li>基本傷口護理</li>
+                                <li>生活能力訓練</li>
+                                <li class="not-included">專科醫療諮詢</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-plan__cta">
+                            <a href="contact-zh.html" class="btn btn--primary">選擇方案</a>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-plan">
+                        <div class="pricing-plan__header">
+                            <h3>高級照護方案</h3>
+                            <div class="pricing-plan__price">
+                                <span class="price">HKD 875</span>
+                                <span class="period">/ 次</span>
+                            </div>
+                        </div>
+                        <div class="pricing-plan__features">
+                            <ul>
+                                <li>全方位專業護理</li>
+                                <li>8+小時服務</li>
+                                <li>專業健康管理</li>
+                                <li>高級醫療處置</li>
+                                <li>專科護理程序</li>
+                                <li>醫療器材操作</li>
+                                <li>專科醫療諮詢</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-plan__cta">
+                            <a href="contact-zh.html" class="btn btn--secondary">選擇方案</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pricing-note">
+                    <p>* 價格可能因個別需求和護理複雜度而有所調整。請聯絡我們獲取詳細報價。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 行動呼籲 -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta__content">
+                    <h2>準備好體驗專業醫療護理服務了嗎？</h2>
+                    <p>立即預約，享受Hygiene First的專業醫療護理服務。我們的團隊隨時準備為您提供卓越的照護體驗。</p>
+                    <div class="cta__buttons">
+                        <a href="contact-zh.html" class="btn btn--primary">立即預約</a>
+                        <a href="tel:+85228278889" class="btn btn--outline">撥打電話 2827 8889</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="contact">
+                <h3>聯絡我們</h3>
+                <div class="contact-methods">
+                    <p><strong>電話：</strong>2827 8889</p>
+                    <p><strong>傳真：</strong>3020 1710</p>
+                    <p><strong>電郵：</strong>careteam@hygienefirstgroup.com</p>
+                    <p><strong>地址：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                </div>
+            </div>
+            
+            <div class="license-info">
+                <p>社會福利署長者社區照顧服務券商 : RSP 11901</p>
+                <p>環保署持牌醫療廢物收集商 : 0001-423-H0001-L1</p>
+                <p>勞工處持牌職業介紹所 : 79406</p>
+                <p>電業承辨商註冊號碼: 037517</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>©版權所有 首衛有限公司 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/85212345678" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <button class="back-to-top" aria-label="回到頂部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html> 

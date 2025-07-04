@@ -17,7 +17,7 @@ Allow: /services.html
 Allow: /contact.html
 Allow: /about.html
 Allow: /index-zh.html
-Allow: /services-zh.html
+Allow: /service.html
 Allow: /contact-zh.html
 Allow: /about-zh.html
 

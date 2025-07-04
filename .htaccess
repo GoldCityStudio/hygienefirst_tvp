@@ -12,7 +12,7 @@ RewriteRule ^(.*)/$ /$1 [L,R=301]
 # Set default language based on browser settings
 RewriteCond %{HTTP:Accept-Language} ^zh [NC]
 RewriteRule ^$ /index-zh.html [L]
-RewriteRule ^services$ /services-zh.html [L]
+RewriteRule ^services$ /service.html [L]
 RewriteRule ^contact$ /contact-zh.html [L]
 
 # Enable gzip compression
