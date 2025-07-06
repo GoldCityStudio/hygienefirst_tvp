@@ -162,17 +162,9 @@
             color: #fff;
         }
 
-        .btn--secondary:hover {
-            background: #0056b3;
-        }
-
         .btn--primary {
             background: var(--primary-color);
             color: #fff;
-        }
-
-        .btn--primary:hover {
-            background: #0056b3;
         }
 
         @media (max-width: 768px) {
@@ -180,6 +172,15 @@
                 grid-template-columns: 1fr;
                 padding: 1rem;
             }
+        }
+
+        .service-content { display: none; }
+        .service-content.active { display: block; }
+        .service-tab.active {
+            background: var(--primary-color, #ff8800);
+            color: #fff;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
     </style>
 </head>
@@ -237,8 +238,8 @@
 
     <main id="main-content">
         <!-- 頁面橫幅 -->
-        <section class="page-banner" style="background-image: url('images/services-banner.jpg'); position: relative;">
-            <div class="banner-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--primary-color) 0%,var(--secondary-color) 100%);z-index:1;"></div>
+        <section class="page-banner" style="">
+            <div class="banner-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--primary-color) 0%,var(--secondary-color) 100%);z-index:1; background-image: url('https://static.wixstatic.com/media/f05284_b23dcfe197564c8abad653c8914f6fc6~mv2.jpg/v1/crop/x_0,y_9,w_3482,h_1401/fill/w_3479,h_1401,al_c,q_90,enc_avif,quality_auto/HYG002%20-Website%20-%20Floor%20-%20%20Layout01%20-%20Our%20Service.jpg'); position: relative;"></div>
             <div class="container" style="position:relative;z-index:2;">
                 <div class="page-banner__content" style="text-align:center;">
                     <h1 class="theme-title">我們的服務</h1>
@@ -491,7 +492,7 @@
                         <a href="contact-zh.html" class="btn btn--primary">聯絡我們討論您的需求</a>
                     </div>
                     <div class="custom-services__image">
-                        <img src="images/custom-healthcare.jpg" alt="客製化醫療護理服務">
+                        <img src="images/HomePage/shutterstock_2285428931.jpg" alt="客製化醫療護理服務 - 專業醫護團隊為您提供個人化醫療護理解決方案">
                     </div>
                 </div>
             </div>
@@ -592,7 +593,7 @@
                     <p>立即預約，享受Hygiene First的專業醫療護理服務。我們的團隊隨時準備為您提供卓越的照護體驗。</p>
                     <div class="cta__buttons">
                         <a href="contact-zh.html" class="btn btn--primary">立即預約</a>
-                        <a href="tel:+85228278889" class="btn btn--outline">撥打電話 2827 8889</a>
+                        <a href="tel:+85228278889" class="btn btn--primary">撥打電話 2827 8889</a>
                     </div>
                 </div>
             </div>
@@ -614,13 +615,15 @@
             <div class="license-info">
                 <p>社會福利署長者社區照顧服務券商 : RSP 11901</p>
                 <p>環保署持牌醫療廢物收集商 : 0001-423-H0001-L1</p>
-                <p>勞工處持牌職業介紹所 : 79406</p>
+                <p>環保署持牌化學廢物收集商 : 9210-4230H0027-WC</p>
+                <p>勞工處持牌職業介紹所 : 79409</p>
                 <p>電業承辨商註冊號碼: 037517</p>
             </div>
             
             <div class="social-links">
                 <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/hygiene.first?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer"><img src="https://www.citypng.com/public/uploads/preview/threads-social-media-white-logo-icon-hd-png-735811696672474wx9bzdjwmv.png" alt="Threads" style="width: 24px; height: 24px; object-fit: contain;"></a>
                 <a href="https://www.youtube.com/channel/UC9TLXQ6bz97kcY94QDkitJA" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.linkedin.com/company/hygiene-first-company-limited-%E9%A6%96%E8%A1%9B%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
             </div>
@@ -633,7 +636,7 @@
     </footer>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/85212345678" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/85295024162" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -642,5 +645,22 @@
     </button>
 
     <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabButtons = document.querySelectorAll('.service-tab');
+      const tabContents = document.querySelectorAll('.service-content');
+      const tabIds = ['residential', 'commercial', 'specialized'];
+      tabButtons.forEach((btn, idx) => {
+        btn.addEventListener('click', function() {
+          // Remove active from all
+          tabButtons.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+          // Add active to current
+          btn.classList.add('active');
+          document.getElementById(tabIds[idx]).classList.add('active');
+        });
+      });
+    });
+    </script>
 </body>
 </html> 
