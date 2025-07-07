@@ -683,6 +683,65 @@ document.addEventListener('DOMContentLoaded', function() {
     contactAnimatedElements.forEach(el => {
         contactObserver.observe(el);
     });
+
+    // Cart modal open/close logic
+    const cartIcon = document.querySelector('.cart-icon');
+    const cartModal = document.getElementById('cartModal');
+    const closeCartModal = document.querySelector('.close-cart-modal');
+    if (cartIcon && cartModal && closeCartModal) {
+        cartIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            cartModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        closeCartModal.addEventListener('click', function() {
+            cartModal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+        closeCartModal.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                cartModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+        cartModal.addEventListener('click', function(e) {
+            if (e.target === cartModal) {
+                cartModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // Promo Banner Functions
+    function closePromoBanner() {
+        const promoBanner = document.querySelector('.promo-banner');
+        if (promoBanner) {
+            promoBanner.style.display = 'none';
+            localStorage.setItem('promo_banner_closed', 'true');
+            // Adjust main content margin
+            const main = document.querySelector('main');
+            if (main) {
+                main.style.marginTop = '80px';
+            }
+        }
+    }
+
+    // Check if promo banner should be shown
+    function checkPromoBanner() {
+        const promoBanner = document.querySelector('.promo-banner');
+        const isClosed = localStorage.getItem('promo_banner_closed');
+        
+        if (promoBanner && isClosed === 'true') {
+            promoBanner.style.display = 'none';
+            const main = document.querySelector('main');
+            if (main) {
+                main.style.marginTop = '80px';
+            }
+        }
+    }
+
+    // Initialize promo banner check
+    checkPromoBanner();
 });
 
 // Form Validation Functions

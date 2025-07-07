@@ -189,6 +189,19 @@
     <div class="overlay"></div>
     <div class="page-transition"></div>
     <header>
+        <!-- Promo Banner -->
+        <div class="promo-banner">
+            <div class="container">
+                <div class="promo-content">
+                    <div class="promo-text">
+                        <i class="fas fa-gift"></i>
+                        <span><strong>限時優惠:</strong> 使用優惠券代碼 <code>WELCOME10</code> 享 10% 折扣 | <code>SAVE50</code> 享 $50 折扣 | <code>FIRST20</code> 享 20% 折扣</span>
+                    </div>
+                    <button class="promo-close" onclick="closePromoBanner()">×</button>
+                </div>
+            </div>
+        </div>
+        
         <div class="container">
             <div class="logo">
                 <a href="index.html">
@@ -233,6 +246,10 @@
                 <span></span>
                 <span></span>
             </div>
+            <div class="header-icons">
+                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i></a>
+                <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span id="cart-count" class="cart-count"></span></a>
+            </div>
         </div>
     </header>
 
@@ -254,6 +271,18 @@
                 <div class="section-header" style="margin-bottom:2.5rem;">
                     <h2 class="theme-title">專業醫療護理服務選項</h2>
                     <p class="theme-subtitle">根據您的需求選擇最適合的服務方案</p>
+                </div>
+                <div class="service-sort-filter">
+                    <div class="filter-group">
+                        <label for="serviceSort">排序：</label>
+                        <select id="serviceSort">
+                            <option value="default">預設</option>
+                            <option value="price-asc">價格：低至高</option>
+                            <option value="price-desc">價格：高至低</option>
+                            <option value="name-asc">名稱：A-Z</option>
+                            <option value="name-desc">名稱：Z-A</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="service-tabs" style="display:flex;gap:1.5rem;justify-content:center;margin-bottom:2.5rem;">
                     <button class="service-tab active">居家醫療</button>
@@ -282,6 +311,7 @@
                                     <h4>HKD 625</h4>
                                 </div>
                                 <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                                <button class="btn btn--primary add-to-cart-btn" data-name="基本居家護理" data-price="625">加入購物車</button>
                             </div>
                         </div>
                         
@@ -305,6 +335,7 @@
                                     <h4>HKD 1,125</h4>
                                 </div>
                                 <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                                <button class="btn btn--primary add-to-cart-btn" data-name="進階居家護理" data-price="1125">加入購物車</button>
                             </div>
                         </div>
                         
@@ -328,6 +359,7 @@
                                     <h4>HKD 875</h4>
                                 </div>
                                 <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                                <button class="btn btn--primary add-to-cart-btn" data-name="高級全天候照護" data-price="875">加入購物車</button>
                             </div>
                         </div>
                     </div>
@@ -354,6 +386,7 @@
                                     <h4>HKD 1,000</h4>
                                 </div>
                                 <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                                <button class="btn btn--primary add-to-cart-btn" data-name="機構醫療人員派遣" data-price="1000">加入購物車</button>
                             </div>
                         </div>
                         
@@ -376,6 +409,7 @@
                                     <h4>HKD 1,375</h4>
                                 </div>
                                 <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                                <button class="btn btn--primary add-to-cart-btn" data-name="養老院/安養中心支援" data-price="1375">加入購物車</button>
                             </div>
                         </div>
                         
@@ -399,6 +433,7 @@
                                     <h4>HKD 1,250</h4>
                                 </div>
                                 <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                                <button class="btn btn--primary add-to-cart-btn" data-name="醫院臨時人力支援" data-price="1250">加入購物車</button>
                             </div>
                         </div>
                     </div>
@@ -425,6 +460,7 @@
                                     <h4>HKD 1,050</h4>
                                 </div>
                                 <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                                <button class="btn btn--primary add-to-cart-btn" data-name="術後照護" data-price="1050">加入購物車</button>
                             </div>
                         </div>
                         
@@ -447,6 +483,7 @@
                                     <h4>HKD 950</h4>
                                 </div>
                                 <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                                <button class="btn btn--primary add-to-cart-btn" data-name="慢性病管理" data-price="950">加入購物車</button>
                             </div>
                         </div>
                         
@@ -469,6 +506,7 @@
                                     <h4>HKD 1,000</h4>
                                 </div>
                                 <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
+                                <button class="btn btn--primary add-to-cart-btn" data-name="疫苗接種服務" data-price="1000">加入購物車</button>
                             </div>
                         </div>
                     </div>
@@ -644,7 +682,7 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <script src="member-script.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
       const tabButtons = document.querySelectorAll('.service-tab');
@@ -662,5 +700,115 @@
       });
     });
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sortSelect = document.getElementById('serviceSort');
+        const tabContents = document.querySelectorAll('.service-content');
+        function getPrice(card) {
+            const priceText = card.querySelector('.service-price h4')?.textContent || '';
+            const match = priceText.replace(/[^\d.]/g, '');
+            return parseFloat(match) || 0;
+        }
+        function getName(card) {
+            return card.querySelector('.service-card__content h3')?.textContent.trim() || '';
+        }
+        function sortCards(cards, sortType) {
+            let sorted = Array.from(cards);
+            if (sortType === 'price-asc') {
+                sorted.sort((a, b) => getPrice(a) - getPrice(b));
+            } else if (sortType === 'price-desc') {
+                sorted.sort((a, b) => getPrice(b) - getPrice(a));
+            } else if (sortType === 'name-asc') {
+                sorted.sort((a, b) => getName(a).localeCompare(getName(b), 'zh-Hant'));
+            } else if (sortType === 'name-desc') {
+                sorted.sort((a, b) => getName(b).localeCompare(getName(a), 'zh-Hant'));
+            }
+            return sorted;
+        }
+        function applySort() {
+            const sortType = sortSelect.value;
+            tabContents.forEach(tab => {
+                const grid = tab.querySelector('.service-grid');
+                if (!grid) return;
+                const cards = grid.querySelectorAll('.service-card');
+                const sorted = sortType === 'default' ? Array.from(cards) : sortCards(cards, sortType);
+                sorted.forEach(card => grid.appendChild(card));
+            });
+        }
+        sortSelect.addEventListener('change', applySort);
+    });
+    </script>
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal" style="display:none;">
+        <div class="cart-modal-content">
+            <span class="close-cart-modal" tabindex="0">&times;</span>
+            <h2>購物車</h2>
+            <div class="cart-modal-body">
+                <div class="cart-items-section">
+                    <h3>購物車商品</h3>
+                    <div id="cart-items"></div>
+                </div>
+                <div class="cart-summary-section">
+                    <div class="cart-modal-footer">
+                        <span>總計: <span id="cart-total">$0</span></span>
+                        <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
+                        <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
+                    </div>
+                </div>
+                
+                <!-- Payment Form -->
+                <div id="payment-form" class="payment-form" style="display:none;">
+                    <h3>付款資訊</h3>
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label for="card-number">信用卡號碼</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="card-expiry">到期日</label>
+                                <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvc">CVC</label>
+                                <input type="text" id="card-cvc" placeholder="123" maxlength="3" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="billing-name">持卡人姓名</label>
+                            <input type="text" id="billing-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="billing-email">電子郵件</label>
+                            <input type="email" id="billing-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="billing-phone">電話號碼</label>
+                            <input type="tel" id="billing-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="billing-address">帳單地址</label>
+                            <textarea id="billing-address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="coupon-code">優惠券代碼 (可選)</label>
+                            <div class="coupon-input-group">
+                                <input type="text" id="coupon-code" placeholder="輸入優惠券代碼">
+                                <button type="button" id="apply-coupon" class="btn btn--secondary">套用</button>
+                            </div>
+                            <div id="coupon-message" class="coupon-message"></div>
+                        </div>
+                        <div class="payment-actions">
+                            <button type="button" id="back-to-cart" class="btn btn--secondary">返回購物車</button>
+                            <button type="submit" id="process-payment" class="btn btn--primary">
+                                <span id="payment-btn-text">確認付款</span>
+                                <span id="payment-loading" style="display:none;">處理中...</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html> 
