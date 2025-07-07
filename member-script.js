@@ -85,45 +85,65 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Simulated login function
-function handleLogin(email, password) {
-    // Here you would typically make an API call to your backend
-    // For now, we'll just simulate a successful login
-    console.log('Logging in with:', email);
-    
-    // Show dashboard and hide forms
-    document.getElementById('loginForm').classList.add('hidden');
-    document.getElementById('registerForm').classList.add('hidden');
-    document.getElementById('memberDashboard').classList.remove('hidden');
-    
-    // Load user data
-    loadUserData();
+// Real login function
+async function handleLogin(email, password) {
+    try {
+        const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.msg || 'Login failed');
+        localStorage.setItem('token', data.token);
+        // Decode token to get user info
+        const user = parseJwt(data.token);
+        showDashboard(user, email);
+    } catch (err) {
+        alert('登入失敗: ' + err.message);
+    }
 }
 
-// Simulated registration function
-function handleRegistration(name, email, phone, password) {
-    // Here you would typically make an API call to your backend
-    // For now, we'll just simulate a successful registration
-    console.log('Registering user:', { name, email, phone });
-    
-    // Show dashboard and hide forms
-    document.getElementById('loginForm').classList.add('hidden');
-    document.getElementById('registerForm').classList.add('hidden');
-    document.getElementById('memberDashboard').classList.remove('hidden');
-    
-    // Load user data
-    loadUserData();
+// Real registration function
+async function handleRegistration(name, email, phone, password) {
+    try {
+        const res = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.msg || 'Registration failed');
+        localStorage.setItem('token', data.token);
+        // Decode token to get user info
+        const user = parseJwt(data.token);
+        showDashboard(user, email);
+    } catch (err) {
+        alert('註冊失敗: ' + err.message);
+    }
 }
 
-// Simulated logout function
 function handleLogout() {
-    // Here you would typically make an API call to your backend
-    // For now, we'll just simulate a logout
-    console.log('Logging out');
-    
-    // Show login form and hide dashboard
+    localStorage.removeItem('token');
     document.getElementById('memberDashboard').classList.add('hidden');
     document.getElementById('loginForm').classList.remove('hidden');
+}
+
+function showDashboard(user, email) {
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('registerForm').classList.add('hidden');
+    document.getElementById('memberDashboard').classList.remove('hidden');
+    document.getElementById('userName').textContent = user && user.user && user.user.id ? '會員' : email;
+    document.getElementById('userEmail').textContent = email;
+}
+
+// Helper to decode JWT
+function parseJwt(token) {
+    try {
+        return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+        return null;
+    }
 }
 
 // Load user data function
