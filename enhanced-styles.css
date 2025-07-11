@@ -713,6 +713,31 @@ main {
     animation: none;
 }
 
+/* Phone Number Hover Effect */
+.contact-methods p strong,
+footer .contact-methods p strong,
+.contact-info-item .contact-details p strong {
+    transition: color 0.3s ease;
+}
+
+.contact-methods p:hover strong,
+footer .contact-methods p:hover strong,
+.contact-info-item .contact-details p:hover strong {
+    color: #0066cc;
+}
+
+/* Phone Call Button Hover Effect */
+a[href^="tel:"] {
+    transition: all 0.3s ease;
+}
+
+a[href^="tel:"]:hover {
+    background-color: #0066cc !important;
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
 /* Service Cards Enhancement */
 .service-card {
     position: relative;

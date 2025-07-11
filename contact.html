@@ -75,11 +75,28 @@
     <div class="overlay"></div>
     <div class="page-transition"></div>
     <header>
+        <!-- Promo Banner -->
+        <div class="promo-banner">
+            <div class="container">
+                <div class="promo-content">
+                    <div class="promo-text">
+                        <i class="fas fa-gift"></i>
+                        <span><strong>限時優惠:</strong> 使用優惠券代碼 <code>WELCOME10</code> 享 10% 折扣 | <code>SAVE50</code> 享 $50 折扣 | <code>FIRST20</code> 享 20% 折扣</span>
+                    </div>
+                    <button class="promo-close" onclick="closePromoBanner()">×</button>
+                </div>
+            </div>
+        </div>
+        
         <div class="container">
             <div class="logo">
                 <a href="index.html">
                     <img src="https://static.wixstatic.com/media/f05284_3647ed5067de49c38c32522636dd8932~mv2.png/v1/fill/w_730,h_124,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo.png" alt="Hygiene First Company Limited" style="max-height: 50px; width: auto;">
                 </a>
+            </div>
+            <div class="header-icons">
+                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i></a>
+                <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
             </div>
             <nav>
                 <ul class="main-menu">
@@ -94,7 +111,7 @@
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="service.html">醫療護理服務</a>
+                        <a href="service.html">居家護理服務</a>
                         <div class="dropdown-content">
                             <a href="service.html#home-care">居家醫療照護</a>
                             <a href="service.html#health-assessment">健康評估</a>
@@ -103,14 +120,22 @@
                             <a href="service.html#caregiver-training">照護人員培訓</a>
                         </div>
                     </li>
-                    <li>
-                        <a href="news.html">最新消息</a>
+                    <li class="dropdown">
+                        <a href="institutional-care.html">機構護理人手支援</a>
+                        <div class="dropdown-content">
+                            <a href="institutional-care.html#institutional-care">機構護理服務</a>
+                            <a href="institutional-care.html#staff-support">人手支援</a>
+                            <a href="institutional-care.html#training">專業培訓</a>
+                        </div>
                     </li>
                     <li>
-                        <a href="community-zh.html">社區計劃</a>
+                        <a href="waste-collection.html">醫療及化學廢物收集服務</a>
                     </li>
                     <li>
-                        <a href="contact-zh.html" class="cta-btn booking-btn">預約服務</a>
+                        <a href="community-zh.html">長者社區服務劵</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">立即預約</a>
                     </li>
                 </ul>
             </nav>
@@ -122,128 +147,212 @@
         </div>
     </header>
 
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal" style="display:none;">
+      <div class="cart-modal-content">
+        <span class="close-cart-modal" tabindex="0">&times;</span>
+        <h2>購物車</h2>
+        <div class="cart-modal-body">
+          <div class="cart-items-section">
+            <h3>購物車商品</h3>
+            <div id="cart-items">
+              <p>您的購物車是空的。</p>
+            </div>
+          </div>
+          <div class="cart-summary-section">
+            <div class="cart-modal-footer">
+              <span>總計: <span id="cart-total">$0</span></span>
+              <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
+              <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <main id="main-content">
-    <section class="page-header">
+    <!-- 頁面橫幅 -->
+    <section class="page-banner">
         <div class="container">
-            <h1>Contact Us</h1>
-            <p>Get in touch with our cleaning experts for professional advice and service inquiries.</p>
+            <h1>聯絡我們</h1>
         </div>
     </section>
 
-    <section class="contact-form-section">
+    <!-- 聯繫表單部分 -->
+    <section class="contact-section">
         <div class="container">
-            <div class="form-container">
-                <h2>Free Consultation</h2>
-                <p>Fill out the form below, and our cleaning specialist will contact you within 24 hours.</p>
-                
+            <div class="contact-content">
+                <!-- 左側聯繫信息 -->
+                <div class="contact-info-card">
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <img src="images/Contact.png" alt="電話" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                            <span class="icon-fallback" style="display:none;"><i class="fas fa-phone"></i></span>
+                        </div>
+                        <div class="contact-details">
+                            <h3>電話</h3>
+                            <p>2827 8889</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <img src="images/Mial.png" alt="電郵" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                            <span class="icon-fallback" style="display:none;"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <div class="contact-details">
+                            <h3>電郵</h3>
+                            <p style="word-break: break-all;">careteam@hygienefirstgroup.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <img src="images/Address.png" alt="地址" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                            <span class="icon-fallback" style="display:none;"><i class="fas fa-map-marker-alt"></i></span>
+                        </div>
+                        <div class="contact-details">
+                            <h3>地址</h3>
+                            <p>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右側表單 -->
+                <div class="contact-form-card" style="margin-top: 32px;">
+                    <h2>給我們發送電子郵件</h2>
                 <form class="contact-form">
-                    <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Full Name *</label>
+                            <label for="name">姓名 *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
+                            <label for="email">電郵 *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="service">Service Interested In</label>
-                            <select id="service" name="service">
-                                <option value="" selected disabled>Select a service</option>
-                                <option value="residential">Residential Cleaning</option>
-                                <option value="sanitization">Home Sanitization</option>
-                                <option value="deep">Deep Cleaning</option>
-                                <option value="disinfection">Disinfection Services</option>
-                                <option value="restoration">Restoration Cleaning</option>
-                                <option value="specialized">Specialized Surface Cleaning</option>
-                                <option value="other">Other Services</option>
-                            </select>
+                            <label for="phone">電話 *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">查詢內容</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="submit-btn">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 所屬機構資料表單 -->
+            <div class="organization-form-section">
+                <h2>所屬機構資料</h2>
+                <form class="organization-form">
+                    <div class="form-group">
+                        <label for="org-name">機構名稱 *</label>
+                        <input type="text" id="org-name" name="org-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="employee-name">員工姓名 *</label>
+                        <input type="text" id="employee-name" name="employee-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">評分（1分最低，10分最高）</label>
+                        <div class="rating-container">
+                            <div class="rating-options">
+                                <input type="radio" id="rating1" name="rating" value="1">
+                                <label for="rating1">1</label>
+                                <input type="radio" id="rating2" name="rating" value="2">
+                                <label for="rating2">2</label>
+                                <input type="radio" id="rating3" name="rating" value="3">
+                                <label for="rating3">3</label>
+                                <input type="radio" id="rating4" name="rating" value="4">
+                                <label for="rating4">4</label>
+                                <input type="radio" id="rating5" name="rating" value="5">
+                                <label for="rating5">5</label>
+                                <input type="radio" id="rating6" name="rating" value="6">
+                                <label for="rating6">6</label>
+                                <input type="radio" id="rating7" name="rating" value="7">
+                                <label for="rating7">7</label>
+                                <input type="radio" id="rating8" name="rating" value="8">
+                                <label for="rating8">8</label>
+                                <input type="radio" id="rating9" name="rating" value="9">
+                                <label for="rating9">9</label>
+                                <input type="radio" id="rating10" name="rating" value="10">
+                                <label for="rating10">10</label>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Please describe your cleaning needs or any questions you have..."></textarea>
+                        <button type="submit" class="submit-btn">提交</button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="preferred-contact">Preferred Contact Method</label>
-                        <div class="radio-group">
-                            <label>
-                                <input type="radio" name="preferred-contact" value="phone" checked>
-                                Phone
-                            </label>
-                            <label>
-                                <input type="radio" name="preferred-contact" value="email">
-                                Email
-                            </label>
-                            <label>
-                                <input type="radio" name="preferred-contact" value="whatsapp">
-                                WhatsApp
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group checkbox-group">
-                        <label>
-                            <input type="checkbox" name="agree-terms" required>
-                            I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" class="btn primary-btn">Submit Inquiry</button>
                 </form>
             </div>
-            
-            <div class="contact-info">
-                <div class="info-card">
-                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <h3>Our Office</h3>
-                    <p>123 Clean Street, Central District<br>Hong Kong</p>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-                    <h3>Call Us</h3>
-                    <p>Phone: 3905 4000<br>Customer WhatsApp: 9502 4162</p>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                    <h3>Email Us</h3>
-                    <p>info@hygienefirst.com<br>support@hygienefirst.com</p>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-icon"><i class="fas fa-clock"></i></div>
-                    <h3>Working Hours</h3>
-                    <p>Monday - Sunday<br>8:00am - 9:00pm</p>
-                </div>
-            </div>
         </div>
     </section>
 
+    <!-- 地圖部分 -->
     <section class="map-section">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.1234567890123!2d113.98765432109876!3d22.456789012345678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f8f8f8f8f8f8%3A0xf8f8f8f8f8f8f8f8!2sSummit%2C%203%20San%20Hop%20Lane%2C%20Tuen%20Mun%2C%20Hong%20Kong!5e0!3m2!1sen!2shk!4v1234567890123!5m2!1sen!2shk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Hygiene First Office Location"></iframe>
+        </div>
+    </section>
+
+    <!-- 常見問題 -->
+    <section class="faq-section">
         <div class="container">
-            <h2>Find Us</h2>
-            <div class="map-container">
-                <!-- In a real implementation, this would be replaced with an actual Google Maps embed -->
-                <div class="map-placeholder">
-                    <p>Google Maps will be embedded here</p>
+            <h2>常見問題</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>預約流程是怎樣的？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>您可以通過我們的網站、電話或電子郵件進行預約。選擇您需要的服務、日期和時間，我們的團隊將與您確認所有細節。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>您提供的消毒服務安全嗎？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>我們使用的所有產品和方法都是安全且環保的。我們的專業人員接受過專業培訓，確保所有操作符合安全標準。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>您的服務可以針對特定需求客製化嗎？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>是的，我們提供客製化服務以滿足您的特定需求。請與我們聯繫討論您的具體要求，我們將為您提供專屬解決方案。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>服務需要多長時間？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>服務時間取決於空間大小和選擇的服務類型。基礎清潔通常需要1-2小時，而深層清潔可能需要3-4小時或更長時間。</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    </main>
+    <!-- 預約按鈕 -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>準備好預約我們的服務了嗎？</h2>
+            <p>點擊下方按鈕立即預約或查詢更多信息</p>
+            <button class="cta-button">立即預約</button>
+        </div>
+    </section>
 
+    <!-- 頁尾 -->
     <footer>
         <div class="container">
             <div class="contact">
@@ -255,7 +364,6 @@
                     <p><strong>地址：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
                 </div>
             </div>
-            
             <div class="license-info">
                 <p>社會福利署長者社區照顧服務券商 : RSP 11901</p>
                 <p>環保署持牌醫療廢物收集商 : 0001-423-H0001-L1</p>
@@ -263,13 +371,16 @@
                 <p>勞工處持牌職業介紹所 : 79409</p>
                 <p>電業承辨商註冊號碼: 037517</p>
             </div>
-            
             <div class="social-links">
                 <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/hygiene.first?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer"><img src="https://www.citypng.com/public/uploads/preview/threads-social-media-white-logo-icon-hd-png-735811696672474wx9bzdjwmv.png" alt="Threads" style="width: 24px; height: 24px; object-fit: contain;"></a>
+                <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer"><img src="images/threads.svg" alt="Threads" style="width: 24px; height: 24px; object-fit: contain;"></a>
                 <a href="https://www.youtube.com/channel/UC9TLXQ6bz97kcY94QDkitJA" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.linkedin.com/company/hygiene-first-company-limited-%E9%A6%96%E8%A1%9B%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                <!-- WeChat Button -->
+                <button class="social-icon wechat-btn" type="button" aria-label="WeChat" style="background: linear-gradient(135deg, #ff9900, #ff6600); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; padding: 0;">
+                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/wechat.svg" alt="WeChat" style="width: 24px; height: 24px; object-fit: contain; filter: invert(1);">
+                </button>
             </div>
         </div>
         <div class="copyright">
@@ -284,10 +395,251 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" aria-label="回到頂部">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- 預約模態視窗 -->
+    <div class="booking-modal">
+        <div class="booking-modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>預約服務</h2>
+            
+            <!-- 進度條 -->
+            <div class="booking-progress">
+                <div class="progress-step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-name">選擇服務</span>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-name">日期時間</span>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-name">客戶資料</span>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-name">付款方式</span>
+                </div>
+            </div>
+            
+            <form class="booking-form">
+                <!-- 步驟 1: 服務選擇 -->
+                <div class="booking-step active" data-step="1">
+                    <h3>選擇您需要的服務</h3>
+                    <div class="service-options">
+                        <div class="service-option">
+                            <input type="radio" id="service-basic" name="service" value="basic">
+                            <label for="service-basic">
+                                <h3>基本居家護理</h3>
+                                <p>基礎健康評估、生活協助和個人衛生護理，適合需要輕度支援的長者。</p>
+                                <span class="service-price">NT$ 2,500</span>
+                            </label>
+                        </div>
+                        <div class="service-option">
+                            <input type="radio" id="service-advanced" name="service" value="advanced">
+                            <label for="service-advanced">
+                                <h3>進階居家護理</h3>
+                                <p>專業健康評估、傷口護理、藥物管理和生命徵象監測，適合需要更多醫療照護的患者。</p>
+                                <span class="service-price">NT$ 4,500</span>
+                            </label>
+                        </div>
+                        <div class="service-option">
+                            <input type="radio" id="service-specialized" name="service" value="specialized">
+                            <label for="service-specialized">
+                                <h3>專業醫療護理</h3>
+                                <p>高級全天候照護，由專業醫護團隊提供，適合有複雜醫療需求的患者。</p>
+                                <span class="service-price">NT$ 6,800</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="step-buttons">
+                        <button type="button" class="button-next">下一步</button>
+                    </div>
+                </div>
+                
+                <!-- 步驟 2: 日期和時間 -->
+                <div class="booking-step" data-step="2">
+                    <h3>選擇日期和時間</h3>
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button type="button" class="prev-month">&lt;</button>
+                            <h4 class="current-month">2024年5月</h4>
+                            <button type="button" class="next-month">&gt;</button>
+                        </div>
+                        <div class="calendar-weekdays">
+                            <div>日</div>
+                            <div>一</div>
+                            <div>二</div>
+                            <div>三</div>
+                            <div>四</div>
+                            <div>五</div>
+                            <div>六</div>
+                        </div>
+                        <div class="calendar-days"></div>
+                    </div>
+                    
+                    <div class="time-slots">
+                        <h4>可預約時段</h4>
+                        <div class="time-slot">
+                            <input type="radio" id="time-9am" name="time-slot" value="9:00">
+                            <label for="time-9am">上午 9:00</label>
+                        </div>
+                        <div class="time-slot">
+                            <input type="radio" id="time-11am" name="time-slot" value="11:00">
+                            <label for="time-11am">上午 11:00</label>
+                        </div>
+                        <div class="time-slot">
+                            <input type="radio" id="time-1pm" name="time-slot" value="13:00">
+                            <label for="time-1pm">下午 1:00</label>
+                        </div>
+                        <div class="time-slot">
+                            <input type="radio" id="time-3pm" name="time-slot" value="15:00">
+                            <label for="time-3pm">下午 3:00</label>
+                        </div>
+                        <div class="time-slot">
+                            <input type="radio" id="time-5pm" name="time-slot" value="17:00">
+                            <label for="time-5pm">下午 5:00</label>
+                        </div>
+                    </div>
+                    <div class="step-buttons">
+                        <button type="button" class="button-prev">上一步</button>
+                        <button type="button" class="button-next">下一步</button>
+                    </div>
+                </div>
+                
+                <!-- 步驟 3: 客戶資料 -->
+                <div class="booking-step" data-step="3">
+                    <h3>您的聯絡資料</h3>
+                    <div class="customer-form">
+                        <div class="form-group">
+                            <label for="customer-name">姓名</label>
+                            <input type="text" id="customer-name" name="customer-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-email">電子郵件</label>
+                            <input type="email" id="customer-email" name="customer-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-phone">電話</label>
+                            <input type="tel" id="customer-phone" name="customer-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-address">地址</label>
+                            <input type="text" id="customer-address" name="customer-address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customer-notes">備註</label>
+                            <textarea id="customer-notes" name="customer-notes" placeholder="請提供額外資訊，如特殊需求或注意事項"></textarea>
+                        </div>
+                    </div>
+                    <div class="step-buttons">
+                        <button type="button" class="button-prev">上一步</button>
+                        <button type="button" class="button-next">下一步</button>
+                    </div>
+                </div>
+                
+                <!-- 步驟 4: 付款方式 -->
+                <div class="booking-step" data-step="4">
+                    <h3>選擇付款方式</h3>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" id="payment-visa" name="payment" value="Visa">
+                            <label for="payment-visa">
+                                <i class="fab fa-cc-visa"></i>
+                                <span>Visa</span>
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="payment-mastercard" name="payment" value="MasterCard">
+                            <label for="payment-mastercard">
+                                <i class="fab fa-cc-mastercard"></i>
+                                <span>MasterCard</span>
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="payment-paypal" name="payment" value="PayPal">
+                            <label for="payment-paypal">
+                                <i class="fab fa-paypal"></i>
+                                <span>PayPal</span>
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="payment-cash" name="payment" value="現金">
+                            <label for="payment-cash">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>現金</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-summary">
+                        <h4>預約摘要</h4>
+                        <div class="summary-item">
+                            <span class="summary-label">服務:</span>
+                            <span class="summary-value" data-summary="service">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">價格:</span>
+                            <span class="summary-value" data-summary="price">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">日期:</span>
+                            <span class="summary-value" data-summary="date">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">時間:</span>
+                            <span class="summary-value" data-summary="time">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">付款方式:</span>
+                            <span class="summary-value" data-summary="payment">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="secure-payment-notice">
+                        <i class="fas fa-lock"></i>
+                        <p>安全支付：您的付款資訊將使用SSL加密保護</p>
+                    </div>
+                    
+                    <div class="step-buttons">
+                        <button type="button" class="button-prev">上一步</button>
+                        <button type="button" id="confirm-booking" class="button-submit">確認預約</button>
+                    </div>
+                </div>
+                
+                <!-- 確認步驟 -->
+                <div class="booking-step" data-step="5">
+                    <div class="confirmation-step">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>預約成功！</h3>
+                        <p>感謝您的預約。我們已發送確認郵件至您的信箱。</p>
+                        <p>我們的客服人員將很快與您聯繫確認詳情。</p>
+                        <button type="button" id="close-confirmation">返回首頁</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="wechat-modal" class="wechat-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+      <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 32px rgba(0,0,0,0.2); position: relative; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
+        <button id="wechat-modal-close" style="position: absolute; top: 8px; right: 12px; background: none; border: none; font-size: 2rem; color: #888; cursor: pointer;">&times;</button>
+        <img src="images/wechatqr.jpeg" alt="WeChat QR Code" style="max-width: 300px; width: 100%; height: auto; margin-bottom: 1rem;">
+        <div style="font-size: 1.1rem; color: #333;">掃描二維碼加我們微信</div>
+      </div>
+    </div>
+    <script>
+      document.querySelector('.wechat-btn').addEventListener('click', function() {
+        document.getElementById('wechat-modal').style.display = 'flex';
+      });
+      document.getElementById('wechat-modal-close').addEventListener('click', function() {
+        document.getElementById('wechat-modal').style.display = 'none';
+      });
+      document.getElementById('wechat-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.style.display = 'none';
+        }
+      });
+    </script>
 
     <script src="script.js"></script>
     </main>
