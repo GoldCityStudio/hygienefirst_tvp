@@ -69,6 +69,161 @@
         ]
     }
     </script>
+    <style>
+    /* --- Institutional Care Page Custom Styles --- */
+    body {
+        background: linear-gradient(135deg, #fff9f5 0%, #fff 50%, #fff9f5 100%);
+    }
+    .institutional-main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2vw;
+        background: linear-gradient(90deg, #ffe3c2 0%, #fff9f5 10%, #fff 80%, #fff9f5 90%, #ffe3c2 100%);
+        border-radius: 32px;
+        box-shadow: 0 4px 32px rgba(255,122,0,0.04);
+    }
+    .institutional-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 64px;
+        margin: 72px 0;
+        flex-wrap: wrap;
+    }
+    .institutional-section:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+    .institutional-section h2 {
+        color: #FF7A00;
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 18px;
+        letter-spacing: 1px;
+    }
+    .institutional-section p {
+        font-size: 1.18rem;
+        font-weight: 500;
+        margin-bottom: 32px;
+        color: #222;
+    }
+    .institutional-gradient-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-bottom: 0;
+    }
+    .institutional-gradient-btn {
+        background: linear-gradient(90deg, #FF7A00 0%, #FF9933 100%);
+        color: #fff;
+        border-radius: 40px;
+        padding: 22px 44px;
+        font-size: 1.18rem;
+        font-weight: 700;
+        border: none;
+        box-shadow: 0 4px 18px rgba(255,122,0,0.10);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 220px;
+        transition: transform 0.18s, box-shadow 0.18s;
+        cursor: pointer;
+    }
+    .institutional-gradient-btn:hover {
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 8px 32px rgba(255,122,0,0.18);
+        background: linear-gradient(90deg, #FF9933 0%, #FF7A00 100%);
+    }
+    .institutional-hex-layer {
+        position: relative;
+        width: 380px;
+        height: 380px;
+        max-width: 98vw;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .institutional-hex-bg {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        width: 360px;
+        height: 360px;
+        background: linear-gradient(135deg, #FF7A00 60%, #FF9933 100%);
+        clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
+        z-index: 1;
+        opacity: 0.18;
+        filter: blur(1px);
+    }
+    .institutional-hex {
+        position: relative;
+        z-index: 2;
+        clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
+        background: #fff;
+        box-shadow: 0 8px 32px rgba(255,122,0,0.13);
+        border: 4px solid #fff9f5;
+        padding: 0;
+        max-width: 360px;
+        width: 360px;
+        height: 360px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .institutional-hex img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 18px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    @media (max-width: 1200px) {
+        .institutional-main {
+            max-width: 100vw;
+        }
+    }
+    @media (max-width: 1100px) {
+        .institutional-section {
+            flex-direction: column !important;
+            gap: 36px;
+        }
+        .institutional-hex-layer {
+            width: 98vw;
+            max-width: 340px;
+            height: 200px;
+        }
+        .institutional-hex-bg, .institutional-hex {
+            width: 98vw;
+            max-width: 340px;
+            height: 200px;
+        }
+    }
+    @media (max-width: 700px) {
+        .institutional-section {
+            margin: 36px 0;
+            gap: 18px;
+        }
+        .institutional-section h2 {
+            font-size: 1.5rem;
+        }
+        .institutional-hex-layer {
+            width: 98vw;
+            max-width: 98vw;
+            height: 140px;
+        }
+        .institutional-hex-bg, .institutional-hex {
+            width: 98vw;
+            max-width: 98vw;
+            height: 140px;
+        }
+        .institutional-gradient-btn {
+            padding: 14px 18px;
+            font-size: 1rem;
+            min-width: 120px;
+        }
+    }
+    </style>
 </head>
 <body class="zh">
     <a href="#main-content" class="skip-link">跳到主要內容</a>
@@ -171,158 +326,101 @@
     </div>
 
     <main id="main-content">
-        <!-- 頁面橫幅 -->
-        <section class="page-banner">
-            <div class="container">
-                <h1>機構護理人手支援</h1>
-                <p>專業的醫護人員支援服務，為醫院、院舍及機構提供24小時專業護理方案</p>
-            </div>
-        </section>
+        <!-- Banner Image -->
+        <div class="full-width-banner" style="position: relative;">
+            <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="機構護理人手支援 Banner" style="width:100%;height:auto;display:block;">
+            <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 2.8rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.5); margin: 0; padding: 0; letter-spacing: 0.1em;">機構護理人手支援</h1>
+        </div>
 
-        <!-- 醫療護理服務方案 -->
-        <section class="service-overview">
-            <div class="container">
-                <div class="service-intro">
-                    <h2>醫療護理服務方案</h2>
+        <div class="institutional-main">
+            <!-- 診所/上門檢測 Section -->
+            <section class="institutional-section">
+                <div style="flex:1; min-width:320px;">
+                    <h2>診所/上門檢測</h2>
+                    <p>Hygiene First提供現場和家庭測試。</p>
+                    <div class="institutional-gradient-btns">
+                        <div class="institutional-gradient-btn">
+                            Covid RT-PCR 檢測<br>抗體檢測
+                        </div>
+                        <div class="institutional-gradient-btn">
+                            血液檢測<br>其他測試
+                        </div>
+                    </div>
+                </div>
+                <div style="flex:1; display:flex; justify-content:center;">
+                    <div class="institutional-hex-layer">
+                        <div class="institutional-hex-bg"></div>
+                        <div class="institutional-hex">
+                            <img src="images/機構護理人手支援/1.png" alt="診所/上門檢測">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 疫苗接種 Section -->
+            <section class="institutional-section">
+                <div style="flex:1; min-width:320px;">
+                    <h2>疫苗接種</h2>
+                    <p>Hygiene First為個人/組織/機構提供疫苗接種和外展服務。</p>
+                    <div class="institutional-gradient-btns">
+                        <div class="institutional-gradient-btn">
+                            流感疫苗接種<br>肝炎疫苗接種<br>Covid-19 疫苗接種
+                        </div>
+                        <div class="institutional-gradient-btn">
+                            旅行疫苗接種其它<br>疫苗接種
+                        </div>
+                    </div>
+                </div>
+                <div style="flex:1; display:flex; justify-content:center;">
+                    <div class="institutional-hex-layer">
+                        <div class="institutional-hex-bg"></div>
+                        <div class="institutional-hex">
+                            <img src="images/機構護理人手支援/2.png" alt="疫苗接種">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 24小時私家護理支援 Section -->
+            <section class="institutional-section">
+                <div style="flex:1; min-width:320px;">
+                    <h2>24 小時私家護理支援</h2>
                     <p>Hygiene First團隊為我們的客戶提供 24 小時醫療護理方案。我們的團隊包括護士、物理治療師、職業治療師、保健員等。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 24 小時私家護理支援 -->
-        <section class="private-care-section">
-            <div class="container">
-                <h2>24 小時私家護理支援</h2>
-                <div class="care-services-grid">
-                    <div class="care-service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-home"></i>
+                    <div class="institutional-gradient-btns">
+                        <div class="institutional-gradient-btn">
+                            住院病人服務<br>手術後護理<br>轉院護送<br>產前及產後護理
                         </div>
-                        <h3>家居護理</h3>
-                        <p>專業護理人員提供居家護理服務，包括基本護理、藥物管理、傷口護理等。</p>
-                    </div>
-                    <div class="care-service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-walking"></i>
+                        <div class="institutional-gradient-btn">
+                            家居護理<br>物理治療<br>職業治療<br>其他護理和治療服務
                         </div>
-                        <h3>物理治療</h3>
-                        <p>專業物理治療師提供康復治療、運動治療、疼痛管理等服務。</p>
                     </div>
-                    <div class="care-service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-tools"></i>
+                </div>
+                <div style="flex:1; display:flex; justify-content:center;">
+                    <div class="institutional-hex-layer">
+                        <div class="institutional-hex-bg"></div>
+                        <div class="institutional-hex">
+                            <img src="images/機構護理人手支援/3.png" alt="24小時私家護理支援">
                         </div>
-                        <h3>職業治療</h3>
-                        <p>職業治療師協助患者恢復日常生活技能，提高獨立生活能力。</p>
                     </div>
-                    <div class="care-service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-heartbeat"></i>
+                </div>
+            </section>
+
+            <!-- 醫院及院舍替假/醫護人員支援 Section -->
+            <section class="institutional-section">
+                <div style="flex:1; min-width:320px;">
+                    <h2>醫院及院舍替假/醫護人員支援</h2>
+                    <p>Hygiene First團隊提供註冊/登記護士和其他醫護人員為醫院和院舍等提供專業支援。</p>
+                </div>
+                <div style="flex:1; display:flex; justify-content:center;">
+                    <div class="institutional-hex-layer">
+                        <div class="institutional-hex-bg"></div>
+                        <div class="institutional-hex">
+                            <img src="images/機構護理人手支援/4.png" alt="醫院及院舍替假/醫護人員支援">
                         </div>
-                        <h3>其他護理和治療服務</h3>
-                        <p>提供各種專業護理和治療服務，滿足不同患者的需求。</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- 住院病人服務 -->
-        <section class="inpatient-services">
-            <div class="container">
-                <h2>住院病人服務</h2>
-                <div class="inpatient-grid">
-                    <div class="inpatient-service">
-                        <h3>手術後護理</h3>
-                        <p>專業護理人員提供手術後護理服務，確保患者安全康復。</p>
-                    </div>
-                    <div class="inpatient-service">
-                        <h3>轉院護送</h3>
-                        <p>安全可靠的轉院護送服務，確保患者安全轉移。</p>
-                    </div>
-                    <div class="inpatient-service">
-                        <h3>產前及產後護理</h3>
-                        <p>專業的產前及產後護理服務，照顧孕婦和新生兒的健康。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 醫院及院舍替假/醫護人員支援 -->
-        <section class="hospital-support">
-            <div class="container">
-                <h2>醫院及院舍替假/醫護人員支援</h2>
-                <p>Hygiene First團隊提供註冊/登記護士和其他醫護人員為醫院和院舍等提供專業支援。</p>
-                <div class="support-features">
-                    <div class="feature">
-                        <i class="fas fa-user-md"></i>
-                        <h3>註冊護士</h3>
-                        <p>提供專業的註冊護士服務，確保高品質的護理標準。</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-user-nurse"></i>
-                        <h3>登記護士</h3>
-                        <p>經驗豐富的登記護士提供全面的護理服務。</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <h3>其他醫護人員</h3>
-                        <p>包括物理治療師、職業治療師、保健員等專業醫護人員。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 疫苗接種 -->
-        <section class="vaccination-services">
-            <div class="container">
-                <h2>疫苗接種</h2>
-                <p>Hygiene First為個人/組織/機構提供疫苗接種和外展服務。</p>
-                <div class="vaccination-grid">
-                    <div class="vaccination-type">
-                        <h3>流感疫苗接種</h3>
-                        <p>提供季節性流感疫苗接種服務，保護健康。</p>
-                    </div>
-                    <div class="vaccination-type">
-                        <h3>肝炎疫苗接種</h3>
-                        <p>專業的肝炎疫苗接種服務，預防肝炎感染。</p>
-                    </div>
-                    <div class="vaccination-type">
-                        <h3>Covid-19 疫苗接種</h3>
-                        <p>提供Covid-19疫苗接種服務，保護社區健康。</p>
-                    </div>
-                    <div class="vaccination-type">
-                        <h3>旅行疫苗接種</h3>
-                        <p>為旅行者提供必要的疫苗接種服務。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 診所/上門檢測 -->
-        <section class="testing-services">
-            <div class="container">
-                <h2>診所/上門檢測</h2>
-                <p>Hygiene First提供現場和家庭測試。</p>
-                <div class="testing-grid">
-                    <div class="testing-type">
-                        <h3>Covid RT-PCR 檢測</h3>
-                        <p>專業的Covid-19 RT-PCR檢測服務，快速準確的結果。</p>
-                    </div>
-                    <div class="testing-type">
-                        <h3>抗體檢測</h3>
-                        <p>提供各種抗體檢測服務，了解免疫狀況。</p>
-                    </div>
-                    <div class="testing-type">
-                        <h3>血液檢測</h3>
-                        <p>全面的血液檢測服務，包括常規檢查和專項檢查。</p>
-                    </div>
-                    <div class="testing-type">
-                        <h3>其他測試</h3>
-                        <p>提供各種專業檢測服務，滿足不同需求。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
         <!-- 聯絡我們 -->
         <section class="contact-section">
@@ -363,7 +461,11 @@
             <div class="social-links">
                 <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/hygiene.first?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer"><img src="https://www.citypng.com/public/uploads/preview/threads-social-media-white-logo-icon-hd-png-735811696672474wx9bzdjwmv.png" alt="Threads" style="width: 24px; height: 24px; object-fit: contain;"></a>
+                <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                    <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161" fill="#fff"/>
+                  </svg>
+                </a>
                 <a href="https://www.youtube.com/channel/UC9TLXQ6bz97kcY94QDkitJA" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.linkedin.com/company/hygiene-first-company-limited-%E9%A6%96%E8%A1%9B%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
             </div>
