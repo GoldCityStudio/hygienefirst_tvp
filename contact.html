@@ -23,6 +23,7 @@
     <title>聯絡我們 - Hygiene First</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="enhanced-styles.css">
+    <link rel="stylesheet" href="dropdown-fix.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -51,9 +52,9 @@
         "description": "專業的醫療護理服務，包括居家醫療照護、健康評估、專業護理、復健治療和照護人員培訓。",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "香港九龍尖沙咀廣東道30號新港中心1座12樓",
+            "streetAddress": "新界屯門新合里3號匯賢一號•雋峰12樓17室",
             "addressLocality": "香港",
-            "addressRegion": "九龍",
+            "addressRegion": "新界",
             "postalCode": "",
             "addressCountry": "HK"
         },
@@ -102,7 +103,7 @@
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">關於我們</a>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content" style="background-color: #ffffff !important; opacity: 1 !important; background: #ffffff !important;">
                             <a href="about.html#features">我們的特色</a>
                             <a href="about.html#testimonials">客戶評價</a>
                             <a href="about.html#quality">服務品質承諾</a>
@@ -210,7 +211,8 @@
                         </div>
                         <div class="contact-details">
                             <h3>地址</h3>
-                            <p>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                            <p><strong>總部（門市）：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                            <p><strong>九龍灣辦事處：</strong>九龍灣臨樂街19號南豐商業中心18樓12室</p>
                         </div>
                     </div>
                 </div>
@@ -298,7 +300,7 @@
     </section>
 
     <!-- 常見問題 -->
-    <section class="faq-section">
+    <section class="faq-section" style="display: none;">
         <div class="container">
             <h2>常見問題</h2>
             <div class="faq-container">
@@ -360,7 +362,8 @@
                     <p><strong>電話：</strong>2827 8889</p>
                     <p><strong>傳真：</strong>3020 1710</p>
                     <p><strong>電郵：</strong>careteam@hygienefirstgroup.com</p>
-                    <p><strong>地址：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                    <p><strong>總部（門市）：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                    <p><strong>九龍灣辦事處：</strong>九龍灣臨樂街19號南豐商業中心18樓12室</p>
                 </div>
             </div>
             <div class="license-info">

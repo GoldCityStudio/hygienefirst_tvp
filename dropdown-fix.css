@@ -1,0 +1,78 @@
+/* BRAND NEW DROPDOWN SYSTEM - Clean implementation */
+
+/* Base dropdown styles */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-dropdown .nav-link {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Submenu styles */
+.nav-submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 250px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 15px;
+    z-index: 1000;
+    list-style: none;
+    margin: 0;
+}
+
+/* Show submenu on hover */
+.nav-dropdown:hover .nav-submenu {
+    display: block;
+}
+
+/* Submenu items */
+.nav-submenu li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-submenu li a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-submenu li a:hover {
+    background-color: #f5f5f5;
+}
+
+/* Ensure proper positioning and visibility */
+.nav-dropdown:hover .nav-submenu {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Override any conflicting styles */
+.nav-submenu {
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+}
+
+/* Make sure the dropdown appears above other elements */
+.nav-dropdown {
+    z-index: 999;
+}
+
+.nav-submenu {
+    z-index: 1000;
+} 

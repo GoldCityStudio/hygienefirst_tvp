@@ -102,31 +102,23 @@ header .container {
     position: absolute;
     background-color: var(--white);
     min-width: 250px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     padding: 15px;
     z-index: 1;
-    border-radius: 8px;
+    border-radius: 5px;
     top: 100%;
     left: 0;
-    transition: all 0.3s ease;
-    transform: translateY(10px);
-    opacity: 0;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
-    transform: translateY(0);
-    opacity: 1;
-    animation: fadeInUp 0.3s ease;
 }
 
 @keyframes fadeInUp {
     from {
-        opacity: 0;
         transform: translateY(10px);
     }
     to {
-        opacity: 1;
         transform: translateY(0);
     }
 }
@@ -572,11 +564,10 @@ main {
     .dropdown-content {
         position: static;
         box-shadow: none;
-        background-color: transparent;
+        background-color: var(--white);
         padding: 5px 0 5px 15px;
         min-width: 100%;
         display: none;
-        opacity: 1;
         transform: none;
         animation: none;
         max-height: 0;
@@ -3583,4 +3574,23 @@ main {
     main {
         margin-top: 130px;
     }
+}
+
+/* CRITICAL FIX: Force About Us dropdown to have solid white background */
+.main-menu li:first-child .dropdown-content,
+.main-menu li.dropdown:first-child .dropdown-content,
+li.dropdown:first-child .dropdown-content,
+nav .main-menu li:first-child .dropdown-content,
+header .main-menu li:first-child .dropdown-content {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    opacity: 1 !important;
+    z-index: 9999 !important;
+}
+
+/* Ensure ALL dropdown content has solid white background */
+.dropdown-content {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    opacity: 1 !important;
 }

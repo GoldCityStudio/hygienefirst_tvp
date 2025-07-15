@@ -23,6 +23,7 @@
     <title>我們的服務 - Hygiene First</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="enhanced-styles.css">
+    <link rel="stylesheet" href="dropdown-fix.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -165,6 +166,13 @@
         .btn--primary {
             background: var(--primary-color);
             color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .btn--primary:hover {
+            background: #007bff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(0, 123, 255, 0.25);
         }
 
         @media (max-width: 768px) {
@@ -216,7 +224,7 @@
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">關於我們</a>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content" style="background-color: #ffffff !important; opacity: 1 !important; background: #ffffff !important;">
                             <a href="about.html#features">我們的特色</a>
                             <a href="about.html#testimonials">客戶評價</a>
                             <a href="about.html#quality">服務品質承諾</a>
@@ -266,14 +274,69 @@
         <div class="full-width-banner" style="position: relative;">
             <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="我們的服務 Banner" style="width:100%;height:auto;display:block;">
             <h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 2.8rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.5); margin: 0; padding: 0; letter-spacing: 0.1em;">我們的服務</h1>
-        </div>
+            </div>
 
         <!-- 服務分類 -->
-        <section class="service-categories" style="background:linear-gradient(135deg,var(--background-light) 0%,#fff 100%);padding-bottom:3rem;">
-            <div class="container">
-                <div class="section-header" style="margin-bottom:2.5rem;">
-                    <h2 class="theme-title">專業醫療護理服務選項</h2>
-                    <p class="theme-subtitle">根據您的需求選擇最適合的服務方案</p>
+        <section class="service-categories" style="background: linear-gradient(135deg, var(--primary-color) 0%, #ff8c1a 15%, var(--secondary-color) 30%, #ffb366 45%, #ffffff 60%, #fff5f0 75%, #ffe6d9 90%, #ffd4b3 100%); padding: 4rem 0; position: relative; overflow: hidden;">
+            <!-- 皇冠裝飾背景 -->
+            <div style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); opacity: 0.08; z-index: 1;">
+                <svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 皇冠主體 -->
+                    <path d="M150 40 L170 70 L200 65 L185 90 L220 100 L185 120 L200 145 L170 140 L150 170 L130 140 L100 145 L115 120 L80 100 L115 90 L100 65 L130 70 Z" fill="url(#crownGradient)" stroke="#FFD700" stroke-width="3"/>
+                    
+                    <!-- 皇冠頂部尖峰 -->
+                    <polygon points="150,20 160,50 140,50" fill="#FFD700"/>
+                    <polygon points="120,30 130,60 110,60" fill="#FFA500"/>
+                    <polygon points="180,30 190,60 170,60" fill="#FFA500"/>
+                    <polygon points="100,40 110,70 90,70" fill="#FF8C00"/>
+                    <polygon points="200,40 210,70 190,70" fill="#FF8C00"/>
+                    
+                    <!-- 皇冠基座 -->
+                    <rect x="80" y="160" width="140" height="20" fill="#FFD700" rx="5"/>
+                    
+                    <!-- 寶石裝飾 -->
+                    <circle cx="150" cy="100" r="8" fill="#FF0000" opacity="0.8"/>
+                    <circle cx="130" cy="110" r="6" fill="#0000FF" opacity="0.8"/>
+                    <circle cx="170" cy="110" r="6" fill="#00FF00" opacity="0.8"/>
+                    
+                    <defs>
+                        <linearGradient id="crownGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                            <stop offset="30%" style="stop-color:#FFA500;stop-opacity:1" />
+                            <stop offset="70%" style="stop-color:#FF8C00;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#DAA520;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            
+            <!-- 皇冠裝飾 - 左上角 -->
+            <div style="position: absolute; top: 20px; left: 20px; opacity: 0.15; z-index: 1;">
+                <svg width="60" height="45" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 5L33 15L42 13.5L37.5 22.5L46.5 24L37.5 31.5L42 40.5L33 39L30 48L27 39L18 40.5L22.5 31.5L13.5 24L22.5 22.5L18 13.5L27 15L30 5Z" fill="#FFD700"/>
+                </svg>
+            </div>
+            
+            <!-- 皇冠裝飾 - 右上角 -->
+            <div style="position: absolute; top: 20px; right: 20px; opacity: 0.15; z-index: 1;">
+                <svg width="60" height="45" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 5L33 15L42 13.5L37.5 22.5L46.5 24L37.5 31.5L42 40.5L33 39L30 48L27 39L18 40.5L22.5 31.5L13.5 24L22.5 22.5L18 13.5L27 15L30 5Z" fill="#FFD700"/>
+                </svg>
+            </div>
+            
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="section-header" style="margin-bottom:2.5rem; text-align: center; position: relative;">
+                    <!-- 標題皇冠 -->
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;">
+                            <path d="M20 3L22 10L28 9L25 15L31 16L25 21L28 27L22 26L20 32L18 26L12 27L15 21L9 16L15 15L12 9L18 10L20 3Z" fill="#FFD700"/>
+                        </svg>
+                        <h2 class="theme-title" style="margin: 0; background: linear-gradient(135deg, #2c3e50, #3498db); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700;">專業醫療護理服務選項</h2>
+                        <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 10px;">
+                            <path d="M20 3L22 10L28 9L25 15L31 16L25 21L28 27L22 26L20 32L18 26L12 27L15 21L9 16L15 15L12 9L18 10L20 3Z" fill="#FFD700"/>
+                        </svg>
+                    </div>
+                    <p class="theme-subtitle" style="color: #5a6c7d; font-size: 1.1rem;">根據您的需求選擇最適合的服務方案</p>
                 </div>
                 <div class="service-sort-filter">
                     <div class="filter-group">
@@ -289,8 +352,6 @@
                 </div>
                 <div class="service-tabs" style="display:flex;gap:1.5rem;justify-content:center;margin-bottom:2.5rem;">
                     <button class="service-tab active">居家醫療</button>
-                    <button class="service-tab">機構醫療</button>
-                    <button class="service-tab">專業護理</button>
                 </div>
                 
                 <div class="service-content active" id="residential">
@@ -310,11 +371,9 @@
                                     <li>陪伴服務</li>
                                 </ul>
                                 <div class="service-price">
-                                    <span>起價</span>
-                                    <h4>HKD 625</h4>
+                                    <h4>HK 452</h4>
                                 </div>
                                 <a href="contact.html" class="btn btn--secondary">預約服務</a>
-                                <button class="btn btn--primary add-to-cart-btn" data-name="基本居家護理" data-price="625">加入購物車</button>
                             </div>
                         </div>
                         
@@ -323,7 +382,7 @@
                                 <i class="fas fa-user-nurse"></i>
                             </div>
                             <div class="service-card__content">
-                                <h3>進階居家護理</h3>
+                                <h3>進階護理方案</h3>
                                 <p>全方位的居家護理服務，由專業護理人員提供，適合需要更多醫療照護的患者。</p>
                                 <ul class="service-features">
                                     <li>所有基本護理項目</li>
@@ -334,20 +393,32 @@
                                     <li>營養和飲食指導</li>
                                 </ul>
                                 <div class="service-price">
-                                    <span>起價</span>
-                                    <h4>HKD 1,125</h4>
+                                    <h4>HKD 750</h4>
                                 </div>
                                 <a href="contact.html" class="btn btn--secondary">預約服務</a>
-                                <button class="btn btn--primary add-to-cart-btn" data-name="進階居家護理" data-price="1125">加入購物車</button>
                             </div>
                         </div>
                         
-                        <div class="service-card">
+                        <div class="service-card" style="border: 3px solid #FFD700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); position: relative; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);">
+                            <!-- 皇冠裝飾在卡片頂部 -->
+                            <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: white; padding: 5px 10px; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                <svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 2L16.5 7.5L21.75 6.75L18.75 11.25L24.25 12L18.75 15.75L21.75 20.25L16.5 19.5L15 24L13.5 19.5L8.25 20.25L11.25 15.75L5.75 12L11.25 11.25L8.25 6.75L13.5 7.5L15 2Z" fill="#FFD700"/>
+                                </svg>
+                            </div>
                             <div class="service-card__icon">
                                 <i class="fas fa-hand-holding-medical"></i>
                             </div>
                             <div class="service-card__content">
-                                <h3>高級全天候照護</h3>
+                                <h3 style="display: flex; align-items: center; justify-content: center; color: #2c3e50; position: relative; z-index: 99;">
+                                    <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px; z-index: 99;">
+                                        <path d="M12 2L13.2 6L17.4 5.4L15 9L19.4 9.6L15 12.6L17.4 16.2L13.2 15.6L12 19.2L10.8 15.6L6.6 16.2L9 12.6L4.6 9.6L9 9L6.6 5.4L10.8 6L12 2Z" fill="#FFD700"/>
+                                    </svg>
+                                    鑽石護理方案
+                                    <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 8px; z-index: 99;">
+                                        <path d="M12 2L13.2 6L17.4 5.4L15 9L19.4 9.6L15 12.6L17.4 16.2L13.2 15.6L12 19.2L10.8 15.6L6.6 16.2L9 12.6L4.6 9.6L9 9L6.6 5.4L10.8 6L12 2Z" fill="#FFD700"/>
+                                    </svg>
+                                </h3>
                                 <p>我們最全面的居家醫療護理服務，提供24小時專業照護，適合有複雜醫療需求的患者。</p>
                                 <ul class="service-features">
                                     <li>所有進階護理項目</li>
@@ -358,162 +429,15 @@
                                     <li>緊急醫療應變處理</li>
                                 </ul>
                                 <div class="service-price">
-                                    <span>起價</span>
-                                    <h4>HKD 875</h4>
+                                    <h4>進行免費諮詢</h4>
                                 </div>
                                 <a href="contact.html" class="btn btn--secondary">預約服務</a>
-                                <button class="btn btn--primary add-to-cart-btn" data-name="高級全天候照護" data-price="875">加入購物車</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="service-content" id="commercial">
-                    <div class="service-grid">
-                        <div class="service-card">
-                            <div class="service-card__icon">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="service-card__content">
-                                <h3>機構醫療人員派遣</h3>
-                                <p>為醫療機構提供合格的醫護人員，包括護士、照護員和醫療助理，以確保機構運作順暢。</p>
-                                <ul class="service-features">
-                                    <li>專業護理人員派遣</li>
-                                    <li>醫療助理支援</li>
-                                    <li>短期與長期合約</li>
-                                    <li>人員資格審核</li>
-                                    <li>全天候支援服務</li>
-                                </ul>
-                                <div class="service-price">
-                                    <span>起價</span>
-                                    <h4>HKD 1,000</h4>
-                                </div>
-                                <a href="contact.html" class="btn btn--secondary">預約服務</a>
-                                <button class="btn btn--primary add-to-cart-btn" data-name="機構醫療人員派遣" data-price="1000">加入購物車</button>
-                            </div>
-                        </div>
-                        
-                        <div class="service-card">
-                            <div class="service-card__icon">
-                                <i class="fas fa-clinic-medical"></i>
-                            </div>
-                            <div class="service-card__content">
-                                <h3>養老院/安養中心支援</h3>
-                                <p>為養老院和安養機構提供專業醫療團隊支援，確保長者獲得適當的照護。</p>
-                                <ul class="service-features">
-                                    <li>專業護理團隊</li>
-                                    <li>醫療評估和建議</li>
-                                    <li>健康監測系統</li>
-                                    <li>員工培訓與指導</li>
-                                    <li>緊急醫療支援</li>
-                                </ul>
-                                <div class="service-price">
-                                    <span>起價</span>
-                                    <h4>HKD 1,375</h4>
-                                </div>
-                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
-                                <button class="btn btn--primary add-to-cart-btn" data-name="養老院/安養中心支援" data-price="1375">加入購物車</button>
-                            </div>
-                        </div>
-                        
-                        <div class="service-card">
-                            <div class="service-card__icon">
-                                <i class="fas fa-hospital"></i>
-                            </div>
-                            <div class="service-card__content">
-                                <h3>醫院臨時人力支援</h3>
-                                <p>為醫院提供臨時醫護人員，協助應對人力短缺或需求高峰期。</p>
-                                <ul class="service-features">
-                                    <li>短期專業護理人員</li>
-                                    <li>急診科支援</li>
-                                    <li>特殊醫療專科支援</li>
-                                    <li>快速人員配置</li>
-                                    <li>靈活排班安排</li>
-                                    <li>品質保證承諾</li>
-                                </ul>
-                                <div class="service-price">
-                                    <span>起價</span>
-                                    <h4>HKD 1,250</h4>
-                                </div>
-                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
-                                <button class="btn btn--primary add-to-cart-btn" data-name="醫院臨時人力支援" data-price="1250">加入購物車</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="service-content" id="specialized">
-                    <div class="service-grid">
-                        <div class="service-card">
-                            <div class="service-card__icon">
-                                <i class="fas fa-procedures"></i>
-                            </div>
-                            <div class="service-card__content">
-                                <h3>術後照護</h3>
-                                <p>為手術後的患者提供專業的復原照護服務，確保順利康復。</p>
-                                <ul class="service-features">
-                                    <li>專業術後護理</li>
-                                    <li>傷口管理與更換</li>
-                                    <li>疼痛管理協助</li>
-                                    <li>活動能力恢復指導</li>
-                                    <li>藥物管理</li>
-                                </ul>
-                                <div class="service-price">
-                                    <span>起價</span>
-                                    <h4>HKD 1,050</h4>
-                                </div>
-                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
-                                <button class="btn btn--primary add-to-cart-btn" data-name="術後照護" data-price="1050">加入購物車</button>
-                            </div>
-                        </div>
-                        
-                        <div class="service-card">
-                            <div class="service-card__icon">
-                                <i class="fas fa-heartbeat"></i>
-                            </div>
-                            <div class="service-card__content">
-                                <h3>慢性病管理</h3>
-                                <p>為慢性病患者提供專業的健康管理，幫助控制病情並提高生活品質。</p>
-                                <ul class="service-features">
-                                    <li>個人化健康計劃</li>
-                                    <li>定期健康評估</li>
-                                    <li>藥物療效監測</li>
-                                    <li>生活方式指導</li>
-                                    <li>醫療協調服務</li>
-                                </ul>
-                                <div class="service-price">
-                                    <span>起價</span>
-                                    <h4>HKD 950</h4>
-                                </div>
-                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
-                                <button class="btn btn--primary add-to-cart-btn" data-name="慢性病管理" data-price="950">加入購物車</button>
-                            </div>
-                        </div>
-                        
-                        <div class="service-card">
-                            <div class="service-card__icon">
-                                <i class="fas fa-shield-virus"></i>
-                            </div>
-                            <div class="service-card__content">
-                                <h3>疫苗接種服務</h3>
-                                <p>專業的疫苗接種服務，可在家中或機構進行，確保安全有效。</p>
-                                <ul class="service-features">
-                                    <li>上門疫苗接種</li>
-                                    <li>專業疫苗儲存和處理</li>
-                                    <li>接種前評估</li>
-                                    <li>疫苗接種證明</li>
-                                    <li>後續觀察與支援</li>
-                                </ul>
-                                <div class="service-price">
-                                    <span>起價</span>
-                                    <h4>HKD 1,000</h4>
-                                </div>
-                                <a href="contact-zh.html" class="btn btn--secondary">預約服務</a>
-                                <button class="btn btn--primary add-to-cart-btn" data-name="疫苗接種服務" data-price="1000">加入購物車</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </section>
 
@@ -523,12 +447,17 @@
                 <div class="custom-services__content">
                     <div class="custom-services__text">
                         <h2>尋找客製化醫療護理解決方案？</h2>
-                        <p>我們了解每位病患都有獨特的需求。我們的專家團隊可以為您量身定制醫療護理計劃，無論是特殊疾病、復健需求還是長期照護，我們都能提供專業解決方案。</p>
+                        <p>Hygiene First 首衛知道每位客戶的需求都是獨一無二的。我們的專家團隊可以為您量身打造合適的護理計劃，無論是特殊疾病照護、復康支援，或是長期照顧，我們都能提供靈活且專業的服務方案。</p>
                         <ul class="custom-services__list">
-                            <li><i class="fas fa-check"></i> 根據您的需求和預算調整服務</li>
-                            <li><i class="fas fa-check"></i> 針對特殊疾病的專業護理</li>
-                            <li><i class="fas fa-check"></i> 個人化照護計劃</li>
-                            <li><i class="fas fa-check"></i> 靈活的服務時間安排</li>
+                            <li><i class="fas fa-check"></i> 根據您的需要與預算靈活調整
+                            </li>
+                            <li><i class="fas fa-check"></i> 提供針對特殊疾病的專業護理
+                            </li>
+                            <li><i class="fas fa-check"></i> 制訂個人化醫療照護計劃
+                            </li>
+                            <li><i class="fas fa-check"></i> 彈性安排服務時間，配合您生活步伐</li>
+
+                            <li><i class="fas fa-check"></i> 讓專業與關懷走進您的生活，為您與家人帶來安心。</li>
                         </ul>
                         <a href="contact.html" class="btn btn--primary">聯絡我們討論您的需求</a>
                     </div>
@@ -630,8 +559,8 @@
         <section class="cta">
             <div class="container">
                 <div class="cta__content">
-                    <h2>準備好體驗專業醫療護理服務了嗎？</h2>
-                    <p>立即預約，享受Hygiene First的專業醫療護理服務。我們的團隊隨時準備為您提供卓越的照護體驗。</p>
+                    <h2>準備好體驗專業的醫療護理服務了嗎？</h2>
+                    <p>立即預約，讓 Hygiene First 首衛 為您提供貼心、可靠的專業照護。我們的團隊隨時準備好，以誠信與關懷，為您與家人帶來安心的醫療體驗。</p>
                     <div class="cta__buttons">
                         <a href="contact-zh.html" class="btn btn--primary">立即預約</a>
                         <a href="tel:+85228278889" class="btn btn--primary">撥打電話 2827 8889</a>
@@ -649,7 +578,8 @@
                     <p><strong>電話：</strong>2827 8889</p>
                     <p><strong>傳真：</strong>3020 1710</p>
                     <p><strong>電郵：</strong>careteam@hygienefirstgroup.com</p>
-                    <p><strong>地址：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                    <p><strong>總部（門市）：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                    <p><strong>九龍灣辦事處：</strong>九龍灣臨樂街19號南豐商業中心18樓12室</p>
                 </div>
             </div>
             
@@ -671,6 +601,10 @@
                 </a>
                 <a href="https://www.youtube.com/channel/UC9TLXQ6bz97kcY94QDkitJA" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.linkedin.com/company/hygiene-first-company-limited-%E9%A6%96%E8%A1%9B%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                <!-- WeChat Button -->
+                <button class="social-icon wechat-btn" type="button" aria-label="WeChat" style="background: linear-gradient(135deg, #ff9900, #ff6600); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%;">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/wechat.svg" alt="WeChat" style="width: 24px; height: 24px; object-fit: contain; filter: invert(1);">
+                </button>
             </div>
         </div>
         <div class="copyright">
@@ -817,5 +751,28 @@
             </div>
         </div>
     </div>
+
+    <!-- WeChat Modal -->
+    <div id="wechat-modal" class="wechat-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+        <div style="background: white; padding: 2rem; border-radius: 12px; text-align: center; max-width: 400px; margin: 0 1rem;">
+            <button id="wechat-modal-close" style="position: absolute; top: 8px; right: 12px; background: none; border: none; font-size: 2rem; color: #888; cursor: pointer;">&times;</button>
+            <img src="images/wechatqr.jpeg" alt="WeChat QR Code" style="max-width: 300px; width: 100%; height: auto; margin-bottom: 1rem;">
+            <div style="font-size: 1.1rem; color: #333;">掃描二維碼加我們微信</div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.wechat-btn').addEventListener('click', function() {
+            document.getElementById('wechat-modal').style.display = 'flex';
+        });
+        document.getElementById('wechat-modal-close').addEventListener('click', function() {
+            document.getElementById('wechat-modal').style.display = 'none';
+        });
+        document.getElementById('wechat-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html> 

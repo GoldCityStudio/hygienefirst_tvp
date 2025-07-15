@@ -20,9 +20,10 @@
     <link rel="canonical" href="https://www.hygienefirst.com/zh-tw" />
     <link rel="alternate" hreflang="en" href="https://www.hygienefirst.com" />
     <link rel="alternate" hreflang="zh-TW" href="https://www.hygienefirst.com/zh-tw" />
-    <title>Hygiene First - 專業醫療護理服務</title>
+    <title>Hygiene First 首衛 <br> 一站式護理支援</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="enhanced-styles.css">
+    <link rel="stylesheet" href="dropdown-fix.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -102,7 +103,7 @@
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">關於我們</a>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content" style="background-color: #ffffff !important; opacity: 1 !important; background: #ffffff !important;">
                             <a href="about.html#features">我們的特色</a>
                             <a href="about.html#testimonials">客戶評價</a>
                             <a href="about.html#quality">服務品質承諾</a>
@@ -186,9 +187,9 @@
                 <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="Banner 11" />
                 <div class="banner-slider-overlay">
                   <div class="banner-slider-content">
-                    <h1>Hygiene First - 專業醫療護理服務</h1>
+                    <h1> Hygiene First 首衛 <br> 一站式護理支援</h1>
                     <h2>20,000+專業醫護人員配對服務</h2>
-                    <h2>Hygiene First 首衛 24 小時專業護理、醫護人員人手支援及醫療廢物、過期藥物處理，為長者與家庭提供全面照護方案</h2>
+                    <h2>Hygiene First 首衛 提供 24 小時醫護人員人手支援、上門護理、疫苗注射、過期針藥回收，用心服務每個家庭。</h2>
                     <p>自2008年以來，我們能夠為不同需求的家庭和機構配對專業醫護人員，包括護士、醫生、物理治療師、保健員和其他醫療人員，提供優質的醫療護理服務，讓您在安全舒適的環境中得到適切的照顧。</p>
                     <div class="cta-buttons">
                         <a href="service.html" class="btn primary-btn">了解服務方案</a>
@@ -232,29 +233,7 @@
                                 <li>其他護理和治療服務</li>
                             </ul>
                         </div>
-                        <div class="service-card animate-on-scroll">
-                            <div class="service-icon-hex">
-                              <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                  <linearGradient id="hexGradient2" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#FFB366"/>
-                                    <stop offset="60%" stop-color="#FF7A00"/>
-                                    <stop offset="100%" stop-color="#FF7A00"/>
-                                  </linearGradient>
-                                </defs>
-                                <polygon points="54,6 102,30 102,78 54,102 6,78 6,30" fill="url(#hexGradient2)"/>
-                                <path d="M12,33 Q54,15 96,33" fill="none" stroke="#fff" stroke-width="4" opacity="0.35"/>
-                              </svg>
-                              <span class="service-icon-svg"><i class="fas fa-stethoscope" aria-hidden="true"></i></span>
-                            </div>
-                            <h3>診所/上門檢測</h3>
-                            <ul>
-                                <li>Covid RT-PCR 檢測</li>
-                                <li>抗體檢測</li>
-                                <li>血液檢測</li>
-                                <li>其他測試</li>
-                            </ul>
-                        </div>
+        
                         <div class="service-card animate-on-scroll">
                             <div class="service-icon-hex">
                               <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -270,10 +249,12 @@
                               </svg>
                               <span class="service-icon-svg"><i class="fas fa-user-md" aria-hidden="true"></i></span>
                             </div>
-                            <h3>醫護人員支援</h3>
+                            <h3>醫療機構人員支援</h3>
                             <ul>
-                                <li>提供註冊/登記護士</li>
-                                <li>其他醫護人員為醫院院舍等提供專業支援</li>
+                                <li>醫院/院舍/醫療機構醫護人手派送服務
+                                    </li>
+                                <li> 承辦健康講座/社區活動服務</li>
+                                <li>承辦外展疫苗接種服務</li>
                             </ul>
                         </div>
                         <div class="service-card animate-on-scroll">
@@ -293,10 +274,13 @@
                             </div>
                             <h3>疫苗接種</h3>
                             <ul>
-                                <li>流感疫苗接種</li>
-                                <li>肝炎疫苗接種</li>
-                                <li>Covid-19 疫苗接種</li>
-                                <li>旅行疫苗接種</li>
+                                <li>流感疫苗接種                                </li>
+                                <li>新冠疫苗接種
+                                </li>
+                                <li>肝炎疫苗接種
+                                </li>
+                                <li>旅行疫苗接種
+                                </li>
                                 <li>其他疫苗接種</li>
                             </ul>
                         </div>
@@ -316,7 +300,9 @@
                               <span class="service-icon-svg"><i class="fas fa-vials" aria-hidden="true"></i></span>
                             </div>
                             <h3>醫療及化學廢物收集</h3>
-                            <p>收集人體組織、動物組織化驗所廢物、傳染性物料、敷料等、醫療廢物針盒、針筒<br>收集過期藥物如：抗生素、危險藥物等</p>
+                            <p>持牌醫療及化學廢物收集商。<br>
+                                醫療廢物收集服務：如 針盒、針筒等<br>
+                                化學廢物收集服務：如 藥丸、藥水、危險藥物等。</p>
                         </div>
                     </div>
                     <div class="slider-fade slider-fade-right"></div>
@@ -373,39 +359,42 @@
 
         <section class="mission">
             <div class="container">
-                <h2>讓醫護走進社區，讓照顧充滿尊重與溫度</h2>
-                <h3>Hygiene First 首衛相信，每一位長者都值得細心照顧。我們致力以誠信、專業及關懷為核心價值，將專業醫護團隊與社區緊密連結，提供靈活、高質的照護方案</h3>
+                <h2>讓 Hygiene First 首衛團隊走進社區，讓照顧充滿尊重與溫度。</h2>
+                <h3>我們秉持誠信、專業與關懷的核心價值，致力將專業醫護團隊與社區緊密連結，為有需要的家庭提供靈活而高質的照護方案，讓關愛真正走進每一個生活細節。</h3>
             </div>
         </section>
 
         <section class="process">
             <div class="container">
                 <h2>查詢醫療服務計劃及收費</h2>
-                <p>無論是為第一次接觸醫療護理的家庭提供指導，還是評估特殊醫療需求，我們的醫療專家都能為您提供個人護理計劃和專業建議。</p>
+                <p>無論是為初次接觸醫護服務的家庭提供指導，還是評估長者的特殊醫療需要，我們的醫療團隊都能為您制定個人化護理計劃，並提供專業而貼心的建議。</p>
                 <div class="process-steps">
                     <div class="process-step animate-on-scroll">
                         <div class="step-number">1</div>
-                        <p>填妥並提交表格，我們的醫療專員將在24小時內與您聯繫</p>
+                        <p>請填妥並提交表格，我們的醫療專員將於 24 小時內主動與您聯繫，為您提供協助。
+                        </p>
                     </div>
                     <div class="process-step animate-on-scroll">
                         <div class="step-number">2</div>
-                        <p>與您的醫療專家進行電話諮詢，讓他們更了解您的需求並提供合適的選擇</p>
+                        <p>按您的需要，安排醫療專家進行電話諮詢，讓他們深入了解您的需要，並為您提供最合適的照護建議與方案。
+                        </p>
                     </div>
                     <div class="process-step animate-on-scroll">
                         <div class="step-number">3</div>
-                        <p>配對醫護人員並預付服務費</p>
+                        <p>為您配對合適的醫護人員，並安排專屬的個案經理，全程跟進服務細節。
+                        </p>
                     </div>
                 </div>
                 <div class="cta-center">
                                             <a href="contact.html" class="btn primary-btn">免費諮詢</a>
-                    <p class="subtitle">辦公時間內馬上回覆！</p>
+                 
                 </div>
             </div>
         </section>
 
         <section class="why-choose">
             <div class="container">
-                <h2>為何選擇Hygiene First 首衛</h2>
+                <h2>為何選擇 Hygiene First 首衛</h2>
                 <div class="features">
                     <div class="feature animate-on-scroll">
                         <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
@@ -452,7 +441,7 @@
             <div class="container">
                 <div class="testimonial-slider">
                     <div class="testimonial animate-on-scroll">
-                        <p>"Hygiene First 首衛 嘅護理員真係超級細心，連我喜歡飲咩茶、睇咩節目都記得，真係好感動！ 佢哋嘅義工隊仲係上年歲晚時黎我們家裏探訪，送左非常實用嘅福袋俾我哋，非常溫暖。"</p>
+                        <p>"Hygiene First 首衛 嘅護理員真係超級細心，連我鍾意飲咩茶、睇咩節目都記得，真係好感動！ 佢哋嘅義工隊仲係上年歲晚時黎我們家裏探訪，送左非常實用嘅福袋俾我哋，非常溫暖。"</p>
                         <div class="testimonial-header">
                             <div class="testimonial-avatar">
                                 <img src="images/HomePage/shutterstock_2285428931.jpg" alt="陳先生" loading="lazy">
@@ -488,7 +477,7 @@
                         </div>
                     </div>
                     <div class="testimonial animate-on-scroll">
-                        <p>"Hygiene First 首衛 為我地家中長者提供專業的上門物理治療服務。每當我地對奶奶的身體狀況有疑問時，派黎嘅 治療師，總能迅速且詳細地解答，幫助我們減輕憂慮，而且奶奶嘅身體狀況明顯有改善，非常值得推薦！"</p>
+                        <p>"Hygiene First 首衛 為我地家中長者提供專業的上門物理治療服務。每當我地對奶奶的身體狀況有疑問時，派黎嘅治療師，總能迅速且詳細地解答，幫助我們減輕憂慮，而且奶奶嘅身體狀況明顯有改善，非常值得推薦！"</p>
                         <div class="testimonial-header">
                             <div class="testimonial-avatar">
                                 <img src="images/HomePage/shutterstock_2413751683.jpg" alt="黃小姐" loading="lazy">
@@ -565,7 +554,8 @@
                     <p><strong>電話：</strong>2827 8889</p>
                     <p><strong>傳真：</strong>3020 1710</p>
                     <p><strong>電郵：</strong>careteam@hygienefirstgroup.com</p>
-                    <p><strong>地址：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                    <p><strong>總部（門市）：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                    <p><strong>九龍灣辦事處：</strong>九龍灣臨樂街19號南豐商業中心18樓12室</p>
                 </div>
             </div>
             
@@ -860,7 +850,7 @@
             current = (current + 1) % slides.length;
             showSlide(current);
         }
-            showSlide(current);
+        showSlide(current);
     setInterval(nextSlide, 4000);
     })();
     </script>

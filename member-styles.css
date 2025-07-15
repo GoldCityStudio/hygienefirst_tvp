@@ -249,7 +249,7 @@ body {
     }
     .dashboard-main {
         padding: 18px 8px 18px 8px;
-    }
+}
 }
 
 /* --- End Modern Member Account UI (Redone) --- */
@@ -296,13 +296,13 @@ body {
     #memberDashboard.active .dashboard-content {
         flex-direction: column;
         gap: 0;
-    }
+}
     #memberDashboard .dashboard-sidebar {
         width: 100%;
         margin-bottom: 12px;
         border-radius: 10px;
         padding: 10px 0;
-    }
+}
     #memberDashboard .dashboard-main {
         padding: 10px 4vw 10px 4vw;
     }
@@ -369,14 +369,14 @@ body {
     padding: 16px 32px;
     display: flex;
     align-items: center;
-    gap: 10px;
+        gap: 10px;
     border-radius: 6px;
     transition: background 0.2s, color 0.2s;
-}
+    }
 #memberDashboard .dashboard-menu a:hover, #memberDashboard .dashboard-menu li.active a {
     background: var(--primary-color);
     color: #fff;
-}
+    }
 #memberDashboard .dashboard-main {
     flex: 1;
     background: #fff;
@@ -403,11 +403,11 @@ body {
     }
     #memberDashboard .dashboard-header, #memberDashboard .dashboard-content {
         padding: 12px 2vw 12px 2vw;
-    }
+}
     #memberDashboard .dashboard-content {
         flex-direction: column;
         gap: 0;
-    }
+}
     #memberDashboard .dashboard-sidebar {
         width: 100%;
         margin-bottom: 12px;
