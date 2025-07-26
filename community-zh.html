@@ -172,10 +172,24 @@
                         <p>社區券（長者社區照顧服務券）是政府「居家安老」政策下一個重點資助計劃。作為此計劃的認可服務單位之一，Hygiene First與社會福利署合作，為長者提供家居為本的服務，讓長者能夠使用社區券，以資助價錢使用上門護理服務。</p>
                     </div>
                 
-                <!-- Full-width image -->
-                <div class="full-width-image">
-                    <img src="images/長者社區照顧服務券.png" alt="長者社區照顧服務券" loading="lazy" style="width: 100%; height: auto; max-width: 100%; opacity: 0.3;">
+                <!-- Fanned out images layout -->
+                <div class="fanned-images-container" style="position: relative; height: 500px; margin: 60px 0; overflow: visible;">
+                    <div style="text-align: center; margin-bottom: 20px; color: #666; font-size: 0.9rem;">
+                        <i class="fas fa-mouse-pointer"></i> 懸停圖片查看詳細內容
                     </div>
+                    <div class="fanned-image" style="position: absolute; width: 300px; height: 200px; left: 10%; top: 50%; transform: translateY(-50%) rotate(-15deg); z-index: 1; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;">
+                        <img src="images/長者社區照顧服務券1.jpg" alt="長者社區照顧服務券" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="fanned-image" style="position: absolute; width: 300px; height: 200px; left: 25%; top: 50%; transform: translateY(-50%) rotate(-8deg); z-index: 2; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;">
+                        <img src="images/長者社區照顧服務券2.jpg" alt="長者社區照顧服務券" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="fanned-image" style="position: absolute; width: 300px; height: 200px; left: 40%; top: 50%; transform: translateY(-50%) rotate(0deg); z-index: 3; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;">
+                        <img src="images/長者社區照顧服務券3.jpg" alt="長者社區照顧服務券" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="fanned-image" style="position: absolute; width: 300px; height: 200px; left: 55%; top: 50%; transform: translateY(-50%) rotate(8deg); z-index: 2; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;">
+                        <img src="images/長者社區照顧服務券4.jpg" alt="長者社區照顧服務券" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                </div>
 
             </div>
         </section>
@@ -186,29 +200,29 @@
                 <div class="section-header">
                     <h2>計劃詳情</h2>
                 </div>
-                <div class="details-grid">
-                    <div class="detail-card">
+                <div class="details-grid" style="display: flex; flex-wrap: nowrap; gap: 20px; overflow-x: auto; padding: 20px 0;">
+                    <div class="detail-card" style="min-width: 280px; flex: 1;">
                         <div class="detail-icon">
                             <i class="fas fa-dollar-sign"></i>
                         </div>
                         <h3>服務定價</h3>
                         <p>服務單位提供的社區券服務組合定價為 HK$4,182 至 $10,455。長者需要支付的金額按其社區券上顯示的共同付款級別而定。</p>
                     </div>
-                    <div class="detail-card">
+                    <div class="detail-card" style="min-width: 280px; flex: 1;">
                         <div class="detail-icon">
                             <i class="fas fa-percentage"></i>
                         </div>
                         <h3>共同付款級別</h3>
                         <p>社區券有六個共同付款級別，分別為服務組合價格的 5%、8%、12%、16%、25%、40%。</p>
                     </div>
-                    <div class="detail-card">
+                    <div class="detail-card" style="min-width: 280px; flex: 1;">
                         <div class="detail-icon">
                             <i class="fas fa-home"></i>
                         </div>
                         <h3>計劃目的</h3>
                         <p>社區券計劃的目的是要讓一眾長者能夠留在家人和朋友身邊，在他們安全溫暖的家、所愛的社區內安享晚年。</p>
                     </div>
-                    <div class="detail-card">
+                    <div class="detail-card" style="min-width: 280px; flex: 1;">
                         <div class="detail-icon">
                             <i class="fas fa-users"></i>
                         </div>
@@ -641,6 +655,77 @@
         if (e.target === this) {
           this.style.display = 'none';
         }
+      });
+      
+      // Fanned images interaction
+      document.addEventListener('DOMContentLoaded', function() {
+        const fannedImages = document.querySelectorAll('.fanned-image');
+        
+        fannedImages.forEach((image, index) => {
+          // Store original transform for smooth transitions
+          const originalTransforms = [
+            'translateY(-50%) rotate(-15deg)',
+            'translateY(-50%) rotate(-8deg)',
+            'translateY(-50%) rotate(0deg)',
+            'translateY(-50%) rotate(8deg)'
+          ];
+          
+          image.addEventListener('mouseenter', function() {
+            // Bring to front and scale up with smooth transition
+            this.style.zIndex = '10';
+            this.style.transform = originalTransforms[index] + ' scale(2.5)';
+            this.style.boxShadow = '0 30px 70px rgba(0,0,0,0.6)';
+            this.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            
+            // Add a subtle glow effect
+            this.style.filter = 'brightness(1.1)';
+          });
+          
+          image.addEventListener('mouseleave', function() {
+            // Reset to original position and scale with smooth transition
+            this.style.zIndex = index + 1;
+            this.style.transform = originalTransforms[index] + ' scale(1)';
+            this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+            this.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            this.style.filter = 'brightness(1)';
+          });
+          
+          image.addEventListener('click', function() {
+            // Create a lightbox effect
+            const img = this.querySelector('img');
+            const lightbox = document.createElement('div');
+            lightbox.style.cssText = `
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              background: rgba(0,0,0,0.9);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              z-index: 9999;
+              cursor: pointer;
+            `;
+            
+            const lightboxImg = document.createElement('img');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxImg.style.cssText = `
+              max-width: 90vw;
+              max-height: 90vh;
+              object-fit: contain;
+              border-radius: 8px;
+            `;
+            
+            lightbox.appendChild(lightboxImg);
+            document.body.appendChild(lightbox);
+            
+            lightbox.addEventListener('click', function() {
+              document.body.removeChild(lightbox);
+            });
+          });
+        });
       });
     </script>
 

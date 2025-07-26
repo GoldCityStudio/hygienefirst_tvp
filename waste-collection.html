@@ -186,9 +186,26 @@
                 </div>
             </div>
         </section>
-        <!-- Full-width image 2.jpg -->
-        <div class="full-width-image">
-            <img src="images/醫療及化學廢物收集服務/2.jpg" alt="醫療及化學廢物收集服務" style="width:100%;height:auto;display:block;">
+        <!-- Full-width image slider -->
+        <div class="full-width-image-slider" style="position: relative; overflow: hidden;">
+            <div class="slider-container" style="display: flex; transition: transform 0.5s ease;">
+                <div class="slide" style="min-width: 100%;">
+                    <img src="images/醫療及化學廢物收集服務/2.jpg" alt="醫療及化學廢物收集服務" style="width:100%;height:auto;display:block;">
+                </div>
+                <div class="slide" style="min-width: 100%;">
+                    <img src="images/醫療及化學廢物收集服務/4.jpg" alt="醫療及化學廢物收集服務" style="width:100%;height:auto;display:block;">
+                </div>
+                <div class="slide" style="min-width: 100%;">
+                    <img src="images/醫療及化學廢物收集服務/5.jpg" alt="醫療及化學廢物收集服務" style="width:100%;height:auto;display:block;">
+                </div>
+            </div>
+            <button class="slider-btn prev" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 20px; color: #333; z-index: 10;">‹</button>
+            <button class="slider-btn next" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 20px; color: #333; z-index: 10;">›</button>
+            <div class="slider-dots" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10;">
+                <span class="dot active" style="width: 12px; height: 12px; border-radius: 50%; background: #fff; cursor: pointer; opacity: 0.8;"></span>
+                <span class="dot" style="width: 12px; height: 12px; border-radius: 50%; background: #fff; cursor: pointer; opacity: 0.4;"></span>
+                <span class="dot" style="width: 12px; height: 12px; border-radius: 50%; background: #fff; cursor: pointer; opacity: 0.4;"></span>
+            </div>
         </div>
 
         <!-- 信心保證 -->
@@ -289,6 +306,54 @@
 
     <script src="script.js"></script>
     <script src="structured-data.js"></script>
+    <script>
+        // Image Slider Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderContainer = document.querySelector('.slider-container');
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.slider-btn.prev');
+            const nextBtn = document.querySelector('.slider-btn.next');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            function updateSlider() {
+                sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.style.opacity = index === currentSlide ? '0.8' : '0.4';
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlider();
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlider();
+                });
+            });
+            
+            // Auto-play
+            setInterval(nextSlide, 5000);
+        });
+    </script>
     <!-- WeChat Modal -->
     <div id="wechat-modal" class="wechat-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
       <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 32px rgba(0,0,0,0.2); position: relative; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
