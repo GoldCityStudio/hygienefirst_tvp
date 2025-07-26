@@ -240,6 +240,10 @@
                 </a>
                 <a href="https://www.youtube.com/channel/UC9TLXQ6bz97kcY94QDkitJA" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.linkedin.com/company/hygiene-first-company-limited-%E9%A6%96%E8%A1%9B%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                <!-- WeChat Button -->
+                <button class="social-icon wechat-btn" type="button" aria-label="WeChat" style="background: linear-gradient(135deg, #ff9900, #ff6600); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; margin: 0 5px; transition: transform 0.3s ease;">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/wechat.svg" alt="WeChat" style="width: 24px; height: 24px; object-fit: contain; filter: invert(1);">
+                </button>
             </div>
         </div>
         <div class="copyright">
@@ -260,5 +264,27 @@
     </button>
 
     <script src="script.js"></script>
+    <!-- WeChat Modal -->
+    <div id="wechat-modal" class="wechat-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+      <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 32px rgba(0,0,0,0.2); position: relative; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
+        <button id="wechat-modal-close" style="position: absolute; top: 8px; right: 12px; background: none; border: none; font-size: 2rem; color: #888; cursor: pointer;">&times;</button>
+        <img src="images/wechatqr.jpeg" alt="WeChat QR Code" style="max-width: 300px; width: 100%; height: auto; margin-bottom: 1rem;">
+        <div style="font-size: 1.1rem; color: #333;">掃描二維碼加我們微信</div>
+      </div>
+    </div>
+    <script>
+      document.querySelector('.wechat-btn').addEventListener('click', function() {
+        document.getElementById('wechat-modal').style.display = 'flex';
+      });
+      document.getElementById('wechat-modal-close').addEventListener('click', function() {
+        document.getElementById('wechat-modal').style.display = 'none';
+      });
+      document.getElementById('wechat-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.style.display = 'none';
+        }
+      });
+    </script>
+
 </body>
 </html> 

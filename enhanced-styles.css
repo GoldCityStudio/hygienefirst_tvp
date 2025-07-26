@@ -2666,7 +2666,7 @@ a[href^="tel:"]:hover {
 
 .contact-form-card::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-color);
-}
+} 
 
 /* View More News Button */
 .view-more-news {
