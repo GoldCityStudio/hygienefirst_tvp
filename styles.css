@@ -1136,6 +1136,9 @@ footer .container {
     letter-spacing: -0.5px;
     -webkit-text-stroke: 2px #fff;
     text-stroke: 2px #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .page-banner__content p {
@@ -1501,6 +1504,9 @@ footer .container {
     
     .page-banner__content h1 {
         font-size: 2.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
@@ -1525,6 +1531,9 @@ footer .container {
     
     .page-banner__content h1 {
         font-size: 2.2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
@@ -3287,6 +3296,9 @@ header.sticky .logo a {
     margin-bottom: 12px;
     color: #fff;
     text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .banner-slider-content h2 {
     font-size: 1.35rem;
@@ -3294,6 +3306,9 @@ header.sticky .logo a {
     margin-bottom: 10px;
     color: #fff;
     text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .banner-slider-content p {
     font-size: 1.08rem;
@@ -3318,9 +3333,15 @@ header.sticky .logo a {
     }
     .banner-slider-content h1 {
         font-size: 1.4rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .banner-slider-content h2 {
         font-size: 1.05rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .banner-slider-content p {
         font-size: 0.98rem;
