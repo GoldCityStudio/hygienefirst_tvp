@@ -3243,6 +3243,11 @@ header.sticky .logo a {
     display: block !important;
 }
 
+.banner-slider-track img:first-child {
+    opacity: 1;
+    z-index: 2;
+}
+
 .banner-slider-track img[style*='block'] {
     opacity: 1;
     z-index: 1;
@@ -4161,6 +4166,10 @@ footer .license-info {
     min-width: 200px;
     color: #888;
     font-size: 0.98rem;
+}
+
+footer .license-info p {
+    margin-bottom: 10px;
 }
 footer .social-links {
     flex: 1 1 120px;

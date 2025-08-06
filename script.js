@@ -1,4 +1,42 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Banner Slider functionality
+    function setupBannerSlider() {
+        const bannerTrack = document.querySelector('.banner-slider-track');
+        if (!bannerTrack) return;
+        
+        const images = bannerTrack.querySelectorAll('img');
+        if (images.length === 0) return;
+        
+        let currentIndex = 0;
+        
+        // Show first image
+        images[0].style.opacity = '1';
+        images[0].style.zIndex = '2';
+        
+        function showImage(index) {
+            // Hide all images
+            images.forEach(img => {
+                img.style.opacity = '0';
+                img.style.zIndex = '1';
+            });
+            
+            // Show current image
+            images[index].style.opacity = '1';
+            images[index].style.zIndex = '2';
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+        
+        // Auto-advance every 5 seconds
+        setInterval(nextImage, 5000);
+    }
+    
+    // Initialize banner slider
+    setupBannerSlider();
+
     // Create page transition element
     const pageTransition = document.createElement('div');
     pageTransition.className = 'page-transition';

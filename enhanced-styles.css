@@ -2412,7 +2412,7 @@ a[href^="tel:"]:hover {
 
 /* CTA Section */
 .cta-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: transparent;
     color: white;
     padding: 4rem 0;
     text-align: center;

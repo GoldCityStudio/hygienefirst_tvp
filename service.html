@@ -198,17 +198,7 @@
     <div class="page-transition"></div>
     <header>
         <!-- Promo Banner -->
-        <div class="promo-banner">
-            <div class="container">
-                <div class="promo-content">
-                    <div class="promo-text">
-                        <i class="fas fa-gift"></i>
-                        <span><strong>限時優惠:</strong> 使用優惠券代碼 <code>WELCOME10</code> 享 10% 折扣 | <code>SAVE50</code> 享 $50 折扣 | <code>FIRST20</code> 享 20% 折扣</span>
-                    </div>
-                    <button class="promo-close" onclick="closePromoBanner()">×</button>
-                </div>
-            </div>
-        </div>
+
         
         <div class="container">
             <div class="logo">
@@ -235,11 +225,17 @@
                     <li class="dropdown">
                         <a href="service.html">居家護理服務</a>
                         <div class="dropdown-content">
-                            <a href="service.html#home-care">居家醫療照護</a>
-                            <a href="service.html#health-assessment">健康評估</a>
-                            <a href="service.html#nursing">專業護理</a>
-                            <a href="service.html#rehabilitation">復健治療</a>
-                            <a href="service.html#caregiver-training">照護人員培訓</a>
+                            <a href="health-assessment.html">上門健康評估</a>
+                            <a href="elderly-care.html">長者照顧服務</a>
+                            <a href="accompaniment.html">陪診護送服務</a>
+                            <a href="wound-care.html">傷口護理</a>
+                            <a href="nasogastric-care.html">鼻胃喉管護理服務</a>
+                            <a href="caregiver-training.html">照顧者培訓班</a>
+                            <a href="stroke-care.html">中風護理及復康服務</a>
+                            <a href="cancer-care.html">癌症護理服務</a>
+                            <a href="dementia-care.html">認知障礙症護理服務</a>
+                            <a href="post-surgery-care.html">專業手術後護理服務</a>
+                            <a href="rehabilitation-care.html">復康護理</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -278,29 +274,25 @@
 
         <!-- 服務分類 -->
         <section class="service-categories" style="background: linear-gradient(135deg, var(--primary-color) 0%, #ff8c1a 15%, var(--secondary-color) 30%, #ffb366 45%, #ffffff 60%, #fff5f0 75%, #ffe6d9 90%, #ffd4b3 100%); padding: 4rem 0; position: relative; overflow: hidden;">
-            <!-- 皇冠裝飾背景 -->
+            <!-- 星星裝飾背景 -->
             <div style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); opacity: 0.08; z-index: 1;">
                 <svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- 皇冠主體 -->
-                    <path d="M150 40 L170 70 L200 65 L185 90 L220 100 L185 120 L200 145 L170 140 L150 170 L130 140 L100 145 L115 120 L80 100 L115 90 L100 65 L130 70 Z" fill="url(#crownGradient)" stroke="#FFD700" stroke-width="3"/>
+                    <!-- 大星星主體 -->
+                    <path d="M150 40 L160 60 L180 65 L165 80 L175 100 L150 85 L125 100 L135 80 L120 65 L140 60 Z" fill="url(#starGradient)" stroke="#FFD700" stroke-width="2"/>
                     
-                    <!-- 皇冠頂部尖峰 -->
-                    <polygon points="150,20 160,50 140,50" fill="#FFD700"/>
-                    <polygon points="120,30 130,60 110,60" fill="#FFA500"/>
-                    <polygon points="180,30 190,60 170,60" fill="#FFA500"/>
-                    <polygon points="100,40 110,70 90,70" fill="#FF8C00"/>
-                    <polygon points="200,40 210,70 190,70" fill="#FF8C00"/>
+                    <!-- 小星星裝飾 -->
+                    <path d="M100 50 L105 60 L115 62 L108 70 L112 80 L100 75 L88 80 L92 70 L85 62 L95 60 Z" fill="#FFA500"/>
+                    <path d="M200 50 L205 60 L215 62 L208 70 L212 80 L200 75 L188 80 L192 70 L185 62 L195 60 Z" fill="#FFA500"/>
+                    <path d="M80 100 L85 110 L95 112 L88 120 L92 130 L80 125 L68 130 L72 120 L65 112 L75 110 Z" fill="#FF8C00"/>
+                    <path d="M220 100 L225 110 L235 112 L228 120 L232 130 L220 125 L208 130 L212 120 L205 112 L215 110 Z" fill="#FF8C00"/>
                     
-                    <!-- 皇冠基座 -->
-                    <rect x="80" y="160" width="140" height="20" fill="#FFD700" rx="5"/>
-                    
-                    <!-- 寶石裝飾 -->
-                    <circle cx="150" cy="100" r="8" fill="#FF0000" opacity="0.8"/>
-                    <circle cx="130" cy="110" r="6" fill="#0000FF" opacity="0.8"/>
-                    <circle cx="170" cy="110" r="6" fill="#00FF00" opacity="0.8"/>
+                    <!-- 更多星星裝飾 -->
+                    <circle cx="150" cy="150" r="3" fill="#FFD700"/>
+                    <circle cx="120" cy="140" r="2" fill="#FFA500"/>
+                    <circle cx="180" cy="140" r="2" fill="#FFA500"/>
                     
                     <defs>
-                        <linearGradient id="crownGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
                             <stop offset="30%" style="stop-color:#FFA500;stop-opacity:1" />
                             <stop offset="70%" style="stop-color:#FF8C00;stop-opacity:1" />
@@ -310,14 +302,14 @@
                 </svg>
             </div>
             
-            <!-- 皇冠裝飾 - 左上角 -->
+            <!-- 星星裝飾 - 左上角 -->
             <div style="position: absolute; top: 20px; left: 20px; opacity: 0.15; z-index: 1;">
                 <svg width="60" height="45" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M30 5L33 15L42 13.5L37.5 22.5L46.5 24L37.5 31.5L42 40.5L33 39L30 48L27 39L18 40.5L22.5 31.5L13.5 24L22.5 22.5L18 13.5L27 15L30 5Z" fill="#FFD700"/>
                 </svg>
             </div>
             
-            <!-- 皇冠裝飾 - 右上角 -->
+            <!-- 星星裝飾 - 右上角 -->
             <div style="position: absolute; top: 20px; right: 20px; opacity: 0.15; z-index: 1;">
                 <svg width="60" height="45" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M30 5L33 15L42 13.5L37.5 22.5L46.5 24L37.5 31.5L42 40.5L33 39L30 48L27 39L18 40.5L22.5 31.5L13.5 24L22.5 22.5L18 13.5L27 15L30 5Z" fill="#FFD700"/>
@@ -326,7 +318,7 @@
             
             <div class="container" style="position: relative; z-index: 2;">
                 <div class="section-header" style="margin-bottom:2.5rem; text-align: center; position: relative;">
-                    <!-- 標題皇冠 -->
+                    <!-- 標題星星 -->
                     <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
                         <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;">
                             <path d="M20 3L22 10L28 9L25 15L31 16L25 21L28 27L22 26L20 32L18 26L12 27L15 21L9 16L15 15L12 9L18 10L20 3Z" fill="#FFD700"/>
@@ -565,41 +557,50 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
+        <footer>
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; padding: 40px 0;">
+            <!-- Left Section - Contact Info -->
             <div class="contact">
-                <h3>聯絡我們</h3>
+                <h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1.3rem;">聯絡我們</h3>
                 <div class="contact-methods">
-                    <p><strong>電話：</strong>2827 8889</p>
-                    <p><strong>傳真：</strong>3020 1710</p>
-                    <p><strong>電郵：</strong>careteam@hygienefirstgroup.com</p>
-                    <p><strong>總部（門市）：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
-                    <p><strong>九龍灣辦事處：</strong>九龍灣臨樂街19號南豐商業中心18樓12室</p>
+                    <p style="margin-bottom: 8px;">電話：2827 8889</p>
+                    <p style="margin-bottom: 8px;">傳真：3020 1710</p>
+                    <p style="margin-bottom: 8px;">電郵：careteam@hygienefirstgroup.com</p>
+                    <p style="margin-bottom: 8px;">總部（門市）：新界屯門新合里3號匯賢一號•雋峰12樓17室</p>
+                    <p style="margin-bottom: 8px;">九龍灣辦事處：九龍灣臨樂街19號南豐商業中心18樓12室</p>
                 </div>
             </div>
             
+            <!-- Middle Section - License Info -->
             <div class="license-info">
-                <p>社會福利署長者社區照顧服務券商 : RSP 11901</p>
-                <p>環保署持牌醫療廢物收集商 : 0001-423-H0001-L1</p>
-                <p>環保署持牌化學廢物收集商 : 9210-4230H0027-WC</p>
-                <p>勞工處持牌職業介紹所 : 79409</p>
-                <p>電業承辨商註冊號碼: 037517</p>
+                <h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1.3rem;">牌照資訊</h3>
+                <div class="license-details">
+                    <p style="margin-bottom: 8px;">社會福利署長者社區照顧服務券商：RSP 11901</p>
+                    <p style="margin-bottom: 8px;">環保署持牌醫療廢物收集商：0001-423-H0001-L1</p>
+                    <p style="margin-bottom: 8px;">環保署持牌化學廢物收集商：9210-4230H0027-WC</p>
+                    <p style="margin-bottom: 8px;">勞工處持牌職業介紹所：79409</p>
+                    <p style="margin-bottom: 8px;">電業承辨商註冊號碼：037517</p>
+                </div>
             </div>
             
+            <!-- Right Section - Social Links -->
             <div class="social-links">
-                <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/hygiene.first?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Threads">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
-                    <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161" fill="#fff"/>
-                  </svg>
-                </a>
-                <a href="https://www.youtube.com/channel/UC9TLXQ6bz97kcY94QDkitJA" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.linkedin.com/company/hygiene-first-company-limited-%E9%A6%96%E8%A1%9B%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-                <!-- WeChat Button -->
-                <button class="social-icon wechat-btn" type="button" aria-label="WeChat" style="background: linear-gradient(135deg, #ff9900, #ff6600); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%;">
-                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/wechat.svg" alt="WeChat" style="width: 24px; height: 24px; object-fit: contain; filter: invert(1);">
-                </button>
+                <h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1.3rem;">關注我們</h3>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/hygiene.first?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                        <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161" fill="#fff"/>
+                      </svg>
+                    </a>
+                    <!-- WeChat Button -->
+                    <button class="social-icon wechat-btn" type="button" aria-label="WeChat" style="background: linear-gradient(135deg, #ff9900, #ff6600); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; padding: 0;">
+                      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/wechat.svg" alt="WeChat" style="width: 24px; height: 24px; object-fit: contain; filter: invert(1);">
+                    </button>
+                    <a href="https://www.youtube.com/channel/UC9TLXQ6bz97kcY94QDkitJA" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/company/hygiene-first-company-limited-%E9%A6%96%E8%A1%9B%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
         </div>
         <div class="copyright">
@@ -610,7 +611,7 @@
     </footer>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/85295024162" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/85295024162" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -618,156 +619,28 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="member-script.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const tabButtons = document.querySelectorAll('.service-tab');
-      const tabContents = document.querySelectorAll('.service-content');
-      const tabIds = ['residential', 'commercial', 'specialized'];
-      tabButtons.forEach((btn, idx) => {
-        btn.addEventListener('click', function() {
-          // Remove active from all
-          tabButtons.forEach(b => b.classList.remove('active'));
-          tabContents.forEach(c => c.classList.remove('active'));
-          // Add active to current
-          btn.classList.add('active');
-          document.getElementById(tabIds[idx]).classList.add('active');
-        });
-      });
-    });
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const sortSelect = document.getElementById('serviceSort');
-        const tabContents = document.querySelectorAll('.service-content');
-        function getPrice(card) {
-            const priceText = card.querySelector('.service-price h4')?.textContent || '';
-            const match = priceText.replace(/[^\d.]/g, '');
-            return parseFloat(match) || 0;
-        }
-        function getName(card) {
-            return card.querySelector('.service-card__content h3')?.textContent.trim() || '';
-        }
-        function sortCards(cards, sortType) {
-            let sorted = Array.from(cards);
-            if (sortType === 'price-asc') {
-                sorted.sort((a, b) => getPrice(a) - getPrice(b));
-            } else if (sortType === 'price-desc') {
-                sorted.sort((a, b) => getPrice(b) - getPrice(a));
-            } else if (sortType === 'name-asc') {
-                sorted.sort((a, b) => getName(a).localeCompare(getName(b), 'zh-Hant'));
-            } else if (sortType === 'name-desc') {
-                sorted.sort((a, b) => getName(b).localeCompare(getName(a), 'zh-Hant'));
-            }
-            return sorted;
-        }
-        function applySort() {
-            const sortType = sortSelect.value;
-            tabContents.forEach(tab => {
-                const grid = tab.querySelector('.service-grid');
-                if (!grid) return;
-                const cards = grid.querySelectorAll('.service-card');
-                const sorted = sortType === 'default' ? Array.from(cards) : sortCards(cards, sortType);
-                sorted.forEach(card => grid.appendChild(card));
-            });
-        }
-        sortSelect.addEventListener('change', applySort);
-    });
-    </script>
-    <!-- Cart Modal -->
-    <div id="cart-modal" class="cart-modal" style="display:none;">
-        <div class="cart-modal-content">
-            <span class="close-cart-modal" tabindex="0">&times;</span>
-            <h2>購物車</h2>
-            <div class="cart-modal-body">
-                <div class="cart-items-section">
-                    <h3>購物車商品</h3>
-                    <div id="cart-items"></div>
-                </div>
-                <div class="cart-summary-section">
-                    <div class="cart-modal-footer">
-                        <span>總計: <span id="cart-total">$0</span></span>
-                        <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
-                        <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
-                    </div>
-                </div>
-                
-                <!-- Payment Form -->
-                <div id="payment-form" class="payment-form" style="display:none;">
-                    <h3>付款資訊</h3>
-                    <form id="checkout-form">
-                        <div class="form-group">
-                            <label for="card-number">信用卡號碼</label>
-                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="card-expiry">到期日</label>
-                                <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="card-cvc">CVC</label>
-                                <input type="text" id="card-cvc" placeholder="123" maxlength="3" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="billing-name">持卡人姓名</label>
-                            <input type="text" id="billing-name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="billing-email">電子郵件</label>
-                            <input type="email" id="billing-email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="billing-phone">電話號碼</label>
-                            <input type="tel" id="billing-phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="billing-address">帳單地址</label>
-                            <textarea id="billing-address" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="coupon-code">優惠券代碼 (可選)</label>
-                            <div class="coupon-input-group">
-                                <input type="text" id="coupon-code" placeholder="輸入優惠券代碼">
-                                <button type="button" id="apply-coupon" class="btn btn--secondary">套用</button>
-                            </div>
-                            <div id="coupon-message" class="coupon-message"></div>
-                        </div>
-                        <div class="payment-actions">
-                            <button type="button" id="back-to-cart" class="btn btn--secondary">返回購物車</button>
-                            <button type="submit" id="process-payment" class="btn btn--primary">
-                                <span id="payment-btn-text">確認付款</span>
-                                <span id="payment-loading" style="display:none;">處理中...</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- WeChat Modal -->
-    <div id="wechat-modal" class="wechat-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
-        <div style="background: white; padding: 2rem; border-radius: 12px; text-align: center; max-width: 400px; margin: 0 1rem;">
+        <div id="wechat-modal" class="wechat-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+          <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 32px rgba(0,0,0,0.2); position: relative; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
             <button id="wechat-modal-close" style="position: absolute; top: 8px; right: 12px; background: none; border: none; font-size: 2rem; color: #888; cursor: pointer;">&times;</button>
             <img src="images/wechatqr.jpeg" alt="WeChat QR Code" style="max-width: 300px; width: 100%; height: auto; margin-bottom: 1rem;">
             <div style="font-size: 1.1rem; color: #333;">掃描二維碼加我們微信</div>
+          </div>
         </div>
-    </div>
-
-    <script>
-        document.querySelector('.wechat-btn').addEventListener('click', function() {
+        <script>
+          document.querySelector('.wechat-btn').addEventListener('click', function() {
             document.getElementById('wechat-modal').style.display = 'flex';
-        });
-        document.getElementById('wechat-modal-close').addEventListener('click', function() {
+          });
+          document.getElementById('wechat-modal-close').addEventListener('click', function() {
             document.getElementById('wechat-modal').style.display = 'none';
-        });
-        document.getElementById('wechat-modal').addEventListener('click', function(e) {
+          });
+          document.getElementById('wechat-modal').addEventListener('click', function(e) {
             if (e.target === this) {
-                this.style.display = 'none';
+              this.style.display = 'none';
             }
-        });
-    </script>
+          });
+        </script>
+
+    <script src="script.js"></script>
+    </main>
 </body>
 </html> 
