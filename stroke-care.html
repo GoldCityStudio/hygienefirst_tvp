@@ -147,7 +147,7 @@
                 <div class="hero-content">
                         <h1 style="font-size: 3rem; color: #333; margin-bottom: 1.5rem; font-weight: 600;">照顧中風病人</h1>
                         <p style="font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 2rem;">
-                            我們提供專業的中風護理服務，包括急性期護理、復康治療和長期護理支援。我們的專業團隊致力於幫助中風患者恢復功能並提高生活質素。
+                            中風會為患者及家人帶來巨大生活轉變，影響活動能力、語言、吞嚥、認知及日常自理。首衛有限公司（Hygiene First）結合專業醫護團隊，為中風患者提供全面、個人化的上門護理與復康服務，協助患者減低後遺症、促進康復，重拾生活信心。
                         </p>
                         <button class="btn btn--primary" style="background: #FF7A00; color: white; border: none; font-size: 1.1rem; padding: 1rem 2rem; border-radius: 10px; cursor: pointer; transition: background 0.3s ease;" onclick="openBookingModal()">
                             了解更多
@@ -189,57 +189,584 @@
             </div>
         </section>
 
+        <!-- Service Process Section -->
+        <section class="service-process" style="padding: 4rem 0; background: white;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">服務流程</h2>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們提供清晰且專業的服務流程，確保患者獲得最優質的護理及復康服務。</p>
+                </div>
+                
+                <div class="process-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- Step 1: 專業評估 -->
+                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
+                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">1</div>
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
+                            <i class="fas fa-clipboard-check" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">專業評估</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">由註冊護士或治療師上門評估患者功能、健康及家居環境。</p>
+                    </div>
+                    
+                    <!-- Step 2: 訂立護理及復康目標 -->
+                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
+                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">2</div>
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
+                            <i class="fas fa-target" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">訂立護理及復康目標</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">根據患者需要，設計個人化復康及護理計劃。</p>
+                    </div>
+                    
+                    <!-- Step 3: 定期上門服務 -->
+                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
+                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">3</div>
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
+                            <i class="fas fa-calendar-check" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">定期上門服務</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">安排醫護人員及治療師定期跟進，調整訓練內容。</p>
+                    </div>
+                    
+                    <!-- Step 4: 持續監察與支援 -->
+                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
+                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">4</div>
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
+                            <i class="fas fa-chart-line" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">持續監察與支援</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">密切追蹤康復進展，並為家屬提供即時諮詢及支援。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommended Care Staff Section -->
+        <section class="recommended-staff" style="padding: 4rem 0; background: #f8f9fa;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">建議護理人員</h2>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們提供專業且經驗豐富的護理團隊，為中風患者提供最優質的照顧。</p>
+                </div>
+                
+                <div class="staff-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- 保健員 -->
+                    <div class="staff-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
+                        <div class="staff-icon" style="width: 80px; height: 80px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-user-nurse" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin-bottom: 1rem;">保健員</h3>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">提供基本護理照顧及健康監測服務。</p>
+                    </div>
+                    
+                    <!-- 專科護士 -->
+                    <div class="staff-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
+                        <div class="staff-icon" style="width: 80px; height: 80px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-user-md" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin-bottom: 1rem;">專科護士</h3>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">具備中風護理專業知識，提供專業護理服務。</p>
+                    </div>
+                    
+                    <!-- 專職治療師 -->
+                    <div class="staff-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
+                        <div class="staff-icon" style="width: 80px; height: 80px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-dumbbell" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin-bottom: 1rem;">專職治療師</h3>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">包括物理治療師及職業治療師，提供專業復康訓練。</p>
+                    </div>
+                    
+                    <!-- 言語治療師 -->
+                    <div class="staff-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
+                        <div class="staff-icon" style="width: 80px; height: 80px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-comments" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin-bottom: 1rem;">言語治療師</h3>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">針對語言及吞嚥障礙提供專業治療服務。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Care Staff Types and Recommendations Table Section -->
+        <section class="care-staff-table-section" style="padding: 4rem 0; background: white;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">護理員類型及推薦</h2>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">根據患者的不同需求，我們提供專業的護理人員配對服務。</p>
+                </div>
+                
+                <div class="table-container" style="overflow-x: auto; background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <table style="width: 100%; border-collapse: collapse; min-width: 800px;">
+                        <thead>
+                            <tr style="background: #FF7A00; color: white;">
+                                <th style="padding: 1.5rem; text-align: left; font-size: 1.1rem; font-weight: 600; border-bottom: 2px solid #e5e5e5;">護理員類型</th>
+                                <th style="padding: 1.5rem; text-align: left; font-size: 1.1rem; font-weight: 600; border-bottom: 2px solid #e5e5e5;">適用情況</th>
+                                <th style="padding: 1.5rem; text-align: left; font-size: 1.1rem; font-weight: 600; border-bottom: 2px solid #e5e5e5;">主要職責</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #e5e5e5;">
+                                <td style="padding: 1.5rem; font-weight: 600; color: #333; background: #f8f9fa;">註冊/登記護士</td>
+                                <td style="padding: 1.5rem; color: #666;">術後需醫療護理、傷口處理者</td>
+                                <td style="padding: 1.5rem; color: #666;">醫療護理、藥物管理、傷口護理</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e5e5e5;">
+                                <td style="padding: 1.5rem; font-weight: 600; color: #333; background: #f8f9fa;">保健員</td>
+                                <td style="padding: 1.5rem; color: #666;">需日常照顧、輕度復康者</td>
+                                <td style="padding: 1.5rem; color: #666;">日常生活協助、健康監測</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e5e5e5;">
+                                <td style="padding: 1.5rem; font-weight: 600; color: #333; background: #f8f9fa;">起居照顧員</td>
+                                <td style="padding: 1.5rem; color: #666;">行動自理但需生活支援者</td>
+                                <td style="padding: 1.5rem; color: #666;">陪伴、家居協助、簡單照顧</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e5e5e5;">
+                                <td style="padding: 1.5rem; font-weight: 600; color: #333; background: #f8f9fa;">物理/職業治療師</td>
+                                <td style="padding: 1.5rem; color: #666;">需專業復康訓練者</td>
+                                <td style="padding: 1.5rem; color: #666;">訓練肌力、提升自理能力</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e5e5e5;">
+                                <td style="padding: 1.5rem; font-weight: 600; color: #333; background: #f8f9fa;">言語治療師</td>
+                                <td style="padding: 1.5rem; color: #666;">有吞嚥困難、語言障礙或溝通障礙的患者</td>
+                                <td style="padding: 1.5rem; color: #666;">吞嚥訓練、語言及溝通能力訓練、進食安全評估</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p style="font-size: 1rem; color: #666; margin-bottom: 1rem;">根據您的具體需求，我們會為您推薦最適合的護理人員</p>
+                    <button class="btn btn--primary" style="background: #FF7A00; color: white; border: none; font-size: 1rem; padding: 1rem 2rem; border-radius: 10px; cursor: pointer; transition: background 0.3s ease;">
+                        立即諮詢
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Target Audience Section -->
+        <section class="target-audience" style="padding: 4rem 0; background: white;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">適用對象</h2>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們的專業服務適合以下人士，為您提供最貼心的照顧。</p>
+                </div>
+                
+                <div class="audience-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- 各階段中風康復人士 -->
+                    <div class="audience-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-user-injured" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">各階段中風康復人士</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">為不同康復階段的中風患者提供專業護理及復康服務。</p>
+                    </div>
+                    
+                    <!-- 行動不便、需長期護理的患者 -->
+                    <div class="audience-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-wheelchair" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">行動不便、需長期護理的患者</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">為行動不便需要長期護理的患者提供專業照顧服務。</p>
+                    </div>
+                    
+                    <!-- 需多專業復康訓練人士 -->
+                    <div class="audience-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-dumbbell" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">需多專業復康訓練人士</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">需要物理、職業、語言治療等多專業復康訓練的人士。</p>
+                    </div>
+                    
+                    <!-- 需家居安全改裝及輔助器材建議的家庭 -->
+                    <div class="audience-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-home" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">需家居安全改裝及輔助器材建議的家庭</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">需要家居安全改裝及輔助器材建議的家庭。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Features Section -->
+        <section class="service-features" style="padding: 4rem 0; background: #f8f9fa;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">服務特色</h2>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們提供專業且全面的中風護理服務，為患者及家人提供最優質的照顧。</p>
+                </div>
+                
+                <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- 專業團隊 -->
+                    <div class="feature-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-users" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">專業團隊</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">由註冊護士、物理治療師、職業治療師、言語治療師及保健員組成，具備豐富中風復康經驗。</p>
+                    </div>
+                    
+                    <!-- 24小時支援 -->
+                    <div class="feature-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-clock" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">24小時支援</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">全年無休，緊急情況可即時回應，確保患者安全。</p>
+                    </div>
+                    
+                    <!-- 個人化及高透明度 -->
+                    <div class="feature-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-eye" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">個人化及高透明度</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">每位患者均有專屬護理計劃，並定期向家屬匯報健康狀況。</p>
+                    </div>
+                    
+                    <!-- 醫院級防感染措施 -->
+                    <div class="feature-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-shield-alt" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">醫院級防感染措施</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">所有上門服務嚴格執行防感染標準，保障患者健康。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Content Section -->
+        <section class="service-content-section" style="padding: 4rem 0; background: #f8f9fa;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">服務內容</h2>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們提供全面的中風護理及復康服務，為患者及家人提供最專業的照顧。</p>
+                </div>
+                
+                <div class="service-content-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- 個人化中風護理計劃 -->
+                    <div class="service-content-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-user-cog" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">個人化中風護理計劃</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">由註冊護士主理，根據患者腦部受損情況、後遺症及生活需要，度身訂造護理及復康方案，協助患者逐步恢復自理能力，預防中風復發。</p>
+                    </div>
+                    
+                    <!-- 多專業復康團隊 -->
+                    <div class="service-content-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-users" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">多專業復康團隊</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">包括物理治療師、職業治療師、言語治療師，針對步行、平衡、吞嚥、語言及認知障礙，提供專業訓練與功能重建。</p>
+                    </div>
+                    
+                    <!-- 日常生活照顧 -->
+                    <div class="service-content-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-hands" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">日常生活照顧</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">協助如廁、洗澡、餵食、穿衣、轉移、扶抱及防跌，讓患者在家中安全舒適地生活。</p>
+                    </div>
+                    
+                    <!-- 家居安全及環境評估 -->
+                    <div class="service-content-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-home" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">家居安全及環境評估</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">職業治療師上門評估家居環境，提出防跌、防障礙及輔助器材建議，提升患者獨立性及安全。</p>
+                    </div>
+                    
+                    <!-- 預防併發症及健康監測 -->
+                    <div class="service-content-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-heartbeat" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">預防併發症及健康監測</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">定期監察血壓、脈搏、呼吸等生命表徵，預防壓瘡、肺炎、癲癇等常見併發症，並即時處理突發狀況。</p>
+                    </div>
+                    
+                    <!-- 照顧者支援與培訓 -->
+                    <div class="service-content-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-chalkboard-teacher" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">照顧者支援與培訓</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">提供家屬及外傭照顧技巧訓練，減輕照顧壓力，提升護理信心。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Stroke Rehabilitation Process Section -->
         <section class="rehabilitation-process-section" style="padding: 4rem 0; background: #fff;">
             <div class="container">
-                <div class="process-layout" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
-                    <!-- Left Content -->
-                    <div class="process-content">
-                        <h2 style="font-size: 2.2rem; color: #333; margin-bottom: 1rem; font-weight: 600;">中風復康療程</h2>
-                        <p style="font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 2rem;">
-                            我們的中風復康療程採用科學化的方法，根據患者的具體情況制定個性化的復康計劃，幫助患者逐步恢復功能。
-                        </p>
+                <div class="process-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <h2 style="font-size: 2.2rem; color: #333; margin-bottom: 1rem; font-weight: 600;">中風復康療程</h2>
+                    <p style="font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 2rem;">
+                        我們的中風復康療程採用科學化的方法，根據患者的具體情況制定個性化的復康計劃，幫助患者逐步恢復功能。
+                    </p>
+                    
+                    <div class="process-steps" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                        <div class="process-step" style="text-align: center;">
+                            <div class="step-number" style="width: 50px; height: 50px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.2rem; font-weight: 600; color: white;">
+                                1
+                            </div>
+                            <h3 style="font-size: 1.1rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">評估</h3>
+                            <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">全面評估患者狀況</p>
+                        </div>
                         
-                        <div class="process-steps" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
-                            <div class="process-step" style="text-align: center;">
-                                <div class="step-number" style="width: 50px; height: 50px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.2rem; font-weight: 600; color: white;">
-                                    1
-                                </div>
-                                <h3 style="font-size: 1.1rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">評估</h3>
-                                <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">全面評估患者狀況</p>
+                        <div class="process-step" style="text-align: center;">
+                            <div class="step-number" style="width: 50px; height: 50px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.2rem; font-weight: 600; color: white;">
+                                2
                             </div>
-                            
-                            <div class="process-step" style="text-align: center;">
-                                <div class="step-number" style="width: 50px; height: 50px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.2rem; font-weight: 600; color: white;">
-                                    2
-                                </div>
-                                <h3 style="font-size: 1.1rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">制定計劃</h3>
-                                <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">制定個性化復康計劃</p>
-                            </div>
-                            
-                            <div class="process-step" style="text-align: center;">
-                                <div class="step-number" style="width: 50px; height: 50px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.2rem; font-weight: 600; color: white;">
-                                    3
-                                </div>
-                                <h3 style="font-size: 1.1rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">執行</h3>
-                                <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">執行復康治療計劃</p>
-                            </div>
-                            
-                            <div class="process-step" style="text-align: center;">
-                                <div class="step-number" style="width: 50px; height: 50px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.2rem; font-weight: 600; color: white;">
-                                    4
-                                </div>
-                                <h3 style="font-size: 1.1rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">跟進</h3>
-                                <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">定期跟進和調整計劃</p>
-                            </div>
+                            <h3 style="font-size: 1.1rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">制定計劃</h3>
+                            <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">制定個性化復康計劃</p>
                         </div>
+                        
+                        <div class="process-step" style="text-align: center;">
+                            <div class="step-number" style="width: 50px; height: 50px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.2rem; font-weight: 600; color: white;">
+                                3
+                            </div>
+                            <h3 style="font-size: 1.1rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">執行</h3>
+                            <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">執行復康治療計劃</p>
+                        </div>
+                        
+                        <div class="process-step" style="text-align: center;">
+                            <div class="step-number" style="width: 50px; height: 50px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.2rem; font-weight: 600; color: white;">
+                                4
+                            </div>
+                            <h3 style="font-size: 1.1rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">跟進</h3>
+                            <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">定期跟進和調整計劃</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                    <!-- Right WhatsApp Icon -->
-                    <div class="whatsapp-icon" style="text-align: center;">
-                        <div style="width: 200px; height: 200px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-                            <i class="fab fa-whatsapp" style="color: white; font-size: 4rem;"></i>
+        <!-- Acute Phase Stroke Care Section -->
+        <section class="acute-phase-care-section" style="padding: 4rem 0; background: linear-gradient(135deg, #f8fdf8 0%, #ffffff 50%, #f8fdf8 100%);">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">急性期護理服務</h2>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">中風發作後數天至兩週內的專業護理服務，為患者提供全面的急性期照顧。</p>
+                </div>
+                
+                <div class="acute-care-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- 日常生活協助 -->
+                    <div class="acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-hands-helping" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">日常生活協助</h3>
                         </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">協助餵食、沖涼、扶抱，確保患者基本生活需求得到照顧。</p>
+                    </div>
+                    
+                    <!-- 監測生命表徵 -->
+                    <div class="acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-heartbeat" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">監測生命表徵</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">密切觀察血壓、心跳、體溫等，及早發現異常變化。</p>
+                    </div>
+                    
+                    <!-- 個人化復康計劃 -->
+                    <div class="acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-clipboard-list" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">個人化復康計劃</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">根據患者情況制定初步復康目標，預防壓瘡、感染等併發症。</p>
+                    </div>
+                    
+                    <!-- 吞嚥訓練 -->
+                    <div class="acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-utensils" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">吞嚥訓練</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">針對吞嚥困難，提供適切的訓練與飲食建議。</p>
+                    </div>
+                    
+                    <!-- 心理支援 -->
+                    <div class="acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-heart" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">心理支援</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">安撫情緒，減輕焦慮與恐懼。</p>
+                    </div>
+                    
+                    <!-- 藥物指導 -->
+                    <div class="acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-pills" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">藥物指導</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">協助按時服藥，解釋藥物作用與副作用。</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <div style="background: #FF7A00; color: white; padding: 1.5rem; border-radius: 10px; max-width: 600px; margin: 0 auto;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 600;">急性期護理重點</h3>
+                        <p style="font-size: 1rem; margin: 0; opacity: 0.9;">中風發作後數天至兩週內是康復的關鍵時期，我們提供24小時專業護理服務，確保患者安全度過急性期。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sub-Acute Phase Stroke Care Section -->
+        <section class="sub-acute-phase-care-section" style="padding: 4rem 0; background: white;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">亞急性期護理服務</h2>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">2週至6個月的黃金復康期，為患者提供專業的復康治療與生活重建服務。</p>
+                </div>
+                
+                <div class="sub-acute-care-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- 度身訂造復康治療計劃 -->
+                    <div class="sub-acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-user-cog" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">度身訂造復康治療計劃</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">結合物理治療、職業治療及語言治療，強化肢體功能與自理能力。</p>
+                    </div>
+                    
+                    <!-- 日常生活訓練 -->
+                    <div class="sub-acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-hands" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">日常生活訓練</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">鼓勵患者參與穿衣、進食、洗臉等自我照顧活動。</p>
+                    </div>
+                    
+                    <!-- 安全環境設計 -->
+                    <div class="sub-acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-home" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">安全環境設計</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">協助家居改裝（如加裝扶手、防滑墊），減低跌倒風險。</p>
+                    </div>
+                    
+                    <!-- 吞嚥及語言訓練 -->
+                    <div class="sub-acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-comments" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">吞嚥及語言訓練</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">持續提升吞嚥及溝通能力。</p>
+                    </div>
+                    
+                    <!-- 心理及社交支援 -->
+                    <div class="sub-acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-users" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">心理及社交支援</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">鼓勵與親友互動，設定實際復康目標。</p>
+                    </div>
+                    
+                    <!-- 藥物管理 -->
+                    <div class="sub-acute-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-pills" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">藥物管理</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">持續監察用藥情況，指導正確服藥方法。</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <div style="background: #1e3a8a; color: white; padding: 1.5rem; border-radius: 10px; max-width: 600px; margin: 0 auto;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 600;">黃金復康期重點</h3>
+                        <p style="font-size: 1rem; margin: 0; opacity: 0.9;">2週至6個月是中風復康的黃金時期，我們提供專業的多學科復康治療，幫助患者重建生活能力。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Long-Term Maintenance Phase Stroke Care Section -->
+        <section class="long-term-maintenance-care-section" style="padding: 4rem 0; background: linear-gradient(135deg, #f8fdf8 0%, #ffffff 50%, #f8fdf8 100%);">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">中長期維持期護理服務</h2>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">6個月後的持續護理服務，為患者提供長期的健康維持與生活質素提升。</p>
+                </div>
+                
+                <div class="long-term-care-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- 持續復康運動 -->
+                    <div class="long-term-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-dumbbell" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">持續復康運動</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">定期物理及職業治療，維持肌力與活動度。</p>
+                    </div>
+                    
+                    <!-- 生活自理能力提升 -->
+                    <div class="long-term-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-user-check" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">生活自理能力提升</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">協助患者逐步恢復更多日常活動的獨立性。</p>
+                    </div>
+                    
+                    <!-- 健康監測 -->
+                    <div class="long-term-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-heartbeat" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">健康監測</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">定期檢查生命表徵，預防慢性併發症。</p>
+                    </div>
+                    
+                    <!-- 心理重建與社區參與 -->
+                    <div class="long-term-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-users" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">心理重建與社區參與</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">鼓勵參加社區活動，預防抑鬱，提升生活質素。</p>
+                    </div>
+                    
+                    <!-- 照顧者支援 -->
+                    <div class="long-term-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-hands-helping" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">照顧者支援</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">提供照顧技巧培訓及情緒支援，協助家屬保持身心健康。</p>
+                    </div>
+                    
+                    <!-- 藥物與健康管理 -->
+                    <div class="long-term-care-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-clipboard-check" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">藥物與健康管理</h3>
+                        </div>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">定期檢視用藥與健康狀況，調整復康計劃。</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <div style="background: #FF7A00; color: white; padding: 2rem; border-radius: 15px; max-width: 800px; margin: 0 auto;">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; font-weight: 600;">全方位護理承諾</h3>
+                        <p style="font-size: 1.1rem; margin: 0; line-height: 1.6; opacity: 0.95;">無論復康歷程處於哪一階段，我們均能提供全方位、個人化的護理與治療服務，讓患者和家人安心面對中風復康之路。</p>
                     </div>
                 </div>
             </div>
