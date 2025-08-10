@@ -76,6 +76,8 @@
     <div class="overlay"></div>
     <div class="page-transition"></div>
     
+
+    
     <header>
         <!-- Promo Banner -->
 
@@ -97,9 +99,7 @@
                         <div class="dropdown-content" style="background-color: #ffffff !important; opacity: 1 !important; background: #ffffff !important;">
                             <a href="about.html#features">我們的特色</a>
                             <a href="about.html#testimonials">客戶評價</a>
-                            <a href="about.html#quality">服務品質承諾</a>
-                            <a href="about.html#media">媒體中心</a>
-                            <a href="blog.html">Hygiene First  部落格</a>
+                            <a href="news.html#media">媒體中心</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -145,9 +145,32 @@
         </div>
     </header>
 
-    <main id="main-content">
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal" style="display:none;">
+      <div class="cart-modal-content">
+        <span class="close-cart-modal" tabindex="0">&times;</span>
+        <h2>購物車</h2>
+        <div class="cart-modal-body">
+          <div class="cart-items-section">
+            <h3>購物車商品</h3>
+            <div id="cart-items">
+              <p>您的購物車是空的。</p>
+            </div>
+          </div>
+          <div class="cart-summary-section">
+            <div class="cart-modal-footer">
+              <span>總計: <span id="cart-total">$0</span></span>
+              <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
+              <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="main-content" style="margin-top: 0;">
         <!-- Hero Section with Background Image and Overlay -->
-        <section class="hero-section" style="position: relative; background: linear-gradient(rgba(255, 122, 0, 0.8), rgba(230, 103, 23, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="%23f0f0f0"/><text x="600" y="400" text-anchor="middle" fill="%23999" font-size="24">護理場景背景圖片</text></svg>') center/cover; color: white; padding: 4rem 0; min-height: 600px; display: flex; align-items: center;">
+        <section class="hero-section" style="position: relative; background: linear-gradient(rgba(255, 122, 0, 0.8), rgba(230, 103, 23, 0.8)), url('images/untitled folder/Photo 7.jpg') center/cover; color: white; padding: 4rem 0; min-height: 600px; display: flex; align-items: center;">
             <div class="container" style="position: relative; z-index: 2;">
                 <div class="hero-content" style="display: flex; justify-content: flex-end; align-items: center;">
                     <!-- Overlay content positioned on the right -->
@@ -367,7 +390,7 @@
                     <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們的專業護理服務適合以下人士，為他們提供貼心、專業的照顧支援。</p>
                 </div>
                 
-                <div class="audience-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                <div class="audience-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto;">
                     <!-- 長者及其家庭 -->
                     <div class="audience-item" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-left: 4px solid #FF7A00;">
                         <div class="audience-header" style="display: flex; align-items: center; margin-bottom: 1rem;">
@@ -467,8 +490,12 @@
                             <div style="width: 30px; height: 4px; background: #FF7A00;"></div>
                         </div>
                         
+                        <!-- Service Image -->
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <img src="images/untitled folder/Photo 8.jpg" alt="立即預約服務 - 專業長者照顧服務" style="width: 100%; max-width: 400px; height: auto; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                        </div>
+                        
                         <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1.5rem; font-weight: 600;">立即預約服務</h2>
-                        <p style="font-size: 1.1rem; color: #666; line-height: 1.6;">立即填妥表格，我們的護理專家將會在24小時內聯絡你以便了解你的情況，讓我們為你提供更多服務及收費詳情。</p>
                     </div>
                     
                     <!-- Right Section: Booking Form -->
@@ -549,126 +576,7 @@
                     <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">以下為常見上門照顧長者服務安排及相應每月費用，僅供參考。如需了解更多詳情，請聯絡我們。</p>
                 </div>
                 
-                <div class="service-plans" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-                    <!-- Plan 1: Temporary/Short-term Care -->
-                    <div class="service-plan-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
-                        <h3 style="font-size: 1.5rem; color: #333; margin-bottom: 1.5rem; font-weight: 600;">臨時/短期照顧</h3>
-                        
-                        <div class="plan-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
-                            <div class="left-column">
-                                <div style="margin-bottom: 1rem;">
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">服務時間</h4>
-                                    <p style="font-size: 0.9rem; color: #666;">每月4次，每次8小時</p>
-                                </div>
-                                <div>
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">患者需要</h4>
-                                    <ul style="list-style: none; padding: 0; margin: 0;">
-                                        <li style="font-size: 0.9rem; color: #666; margin-bottom: 0.3rem;">• 日常生活協助</li>
-                                        <li style="font-size: 0.9rem; color: #666;">• 簡單煮食/餵食</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="right-column">
-                                <div style="margin-bottom: 1rem;">
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">護理人員需要</h4>
-                                    <p style="font-size: 0.9rem; color: #666;">保健員</p>
-                                </div>
-                                <div>
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">額外需要</h4>
-                                    <ul style="list-style: none; padding: 0; margin: 0;">
-                                        <li style="font-size: 0.9rem; color: #666; margin-bottom: 0.3rem;">• 扶抱、沖涼及換片</li>
-                                        <li style="font-size: 0.9rem; color: #666;">• 協助服藥</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="plan-icon" style="position: absolute; bottom: 1rem; right: 1rem; width: 40px; height: 40px; border: 2px solid #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-pills" style="color: #FF7A00; font-size: 1.2rem;"></i>
-                        </div>
-                    </div>
-                    
-                    <!-- Plan 2: Regular Care (Most Popular) -->
-                    <div class="service-plan-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative; border: 2px solid #FF7A00;">
-                        <div class="popular-badge" style="position: absolute; top: -10px; right: 1rem; background: #FF7A00; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">最受歡迎</div>
-                        
-                        <h3 style="font-size: 1.5rem; color: #333; margin-bottom: 1.5rem; font-weight: 600;">恆常照顧</h3>
-                        
-                        <div class="plan-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
-                            <div class="left-column">
-                                <div style="margin-bottom: 1rem;">
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">服務時間</h4>
-                                    <p style="font-size: 0.9rem; color: #666;">每月20次，每次8小時</p>
-                                </div>
-                                <div>
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">患者需要</h4>
-                                    <ul style="list-style: none; padding: 0; margin: 0;">
-                                        <li style="font-size: 0.9rem; color: #666; margin-bottom: 0.3rem;">• 日常生活協助</li>
-                                        <li style="font-size: 0.9rem; color: #666;">• 護送陪診</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="right-column">
-                                <div style="margin-bottom: 1rem;">
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">護理人員需要</h4>
-                                    <p style="font-size: 0.9rem; color: #666;">保健員</p>
-                                </div>
-                                <div>
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">額外需要</h4>
-                                    <ul style="list-style: none; padding: 0; margin: 0;">
-                                        <li style="font-size: 0.9rem; color: #666; margin-bottom: 0.3rem;">• 扶抱、轉移及防跌</li>
-                                        <li style="font-size: 0.9rem; color: #666;">• 簡單伸展運動</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="plan-icon" style="position: absolute; bottom: 1rem; right: 1rem; width: 40px; height: 40px; border: 2px solid #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-calendar-plus" style="color: #FF7A00; font-size: 1.2rem;"></i>
-                        </div>
-                    </div>
-                    
-                    <!-- Plan 3: All-day Care -->
-                    <div class="service-plan-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
-                        <h3 style="font-size: 1.5rem; color: #333; margin-bottom: 1.5rem; font-weight: 600;">全天候護理</h3>
-                        
-                        <div class="plan-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
-                            <div class="left-column">
-                                <div style="margin-bottom: 1rem;">
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">服務時間</h4>
-                                    <p style="font-size: 0.9rem; color: #666;">每月30次，每次24小時</p>
-                                </div>
-                                <div>
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">患者需要</h4>
-                                    <ul style="list-style: none; padding: 0; margin: 0;">
-                                        <li style="font-size: 0.9rem; color: #666; margin-bottom: 0.3rem;">• 手術後護理</li>
-                                        <li style="font-size: 0.9rem; color: #666;">• 監測生命表徵</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="right-column">
-                                <div style="margin-bottom: 1rem;">
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">護理人員需要</h4>
-                                    <p style="font-size: 0.9rem; color: #666;">保健員/註冊護士</p>
-                                </div>
-                                <div>
-                                    <h4 style="font-size: 1rem; color: #FF7A00; margin-bottom: 0.5rem; font-weight: 600;">額外需要</h4>
-                                    <ul style="list-style: none; padding: 0; margin: 0;">
-                                        <li style="font-size: 0.9rem; color: #666; margin-bottom: 0.3rem;">• 鼻胃喉餵食</li>
-                                        <li style="font-size: 0.9rem; color: #666;">• 傷口護理</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="plan-icon" style="position: absolute; bottom: 1rem; right: 1rem; width: 40px; height: 40px; border: 2px solid #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-sun" style="color: #FF7A00; font-size: 1.2rem;"></i>
-                        </div>
-                    </div>
-                </div>
+
                 
                 <!-- Call to Action Buttons -->
                 <div class="cta-buttons" style="text-align: center; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
@@ -696,9 +604,7 @@
                     
                     <!-- Customer Photo -->
                     <div class="customer-photo" style="margin-bottom: 1.5rem;">
-                        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);">
-                            <i class="fas fa-user" style="font-size: 3rem; color: white;"></i>
-                        </div>
+                        <img src="images/untitled folder/Photo 9.png" alt="Ruby - Hygiene First Customer" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto; display: block; object-fit: cover; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);">
                     </div>
                     
                     <!-- Customer Name -->

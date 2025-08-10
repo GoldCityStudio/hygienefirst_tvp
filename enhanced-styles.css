@@ -483,7 +483,7 @@ main {
 }
 
 /* Mobile Navigation Enhancement */
-@media (max-width: 992px) {
+@media (max-width: 1048px) {
     .mobile-menu-toggle {
         display: flex;
         flex-direction: column;
@@ -510,11 +510,11 @@ main {
         right: -300px;
         width: 300px;
         height: 100vh;
-        background-color: var(--white);
+        background-color: #FFFFFF !important;
         flex-direction: column;
         padding: 80px 25px 30px;
         box-shadow: -5px 0 30px rgba(0,0,0,0.15);
-        transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        transition: right 0.4s cubic-bezier(0.77, 0, 0, 0.175, 1);
         overflow-y: auto;
         z-index: 1000;
         align-items: flex-start;
@@ -564,7 +564,7 @@ main {
     .dropdown-content {
         position: static;
         box-shadow: none;
-        background-color: var(--white);
+        background-color: #FFFFFF !important;
         padding: 5px 0 5px 15px;
         min-width: 100%;
         display: none;
@@ -1100,6 +1100,190 @@ a[href^="tel:"]:hover {
 .filter-btn.active {
     background-color: var(--primary-color);
     color: #fff;
+}
+
+/* Media Center Section */
+.media-center {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.media-center .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.media-center .section-header h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.media-center .section-header p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.media-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.media-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.media-category {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.media-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.media-category h3 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.media-category h3 i {
+    font-size: 1.6rem;
+}
+
+.media-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.media-item {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.media-item:hover {
+    background: #e9ecef;
+}
+
+.media-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.media-text h4 {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.media-text p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+.media-text p:first-of-type {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.media-contact {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.media-contact h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.media-contact p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.media-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.media-contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.media-contact-info i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    width: 20px;
+}
+
+@media (max-width: 768px) {
+    .media-categories {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .media-category {
+        padding: 25px;
+    }
+    
+    .media-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .media-icon {
+        margin: 0 auto;
+    }
+    
+    .media-contact {
+        padding: 30px 20px;
+    }
+    
+    .media-center .section-header h2 {
+        font-size: 2rem;
+    }
 }
 
 .newsletter {

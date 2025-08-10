@@ -660,31 +660,119 @@ header .container {
     margin: 0 auto 40px;
 }
 
+/* Process Step Cards Vertical Alignment */
 .process-steps {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.process-step {
-    flex: 1;
-    max-width: 300px;
-    margin: 0 15px 20px;
+.process-step,
+.process-step-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 300px;
 }
 
-.step-number {
-    width: 40px;
-    height: 40px;
-    background-color: var(--primary-color);
-    color: var(--white);
+.process-step .step-number,
+.process-step-card .step-number {
+    background: #FF7A00;
+    color: white;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 0 auto 15px;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.process-step .step-header,
+.process-step-card .step-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.process-step .step-icon,
+.process-step-card .step-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.process-step .step-icon i,
+.process-step-card .step-icon i {
+    color: #FF7A00;
+    font-size: 1.8rem;
+}
+
+.process-step .step-header h3,
+.process-step-card .step-header h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin: 0;
     font-weight: 600;
+    text-align: left;
+    flex: 1;
+}
+
+.process-step p,
+.process-step-card p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .process-steps {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .process-step,
+    .process-step-card {
+        padding: 2rem;
+        min-height: 250px;
+    }
+    
+    .process-step .step-header,
+    .process-step-card .step-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .process-step .step-icon,
+    .process-step-card .step-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .process-step .step-icon i,
+    .process-step-card .step-icon i {
+        font-size: 1.5rem;
+    }
 }
 
 .cta-center {
@@ -2712,13 +2800,13 @@ header.sticky .logo a {
     display: flex;
     gap: 48px;
     align-items: center;
-    animation: marquee-ltr 18s linear infinite;
+    animation: marquee-ltr 40s linear infinite;
 }
 .marquee-rtl .marquee-content {
-    animation: marquee-rtl 18s linear infinite;
+    animation: marquee-rtl 40s linear infinite;
 }
 .marquee-ltr .marquee-content {
-    animation: marquee-ltr 18s linear infinite;
+    animation: marquee-ltr 40s linear infinite;
 }
 .partner-logo {
     height: 90px;

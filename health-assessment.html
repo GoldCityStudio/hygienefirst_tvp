@@ -76,7 +76,12 @@
     <div class="overlay"></div>
     <div class="page-transition"></div>
     
+
+    
     <header>
+        <!-- Promo Banner -->
+
+        
         <div class="container">
             <div class="logo">
                 <a href="index.html">
@@ -91,12 +96,10 @@
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">關於我們</a>
-                        <div class="dropdown-content" style="background-color: #ffffff !important; opacity: 1 !important; background: #ffffff !important;">
+                        <div class="dropdown-content">
                             <a href="about.html#features">我們的特色</a>
                             <a href="about.html#testimonials">客戶評價</a>
-                            <a href="about.html#quality">服務品質承諾</a>
-                            <a href="about.html#media">媒體中心</a>
-                            <a href="blog.html">Hygiene First  部落格</a>
+                            <a href="news.html#media">媒體中心</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -118,7 +121,6 @@
                     <li class="dropdown">
                         <a href="institutional-care.html">機構護理人手支援</a>
                         <div class="dropdown-content">
-                            <a href="institutional-care.html#institutional-care">機構護理服務</a>
                             <a href="institutional-care.html#staff-support">人手支援</a>
                             <a href="institutional-care.html#training">專業培訓</a>
                         </div>
@@ -142,7 +144,30 @@
         </div>
     </header>
 
-    <main id="main-content">
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal" style="display:none;">
+      <div class="cart-modal-content">
+        <span class="close-cart-modal" tabindex="0">&times;</span>
+        <h2>購物車</h2>
+        <div class="cart-modal-body">
+          <div class="cart-items-section">
+            <h3>購物車商品</h3>
+            <div id="cart-items">
+              <p>您的購物車是空的。</p>
+            </div>
+          </div>
+          <div class="cart-summary-section">
+            <div class="cart-modal-footer">
+              <span>總計: <span id="cart-total">$0</span></span>
+              <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
+              <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="main-content" style="margin-top: 0;">
         <!-- Hero Section -->
         <section class="hero-section" style="background: white; padding: 4rem 0;">
             <div class="container">
@@ -183,7 +208,7 @@
                     </div>
                     <div class="hero-image" style="flex: 1; text-align: center; padding-top: 0.5rem; min-width: 300px;">
                         <div style="position: relative; display: inline-block;">
-                            <img src="images/HomePage/shutterstock_2285428931.jpg" alt="健康評估服務" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 4px dotted #FF7A00; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <img src="images/untitled folder/Photo 1.jpg" alt="健康評估服務" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 4px dotted #FF7A00; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                             <div style="position: absolute; bottom: 25px; left: 25px; background: #fff3e0; padding: 1rem 1.2rem; border-radius: 25px; transform: rotate(-5deg); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                                 <span style="color: #FF7A00; font-weight: bold; font-size: 1rem;">專業護理</span>
                             </div>
@@ -432,24 +457,7 @@
                 <div class="staff-content active" id="nurse" style="display: flex; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
                     <div class="illustration" style="flex: 1; text-align: center; min-width: 300px;">
                         <div style="position: relative; display: inline-block;">
-                            <svg width="300" height="300" viewBox="0 0 300 300" style="background: #f8f9fa; border-radius: 20px; padding: 2rem; max-width: 100%; height: auto;">
-                                <!-- Nurse Icon -->
-                                <circle cx="150" cy="80" r="40" fill="#FF7A00"/>
-                                <circle cx="150" cy="80" r="35" fill="white"/>
-                                <circle cx="140" cy="75" r="3" fill="#FF7A00"/>
-                                <circle cx="160" cy="75" r="3" fill="#FF7A00"/>
-                                <path d="M 135 85 Q 150 95 165 85" stroke="#FF7A00" stroke-width="2" fill="none"/>
-                                <!-- Body -->
-                                <rect x="130" y="120" width="40" height="80" fill="#FF7A00"/>
-                                <rect x="135" y="130" width="30" height="50" fill="white"/>
-                                <!-- Medical Cross -->
-                                <rect x="145" y="140" width="10" height="30" fill="#FF7A00"/>
-                                <rect x="135" y="150" width="30" height="10" fill="#FF7A00"/>
-                                <!-- Stethoscope -->
-                                <path d="M 100 100 Q 120 90 140 100" stroke="#FF7A00" stroke-width="3" fill="none"/>
-                                <circle cx="100" cy="100" r="8" fill="#FF7A00"/>
-                                <circle cx="140" cy="100" r="8" fill="#FF7A00"/>
-                            </svg>
+                            <img src="images/untitled folder/Photo 2.jpg" alt="註冊護士 (RN) - 專業健康評估服務" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
                         </div>
                     </div>
                     <div class="content" style="flex: 1; min-width: 300px;">
@@ -488,22 +496,7 @@
                 <div class="staff-content" id="pt" style="display: none; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
                     <div class="illustration" style="flex: 1; text-align: center;">
                         <div style="position: relative; display: inline-block;">
-                            <svg width="300" height="300" viewBox="0 0 300 300" style="background: #f8f9fa; border-radius: 20px; padding: 2rem;">
-                                <!-- Physical Therapy Icon -->
-                                <circle cx="150" cy="80" r="40" fill="#FF7A00"/>
-                                <circle cx="150" cy="80" r="35" fill="white"/>
-                                <circle cx="140" cy="75" r="3" fill="#FF7A00"/>
-                                <circle cx="160" cy="75" r="3" fill="#FF7A00"/>
-                                <path d="M 135 85 Q 150 95 165 85" stroke="#FF7A00" stroke-width="2" fill="none"/>
-                                <!-- Body -->
-                                <rect x="130" y="120" width="40" height="80" fill="#FF7A00"/>
-                                <!-- Arms in exercise position -->
-                                <line x1="130" y1="140" x2="100" y2="120" stroke="#FF7A00" stroke-width="4"/>
-                                <line x1="170" y1="140" x2="200" y2="120" stroke="#FF7A00" stroke-width="4"/>
-                                <!-- Exercise equipment -->
-                                <rect x="80" y="110" width="20" height="20" fill="#FF7A00" opacity="0.3"/>
-                                <rect x="200" y="110" width="20" height="20" fill="#FF7A00" opacity="0.3"/>
-                            </svg>
+                            <img src="images/untitled folder/Photo 3.jpg" alt="物理治療師 (PT) - 專業物理治療服務" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
                         </div>
                     </div>
                     <div class="content" style="flex: 1;">
@@ -542,21 +535,7 @@
                 <div class="staff-content" id="ot" style="display: none; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto;">
                     <div class="illustration" style="flex: 1; text-align: center;">
                         <div style="position: relative; display: inline-block;">
-                            <svg width="300" height="300" viewBox="0 0 300 300" style="background: #f8f9fa; border-radius: 20px; padding: 2rem;">
-                                <!-- Occupational Therapy Icon -->
-                                <circle cx="150" cy="80" r="40" fill="#FF7A00"/>
-                                <circle cx="150" cy="80" r="35" fill="white"/>
-                                <circle cx="140" cy="75" r="3" fill="#FF7A00"/>
-                                <circle cx="160" cy="75" r="3" fill="#FF7A00"/>
-                                <path d="M 135 85 Q 150 95 165 85" stroke="#FF7A00" stroke-width="2" fill="none"/>
-                                <!-- Body -->
-                                <rect x="130" y="120" width="40" height="80" fill="#FF7A00"/>
-                                <!-- Daily living activities -->
-                                <rect x="80" y="180" width="15" height="20" fill="#FF7A00" opacity="0.3"/>
-                                <rect x="200" y="180" width="15" height="20" fill="#FF7A00" opacity="0.3"/>
-                                <circle cx="100" cy="200" r="8" fill="#FF7A00" opacity="0.3"/>
-                                <circle cx="220" cy="200" r="8" fill="#FF7A00" opacity="0.3"/>
-                            </svg>
+                            <img src="images/untitled folder/Photo 4.jpg" alt="職業治療師 (OT) - 專業職業治療服務" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
                         </div>
                     </div>
                     <div class="content" style="flex: 1;">
@@ -595,21 +574,7 @@
                 <div class="staff-content" id="dietitian" style="display: none; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto;">
                     <div class="illustration" style="flex: 1; text-align: center;">
                         <div style="position: relative; display: inline-block;">
-                            <svg width="300" height="300" viewBox="0 0 300 300" style="background: #f8f9fa; border-radius: 20px; padding: 2rem;">
-                                <!-- Dietitian Icon -->
-                                <circle cx="150" cy="80" r="40" fill="#FF7A00"/>
-                                <circle cx="150" cy="80" r="35" fill="white"/>
-                                <circle cx="140" cy="75" r="3" fill="#FF7A00"/>
-                                <circle cx="160" cy="75" r="3" fill="#FF7A00"/>
-                                <path d="M 135 85 Q 150 95 165 85" stroke="#FF7A00" stroke-width="2" fill="none"/>
-                                <!-- Body -->
-                                <rect x="130" y="120" width="40" height="80" fill="#FF7A00"/>
-                                <!-- Food items -->
-                                <circle cx="100" cy="200" r="15" fill="#FF7A00" opacity="0.3"/>
-                                <circle cx="200" cy="200" r="15" fill="#FF7A00" opacity="0.3"/>
-                                <rect x="80" y="180" width="20" height="20" fill="#FF7A00" opacity="0.3"/>
-                                <rect x="200" y="180" width="20" height="20" fill="#FF7A00" opacity="0.3"/>
-                            </svg>
+                            <img src="images/untitled folder/Photo 5.png" alt="營養師 - 專業營養諮詢服務" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
                         </div>
                     </div>
                     <div class="content" style="flex: 1;">
@@ -648,22 +613,7 @@
                 <div class="staff-content" id="speech" style="display: none; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
                     <div class="illustration" style="flex: 1; text-align: center; min-width: 300px;">
                         <div style="position: relative; display: inline-block;">
-                            <svg width="300" height="300" viewBox="0 0 300 300" style="background: #f8f9fa; border-radius: 20px; padding: 2rem; max-width: 100%; height: auto;">
-                                <!-- Speech Therapy Icon -->
-                                <circle cx="150" cy="80" r="40" fill="#FF7A00"/>
-                                <circle cx="150" cy="80" r="35" fill="white"/>
-                                <circle cx="140" cy="75" r="3" fill="#FF7A00"/>
-                                <circle cx="160" cy="75" r="3" fill="#FF7A00"/>
-                                <path d="M 135 85 Q 150 95 165 85" stroke="#FF7A00" stroke-width="2" fill="none"/>
-                                <!-- Body -->
-                                <rect x="130" y="120" width="40" height="80" fill="#FF7A00"/>
-                                <!-- Speech bubbles -->
-                                <ellipse cx="100" cy="200" rx="25" ry="15" fill="#FF7A00" opacity="0.3"/>
-                                <ellipse cx="200" cy="200" rx="25" ry="15" fill="#FF7A00" opacity="0.3"/>
-                                <!-- Communication lines -->
-                                <path d="M 140 160 Q 100 180 100 200" stroke="#FF7A00" stroke-width="2" fill="none" opacity="0.5"/>
-                                <path d="M 160 160 Q 200 180 200 200" stroke="#FF7A00" stroke-width="2" fill="none" opacity="0.5"/>
-                            </svg>
+                            <img src="images/untitled folder/Photo 6.jpg" alt="言語治療師 - 專業言語治療服務" style="max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
                         </div>
                     </div>
                     <div class="content" style="flex: 1; min-width: 300px;">

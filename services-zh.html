@@ -173,42 +173,61 @@
 <body>
     <!-- 頁首 -->
     <header>
+        <!-- Promo Banner -->
+
+        
         <div class="container">
             <div class="logo">
-                <a href="index-zh.html">
+                <a href="index.html">
                     <img src="https://static.wixstatic.com/media/f05284_3647ed5067de49c38c32522636dd8932~mv2.png/v1/fill/w_730,h_124,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo.png" alt="Hygiene First Company Limited" style="max-height: 50px; width: auto;">
                 </a>
+            </div>
+            <div class="header-icons">
+                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i></a>
+                <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
             </div>
             <nav>
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">關於我們</a>
                         <div class="dropdown-content">
-                            <a href="#">我們的特色</a>
-                            <a href="#">客戶評價</a>
-                            <a href="#">服務品質承諾</a>
-                            <a href="#">媒體中心</a>
-                            <a href="#">Hygiene First部落格</a>
+                            <a href="about.html#features">我們的特色</a>
+                            <a href="about.html#testimonials">客戶評價</a>
+                            <a href="news.html#media">媒體中心</a>
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="#">醫療護理服務</a>
+                        <a href="service.html">居家護理服務</a>
                         <div class="dropdown-content">
-                            <a href="#">居家醫療照護</a>
-                            <a href="#">健康評估</a>
-                            <a href="#">專業護理</a>
-                            <a href="#">復健治療</a>
-                            <a href="#">照護人員培訓</a>
+                            <a href="health-assessment.html">上門健康評估</a>
+                            <a href="elderly-care.html">長者照顧服務</a>
+                            <a href="accompaniment.html">陪診護送服務</a>
+                            <a href="wound-care.html">傷口護理</a>
+                            <a href="nasogastric-care.html">鼻胃喉管護理服務</a>
+                            <a href="caregiver-training.html">照顧者培訓班</a>
+                            <a href="stroke-care.html">中風護理及復康服務</a>
+                            <a href="cancer-care.html">癌症護理服務</a>
+                            <a href="dementia-care.html">認知障礙症護理服務</a>
+                            <a href="post-surgery-care.html">專業手術後護理服務</a>
+                            <a href="rehabilitation-care.html">復康護理</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="institutional-care.html">機構護理人手支援</a>
+                        <div class="dropdown-content">
+                            <a href="institutional-care.html#institutional-care">機構護理服務</a>
+                            <a href="institutional-care.html#staff-support">人手支援</a>
+                            <a href="institutional-care.html#training">專業培訓</a>
                         </div>
                     </li>
                     <li>
-                        <a href="#">社區計劃</a>
+                        <a href="waste-collection.html">醫療及化學廢物收集服務</a>
                     </li>
                     <li>
-                        <a href="news-zh.html">最新消息</a>
+                        <a href="community-zh.html">長者社區服務劵</a>
                     </li>
                     <li>
-                        <a href="#" class="cta-btn booking-btn">預約服務</a>
+                        <a href="contact.html">立即預約</a>
                     </li>
                 </ul>
             </nav>
@@ -219,6 +238,29 @@
             </div>
         </div>
     </header>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal" style="display:none;">
+      <div class="cart-modal-content">
+        <span class="close-cart-modal" tabindex="0">&times;</span>
+        <h2>購物車</h2>
+        <div class="cart-modal-body">
+          <div class="cart-items-section">
+            <h3>購物車商品</h3>
+            <div id="cart-items">
+              <p>您的購物車是空的。</p>
+            </div>
+          </div>
+          <div class="cart-summary-section">
+            <div class="cart-modal-footer">
+              <span>總計: <span id="cart-total">$0</span></span>
+              <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
+              <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- 頁面橫幅 -->
     <section class="page-banner" style="background-image: url('images/services-banner.jpg');">

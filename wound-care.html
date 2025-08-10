@@ -76,6 +76,8 @@
     <div class="overlay"></div>
     <div class="page-transition"></div>
     
+
+    
     <header>
         <div class="container">
             <div class="logo">
@@ -94,9 +96,7 @@
                         <div class="dropdown-content" style="background-color: #ffffff !important; opacity: 1 !important; background: #ffffff !important;">
                             <a href="about.html#features">我們的特色</a>
                             <a href="about.html#testimonials">客戶評價</a>
-                            <a href="about.html#quality">服務品質承諾</a>
-                            <a href="about.html#media">媒體中心</a>
-                            <a href="blog.html">Hygiene First  部落格</a>
+                            <a href="news.html#media">媒體中心</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -142,7 +142,30 @@
         </div>
     </header>
 
-    <main id="main-content">
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal" style="display:none;">
+      <div class="cart-modal-content">
+        <span class="close-cart-modal" tabindex="0">&times;</span>
+        <h2>購物車</h2>
+        <div class="cart-modal-body">
+          <div class="cart-items-section">
+            <h3>購物車商品</h3>
+            <div id="cart-items">
+              <p>您的購物車是空的。</p>
+            </div>
+          </div>
+          <div class="cart-summary-section">
+            <div class="cart-modal-footer">
+              <span>總計: <span id="cart-total">$0</span></span>
+              <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
+              <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="main-content" style="margin-top: 0;">
         <!-- Hero Section -->
         <section class="hero-section" style="padding: 4rem 0; background: linear-gradient(135deg, #fff9f5 0%, #ffffff 50%, #fff9f5 100%);">
             <div class="container">
@@ -217,16 +240,8 @@
                     
                     <!-- Right Image -->
                     <div class="hero-image" style="position: relative;">
-                        <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #fff3e0 0%, #fff8f0 100%); border-radius: 20px; position: relative; overflow: hidden;">
-                            <!-- Medical gloves illustration -->
-                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center;">
-                                <div style="width: 200px; height: 120px; background: #FF7A00; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-hands" style="color: white; font-size: 3rem;"></i>
-                                </div>
-                            </div>
-                            
-                            <!-- Abstract background shape -->
-                            <div style="position: absolute; bottom: -30px; right: -30px; width: 150px; height: 150px; background: #fff3e0; border-radius: 50%; opacity: 0.6;"></div>
+                        <div style="width: 100%; height: 400px; border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <img src="images/untitled folder/Photo 11.jpg" alt="上門洗傷口 - 手術後傷口護理" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
                         </div>
                     </div>
                 </div>
@@ -479,21 +494,8 @@
                     
                     <!-- Right Image -->
                     <div class="scope-image" style="position: relative;">
-                        <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #fff3e0 0%, #fff8f0 100%); border-radius: 20px; position: relative; overflow: hidden;">
-                            <!-- Caregiver and patient illustration -->
-                            <div style="position: absolute; bottom: 20px; left: 20px; display: flex; align-items: flex-end; gap: 20px;">
-                                <!-- Patient in bed -->
-                                <div style="width: 120px; height: 80px; background: #333; border-radius: 10px; position: relative;">
-                                    <div style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 60px; height: 60px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                        <i class="fas fa-book" style="color: #666; font-size: 1.2rem;"></i>
-                                    </div>
-                                </div>
-                                
-                                <!-- Caregiver -->
-                                <div style="width: 80px; height: 120px; background: #FF7A00; border-radius: 10px; position: relative; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-user-md" style="color: white; font-size: 2rem;"></i>
-                                </div>
-                            </div>
+                        <div style="width: 100%; height: 400px; border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <img src="images/untitled folder/Photo 12.png" alt="服務範疇" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
                         </div>
                     </div>
                 </div>
@@ -566,7 +568,7 @@
                     <!-- 協助管路護理 -->
                     <div class="capability-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
                         <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-                            <i class="fas fa-tube" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                            <i class="fas fa-stethoscope" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
                             <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">協助管路護理</h3>
                         </div>
                         <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">如有引流管、造口、導尿管等，護士能正確維護，減少感染與阻塞風險。</p>
@@ -691,45 +693,49 @@
                     <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">預約服務流程</h2>
                 </div>
                 
-                <div class="process-steps" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 3rem;">
+                <div class="process-steps">
                     <!-- Step 1 -->
-                    <div class="process-step" style="text-align: center;">
-                        <div class="step-icon" style="width: 80px; height: 80px; background: linear-gradient(135deg, #FF7A00, #FF9933); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                            <i class="fas fa-file-alt" style="color: white; font-size: 2rem;"></i>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3>提交網上查詢表格</h3>
                         </div>
-                        <div class="step-number" style="background: #FF7A00; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">1</div>
-                        <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">提交網上查詢表格</h3>
-                        <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">填寫以下表格或WhatsApp聯絡我們查詢。</p>
+                        <p>填寫以下表格或WhatsApp聯絡我們查詢。</p>
                     </div>
                     
                     <!-- Step 2 -->
-                    <div class="process-step" style="text-align: center;">
-                        <div class="step-icon" style="width: 80px; height: 80px; background: linear-gradient(135deg, #FF7A00, #FF9933); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                            <i class="fas fa-comments" style="color: white; font-size: 2rem;"></i>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>與護理專家聯繫</h3>
                         </div>
-                        <div class="step-number" style="background: #FF7A00; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">2</div>
-                        <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">與護理專家聯繫</h3>
-                        <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">我們的護理專家們將聯絡你，以了解家人的狀況。</p>
+                        <p>我們的護理專家們將聯絡你，以了解家人的狀況。</p>
                     </div>
                     
                     <!-- Step 3 -->
-                    <div class="process-step" style="text-align: center;">
-                        <div class="step-icon" style="width: 80px; height: 80px; background: linear-gradient(135deg, #FF7A00, #FF9933); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                            <i class="fas fa-calendar-check" style="color: white; font-size: 2rem;"></i>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <h3>填寫服務預訂表格</h3>
                         </div>
-                        <div class="step-number" style="background: #FF7A00; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">3</div>
-                        <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">填寫服務預訂表格</h3>
-                        <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">我們會發送服務預訂表格給你，確認服務要求及詳情。</p>
+                        <p>我們會發送服務預訂表格給你，確認服務要求及詳情。</p>
                     </div>
                     
                     <!-- Step 4 -->
-                    <div class="process-step" style="text-align: center;">
-                        <div class="step-icon" style="width: 80px; height: 80px; background: linear-gradient(135deg, #FF7A00, #FF9933); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                            <i class="fas fa-heart" style="color: white; font-size: 2rem;"></i>
+                    <div class="process-step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>配對您的護理人員</h3>
                         </div>
-                        <div class="step-number" style="background: #FF7A00; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: bold;">4</div>
-                        <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 0.5rem; font-weight: 600;">配對您的護理人員</h3>
-                        <p style="font-size: 0.9rem; color: #666; line-height: 1.4;">我們將盡在1-2日內為你配對到合適的護理人員。</p>
+                        <p>我們將盡在1-2日內為你配對到合適的護理人員。</p>
                     </div>
                 </div>
                 

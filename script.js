@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (link) {
                     link.addEventListener('click', function(e) {
                         // Only do this for mobile view
-                        if (window.innerWidth <= 992) {
+                        if (window.innerWidth <= 1048) {
                             e.preventDefault();
                             
                             // Check if this is already open
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Close menu when window is resized to desktop size
             window.addEventListener('resize', function() {
-                if (window.innerWidth > 992) {
+                if (window.innerWidth > 1048) {
                     mobileMenuToggle.classList.remove('active');
                     mainMenu.classList.remove('active');
                     if (overlay) overlay.classList.remove('active');

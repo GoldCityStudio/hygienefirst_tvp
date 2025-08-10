@@ -95,19 +95,23 @@
                         <div class="dropdown-content">
                             <a href="about.html#features">我們的特色</a>
                             <a href="about.html#testimonials">客戶評價</a>
-                            <a href="about.html#quality">服務品質承諾</a>
-                            <a href="about.html#media">媒體中心</a>
-                            <a href="blog.html">Hygiene First  部落格</a>
+                            <a href="news.html#media">媒體中心</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="service.html">居家護理服務</a>
                         <div class="dropdown-content">
-                            <a href="service.html#home-care">居家醫療照護</a>
-                            <a href="service.html#health-assessment">健康評估</a>
-                            <a href="service.html#nursing">專業護理</a>
-                            <a href="service.html#rehabilitation">復健治療</a>
-                            <a href="service.html#caregiver-training">照護人員培訓</a>
+                            <a href="health-assessment.html">上門健康評估</a>
+                            <a href="elderly-care.html">長者照顧服務</a>
+                            <a href="accompaniment.html">陪診護送服務</a>
+                            <a href="wound-care.html">傷口護理</a>
+                            <a href="nasogastric-care.html">鼻胃喉管護理服務</a>
+                            <a href="caregiver-training.html">照顧者培訓班</a>
+                            <a href="stroke-care.html">中風護理及復康服務</a>
+                            <a href="cancer-care.html">癌症護理服務</a>
+                            <a href="dementia-care.html">認知障礙症護理服務</a>
+                            <a href="post-surgery-care.html">專業手術後護理服務</a>
+                            <a href="rehabilitation-care.html">復康護理</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -137,7 +141,30 @@
         </div>
     </header>
 
-    <main id="main-content">
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal" style="display:none;">
+      <div class="cart-modal-content">
+        <span class="close-cart-modal" tabindex="0">&times;</span>
+        <h2>購物車</h2>
+        <div class="cart-modal-body">
+          <div class="cart-items-section">
+            <h3>購物車商品</h3>
+            <div id="cart-items">
+              <p>您的購物車是空的。</p>
+            </div>
+          </div>
+          <div class="cart-summary-section">
+            <div class="cart-modal-footer">
+              <span>總計: <span id="cart-total">$0</span></span>
+              <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
+              <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="main-content" style="margin-top: 0;">
         <!-- Hero Section -->
         <section class="hero-section community-hero">
             <div class="container">
@@ -163,21 +190,82 @@
                     </div>
                 
                 <!-- Fanned out images layout -->
+                <style>
+                    .fanned-image {
+                        position: absolute;
+                        width: 300px;
+                        height: 200px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+                        cursor: pointer;
+                        border-radius: 8px;
+                        overflow: hidden;
+                    }
+                    
+                    .fanned-image:nth-child(2) {
+                        left: 10%;
+                        transform: translateY(-50%) rotate(-15deg);
+                        z-index: 1;
+                    }
+                    
+                    .fanned-image:nth-child(3) {
+                        left: 25%;
+                        transform: translateY(-50%) rotate(-8deg);
+                        z-index: 2;
+                    }
+                    
+                    .fanned-image:nth-child(4) {
+                        left: 40%;
+                        transform: translateY(-50%) rotate(0deg);
+                        z-index: 3;
+                    }
+                    
+                    .fanned-image:nth-child(5) {
+                        left: 55%;
+                        transform: translateY(-50%) rotate(8deg);
+                        z-index: 2;
+                    }
+                    
+                    .fanned-image:hover {
+                        transform: translateY(-50%) scale(1.4) rotate(0deg) !important;
+                        z-index: 10 !important;
+                        box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+                        border: 4px solid #FF7A00;
+                        overflow: visible;
+                    }
+                    
+                    .fanned-image img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 8px;
+                        transition: all 0.4s ease;
+                    }
+                    
+                    .fanned-image:hover img {
+                        transform: scale(1.2);
+                        object-fit: contain;
+                        background-color: white;
+                    }
+                </style>
+                
                 <div class="fanned-images-container" style="position: relative; height: 500px; margin: 60px 0; overflow: visible;">
                     <div style="text-align: center; margin-bottom: 20px; color: #666; font-size: 0.9rem;">
                         <i class="fas fa-mouse-pointer"></i> 懸停圖片查看詳細內容
                     </div>
-                    <div class="fanned-image" style="position: absolute; width: 300px; height: 200px; left: 10%; top: 50%; transform: translateY(-50%) rotate(-15deg); z-index: 1; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;">
-                        <img src="images/長者社區照顧服務券1.jpg" alt="長者社區照顧服務券" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <div class="fanned-image">
+                        <img src="images/長者社區照顧服務券1.jpg" alt="長者社區照顧服務券" loading="lazy">
                     </div>
-                    <div class="fanned-image" style="position: absolute; width: 300px; height: 200px; left: 25%; top: 50%; transform: translateY(-50%) rotate(-8deg); z-index: 2; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;">
-                        <img src="images/長者社區照顧服務券2.jpg" alt="長者社區照顧服務券" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <div class="fanned-image">
+                        <img src="images/長者社區照顧服務券2.jpg" alt="長者社區照顧服務券" loading="lazy">
                     </div>
-                    <div class="fanned-image" style="position: absolute; width: 300px; height: 200px; left: 40%; top: 50%; transform: translateY(-50%) rotate(0deg); z-index: 3; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;">
-                        <img src="images/長者社區照顧服務券3.jpg" alt="長者社區照顧服務券" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <div class="fanned-image">
+                        <img src="images/長者社區照顧服務券3.jpg" alt="長者社區照顧服務券" loading="lazy">
                     </div>
-                    <div class="fanned-image" style="position: absolute; width: 300px; height: 200px; left: 55%; top: 50%; transform: translateY(-50%) rotate(8deg); z-index: 2; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 8px 25px rgba(0,0,0,0.15); cursor: pointer;">
-                        <img src="images/長者社區照顧服務券4.jpg" alt="長者社區照顧服務券" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    <div class="fanned-image">
+                        <img src="images/長者社區照顧服務券4.jpg" alt="長者社區照顧服務券" loading="lazy">
                     </div>
                 </div>
 
