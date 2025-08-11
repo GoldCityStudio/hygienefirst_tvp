@@ -138,7 +138,7 @@
         </div>
     </header>
 
-    <main id="main-content" style="margin-top: 0;">
+    <main id="main-content" >
         <!-- Hero Section -->
         <section class="hero-section" style="padding: 4rem 0; background: linear-gradient(135deg, #f8fdf8 0%, #ffffff 50%, #f8fdf8 100%);">
             <div class="container">
@@ -971,7 +971,10 @@
         <section class="booking-process-section" style="padding: 4rem 0; background: linear-gradient(135deg, #f8fdf8 0%, #ffffff 50%, #f8fdf8 100%);">
             <div class="container">
                 <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 style="font-size: 2.2rem; color: #333; margin-bottom: 1rem; font-weight: 600;">預約服務流程</h2>
+                    <h2 style="font-size: 2.2rem; color: #333; margin-bottom: 1rem; font-weight: 600; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-calendar-alt" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
+                        預約服務流程
+                    </h2>
                 </div>
                 
                 <div class="process-steps">
@@ -990,7 +993,7 @@
                     <div class="process-step">
                         <div class="step-header">
                             <div class="step-icon">
-                                <i class="fas fa-user-question"></i>
+                                <i class="fas fa-stethoscope"></i>
                             </div>
                             <h3>專業評估</h3>
                         </div>
@@ -1033,7 +1036,7 @@
                     <!-- Feature 1 -->
                     <div class="why-choose-feature" style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; text-align: center;">
                         <div class="feature-icon" style="width: 60px; height: 60px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                            <i class="fas fa-turtle" style="color: #1e3a8a; font-size: 1.5rem;"></i>
+                            <i class="fas fa-home" style="color: #1e3a8a; font-size: 1.5rem;"></i>
                         </div>
                         <h3 style="font-size: 1.1rem; color: white; margin-bottom: 0.5rem; font-weight: 600;">熟悉環境</h3>
                         <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.5;">在熟悉的家中環境，減少患者的焦慮和不安</p>
@@ -1134,37 +1137,32 @@
                     <!-- Right Contact -->
                     <div class="contact-content" style="text-align: center;">
                         <h2 style="font-size: 2.2rem; color: #333; margin-bottom: 2rem; font-weight: 600;">立即聯絡我們</h2>
-                        <a href="https://wa.me/85223456789" class="whatsapp-btn" style="display: inline-block; background: #25D366; color: white; padding: 1.5rem 3rem; border-radius: 10px; text-decoration: none; font-size: 1.2rem; font-weight: 600; margin-bottom: 2rem; transition: transform 0.3s ease;">
-                            <i class="fab fa-whatsapp" style="margin-right: 0.5rem;"></i>
+                        
+                        <!-- WhatsApp Button -->
+                        <a href="https://wa.me/85223456789" class="whatsapp-btn" style="display: inline-block; background: #25D366; color: white; padding: 1.5rem 3rem; border-radius: 10px; text-decoration: none; font-size: 1.2rem; font-weight: 600; margin-bottom: 2rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp" style="margin-right: 0.5rem; font-size: 1.3rem;"></i>
                             WhatsApp 我們
                         </a>
                         
+                        <!-- Contact Information -->
                         <div class="contact-info" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                            <div class="contact-item" style="margin-bottom: 1rem;">
-                                <i class="fas fa-phone" style="color: #FF7A00; margin-right: 0.5rem;"></i>
-                                <span style="color: #666;">+852 2345 6789</span>
+                            <div class="contact-item" style="display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                                <i class="fas fa-phone" style="color: #FF7A00; margin-right: 1rem; font-size: 1.2rem;"></i>
+                                <span style="color: #333; font-weight: 500;">+852 2345 6789</span>
                             </div>
-                            <div class="contact-item" style="margin-bottom: 1rem;">
-                                <i class="fas fa-envelope" style="color: #FF7A00; margin-right: 0.5rem;"></i>
-                                <span style="color: #666;">info@hygienefirst.hk</span>
+                            <div class="contact-item" style="display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                                <i class="fas fa-envelope" style="color: #FF7A00; margin-right: 1rem; font-size: 1.2rem;"></i>
+                                <span style="color: #333; font-weight: 500;">info@hygienefirst.hk</span>
                             </div>
-                            <div class="contact-item">
-                                <i class="fas fa-clock" style="color: #FF7A00; margin-right: 0.5rem;"></i>
-                                <span style="color: #666;">24小時服務</span>
+                            <div class="contact-item" style="display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-clock" style="color: #FF7A00; margin-right: 1rem; font-size: 1.2rem;"></i>
+                                <span style="color: #333; font-weight: 500;">24小時服務</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-
-
-
-
-
-
-
 
         <!-- Pricing Inquiry Section -->
         <section class="pricing-inquiry-section" style="padding: 4rem 0; background: #fff;">

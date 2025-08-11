@@ -12,6 +12,10 @@
     --admin-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+main {
+    padding-top: 120px;
+}
+
 /* Admin Section Visibility */
 .admin-section {
     display: none;

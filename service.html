@@ -420,7 +420,7 @@
         </div>
     </header>
 
-    <main id="main-content" style="margin-top: 0;">
+    <main id="main-content" >
         <!-- Banner Image -->
         <div class="full-width-banner" style="position: relative;">
             <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="我們的服務 Banner" style="width:100%;height:auto;display:block;">
@@ -430,60 +430,35 @@
         <!-- 服務分類 -->
         <section class="service-categories" style="background: linear-gradient(135deg, var(--primary-color) 0%, #ff8c1a 15%, var(--secondary-color) 30%, #ffb366 45%, #ffffff 60%, #fff5f0 75%, #ffe6d9 90%, #ffd4b3 100%); padding: 4rem 0; position: relative; overflow: hidden;">
             <!-- 星星裝飾背景 -->
-            <div style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); opacity: 0.08; z-index: 1;">
-                <svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- 大星星主體 -->
-                    <path d="M150 40 L160 60 L180 65 L165 80 L175 100 L150 85 L125 100 L135 80 L120 65 L140 60 Z" fill="url(#starGradient)" stroke="#FFD700" stroke-width="2"/>
-                    
-                    <!-- 小星星裝飾 -->
-                    <path d="M100 50 L105 60 L115 62 L108 70 L112 80 L100 75 L88 80 L92 70 L85 62 L95 60 Z" fill="#FFA500"/>
-                    <path d="M200 50 L205 60 L215 62 L208 70 L212 80 L200 75 L188 80 L192 70 L185 62 L195 60 Z" fill="#FFA500"/>
-                    <path d="M80 100 L85 110 L95 112 L88 120 L92 130 L80 125 L68 130 L72 120 L65 112 L75 110 Z" fill="#FF8C00"/>
-                    <path d="M220 100 L225 110 L235 112 L228 120 L232 130 L220 125 L208 130 L212 120 L205 112 L215 110 Z" fill="#FF8C00"/>
-                    
-                    <!-- 更多星星裝飾 -->
-                    <circle cx="150" cy="150" r="3" fill="#FFD700"/>
-                    <circle cx="120" cy="140" r="2" fill="#FFA500"/>
-                    <circle cx="180" cy="140" r="2" fill="#FFA500"/>
-                    
-                    <defs>
-                        <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
-                            <stop offset="30%" style="stop-color:#FFA500;stop-opacity:1" />
-                            <stop offset="70%" style="stop-color:#FF8C00;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#DAA520;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                </svg>
+            <div style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); opacity: 0.08; z-index: 1; text-align: center;">
+                <i class="fas fa-star" style="color: #FFD700; font-size: 3rem; margin: 0 10px;"></i>
+                <i class="fas fa-star" style="color: #FFA500; font-size: 2rem; margin: 0 10px;"></i>
+                <i class="fas fa-star" style="color: #FF8C00; font-size: 2.5rem; margin: 0 10px;"></i>
+                <i class="fas fa-star" style="color: #FFA500; font-size: 2rem; margin: 0 10px;"></i>
+                <i class="fas fa-star" style="color: #FFD700; font-size: 1.5rem; margin: 0 10px;"></i>
+                <i class="fas fa-star" style="color: #FFA500; font-size: 1.8rem; margin: 0 10px;"></i>
+                <i class="fas fa-star" style="color: #FF8C00; font-size: 1.2rem; margin: 0 10px;"></i>
             </div>
             
             <!-- 星星裝飾 - 左上角 -->
             <div style="position: absolute; top: 20px; left: 20px; opacity: 0.15; z-index: 1;">
-                <svg width="60" height="45" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M30 5L33 15L42 13.5L37.5 22.5L46.5 24L37.5 31.5L42 40.5L33 39L30 48L27 39L18 40.5L22.5 31.5L13.5 24L22.5 22.5L18 13.5L27 15L30 5Z" fill="#FFD700"/>
-                </svg>
+                <i class="fas fa-star" style="color: #FFD700; font-size: 2.5rem;"></i>
             </div>
             
             <!-- 星星裝飾 - 右上角 -->
             <div style="position: absolute; top: 20px; right: 20px; opacity: 0.15; z-index: 1;">
-                <svg width="60" height="45" viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M30 5L33 15L42 13.5L37.5 22.5L46.5 24L37.5 31.5L42 40.5L33 39L30 48L27 39L18 40.5L22.5 31.5L13.5 24L22.5 22.5L18 13.5L27 15L30 5Z" fill="#FFD700"/>
-                </svg>
+                <i class="fas fa-star" style="color: #FFD700; font-size: 2.5rem;"></i>
             </div>
             
             <div class="container" style="position: relative; z-index: 2;">
                 <div class="section-header" style="margin-bottom:2.5rem; text-align: center; position: relative;">
                     <!-- 標題星星 -->
                     <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-                        <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;">
-                            <path d="M20 3L22 10L28 9L25 15L31 16L25 21L28 27L22 26L20 32L18 26L12 27L15 21L9 16L15 15L12 9L18 10L20 3Z" fill="#FFD700"/>
-                        </svg>
+                        <i class="fas fa-star" style="color: #FFD700; font-size: 1.5rem; margin-right: 10px;"></i>
                         <h2 class="theme-title" style="margin: 0; background: linear-gradient(135deg, #2c3e50, #3498db); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700;">專業醫療護理服務選項</h2>
-                        <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 10px;">
-                            <path d="M20 3L22 10L28 9L25 15L31 16L25 21L28 27L22 26L20 32L18 26L12 27L15 21L9 16L15 15L12 9L18 10L20 3Z" fill="#FFD700"/>
-                        </svg>
+                        <i class="fas fa-star" style="color: #FFD700; font-size: 1.5rem; margin-left: 10px;"></i>
                     </div>
-                    <p class="theme-subtitle" style="color: #5a6c7d; font-size: 1.1rem;">根據您的需求選擇最適合的服務方案</p>
+                    <p class="theme-subtitle" style="background: linear-gradient(135deg, #2c3e50, #3498db); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.1rem; font-weight: 600;">根據您的需求選擇最適合的服務方案</p>
                 </div>
                 <div class="service-sort-filter">
                     <div class="filter-group">
@@ -508,7 +483,7 @@
                                 <i class="fas fa-home"></i>
                             </div>
                             <div class="service-card__content">
-                                <h3>進行免費諮詢</h3>
+                                <h3>基本照護方案</h3>
                                 <p>全面照顧您的日常生活需求，包括生活協助、基本健康監測和個人衛生護理。適合需要輕度支援的長者。</p>
                                 <ul class="service-features">
                                     <li>基本健康檢查</li>
@@ -529,7 +504,7 @@
                                 <i class="fas fa-user-nurse"></i>
                             </div>
                             <div class="service-card__content">
-                                <h3>進行免費諮詢</h3>
+                                <h3>標準護理方案</h3>
                                 <p>全方位的居家護理服務，由專業護理人員提供，適合需要更多醫療照護的患者。</p>
                                 <ul class="service-features">
                                     <li>所有基本護理項目</li>
@@ -553,13 +528,9 @@
                             </div>
                             <div class="service-card__content">
                                 <h3 style="display: flex; align-items: center; justify-content: center; color: #2c3e50; position: relative; z-index: 99;">
-                                    <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px; z-index: 99;">
-                                        <path d="M12 2L13.2 6L17.4 5.4L15 9L19.4 9.6L15 12.6L17.4 16.2L13.2 15.6L12 19.2L10.8 15.6L6.6 16.2L9 12.6L4.6 9.6L9 9L6.6 5.4L10.8 6L12 2Z" fill="#FFD700"/>
-                                    </svg>
+                                    <i class="fas fa-star" style="color: #FFD700; font-size: 1.2rem; margin-right: 8px; z-index: 99;"></i>
                                     鑽石護理方案
-                                    <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: 8px; z-index: 99;">
-                                        <path d="M12 2L13.2 6L17.4 5.4L15 9L19.4 9.6L15 12.6L17.4 16.2L13.2 15.6L12 19.2L10.8 15.6L6.6 16.2L9 12.6L4.6 9.6L9 9L6.6 5.4L10.8 6L12 2Z" fill="#FFD700"/>
-                                    </svg>
+                                    <i class="fas fa-star" style="color: #FFD700; font-size: 1.2rem; margin-left: 8px; z-index: 99;"></i>
                                 </h3>
                                 <p>我們最全面的居家醫療護理服務，提供24小時專業照護，適合有複雜醫療需求的患者。</p>
                                 <ul class="service-features">
@@ -669,7 +640,7 @@
                     
                     <div class="pricing-plan">
                         <div class="pricing-plan__header">
-                            <h3>高級照護方案</h3>
+                            <h3>鑽石護理方案</h3>
                             <div class="pricing-plan__price">
                                 <span class="price">HKD 875</span>
                                 <span class="period">/ 次</span>

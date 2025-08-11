@@ -5,6 +5,10 @@ body {
     min-height: 100vh;
 }
 
+main {
+    padding-top: 120px;
+}
+
 .member-section {
     min-height: 100vh;
     display: flex;

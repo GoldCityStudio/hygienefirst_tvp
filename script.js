@@ -33,9 +33,64 @@ document.addEventListener('DOMContentLoaded', function() {
         // Auto-advance every 5 seconds
         setInterval(nextImage, 5000);
     }
+
+    // Service Cards Slider functionality
+    function setupServiceCardsSlider() {
+        const serviceCards = document.querySelector('.service-cards');
+        const leftArrow = document.querySelector('.slider-arrow-left');
+        const rightArrow = document.querySelector('.slider-arrow-right');
+        
+        console.log('Setting up service cards slider:', { serviceCards, leftArrow, rightArrow });
+        
+        if (!serviceCards || !leftArrow || !rightArrow) {
+            console.log('Missing elements for service cards slider');
+            return;
+        }
+        
+        const scrollAmount = 390; // Adjust based on card width (360px) + gap (30px)
+        
+        // Left arrow click handler
+        leftArrow.addEventListener('click', () => {
+            console.log('Left arrow clicked, scrolling left by', -scrollAmount);
+            serviceCards.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Right arrow click handler
+        rightArrow.addEventListener('click', () => {
+            console.log('Right arrow clicked, scrolling right by', scrollAmount);
+            serviceCards.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Show/hide arrows based on scroll position
+        function updateArrowVisibility() {
+            const isAtStart = serviceCards.scrollLeft <= 0;
+            const isAtEnd = serviceCards.scrollLeft >= serviceCards.scrollWidth - serviceCards.clientWidth;
+            
+            leftArrow.style.opacity = isAtStart ? '0.5' : '1';
+            leftArrow.style.pointerEvents = isAtStart ? 'none' : 'auto';
+            
+            rightArrow.style.opacity = isAtEnd ? '0.5' : '1';
+            rightArrow.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+        }
+        
+        // Update arrows on scroll
+        serviceCards.addEventListener('scroll', updateArrowVisibility);
+        
+        // Initial arrow state
+        updateArrowVisibility();
+    }
     
     // Initialize banner slider
     setupBannerSlider();
+
+    // Setup service cards slider
+    setupServiceCardsSlider();
 
     // Create page transition element
     const pageTransition = document.createElement('div');

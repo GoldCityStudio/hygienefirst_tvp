@@ -75,4 +75,9 @@
 
 .nav-submenu {
     z-index: 1000;
+}
+
+/* Main content padding */
+main {
+    padding-top: 120px;
 } 

@@ -3704,7 +3704,7 @@ a[href^="tel:"]:hover {
 
 /* Adjust main content to account for promo banner */
 main {
-    margin-top: 120px; /* Adjusted for header with integrated promo banner */
+    padding-top: 120px; /* Adjusted for header with integrated promo banner */
 }
 
 /* Responsive adjustments */
@@ -3735,7 +3735,7 @@ main {
         margin-top: 4px;
     }
     main {
-        margin-top: 150px;
+        padding-top: 150px;
     }
 }
 
@@ -3756,7 +3756,7 @@ main {
         padding: 10px 14px;
     }
     main {
-        margin-top: 130px;
+        padding-top: 130px;
     }
 }
 
