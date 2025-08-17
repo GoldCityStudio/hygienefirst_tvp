@@ -339,62 +339,106 @@
             </div>
         </section>
 
-        <!-- 預約及服務流程 Section -->
-        <section class="booking-process-section" style="padding: 4rem 0; background: #f8f9fa;">
+        <!-- 服務流程 Section -->
+        <section class="service-process-section" style="padding: 4rem 0; background: white;">
             <div class="container">
                 <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">預約及服務流程</h2>
+                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">服務流程</h2>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們提供專業且完整的傷口護理服務流程，確保每位患者都能獲得最優質的照顧。</p>
                 </div>
                 
-                <div class="process-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-                    <!-- Step 1 -->
-                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
-                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">1</div>
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
-                            <i class="fas fa-phone" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">查詢及預約</h3>
+                <div class="slider-container" style="position: relative; max-width: 1600px; margin: 0 auto;">
+                    <div class="slider-wrapper" style="overflow: hidden; position: relative;">
+                        <div class="process-steps" style="display: flex; transition: transform 0.5s ease; gap: 2rem; max-width: 1000px; margin: 3rem auto 3rem;">
+                            <!-- Step 1: 查詢及預約 -->
+                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
+                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">1</div>
+                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
+                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
+                                        <i class="fas fa-phone" style="color: white; font-size: 1.6rem;"></i>
+                                    </div>
+                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
+                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">查詢及預約</h3>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">透過WhatsApp 預約專線，專員將於24小時內聯絡安排。</p>
+                            </div>
+                            
+                            <!-- Step 2: 專業評估 -->
+                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
+                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">2</div>
+                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
+                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
+                                        <i class="fas fa-clipboard-check" style="color: white; font-size: 1.6rem;"></i>
+                                    </div>
+                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
+                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">專業評估</h3>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">註冊護士上門，詳細評估傷口及整體健康狀況。</p>
+                            </div>
+                            
+                            <!-- Step 3: 護理實施 -->
+                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
+                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">3</div>
+                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
+                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
+                                        <i class="fas fa-hands" style="color: white; font-size: 1.6rem;"></i>
+                                    </div>
+                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
+                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">護理實施</h3>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">根據評估結果，進行傷口清潔、消毒、換藥及包紮。</p>
+                            </div>
+                            
+                            <!-- Step 4: 家屬指導 -->
+                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
+                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">4</div>
+                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
+                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
+                                        <i class="fas fa-chalkboard-teacher" style="color: white; font-size: 1.6rem;"></i>
+                                    </div>
+                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
+                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">家屬指導</h3>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">提供家居護理建議及後續觀察重點。</p>
+                            </div>
+                            
+                            <!-- Step 5: 定期跟進 -->
+                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
+                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">5</div>
+                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
+                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
+                                        <i class="fas fa-chart-line" style="color: white; font-size: 1.6rem;"></i>
+                                    </div>
+                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
+                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">定期跟進</h3>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">如有需要，安排多次上門服務，密切監察傷口癒合進度。</p>
+                            </div>
                         </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">透過WhatsApp 預約專線，專員將於24小時內聯絡安排。</p>
                     </div>
                     
-                    <!-- Step 2 -->
-                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
-                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">2</div>
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
-                            <i class="fas fa-clipboard-check" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">專業評估</h3>
+                    <!-- Navigation Controls -->
+                    <div class="slider-controls" style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 2rem;">
+                        <button class="slider-btn prev-btn" onclick="slideServiceProcess('prev')" style="background: #FF7A00; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.3s ease;">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <div class="slider-dots" style="display: flex; gap: 0.5rem;">
+                            <span class="dot active" onclick="goToSlide(0)" style="width: 12px; height: 12px; border-radius: 50%; background: #FF7A00; cursor: pointer; transition: all 0.3s ease;"></span>
+                            <span class="dot" onclick="goToSlide(1)" style="width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s ease;"></span>
+                            <span class="dot" onclick="goToSlide(2)" style="width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s ease;"></span>
+                            <span class="dot" onclick="goToSlide(3)" style="width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s ease;"></span>
+                            <span class="dot" onclick="goToSlide(4)" style="width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s ease;"></span>
                         </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">治療師上門評估身體狀況及家居環境。</p>
-                    </div>
-                    
-                    <!-- Step 3 -->
-                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
-                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">3</div>
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
-                            <i class="fas fa-clipboard-list" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">訂立復康計劃</h3>
-                        </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">根據需要度身訂造護理及訓練方案。</p>
-                    </div>
-                    
-                    <!-- Step 4 -->
-                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
-                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">4</div>
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
-                            <i class="fas fa-chart-line" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">定期跟進及調整</h3>
-                        </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">根據康復進度靈活調整內容。</p>
-                    </div>
-                    
-                    <!-- Step 5 -->
-                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
-                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">5</div>
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
-                            <i class="fas fa-heart" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">持續支援</h3>
-                        </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">定期向家屬匯報進展，全年無休支援。</p>
+                        
+                        <button class="slider-btn next-btn" onclick="slideServiceProcess('next')" style="background: #FF7A00; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.3s ease;">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -478,5 +522,50 @@
     </a>
 
     <script src="script.js"></script>
+    
+    <!-- Service Process Slider JavaScript -->
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const slideWidth = 312; // 280px card + 32px gap
+        
+        function slideServiceProcess(direction) {
+            if (direction === 'next') {
+                currentSlide = (currentSlide + 1) % totalSlides;
+            } else if (direction === 'prev') {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            }
+            
+            updateSlider();
+        }
+        
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateSlider();
+        }
+        
+        function updateSlider() {
+            const slider = document.querySelector('.process-steps');
+            const dots = document.querySelectorAll('.dot');
+            
+            // Update slider position
+            slider.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+            
+            // Update active dot
+            dots.forEach((dot, index) => {
+                dot.style.background = index === currentSlide ? '#FF7A00' : '#ddd';
+            });
+        }
+        
+        // Auto-advance slider every 5 seconds
+        setInterval(() => {
+            slideServiceProcess('next');
+        }, 5000);
+        
+        // Initialize slider
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSlider();
+        });
+    </script>
 </body>
 </html>

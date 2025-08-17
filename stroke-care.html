@@ -185,53 +185,106 @@
             </div>
         </section>
 
-        <!-- Service Process Section -->
-        <section class="service-process" style="padding: 4rem 0; background: white;">
+        <!-- 服務流程 Section -->
+        <section class="service-process-section" style="padding: 4rem 0; background: white;">
             <div class="container">
                 <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
                     <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">服務流程</h2>
-                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們提供清晰且專業的服務流程，確保患者獲得最優質的護理及復康服務。</p>
+                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們提供專業且完整的傷口護理服務流程，確保每位患者都能獲得最優質的照顧。</p>
                 </div>
                 
-                <div class="process-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-                    <!-- Step 1: 專業評估 -->
-                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
-                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">1</div>
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
-                            <i class="fas fa-clipboard-check" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">專業評估</h3>
+                <div class="slider-container" style="position: relative; max-width: 1600px; margin: 0 auto;">
+                    <div class="slider-wrapper" style="overflow: hidden; position: relative;">
+                        <div class="process-steps" style="display: flex; transition: transform 0.5s ease; gap: 2rem; max-width: 1000px; margin: 3rem auto 3rem;">
+                            <!-- Step 1: 查詢及預約 -->
+                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
+                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">1</div>
+                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
+                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
+                                        <i class="fas fa-phone" style="color: white; font-size: 1.6rem;"></i>
+                                    </div>
+                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
+                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">查詢及預約</h3>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">透過WhatsApp 預約專線，專員將於24小時內聯絡安排。</p>
+                            </div>
+                            
+                            <!-- Step 2: 專業評估 -->
+                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
+                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">2</div>
+                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
+                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
+                                        <i class="fas fa-clipboard-check" style="color: white; font-size: 1.6rem;"></i>
+                                    </div>
+                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
+                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">專業評估</h3>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">註冊護士上門，詳細評估傷口及整體健康狀況。</p>
+                            </div>
+                            
+                            <!-- Step 3: 護理實施 -->
+                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
+                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">3</div>
+                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
+                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
+                                        <i class="fas fa-hands" style="color: white; font-size: 1.6rem;"></i>
+                                    </div>
+                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
+                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">護理實施</h3>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">根據評估結果，進行傷口清潔、消毒、換藥及包紮。</p>
+                            </div>
+                            
+                            <!-- Step 4: 家屬指導 -->
+                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
+                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">4</div>
+                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
+                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
+                                        <i class="fas fa-chalkboard-teacher" style="color: white; font-size: 1.6rem;"></i>
+                                    </div>
+                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
+                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">家屬指導</h3>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">提供家居護理建議及後續觀察重點。</p>
+                            </div>
+                            
+                            <!-- Step 5: 定期跟進 -->
+                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
+                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">5</div>
+                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
+                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
+                                        <i class="fas fa-chart-line" style="color: white; font-size: 1.6rem;"></i>
+                                    </div>
+                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
+                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">定期跟進</h3>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">如有需要，安排多次上門服務，密切監察傷口癒合進度。</p>
+                            </div>
                         </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">由註冊護士或治療師上門評估患者功能、健康及家居環境。</p>
                     </div>
                     
-                    <!-- Step 2: 訂立護理及復康目標 -->
-                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
-                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">2</div>
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
-                            <i class="fas fa-flag" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">訂立護理及復康目標</h3>
+                    <!-- Navigation Controls -->
+                    <div class="slider-controls" style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 2rem;">
+                        <button class="slider-btn prev-btn" onclick="slideServiceProcess('prev')" style="background: #FF7A00; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.3s ease;">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <div class="slider-dots" style="display: flex; gap: 0.5rem;">
+                            <span class="dot active" onclick="goToSlide(0)" style="width: 12px; height: 12px; border-radius: 50%; background: #FF7A00; cursor: pointer; transition: all 0.3s ease;"></span>
+                            <span class="dot" onclick="goToSlide(1)" style="width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s ease;"></span>
+                            <span class="dot" onclick="goToSlide(2)" style="width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s ease;"></span>
+                            <span class="dot" onclick="goToSlide(3)" style="width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s ease;"></span>
+                            <span class="dot" onclick="goToSlide(4)" style="width: 12px; height: 12px; border-radius: 50%; background: #ddd; cursor: pointer; transition: all 0.3s ease;"></span>
                         </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">根據患者需要，設計個人化復康及護理計劃。</p>
-                    </div>
-                    
-                    <!-- Step 3: 定期上門服務 -->
-                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
-                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">3</div>
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
-                            <i class="fas fa-calendar-check" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">定期上門服務</h3>
-                        </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">安排醫護人員及治療師定期跟進，調整訓練內容。</p>
-                    </div>
-                    
-                    <!-- Step 4: 持續監察與支援 -->
-                    <div class="process-step-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;">
-                        <div class="step-number" style="position: absolute; top: -15px; left: 20px; background: #FF7A00; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">4</div>
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
-                            <i class="fas fa-chart-line" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">持續監察與支援</h3>
-                        </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">密切追蹤康復進展，並為家屬提供即時諮詢及支援。</p>
+                        
+                        <button class="slider-btn next-btn" onclick="slideServiceProcess('next')" style="background: #FF7A00; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.3s ease;">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -390,48 +443,73 @@
         </section>
 
         <!-- Service Features Section -->
-        <section class="service-features" style="padding: 4rem 0; background: #f8f9fa;">
+        <section class="service-features" style="padding: 6rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
             <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">服務特色</h2>
-                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們提供專業且全面的中風護理服務，為患者及家人提供最優質的照顧。</p>
+                <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                    <div style="display: inline-block; background: linear-gradient(135deg, #FF7A00, #E56717); padding: 0.5rem 2rem; border-radius: 25px; margin-bottom: 1.5rem;">
+                        <span style="color: white; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">我們的特色</span>
+                    </div>
+                    <h2 style="font-size: 3rem; margin-bottom: 1.5rem; color: #333; font-weight: 700; line-height: 1.2;">專業中風護理服務特色</h2>
+                    <p style="font-size: 1.3rem; color: #666; max-width: 900px; margin: 0 auto; line-height: 1.8; font-weight: 400;">我們提供專業且全面的中風護理服務，為患者及家人提供最優質的照顧。</p>
                 </div>
                 
-                <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2.5rem; max-width: 1400px; margin: 0 auto;">
                     <!-- 專業團隊 -->
-                    <div class="feature-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-                            <i class="fas fa-users" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">專業團隊</h3>
+                    <div class="feature-card" style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #FF7A00, #E56717);"></div>
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 2rem;">
+                            <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);">
+                                <i class="fas fa-users" style="font-size: 2rem; color: white;"></i>
+                            </div>
+                            <h3 style="font-size: 1.5rem; color: #333; font-weight: 700; margin: 0;">專業團隊</h3>
                         </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">由註冊護士、物理治療師、職業治療師、言語治療師及保健員組成，具備豐富中風復康經驗。</p>
+                        <p style="font-size: 1.05rem; color: #666; line-height: 1.7; margin: 0; font-weight: 400;">由註冊護士、物理治療師、職業治療師、言語治療師及保健員組成，具備豐富中風復康經驗。</p>
                     </div>
                     
                     <!-- 24小時支援 -->
-                    <div class="feature-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-                            <i class="fas fa-clock" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">24小時支援</h3>
+                    <div class="feature-card" style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #FF7A00, #E56717);"></div>
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 2rem;">
+                            <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);">
+                                <i class="fas fa-clock" style="font-size: 2rem; color: white;"></i>
+                            </div>
+                            <h3 style="font-size: 1.5rem; color: #333; font-weight: 700; margin: 0;">24小時支援</h3>
                         </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">全年無休，緊急情況可即時回應，確保患者安全。</p>
+                        <p style="font-size: 1.05rem; color: #666; line-height: 1.7; margin: 0; font-weight: 400;">全年無休，緊急情況可即時回應，確保患者安全。</p>
                     </div>
                     
                     <!-- 個人化及高透明度 -->
-                    <div class="feature-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-                            <i class="fas fa-eye" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">個人化及高透明度</h3>
+                    <div class="feature-card" style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #FF7A00, #E56717);"></div>
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 2rem;">
+                            <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);">
+                                <i class="fas fa-eye" style="font-size: 2rem; color: white;"></i>
+                            </div>
+                            <h3 style="font-size: 1.5rem; color: #333; font-weight: 700; margin: 0;">個人化及高透明度</h3>
                         </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">每位患者均有專屬護理計劃，並定期向家屬匯報健康狀況。</p>
+                        <p style="font-size: 1.05rem; color: #666; line-height: 1.7; margin: 0; font-weight: 400;">每位患者均有專屬護理計劃，並定期向家屬匯報健康狀況。</p>
                     </div>
                     
                     <!-- 醫院級防感染措施 -->
-                    <div class="feature-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-                            <i class="fas fa-shield-alt" style="font-size: 2rem; margin-right: 1rem; color: #FF7A00;"></i>
-                            <h3 style="font-size: 1.3rem; color: #333; font-weight: 600; margin: 0;">醫院級防感染措施</h3>
+                    <div class="feature-card" style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #FF7A00, #E56717);"></div>
+                        <div class="card-header" style="display: flex; align-items: center; margin-bottom: 2rem;">
+                            <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);">
+                                <i class="fas fa-shield-alt" style="font-size: 2rem; color: white;"></i>
+                            </div>
+                            <h3 style="font-size: 1.5rem; color: #333; font-weight: 700; margin: 0;">醫院級防感染措施</h3>
                         </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">所有上門服務嚴格執行防感染標準，保障患者健康。</p>
+                        <p style="font-size: 1.05rem; color: #666; line-height: 1.7; margin: 0; font-weight: 400;">所有上門服務嚴格執行防感染標準，保障患者健康。</p>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Call to Action -->
+                <div style="text-align: center; margin-top: 4rem; padding: 3rem; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 25px; color: white; box-shadow: 0 15px 50px rgba(255, 122, 0, 0.3);">
+                    <h3 style="font-size: 2rem; margin-bottom: 1.5rem; font-weight: 600;">需要專業中風護理服務？</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">立即聯絡我們，為您的家人提供最專業的中風護理及復康服務</p>
+                    <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                        <button class="btn btn--primary" style="background: white; color: #FF7A00; padding: 1rem 2.5rem; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">立即預約</button>
+                        <button class="btn btn--secondary" style="background: transparent; color: white; padding: 1rem 2.5rem; border: 2px solid white; border-radius: 12px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s ease;">免費諮詢</button>
                     </div>
                 </div>
             </div>
@@ -1176,56 +1254,69 @@
                 </div>
             </div>
         </section>
-        <!-- Appointment Process Section -->
-        <section class="appointment-process-section" style="padding: 4rem 0; background: #f8f9fa;">
+        <!-- 預約服務流程 -->
+        <section class="booking-process" style="padding: 4rem 0; background: white;">
             <div class="container">
                 <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
                     <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">預約服務流程</h2>
-                    <p style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們提供簡單明瞭的預約流程，讓您輕鬆獲得專業的中風護理服務。</p>
                 </div>
                 
-                <div class="process-steps" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+                <div class="process-steps" style="display: flex; justify-content: center; gap: 2rem; max-width: 1600px; margin: 0 auto 3rem; flex-wrap: nowrap;">
                     <!-- Step 1 -->
-                    <div class="process-step" style="text-align: center; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                        <div class="step-icon" style="width: 80px; height: 80px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                            <i class="fas fa-file-alt" style="color: white; font-size: 2rem;"></i>
+                    <div class="process-step" style="text-align: left; background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); min-width: 300px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease;">
+                        <div class="step-header" style="display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem;">
+                            <div class="step-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);">
+                                <i class="fas fa-file-alt" style="color: white; font-size: 1.8rem;"></i>
+                            </div>
+                            <div class="step-title-section" style="flex: 1;">
+                                <h3 style="font-size: 1.3rem; color: #333; margin: 0; font-weight: 600; line-height: 1.3;">提交查詢表格</h3>
+                            </div>
                         </div>
-                        <h3 style="font-size: 1.3rem; color: #333; margin-bottom: 1rem; font-weight: 600;">提交網上預約表格</h3>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6;">填妥預約表格或WhatsApp查詢，我們會在1-2日內為您配對合適的護理人員。</p>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">填寫以下表格或WhatsApp聯絡我們查詢。</p>
                     </div>
                     
                     <!-- Step 2 -->
-                    <div class="process-step" style="text-align: center; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                        <div class="step-icon" style="width: 80px; height: 80px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                            <i class="fas fa-calendar-check" style="color: white; font-size: 2rem;"></i>
+                    <div class="process-step" style="text-align: left; background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); min-width: 300px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease;">
+                        <div class="step-header" style="display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem;">
+                            <div class="step-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);">
+                                <i class="fas fa-headset" style="color: white; font-size: 1.8rem;"></i>
+                            </div>
+                            <div class="step-title-section" style="flex: 1;">
+                                <h3 style="font-size: 1.3rem; color: #333; margin: 0; font-weight: 600; line-height: 1.3;">聯繫護理專家</h3>
+                            </div>
                         </div>
-                        <h3 style="font-size: 1.3rem; color: #333; margin-bottom: 1rem; font-weight: 600;">預約上門評估</h3>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6;">我們的護理專員會主動聯絡您，詳細了解您的個人護理需求。</p>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">我們的護理專家們將聯絡你，以了解家人的狀況。</p>
                     </div>
                     
                     <!-- Step 3 -->
-                    <div class="process-step" style="text-align: center; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                        <div class="step-icon" style="width: 80px; height: 80px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                            <i class="fas fa-clipboard-list" style="color: white; font-size: 2rem;"></i>
+                    <div class="process-step" style="text-align: left; background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); min-width: 300px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease;">
+                        <div class="step-header" style="display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem;">
+                            <div class="step-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);">
+                                <i class="fas fa-calendar-check" style="color: white; font-size: 1.8rem;"></i>
+                            </div>
+                            <div class="step-title-section" style="flex: 1;">
+                                <h3 style="font-size: 1.3rem; color: #333; margin: 0; font-weight: 600; line-height: 1.3;">填寫預訂表格</h3>
+                            </div>
                         </div>
-                        <h3 style="font-size: 1.3rem; color: #333; margin-bottom: 1rem; font-weight: 600;">確認服務方案</h3>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6;">我們會提供詳細的服務方案、收費詳情及護理計劃供您確認。</p>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">我們會發送服務預訂表格給你，確認服務要求及詳情。</p>
                     </div>
                     
                     <!-- Step 4 -->
-                    <div class="process-step" style="text-align: center; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-                        <div class="step-icon" style="width: 80px; height: 80px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                            <i class="fas fa-user-plus" style="color: white; font-size: 2rem;"></i>
+                    <div class="process-step" style="text-align: left; background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); min-width: 300px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease;">
+                        <div class="step-header" style="display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem;">
+                            <div class="step-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);">
+                                <i class="fas fa-hands-helping" style="color: white; font-size: 1.8rem;"></i>
+                            </div>
+                            <div class="step-title-section" style="flex: 1;">
+                                <h3 style="font-size: 1.3rem; color: #333; margin: 0; font-weight: 600; line-height: 1.3;">配對護理人員</h3>
+                            </div>
                         </div>
-                        <h3 style="font-size: 1.3rem; color: #333; margin-bottom: 1rem; font-weight: 600;">配對護理人員</h3>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6;">我們會在1-2日內為您配對經驗豐富的專業護理人員，開始提供服務。</p>
+                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">我們將盡在1-2日內為你配對到合適的護理人員。</p>
                     </div>
                 </div>
                 
-                <div style="text-align: center; margin-top: 3rem;">
-                    <button class="btn btn--primary" style="background: #FF7A00; color: white; border: none; font-size: 1.1rem; padding: 1rem 2rem; border-radius: 10px; cursor: pointer; transition: background 0.3s ease;" onclick="openBookingModal()">
-                        立即預約
-                    </button>
+                <div style="text-align: center;">
+                    <button style="background: #FF7A00; color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">立即查詢</button>
                 </div>
             </div>
         </section>
@@ -1368,5 +1459,50 @@
     </a>
 
     <script src="script.js"></script>
+    
+    <!-- Service Process Slider JavaScript -->
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const slideWidth = 312; // 280px card + 32px gap
+        
+        function slideServiceProcess(direction) {
+            if (direction === 'next') {
+                currentSlide = (currentSlide + 1) % totalSlides;
+            } else if (direction === 'prev') {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            }
+            
+            updateSlider();
+        }
+        
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateSlider();
+        }
+        
+        function updateSlider() {
+            const slider = document.querySelector('.process-steps');
+            const dots = document.querySelectorAll('.dot');
+            
+            // Update slider position
+            slider.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+            
+            // Update active dot
+            dots.forEach((dot, index) => {
+                dot.style.background = index === currentSlide ? '#FF7A00' : '#ddd';
+            });
+        }
+        
+        // Auto-advance slider every 5 seconds
+        setInterval(() => {
+            slideServiceProcess('next');
+        }, 5000);
+        
+        // Initialize slider
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSlider();
+        });
+    </script>
 </body>
 </html> 
