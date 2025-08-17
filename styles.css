@@ -596,10 +596,10 @@ header .container {
     margin: 0 auto 40px;
 }
 
-/* Process Step Cards Vertical Alignment */
+/* Process Step Cards Horizontal Layout */
 .process-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -613,7 +613,7 @@ header .container {
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     position: relative;
     text-align: center;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     height: 100%;
     min-height: 300px;
@@ -709,6 +709,19 @@ header .container {
     .process-step-card .step-icon i {
         font-size: 1.5rem;
     }
+}
+
+/* Ensure process steps are in one row on medium and larger screens */
+@media (min-width: 769px) {
+    .process-steps {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* Override any conflicting styles from enhanced-styles.css */
+section.process .process-steps {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
 }
 
 .cta-center {
