@@ -4799,7 +4799,7 @@ footer .copyright {
 .social-icons button:hover { color: #07c160; } /* WeChat */
 .social-icons .wechat-btn { 
     background: #f8f9fa !important; 
-    border: 1px solid #dee2e6 !important;
+    border: none !important;
 }
 .social-icons .wechat-btn:hover { 
     background: #e9ecef !important; 
