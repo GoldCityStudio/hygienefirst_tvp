@@ -635,6 +635,389 @@
         </script>
 
     <script src="script.js"></script>
+    
+    <!-- Chatbot Component -->
+    <div id="chatbot-container" class="chatbot-container">
+        <!-- Chatbot Toggle Button -->
+        <div id="chatbot-toggle" class="chatbot-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chatbot-toggle-text">線上客服</span>
+        </div>
+        
+        <!-- Chatbot Window -->
+        <div id="chatbot-window" class="chatbot-window" style="display: none;">
+            <!-- Chatbot Header -->
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <img src="images/hygienelogo.png" alt="Hygiene First" class="chatbot-avatar">
+                    <div>
+                        <h4>Hygiene First 首衛</h4>
+                        <span class="chatbot-status">線上客服</span>
+                    </div>
+                </div>
+                <button id="chatbot-close" class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="chatbot-message bot-message">
+                    <div class="message-content">
+                        <p>您好！歡迎來到 Hygiene First 首衛。我是您的專屬客服助手，有什麼可以幫助您的嗎？</p>
+                        <span class="message-time">剛剛</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Reply Buttons -->
+            <div class="chatbot-quick-replies">
+                <button class="quick-reply-btn" data-message="我想了解護理服務">護理服務</button>
+                <button class="quick-reply-btn" data-message="如何預約服務">預約服務</button>
+                <button class="quick-reply-btn" data-message="服務收費">服務收費</button>
+            </div>
+            
+            <!-- Chat Input -->
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input-field" placeholder="輸入您的問題..." maxlength="200">
+                <button id="chatbot-send" class="chatbot-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot CSS -->
+    <style>
+    .chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    .chatbot-toggle {
+        background: linear-gradient(135deg, #FF7A00, #E56717);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(255, 122, 0, 0.3);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+    }
+
+    .chatbot-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(255, 122, 0, 0.4);
+    }
+
+    .chatbot-toggle i {
+        font-size: 1.2rem;
+    }
+
+    .chatbot-window {
+        position: absolute;
+        bottom: 80px;
+        right: 0;
+        width: 350px;
+        height: 500px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .chatbot-header {
+        background: linear-gradient(135deg, #FF7A00, #E56717);
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .chatbot-header-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .chatbot-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .chatbot-header h4 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .chatbot-status {
+        font-size: 0.9rem;
+        opacity: 0.9;
+    }
+
+    .chatbot-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+    }
+
+    .chatbot-close:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .chatbot-messages {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        background: #f8f9fa;
+    }
+
+    .chatbot-message {
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bot-message {
+        align-items: flex-start;
+    }
+
+    .user-message {
+        align-items: flex-end;
+    }
+
+    .message-content {
+        background: white;
+        padding: 12px 16px;
+        border-radius: 18px;
+        max-width: 80%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .bot-message .message-content {
+        background: #FF7A00;
+        color: white;
+    }
+
+    .user-message .message-content {
+        background: #e9ecef;
+        color: #333;
+    }
+
+    .message-content p {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+    .message-time {
+        font-size: 0.75rem;
+        opacity: 0.7;
+        margin-top: 5px;
+        display: block;
+    }
+
+    .chatbot-quick-replies {
+        padding: 15px 20px;
+        background: white;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .quick-reply-btn {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #495057;
+        padding: 8px 16px;
+        border-radius: 20px;
+        margin: 5px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .quick-reply-btn:hover {
+        background: #FF7A00;
+        color: white;
+        border-color: #FF7A00;
+    }
+
+    .chatbot-input {
+        padding: 20px;
+        background: white;
+        border-top: 1px solid #e9ecef;
+        display: flex;
+        gap: 10px;
+    }
+
+    #chatbot-input-field {
+        flex: 1;
+        padding: 12px 16px;
+        border: 1px solid #dee2e6;
+        border-radius: 25px;
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    #chatbot-input-field:focus {
+        border-color: #FF7A00;
+    }
+
+    .chatbot-send-btn {
+        background: #FF7A00;
+        color: white;
+        border: none;
+        padding: 12px 16px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+    }
+
+    .chatbot-send-btn:hover {
+        background: #E56717;
+    }
+
+    .chatbot-send-btn i {
+        font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .chatbot-window {
+            width: 90vw;
+            right: -20px;
+            height: 70vh;
+        }
+        
+        .chatbot-toggle {
+            padding: 12px 16px;
+            font-size: 0.9rem;
+        }
+        
+        .chatbot-toggle-text {
+            display: none;
+        }
+    }
+    </style>
+
+    <!-- Chatbot JavaScript -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotSend = document.getElementById('chatbot-send');
+        const chatbotInput = document.getElementById('chatbot-input-field');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const quickReplyBtns = document.querySelectorAll('.quick-reply-btn');
+
+        // Toggle chatbot window
+        chatbotToggle.addEventListener('click', function() {
+            chatbotWindow.style.display = chatbotWindow.style.display === 'none' ? 'flex' : 'none';
+        });
+
+        // Close chatbot window
+        chatbotClose.addEventListener('click', function() {
+            chatbotWindow.style.display = 'none';
+        });
+
+        // Send message
+        function sendMessage(message) {
+            if (!message.trim()) return;
+
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'chatbot-message user-message';
+            userMessage.innerHTML = `
+                <div class="message-content">
+                    <p>${message}</p>
+                    <span class="message-time">剛剛</span>
+                </div>
+            `;
+            chatbotMessages.appendChild(userMessage);
+
+            // Clear input
+            chatbotInput.value = '';
+
+            // Scroll to bottom
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+            // Simulate bot response
+            setTimeout(() => {
+                const botResponse = getBotResponse(message);
+                const botMessage = document.createElement('div');
+                botMessage.className = 'chatbot-message bot-message';
+                botMessage.innerHTML = `
+                    <div class="message-content">
+                        <p>${botResponse}</p>
+                        <span class="message-time">剛剛</span>
+                    </div>
+                `;
+                chatbotMessages.appendChild(botMessage);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }, 1000);
+        }
+
+        // Send button click
+        chatbotSend.addEventListener('click', function() {
+            sendMessage(chatbotInput.value);
+        });
+
+        // Enter key press
+        chatbotInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage(chatbotInput.value);
+            }
+        });
+
+        // Quick reply buttons
+        quickReplyBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const message = this.getAttribute('data-message');
+                sendMessage(message);
+            });
+        });
+
+        // Bot response logic
+        function getBotResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('護理服務') || lowerMessage.includes('護理')) {
+                return '我們提供專業的居家護理服務，包括傷口護理、鼻胃管護理、復健護理等。您可以瀏覽我們的服務頁面了解更多詳情。';
+            } else if (lowerMessage.includes('預約') || lowerMessage.includes('預約服務')) {
+                return '您可以透過電話 2827 8889 或電郵 careteam@hygienefirstgroup.com 預約服務。我們的客服團隊會為您安排最適合的時間。';
+            } else if (lowerMessage.includes('收費') || lowerMessage.includes('價格') || lowerMessage.includes('費用')) {
+                return '我們的服務收費根據服務類型和時長而定。請聯絡我們的客服團隊，他們會為您提供詳細的報價。';
+            } else if (lowerMessage.includes('聯絡') || lowerMessage.includes('電話') || lowerMessage.includes('電郵')) {
+                return '您可以透過以下方式聯絡我們：\n電話：2827 8889\n電郵：careteam@hygienefirstgroup.com\n地址：新界屯門新合里3號匯賢一號•雋峰12樓17室';
+            } else {
+                return '感謝您的查詢！如果您需要更詳細的資訊，請聯絡我們的客服團隊，電話：2827 8889。';
+            }
+        }
+    });
+    </script>
     </main>
 </body>
 </html> 
