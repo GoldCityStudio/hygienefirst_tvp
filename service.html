@@ -184,6 +184,134 @@
             }
         }
 
+        /* Payment Modal Styles */
+        .payment-modal {
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .payment-modal-content {
+            background-color: #fff;
+            margin: 2% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .payment-close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .payment-close:hover {
+            color: #000;
+        }
+
+        .payment-form {
+            margin-top: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .payment-modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .payment-modal-content::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .payment-modal-content::-webkit-scrollbar-thumb:hover {
+            background: #e67300;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .payment-submit {
+            width: 100%;
+            margin-top: 1rem;
+            padding: 1rem;
+            font-size: 1.1rem;
+        }
+
+        #paymentStatus {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        #paymentStatus h3 {
+            margin: 1rem 0;
+            color: #333;
+        }
+
+        #paymentStatus p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .payment-modal-content {
+                margin: 5% auto;
+                width: 95%;
+                padding: 1.5rem;
+                max-height: 95vh;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
         .service-content { display: none; }
         .service-content.active { display: block; }
         .service-tab.active {
@@ -482,7 +610,7 @@
                             <div class="service-card__icon">
                                 <i class="fas fa-home"></i>
                             </div>
-                            <div class="service-card__content">
+                                                            <div class="service-card__content">
                                 <h3>基本照護方案</h3>
                                 <p>全面照顧您的日常生活需求，包括生活協助、基本健康監測和個人衛生護理。適合需要輕度支援的長者。</p>
                                 <ul class="service-features">
@@ -493,9 +621,10 @@
                                     <li>陪伴服務</li>
                                 </ul>
                                 <div class="service-price">
-                                    <h4>進行免費諮詢</h4>
+                                    <span>價格</span>
+                                    <h4>HK$ 2,800</h4>
                                 </div>
-                                <a href="contact.html" class="btn btn--secondary">預約服務</a>
+                                <button class="btn btn--secondary payment-btn" onclick="openPaymentModal('基本照護方案', 2800)">立即購買</button>
                             </div>
                         </div>
                         
@@ -677,8 +806,205 @@
         </script>
 
     <script src="script.js"></script>
+    
+    <!-- Payment Gateway JavaScript -->
+    <script>
+        // Payment Modal Functions
+        function openPaymentModal(serviceName, price) {
+            document.getElementById('serviceName').textContent = serviceName;
+            document.getElementById('servicePrice').textContent = price;
+            document.getElementById('submitPrice').textContent = price;
+            document.getElementById('paymentModal').style.display = 'block';
+            document.getElementById('paymentForm').style.display = 'block';
+            document.getElementById('paymentStatus').style.display = 'none';
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+            resetPaymentForm();
+        }
+
+        function resetPaymentForm() {
+            document.getElementById('paymentForm').reset();
+            document.getElementById('paymentForm').style.display = 'block';
+            document.getElementById('paymentStatus').style.display = 'none';
+        }
+
+        function retryPayment() {
+            document.getElementById('paymentForm').style.display = 'block';
+            document.getElementById('paymentStatus').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('paymentModal');
+            if (event.target === modal) {
+                closePaymentModal();
+            }
+        }
+
+        // Credit card formatting
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+
+        // Expiry date formatting
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // CVC formatting
+        document.getElementById('cvc').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        // Payment form submission
+        document.getElementById('paymentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector('.payment-submit');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 處理中...';
+            submitBtn.disabled = true;
+
+            // Get form data
+            const formData = {
+                serviceName: document.getElementById('serviceName').textContent,
+                price: parseInt(document.getElementById('servicePrice').textContent),
+                cardName: document.getElementById('cardName').value,
+                cardNumber: document.getElementById('cardNumber').value.replace(/\s/g, ''),
+                expiry: document.getElementById('expiry').value,
+                cvc: document.getElementById('cvc').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value
+            };
+
+            try {
+                // Simulate payment processing (replace with actual API call)
+                const result = await processTestPayment(formData);
+                
+                if (result.success) {
+                    showPaymentSuccess();
+                } else {
+                    showPaymentError(result.message);
+                }
+            } catch (error) {
+                showPaymentError('付款處理時發生錯誤，請重試。');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Test payment processing function
+        async function processTestPayment(paymentData) {
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Test card numbers for demo
+            const testCards = ['4242424242424242', '4000000000000002', '4000000000009995'];
+            const cardNumber = paymentData.cardNumber;
+            
+            if (testCards.includes(cardNumber)) {
+                if (cardNumber === '4000000000000002') {
+                    return { success: false, message: '信用卡被拒絕，請使用其他卡片。' };
+                } else if (cardNumber === '4000000000009995') {
+                    return { success: false, message: '餘額不足，請使用其他付款方式。' };
+                } else {
+                    return { success: true, message: '付款成功！' };
+                }
+            }
+            
+            // Random success/failure for other card numbers
+            return Math.random() > 0.1 ? 
+                { success: true, message: '付款成功！' } : 
+                { success: false, message: '付款失敗，請重試。' };
+        }
+
+        function showPaymentSuccess() {
+            document.getElementById('paymentForm').style.display = 'none';
+            document.getElementById('paymentStatus').style.display = 'block';
+            document.getElementById('paymentSuccess').style.display = 'block';
+            document.getElementById('paymentError').style.display = 'none';
+        }
+
+        function showPaymentError(message) {
+            document.getElementById('paymentForm').style.display = 'none';
+            document.getElementById('paymentStatus').style.display = 'block';
+            document.getElementById('paymentSuccess').style.display = 'none';
+            document.getElementById('paymentError').style.display = 'block';
+            document.getElementById('errorMessage').textContent = message;
+        }
+    </script>
     </main>
     
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal" style="display: none;">
+        <div class="payment-modal-content">
+            <span class="payment-close" onclick="closePaymentModal()">&times;</span>
+            <h2>付款確認</h2>
+            <div id="paymentDetails">
+                <p><strong>服務：</strong><span id="serviceName"></span></p>
+                <p><strong>價格：</strong>HK$ <span id="servicePrice"></span></p>
+            </div>
+            
+            <form id="paymentForm" class="payment-form">
+                <div class="form-group">
+                    <label for="cardName">持卡人姓名</label>
+                    <input type="text" id="cardName" name="cardName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cardNumber">信用卡號碼</label>
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiry">到期日</label>
+                        <input type="text" id="expiry" name="expiry" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvc">CVC</label>
+                        <input type="text" id="cvc" name="cvc" placeholder="123" maxlength="3" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">電子郵件</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">電話號碼</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <button type="submit" class="btn btn--primary payment-submit">確認付款 HK$ <span id="submitPrice"></span></button>
+            </form>
+            
+            <div id="paymentStatus" style="display: none;">
+                <div id="paymentSuccess" style="display: none;">
+                    <i class="fas fa-check-circle" style="color: #28a745; font-size: 3rem;"></i>
+                    <h3>付款成功！</h3>
+                    <p>您的訂單已確認，我們會盡快與您聯繫安排服務。</p>
+                    <button onclick="closePaymentModal()" class="btn btn--primary">關閉</button>
+                </div>
+                <div id="paymentError" style="display: none;">
+                    <i class="fas fa-times-circle" style="color: #dc3545; font-size: 3rem;"></i>
+                    <h3>付款失敗</h3>
+                    <p id="errorMessage">請檢查您的付款資訊後重試。</p>
+                    <button onclick="retryPayment()" class="btn btn--primary">重試</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html> 
