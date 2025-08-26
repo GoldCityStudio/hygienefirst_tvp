@@ -1,0 +1,483 @@
+# PowerShell script to fix chatbot encoding issues
+# This script will replace the corrupted chatbot component with the corrected version
+
+$correctedChatbot = @'
+    <!-- Chatbot Component -->
+    <div id="chatbot-container" class="chatbot-container">
+        <!-- Chatbot Toggle Button -->
+        <div id="chatbot-toggle" class="chatbot-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chatbot-toggle-text">線上客服</span>
+        </div>
+        
+        <!-- Chatbot Window -->
+        <div id="chatbot-window" class="chatbot-window" style="display: none;">
+            <!-- Chatbot Header -->
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <img src="images/hygienelogo.png" alt="Hygiene First" class="chatbot-avatar">
+                    <div>
+                        <h4>Hygiene First 首衛</h4>
+                        <span class="chatbot-status">線上客服</span>
+                    </div>
+                </div>
+                <button id="chatbot-close" class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="chatbot-message bot-message">
+                    <div class="message-content">
+                        <p>您好！歡迎來到 Hygiene First 首衛。我是您的專屬客服助手，有什麼可以幫助您的嗎？</p>
+                        <p style="margin-top: 10px; font-size: 0.85rem; opacity: 0.8;">💡 您可以詢問：護理服務、預約安排、服務收費、服務時間、護理員資歷等問題</p>
+                        <span class="message-time">剛剛</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Reply Buttons -->
+            <div class="chatbot-quick-replies">
+                <button class="quick-reply-btn" data-message="我想了解護理服務">護理服務</button>
+                <button class="quick-reply-btn" data-message="如何預約服務">預約服務</button>
+                <button class="quick-reply-btn" data-message="服務收費">服務收費</button>
+                <button class="quick-reply-btn" data-message="服務時間">服務時間</button>
+                <button class="quick-reply-btn" data-message="護理員資歷">護理員資歷</button>
+                <button class="quick-reply-btn" data-message="緊急服務">緊急服務</button>
+            </div>
+            
+            <!-- Chat Input -->
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input-field" placeholder="輸入您的問題..." maxlength="200">
+                <button id="chatbot-send" class="chatbot-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot CSS -->
+    <style>
+    .chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    .chatbot-toggle {
+        background: linear-gradient(135deg, #FF7A00, #E56717);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(255, 122, 0, 0.3);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+    }
+
+    .chatbot-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(255, 122, 0, 0.4);
+    }
+
+    .chatbot-toggle i {
+        font-size: 1.2rem;
+    }
+
+    .chatbot-window {
+        position: absolute;
+        bottom: 80px;
+        right: 0;
+        width: 350px;
+        height: 500px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .chatbot-header {
+        background: linear-gradient(135deg, #FF7A00, #E56717);
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .chatbot-header-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .chatbot-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .chatbot-header h4 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .chatbot-status {
+        font-size: 0.8rem;
+        opacity: 0.9;
+    }
+
+    .chatbot-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 50%;
+        transition: background 0.3s ease;
+    }
+
+    .chatbot-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .chatbot-messages {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        background: #f8f9fa;
+    }
+
+    .chatbot-message {
+        margin-bottom: 15px;
+        display: flex;
+    }
+
+    .chatbot-message.user-message {
+        justify-content: flex-end;
+    }
+
+    .chatbot-message.bot-message {
+        justify-content: flex-start;
+    }
+
+    .message-content {
+        max-width: 80%;
+        padding: 12px 16px;
+        border-radius: 18px;
+        position: relative;
+    }
+
+    .user-message .message-content {
+        background: #FF7A00;
+        color: white;
+        border-bottom-right-radius: 6px;
+    }
+
+    .bot-message .message-content {
+        background: white;
+        color: #333;
+        border: 1px solid #e9ecef;
+        border-bottom-left-radius: 6px;
+    }
+
+    .message-content p {
+        margin: 0 0 5px 0;
+        line-height: 1.4;
+        font-size: 0.9rem;
+    }
+
+    .message-time {
+        font-size: 0.7rem;
+        opacity: 0.7;
+    }
+
+    .chatbot-quick-replies {
+        padding: 15px 20px;
+        background: white;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .quick-reply-btn {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        color: #333;
+        padding: 8px 16px;
+        margin: 5px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: all 0.3s ease;
+    }
+
+    .quick-reply-btn:hover {
+        background: #FF7A00;
+        color: white;
+        border-color: #FF7A00;
+    }
+
+    .chatbot-input {
+        padding: 15px 20px;
+        background: white;
+        border-top: 1px solid #e9ecef;
+        display: flex;
+        gap: 10px;
+    }
+
+    #chatbot-input-field {
+        flex: 1;
+        padding: 10px 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 25px;
+        outline: none;
+        font-size: 0.9rem;
+    }
+
+    #chatbot-input-field:focus {
+        border-color: #FF7A00;
+    }
+
+    .chatbot-send-btn {
+        background: #FF7A00;
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease;
+    }
+
+    .chatbot-send-btn:hover {
+        background: #E56717;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .chatbot-window {
+            width: 320px;
+            height: 450px;
+            right: -10px;
+        }
+        
+        .chatbot-toggle {
+            padding: 12px 16px;
+            font-size: 0.9rem;
+        }
+        
+        .chatbot-toggle-text {
+            display: none;
+        }
+    }
+
+    /* Animation */
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .chatbot-window {
+        animation: slideIn 0.3s ease;
+    }
+    </style>
+
+    <!-- Chatbot JavaScript -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotInput = document.getElementById('chatbot-input-field');
+        const chatbotSend = document.getElementById('chatbot-send');
+        const quickReplyBtns = document.querySelectorAll('.quick-reply-btn');
+        
+        // Toggle chatbot window
+        chatbotToggle.addEventListener('click', function() {
+            chatbotWindow.style.display = chatbotWindow.style.display === 'none' ? 'flex' : 'none';
+        });
+        
+        // Close chatbot window
+        chatbotClose.addEventListener('click', function() {
+            chatbotWindow.style.display = 'none';
+        });
+        
+        // Send message function
+        function sendMessage(message, isUser = true) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chatbot-message ${isUser ? 'user-message' : 'bot-message'}`;
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            
+            const messageText = document.createElement('p');
+            messageText.textContent = message;
+            
+            const messageTime = document.createElement('span');
+            messageTime.className = 'message-time';
+            messageTime.textContent = '剛剛';
+            
+            messageContent.appendChild(messageText);
+            messageContent.appendChild(messageTime);
+            messageDiv.appendChild(messageContent);
+            chatbotMessages.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            
+            return messageDiv;
+        }
+        
+        // Handle send button click
+        chatbotSend.addEventListener('click', function() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                sendMessage(message, true);
+                chatbotInput.value = '';
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    const botResponse = getBotResponse(message);
+                    sendMessage(botResponse, false);
+                }, 1000);
+            }
+        });
+        
+        // Handle Enter key
+        chatbotInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                chatbotSend.click();
+            }
+        });
+        
+        // Handle quick reply buttons
+        quickReplyBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const message = this.getAttribute('data-message');
+                sendMessage(message, true);
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    const botResponse = getBotResponse(message);
+                    sendMessage(botResponse, false);
+                }, 1000);
+            });
+        });
+        
+        // Bot response logic
+        function getBotResponse(userMessage) {
+            const responses = {
+                '護理服務': '我們提供多種專業護理服務：\n\n🏥 長者照顧服務\n🩹 傷口護理\n🔄 復康護理\n🧠 認知障礙症護理\n🩺 鼻胃喉管護理\n🎯 中風護理\n💊 手術後護理\n\n您想了解哪一項服務的詳細資訊呢？',
+                
+                '預約服務': '您可以透過以下方式預約服務：\n\n📱 WhatsApp: 852-9502-4162\n📞 電話: 2827-8889\n🌐 網上預約表格\n\n我們會在24小時內回覆您的預約申請！',
+                
+                '服務收費': '我們的服務收費根據以下因素而定：\n\n💰 服務類型（護理、復康、陪診等）\n⏰ 服務時長（小時/日/月）\n👩‍⚕️ 護理員資歷（護士、保健員、起居照顧員）\n📍 服務地點\n\n一般居家護理服務由$200/小時起。如需詳細報價，請聯絡我們的客服團隊。',
+                
+                '服務時間': '我們的服務時間安排：\n\n🕐 24小時緊急服務\n🌅 日間服務：上午8:00 - 晚上8:00\n🌙 夜間服務：晚上8:00 - 上午8:00\n📅 全年無休，包括公眾假期\n\n可根據您的需求安排彈性服務時間。',
+                
+                '護理員資歷': '我們的護理團隊具備專業資歷：\n\n👩‍⚕️ 註冊護士 (RN)\n👨‍⚕️ 登記護士 (EN)\n🏥 保健員\n👵 起居照顧員\n💪 物理治療師\n🎯 職業治療師\n\n所有護理員均通過嚴格培訓及背景審查。',
+                
+                '緊急服務': '緊急服務安排：\n\n🚨 24小時緊急熱線：2827-8889\n⚡ 最快2小時內到達\n🆘 處理突發護理需求\n🏥 配合醫院出院安排\n💊 緊急藥物管理\n\n如遇緊急情況，請立即致電我們！',
+                
+                'default': '感謝您的查詢！我們的專業團隊會盡快為您提供詳細資訊。\n\n如需即時協助，請：\n📞 致電：2827-8889\n📱 WhatsApp：852-9502-4162\n\n我們期待為您提供優質的護理服務！'
+            };
+            
+            // Check for specific keywords in user message
+            for (let key in responses) {
+                if (userMessage.includes(key)) {
+                    return responses[key];
+                }
+            }
+            
+            // Check for additional common questions
+            if (userMessage.includes('時間') || userMessage.includes('幾點')) {
+                return responses['服務時間'];
+            }
+            if (userMessage.includes('資歷') || userMessage.includes('資格') || userMessage.includes('經驗')) {
+                return responses['護理員資歷'];
+            }
+            if (userMessage.includes('緊急') || userMessage.includes('急') || userMessage.includes('突發')) {
+                return responses['緊急服務'];
+            }
+            if (userMessage.includes('收費') || userMessage.includes('價錢') || userMessage.includes('費用') || userMessage.includes('多少錢')) {
+                return responses['服務收費'];
+            }
+            if (userMessage.includes('預約') || userMessage.includes('安排') || userMessage.includes('約時間')) {
+                return responses['預約服務'];
+            }
+            if (userMessage.includes('護理') || userMessage.includes('照顧') || userMessage.includes('服務')) {
+                return responses['護理服務'];
+            }
+            
+            return responses.default;
+        }
+        
+        // Auto-close when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!chatbotContainer.contains(e.target)) {
+                chatbotWindow.style.display = 'none';
+            }
+        });
+    });
+    </script>
+'@
+
+# Get all HTML files in the current directory
+$htmlFiles = Get-ChildItem -Path "." -Filter "*.html" | Where-Object { $_.Name -notin @("chatbot.html", "corrected-chatbot.html") }
+
+Write-Host "Found $($htmlFiles.Count) HTML files to process..."
+
+foreach ($file in $htmlFiles) {
+    Write-Host "Processing: $($file.Name)"
+    
+    # Read the file content
+    $content = Get-Content -Path $file.FullName -Raw -Encoding UTF8
+    
+    # Check if chatbot exists and has encoding issues
+    if ($content -match "chatbot-container" -and $content -match "ç·šä¸Šå®¢æœ") {
+        Write-Host "  - Found corrupted chatbot, replacing..."
+        
+        # Remove the entire corrupted chatbot section
+        $content = $content -replace '(?s)<!-- Chatbot Component -->.*?</script>', ''
+        
+        # Add the corrected chatbot before </body>
+        if ($content -match "</body>") {
+            $content = $content -replace "</body>", "$correctedChatbot`n</body>"
+            Write-Host "  - Chatbot replaced successfully!"
+        } else {
+            Write-Host "  - Warning: No </body> tag found, adding at end of file"
+            $content = $content + "`n$correctedChatbot"
+        }
+        
+        # Write the updated content back to the file
+        Set-Content -Path $file.FullName -Value $content -Encoding UTF8
+    } elseif ($content -match "chatbot-container") {
+        Write-Host "  - Chatbot exists and appears to be working correctly, skipping..."
+    } else {
+        Write-Host "  - No chatbot found, skipping..."
+    }
+}
+
+Write-Host "`nChatbot encoding fix process completed!"
+Write-Host "Files processed: $($htmlFiles.Count)"
+
