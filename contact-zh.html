@@ -27,6 +27,192 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Chatbot Styles -->
+    <style>
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .chatbot-toggle {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .chatbot-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+        }
+
+        .chatbot-toggle i {
+            font-size: 18px;
+        }
+
+        .chatbot-interface {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+        }
+
+        .chatbot-close:hover {
+            opacity: 0.8;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .bot-message {
+            justify-content: flex-start;
+        }
+
+        .message-content {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+
+        .user-message .message-content {
+            background: #007bff;
+            color: white;
+        }
+
+        .bot-message .message-content {
+            background: white;
+            color: #333;
+            border: 1px solid #e9ecef;
+        }
+
+        .chatbot-input {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .chatbot-input input:focus {
+            border-color: #007bff;
+        }
+
+        .chatbot-input button {
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .chatbot-input button:hover {
+            background: #0056b3;
+        }
+
+        .chatbot-input button i {
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .chatbot-interface {
+                width: 300px;
+                height: 400px;
+                right: -20px;
+            }
+            
+            .chatbot-toggle {
+                padding: 12px 16px;
+                font-size: 13px;
+            }
+            
+            .chatbot-toggle-text {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-interface {
+                width: 280px;
+                height: 350px;
+                right: -40px;
+            }
+        }
+    </style>
+    
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -430,6 +616,131 @@
     <script src="script.js"></script>
     </main>
     
+    <!-- Chatbot Component -->
+    <div id="chatbot-container" class="chatbot-container">
+        <!-- Chatbot Toggle Button -->
+        <div id="chatbot-toggle" class="chatbot-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chatbot-toggle-text">線上客服</span>
+        </div>
+        
+        <!-- Chatbot Interface -->
+        <div id="chatbot-interface" class="chatbot-interface" style="display: none;">
+            <div class="chatbot-header">
+                <h3>首衛線上客服</h3>
+                <button id="chatbot-close" class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        您好！我是首衛的線上客服，很高興為您服務。請問有什麼可以幫助您的嗎？
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input-field" placeholder="請輸入您的問題..." maxlength="500">
+                <button id="chatbot-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotInterface = document.getElementById('chatbot-interface');
+            const chatbotClose = document.getElementById('chatbot-close');
+            const chatbotMessages = document.getElementById('chatbot-messages');
+            const chatbotInput = document.getElementById('chatbot-input-field');
+            const chatbotSend = document.getElementById('chatbot-send');
+
+            // Toggle chatbot interface
+            chatbotToggle.addEventListener('click', function() {
+                chatbotInterface.style.display = chatbotInterface.style.display === 'none' ? 'block' : 'none';
+                if (chatbotInterface.style.display === 'block') {
+                    chatbotInput.focus();
+                }
+            });
+
+            // Close chatbot interface
+            chatbotClose.addEventListener('click', function() {
+                chatbotInterface.style.display = 'none';
+            });
+
+            // Send message function
+            function sendMessage() {
+                const message = chatbotInput.value.trim();
+                if (message === '') return;
+
+                // Add user message
+                addMessage(message, 'user');
+                chatbotInput.value = '';
+
+                // Simulate bot response
+                setTimeout(() => {
+                    const botResponse = getBotResponse(message);
+                    addMessage(botResponse, 'bot');
+                }, 1000);
+            }
+
+            // Add message to chat
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}-message`;
+                
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'message-content';
+                contentDiv.textContent = text;
+                
+                messageDiv.appendChild(contentDiv);
+                chatbotMessages.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            // Simple bot response logic
+            function getBotResponse(userMessage) {
+                const message = userMessage.toLowerCase();
+                
+                if (message.includes('預約') || message.includes('booking') || message.includes('appointment')) {
+                    return '您可以通過以下方式預約服務：\n1) 致電客服熱線 2827-8889\n2) 填寫網站聯絡表格\n3) 發送電郵至 careteam@hygienefirstgroup.com\n4) WhatsApp: 852-9502-4162';
+                } else if (message.includes('聯絡') || message.includes('contact') || message.includes('電話')) {
+                    return '我們的聯絡方式：\n📞 電話：2827-8889\n📱 WhatsApp：852-9502-4162\n📧 電郵：careteam@hygienefirstgroup.com\n🏢 地址：新界屯門新合里3號匯賢一號•雋峰12樓17室';
+                } else if (message.includes('服務') || message.includes('service')) {
+                    return '我們提供多種專業護理服務：\n• 長者照顧服務\n• 傷口護理\n• 復康護理\n• 陪診服務\n• 健康評估\n• 醫療廢物收集';
+                } else if (message.includes('時間') || message.includes('營業') || message.includes('working hours')) {
+                    return '我們的服務時間：\n🕐 24小時緊急服務\n🌅 日間服務：上午8:00 - 晚上8:00\n🌙 夜間服務：晚上8:00 - 上午8:00\n📅 全年無休，包括公眾假期';
+                } else if (message.includes('收費') || message.includes('價格') || message.includes('價錢') || message.includes('price')) {
+                    return '我們的服務收費根據服務類型和時長而定。一般居家護理服務由$200/小時起。如需詳細報價，請聯絡我們的客服團隊。';
+                } else if (message.includes('謝謝') || message.includes('thank')) {
+                    return '不客氣！很高興能幫助您。如果還有其他問題，請隨時詢問。';
+                } else {
+                    return '感謝您的查詢。如需更詳細的資訊，建議您致電2827-8889或填寫聯絡表格，我們會安排專人為您解答。';
+                }
+            }
+
+            // Event listeners
+            chatbotSend.addEventListener('click', sendMessage);
+            chatbotInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // Close chatbot when clicking outside
+            document.addEventListener('click', function(e) {
+                const chatbotContainer = document.getElementById('chatbot-container');
+                if (!chatbotContainer.contains(e.target)) {
+                    chatbotInterface.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
 </body>
 </html> 

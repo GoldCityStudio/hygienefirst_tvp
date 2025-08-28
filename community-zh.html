@@ -247,6 +247,190 @@
                         object-fit: contain;
                         background-color: white;
                     }
+
+                    /* Chatbot Styles */
+                    .chatbot-container {
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        z-index: 1000;
+                        font-family: 'Noto Sans TC', sans-serif;
+                    }
+
+                    .chatbot-toggle {
+                        background: linear-gradient(135deg, #007bff, #0056b3);
+                        color: white;
+                        border: none;
+                        border-radius: 50px;
+                        padding: 15px 20px;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+                        transition: all 0.3s ease;
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+
+                    .chatbot-toggle:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+                    }
+
+                    .chatbot-toggle i {
+                        font-size: 18px;
+                    }
+
+                    .chatbot-interface {
+                        position: absolute;
+                        bottom: 80px;
+                        right: 0;
+                        width: 350px;
+                        height: 500px;
+                        background: white;
+                        border-radius: 15px;
+                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                        display: flex;
+                        flex-direction: column;
+                        overflow: hidden;
+                    }
+
+                    .chatbot-header {
+                        background: linear-gradient(135deg, #007bff, #0056b3);
+                        color: white;
+                        padding: 20px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+
+                    .chatbot-header h3 {
+                        margin: 0;
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+
+                    .chatbot-close {
+                        background: none;
+                        border: none;
+                        color: white;
+                        cursor: pointer;
+                        font-size: 18px;
+                        padding: 5px;
+                    }
+
+                    .chatbot-close:hover {
+                        opacity: 0.8;
+                    }
+
+                    .chatbot-messages {
+                        flex: 1;
+                        padding: 20px;
+                        overflow-y: auto;
+                        background: #f8f9fa;
+                    }
+
+                    .message {
+                        margin-bottom: 15px;
+                        display: flex;
+                    }
+
+                    .user-message {
+                        justify-content: flex-end;
+                    }
+
+                    .bot-message {
+                        justify-content: flex-start;
+                    }
+
+                    .message-content {
+                        max-width: 80%;
+                        padding: 12px 16px;
+                        border-radius: 18px;
+                        word-wrap: break-word;
+                        line-height: 1.4;
+                    }
+
+                    .user-message .message-content {
+                        background: #007bff;
+                        color: white;
+                    }
+
+                    .bot-message .message-content {
+                        background: white;
+                        color: #333;
+                        border: 1px solid #e9ecef;
+                    }
+
+                    .chatbot-input {
+                        padding: 20px;
+                        background: white;
+                        border-top: 1px solid #e9ecef;
+                        display: flex;
+                        gap: 10px;
+                    }
+
+                    .chatbot-input input {
+                        flex: 1;
+                        padding: 12px 16px;
+                        border: 1px solid #ddd;
+                        border-radius: 25px;
+                        outline: none;
+                        font-size: 14px;
+                    }
+
+                    .chatbot-input input:focus {
+                        border-color: #007bff;
+                    }
+
+                    .chatbot-input button {
+                        background: #007bff;
+                        color: white;
+                        border: none;
+                        border-radius: 50%;
+                        width: 40px;
+                        height: 40px;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: background 0.3s ease;
+                    }
+
+                    .chatbot-input button:hover {
+                        background: #0056b3;
+                    }
+
+                    .chatbot-input button i {
+                        font-size: 14px;
+                    }
+
+                    /* Responsive Design */
+                    @media (max-width: 768px) {
+                        .chatbot-interface {
+                            width: 300px;
+                            height: 400px;
+                            right: -20px;
+                        }
+                        
+                        .chatbot-toggle {
+                            padding: 12px 16px;
+                            font-size: 13px;
+                        }
+                        
+                        .chatbot-toggle-text {
+                            display: none;
+                        }
+                    }
+
+                    @media (max-width: 480px) {
+                        .chatbot-interface {
+                            width: 280px;
+                            height: 350px;
+                            right: -40px;
+                        }
+                    }
                 </style>
                 
                 <div class="fanned-images-container" style="position: relative; height: 500px; margin: 60px 0; overflow: visible;">
@@ -327,9 +511,9 @@
                 <div class="section-header" style="text-align: left;">
                     <h2> Hygiene First 首衛 可以「衛」您提供的服務</h2>
                     <p>根據「長者社區照顧服務券計劃」，持券人可靈活選擇「中心為本」及／或「家居為本」的照顧模式。
-<br>
+<br> <br> 
                         Hygiene First 首衛 專注提供家居為本的護理服務，由專業醫護團隊上門支援，涵蓋日常照顧、康復訓練及個人化健康管理。
-                        <br>                    Hygiene First 首衛 期望透過參與此計劃，讓每位長者都能以可負擔的價格，獲得公平而有尊嚴的居家照護機會。</p>
+                        <br>        <br>              Hygiene First 首衛 期望透過參與此計劃，讓每位長者都能以可負擔的價格，獲得公平而有尊嚴的居家照護機會。</p>
                 </div>
                 <div class="service-options-grid">
                     <div class="service-option-card">
@@ -668,28 +852,28 @@
         <div class="container">
             <div class="footer-content">
                                    <!-- Contact Info -->
-                   <div class="footer-section">
-                       <h3 style="color: #FF7A00;"><i class="fas fa-phone"></i> 聯絡我們</h3>
-                                        <p style="font-size: 0.9rem;"><i class="fas fa-phone"></i> 電話：<strong>2827 8889</strong></p>
-                    <p style="font-size: 0.9rem;"><i class="fas fa-fax"></i> 傳真：<strong>3020 1710</strong></p>
-                    <p style="font-size: 0.9rem;"><i class="fas fa-envelope"></i> 電郵：<strong>careteam@hygienefirstgroup.com</strong></p>
-                    <p style="font-size: 0.9rem;"><i class="fas fa-building"></i> 總部（門市）：<br><strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</strong></p>
-                    <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt"></i> 九龍灣辦事處：<br><strong>九龍灣臨樂街19號南豐商業中心18樓12室</strong></p>
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">聯絡我們</h3>
+                                        <p style="font-size: 0.8rem;"><i class="fas fa-phone"></i> 電話：<strong>2827 8889</strong></p>
+                    <p style="font-size: 0.8rem;"><i class="fas fa-fax"></i> 傳真：<strong>3020 1710</strong></p>
+                    <p style="font-size: 0.8rem;"><i class="fas fa-envelope"></i> 電郵：<strong>careteam@hygienefirstgroup.com</strong></p>
+                    <p style="font-size: 0.8rem;"><i class="fas fa-building"></i> 總部：<strong>新界屯門新合里3號匯賢一號 · 雋峰12樓17室</strong></p>
+                    <p style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt"></i> 辦事處：<strong>九龍灣臨樂街19號南豐商業中心18樓12室</strong></p>
                 </div>
                 
                                    <!-- License Info -->
-                   <div class="footer-section">
-                       <h3 style="color: #FF7A00;"><i class="fas fa-certificate"></i> 牌照資訊</h3>
-                    <p style="font-size: 0.9rem;"><i class="fas fa-shield-alt"></i> 社會福利署長者社區照顧服務券商：<strong>RSP 11901</strong></p>
-                    <p style="font-size: 0.9rem;"><i class="fas fa-recycle"></i> 環保署持牌醫療廢物收集商：<strong>0001-423-H0001-L1</strong></p>
-                    <p style="font-size: 0.9rem;"><i class="fas fa-flask"></i> 環保署持牌化學廢物收集商：<strong>9210-4230H0027-WC</strong></p>
-                    <p style="font-size: 0.9rem;"><i class="fas fa-briefcase"></i> 勞工處持牌職業介紹所：<strong>79409</strong></p>
-                    <p style="font-size: 0.9rem;"><i class="fas fa-bolt"></i> 電業承辨商註冊號碼：<strong>037517</strong></p>
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">牌照資訊</h3>
+                    <p style="font-size: 0.8rem;"><i class="fas fa-shield-alt"></i> 社會福利署長者社區照顧服務券商：<strong>RSP 11901</strong></p>
+                    <p style="font-size: 0.8rem;"><i class="fas fa-recycle"></i> 環保署持牌醫療廢物收集商：<strong>0001-423-H0001-L1</strong></p>
+                    <p style="font-size: 0.8rem;"><i class="fas fa-flask"></i> 環保署持牌化學廢物收集商：<strong>9210-4230H0027-WC</strong></p>
+                    <p style="font-size: 0.8rem;"><i class="fas fa-briefcase"></i> 勞工處持牌職業介紹所：<strong>79409</strong></p>
+                    <p style="font-size: 0.8rem;"><i class="fas fa-bolt"></i> 電業承辨商註冊號碼：<strong>037517</strong></p>
                 </div>
                 
                                    <!-- Social Links -->
-                   <div class="footer-section">
-                       <h3 style="color: #FF7A00;"><i class="fas fa-heart"></i> 關注我們</h3>
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">關注我們</h3>
                                            <div class="social-icons" style="font-size: 0.8rem;">
                            <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-facebook"></i></a>
                            <a href="https://www.instagram.com/hygiene.first?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-instagram"></i></a>
@@ -746,7 +930,162 @@
 
     <script src="script.js"></script>
     </main>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/85295024162" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <button class="back-to-top" aria-label="回到頂部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div id="wechat-modal" class="wechat-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+        <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 32px rgba(0,0,0,0.2); position: relative; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
+            <button id="wechat-modal-close" style="position: absolute; top: 8px; right: 12px; background: none; border: none; font-size: 2rem; color: #888; cursor: pointer;">&times;</button>
+            <img src="images/wechatqr.jpeg" alt="WeChat QR Code" style="max-width: 300px; width: 100%; height: auto; margin-bottom: 1rem;">
+            <div style="font-size: 1.1rem; color: #333;">掃描二維碼加我們微信</div>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.wechat-btn').addEventListener('click', function() {
+            document.getElementById('wechat-modal').style.display = 'flex';
+        });
+        document.getElementById('wechat-modal-close').addEventListener('click', function() {
+            document.getElementById('wechat-modal').style.display = 'none';
+        });
+        document.getElementById('wechat-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+    </script>
     
+    <!-- Chatbot Component -->
+    <div id="chatbot-container" class="chatbot-container">
+        <!-- Chatbot Toggle Button -->
+        <div id="chatbot-toggle" class="chatbot-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chatbot-toggle-text">線上客服</span>
+        </div>
+        
+        <!-- Chatbot Interface -->
+        <div id="chatbot-interface" class="chatbot-interface" style="display: none;">
+            <div class="chatbot-header">
+                <h3>首衛線上客服</h3>
+                <button id="chatbot-close" class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        您好！我是首衛的線上客服，很高興為您服務。請問有什麼可以幫助您的嗎？
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input-field" placeholder="請輸入您的問題..." maxlength="500">
+                <button id="chatbot-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotInterface = document.getElementById('chatbot-interface');
+            const chatbotClose = document.getElementById('chatbot-close');
+            const chatbotMessages = document.getElementById('chatbot-messages');
+            const chatbotInput = document.getElementById('chatbot-input-field');
+            const chatbotSend = document.getElementById('chatbot-send');
+
+            // Toggle chatbot interface
+            chatbotToggle.addEventListener('click', function() {
+                chatbotInterface.style.display = chatbotInterface.style.display === 'none' ? 'block' : 'none';
+                if (chatbotInterface.style.display === 'block') {
+                    chatbotInput.focus();
+                }
+            });
+
+            // Close chatbot interface
+            chatbotClose.addEventListener('click', function() {
+                chatbotInterface.style.display = 'none';
+            });
+
+            // Send message function
+            function sendMessage() {
+                const message = chatbotInput.value.trim();
+                if (message === '') return;
+
+                // Add user message
+                addMessage(message, 'user');
+                chatbotInput.value = '';
+
+                // Simulate bot response
+                setTimeout(() => {
+                    const botResponse = getBotResponse(message);
+                    addMessage(botResponse, 'bot');
+                }, 1000);
+            }
+
+            // Add message to chat
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}-message`;
+                
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'message-content';
+                contentDiv.textContent = text;
+                
+                messageDiv.appendChild(contentDiv);
+                chatbotMessages.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            // Simple bot response logic
+            function getBotResponse(userMessage) {
+                const message = userMessage.toLowerCase();
+                
+                if (message.includes('社區券') || message.includes('社區服務券')) {
+                    return '長者社區照顧服務券是政府資助計劃，可節省高達95%的居家護理費用。我們是持牌服務商，可協助您申請和使用服務券。';
+                } else if (message.includes('申請') || message.includes('資格') || message.includes('條件')) {
+                    return '申請社區券需符合以下條件：\n1. 65歲或以上\n2. 經評估後被評為需要護理服務\n3. 正在輪候資助長者住宿照顧服務\n4. 居於社區而非院舍';
+                } else if (message.includes('收費') || message.includes('費用') || message.includes('價錢')) {
+                    return '社區券計劃由政府資助，您只需支付5%的服務費用，其餘95%由政府承擔。具體金額根據服務類型和時長而定。';
+                } else if (message.includes('服務') || message.includes('護理')) {
+                    return '我們提供多種社區券服務：\n• 個人照顧\n• 護理服務\n• 復康訓練\n• 陪診服務\n• 家居支援';
+                } else if (message.includes('預約') || message.includes('安排')) {
+                    return '您可以致電2827-8889或填寫聯絡表格預約服務。我們會安排專業評估，協助您申請社區券。';
+                } else if (message.includes('謝謝') || message.includes('thank')) {
+                    return '不客氣！很高興能幫助您。如果還有其他問題，請隨時詢問。';
+                } else {
+                    return '感謝您的查詢。關於社區券服務，建議您致電2827-8889或填寫聯絡表格，我們會安排專人為您詳細解答。';
+                }
+            }
+
+            // Event listeners
+            chatbotSend.addEventListener('click', sendMessage);
+            chatbotInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // Close chatbot when clicking outside
+            document.addEventListener('click', function(e) {
+                const chatbotContainer = document.getElementById('chatbot-container');
+                if (!chatbotContainer.contains(e.target)) {
+                    chatbotInterface.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
 </body>
 </html> 
