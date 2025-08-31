@@ -3575,7 +3575,7 @@
          border-radius: 2px;
      }
      
-     /* Enhanced Process Steps Container */
+     /* Enhanced Process Steps Container - Mobile Only */
      .booking-process .process-steps {
          display: flex !important;
          flex-direction: column !important;
@@ -6735,102 +6735,889 @@
 
 /* ===== DEMENTIA CARE PAGE MOBILE STYLES ===== */
 
-/* Hero Section */
-.mobile-dementia-hero-section {
-    padding: 2rem 0 !important;
+@media (max-width: 768px) {
+    /* Hero Section Mobile Improvements */
+    .hero-section {
+        padding: 2rem 0 !important;
+    }
+    
+    .hero-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        align-items: center !important;
+    }
+    
+    .mobile-hero-title {
+        font-size: 2rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-hero-description {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .hero-image > div {
+        height: 300px !important;
+    }
+    
+    /* Stats Boxes Mobile Improvements */
+    .stats-boxes {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .mobile-stat-box {
+        padding: 1.25rem !important;
+    }
+    
+    .mobile-stat-box h3 {
+        font-size: 1.6rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .mobile-stat-box p {
+        font-size: 0.85rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* Stages Section Mobile Improvements */
+    .stages-section {
+        padding: 2rem 0 !important;
+    }
+    
+    .mobile-stages-title {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stages-description {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .stages-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    .mobile-stage-card {
+        padding: 1.5rem !important;
+        text-align: left !important;
+    }
+    
+    .stage-number {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.3rem !important;
+        margin: 0 0 1rem 0 !important;
+    }
+    
+    .mobile-stage-card h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .mobile-stage-card ul li {
+        margin-bottom: 0.6rem !important;
+    }
+    
+    .mobile-stage-card ul li span {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Nursing Care Points Mobile Improvements */
+    .nursing-care-points {
+        margin-top: 2rem !important;
+    }
+    
+    .nursing-care-points .section-header h2 {
+        font-size: 2rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .nursing-care-points .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .care-points-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .care-points-card h3 {
+        font-size: 1.3rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .care-points-card ul li {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .care-points-card ul li span {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* Early/Middle/Late Dementia Care Sections Mobile Improvements */
+    .early-dementia-section,
+    .middle-dementia-section,
+    .late-dementia-section {
+        padding: 2rem 0 !important;
+    }
+    
+    .early-dementia-layout,
+    .middle-dementia-layout,
+    .late-dementia-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        align-items: center !important;
+    }
+    
+    .early-dementia-content h2,
+    .middle-dementia-content h2,
+    .late-dementia-content h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .early-dementia-content p,
+    .middle-dementia-content p,
+    .late-dementia-content p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .care-services h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .care-services ul li {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .care-services ul li span {
+        font-size: 0.95rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .feature-boxes {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .feature-box {
+        padding: 0.75rem !important;
+    }
+    
+    .feature-box i {
+        font-size: 1.3rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .feature-box p {
+        font-size: 0.85rem !important;
+    }
+    
+    .early-dementia-image > div,
+    .middle-dementia-image > div,
+    .late-dementia-image > div {
+        height: 300px !important;
+    }
+    
+    /* Service Process Section - One Card Per Row on Mobile */
+    .service-process-section {
+        padding: 2rem 0 !important;
+    }
+    
+    .service-process-section .section-header h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .service-process-section .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .process-steps {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        margin: 2rem auto !important;
+        max-width: 100% !important;
+    }
+    
+    .process-step-card {
+        min-width: auto !important;
+        padding: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .step-number {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 1rem !important;
+        top: -10px !important;
+        left: 12px !important;
+    }
+    
+    .step-icon {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    .step-icon i {
+        font-size: 1.4rem !important;
+    }
+    
+    .step-title-section h3 {
+        font-size: 1.1rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .process-step-card p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Service Features Section - One Card Per Row on Mobile */
+    .service-features-section {
+        padding: 2rem 0 !important;
+    }
+    
+    .service-features-section .section-header h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .service-features-section .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        margin: 0 auto !important;
+        max-width: 100% !important;
+    }
+    
+    .feature-card {
+        padding: 1.5rem !important;
+    }
+    
+    .feature-card .card-header {
+        margin-bottom: 1rem !important;
+    }
+    
+    .feature-card .card-header i {
+        font-size: 1.6rem !important;
+        margin-right: 0.75rem !important;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .feature-card p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* Pricing Section - One Card Per Row on Mobile */
+    .pricing-section {
+        padding: 2rem 0 !important;
+    }
+    
+    .pricing-section .section-header h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .pricing-section .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .pricing-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        align-items: start !important;
+    }
+    
+    .pricing-illustration > div {
+        height: 300px !important;
+    }
+    
+    .pricing-form {
+        padding: 1.5rem !important;
+    }
+    
+    .pricing-form h2 {
+        font-size: 1.6rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .pricing-form p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .form-group {
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.7rem !important;
+        font-size: 0.95rem !important;
+    }
+    
+    .form-buttons {
+        gap: 0.75rem !important;
+    }
+    
+    .form-buttons .btn {
+        padding: 0.8rem 1.5rem !important;
+        font-size: 0.95rem !important;
+    }
+    
+    /* Why Choose Section - One Card Per Row on Mobile */
+    .why-choose-section {
+        padding: 2rem 0 !important;
+    }
+    
+    .why-choose-section h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .why-choose-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    .why-choose-feature {
+        padding: 1.5rem !important;
+    }
+    
+    .why-choose-feature .feature-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .why-choose-feature .feature-icon i {
+        font-size: 1.3rem !important;
+    }
+    
+    .why-choose-feature h3 {
+        font-size: 1rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .why-choose-feature p {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Quality Assurance Section - Desktop 2x2, Mobile 1 Column */
+    .quality-section {
+        padding: 2rem 0 !important;
+    }
+    
+    .quality-section .section-header h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .quality-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+    
+    .quality-item {
+        text-align: center !important;
+        padding: 1.5rem !important;
+        background: white !important;
+        border-radius: 15px !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    }
+    
+    .quality-item h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .quality-item p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* Other Services Section - One Card Per Row on Mobile */
+    .other-services-section {
+        padding: 2rem 0 !important;
+    }
+    
+    .other-services-section .section-header h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .other-services-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    .other-service {
+        text-align: center !important;
+        padding: 1.5rem !important;
+        background: white !important;
+        border-radius: 15px !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    }
+    
+    .other-service .service-icon {
+        width: 80px !important;
+        height: 80px !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .other-service .service-icon i {
+        font-size: 2rem !important;
+    }
+    
+    .other-service h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .other-service p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
 }
 
-.mobile-dementia-hero-layout {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 2rem !important;
-    margin-bottom: 2rem !important;
+/* ===== DESKTOP QUALITY ASSURANCE 2x2 LAYOUT ===== */
+@media (min-width: 769px) {
+    .quality-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+    }
+    
+    .quality-item {
+        padding: 2rem !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+    
+    .quality-item h3 {
+        font-size: 1.3rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .quality-item p {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+    }
 }
 
-.mobile-dementia-hero-content h1 {
-    font-size: 2rem !important;
-    text-align: center !important;
+/* ===== DESKTOP BOOKING PROCESS 2x2 LAYOUT ===== */
+@media (min-width: 769px) {
+    .booking-process .process-steps {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    .booking-process .process-step {
+        width: auto !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 2rem !important;
+        background: white !important;
+        border-radius: 20px !important;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12) !important;
+        border: 1px solid rgba(255, 122, 0, 0.1) !important;
+    }
 }
 
-.mobile-dementia-hero-content p {
-    font-size: 1rem !important;
-    text-align: center !important;
-}
-
-.mobile-dementia-hero-content button {
-    width: 100% !important;
-    margin: 0 auto !important;
-    display: block !important;
-}
-
-.mobile-dementia-hero-image {
-    order: -1 !important;
-}
-
-.mobile-dementia-hero-image img {
-    height: 250px !important;
-}
-
-/* Statistics Section */
-.mobile-dementia-stats-boxes {
-    grid-template-columns: 1fr !important;
-    gap: 1rem !important;
-    margin-top: 2rem !important;
-}
-
-.mobile-dementia-stats-boxes .stat-box {
-    padding: 1.5rem !important;
-}
-
-.mobile-dementia-stats-boxes .stat-box h3 {
-    font-size: 1.8rem !important;
-}
-
-.mobile-dementia-stats-boxes .stat-box p {
-    font-size: 0.9rem !important;
-}
-
-/* Stages Section */
-.mobile-dementia-stages-section {
-    padding: 2rem 0 !important;
-}
-
-.mobile-dementia-stages-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-}
-
-.mobile-dementia-stages-grid .stage-card {
-    padding: 1.5rem !important;
-}
-
-.mobile-dementia-stages-grid .stage-card h3 {
-    font-size: 1.2rem !important;
-}
-
-.mobile-dementia-stages-grid .stage-card ul {
-    text-align: left !important;
-}
-
-/* Nursing Care Points Section */
-.mobile-dementia-nursing-care-points {
-    margin-top: 2rem !important;
-}
-
-.mobile-dementia-nursing-care-points .care-points-card {
-    padding: 1.5rem !important;
-    margin-bottom: 1.5rem !important;
-}
-
-.mobile-dementia-nursing-care-points .care-points-card h3 {
-    font-size: 1.3rem !important;
-    flex-direction: column !important;
-    text-align: center !important;
-    gap: 1rem !important;
-}
-
-.mobile-dementia-nursing-care-points .care-points-card ul {
-    text-align: left !important;
+/* ===== DESKTOP SERVICE PROCESS 2x2 LAYOUT FOR ALL PAGES ===== */
+@media (min-width: 769px) {
+    /* General service process sections */
+    .service-process-section .process-steps,
+    .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    .service-process-section .process-step-card,
+    .service-process-section .process-step {
+        width: auto !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 1.5rem !important;
+        background: white !important;
+        border-radius: 16px !important;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important;
+        border: 1px solid rgba(255, 122, 0, 0.1) !important;
+    }
+    
+    /* Specific page overrides */
+    /* Elderly Care */
+    .elderly-care .service-process-section .process-steps,
+    .elderly-care .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Dementia Care */
+    .dementia-care .service-process-section .process-steps,
+    .dementia-care .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Cancer Care */
+    .cancer-care .service-process-section .process-steps,
+    .cancer-care .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Stroke Care */
+    .stroke-care .service-process-section .process-steps,
+    .stroke-care .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Wound Care */
+    .wound-care .service-process-section .process-steps,
+    .wound-care .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Post Surgery Care */
+    .post-surgery-care .service-process-section .process-steps,
+    .post-surgery-care .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Rehabilitation Care */
+    .rehabilitation-care .service-process-section .process-steps,
+    .rehabilitation-care .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Caregiver Training */
+    .caregiver-training .service-process-section .process-steps,
+    .caregiver-training .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Accompaniment */
+    .accompaniment .service-process-section .process-steps,
+    .accompaniment .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Nasogastric Care */
+    .nasogastric-care .service-process-section .process-steps,
+    .nasogastric-care .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Health Assessment */
+    .health-assessment .service-process-section .process-steps,
+    .health-assessment .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Institutional Care */
+    .institutional-care .service-process-section .process-steps,
+    .institutional-care .service-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* ===== DESKTOP APPOINTMENT SERVICE PROCESS 2x2 LAYOUT FOR ALL PAGES ===== */
+    /* General appointment process sections */
+    .booking-process-section .process-steps,
+    .booking-process-section .process-steps-grid,
+    .appointment-process-section .process-steps,
+    .appointment-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    .booking-process-section .process-step,
+    .booking-process-section .process-step-card,
+    .appointment-process-section .process-step,
+    .appointment-process-section .process-step-card {
+        width: auto !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 2rem !important;
+        background: white !important;
+        border-radius: 20px !important;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12) !important;
+        border: 1px solid rgba(255, 122, 0, 0.1) !important;
+    }
+    
+    /* Specific page overrides for appointment process */
+    /* Elderly Care */
+    .elderly-care .booking-process-section .process-steps,
+    .elderly-care .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Dementia Care */
+    .dementia-care .booking-process-section .process-steps,
+    .dementia-care .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Cancer Care */
+    .cancer-care .booking-process-section .process-steps,
+    .cancer-care .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Stroke Care */
+    .stroke-care .booking-process-section .process-steps,
+    .stroke-care .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Wound Care */
+    .wound-care .booking-process-section .process-steps,
+    .wound-care .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Post Surgery Care */
+    .post-surgery-care .booking-process-section .process-steps,
+    .post-surgery-care .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Rehabilitation Care */
+    .rehabilitation-care .booking-process-section .process-steps,
+    .rehabilitation-care .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Caregiver Training */
+    .caregiver-training .booking-process-section .process-steps,
+    .caregiver-training .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Accompaniment */
+    .accompaniment .booking-process-section .process-steps,
+    .accompaniment .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Nasogastric Care */
+    .nasogastric-care .booking-process-section .process-steps,
+    .nasogastric-care .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Health Assessment */
+    .health-assessment .booking-process-section .process-steps,
+    .health-assessment .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* Institutional Care */
+    .institutional-care .booking-process-section .process-steps,
+    .institutional-care .booking-process-section .process-steps-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+        padding: 0 !important;
+    }
+    
+    /* ===== SPECIFIC PAGE OVERRIDES FOR 2x2 LAYOUT ===== */
+    /* Health Assessment - Service Process */
+    .mobile-health-process-steps {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Caregiver Training - Service Process */
+    .mobile-caregiver-training-service-process-steps {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 3rem auto !important;
+    }
+    
+    /* Caregiver Training - Appointment Process */
+    .mobile-caregiver-training-booking-process-steps {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto 3rem !important;
+    }
 }
 
 /* Early Dementia Section */
