@@ -4853,3 +4853,2482 @@
          }
      }
 }
+
+/* ===== STROKE CARE PAGE MOBILE STYLES ===== */
+
+/* Hero Section */
+@media (max-width: 768px) {
+    .mobile-stroke-hero-section {
+        padding: 2rem 0 !important;
+    }
+    
+    .mobile-stroke-hero-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .mobile-stroke-hero-content {
+        order: 2 !important;
+    }
+    
+    .mobile-stroke-hero-image {
+        order: 1 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-hero-image > div {
+        height: 300px !important;
+        border-radius: 15px !important;
+    }
+    
+    .mobile-stroke-hero-content h1 {
+        font-size: 2rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-hero-content p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-hero-content button {
+        width: 100% !important;
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+    }
+    
+    .mobile-stroke-stats-boxes {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .mobile-stroke-stats-boxes .stat-box {
+        padding: 1rem !important;
+    }
+    
+    .mobile-stroke-stats-boxes .stat-box h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    .mobile-stroke-stats-boxes .stat-box p {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Service Process Section */
+@media (max-width: 768px) {
+    .mobile-stroke-service-process-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-service-process-section .section-header h2 {
+        font-size: 2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-service-process-section .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-process-steps {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        max-width: 100% !important;
+        margin: 2rem auto !important;
+    }
+    
+    .mobile-stroke-process-steps .process-step-card {
+        min-width: auto !important;
+        width: 100% !important;
+        padding: 1.2rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-process-steps .step-number {
+        width: 30px !important;
+        height: 30px !important;
+        top: -8px !important;
+        left: 12px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .mobile-stroke-process-steps .card-header {
+        margin-bottom: 0.8rem !important;
+        margin-top: 0.3rem !important;
+    }
+    
+    .mobile-stroke-process-steps .step-icon {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    .mobile-stroke-process-steps .step-icon i {
+        font-size: 1.4rem !important;
+    }
+    
+    .mobile-stroke-process-steps .step-title-section h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    .mobile-stroke-process-steps p {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+    }
+}
+
+/* Recommended Care Staff Section */
+@media (max-width: 768px) {
+    .mobile-stroke-recommended-staff {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-recommended-staff .section-header h2 {
+        font-size: 2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-recommended-staff .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-staff-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    .mobile-stroke-staff-grid .staff-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-staff-grid .staff-icon {
+        width: 60px !important;
+        height: 60px !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-staff-grid .staff-icon i {
+        font-size: 1.5rem !important;
+    }
+    
+    .mobile-stroke-staff-grid h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-staff-grid p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+}
+
+/* Care Staff Table Section */
+@media (max-width: 768px) {
+    .mobile-stroke-care-staff-table-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-care-staff-table-section .section-header h2 {
+        font-size: 2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-care-staff-table-section .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-table-container {
+        margin: 0 1rem !important;
+        border-radius: 10px !important;
+    }
+    
+    .mobile-stroke-table-container table {
+        min-width: 600px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .mobile-stroke-table-container th,
+    .mobile-stroke-table-container td {
+        padding: 1rem !important;
+    }
+    
+    .mobile-stroke-table-container th {
+        font-size: 1rem !important;
+    }
+    
+    .mobile-stroke-care-staff-table-section button {
+        width: 100% !important;
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+        margin-top: 1rem !important;
+    }
+}
+
+/* Target Audience Section */
+@media (max-width: 768px) {
+    .mobile-stroke-target-audience {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-target-audience .section-header h2 {
+        font-size: 2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-target-audience .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-audience-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    .mobile-stroke-audience-grid .audience-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-audience-grid .card-header {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-audience-grid .card-header i {
+        font-size: 1.8rem !important;
+        margin-right: 0.8rem !important;
+    }
+    
+    .mobile-stroke-audience-grid .card-header h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .mobile-stroke-audience-grid p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+}
+
+/* Service Features Section */
+@media (max-width: 768px) {
+    .mobile-stroke-service-features {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-service-features .section-header h2 {
+        font-size: 2.2rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-service-features .section-header p {
+        font-size: 1.1rem !important;
+        line-height: 1.6 !important;
+    }
+    
+    .mobile-stroke-features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    .mobile-stroke-features-grid .feature-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-features-grid .card-header {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-features-grid .card-header > div {
+        width: 60px !important;
+        height: 60px !important;
+        margin-right: 1rem !important;
+    }
+    
+    .mobile-stroke-features-grid .card-header > div i {
+        font-size: 1.6rem !important;
+    }
+    
+    .mobile-stroke-features-grid .card-header h3 {
+        font-size: 1.3rem !important;
+    }
+    
+    .mobile-stroke-features-grid p {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+    }
+    
+    .mobile-stroke-service-features .enhanced-call-to-action {
+        padding: 2rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .mobile-stroke-service-features .enhanced-call-to-action h3 {
+        font-size: 1.6rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-service-features .enhanced-call-to-action p {
+        font-size: 1.1rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-service-features .enhanced-call-to-action .form-buttons {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+    
+    .mobile-stroke-service-features .enhanced-call-to-action button {
+        width: 100% !important;
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Service Content Section */
+@media (max-width: 768px) {
+    .mobile-stroke-service-content-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-service-content-section .section-header h2 {
+        font-size: 2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-service-content-section .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-service-content-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    .mobile-stroke-service-content-grid .service-content-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-service-content-grid .card-header {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-service-content-grid .card-header i {
+        font-size: 1.8rem !important;
+        margin-right: 0.8rem !important;
+    }
+    
+    .mobile-stroke-service-content-grid .card-header h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .mobile-stroke-service-content-grid p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+}
+
+/* Rehabilitation Process Section */
+@media (max-width: 768px) {
+    .mobile-stroke-rehabilitation-process-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-rehabilitation-process-section h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-process-section p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-process-steps {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-process-steps .process-step {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-process-steps .step-number {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-process-steps h3 {
+        font-size: 1rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-process-steps p {
+        font-size: 0.85rem !important;
+        line-height: 1.3 !important;
+    }
+}
+
+/* Acute Phase Care Section */
+@media (max-width: 768px) {
+    .mobile-stroke-acute-phase-care-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-acute-phase-care-section .section-header h2 {
+        font-size: 2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-acute-phase-care-section .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-acute-care-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    .mobile-stroke-acute-care-grid .acute-care-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-acute-care-grid .card-header {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-acute-care-grid .card-header i {
+        font-size: 1.8rem !important;
+        margin-right: 0.8rem !important;
+    }
+    
+    .mobile-stroke-acute-care-grid .card-header h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .mobile-stroke-acute-care-grid p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-acute-phase-care-section .acute-care-highlight {
+        padding: 1.2rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .mobile-stroke-acute-phase-care-section .acute-care-highlight h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .mobile-stroke-acute-phase-care-section .acute-care-highlight p {
+        font-size: 0.95rem !important;
+    }
+}
+
+/* Sub-Acute Phase Care Section */
+@media (max-width: 768px) {
+    .mobile-stroke-sub-acute-phase-care-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-sub-acute-phase-care-section .section-header h2 {
+        font-size: 2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-sub-acute-phase-care-section .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-sub-acute-care-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    .mobile-stroke-sub-acute-care-grid .sub-acute-care-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-sub-acute-care-grid .card-header {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-sub-acute-care-grid .card-header i {
+        font-size: 1.8rem !important;
+        margin-right: 0.8rem !important;
+    }
+    
+    .mobile-stroke-sub-acute-care-grid .card-header h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .mobile-stroke-sub-acute-care-grid p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-sub-acute-phase-care-section .golden-recovery-highlight {
+        padding: 1.2rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .mobile-stroke-sub-acute-phase-care-section .golden-recovery-highlight h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .mobile-stroke-sub-acute-phase-care-section .golden-recovery-highlight p {
+        font-size: 0.95rem !important;
+    }
+}
+
+/* Long-Term Maintenance Care Section */
+@media (max-width: 768px) {
+    .mobile-stroke-long-term-maintenance-care-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-long-term-maintenance-care-section .section-header h2 {
+        font-size: 2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-long-term-maintenance-care-section .section-header p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-long-term-care-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        max-width: 100% !important;
+    }
+    
+    .mobile-stroke-long-term-care-grid .long-term-care-card {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-long-term-care-grid .card-header {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-long-term-care-grid .card-header i {
+        font-size: 1.8rem !important;
+        margin-right: 0.8rem !important;
+    }
+    
+    .mobile-stroke-long-term-care-grid .card-header h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .mobile-stroke-long-term-care-grid p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-long-term-maintenance-care-section .comprehensive-care-commitment {
+        padding: 1.5rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .mobile-stroke-long-term-maintenance-care-section .comprehensive-care-commitment h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-long-term-maintenance-care-section .comprehensive-care-commitment p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+}
+
+/* Complications Section */
+@media (max-width: 768px) {
+    .mobile-stroke-complications-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-complications-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    .mobile-stroke-complications-content {
+        order: 2 !important;
+    }
+    
+    .mobile-stroke-complications-image {
+        order: 1 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-complications-content h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-complications-content p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-complications-content ul li {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-complications-content ul li i {
+        font-size: 0.8rem !important;
+        margin-right: 0.4rem !important;
+    }
+    
+    .mobile-stroke-complications-content ul li span {
+        font-size: 0.95rem !important;
+    }
+    
+    .mobile-stroke-complications-image > div {
+        height: 250px !important;
+        border-radius: 10px !important;
+    }
+    
+    .mobile-stroke-complications-feature-blocks {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .mobile-stroke-complications-feature-blocks .feature-block {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-complications-feature-blocks .feature-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-complications-feature-blocks .feature-icon i {
+        font-size: 1.3rem !important;
+    }
+    
+    .mobile-stroke-complications-feature-blocks h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-complications-feature-blocks p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .mobile-stroke-complications-section button {
+        width: 100% !important;
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Stroke Care Section */
+@media (max-width: 768px) {
+    .mobile-stroke-stroke-care-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-stroke-care-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-content {
+        order: 2 !important;
+    }
+    
+    .mobile-stroke-stroke-care-image {
+        order: 1 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-content h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-content p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-content ul li {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-content ul li i {
+        font-size: 0.8rem !important;
+        margin-right: 0.4rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-content ul li span {
+        font-size: 0.95rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-image > div {
+        height: 250px !important;
+        border-radius: 10px !important;
+    }
+    
+    .mobile-stroke-stroke-care-feature-blocks {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-feature-blocks .feature-block {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-feature-blocks .feature-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-feature-blocks .feature-icon i {
+        font-size: 1.3rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-feature-blocks h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-stroke-care-feature-blocks p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .mobile-stroke-stroke-care-section button {
+        width: 100% !important;
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Stroke Rehabilitation Section */
+@media (max-width: 768px) {
+    .mobile-stroke-stroke-rehabilitation-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-rehabilitation-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-content {
+        order: 2 !important;
+    }
+    
+    .mobile-stroke-rehabilitation-image {
+        order: 1 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-content h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-content p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-content ul li {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-content ul li i {
+        font-size: 0.8rem !important;
+        margin-right: 0.4rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-content ul li span {
+        font-size: 0.95rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-image > div {
+        height: 250px !important;
+        border-radius: 10px !important;
+    }
+    
+    .mobile-stroke-rehabilitation-feature-blocks {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-feature-blocks .feature-block {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-feature-blocks .feature-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-feature-blocks .feature-icon i {
+        font-size: 1.3rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-feature-blocks h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-rehabilitation-feature-blocks p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .mobile-stroke-stroke-rehabilitation-section button {
+        width: 100% !important;
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Psychological Support Section */
+@media (max-width: 768px) {
+    .mobile-stroke-psychological-support-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-psychological-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    .mobile-stroke-psychological-content {
+        order: 2 !important;
+    }
+    
+    .mobile-stroke-psychological-image {
+        order: 1 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-psychological-content h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-psychological-content p {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-psychological-content ul li {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-psychological-content ul li i {
+        font-size: 0.8rem !important;
+        margin-right: 0.4rem !important;
+    }
+    
+    .mobile-stroke-psychological-content ul li span {
+        font-size: 0.95rem !important;
+    }
+    
+    .mobile-stroke-psychological-image > div {
+        height: 250px !important;
+        border-radius: 10px !important;
+    }
+    
+    .mobile-stroke-psychological-feature-blocks {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        margin-top: 2rem !important;
+    }
+    
+    .mobile-stroke-psychological-feature-blocks .feature-block {
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-psychological-feature-blocks .feature-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-psychological-feature-blocks .feature-icon i {
+        font-size: 1.3rem !important;
+    }
+    
+    .mobile-stroke-psychological-feature-blocks h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-psychological-feature-blocks p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .mobile-stroke-psychological-support-section button {
+        width: 100% !important;
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Pricing Details Section */
+@media (max-width: 768px) {
+    .mobile-stroke-pricing-details-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-pricing-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    .mobile-stroke-pricing-content {
+        order: 2 !important;
+    }
+    
+    .mobile-stroke-pricing-form {
+        order: 1 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-pricing-content h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-pricing-content > div {
+        height: 250px !important;
+        border-radius: 10px !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-stroke-pricing-form {
+        padding: 1.5rem !important;
+        margin: 0 1rem !important;
+        max-width: 100% !important;
+    }
+    
+    .mobile-stroke-pricing-form h3 {
+        font-size: 1.3rem !important;
+        margin-bottom: 1.2rem !important;
+    }
+    
+    .mobile-stroke-pricing-form .form-group {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-pricing-form label {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .mobile-stroke-pricing-form input,
+    .mobile-stroke-pricing-form select {
+        padding: 0.8rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .mobile-stroke-pricing-form .form-buttons {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+    
+    .mobile-stroke-pricing-form button {
+        width: 100% !important;
+        padding: 1rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Booking Process Section */
+@media (max-width: 768px) {
+    .mobile-stroke-booking-process {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-booking-process .section-header h2 {
+        font-size: 2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-booking-process-steps {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        max-width: 100% !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .mobile-stroke-booking-process-steps .process-step {
+        min-width: auto !important;
+        width: 100% !important;
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-booking-process-steps .step-header {
+        gap: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-booking-process-steps .step-icon {
+        width: 60px !important;
+        height: 60px !important;
+        border-radius: 12px !important;
+    }
+    
+    .mobile-stroke-booking-process-steps .step-icon i {
+        font-size: 1.5rem !important;
+    }
+    
+    .mobile-stroke-booking-process-steps .step-title-section h3 {
+        font-size: 1.2rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .mobile-stroke-booking-process-steps p {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .mobile-stroke-booking-process > div > div:last-child button {
+        width: 100% !important;
+        padding: 1rem 2rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Why Choose Section */
+@media (max-width: 768px) {
+    .mobile-stroke-why-choose-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-why-choose-section .section-header h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-benefits-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+    
+    .mobile-stroke-benefits-grid .benefit-item {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-benefits-grid .benefit-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-benefits-grid .benefit-icon i {
+        font-size: 1.3rem !important;
+    }
+    
+    .mobile-stroke-benefits-grid h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .mobile-stroke-benefits-grid p {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+    }
+}
+
+/* Quality Protection Section */
+@media (max-width: 768px) {
+    .mobile-stroke-quality-protection-section {
+        padding: 3rem 0 !important;
+    }
+    
+    .mobile-stroke-quality-protection-section .section-header h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-quality-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+    
+    .mobile-stroke-quality-grid .quality-item {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-stroke-quality-grid .quality-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-stroke-quality-grid .quality-icon i {
+        font-size: 1.3rem !important;
+    }
+    
+    .mobile-stroke-quality-grid h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .mobile-stroke-quality-grid p {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+    }
+}
+
+/* Additional Mobile Enhancements */
+@media (max-width: 480px) {
+    .mobile-stroke-hero-content h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    .mobile-stroke-service-process-section .section-header h2,
+    .mobile-stroke-recommended-staff .section-header h2,
+    .mobile-stroke-care-staff-table-section .section-header h2,
+    .mobile-stroke-target-audience .section-header h2,
+    .mobile-stroke-service-features .section-header h2,
+    .mobile-stroke-service-content-section .section-header h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .mobile-stroke-stats-boxes {
+        grid-template-columns: 1fr !important;
+        gap: 0.8rem !important;
+    }
+    
+    .mobile-stroke-stats-boxes .stat-box {
+        padding: 0.8rem !important;
+    }
+    
+    .mobile-stroke-stats-boxes .stat-box h3 {
+        font-size: 1.3rem !important;
+    }
+    
+    .mobile-stroke-stats-boxes .stat-box p {
+        font-size: 0.75rem !important;
+    }
+    
+    .mobile-stroke-benefits-grid,
+    .mobile-stroke-quality-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .mobile-stroke-pricing-form {
+        padding: 1.2rem !important;
+        margin: 0 0.5rem !important;
+    }
+}
+
+/* Touch-friendly interactions */
+@media (max-width: 768px) {
+    .mobile-stroke-hero-content button,
+    .mobile-stroke-service-process-section button,
+    .mobile-stroke-care-staff-table-section button,
+    .mobile-stroke-complications-section button,
+    .mobile-stroke-stroke-care-section button,
+    .mobile-stroke-stroke-rehabilitation-section button,
+    .mobile-stroke-psychological-support-section button,
+    .mobile-stroke-booking-process > div > div:last-child button,
+    .mobile-stroke-pricing-form button {
+        -webkit-tap-highlight-color: transparent !important;
+        touch-action: manipulation !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    .mobile-stroke-hero-content button:active,
+    .mobile-stroke-service-process-section button:active,
+    .mobile-stroke-care-staff-table-section button:active,
+    .mobile-stroke-complications-section button:active,
+    .mobile-stroke-stroke-care-section button:active,
+    .mobile-stroke-stroke-rehabilitation-section button:active,
+    .mobile-stroke-psychological-support-section button:active,
+    .mobile-stroke-booking-process > div > div:last-child button:active,
+    .mobile-stroke-pricing-form button:active {
+        transform: scale(0.98) !important;
+        box-shadow: 0 2px 8px rgba(255, 122, 0, 0.4) !important;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .mobile-stroke-hero-section {
+        padding: 1.5rem 0 !important;
+    }
+    
+    .mobile-stroke-hero-layout {
+        gap: 1.5rem !important;
+    }
+    
+    .mobile-stroke-service-process-section,
+    .mobile-stroke-recommended-staff,
+    .mobile-stroke-care-staff-table-section,
+    .mobile-stroke-target-audience,
+    .mobile-stroke-service-features,
+    .mobile-stroke-service-content-section,
+    .mobile-stroke-rehabilitation-process-section,
+    .mobile-stroke-acute-phase-care-section,
+    .mobile-stroke-sub-acute-phase-care-section,
+    .mobile-stroke-long-term-maintenance-care-section,
+    .mobile-stroke-complications-section,
+    .mobile-stroke-stroke-care-section,
+    .mobile-stroke-stroke-rehabilitation-section,
+    .mobile-stroke-psychological-support-section,
+    .mobile-stroke-pricing-details-section,
+    .mobile-stroke-booking-process,
+    .mobile-stroke-why-choose-section,
+    .mobile-stroke-quality-protection-section {
+        padding: 2rem 0 !important;
+    }
+}
+
+/* ===== CANCER CARE PAGE MOBILE STYLES ===== */
+
+/* Hero Section */
+.mobile-cancer-hero-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-hero-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.mobile-cancer-hero-content h1 {
+    font-size: 2rem !important;
+    text-align: center !important;
+}
+
+.mobile-cancer-hero-content p {
+    font-size: 1rem !important;
+    text-align: center !important;
+}
+
+.mobile-cancer-hero-content button {
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+.mobile-cancer-hero-image {
+    order: -1 !important;
+}
+
+.mobile-cancer-hero-image img {
+    height: 250px !important;
+}
+
+/* Statistics Section */
+.mobile-cancer-statistics-section {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    margin-top: 2rem !important;
+}
+
+.mobile-cancer-statistics-section .stat-card {
+    padding: 1.5rem !important;
+}
+
+.mobile-cancer-statistics-section .stat-number {
+    font-size: 2rem !important;
+}
+
+/* Treatment Process Section */
+.mobile-cancer-treatment-process {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-process-graph {
+    margin: 2rem 0 !important;
+}
+
+.mobile-cancer-process-graph > div {
+    height: 150px !important;
+}
+
+.mobile-cancer-process-steps {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    margin-top: 2rem !important;
+}
+
+.mobile-cancer-process-steps .process-step {
+    text-align: center !important;
+    padding: 1.5rem !important;
+}
+
+.mobile-cancer-process-steps .process-step button {
+    width: 100% !important;
+    margin-top: 1rem !important;
+}
+
+/* Service Content Section */
+.mobile-cancer-service-content-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-service-content-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+}
+
+.mobile-cancer-service-content-grid .service-content-card {
+    padding: 1.5rem !important;
+}
+
+.mobile-cancer-service-content-grid .card-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-cancer-service-content-grid .card-header i {
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Service Process Section */
+.mobile-cancer-service-process-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-service-process-steps {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+    margin: 2rem auto !important;
+}
+
+.mobile-cancer-service-process-steps .process-step-card {
+    min-width: auto !important;
+    padding: 1.5rem !important;
+}
+
+.mobile-cancer-service-process-steps .card-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-cancer-service-process-steps .step-title-section {
+    margin-left: 0 !important;
+    text-align: center !important;
+}
+
+/* Service Features Section */
+.mobile-cancer-service-features-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+}
+
+.mobile-cancer-features-grid .feature-card {
+    padding: 1.5rem !important;
+}
+
+.mobile-cancer-features-grid .card-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-cancer-features-grid .card-header i {
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Target Audience Section */
+.mobile-cancer-target-audience-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-audience-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+}
+
+.mobile-cancer-audience-grid .audience-card {
+    padding: 1.5rem !important;
+}
+
+.mobile-cancer-audience-grid .card-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-cancer-audience-grid .card-header i {
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Care Staff Table Section */
+.mobile-cancer-care-staff-table-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-table-container {
+    overflow-x: auto !important;
+    border-radius: 10px !important;
+}
+
+.mobile-cancer-table-container table {
+    min-width: 600px !important;
+    font-size: 0.9rem !important;
+}
+
+.mobile-cancer-table-container th,
+.mobile-cancer-table-container td {
+    padding: 1rem !important;
+}
+
+/* Cancer Stage Care Sections */
+.mobile-cancer-first-stage-care-section,
+.mobile-cancer-second-stage-care-section,
+.mobile-cancer-third-stage-care-section,
+.mobile-cancer-fourth-stage-care-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-stage-overview {
+    margin: 0 auto 2rem !important;
+    padding: 1.5rem !important;
+}
+
+.mobile-cancer-care-content-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+}
+
+.mobile-cancer-care-content-grid .care-content-card {
+    padding: 1.5rem !important;
+}
+
+.mobile-cancer-care-content-grid .card-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-cancer-care-content-grid .card-header i {
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Home Care Section */
+.mobile-cancer-home-care {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-service-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.mobile-cancer-service-content h2 {
+    font-size: 2rem !important;
+    text-align: center !important;
+}
+
+.mobile-cancer-service-content p {
+    text-align: center !important;
+}
+
+.mobile-cancer-service-content .service-list {
+    margin-bottom: 1.5rem !important;
+}
+
+.mobile-cancer-service-content button {
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+.mobile-cancer-service-image {
+    order: -1 !important;
+}
+
+.mobile-cancer-service-image img {
+    height: 250px !important;
+}
+
+.mobile-cancer-feature-boxes {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    margin-top: 2rem !important;
+}
+
+.mobile-cancer-feature-boxes .feature-box {
+    padding: 1.5rem !important;
+}
+
+/* IV Infusion Section */
+.mobile-cancer-iv-infusion {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-iv-infusion .service-content h2 {
+    font-size: 2rem !important;
+    text-align: center !important;
+}
+
+.mobile-cancer-iv-infusion .service-content p {
+    text-align: center !important;
+}
+
+.mobile-cancer-iv-infusion .service-content button {
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+.mobile-cancer-iv-infusion .service-image {
+    order: -1 !important;
+}
+
+.mobile-cancer-iv-infusion .service-image img {
+    height: 250px !important;
+}
+
+/* Rehabilitation Therapy Section */
+.mobile-cancer-rehabilitation-therapy {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-rehabilitation-therapy .service-content h2 {
+    font-size: 2rem !important;
+    text-align: center !important;
+}
+
+.mobile-cancer-rehabilitation-therapy .service-content p {
+    text-align: center !important;
+}
+
+.mobile-cancer-rehabilitation-therapy .service-content button {
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+.mobile-cancer-rehabilitation-therapy .service-image {
+    order: -1 !important;
+}
+
+.mobile-cancer-rehabilitation-therapy .service-image img {
+    height: 250px !important;
+}
+
+/* Psychological Support Section */
+.mobile-cancer-psychological-support {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-psychological-support .service-content h2 {
+    font-size: 2rem !important;
+    text-align: center !important;
+}
+
+.mobile-cancer-psychological-support .service-content p {
+    text-align: center !important;
+}
+
+.mobile-cancer-psychological-support .service-content button {
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+.mobile-cancer-psychological-support .service-image {
+    order: -1 !important;
+}
+
+.mobile-cancer-psychological-support .service-image img {
+    height: 250px !important;
+}
+
+/* Pricing Inquiry Section */
+.mobile-cancer-pricing-inquiry {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-inquiry-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+}
+
+.mobile-cancer-inquiry-content h2 {
+    font-size: 2rem !important;
+    text-align: center !important;
+}
+
+.mobile-cancer-inquiry-content p {
+    text-align: center !important;
+}
+
+.mobile-cancer-inquiry-content > div {
+    height: 200px !important;
+}
+
+.mobile-cancer-inquiry-form {
+    padding: 2rem !important;
+}
+
+.mobile-cancer-inquiry-form form {
+    gap: 1rem !important;
+}
+
+.mobile-cancer-inquiry-form input,
+.mobile-cancer-inquiry-form select,
+.mobile-cancer-inquiry-form textarea {
+    padding: 15px !important;
+    font-size: 16px !important; /* Prevents zoom on iOS */
+}
+
+.mobile-cancer-inquiry-form button {
+    padding: 18px !important;
+    font-size: 16px !important;
+}
+
+/* Booking Process Section */
+.mobile-cancer-booking-process {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-booking-process-steps {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+    margin: 2rem auto !important;
+    flex-wrap: wrap !important;
+}
+
+.mobile-cancer-booking-process-steps .process-step {
+    min-width: auto !important;
+    padding: 1.5rem !important;
+}
+
+.mobile-cancer-booking-process-steps .step-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-cancer-booking-process-steps .step-title-section {
+    text-align: center !important;
+}
+
+.mobile-cancer-booking-process button {
+    width: 100% !important;
+    margin: 1rem auto !important;
+    display: block !important;
+    max-width: 300px !important;
+}
+
+/* Why Choose Section */
+.mobile-cancer-why-choose {
+    padding: 2rem 0 !important;
+}
+
+.mobile-cancer-why-choose h2 {
+    font-size: 2rem !important;
+}
+
+.mobile-cancer-why-choose-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+}
+
+.mobile-cancer-why-choose-features-grid .feature-card {
+    padding: 1.5rem !important;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 480px) {
+    .mobile-cancer-hero-content h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    .mobile-cancer-hero-content p {
+        font-size: 0.95rem !important;
+    }
+    
+    .mobile-cancer-service-content h2,
+    .mobile-cancer-iv-infusion .service-content h2,
+    .mobile-cancer-rehabilitation-therapy .service-content h2,
+    .mobile-cancer-psychological-support .service-content h2,
+    .mobile-cancer-inquiry-content h2,
+    .mobile-cancer-booking-process h2,
+    .mobile-cancer-why-choose h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .mobile-cancer-service-content p,
+    .mobile-cancer-iv-infusion .service-content p,
+    .mobile-cancer-rehabilitation-therapy .service-content p,
+    .mobile-cancer-psychological-support .service-content p,
+    .mobile-cancer-inquiry-content p {
+        font-size: 1rem !important;
+    }
+    
+    .mobile-cancer-statistics-section .stat-number {
+        font-size: 1.8rem !important;
+    }
+    
+    .mobile-cancer-statistics-section .stat-description {
+        font-size: 0.8rem !important;
+    }
+    
+    .mobile-cancer-process-steps .process-step h3,
+    .mobile-cancer-service-process-steps .process-step-card h3,
+    .mobile-cancer-service-content-grid .service-content-card h3,
+    .mobile-cancer-features-grid .feature-card h3,
+    .mobile-cancer-audience-grid .audience-card h3,
+    .mobile-cancer-care-content-grid .care-content-card h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .mobile-cancer-process-steps .process-step p,
+    .mobile-cancer-service-process-steps .process-step-card p,
+    .mobile-cancer-service-content-grid .service-content-card p,
+    .mobile-cancer-features-grid .feature-card p,
+    .mobile-cancer-audience-grid .audience-card p,
+    .mobile-cancer-care-content-grid .care-content-card p {
+        font-size: 0.95rem !important;
+    }
+    
+    .mobile-cancer-feature-boxes .feature-box h4 {
+        font-size: 1rem !important;
+    }
+    
+    .mobile-cancer-feature-boxes .feature-box p {
+        font-size: 0.85rem !important;
+    }
+    
+    .mobile-cancer-inquiry-form {
+        padding: 1.5rem !important;
+    }
+    
+    .mobile-cancer-booking-process-steps .process-step {
+        padding: 1.25rem !important;
+    }
+    
+    .mobile-cancer-booking-process-steps .process-step h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .mobile-cancer-booking-process-steps .process-step p {
+        font-size: 0.95rem !important;
+    }
+}
+
+/* Touch-friendly improvements */
+.mobile-cancer-hero-content button,
+.mobile-cancer-process-steps .process-step button,
+.mobile-cancer-service-content button,
+.mobile-cancer-iv-infusion .service-content button,
+.mobile-cancer-rehabilitation-therapy .service-content button,
+.mobile-cancer-psychological-support .service-content button,
+.mobile-cancer-inquiry-form button,
+.mobile-cancer-booking-process button {
+    min-height: 44px !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.mobile-cancer-inquiry-form input,
+.mobile-cancer-inquiry-form select,
+.mobile-cancer-inquiry-form textarea {
+    min-height: 44px !important;
+    touch-action: manipulation !important;
+}
+
+/* Enhanced mobile animations */
+@media (max-width: 768px) {
+    .mobile-cancer-service-content-card,
+    .mobile-cancer-feature-card,
+    .mobile-cancer-audience-card,
+    .mobile-cancer-care-content-card,
+    .mobile-cancer-process-step,
+    .mobile-cancer-process-step-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+    
+    .mobile-cancer-service-content-card:active,
+    .mobile-cancer-feature-card:active,
+    .mobile-cancer-audience-card:active,
+    .mobile-cancer-care-content-card:active,
+    .mobile-cancer-process-step:active,
+    .mobile-cancer-process-step-card:active {
+        transform: scale(0.98) !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.15) !important;
+    }
+    
+    .mobile-cancer-hero-content button:active,
+    .mobile-cancer-process-steps .process-step button:active,
+    .mobile-cancer-service-content button:active,
+    .mobile-cancer-iv-infusion .service-content button:active,
+    .mobile-cancer-rehabilitation-therapy .service-content button:active,
+    .mobile-cancer-psychological-support .service-content button:active,
+    .mobile-cancer-inquiry-form button:active,
+    .mobile-cancer-booking-process button:active {
+        transform: scale(0.95) !important;
+    }
+}
+
+/* ===== DEMENTIA CARE PAGE MOBILE STYLES ===== */
+
+/* Hero Section */
+.mobile-dementia-hero-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-hero-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.mobile-dementia-hero-content h1 {
+    font-size: 2rem !important;
+    text-align: center !important;
+}
+
+.mobile-dementia-hero-content p {
+    font-size: 1rem !important;
+    text-align: center !important;
+}
+
+.mobile-dementia-hero-content button {
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+.mobile-dementia-hero-image {
+    order: -1 !important;
+}
+
+.mobile-dementia-hero-image img {
+    height: 250px !important;
+}
+
+/* Statistics Section */
+.mobile-dementia-stats-boxes {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    margin-top: 2rem !important;
+}
+
+.mobile-dementia-stats-boxes .stat-box {
+    padding: 1.5rem !important;
+}
+
+.mobile-dementia-stats-boxes .stat-box h3 {
+    font-size: 1.8rem !important;
+}
+
+.mobile-dementia-stats-boxes .stat-box p {
+    font-size: 0.9rem !important;
+}
+
+/* Stages Section */
+.mobile-dementia-stages-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-stages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+}
+
+.mobile-dementia-stages-grid .stage-card {
+    padding: 1.5rem !important;
+}
+
+.mobile-dementia-stages-grid .stage-card h3 {
+    font-size: 1.2rem !important;
+}
+
+.mobile-dementia-stages-grid .stage-card ul {
+    text-align: left !important;
+}
+
+/* Nursing Care Points Section */
+.mobile-dementia-nursing-care-points {
+    margin-top: 2rem !important;
+}
+
+.mobile-dementia-nursing-care-points .care-points-card {
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.mobile-dementia-nursing-care-points .care-points-card h3 {
+    font-size: 1.3rem !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-dementia-nursing-care-points .care-points-card ul {
+    text-align: left !important;
+}
+
+/* Early Dementia Section */
+.mobile-dementia-early-dementia-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-early-dementia-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+}
+
+.mobile-dementia-early-dementia-content h2 {
+    font-size: 1.8rem !important;
+    text-align: center !important;
+}
+
+.mobile-dementia-early-dementia-content p {
+    text-align: center !important;
+}
+
+.mobile-dementia-early-dementia-content button {
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+.mobile-dementia-early-dementia-image {
+    order: -1 !important;
+}
+
+.mobile-dementia-early-dementia-image img {
+    height: 250px !important;
+}
+
+.mobile-dementia-early-feature-boxes {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+}
+
+.mobile-dementia-early-feature-boxes .feature-box {
+    padding: 1rem !important;
+}
+
+/* Middle Dementia Section */
+.mobile-dementia-middle-dementia-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-middle-dementia-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+}
+
+.mobile-dementia-middle-dementia-content h2 {
+    font-size: 1.8rem !important;
+    text-align: center !important;
+}
+
+.mobile-dementia-middle-dementia-content p {
+    text-align: center !important;
+}
+
+.mobile-dementia-middle-dementia-content button {
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+.mobile-dementia-middle-dementia-image {
+    order: -1 !important;
+}
+
+.mobile-dementia-middle-dementia-image img {
+    height: 250px !important;
+}
+
+/* Late Dementia Section */
+.mobile-dementia-late-dementia-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-late-dementia-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+}
+
+.mobile-dementia-late-dementia-content h2 {
+    font-size: 1.8rem !important;
+    text-align: center !important;
+}
+
+.mobile-dementia-late-dementia-content p {
+    text-align: center !important;
+}
+
+.mobile-dementia-late-dementia-content button {
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+.mobile-dementia-late-dementia-image {
+    order: -1 !important;
+}
+
+.mobile-dementia-late-dementia-image img {
+    height: 250px !important;
+}
+
+/* Service Content Section */
+.mobile-dementia-service-content-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-service-content-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+}
+
+.mobile-dementia-service-content-grid .service-content-card {
+    padding: 1.5rem !important;
+}
+
+.mobile-dementia-service-content-grid .card-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-dementia-service-content-grid .card-header i {
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Service Process Section */
+.mobile-dementia-service-process-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-process-steps {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+    margin: 2rem auto !important;
+}
+
+.mobile-dementia-process-steps .process-step-card {
+    min-width: auto !important;
+    padding: 1.5rem !important;
+}
+
+.mobile-dementia-process-steps .card-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-dementia-process-steps .step-title-section {
+    margin-left: 0 !important;
+    text-align: center !important;
+}
+
+/* Service Features Section */
+.mobile-dementia-service-features-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+}
+
+.mobile-dementia-features-grid .feature-card {
+    padding: 1.5rem !important;
+}
+
+.mobile-dementia-features-grid .card-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-dementia-features-grid .card-header i {
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Target Audience Section */
+.mobile-dementia-target-audience-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-audience-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+}
+
+.mobile-dementia-audience-grid .audience-card {
+    padding: 1.5rem !important;
+}
+
+.mobile-dementia-audience-grid .card-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-dementia-audience-grid .card-header i {
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Care Staff Table Section */
+.mobile-dementia-care-staff-table-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-table-container {
+    overflow-x: auto !important;
+    border-radius: 10px !important;
+}
+
+.mobile-dementia-table-container table {
+    min-width: 600px !important;
+    font-size: 0.9rem !important;
+}
+
+.mobile-dementia-table-container th,
+.mobile-dementia-table-container td {
+    padding: 1rem !important;
+}
+
+/* Pricing Section */
+.mobile-dementia-pricing-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-pricing-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+}
+
+.mobile-dementia-pricing-content h2 {
+    font-size: 1.8rem !important;
+    text-align: center !important;
+}
+
+.mobile-dementia-pricing-content p {
+    text-align: center !important;
+}
+
+.mobile-dementia-pricing-illustration {
+    order: -1 !important;
+}
+
+.mobile-dementia-pricing-illustration img {
+    height: 250px !important;
+}
+
+.mobile-dementia-pricing-form {
+    padding: 1.5rem !important;
+}
+
+.mobile-dementia-pricing-form h2 {
+    font-size: 1.6rem !important;
+    text-align: center !important;
+}
+
+.mobile-dementia-pricing-form p {
+    text-align: center !important;
+}
+
+.mobile-dementia-pricing-form .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+}
+
+/* Booking Process Section */
+.mobile-dementia-booking-process {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-booking-process-steps {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+    margin: 2rem auto !important;
+    flex-wrap: wrap !important;
+}
+
+.mobile-dementia-booking-process-steps .process-step {
+    min-width: auto !important;
+    padding: 1.5rem !important;
+}
+
+.mobile-dementia-booking-process-steps .step-header {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1rem !important;
+}
+
+.mobile-dementia-booking-process-steps .step-title-section {
+    text-align: center !important;
+}
+
+.mobile-dementia-booking-process button {
+    width: 100% !important;
+    margin: 1rem auto !important;
+    display: block !important;
+    max-width: 300px !important;
+}
+
+/* Why Choose Section */
+.mobile-dementia-why-choose-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-why-choose-section h2 {
+    font-size: 1.8rem !important;
+}
+
+.mobile-dementia-why-choose-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+}
+
+.mobile-dementia-why-choose-grid .why-choose-feature {
+    padding: 1.5rem !important;
+}
+
+/* Quality Section */
+.mobile-dementia-quality-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-quality-section h2 {
+    font-size: 1.8rem !important;
+}
+
+.mobile-dementia-quality-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+}
+
+.mobile-dementia-quality-grid .quality-item {
+    padding: 1.5rem !important;
+}
+
+/* Other Services Section */
+.mobile-dementia-other-services-section {
+    padding: 2rem 0 !important;
+}
+
+.mobile-dementia-other-services-section h2 {
+    font-size: 1.8rem !important;
+}
+
+.mobile-dementia-other-services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+}
+
+.mobile-dementia-other-services-grid .other-service {
+    padding: 1.5rem !important;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 480px) {
+    .mobile-dementia-hero-content h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    .mobile-dementia-hero-content p {
+        font-size: 0.95rem !important;
+    }
+    
+    .mobile-dementia-stages-section h2,
+    .mobile-dementia-early-dementia-content h2,
+    .mobile-dementia-middle-dementia-content h2,
+    .mobile-dementia-late-dementia-content h2,
+    .mobile-dementia-service-content-section h2,
+    .mobile-dementia-service-process-section h2,
+    .mobile-dementia-service-features-section h2,
+    .mobile-dementia-target-audience-section h2,
+    .mobile-dementia-care-staff-table-section h2,
+    .mobile-dementia-pricing-section h2,
+    .mobile-dementia-booking-process h2,
+    .mobile-dementia-why-choose-section h2,
+    .mobile-dementia-quality-section h2,
+    .mobile-dementia-other-services-section h2 {
+        font-size: 1.6rem !important;
+    }
+    
+    .mobile-dementia-stages-section p,
+    .mobile-dementia-early-dementia-content p,
+    .mobile-dementia-middle-dementia-content p,
+    .mobile-dementia-late-dementia-content p,
+    .mobile-dementia-service-content-section p,
+    .mobile-dementia-service-process-section p,
+    .mobile-dementia-service-features-section p,
+    .mobile-dementia-target-audience-section p,
+    .mobile-dementia-care-staff-table-section p,
+    .mobile-dementia-pricing-section p {
+        font-size: 1rem !important;
+    }
+    
+    .mobile-dementia-stats-boxes .stat-box h3 {
+        font-size: 1.6rem !important;
+    }
+    
+    .mobile-dementia-stats-boxes .stat-box p {
+        font-size: 0.8rem !important;
+    }
+    
+    .mobile-dementia-stages-grid .stage-card h3,
+    .mobile-dementia-service-content-grid .service-content-card h3,
+    .mobile-dementia-features-grid .feature-card h3,
+    .mobile-dementia-audience-grid .audience-card h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .mobile-dementia-stages-grid .stage-card p,
+    .mobile-dementia-service-content-grid .service-content-card p,
+    .mobile-dementia-features-grid .feature-card p,
+    .mobile-dementia-audience-grid .audience-card p {
+        font-size: 0.95rem !important;
+    }
+    
+    .mobile-dementia-pricing-form {
+        padding: 1.25rem !important;
+    }
+    
+    .mobile-dementia-booking-process-steps .process-step {
+        padding: 1.25rem !important;
+    }
+    
+    .mobile-dementia-booking-process-steps .process-step h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .mobile-dementia-booking-process-steps .process-step p {
+        font-size: 0.95rem !important;
+    }
+}
+
+/* Touch-friendly improvements */
+.mobile-dementia-hero-content button,
+.mobile-dementia-early-dementia-content button,
+.mobile-dementia-middle-dementia-content button,
+.mobile-dementia-late-dementia-content button,
+.mobile-dementia-pricing-form button,
+.mobile-dementia-booking-process button {
+    min-height: 44px !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.mobile-dementia-pricing-form input,
+.mobile-dementia-pricing-form select,
+.mobile-dementia-pricing-form textarea {
+    min-height: 44px !important;
+    touch-action: manipulation !important;
+}
+
+/* Enhanced mobile animations */
+@media (max-width: 768px) {
+    .mobile-dementia-service-content-card,
+    .mobile-dementia-feature-card,
+    .mobile-dementia-audience-card,
+    .mobile-dementia-stage-card,
+    .mobile-dementia-process-step-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+    
+    .mobile-dementia-service-content-card:active,
+    .mobile-dementia-feature-card:active,
+    .mobile-dementia-audience-card:active,
+    .mobile-dementia-stage-card:active,
+    .mobile-dementia-process-step-card:active {
+        transform: scale(0.98) !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.15) !important;
+    }
+    
+    .mobile-dementia-hero-content button:active,
+    .mobile-dementia-early-dementia-content button:active,
+    .mobile-dementia-middle-dementia-content button:active,
+    .mobile-dementia-late-dementia-content button:active,
+    .mobile-dementia-pricing-form button:active,
+    .mobile-dementia-booking-process button:active {
+        transform: scale(0.95) !important;
+    }
+}
