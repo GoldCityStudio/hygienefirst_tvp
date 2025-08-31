@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="enhanced-styles.css">
     <link rel="stylesheet" href="dropdown-fix.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -165,119 +166,119 @@
 
     <main id="main-content" >
         <!-- Banner Image -->
-                    <div class="full-width-banner" style="position: relative;">
-                <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="聯絡我們 Banner" style="width:100%;height:auto;display:block;">
-                <h1 style="position: absolute; top: 68%; left: 50%; transform: translate(-50%, 0); color: #fff; font-size: 2.8rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.5); margin: 0; padding: 0; letter-spacing: 0.1em;">聯絡我們</h1>
-            </div>
+        <div class="full-width-banner mobile-banner" style="position: relative;">
+            <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="聯絡我們 Banner" style="width:100%;height:auto;display:block;">
+            <h1 class="banner-title mobile-banner-title" style="position: absolute; top: 68%; left: 50%; transform: translate(-50%, 0); color: #fff; font-size: 2.8rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.5); margin: 0; padding: 0; letter-spacing: 0.1em;">聯絡我們</h1>
+        </div>
 
     <!-- 聯繫表單部分 -->
-    <section class="contact-section">
+    <section class="contact-section mobile-contact-section">
         <div class="container">
-            <div class="contact-content">
+            <div class="contact-content mobile-contact-content">
                 <!-- 左側聯繫信息 -->
-                <div class="contact-info-card">
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
+                <div class="contact-info-card mobile-contact-info-card">
+                    <div class="contact-info-item mobile-contact-info-item">
+                        <div class="contact-icon mobile-contact-icon">
                             <img src="images/Contact.png" alt="電話" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                             <span class="icon-fallback" style="display:none;"><i class="fas fa-phone"></i></span>
                         </div>
-                        <div class="contact-details">
-                            <h3>電話</h3>
-                            <p>2827 8889</p>
+                        <div class="contact-details mobile-contact-details">
+                            <h3 class="contact-item-title">電話</h3>
+                            <p class="contact-item-text">2827 8889</p>
                         </div>
                     </div>
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
+                    <div class="contact-info-item mobile-contact-info-item">
+                        <div class="contact-icon mobile-contact-icon">
                             <img src="images/Mial.png" alt="電郵" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                             <span class="icon-fallback" style="display:none;"><i class="fas fa-envelope"></i></span>
                         </div>
-                        <div class="contact-details">
-                            <h3>電郵</h3>
-                            <p style="word-break: break-all;">careteam@hygienefirstgroup.com</p>
+                        <div class="contact-details mobile-contact-details">
+                            <h3 class="contact-item-title">電郵</h3>
+                            <p class="contact-item-text" style="word-break: break-all;">careteam@hygienefirstgroup.com</p>
                         </div>
                     </div>
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
+                    <div class="contact-info-item mobile-contact-info-item">
+                        <div class="contact-icon mobile-contact-icon">
                             <img src="images/Address.png" alt="地址" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                             <span class="icon-fallback" style="display:none;"><i class="fas fa-map-marker-alt"></i></span>
                         </div>
-                        <div class="contact-details">
-                            <h3>地址</h3>
-                            <p><strong>總部（門市）：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p> <br>
-                            <p><strong>九龍灣辦事處：</strong>九龍灣臨樂街19號南豐商業中心18樓12室</p>
+                        <div class="contact-details mobile-contact-details">
+                            <h3 class="contact-item-title">地址</h3>
+                            <p class="contact-item-text"><strong>總部（門市）：</strong>新界屯門新合里3號匯賢一號•雋峰12樓17室</p> <br>
+                            <p class="contact-item-text"><strong>九龍灣辦事處：</strong>九龍灣臨樂街19號南豐商業中心18樓12室</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 右側表單 -->
-                <div class="contact-form-card" style="margin-top: 32px;">
-                    <h2>給我們發送電子郵件</h2>
-                <form class="contact-form">
-                        <div class="form-group">
-                            <label for="name">姓名 *</label>
-                            <input type="text" id="name" name="name" required>
+                <div class="contact-form-card mobile-contact-form-card" style="margin-top: 32px;">
+                    <h2 class="contact-form-title">給我們發送電子郵件</h2>
+                    <form class="contact-form mobile-contact-form">
+                        <div class="form-group mobile-form-group">
+                            <label for="name" class="form-label">姓名 *</label>
+                            <input type="text" id="name" name="name" class="form-input mobile-form-input" required>
                         </div>
-                        <div class="form-group">
-                            <label for="email">電郵 *</label>
-                            <input type="email" id="email" name="email" required>
+                        <div class="form-group mobile-form-group">
+                            <label for="email" class="form-label">電郵 *</label>
+                            <input type="email" id="email" name="email" class="form-input mobile-form-input" required>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">電話 *</label>
-                            <input type="tel" id="phone" name="phone" required>
+                        <div class="form-group mobile-form-group">
+                            <label for="phone" class="form-label">電話 *</label>
+                            <input type="tel" id="phone" name="phone" class="form-input mobile-form-input" required>
                         </div>
-                        <div class="form-group">
-                            <label for="message">查詢內容</label>
-                            <textarea id="message" name="message" rows="4"></textarea>
+                        <div class="form-group mobile-form-group">
+                            <label for="message" class="form-label">查詢內容</label>
+                            <textarea id="message" name="message" rows="4" class="form-textarea mobile-form-textarea"></textarea>
                         </div>
-                        <div class="form-group">
-                            <button type="submit" class="submit-btn">提交</button>
+                        <div class="form-group mobile-form-group">
+                            <button type="submit" class="submit-btn mobile-submit-btn">提交</button>
                         </div>
                     </form>
                 </div>
             </div>
 
             <!-- 所屬機構資料表單 -->
-            <div class="organization-form-section">
-                <h2>所屬機構資料</h2>
-                <form class="organization-form">
-                    <div class="form-group">
-                        <label for="org-name">機構名稱 *</label>
-                        <input type="text" id="org-name" name="org-name" required>
+            <div class="organization-form-section mobile-organization-form-section">
+                <h2 class="organization-form-title">所屬機構資料</h2>
+                <form class="organization-form mobile-organization-form">
+                    <div class="form-group mobile-form-group">
+                        <label for="org-name" class="form-label">機構名稱 *</label>
+                        <input type="text" id="org-name" name="org-name" class="form-input mobile-form-input" required>
                     </div>
-                    <div class="form-group">
-                        <label for="employee-name">員工姓名 *</label>
-                        <input type="text" id="employee-name" name="employee-name" required>
+                    <div class="form-group mobile-form-group">
+                        <label for="employee-name" class="form-label">員工姓名 *</label>
+                        <input type="text" id="employee-name" name="employee-name" class="form-input mobile-form-input" required>
                     </div>
-                    <div class="form-group">
-                        <label for="rating">評分（1分最低，10分最高）</label>
-                        <div class="rating-container">
-                            <div class="rating-options">
-                                <input type="radio" id="rating1" name="rating" value="1">
-                                <label for="rating1">1</label>
-                                <input type="radio" id="rating2" name="rating" value="2">
-                                <label for="rating2">2</label>
-                                <input type="radio" id="rating3" name="rating" value="3">
-                                <label for="rating3">3</label>
-                                <input type="radio" id="rating4" name="rating" value="4">
-                                <label for="rating4">4</label>
-                                <input type="radio" id="rating5" name="rating" value="5">
-                                <label for="rating5">5</label>
-                                <input type="radio" id="rating6" name="rating" value="6">
-                                <label for="rating6">6</label>
-                                <input type="radio" id="rating7" name="rating" value="7">
-                                <label for="rating7">7</label>
-                                <input type="radio" id="rating8" name="rating" value="8">
-                                <label for="rating8">8</label>
-                                <input type="radio" id="rating9" name="rating" value="9">
-                                <label for="rating9">9</label>
-                                <input type="radio" id="rating10" name="rating" value="10">
-                                <label for="rating10">10</label>
+                    <div class="form-group mobile-form-group">
+                        <label for="rating" class="form-label">評分（1分最低，10分最高）</label>
+                        <div class="rating-container mobile-rating-container">
+                            <div class="rating-options mobile-rating-options">
+                                <input type="radio" id="rating1" name="rating" value="1" class="rating-radio mobile-rating-radio">
+                                <label for="rating1" class="rating-label mobile-rating-label">1</label>
+                                <input type="radio" id="rating2" name="rating" value="2" class="rating-radio mobile-rating-radio">
+                                <label for="rating2" class="rating-label mobile-rating-label">2</label>
+                                <input type="radio" id="rating3" name="rating" value="3" class="rating-radio mobile-rating-radio">
+                                <label for="rating3" class="rating-label mobile-rating-label">3</label>
+                                <input type="radio" id="rating4" name="rating" value="4" class="rating-radio mobile-rating-radio">
+                                <label for="rating4" class="rating-label mobile-rating-label">4</label>
+                                <input type="radio" id="rating5" name="rating" value="5" class="rating-radio mobile-rating-radio">
+                                <label for="rating5" class="rating-label mobile-rating-label">5</label>
+                                <input type="radio" id="rating6" name="rating" value="6" class="rating-radio mobile-rating-radio">
+                                <label for="rating6" class="rating-label mobile-rating-label">6</label>
+                                <input type="radio" id="rating7" name="rating" value="7" class="rating-radio mobile-rating-radio">
+                                <label for="rating7" class="rating-label mobile-rating-label">7</label>
+                                <input type="radio" id="rating8" name="rating" value="8" class="rating-radio mobile-rating-radio">
+                                <label for="rating8" class="rating-label mobile-rating-label">8</label>
+                                <input type="radio" id="rating9" name="rating" value="9" class="rating-radio mobile-rating-radio">
+                                <label for="rating9" class="rating-label mobile-rating-label">9</label>
+                                <input type="radio" id="rating10" name="rating" value="10" class="rating-radio mobile-rating-radio">
+                                <label for="rating10" class="rating-label mobile-rating-label">10</label>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <button type="submit" class="submit-btn">提交</button>
+                    <div class="form-group mobile-form-group">
+                        <button type="submit" class="submit-btn mobile-submit-btn">提交</button>
                     </div>
                 </form>
             </div>
@@ -285,50 +286,50 @@
     </section>
 
     <!-- 地圖部分 -->
-    <section class="map-section">
-        <div class="map-container">
+    <section class="map-section mobile-map-section">
+        <div class="map-container mobile-map-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.1234567890123!2d113.98765432109876!3d22.456789012345678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f8f8f8f8f8f8%3A0xf8f8f8f8f8f8f8f8!2sSummit%2C%203%20San%20Hop%20Lane%2C%20Tuen%20Mun%2C%20Hong%20Kong!5e0!3m2!1sen!2shk!4v1234567890123!5m2!1sen!2shk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Hygiene First Office Location"></iframe>
         </div>
     </section>
 
     <!-- 常見問題 -->
-    <section class="faq-section" style="display: none;">
+    <section class="faq-section mobile-faq-section" style="display: none;">
         <div class="container">
-            <h2>常見問題</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>預約流程是怎樣的？</h3>
+            <h2 class="faq-section-title">常見問題</h2>
+            <div class="faq-container mobile-faq-container">
+                <div class="faq-item mobile-faq-item">
+                    <div class="faq-question mobile-faq-question">
+                        <h3 class="faq-question-title">預約流程是怎樣的？</h3>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer mobile-faq-answer">
                         <p>您可以通過我們的網站、電話或電子郵件進行預約。選擇您需要的服務、日期和時間，我們的團隊將與您確認所有細節。</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>您提供的消毒服務安全嗎？</h3>
+                <div class="faq-item mobile-faq-item">
+                    <div class="faq-question mobile-faq-question">
+                        <h3 class="faq-question-title">您提供的消毒服務安全嗎？</h3>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer mobile-faq-answer">
                         <p>我們使用的所有產品和方法都是安全且環保的。我們的專業人員接受過專業培訓，確保所有操作符合安全標準。</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>您的服務可以針對特定需求客製化嗎？</h3>
+                <div class="faq-item mobile-faq-item">
+                    <div class="faq-question mobile-faq-question">
+                        <h3 class="faq-question-title">您的服務可以針對特定需求客製化嗎？</h3>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer mobile-faq-answer">
                         <p>是的，我們提供客製化服務以滿足您的特定需求。請與我們聯繫討論您的具體要求，我們將為您提供專屬解決方案。</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>服務需要多長時間？</h3>
+                <div class="faq-item mobile-faq-item">
+                    <div class="faq-question mobile-faq-question">
+                        <h3 class="faq-question-title">服務需要多長時間？</h3>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer mobile-faq-answer">
                         <p>服務時間取決於空間大小和選擇的服務類型。基礎清潔通常需要1-2小時，而深層清潔可能需要3-4小時或更長時間。</p>
                     </div>
                 </div>
@@ -337,11 +338,11 @@
     </section>
 
     <!-- 預約按鈕 -->
-    <section class="cta-section">
+    <section class="cta-section mobile-cta-section">
         <div class="container">
-            <h2>準備好預約我們的服務了嗎？</h2>
-            <p>點擊下方按鈕立即預約或查詢更多信息</p>
-            <button class="cta-button">立即預約</button>
+            <h2 class="cta-title">準備好預約我們的服務了嗎？</h2>
+            <p class="cta-description">點擊下方按鈕立即預約或查詢更多信息</p>
+            <button class="cta-button mobile-cta-button">立即預約</button>
         </div>
     </section>
 

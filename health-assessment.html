@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="enhanced-styles.css">
     <link rel="stylesheet" href="dropdown-fix.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -167,18 +168,18 @@
 
     <main id="main-content" >
         <!-- Hero Section -->
-        <section class="hero-section" style="background: white; padding: 4rem 0;">
+        <section class="hero-section mobile-health-hero" style="background: white; padding: 4rem 0;">
             <div class="container">
-                <div class="hero-content" style="display: flex; align-items: flex-start; gap: 4rem; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
-                    <div class="hero-text" style="flex: 1; padding-top: 3rem; min-width: 300px;">
-                        <h1 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2rem; color: #333; font-weight: bold; line-height: 1.2;">
+                <div class="hero-content mobile-health-hero-content" style="display: flex; align-items: flex-start; gap: 4rem; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
+                    <div class="hero-text mobile-health-hero-text" style="flex: 1; padding-top: 3rem; min-width: 300px;">
+                        <h1 class="mobile-health-hero-title" style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2rem; color: #333; font-weight: bold; line-height: 1.2;">
                             健康評估服務
                         </h1>
-                        <p style="font-size: 1.1rem; line-height: 1.6; color: #666; margin-bottom: 2rem;">
+                        <p class="mobile-health-hero-description" style="font-size: 1.1rem; line-height: 1.6; color: #666; margin-bottom: 2rem;">
                             Hygiene First 首衛團隊致力「衛」香港社區提供專業、個人化的上門護理評估服務，協助長者及有需要人士在熟悉的家中環境獲得最適合的護理與復康計劃。 Hygiene First 首衛 的服務以人為本，結合專業團隊的評估與個性化方案，確保每位服務對象都能安全、舒適地踏上康復之路。
                         </p>
                       
-                        <div class="benefits-list" style="margin-bottom: 2rem;">
+                        <div class="benefits-list mobile-health-benefits-list" style="margin-bottom: 2rem;">
                             <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
                                 <span style="color: #FF7A00; margin-right: 1.5rem; font-size: 1.2rem; margin-top: 0.2rem; font-weight: bold;">✓</span>
                                 <span style="font-size: 1.1rem; line-height: 1.4; color: #333;">到戶臨床評估服務</span>
@@ -200,9 +201,9 @@
                                 <span style="font-size: 1.1rem; line-height: 1.4; color: #333;">「衛」照顧者提供臨床護理培訓</span>
                             </div>
                         </div>
-                        <button class="btn btn--primary" style="background: #FF7A00; color: white; padding: 1.2rem 2.5rem; border: none; border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);">預約評估</button>
+                        <button class="btn btn--primary mobile-health-hero-btn" style="background: #FF7A00; color: white; padding: 1.2rem 2.5rem; border: none; border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);">預約評估</button>
                     </div>
-                    <div class="hero-image" style="flex: 1; text-align: center; padding-top: 0.5rem; min-width: 300px;">
+                    <div class="hero-image mobile-health-hero-image" style="flex: 1; text-align: center; padding-top: 0.5rem; min-width: 300px;">
                         <div style="position: relative; display: inline-block;">
                             <img src="images/untitled folder/Photo 1.jpg" alt="健康評估服務" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 4px dotted #FF7A00; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                             <div style="position: absolute; bottom: 25px; left: 25px; background: #fff3e0; padding: 1rem 1.2rem; border-radius: 25px; transform: rotate(-5deg); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
@@ -215,9 +216,9 @@
         </section>
 
         <!-- Statistics Section -->
-        <section class="stats-section" style="background: white; padding: 4rem 0;">
+        <section class="stats-section mobile-health-stats" style="background: white; padding: 4rem 0;">
             <div class="container">
-                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
+                <div class="stats-grid mobile-health-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
                     <div class="stat-item">
                         <h3 style="font-size: 2.5rem; color: #FF7A00; margin-bottom: 1rem; font-weight: bold;">20,000+</h3>
                         <p style="font-size: 1rem; color: #666;">平台上擁有超過20,000護理人員並<br>每日迅速增長</p>
@@ -239,13 +240,13 @@
         </section>
 
         <!-- Call to Action Section -->
-        <section class="cta-section" style="background: #f8f9fa; padding: 4rem 0;">
+        <section class="cta-section mobile-health-cta" style="background: #f8f9fa; padding: 4rem 0;">
             <div class="container">
-                <div class="cta-content" style="text-align: center;">
-                    <h2 style="font-size: 3rem; margin-bottom: 1rem; color: #333; font-weight: bold;">踏上優質照顧的第一步</h2>
-                    <h3 style="font-size: 2rem; color: #FF7A00; margin-bottom: 2rem;">開啟您的康復之路</h3>
+                <div class="cta-content mobile-health-cta-content" style="text-align: center;">
+                    <h2 class="mobile-health-cta-title" style="font-size: 3rem; margin-bottom: 1rem; color: #333; font-weight: bold;">踏上優質照顧的第一步</h2>
+                    <h3 class="mobile-health-cta-subtitle" style="font-size: 2rem; color: #FF7A00; margin-bottom: 2rem;">開啟您的康復之路</h3>
                     
-                    <div class="cta-elements" style="display: flex; justify-content: center; gap: 3rem; margin-top: 3rem; flex-wrap: wrap;">
+                    <div class="cta-elements mobile-health-cta-elements" style="display: flex; justify-content: center; gap: 3rem; margin-top: 3rem; flex-wrap: wrap;">
                         <div class="cta-element" style="text-align: center; min-width: 200px;">
                             <div class="element-icon" style="width: 60px; height: 60px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
                                 <i class="fas fa-calendar-check" style="color: white; font-size: 1.5rem;"></i>
@@ -272,11 +273,11 @@
         </section>
 
         <!-- 服務流程 Section -->
-        <section class="service-process" style="background: #f8f8f5; padding: 6rem 0;">
+        <section class="service-process mobile-health-service-process" style="background: #f8f8f5; padding: 6rem 0;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #333; font-weight: bold;">服務流程</h2>
+                <h2 class="mobile-health-service-process-title" style="text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #333; font-weight: bold;">服務流程</h2>
                 
-                <div class="process-steps" style="display: flex; justify-content: center; gap: 1.5rem; max-width: 1400px; margin: 0 auto; flex-wrap: nowrap;">
+                <div class="process-steps mobile-health-process-steps" style="display: flex; justify-content: center; gap: 1.5rem; max-width: 1400px; margin: 0 auto; flex-wrap: nowrap;">
                     <!-- Step 1 -->
                     <div class="process-step" style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; min-width: 250px;">
                         <div class="step-icon" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
@@ -325,11 +326,11 @@
         </section>
 
         <!-- 服務優勢 Section -->
-        <section class="service-advantages" style="background: white; padding: 6rem 0;">
+        <section class="service-advantages mobile-health-service-advantages" style="background: white; padding: 6rem 0;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #333; font-weight: bold;">服務優勢</h2>
+                <h2 class="mobile-health-service-advantages-title" style="text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #333; font-weight: bold;">服務優勢</h2>
                 
-                <div class="advantages-grid" style="display: flex; justify-content: center; gap: 3rem; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
+                <div class="advantages-grid mobile-health-advantages-grid" style="display: flex; justify-content: center; gap: 3rem; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
                     <!-- Advantage 1 -->
                     <div class="advantage-item" style="background: #f8f9fa; padding: 2.5rem; border-radius: 15px; border-left: 4px solid #FF7A00;">
                         <div class="advantage-icon" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
@@ -378,13 +379,13 @@
         </section>
 
         <!-- 預約服務流程 -->
-        <section class="booking-process" style="padding: 4rem 0; background: white;">
+        <section class="booking-process mobile-health-booking-process" style="padding: 4rem 0; background: white;">
             <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">預約服務流程</h2>
+                <div class="section-header mobile-health-booking-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="mobile-health-booking-title" style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">預約服務流程</h2>
                 </div>
                 
-                <div class="process-steps" style="display: flex; justify-content: center; gap: 2rem; max-width: 1600px; margin: 0 auto 3rem; flex-wrap: nowrap;">
+                <div class="process-steps mobile-health-booking-steps" style="display: flex; justify-content: center; gap: 2rem; max-width: 1600px; margin: 0 auto 3rem; flex-wrap: nowrap;">
                     <!-- Step 1 -->
                     <div class="process-step" style="text-align: left; background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); min-width: 300px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease;">
                         <div class="step-header" style="display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem;">
@@ -445,11 +446,11 @@
         </section>
 
         <!-- 適用對象 Section -->
-        <section class="target-audience" style="background: #f8f8f5; padding: 6rem 0;">
+        <section class="target-audience mobile-health-target-audience" style="background: #f8f8f5; padding: 6rem 0;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #333; font-weight: bold;">適用對象</h2>
+                <h2 class="mobile-health-target-audience-title" style="text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #333; font-weight: bold;">適用對象</h2>
                 
-                <div class="audience-grid" style="display: flex; justify-content: center; gap: 1.5rem; max-width: 1400px; margin: 0 auto; flex-wrap: nowrap;">
+                <div class="audience-grid mobile-health-audience-grid" style="display: flex; justify-content: center; gap: 1.5rem; max-width: 1400px; margin: 0 auto; flex-wrap: nowrap;">
                     <!-- Audience 1 -->
                     <div class="audience-item" style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; min-width: 200px;">
                         <div class="audience-icon" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
@@ -494,9 +495,9 @@
         </section>
 
         <!-- 專業人員 Section -->
-        <section class="professional-staff" style="background: white; padding: 6rem 0;">
+        <section class="professional-staff mobile-health-professional-staff" style="background: white; padding: 6rem 0;">
             <div class="container">
-                <h2 style="text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #333; font-weight: bold;">健康評估種類</h2>
+                <h2 class="mobile-health-professional-staff-title" style="text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #333; font-weight: bold;">健康評估種類</h2>
                 
                 <div class="staff-tabs" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
                     <button class="staff-tab active" data-tab="nurse" style="background: #FF7A00; color: white; padding: 1rem 2rem; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">

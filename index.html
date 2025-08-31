@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="enhanced-styles.css">
     <link rel="stylesheet" href="dropdown-fix.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -177,13 +178,13 @@
                 <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="Banner 11" />
                 <div class="banner-slider-overlay">
                   <div class="banner-slider-content">
-                    <h1> Hygiene First 首衛 <br> 一站式護理支援</h1>
-                    <h2>20,000+專業醫護人員配對服務</h2>
-                    <h2>Hygiene First 首衛 提供 24 小時醫護人員人手支援、上門護理、疫苗注射、過期針藥回收，用心服務每個家庭。</h2>
-                    <p>自2008年以來，我們能夠為不同需求的家庭和機構配對專業醫護人員，包括護士、醫生、物理治療師、保健員和其他醫療人員，提供優質的醫療護理服務，讓您在安全舒適的環境中得到適切的照顧。</p>
+                    <h1 class="banner-title">Hygiene First 首衛<br>一站式護理支援</h1>
+                    <h2 class="banner-subtitle">20,000+專業醫護人員配對服務</h2>
+                    <h2 class="banner-description">Hygiene First 首衛 提供 24 小時醫護人員人手支援、上門護理、疫苗注射、過期針藥回收，用心服務每個家庭。</h2>
+                    <p class="banner-text">自2008年以來，我們能夠為不同需求的家庭和機構配對專業醫護人員，包括護士、醫生、物理治療師、保健員和其他醫療人員，提供優質的醫療護理服務，讓您在安全舒適的環境中得到適切的照顧。</p>
                     <div class="cta-buttons">
-                        <a href="service.html" class="btn primary-btn">了解服務方案</a>
-                        <a href="https://wa.me/85295024162?text=您好！我想了解Hygiene First的收費詳情，請問可以為我提供更多資訊嗎？" class="btn secondary-btn" target="_blank" rel="noopener noreferrer">獲取收費詳情</a>
+                        <a href="service.html" class="btn primary-btn mobile-cta">了解服務方案</a>
+                        <a href="https://wa.me/85295024162?text=您好！我想了解Hygiene First的收費詳情，請問可以為我提供更多資訊嗎？" class="btn secondary-btn mobile-cta" target="_blank" rel="noopener noreferrer">獲取收費詳情</a>
                     </div>
                   </div>
                 </div>
@@ -193,7 +194,7 @@
         <section class="services">
             <div class="container">
                 <div class="service-cards">
-                    <div class="service-card animate-on-scroll">
+                    <div class="service-card animate-on-scroll mobile-service-card">
                         <div class="service-icon-hex">
                           <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
@@ -208,14 +209,14 @@
                           </svg>
                           <span class="service-icon-svg"><i class="fas fa-vials" aria-hidden="true"></i></span>
                         </div>
-                        <h3>醫療及化學廢物收集</h3>
-                        <ul>
+                        <h3 class="service-title">醫療及化學廢物收集</h3>
+                        <ul class="service-features">
                             <li>持牌醫療及化學廢物收集商</li>
                             <li>醫療廢物收集服務：針盒、針筒等</li>
                             <li>化學廢物收集服務：藥丸、藥水、危險藥物等</li>
                         </ul>
                     </div>
-                    <div class="service-card animate-on-scroll">
+                    <div class="service-card animate-on-scroll mobile-service-card">
                         <div class="service-icon-hex">
                           <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
@@ -230,8 +231,8 @@
                           </svg>
                           <span class="service-icon-svg"><i class="fas fa-home" aria-hidden="true"></i></span>
                         </div>
-                        <h3>24小時私家護理支援</h3>
-                        <ul>
+                        <h3 class="service-title">24小時私家護理支援</h3>
+                        <ul class="service-features">
                             <li>住院病人服務</li>
                             <li>手術後護理</li>
                             <li>轉院護送</li>
@@ -243,7 +244,7 @@
                         </ul>
                     </div>
     
-                    <div class="service-card animate-on-scroll">
+                    <div class="service-card animate-on-scroll mobile-service-card">
                         <div class="service-icon-hex">
                           <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
@@ -258,15 +259,14 @@
                           </svg>
                           <span class="service-icon-svg"><i class="fas fa-user-md" aria-hidden="true"></i></span>
                         </div>
-                        <h3>醫療機構人員支援</h3>
-                        <ul>
-                            <li>醫院/院舍/醫療機構醫護人手派送服務
-                                </li>
-                            <li> 承辦健康講座/社區活動服務</li>
+                        <h3 class="service-title">醫療機構人員支援</h3>
+                        <ul class="service-features">
+                            <li>醫院/院舍/醫療機構醫護人手派送服務</li>
+                            <li>承辦健康講座/社區活動服務</li>
                             <li>承辦外展疫苗接種服務</li>
                         </ul>
                     </div>
-                    <div class="service-card animate-on-scroll">
+                    <div class="service-card animate-on-scroll mobile-service-card">
                         <div class="service-icon-hex">
                           <svg width="108" height="108" viewBox="0 0 108 108" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <defs>
@@ -281,15 +281,12 @@
                           </svg>
                           <span class="service-icon-svg"><i class="fas fa-syringe" aria-hidden="true"></i></span>
                         </div>
-                        <h3>疫苗接種</h3>
-                        <ul>
-                            <li>流感疫苗接種                                </li>
-                            <li>新冠疫苗接種
-                            </li>
-                            <li>肝炎疫苗接種
-                            </li>
-                            <li>旅行疫苗接種
-                            </li>
+                        <h3 class="service-title">疫苗接種</h3>
+                        <ul class="service-features">
+                            <li>流感疫苗接種</li>
+                            <li>新冠疫苗接種</li>
+                            <li>肝炎疫苗接種</li>
+                            <li>旅行疫苗接種</li>
                             <li>其他疫苗接種</li>
                         </ul>
                     </div>
@@ -301,39 +298,39 @@
             <div class="container">
                 <h2>最新消息</h2>
                 <div class="news-grid">
-                    <article class="news-card animate-on-scroll">
+                    <article class="news-card animate-on-scroll mobile-news-card">
                         <div class="news-image">
                             <img src="https://static.wixstatic.com/media/f05284_fd43cdf9352540d1901bf16174ba7e3f~mv2.jpg/v1/fill/w_2636,h_1976,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_fd43cdf9352540d1901bf16174ba7e3f~mv2.jpg" alt="Hygiene First 首衛會員第一波優惠" loading="lazy">
                         </div>
                         <div class="news-content">
-                            <h3>Hygiene First 首衛會員第一波優惠</h3>
+                            <h3 class="news-title">Hygiene First 首衛會員第一波優惠</h3>
                             <p class="news-date">2025年1月20日</p>
                             <p class="news-excerpt">憑住 Hygiene First 首衛 會員證，您可以係與首衛合作嘅商舖享受獨家購物折扣優惠。折扣詳情即將公布，敬請期待！</p>
-                            <a href="news-detail-1.html" class="read-more">申請會員證</a>
+                            <a href="news-detail-1.html" class="read-more mobile-read-more">申請會員證</a>
                         </div>
                     </article>
                     
-                    <article class="news-card animate-on-scroll">
+                    <article class="news-card animate-on-scroll mobile-news-card">
                         <div class="news-image">
                             <img src="https://static.wixstatic.com/media/f05284_5e4ea99a99e24329b12d526c2f08f144~mv2.jpg/v1/fill/w_2526,h_1894,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_5e4ea99a99e24329b12d526c2f08f144~mv2.jpg" alt="免費驗血糖 首衛您的健康" loading="lazy">
                         </div>
                         <div class="news-content">
-                            <h3>免費驗血糖｜首衛您的健康</h3>
+                            <h3 class="news-title">免費驗血糖｜首衛您的健康</h3>
                             <p class="news-date">2025年1月15日</p>
                             <p class="news-excerpt">Hygiene First 首衛很榮幸獲邀成為「免費驗血糖 健康護航兵」活動的協辦單位，與社區攜手守護大家的健康！是次活動由首衛醫護團隊提供即場血糖檢測，協助各位及早發現風險、預防糖尿病！</p>
-                            <a href="news-detail-2.html" class="read-more">報名參加</a>
+                            <a href="news-detail-2.html" class="read-more mobile-read-more">報名參加</a>
                         </div>
                     </article>
                     
-                    <article class="news-card animate-on-scroll">
+                    <article class="news-card animate-on-scroll mobile-news-card">
                         <div class="news-image">
                             <img src="https://static.wixstatic.com/media/f05284_6820dc2e8d63406a8eae9f0c134ae00b~mv2.jpg/v1/fill/w_2065,h_1550,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_6820dc2e8d63406a8eae9f0c134ae00b~mv2.jpg" alt="推動殘疾人士共融活動" loading="lazy">
                         </div>
                         <div class="news-content">
-                            <h3>Hygiene First 首衛 很高興作為贊助機構，參與這項推動殘疾人士共融活動！</h3>
+                            <h3 class="news-title">Hygiene First 首衛 很高興作為贊助機構，參與這項推動殘疾人士共融活動！</h3>
                             <p class="news-date">2025年1月10日</p>
                             <p class="news-excerpt">活動係香港紅十字會瑪嘉烈戴麟趾學校順利舉行，更加邀請到殘奧金牌得主何宛淇女士作為活動大使分享。Hygiene First 首衛秉承「守護與關懷」（We Guard · We Care）的理念，致力推動社會共融。</p>
-                            <a href="news-detail-3.html" class="read-more">了解更多</a>
+                            <a href="news-detail-3.html" class="read-more mobile-read-more">了解更多</a>
                         </div>
                     </article>
                 </div>
@@ -382,10 +379,10 @@
             <div class="container">
                 <h2>為何選擇 Hygiene First 首衛</h2>
                 <div class="features">
-                    <div class="feature animate-on-scroll">
+                    <div class="feature animate-on-scroll mobile-feature">
                         <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
-                        <h3>全方位服務，一站式支援 </h3>
-                        <ul>
+                        <h3 class="feature-title">全方位服務，一站式支援</h3>
+                        <ul class="feature-list">
                             <li>私家護理服務</li>
                             <li>過期藥物處理</li>
                             <li>疫苗支援</li>
@@ -393,10 +390,10 @@
                             <li>靈活、到位的專業方案</li>
                         </ul>
                     </div>
-                    <div class="feature animate-on-scroll">
+                    <div class="feature animate-on-scroll mobile-feature">
                         <div class="feature-icon"><i class="fas fa-medal"></i></div>
-                        <h3>嚴謹培訓與監察制度</h3>
-                        <ul>
+                        <h3 class="feature-title">嚴謹培訓與監察制度</h3>
+                        <ul class="feature-list">
                             <li>醫護人員甄選</li>
                             <li>季度培訓</li>
                             <li>服務評分機制</li>
@@ -404,20 +401,20 @@
                             <li>專業與安心保證</li>
                         </ul>
                     </div>
-                    <div class="feature animate-on-scroll">
+                    <div class="feature animate-on-scroll mobile-feature">
                         <div class="feature-icon"><i class="fas fa-users"></i></div>
-                        <h3>30,000+頂尖醫護專業團隊</h3>
-                        <ul>
+                        <h3 class="feature-title">30,000+頂尖醫護專業團隊</h3>
+                        <ul class="feature-list">
                             <li>醫療服務團隊網絡</li>
                             <li>覆蓋18個區</li>
                             <li>經驗豐富的專業醫護人員</li>
                             <li>隨時隨地提供服務</li>
                         </ul>
                     </div>
-                    <div class="feature animate-on-scroll">
+                    <div class="feature animate-on-scroll mobile-feature">
                         <div class="feature-icon"><i class="fas fa-clock"></i></div>
-                        <h3>全年24/7全天候支援</h3>
-                        <ul>
+                        <h3 class="feature-title">全年24/7全天候支援</h3>
+                        <ul class="feature-list">
                             <li>一年365天服務</li>
                             <li>24小時全天候支援</li>
                             <li>緊急情況應對</li>
@@ -448,14 +445,14 @@
         <section class="testimonials">
             <div class="container">
                 <div class="testimonial-slider">
-                    <div class="testimonial animate-on-scroll">
-                        <p>"Hygiene First 首衛 嘅護理員真係超級細心，連我鍾意飲咩茶、睇咩節目都記得，真係好感動！ 佢哋嘅義工隊仲係上年歲晚時黎我們家裏探訪，送左非常實用嘅福袋俾我哋，非常溫暖。"</p>
+                    <div class="testimonial animate-on-scroll mobile-testimonial">
+                        <p class="testimonial-text">"Hygiene First 首衛 嘅護理員真係超級細心，連我鍾意飲咩茶、睇咩節目都記得，真係好感動！ 佢哋嘅義工隊仲係上年歲晚時黎我們家裏探訪，送左非常實用嘅福袋俾我哋，非常溫暖。"</p>
                         <div class="testimonial-header">
                             <div class="testimonial-avatar">
                                 <img src="images/HomePage/shutterstock_2285428931.jpg" alt="陳先生" loading="lazy">
                             </div>
                             <div class="testimonial-info">
-                                <h4>陳先生</h4>
+                                <h4 class="testimonial-name">陳先生</h4>
                                 <div class="star-rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -466,14 +463,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial animate-on-scroll">
-                        <p>"在疫情高峰期，我們找到持牌的Hygiene First為我們收集醫療廢物。他們的團隊整齊有禮，準時到達，我們會繼續 和Hygiene First長期合作。"</p>
+                    <div class="testimonial animate-on-scroll mobile-testimonial">
+                        <p class="testimonial-text">"在疫情高峰期，我們找到持牌的Hygiene First為我們收集醫療廢物。他們的團隊整齊有禮，準時到達，我們會繼續 和Hygiene First長期合作。"</p>
                         <div class="testimonial-header">
                             <div class="testimonial-avatar">
                                 <img src="images/HomePage/shutterstock_1842022177.jpg" alt="姚先生" loading="lazy">
                             </div>
                             <div class="testimonial-info">
-                                <h4>姚先生</h4>
+                                <h4 class="testimonial-name">姚先生</h4>
                                 <div class="star-rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -484,14 +481,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial animate-on-scroll">
-                        <p>"Hygiene First 首衛 為我地家中長者提供專業的上門物理治療服務。每當我地對奶奶的身體狀況有疑問時，派黎嘅治療師，總能迅速且詳細地解答，幫助我們減輕憂慮，而且奶奶嘅身體狀況明顯有改善，非常值得推薦！"</p>
+                    <div class="testimonial animate-on-scroll mobile-testimonial">
+                        <p class="testimonial-text">"Hygiene First 首衛 為我地家中長者提供專業的上門物理治療服務。每當我地對奶奶的身體狀況有疑問時，派黎嘅治療師，總能迅速且詳細地解答，幫助我們減輕憂慮，而且奶奶嘅身體狀況明顯有改善，非常值得推薦！"</p>
                         <div class="testimonial-header">
                             <div class="testimonial-avatar">
                                 <img src="images/HomePage/shutterstock_2413751683.jpg" alt="黃小姐" loading="lazy">
                             </div>
                             <div class="testimonial-info">
-                                <h4>黃小姐</h4>
+                                <h4 class="testimonial-name">黃小姐</h4>
                                 <div class="star-rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -502,14 +499,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial animate-on-scroll">
-                        <p>"我哋第一次接觸Hygiene First 首衛嘅時候係岩岩第一波疫情。佢哋嘅醫護人員好好，為我哋嘅啱啱出世嘅孫女提 供上門檢測服務， 8小時後就有結果了！ 價錢又優惠。直至而家，我哋都有繼續用緊Hygiene First首衛家務助理服 務！"</p>
+                    <div class="testimonial animate-on-scroll mobile-testimonial">
+                        <p class="testimonial-text">"我哋第一次接觸Hygiene First 首衛嘅時候係岩岩第一波疫情。佢哋嘅醫護人員好好，為我哋嘅啱啱出世嘅孫女提 供上門檢測服務， 8小時後就有結果了！ 價錢又優惠。直至而家，我哋都有繼續用緊Hygiene First首衛家務助理服 務！"</p>
                         <div class="testimonial-header">
                             <div class="testimonial-avatar">
                                 <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="吳女士" loading="lazy">
                             </div>
                             <div class="testimonial-info">
-                                <h4>吳女士</h4>
+                                <h4 class="testimonial-name">吳女士</h4>
                                 <div class="star-rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -539,15 +536,15 @@
 
         <section class="target-audiences">
             <div class="container">
-                <div class="audience animate-on-scroll">
-                    <h3>企業和機構</h3>
-                    <p>想查詢企業服務？</p>
-                                            <a href="contact.html" class="btn outline-btn">企業查詢</a>
+                <div class="audience animate-on-scroll mobile-audience">
+                    <h3 class="audience-title">企業和機構</h3>
+                    <p class="audience-description">想查詢企業服務？</p>
+                    <a href="contact.html" class="btn outline-btn mobile-btn">企業查詢</a>
                 </div>
-                <div class="audience animate-on-scroll">
-                    <h3>加入我們</h3>
-                    <p>想加入我們的清潔團隊？</p>
-                    <a href="member-account.html" class="btn outline-btn">會員登記</a>
+                <div class="audience animate-on-scroll mobile-audience">
+                    <h3 class="audience-title">加入我們</h3>
+                    <p class="audience-description">想加入我們的清潔團隊？</p>
+                    <a href="member-account.html" class="btn outline-btn mobile-btn">會員登記</a>
                 </div>
             </div>
         </section>

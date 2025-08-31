@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="enhanced-styles.css">
     <link rel="stylesheet" href="dropdown-fix.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -734,13 +735,13 @@
 
     <main id="main-content" >
         <!-- Banner Image -->
-                    <div class="full-width-banner" style="position: relative;">
+                    <div class="full-width-banner mobile-service-banner" style="position: relative;">
                 <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="我們的服務 Banner" style="width:100%;height:auto;display:block;">
-                <h1 style="position: absolute; top: 68%; left: 50%; transform: translate(-50%, 0); color: #fff; font-size: 2.8rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.5); margin: 0; padding: 0; letter-spacing: 0.1em;">居家護理服務</h1>
+                <h1 class="mobile-service-banner-title" style="position: absolute; top: 68%; left: 50%; transform: translate(-50%, 0); color: #fff; font-size: 2.8rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.5); margin: 0; padding: 0; letter-spacing: 0.1em;">居家護理服務</h1>
             </div>
 
         <!-- 服務分類 -->
-        <section class="service-categories" style="background: linear-gradient(135deg, var(--primary-color) 0%, #ff8c1a 15%, var(--secondary-color) 30%, #ffb366 45%, #ffffff 60%, #fff5f0 75%, #ffe6d9 90%, #ffd4b3 100%); padding: 4rem 0; position: relative; overflow: hidden;">
+        <section class="service-categories mobile-service-categories" style="background: linear-gradient(135deg, var(--primary-color) 0%, #ff8c1a 15%, var(--secondary-color) 30%, #ffb366 45%, #ffffff 60%, #fff5f0 75%, #ffe6d9 90%, #ffd4b3 100%); padding: 4rem 0; position: relative; overflow: hidden;">
             <!-- 星星裝飾背景 -->
             <div style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); opacity: 0.08; z-index: 1; text-align: center;">
                 <i class="fas fa-star" style="color: #FFD700; font-size: 3rem; margin: 0 10px;"></i>
@@ -789,35 +790,35 @@
                 </div>
                 
                 <div class="service-content active" id="residential">
-                    <div class="service-grid">
-                        <div class="service-card">
-                            <div class="service-card__icon">
+                    <div class="service-grid mobile-service-grid">
+                        <div class="service-card mobile-service-card">
+                            <div class="service-card__icon mobile-service-icon">
                                 <i class="fas fa-home"></i>
                             </div>
-                                                            <div class="service-card__content">
-                                <h3>基本照護方案</h3>
+                                                            <div class="service-card__content mobile-service-content">
+                                <h3 class="mobile-service-title">基本照護方案</h3>
                                 <p>全面照顧您的日常生活需求，包括生活協助、基本健康監測和個人衛生護理。適合需要輕度支援的長者。</p>
-                                <ul class="service-features">
+                                <ul class="service-features mobile-service-features">
                                     <li>基本健康檢查</li>
                                     <li>個人衛生照護</li>
                                     <li>日常生活協助</li>
                                     <li>簡單藥物提醒</li>
                                     <li>陪伴服務</li>
                                 </ul>
-                                <div class="service-price">
+                                <div class="service-price mobile-service-price">
                                     <span>價格</span>
                                     <h4>HK$ 2,800</h4>
                                 </div>
-                                <button class="btn btn--secondary payment-btn" onclick="openPaymentModal('基本照護方案', 2800)">立即購買</button>
+                                <button class="btn btn--secondary payment-btn mobile-service-btn" onclick="openPaymentModal('基本照護方案', 2800)">立即購買</button>
                             </div>
                         </div>
                         
-                        <div class="service-card">
-                            <div class="service-card__icon">
+                        <div class="service-card mobile-service-card">
+                            <div class="service-card__icon mobile-service-icon">
                                 <i class="fas fa-user-nurse"></i>
                             </div>
-                            <div class="service-card__content">
-                                <h3>標準護理方案</h3>
+                            <div class="service-card__content mobile-service-content">
+                                <h3 class="mobile-service-title">標準護理方案</h3>
                                 <p>全方位的居家護理服務，由專業護理人員提供，適合需要更多醫療照護的患者。</p>
                                 <ul class="service-features">
                                     <li>所有基本護理項目</li>
@@ -834,13 +835,13 @@
                             </div>
                         </div>
                         
-                        <div class="service-card" style="border: 3px solid #FFD700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); position: relative; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);">
+                        <div class="service-card mobile-service-card" style="border: 3px solid #FFD700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); position: relative; background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);">
                           
-                            <div class="service-card__icon">
+                            <div class="service-card__icon mobile-service-icon">
                                 <i class="fas fa-hand-holding-medical"></i>
                             </div>
-                            <div class="service-card__content">
-                                <h3 style="display: flex; align-items: center; justify-content: center; color: #2c3e50; position: relative; z-index: 99;">
+                            <div class="service-card__content mobile-service-content">
+                                <h3 class="mobile-service-title" style="display: flex; align-items: center; justify-content: center; color: #2c3e50; position: relative; z-index: 99;">
                                     <i class="fas fa-star" style="color: #FFD700; font-size: 1.2rem; margin-right: 8px; z-index: 99;"></i>
                                     鑽石護理方案
                                     <i class="fas fa-star" style="color: #FFD700; font-size: 1.2rem; margin-left: 8px; z-index: 99;"></i>
@@ -868,13 +869,13 @@
         </section>
 
         <!-- 客製化服務 -->
-        <section class="custom-services">
+        <section class="custom-services mobile-custom-services">
             <div class="container">
-                <div class="custom-services__content">
-                    <div class="custom-services__text">
-                        <h2>尋找客製化醫療護理解決方案？</h2>
+                <div class="custom-services__content mobile-custom-services-content">
+                    <div class="custom-services__text mobile-custom-services-text">
+                        <h2 class="mobile-custom-services-title">尋找客製化醫療護理解決方案？</h2>
                         <p>Hygiene First 首衛知道每位客戶的需求都是獨一無二的。我們的專家團隊可以為您量身打造合適的護理計劃，無論是特殊疾病照護、復康支援，或是長期照顧，我們都能提供靈活且專業的服務方案。</p>
-                        <ul class="custom-services__list">
+                        <ul class="custom-services__list mobile-custom-services-list">
                             <li><i class="fas fa-check"></i> 根據您的需要與預算靈活調整
                             </li>
                             <li><i class="fas fa-check"></i> 提供針對特殊疾病的專業護理
@@ -885,7 +886,7 @@
 
                             <li><i class="fas fa-check"></i> 讓專業與關懷走進您的生活，為您與家人帶來安心。</li>
                         </ul>
-                        <a href="contact.html" class="btn btn--primary">聯絡我們討論您的需求</a>
+                        <a href="contact.html" class="btn btn--primary mobile-custom-services-btn">聯絡我們討論您的需求</a>
                     </div>
                     <div class="custom-services__image">
                         <img src="images/untitled folder/Photo 46.jpg" alt="客製化醫療護理服務 - 專業醫護團隊為您提供個人化醫療護理解決方案">
@@ -895,14 +896,14 @@
         </section>
 
         <!-- 行動呼籲 -->
-        <section class="cta">
+        <section class="cta mobile-cta-section">
             <div class="container">
-                <div class="cta__content">
-                    <h2>準備好體驗專業的醫療護理服務了嗎？</h2>
+                <div class="cta__content mobile-cta-content">
+                    <h2 class="mobile-cta-title">準備好體驗專業的醫療護理服務了嗎？</h2>
                     <p>立即預約，讓 Hygiene First 首衛 為您提供貼心、可靠的專業照護。我們的團隊隨時準備好，以誠信與關懷，為您與家人帶來安心的醫療體驗。</p>
-                    <div class="cta__buttons">
-                        <a href="contact-zh.html" class="btn btn--primary">立即預約</a>
-                        <a href="tel:+85228278889" class="btn btn--primary">撥打電話 2827 8889</a>
+                    <div class="cta__buttons mobile-cta-buttons">
+                        <a href="contact-zh.html" class="btn btn--primary mobile-cta-btn">立即預約</a>
+                        <a href="tel:+85228278889" class="btn btn--primary mobile-cta-btn">撥打電話 2827 8889</a>
                     </div>
                 </div>
             </div>
