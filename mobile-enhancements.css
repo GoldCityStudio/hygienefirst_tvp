@@ -2414,3 +2414,599 @@
         }
     }
 }
+    /* ===== ELDERLY CARE PAGE MOBILE ENHANCEMENTS ===== */
+    
+    /* Mobile Banner Content */
+    .banner-content-mobile {
+        display: block !important;
+        background: linear-gradient(135deg, #FF7A00, #E56717) !important;
+        padding: 40px 20px !important;
+        margin: 0 !important;
+        text-align: center !important;
+    }
+    
+    .mobile-banner-title {
+        font-size: 2.2rem !important;
+        color: #fff !important;
+        font-weight: 700 !important;
+        margin-bottom: 0.5rem !important;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    }
+    
+    .mobile-banner-subtitle {
+        font-size: 1.4rem !important;
+        color: rgba(255,255,255,0.9) !important;
+        font-weight: 500 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-banner-description {
+        font-size: 1rem !important;
+        color: rgba(255,255,255,0.8) !important;
+        line-height: 1.6 !important;
+        margin-bottom: 2rem !important;
+        max-width: 600px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    .mobile-banner-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+    }
+    
+    .mobile-banner-btn {
+        display: inline-block !important;
+        padding: 1rem 2rem !important;
+        border-radius: 50px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .mobile-banner-btn.primary {
+        background: #fff !important;
+        color: #FF7A00 !important;
+        border: 2px solid #fff !important;
+    }
+    
+    .mobile-banner-btn.primary:hover {
+        background: transparent !important;
+        color: #fff !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 20px rgba(255,255,255,0.3) !important;
+    }
+    
+    .mobile-banner-btn.secondary {
+        background: transparent !important;
+        color: #fff !important;
+        border: 2px solid #fff !important;
+    }
+    
+    .mobile-banner-btn.secondary:hover {
+        background: #fff !important;
+        color: #FF7A00 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 20px rgba(255,255,255,0.3) !important;
+    }
+    
+    /* Mobile Section Headers */
+    .mobile-section-header {
+        text-align: center !important;
+        margin-bottom: 3rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-section-title {
+        font-size: 2rem !important;
+        color: #333 !important;
+        font-weight: 700 !important;
+        margin-bottom: 1rem !important;
+        position: relative !important;
+    }
+    
+    .mobile-section-title::after {
+        content: '' !important;
+        position: absolute !important;
+        bottom: -8px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 60px !important;
+        height: 3px !important;
+        background: linear-gradient(90deg, #FF7A00, #E56717) !important;
+        border-radius: 2px !important;
+    }
+    
+    .mobile-section-description {
+        font-size: 1.1rem !important;
+        color: #666 !important;
+        line-height: 1.6 !important;
+        max-width: 600px !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Mobile Service Scope Section */
+    .mobile-elderly-service-scope {
+        padding: 3rem 0 !important;
+        background: #f8f9fa !important;
+    }
+    
+    .mobile-elderly-service-scope .service-categories {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-elderly-service-scope .service-category {
+        background: #fff !important;
+        border-radius: 20px !important;
+        padding: 2rem 1.5rem !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+        border: 1px solid rgba(255, 122, 0, 0.1) !important;
+        transition: all 0.3s ease !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    .mobile-elderly-service-scope .service-category:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+    }
+    
+    .mobile-elderly-service-scope .service-header {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-elderly-service-scope .service-header h3 {
+        font-size: 1.4rem !important;
+        color: #333 !important;
+        font-weight: 700 !important;
+        margin: 0 !important;
+        margin-left: 1rem !important;
+    }
+    
+    .mobile-elderly-service-scope ul {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .mobile-elderly-service-scope li {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 1rem !important;
+        padding: 0.8rem !important;
+        background: #f8f9fa !important;
+        border-radius: 10px !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .mobile-elderly-service-scope li:last-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .mobile-elderly-service-scope li span {
+        font-size: 1rem !important;
+        color: #333 !important;
+        font-weight: 500 !important;
+        margin-left: 1rem !important;
+    }
+    
+    /* Mobile Service Process Section */
+    .mobile-elderly-service-process {
+        padding: 3rem 0 !important;
+        background: #fff !important;
+    }
+    
+    .mobile-elderly-process-steps {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-elderly-process-steps .process-step-card {
+        background: #fff !important;
+        border-radius: 20px !important;
+        padding: 2rem 1.5rem !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+        border: 1px solid rgba(255, 122, 0, 0.1) !important;
+        transition: all 0.3s ease !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    .mobile-elderly-process-steps .process-step-card:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+    }
+    
+    .mobile-elderly-process-steps .card-header {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 1rem !important;
+        margin-top: 0.5rem !important;
+    }
+    
+    .mobile-elderly-process-steps .step-title-section h3 {
+        font-size: 1.3rem !important;
+        color: #333 !important;
+        margin: 0 !important;
+        font-weight: 600 !important;
+        line-height: 1.2 !important;
+        margin-left: 0.75rem !important;
+    }
+    
+    .mobile-elderly-process-steps p {
+        font-size: 1rem !important;
+        color: #666 !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+    }
+    
+    /* Mobile Booking Process Section */
+    .mobile-elderly-booking-process {
+        padding: 3rem 0 !important;
+        background: #f8f9fa !important;
+    }
+    
+    .mobile-elderly-booking-process .booking-steps {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-elderly-booking-process .booking-step {
+        background: #fff !important;
+        border-radius: 20px !important;
+        padding: 2rem 1.5rem !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+        border: 1px solid rgba(255, 122, 0, 0.1) !important;
+        transition: all 0.3s ease !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    .mobile-elderly-booking-process .booking-step:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+    }
+    
+    .mobile-elderly-booking-process .step-header {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-elderly-booking-process .step-header h3 {
+        font-size: 1.3rem !important;
+        color: #333 !important;
+        margin: 0 !important;
+        font-weight: 600 !important;
+        margin-left: 1rem !important;
+    }
+    
+    .mobile-elderly-booking-process .step-content {
+        font-size: 1rem !important;
+        color: #666 !important;
+        line-height: 1.6 !important;
+    }
+    
+    /* Mobile Target Audience Section */
+    .mobile-elderly-target-audience {
+        padding: 3rem 0 !important;
+        background: #fff !important;
+    }
+    
+    .mobile-elderly-target-audience .target-groups {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-elderly-target-audience .target-group {
+        background: #fff !important;
+        border-radius: 20px !important;
+        padding: 2rem 1.5rem !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+        border: 1px solid rgba(255, 122, 0, 0.1) !important;
+        transition: all 0.3s ease !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    .mobile-elderly-target-audience .target-group:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+    }
+    
+    .mobile-elderly-target-audience .group-header {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-elderly-target-audience .group-header h3 {
+        font-size: 1.4rem !important;
+        color: #333 !important;
+        font-weight: 700 !important;
+        margin: 0 !important;
+        margin-left: 1rem !important;
+    }
+    
+    .mobile-elderly-target-audience .group-description {
+        font-size: 1rem !important;
+        color: #666 !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-elderly-target-audience .group-features {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .mobile-elderly-target-audience .group-features li {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 0.8rem !important;
+        padding: 0.6rem !important;
+        background: #f8f9fa !important;
+        border-radius: 8px !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .mobile-elderly-target-audience .group-features li:last-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .mobile-elderly-target-audience .group-features li span {
+        font-size: 0.95rem !important;
+        color: #333 !important;
+        font-weight: 500 !important;
+        margin-left: 0.8rem !important;
+    }
+    
+    /* Mobile Family First Care Section */
+    .mobile-elderly-family-care {
+        padding: 3rem 0 !important;
+        background: #f8f9fa !important;
+    }
+    
+    .mobile-elderly-family-care .family-care-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-elderly-family-care .care-card {
+        background: #fff !important;
+        border-radius: 20px !important;
+        padding: 2rem 1.5rem !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+        border: 1px solid rgba(255, 122, 0, 0.1) !important;
+        transition: all 0.3s ease !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    
+    .mobile-elderly-family-care .care-card:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15) !important;
+    }
+    
+    .mobile-elderly-family-care .care-header {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-elderly-family-care .care-header h3 {
+        font-size: 1.4rem !important;
+        color: #333 !important;
+        font-weight: 700 !important;
+        margin: 0 !important;
+        margin-left: 1rem !important;
+    }
+    
+    .mobile-elderly-family-care .care-description {
+        font-size: 1rem !important;
+        color: #666 !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .mobile-elderly-family-care .care-features {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .mobile-elderly-family-care .care-features li {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 0.8rem !important;
+        padding: 0.6rem !important;
+        background: #f8f9fa !important;
+        border-radius: 8px !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .mobile-elderly-family-care .care-features li:last-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .mobile-elderly-family-care .care-features li span {
+        font-size: 0.95rem !important;
+        color: #333 !important;
+        font-weight: 500 !important;
+        margin-left: 0.8rem !important;
+    }
+    
+    /* Mobile FAQ Section */
+    .mobile-elderly-faq {
+        padding: 3rem 0 !important;
+        background: #fff !important;
+    }
+    
+    .mobile-elderly-faq .faq-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-elderly-faq .faq-item {
+        background: #fff !important;
+        border-radius: 15px !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+        border: 1px solid #e9ecef !important;
+        overflow: hidden !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .mobile-elderly-faq .faq-item:hover {
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12) !important;
+        transform: translateY(-2px) !important;
+    }
+    
+    .mobile-elderly-faq .faq-question {
+        padding: 1.5rem !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background: #f8f9fa !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .mobile-elderly-faq .faq-question:hover {
+        background: #e9ecef !important;
+    }
+    
+    .mobile-elderly-faq .faq-question h3 {
+        font-size: 1.1rem !important;
+        color: #333 !important;
+        font-weight: 600 !important;
+        margin: 0 !important;
+        flex: 1 !important;
+    }
+    
+    .mobile-elderly-faq .faq-icon {
+        width: 24px !important;
+        height: 24px !important;
+        background: #FF7A00 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: #fff !important;
+        font-size: 0.8rem !important;
+        transition: all 0.3s ease !important;
+        flex-shrink: 0 !important;
+        margin-left: 1rem !important;
+    }
+    
+    .mobile-elderly-faq .faq-answer {
+        padding: 0 1.5rem 1.5rem !important;
+        display: none !important;
+    }
+    
+    .mobile-elderly-faq .faq-answer.active {
+        display: block !important;
+    }
+    
+    .mobile-elderly-faq .faq-answer-text {
+        font-size: 1rem !important;
+        color: #666 !important;
+        line-height: 1.6 !important;
+        margin: 0 !important;
+    }
+    
+    /* Mobile Final CTA Section */
+    .mobile-elderly-final-cta {
+        padding: 3rem 0 !important;
+        background: linear-gradient(135deg, #FF7A00, #E56717) !important;
+        text-align: center !important;
+    }
+    
+    .mobile-elderly-final-cta .cta-content {
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-elderly-final-cta h3 {
+        font-size: 2rem !important;
+        color: #fff !important;
+        font-weight: 700 !important;
+        margin-bottom: 1rem !important;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    }
+    
+    .mobile-elderly-final-cta p {
+        font-size: 1.1rem !important;
+        color: rgba(255,255,255,0.9) !important;
+        margin-bottom: 2rem !important;
+        line-height: 1.6 !important;
+    }
+    
+    .mobile-elderly-final-cta .cta-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+    }
+    
+    .mobile-elderly-final-cta .cta-btn {
+        display: inline-block !important;
+        padding: 1rem 2rem !important;
+        border-radius: 50px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .mobile-elderly-final-cta .cta-btn.primary {
+        background: #fff !important;
+        color: #FF7A00 !important;
+        border: 2px solid #fff !important;
+    }
+    
+    .mobile-elderly-final-cta .cta-btn.primary:hover {
+        background: transparent !important;
+        color: #fff !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 20px rgba(255,255,255,0.3) !important;
+    }
+    
+    .mobile-elderly-final-cta .cta-btn.secondary {
+        background: transparent !important;
+        color: #fff !important;
+        border: 2px solid #fff !important;
+    }
+    
+    .mobile-elderly-final-cta .cta-btn.secondary:hover {
+        background: #fff !important;
+        color: #FF7A00 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 20px rgba(255,255,255,0.3) !important;
+    }
+}

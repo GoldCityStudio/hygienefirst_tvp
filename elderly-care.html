@@ -168,8 +168,21 @@
     </div>
 
     <main id="main-content" >
+        <!-- Mobile Banner Content -->
+        <section class="banner-content-mobile mobile-only">
+            <div class="container">
+                <h1 class="mobile-banner-title">長者照顧服務</h1>
+                <h2 class="mobile-banner-subtitle">專業護理 · 貼心照顧</h2>
+                <p class="mobile-banner-description">Hygiene First 首衛團隊專注為長者及長期病患者提供個人化、專業且靈活的上門照顧服務，讓他們在熟悉的家中環境獲得全面支援。</p>
+                <div class="mobile-banner-buttons">
+                    <a href="#contact-form" class="mobile-banner-btn primary">進行免費諮詢</a>
+                    <a href="#contact-form" class="mobile-banner-btn secondary">立即預約</a>
+                </div>
+            </div>
+        </section>
+
         <!-- Hero Section with Background Image and Overlay -->
-        <section class="hero-section mobile-elderly-hero" style="position: relative; background: linear-gradient(rgba(255, 122, 0, 0.8), rgba(230, 103, 23, 0.8)), url('images/untitled folder/Photo 47.jpg') center/cover; color: white; padding: 4rem 0; min-height: 600px; display: flex; align-items: center;">
+        <section class="hero-section mobile-elderly-hero desktop-only" style="position: relative; background: linear-gradient(rgba(255, 122, 0, 0.8), rgba(230, 103, 23, 0.8)), url('images/untitled folder/Photo 47.jpg') center/cover; color: white; padding: 4rem 0; min-height: 600px; display: flex; align-items: center;">
             <div class="container" style="position: relative; z-index: 2;">
                 <div class="hero-content mobile-elderly-hero-content" style="display: flex; justify-content: flex-end; align-items: center;">
                     <!-- Overlay content positioned on the right -->
@@ -243,12 +256,9 @@
         <!-- Service Scope Section -->
         <section class="service-scope mobile-elderly-service-scope" style="padding: 6rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
             <div class="container">
-                <div class="section-header mobile-elderly-service-scope-header" style="text-align: center; margin-bottom: 4rem;">
-                    <div style="display: inline-block; background: linear-gradient(135deg, #FF7A00, #E56717); padding: 0.5rem 2rem; border-radius: 25px; margin-bottom: 1.5rem;">
-                        <span style="color: white; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">我們的服務</span>
-                    </div>
-                    <h2 class="mobile-elderly-service-scope-title" style="font-size: 3rem; margin-bottom: 1.5rem; color: #333; font-weight: 700; line-height: 1.2;">專業長者照顧服務</h2>
-                    <p class="mobile-elderly-service-scope-description" style="font-size: 1.3rem; color: #666; max-width: 900px; margin: 0 auto; line-height: 1.8; font-weight: 400;"> Hygiene First 首衛團隊的護理人員均受過專業訓練並持有相關證書，確保提供優質妥善的照顧。</p>
+                <div class="section-header mobile-section-header">
+                    <h2 class="mobile-section-title">專業長者照顧服務</h2>
+                    <p class="mobile-section-description">Hygiene First 首衛團隊的護理人員均受過專業訓練並持有相關證書，確保提供優質妥善的照顧。</p>
                 </div>
                 
                 <div class="services-grid mobile-elderly-services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2.5rem; max-width: 1400px; margin: 0 auto;">
@@ -460,9 +470,9 @@
         <!-- 服務流程 Section -->
         <section class="service-process-section mobile-elderly-service-process" style="padding: 4rem 0; background: white;">
             <div class="container">
-                <div class="section-header mobile-elderly-service-process-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 class="mobile-elderly-service-process-title" style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">服務流程</h2>
-                    <p class="mobile-elderly-service-process-description" style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;"> Hygiene First 首衛團隊提供專業且完整的長者照顧服務流程，確保每位長者都能獲得最優質的照顧。</p>
+                <div class="section-header mobile-section-header">
+                    <h2 class="mobile-section-title">服務流程</h2>
+                    <p class="mobile-section-description">Hygiene First 首衛團隊提供專業且完整的長者照顧服務流程，確保每位長者都能獲得最優質的照顧。</p>
                 </div>
                 
                 <div class="process-steps mobile-elderly-process-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1400px; margin: 3rem auto;">
@@ -544,8 +554,9 @@
         <!-- 預約服務流程 -->
         <section class="booking-process mobile-elderly-booking-process" style="padding: 4rem 0; background: white;">
             <div class="container">
-                <div class="section-header mobile-elderly-booking-process-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 class="mobile-elderly-booking-process-title" style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">預約服務流程</h2>
+                <div class="section-header mobile-section-header">
+                    <h2 class="mobile-section-title">預約服務流程</h2>
+                    <p class="mobile-section-description">簡單四步驟，輕鬆預約專業長者照顧服務</p>
                 </div>
                 
                 <div class="process-steps mobile-elderly-booking-process-steps" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto 3rem;">
@@ -611,12 +622,9 @@
         <!-- Target Audience Section -->
         <section class="target-audience mobile-elderly-target-audience" style="padding: 6rem 0; background: white;">
             <div class="container">
-                <div class="section-header mobile-elderly-target-audience-header" style="text-align: center; margin-bottom: 4rem;">
-                    <div style="display: inline-block; background: linear-gradient(135deg, #FF7A00, #E56717); padding: 0.5rem 2rem; border-radius: 25px; margin-bottom: 1.5rem;">
-                        <span style="color: white; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">適用對象</span>
-                    </div>
-                    <h2 class="mobile-elderly-target-audience-title" style="font-size: 3rem; margin-bottom: 1.5rem; color: #333; font-weight: 700; line-height: 1.2;">誰需要 Hygiene First 首衛 的服務？</h2>
-                    <p class="mobile-elderly-target-audience-description" style="font-size: 1.3rem; color: #666; max-width: 900px; margin: 0 auto; line-height: 1.8; font-weight: 400;">我們的專業護理服務適合以下人士，為他們提供貼心、專業的照顧支援。</p>
+                <div class="section-header mobile-section-header">
+                    <h2 class="mobile-section-title">誰需要 Hygiene First 首衛 的服務？</h2>
+                    <p class="mobile-section-description">我們的專業護理服務適合以下人士，為他們提供貼心、專業的照顧支援。</p>
                 </div>
                 
                 <div class="audience-grid mobile-elderly-audience-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
@@ -684,12 +692,9 @@
         <!-- Family First Care Section -->
         <section class="family-first-care mobile-elderly-family-first-care" style="padding: 6rem 0; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
             <div class="container">
-                <div class="section-header mobile-elderly-family-first-care-header" style="text-align: center; margin-bottom: 5rem;">
-                    <div style="display: inline-block; background: linear-gradient(135deg, #FF7A00, #E56717); padding: 0.5rem 2rem; border-radius: 25px; margin-bottom: 1.5rem;">
-                        <span style="color: white; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">  Hygiene First 首衛團隊的承諾</span>
-                    </div>
-                    <h2 class="mobile-elderly-family-first-care-title" style="font-size: 3rem; margin-bottom: 1.5rem; color: #333; font-weight: 700; line-height: 1.2;">以家庭為先，每一步都用心呵護</h2>
-                    <p class="mobile-elderly-family-first-care-description" style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">  Hygiene First 首衛團隊相信每個家庭都值得最好的照顧，讓我們一起為您的家人創造更美好的生活。</p>
+                <div class="section-header mobile-section-header">
+                    <h2 class="mobile-section-title">以家庭為先，每一步都用心呵護</h2>
+                    <p class="mobile-section-description">Hygiene First 首衛團隊相信每個家庭都值得最好的照顧，讓我們一起為您的家人創造更美好的生活。</p>
                 </div>
                 
                 <div class="care-features mobile-elderly-care-features" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 3rem; margin-bottom: 4rem;">
@@ -888,9 +893,11 @@
         <!-- FAQ Section -->
         <section class="faq-section mobile-elderly-faq-section" style="padding: 4rem 0; background: white;">
             <div class="container">
+                <div class="section-header mobile-section-header">
+                    <h2 class="mobile-section-title">常見問題</h2>
+                    <p class="mobile-section-description">解答您對長者照顧服務的疑問</p>
+                </div>
                 <div class="faq-content mobile-elderly-faq-content" style="max-width: 800px; margin: 0 auto;">
-                    <!-- Header -->
-                    <h2 class="mobile-elderly-faq-title" style="font-size: 2.5rem; color: #333; margin-bottom: 3rem; text-align: center; font-weight: 600;">常見問題</h2>
                     
                     <!-- FAQ Items -->
                     <div class="faq-items mobile-elderly-faq-items">
@@ -993,12 +1000,12 @@
 
 
 
-        <!-- FAQ Section -->
-        <section class="faq-section mobile-elderly-final-cta" style="padding: 4rem 0; background: #f8f9fa;">
+        <!-- Final CTA Section -->
+        <section class="final-cta-section mobile-elderly-final-cta" style="padding: 4rem 0; background: #f8f9fa;">
             <div class="container">
-                <div class="section-header mobile-elderly-final-cta-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 class="mobile-elderly-final-cta-title" style="font-size: 2.5rem; margin-bottom: 1rem;">準備好體驗專業的醫療護理服務了嗎？</h2>
-                    <p class="mobile-elderly-final-cta-description" style="font-size: 1.2rem; margin-bottom: 2rem;">立即預約，讓 Hygiene First 首衛 為您提供貼心、可靠的專業照護。我們的團隊隨時準備好，以誠信與關懷，為您與家人帶來安心的醫療體驗。</p>
+                <div class="section-header mobile-section-header">
+                    <h2 class="mobile-section-title">準備好體驗專業的醫療護理服務了嗎？</h2>
+                    <p class="mobile-section-description">立即預約，讓 Hygiene First 首衛 為您提供貼心、可靠的專業照護。我們的團隊隨時準備好，以誠信與關懷，為您與家人帶來安心的醫療體驗。</p>
                 </div>
                 
                 <div class="contact-options mobile-elderly-contact-options" style="text-align: center;">
@@ -1013,31 +1020,61 @@
 
     <footer class="simple-footer">
         <div class="container">
-                            <div class="footer-content">
-                                          <!-- Contact Info -->
-                                              <div class="footer-section">
-                               <h3 style="color: #FF7A00;">聯絡我們</h3>
-                                               <p style="font-size: 0.8rem;"><i class="fas fa-phone"></i> 電話：<strong>2827 8889</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-fax"></i> 傳真：<strong>3020 1710</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-envelope"></i> 電郵：<strong>careteam@hygienefirstgroup.com</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-building"></i> 總部：<strong>新界屯門新合里3號匯賢一號 · 雋峰12樓17室</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt"></i> 辦事處：<strong>九龍灣臨樂街19號南豐商業中心18樓12室</strong></p>
-                       </div>
-                       
-                                          <!-- License Info -->
-                                              <div class="footer-section">
-                               <h3 style="color: #FF7A00;">牌照資訊</h3>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-shield-alt"></i> 社會福利署長者社區照顧服務券商：<strong>RSP 11901</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-recycle"></i> 環保署持牌醫療廢物收集商：<strong>0001-423-H0001-L1</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-flask"></i> 環保署持牌化學廢物收集商：<strong>9210-4230H0027-WC</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-briefcase"></i> 勞工處持牌職業介紹所：<strong>79409</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-bolt"></i> 電業承辨商註冊號碼：<strong>037517</strong></p>
-                       </div>
-                       
-                                          <!-- Social Links -->
-                                              <div class="footer-section">
-                               <h3 style="color: #FF7A00;">關注我們</h3>
-                                                  <div class="social-icons" style="font-size: 0.8rem;">
+            <div class="footer-content">
+                                   <!-- Contact Info -->
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">聯絡我們</h3>
+                                        <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-phone" style="color: #FF7A00;"></i> 電話</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">2827 8889</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-fax" style="color: #FF7A00;"></i> 傳真</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">3020 1710</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-envelope" style="color: #FF7A00;"></i> 電郵</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">careteam@hygienefirstgroup.com</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-building" style="color: #FF7A00;"></i> 總部</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">新界屯門新合里3號匯賢一號 · 雋峰12樓17室</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-map-marker-alt" style="color: #FF7A00;"></i> 辦事處</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">九龍灣臨樂街19號南豐商業中心18樓12室</div>
+                    </div>
+                </div>
+                
+                                   <!-- License Info -->
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">牌照資訊</h3>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-shield-alt" style="color: #FF7A00;"></i> 社會福利署長者社區照顧服務券商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">RSP 11901</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-recycle" style="color: #FF7A00;"></i> 環保署持牌醫療廢物收集商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">0001-423-H0001-L1</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-flask" style="color: #FF7A00;"></i> 環保署持牌化學廢物收集商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">9210-4230H0027-WC</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-briefcase" style="color: #FF7A00;"></i> 勞工處持牌職業介紹所</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">79409</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-bolt" style="color: #FF7A00;"></i> 電業承辨商註冊號碼</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">037517</div>
+                    </div>
+                </div>
+                
+                                   <!-- Social Links -->
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">關注我們</h3>
+                                           <div class="social-icons" style="font-size: 0.8rem;">
                            <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-facebook"></i></a>
                            <a href="https://www.instagram.com/hygiene.first?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-instagram"></i></a>
                            <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Threads" style="color: #FF7A00;">
@@ -1062,65 +1099,70 @@
     </footer>
 
     <!-- WhatsApp Button -->
-        <a href="https://wa.me/85295024162" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/85295024162" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-
-        <div id="wechat-modal" class="wechat-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
-          <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 32px rgba(0,0,0,0.2); position: relative; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
-            <button id="wechat-modal-close" style="position: absolute; top: 8px; right: 12px; background: none; border: none; font-size: 2rem; color: #888; cursor: pointer;">&times;</button>
-            <img src="images/wechatqr.jpeg" alt="WeChat QR Code" style="max-width: 300px; width: 100%; height: auto; margin-bottom: 1rem;">
-            <div style="font-size: 1.1rem; color: #333;">掃描二維碼加我們微信</div>
-          </div>
+    <!-- Chatbot Container -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div class="chatbot-header">
+            <h3>首衛智能客服</h3>
+            <button class="chatbot-close" onclick="toggleChatbot()">×</button>
         </div>
-        <script>
-          document.querySelector('.wechat-btn').addEventListener('click', function() {
-            document.getElementById('wechat-modal').style.display = 'flex';
-          });
-          document.getElementById('wechat-modal-close').addEventListener('click', function() {
-            document.getElementById('wechat-modal').style.display = 'none';
-          });
-          document.getElementById('wechat-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-              this.style.display = 'none';
-            }
-          });
-        </script>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message bot-message">
+                <div class="message-content">
+                    您好！我是首衛智能客服，很高興為您服務！👋<br><br>
+                    我可以協助您了解：<br>
+                    • 長者照顧服務詳情<br>
+                    • 服務收費及計劃<br>
+                    • 預約安排<br>
+                    • 其他查詢<br><br>
+                    請選擇您想了解的服務，或直接輸入您的問題。
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-quick-replies">
+            <button class="quick-reply-btn" data-message="我想了解長者照顧服務">長者照顧服務</button>
+            <button class="quick-reply-btn" data-message="服務收費詳情">服務收費</button>
+            <button class="quick-reply-btn" data-message="如何預約服務">預約服務</button>
+            <button class="quick-reply-btn" data-message="服務範圍">服務範圍</button>
+            <button class="quick-reply-btn" data-message="長者照顧服務計劃">服務計劃</button>
+            <button class="quick-reply-btn" data-message="上門照顧服務">上門服務</button>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input-field" placeholder="輸入您的問題..." maxlength="500">
+            <button onclick="sendMessage()">發送</button>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button class="chatbot-toggle" onclick="toggleChatbot()" aria-label="開啟聊天機器人">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <div id="wechat-modal" class="wechat-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+      <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 32px rgba(0,0,0,0.2); position: relative; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
+        <button id="wechat-modal-close" style="position: absolute; top: 8px; right: 12px; background: none; border: none; font-size: 2rem; color: #888; cursor: pointer;">&times;</button>
+        <img src="images/wechatqr.jpeg" alt="WeChat QR Code" style="max-width: 300px; width: 100%; height: auto; margin-bottom: 1rem;">
+        <div style="font-size: 1.1rem; color: #333;">掃描二維碼加我們微信</div>
+      </div>
+    </div>
+    <script>
+      document.querySelector('.wechat-btn').addEventListener('click', function() {
+        document.getElementById('wechat-modal').style.display = 'flex';
+      });
+      document.getElementById('wechat-modal-close').addEventListener('click', function() {
+        document.getElementById('wechat-modal').style.display = 'none';
+      });
+      document.getElementById('wechat-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.style.display = 'none';
+        }
+      });
+    </script>
 
     <script src="script.js"></script>
     </main>
-
-    <!-- Chatbot Component -->
-    <div id="chatbot-container" class="chatbot-container">
-        <!-- Chatbot Toggle Button -->
-        <div id="chatbot-toggle" class="chatbot-toggle">
-            <i class="fas fa-comments"></i>
-            <span class="chatbot-toggle-text">線上客服</span>
-        </div>
-        
-        <!-- Chatbot Interface -->
-        <div id="chatbot-interface" class="chatbot-interface" style="display: none;">
-            <div class="chatbot-header">
-                <h3>首衛線上客服</h3>
-                <button id="chatbot-close" class="chatbot-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chatbot-messages" id="chatbot-messages">
-                <div class="message bot-message">
-                    <div class="message-content">
-                        您好！我是首衛的線上客服，很高興為您服務。請問有什麼可以幫助您的嗎？
-                    </div>
-                </div>
-            </div>
-            <div class="chatbot-input">
-                <input type="text" id="chatbot-input-field" placeholder="請輸入您的問題..." maxlength="500">
-                <button id="chatbot-send">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
-    </div>
 </body>
 </html> 
