@@ -2131,12 +2131,12 @@
     
     /* Close button styling */
     .mobile-menu-close {
-        position: absolute;
-        top: 15px;
-        right: 20px;
-        width: 30px;
-        height: 30px;
-        background: rgba(255, 255, 255, 0.2);
+        position: fixed;
+        top: 20px;
+        right: calc(15% + 20px);
+        width: 35px;
+        height: 35px;
+        background: rgba(255, 122, 0, 0.9);
         color: white;
         display: none;
         align-items: center;
@@ -2147,16 +2147,19 @@
         z-index: 10000;
         border: none;
         transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
     }
     
     /* Show close button when menu is active */
-    .main-menu.active .mobile-menu-close {
+    .main-menu.active ~ .mobile-menu-close {
         display: flex;
+        right: 20px;
     }
     
     .mobile-menu-close:hover {
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 122, 0, 1);
         transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(255, 122, 0, 0.4);
     }
     
     /* Special styling for main menu items - matching website theme */
