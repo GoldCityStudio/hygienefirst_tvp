@@ -2138,7 +2138,7 @@
         height: 30px;
         background: rgba(255, 255, 255, 0.2);
         color: white;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
@@ -2147,6 +2147,11 @@
         z-index: 10000;
         border: none;
         transition: all 0.3s ease;
+    }
+    
+    /* Show close button when menu is active */
+    .main-menu.active .mobile-menu-close {
+        display: flex;
     }
     
     .mobile-menu-close:hover {
