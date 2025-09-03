@@ -139,37 +139,49 @@ document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const mainMenu = document.querySelector('.main-menu');
         const overlay = document.querySelector('.overlay');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
         
         if (mobileMenuToggle && mainMenu) {
             mobileMenuToggle.addEventListener('click', function() {
                 this.classList.toggle('active');
                 mainMenu.classList.toggle('active');
                 
-                if (overlay) {
-                    overlay.classList.toggle('active');
-                }
+                // Overlay disabled - no overlay functionality
                 
                 // Prevent body scrolling when menu is open
                 document.body.classList.toggle('menu-open');
             });
             
-            // Close menu when clicking overlay
-            if (overlay) {
-                overlay.addEventListener('click', function() {
+            // Overlay click functionality removed
+            
+            // Handle close button click
+            const closeButton = document.querySelector('.mobile-menu-close');
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
                     mobileMenuToggle.classList.remove('active');
                     mainMenu.classList.remove('active');
-                    overlay.classList.remove('active');
+                    // Overlay disabled
                     document.body.classList.remove('menu-open');
                 });
             }
             
-            // Enhanced dropdown functionality for mobile
+            // Enhanced dropdown functionality for mobile - all expanded by default
             const dropdowns = document.querySelectorAll('.main-menu .dropdown');
+            
+            // Make all dropdowns expanded by default on mobile
+            dropdowns.forEach(dropdown => {
+                const dropdownContent = dropdown.querySelector('.dropdown-content');
+                if (dropdownContent) {
+                    dropdown.classList.add('open');
+                    dropdownContent.classList.add('show');
+                }
+            });
             
             dropdowns.forEach(dropdown => {
                 const link = dropdown.querySelector('a');
+                const dropdownContent = dropdown.querySelector('.dropdown-content');
                 
-                if (link) {
+                if (link && dropdownContent) {
                     link.addEventListener('click', function(e) {
                         // Only do this for mobile view
                         if (window.innerWidth <= 1048) {
@@ -182,14 +194,41 @@ document.addEventListener('DOMContentLoaded', function() {
                             dropdowns.forEach(otherDropdown => {
                                 if (otherDropdown !== dropdown) {
                                     otherDropdown.classList.remove('open');
+                                    const otherContent = otherDropdown.querySelector('.dropdown-content');
+                                    if (otherContent) {
+                                        otherContent.classList.remove('show');
+                                    }
                                 }
                             });
                             
                             // Toggle this dropdown
                             dropdown.classList.toggle('open', !isOpen);
+                            dropdownContent.classList.toggle('show', !isOpen);
                         }
                     });
                 }
+            });
+            
+            // Close menu when clicking on regular menu items (not dropdowns)
+            const regularMenuLinks = mainMenu.querySelectorAll('li:not(.dropdown) > a');
+            regularMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mainMenu.classList.remove('active');
+                    // Overlay disabled
+                    document.body.classList.remove('menu-open');
+                });
+            });
+            
+            // Close menu when clicking on dropdown submenu items
+            const dropdownLinks = mainMenu.querySelectorAll('.dropdown-content a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mainMenu.classList.remove('active');
+                    // Overlay disabled
+                    document.body.classList.remove('menu-open');
+                });
             });
             
             // Close menu when window is resized to desktop size
@@ -197,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (window.innerWidth > 1048) {
                     mobileMenuToggle.classList.remove('active');
                     mainMenu.classList.remove('active');
-                    if (overlay) overlay.classList.remove('active');
+                    // Overlay disabled
                     document.body.classList.remove('menu-open');
                     
                     // Remove all open classes from dropdowns
@@ -289,26 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300 + (index * 100));
     });
     
-    // Enhanced back to top button
-    const backToTopBtn = document.querySelector('.back-to-top');
-    
-    if (backToTopBtn) {
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
+
     
     // Parallax effect for hero section
     const hero = document.querySelector('.hero');

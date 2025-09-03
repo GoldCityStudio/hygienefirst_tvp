@@ -85,7 +85,8 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
-            height: 100%;
+            height: auto;
+            min-height: fit-content;
             display: flex;
             flex-direction: column;
             width: 280px;
@@ -479,189 +480,7 @@
             }
         }
 
-        /* Chatbot Styles */
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            font-family: 'Noto Sans TC', sans-serif;
-        }
 
-        .chatbot-toggle {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 15px 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
-            transition: all 0.3s ease;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .chatbot-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
-        }
-
-        .chatbot-toggle i {
-            font-size: 18px;
-        }
-
-        .chatbot-interface {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .chatbot-header {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chatbot-header h3 {
-            margin: 0;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .chatbot-close {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 18px;
-            padding: 5px;
-        }
-
-        .chatbot-close:hover {
-            opacity: 0.8;
-        }
-
-        .chatbot-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background: #f8f9fa;
-        }
-
-        .message {
-            margin-bottom: 15px;
-            display: flex;
-        }
-
-        .user-message {
-            justify-content: flex-end;
-        }
-
-        .bot-message {
-            justify-content: flex-start;
-        }
-
-        .message-content {
-            max-width: 80%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            word-wrap: break-word;
-            line-height: 1.4;
-        }
-
-        .user-message .message-content {
-            background: #007bff;
-            color: white;
-        }
-
-        .bot-message .message-content {
-            background: white;
-            color: #333;
-            border: 1px solid #e9ecef;
-        }
-
-        .chatbot-input {
-            padding: 20px;
-            background: white;
-            border-top: 1px solid #e9ecef;
-            display: flex;
-            gap: 10px;
-        }
-
-        .chatbot-input input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            outline: none;
-            font-size: 14px;
-        }
-
-        .chatbot-input input:focus {
-            border-color: #007bff;
-        }
-
-        .chatbot-input button {
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s ease;
-        }
-
-        .chatbot-input button:hover {
-            background: #0056b3;
-        }
-
-        .chatbot-input button i {
-            font-size: 14px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .chatbot-interface {
-                width: 300px;
-                height: 400px;
-                right: -20px;
-            }
-            
-            .chatbot-toggle {
-                padding: 12px 16px;
-                font-size: 13px;
-            }
-            
-            .chatbot-toggle-text {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .chatbot-interface {
-                width: 280px;
-                height: 350px;
-                right: -40px;
-            }
-        }
     </style>
 </head>
 <body class="zh">
@@ -741,7 +560,7 @@
             </div>
 
         <!-- 服務分類 -->
-        <section class="service-categories mobile-service-categories" style="background: linear-gradient(135deg, var(--primary-color) 0%, #ff8c1a 15%, var(--secondary-color) 30%, #ffb366 45%, #ffffff 60%, #fff5f0 75%, #ffe6d9 90%, #ffd4b3 100%); padding: 4rem 0; position: relative; overflow: hidden;">
+        <section class="service-categories mobile-service-categories">
             <!-- 星星裝飾背景 -->
             <div style="position: absolute; top: -30px; left: 50%; transform: translateX(-50%); opacity: 0.08; z-index: 1; text-align: center;">
                 <i class="fas fa-star" style="color: #FFD700; font-size: 3rem; margin: 0 10px;"></i>
@@ -763,15 +582,10 @@
                 <i class="fas fa-star" style="color: #FFD700; font-size: 2.5rem;"></i>
             </div>
             
-            <div class="container" style="position: relative; z-index: 2;">
-                <div class="section-header" style="margin-bottom:2.5rem; text-align: center; position: relative;">
-                    <!-- 標題星星 -->
-                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-                        <i class="fas fa-star" style="color: #FFD700; font-size: 1.5rem; margin-right: 10px;"></i>
-                        <h2 class="theme-title" style="margin: 0; background: linear-gradient(135deg, #2c3e50, #3498db); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700;">專業醫療護理服務選項</h2>
-                        <i class="fas fa-star" style="color: #FFD700; font-size: 1.5rem; margin-left: 10px;"></i>
-                    </div>
-                    <p class="theme-subtitle" style="background: linear-gradient(135deg, #2c3e50, #3498db); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.1rem; font-weight: 600;">根據您的需求選擇最適合的服務方案</p>
+            <div class="container">
+                <div class="section-header mobile-section-header">
+                    <h2 class="section-title mobile-section-title">專業醫療護理服務選項</h2>
+                    <p class="section-description mobile-section-description">根據您的需求選擇最適合的服務方案</p>
                 </div>
                 <div class="service-sort-filter">
                     <div class="filter-group">
@@ -785,7 +599,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="service-tabs" style="display:flex;gap:1.5rem;justify-content:center;margin-bottom:2.5rem;">
+                <div class="service-tabs mobile-service-tabs">
                     <button class="service-tab active">居家醫療</button>
                 </div>
                 
@@ -805,7 +619,7 @@
                                     <li>簡單藥物提醒</li>
                                     <li>陪伴服務</li>
                                 </ul>
-                                <div class="service-price mobile-service-price">
+                                <div class="service-price">
                                     <span>價格</span>
                                     <h4>HK$ 2,800</h4>
                                 </div>
@@ -871,24 +685,23 @@
         <!-- 客製化服務 -->
         <section class="custom-services mobile-custom-services">
             <div class="container">
+                <div class="section-header mobile-section-header">
+                    <h2 class="section-title mobile-section-title">尋找客製化醫療護理解決方案？</h2>
+                    <p class="section-description mobile-section-description">Hygiene First 首衛知道每位客戶的需求都是獨一無二的。我們的專家團隊可以為您量身打造合適的護理計劃，無論是特殊疾病照護、復康支援，或是長期照顧，我們都能提供靈活且專業的服務方案。</p>
+                </div>
+                
                 <div class="custom-services__content mobile-custom-services-content">
                     <div class="custom-services__text mobile-custom-services-text">
-                        <h2 class="mobile-custom-services-title">尋找客製化醫療護理解決方案？</h2>
-                        <p>Hygiene First 首衛知道每位客戶的需求都是獨一無二的。我們的專家團隊可以為您量身打造合適的護理計劃，無論是特殊疾病照護、復康支援，或是長期照顧，我們都能提供靈活且專業的服務方案。</p>
                         <ul class="custom-services__list mobile-custom-services-list">
-                            <li><i class="fas fa-check"></i> 根據您的需要與預算靈活調整
-                            </li>
-                            <li><i class="fas fa-check"></i> 提供針對特殊疾病的專業護理
-                            </li>
-                            <li><i class="fas fa-check"></i> 制訂個人化醫療照護計劃
-                            </li>
+                            <li><i class="fas fa-check"></i> 根據您的需要與預算靈活調整</li>
+                            <li><i class="fas fa-check"></i> 提供針對特殊疾病的專業護理</li>
+                            <li><i class="fas fa-check"></i> 制訂個人化醫療照護計劃</li>
                             <li><i class="fas fa-check"></i> 彈性安排服務時間，配合您生活步伐</li>
-
                             <li><i class="fas fa-check"></i> 讓專業與關懷走進您的生活，為您與家人帶來安心。</li>
                         </ul>
                         <a href="contact.html" class="btn btn--primary mobile-custom-services-btn">聯絡我們討論您的需求</a>
                     </div>
-                    <div class="custom-services__image">
+                    <div class="custom-services__image mobile-custom-services-image">
                         <img src="images/untitled folder/Photo 46.jpg" alt="客製化醫療護理服務 - 專業醫護團隊為您提供個人化醫療護理解決方案">
                     </div>
                 </div>
@@ -898,13 +711,13 @@
         <!-- 行動呼籲 -->
         <section class="cta mobile-cta-section">
             <div class="container">
-                <div class="cta__content mobile-cta-content">
-                    <h2 class="mobile-cta-title">準備好體驗專業的醫療護理服務了嗎？</h2>
-                    <p>立即預約，讓 Hygiene First 首衛 為您提供貼心、可靠的專業照護。我們的團隊隨時準備好，以誠信與關懷，為您與家人帶來安心的醫療體驗。</p>
-                    <div class="cta__buttons mobile-cta-buttons">
-                        <a href="contact-zh.html" class="btn btn--primary mobile-cta-btn">立即預約</a>
-                        <a href="tel:+85228278889" class="btn btn--primary mobile-cta-btn">撥打電話 2827 8889</a>
-                    </div>
+                <div class="section-header mobile-section-header">
+                    <h2 class="section-title mobile-section-title">準備好體驗專業的醫療護理服務了嗎？</h2>
+                    <p class="section-description mobile-section-description">立即預約，讓 Hygiene First 首衛 為您提供貼心、可靠的專業照護。我們的團隊隨時準備好，以誠信與關懷，為您與家人帶來安心的醫療體驗。</p>
+                </div>
+                <div class="cta__buttons mobile-cta-buttons">
+                    <a href="contact-zh.html" class="btn btn--primary mobile-cta-btn">立即預約</a>
+                    <a href="tel:+85228278889" class="btn btn--primary mobile-cta-btn">撥打電話 2827 8889</a>
                 </div>
             </div>
         </section>
@@ -914,33 +727,63 @@
         <div class="container">
             <div class="footer-content">
                                    <!-- Contact Info -->
-                   <div class="footer-section">
-                       <h3 style="color: #FF7A00;">聯絡我們</h3>
-                       <p style="font-size: 0.8rem;"><i class="fas fa-phone"></i> 電話：<strong>2827 8889</strong></p>
-                       <p style="font-size: 0.8rem;"><i class="fas fa-fax"></i> 傳真：<strong>3020 1710</strong></p>
-                       <p style="font-size: 0.8rem;"><i class="fas fa-envelope"></i> 電郵：<strong>careteam@hygienefirstgroup.com</strong></p>
-                       <p style="font-size: 0.8rem;"><i class="fas fa-building"></i> 總部：<strong>新界屯門新合里3號匯賢一號 · 雋峰12樓17室</strong></p>
-                       <p style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt"></i> 辦事處：<strong>九龍灣臨樂街19號南豐商業中心18樓12室</strong></p>
-                   </div>
-                   
-                   <!-- License Info -->
-                   <div class="footer-section">
-                       <h3 style="color: #FF7A00;">牌照資訊</h3>
-                                                                                                                                                                               <p style="font-size: 0.8rem;"><i class="fas fa-shield-alt"></i> 社會福利署長者社區照顧服務券商：<strong>RSP 11901</strong></p>
-                         <p style="font-size: 0.8rem;"><i class="fas fa-recycle"></i> 環保署持牌醫療廢物收集商：<strong>0001-423-H0001-L1</strong></p>
-                         <p style="font-size: 0.8rem;"><i class="fas fa-flask"></i> 環保署持牌化學廢物收集商：<strong>9210-4230H0027-WC</strong></p>
-                         <p style="font-size: 0.8rem;"><i class="fas fa-briefcase"></i> 勞工處持牌職業介紹所：<strong>79409</strong></p>
-                         <p style="font-size: 0.8rem;"><i class="fas fa-bolt"></i> 電業承辨商註冊號碼：<strong>037517</strong></p>
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">聯絡我們</h3>
+                                        <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-phone" style="color: #FF7A00;"></i> 電話</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">2827 8889</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-fax" style="color: #FF7A00;"></i> 傳真</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">3020 1710</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-envelope" style="color: #FF7A00;"></i> 電郵</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">careteam@hygienefirstgroup.com</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-building" style="color: #FF7A00;"></i> 總部</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">新界屯門新合里3號匯賢一號 · 雋峰12樓17室</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-map-marker-alt" style="color: #FF7A00;"></i> 辦事處</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">九龍灣臨樂街19號南豐商業中心18樓12室</div>
+                    </div>
+                </div>
+                
+                                   <!-- License Info -->
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">牌照資訊</h3>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-shield-alt" style="color: #FF7A00;"></i> 社會福利署長者社區照顧服務券商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">RSP 11901</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-recycle" style="color: #FF7A00;"></i> 環保署持牌醫療廢物收集商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">0001-423-H0001-L1</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-flask" style="color: #FF7A00;"></i> 環保署持牌化學廢物收集商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">9210-4230H0027-WC</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-briefcase" style="color: #FF7A00;"></i> 勞工處持牌職業介紹所</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">79409</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-bolt" style="color: #FF7A00;"></i> 電業承辨商註冊號碼</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">037517</div>
+                    </div>
                 </div>
                 
                                    <!-- Social Links -->
-                   <div class="footer-section">
-                       <h3 style="color: #FF7A00;">關注我們</h3>
-                       <div class="social-icons">
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">關注我們</h3>
+                                           <div class="social-icons" style="font-size: 0.8rem;">
                            <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-facebook"></i></a>
                            <a href="https://www.instagram.com/hygiene.first?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-instagram"></i></a>
                            <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Threads" style="color: #FF7A00;">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
                                <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161" fill="currentColor"/>
                              </svg>
                            </a>
@@ -965,9 +808,7 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <button class="back-to-top" aria-label="回到頂部">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+
 
         <div id="wechat-modal" class="wechat-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
           <div style="background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 32px rgba(0,0,0,0.2); position: relative; max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
@@ -1199,126 +1040,182 @@
             <span class="chatbot-toggle-text">線上客服</span>
         </div>
         
-        <!-- Chatbot Interface -->
-        <div id="chatbot-interface" class="chatbot-interface" style="display: none;">
+        <!-- Chatbot Window -->
+        <div id="chatbot-window" class="chatbot-window" style="display: none;">
+            <!-- Chatbot Header -->
             <div class="chatbot-header">
-                <h3>首衛線上客服</h3>
+                <div class="chatbot-header-info">
+                    <img src="images/hygienelogo.png" alt="Hygiene First" class="chatbot-avatar">
+                    <div>
+                        <h4>Hygiene First 首衛</h4>
+                        <span class="chatbot-status">線上客服</span>
+                    </div>
+                </div>
                 <button id="chatbot-close" class="chatbot-close">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
+            
+            <!-- Chat Messages -->
             <div class="chatbot-messages" id="chatbot-messages">
-                <div class="message bot-message">
+                <div class="chatbot-message bot-message">
                     <div class="message-content">
-                        您好！我是首衛的線上客服，很高興為您服務。請問有什麼可以幫助您的嗎？
+                        <p>您好！歡迎來到 Hygiene First 首衛。我是您的專屬客服助手，有什麼可以幫助您的嗎？</p>
+                        <p style="margin-top: 10px; font-size: 0.85rem; opacity: 0.8;">💡 您可以詢問：護理服務、預約安排、服務收費、服務時間、護理員資歷等問題</p>
+                        <span class="message-time">剛剛</span>
                     </div>
                 </div>
             </div>
+            
+            <!-- Quick Reply Buttons -->
+            <div class="chatbot-quick-replies">
+                <button class="quick-reply-btn" data-message="我想了解護理服務">護理服務</button>
+                <button class="quick-reply-btn" data-message="如何預約服務">預約服務</button>
+                <button class="quick-reply-btn" data-message="服務收費">服務收費</button>
+                <button class="quick-reply-btn" data-message="服務時間">服務時間</button>
+                <button class="quick-reply-btn" data-message="護理員資歷">護理員資歷</button>
+                <button class="quick-reply-btn" data-message="緊急服務">緊急服務</button>
+            </div>
+            
+            <!-- Chat Input -->
             <div class="chatbot-input">
-                <input type="text" id="chatbot-input-field" placeholder="請輸入您的問題..." maxlength="500">
-                <button id="chatbot-send">
+                <input type="text" id="chatbot-input-field" placeholder="輸入您的問題..." maxlength="200">
+                <button id="chatbot-send" class="chatbot-send-btn">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
         </div>
     </div>
 
+
+
     <!-- Chatbot JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const chatbotToggle = document.getElementById('chatbot-toggle');
-            const chatbotInterface = document.getElementById('chatbot-interface');
-            const chatbotClose = document.getElementById('chatbot-close');
-            const chatbotMessages = document.getElementById('chatbot-messages');
-            const chatbotInput = document.getElementById('chatbot-input-field');
-            const chatbotSend = document.getElementById('chatbot-send');
-
-            // Toggle chatbot interface
-            chatbotToggle.addEventListener('click', function() {
-                chatbotInterface.style.display = chatbotInterface.style.display === 'none' ? 'block' : 'none';
-                if (chatbotInterface.style.display === 'block') {
-                    chatbotInput.focus();
-                }
-            });
-
-            // Close chatbot interface
-            chatbotClose.addEventListener('click', function() {
-                chatbotInterface.style.display = 'none';
-            });
-
-            // Send message function
-            function sendMessage() {
-                const message = chatbotInput.value.trim();
-                if (message === '') return;
-
-                // Add user message
-                addMessage(message, 'user');
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotInput = document.getElementById('chatbot-input-field');
+        const chatbotSend = document.getElementById('chatbot-send');
+        const quickReplyBtns = document.querySelectorAll('.quick-reply-btn');
+        
+        // Toggle chatbot window
+        chatbotToggle.addEventListener('click', function() {
+            chatbotWindow.style.display = chatbotWindow.style.display === 'none' ? 'flex' : 'none';
+        });
+        
+        // Close chatbot window
+        chatbotClose.addEventListener('click', function() {
+            chatbotWindow.style.display = 'none';
+        });
+        
+        // Send message function
+        function sendMessage(message, isUser = true) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chatbot-message ${isUser ? 'user-message' : 'bot-message'}`;
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            
+            const messageText = document.createElement('p');
+            messageText.textContent = message;
+            
+            const messageTime = document.createElement('span');
+            messageTime.className = 'message-time';
+            messageTime.textContent = '剛剛';
+            
+            messageContent.appendChild(messageText);
+            messageContent.appendChild(messageTime);
+            messageDiv.appendChild(messageContent);
+            chatbotMessages.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            
+            return messageDiv;
+        }
+        
+        // Handle send button click
+        chatbotSend.addEventListener('click', function() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                sendMessage(message, true);
                 chatbotInput.value = '';
-
+                
                 // Simulate bot response
                 setTimeout(() => {
                     const botResponse = getBotResponse(message);
-                    addMessage(botResponse, 'bot');
+                    sendMessage(botResponse, false);
                 }, 1000);
             }
-
-            // Add message to chat
-            function addMessage(text, sender) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = `message ${sender}-message`;
-                
-                const contentDiv = document.createElement('div');
-                contentDiv.className = 'message-content';
-                contentDiv.textContent = text;
-                
-                messageDiv.appendChild(contentDiv);
-                chatbotMessages.appendChild(messageDiv);
-                
-                // Scroll to bottom
-                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        });
+        
+        // Handle Enter key
+        chatbotInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                chatbotSend.click();
             }
-
-            // Simple bot response logic
-            function getBotResponse(userMessage) {
-                const message = userMessage.toLowerCase();
+        });
+        
+        // Handle quick reply buttons
+        quickReplyBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const message = this.getAttribute('data-message');
+                sendMessage(message, true);
                 
-                if (message.includes('服務') || message.includes('service')) {
-                    return '我們提供多種專業護理服務，包括長者護理、傷口護理、復康護理等。您想了解哪一項服務呢？';
-                } else if (message.includes('價格') || message.includes('收費') || message.includes('price')) {
-                    return '我們的服務價格因服務類型和時長而異。建議您致電我們的客服熱線或填寫聯絡表格，我們會為您提供詳細的報價。';
-                } else if (message.includes('預約') || message.includes('booking') || message.includes('appointment')) {
-                    return '您可以通過以下方式預約服務：1) 致電客服熱線 2) 填寫網站聯絡表格 3) 發送電郵給我們。我們會盡快回覆您。';
-                } else if (message.includes('時間') || message.includes('time') || message.includes('營業')) {
-                    return '我們的服務時間為週一至週日，24小時提供服務。緊急情況請隨時聯絡我們。';
-                } else if (message.includes('聯絡') || message.includes('contact') || message.includes('電話')) {
-                    return '您可以通過以下方式聯絡我們：電話、電郵或填寫網站聯絡表格。我們的客服團隊會盡快回覆您。';
-                } else if (message.includes('謝謝') || message.includes('thank')) {
-                    return '不客氣！很高興能幫助您。如果還有其他問題，請隨時詢問。';
-                } else {
-                    return '感謝您的查詢。如果您需要更詳細的資訊，建議您致電我們的客服熱線或填寫聯絡表格，我們會安排專人為您解答。';
-                }
-            }
-
-            // Event listeners
-            chatbotSend.addEventListener('click', sendMessage);
-            chatbotInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    sendMessage();
-                }
-            });
-
-            // Close chatbot when clicking outside
-            document.addEventListener('click', function(e) {
-                const chatbotContainer = document.getElementById('chatbot-container');
-                if (!chatbotContainer.contains(e.target)) {
-                    chatbotInterface.style.display = 'none';
-                }
+                // Simulate bot response
+                setTimeout(() => {
+                    const botResponse = getBotResponse(message);
+                    sendMessage(botResponse, false);
+                }, 1000);
             });
         });
+        
+        // Bot response logic
+        function getBotResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            const responses = {
+                '護理服務': '我們提供全面的護理服務，包括：\n• 長者護理服務\n• 傷口護理\n• 復康護理\n• 陪診服務\n• 照顧者培訓\n\n您想了解哪一項服務的詳細資訊？',
+                '預約服務': '預約服務非常簡單！您可以：\n\n1️⃣ 致電客服熱線：2827 8889\n2️⃣ 填寫網站聯絡表格\n3️⃣ 發送電郵至：careteam@hygienefirstgroup.com\n\n我們會盡快回覆並安排服務時間！',
+                '服務收費': '我們的服務收費根據不同服務類型而定：\n\n• 基本護理服務：$200-400/小時\n• 專業護理服務：$300-600/小時\n• 24小時護理：$800-1200/天\n\n詳細收費請致電 2827 8889 查詢！',
+                '服務時間': '我們的服務時間：\n\n🕘 週一至週五：上午9:00 - 下午6:00\n🕘 週六：上午9:00 - 下午1:00\n🕘 週日及公眾假期：休息\n\n🚨 緊急服務可24小時聯絡我們！',
+                '護理員資歷': '我們的護理員都具備：\n\n✅ 註冊護士資格\n✅ 豐富臨床經驗\n✅ 持續專業培訓\n✅ 背景審查合格\n✅ 愛心與耐心\n\n所有護理員都經過嚴格篩選和培訓！',
+                '緊急服務': '緊急服務聯絡方式：\n\n🚨 24小時緊急熱線：2827 8889\n📧 緊急電郵：careteam@hygienefirstgroup.com\n\n我們提供24小時緊急護理服務，隨時為您提供協助！'
+            };
+            
+            // Check for specific keywords
+            for (const [key, response] of Object.entries(responses)) {
+                if (message.includes(key.toLowerCase())) {
+                    return response;
+                }
+            }
+            
+            // Default responses
+            if (message.includes('你好') || message.includes('hello')) {
+                return '您好！很高興為您服務。請問有什麼可以幫助您的嗎？';
+            } else if (message.includes('謝謝') || message.includes('thank')) {
+                return '不客氣！很高興能幫助您。如果還有其他問題，請隨時詢問。';
+            } else if (message.includes('聯絡') || message.includes('contact')) {
+                return '您可以通過以下方式聯絡我們：\n\n📞 電話：2827 8889\n📧 電郵：careteam@hygienefirstgroup.com\n📍 地址：新界屯門新合里3號匯賢一號·雋峰12樓17室';
+            } else {
+                return '感謝您的查詢！如需了解更多詳情，請：\n\n• 致電 2827 8889\n• 發送電郵至 careteam@hygienefirstgroup.com\n• 或選擇上方的快速回覆按鈕\n\n我們很樂意為您提供協助！';
+            }
+        }
+        
+        // Auto-close when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!chatbotContainer.contains(e.target)) {
+                chatbotWindow.style.display = 'none';
+            }
+        });
+    });
     </script>
 
 </body>
 </html> 
+
 
 
 
