@@ -4147,3 +4147,93 @@
         font-size: 1.2rem !important;
     }
 }
+
+/* ===== WASTE COLLECTION PAGE MOBILE ENHANCEMENTS ===== */
+@media (max-width: 768px) {
+    /* Mobile Guarantee Features Section */
+    .mobile-guarantee-features {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-guarantee-feature {
+        flex: 1 1 auto !important;
+        min-width: auto !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 1.5rem !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 16px rgba(255,122,0,0.08) !important;
+        border: 1px solid rgba(255,122,0,0.15) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .mobile-guarantee-feature:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 8px 24px rgba(255,122,0,0.15) !important;
+    }
+    
+    .mobile-feature-icon {
+        font-size: 2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .mobile-feature-title {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.5rem !important;
+        text-align: center !important;
+    }
+    
+    .mobile-feature-description {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        text-align: center !important;
+    }
+    
+    /* Mobile Confidence Section */
+    .mobile-confidence-content {
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-confidence-title {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .mobile-confidence-description {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 2rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-guarantee-feature {
+        padding: 1.2rem !important;
+    }
+    
+    .mobile-feature-icon {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.6rem !important;
+    }
+    
+    .mobile-feature-title {
+        font-size: 1rem !important;
+        margin-bottom: 0.4rem !important;
+    }
+    
+    .mobile-feature-description {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .mobile-confidence-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .mobile-confidence-description {
+        font-size: 0.9rem !important;
+    }
+}

@@ -1,0 +1,5 @@
+[33m7891b49[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Improve mobile UI for institutional-care.html and update chatbot to enhanced version
+[33m18826f9[m Remove mobile menu close button from desktop layout
+[33m4225a00[m Add comprehensive mobile UI improvements for rehabilitation-care.html and update footer to match index.html
+[33m9f2342d[m Add comprehensive mobile UI improvements for institutional-care.html
+[33m38161fa[m Set mobile menu toggle z-index to 9999 for mobile devices
