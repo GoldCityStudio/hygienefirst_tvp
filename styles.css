@@ -3916,10 +3916,17 @@ header.sticky .logo a {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    z-index: 1000;
+    z-index: 10;
     pointer-events: none;
     padding-left: 5vw;
     box-sizing: border-box;
+}
+
+/* Hide mobile banner content on desktop */
+@media (min-width: 769px) {
+    .banner-content-mobile {
+        display: none !important;
+    }
 }
 
 .banner-slider-content {
