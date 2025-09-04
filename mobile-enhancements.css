@@ -4148,142 +4148,160 @@
     }
 }
 
-/* ===== WASTE COLLECTION PAGE MOBILE ENHANCEMENTS ===== */
+/* ===== SERVICE CARDS MOBILE ENHANCEMENTS ===== */
 @media (max-width: 768px) {
-    /* Mobile Guarantee Features Section */
-    .mobile-guarantee-features {
-        display: flex !important;
-        flex-direction: column !important;
+    /* Service Cards Mobile Layout */
+    .service-cards {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
         gap: 1.5rem !important;
-        padding: 0 1rem !important;
+        padding: 1.5rem !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
     }
-    
-    .mobile-guarantee-feature {
-        flex: 1 1 auto !important;
+
+    .service-card {
         min-width: auto !important;
         max-width: 100% !important;
         width: 100% !important;
-        padding: 1.5rem !important;
+        padding: 1.5rem 1rem 1.25rem 1rem !important;
         border-radius: 12px !important;
-        box-shadow: 0 4px 16px rgba(255,122,0,0.08) !important;
-        border: 1px solid rgba(255,122,0,0.15) !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+        background: #fff !important;
         transition: all 0.3s ease !important;
     }
-    
-    .mobile-guarantee-feature:hover {
+
+    .service-card:hover {
         transform: translateY(-3px) !important;
         box-shadow: 0 8px 24px rgba(255,122,0,0.15) !important;
     }
-    
-    .mobile-feature-icon {
-        font-size: 2rem !important;
-        margin-bottom: 0.8rem !important;
+
+    .service-card h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 1rem !important;
+        color: var(--primary-color) !important;
+        font-weight: 700 !important;
     }
-    
-    .mobile-feature-title {
-        font-size: 1.1rem !important;
+
+    .service-card ul, .service-card p {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 0 !important;
+        color: #333 !important;
+    }
+
+    .service-card ul {
+        padding-left: 1.25rem !important;
+        text-align: left !important;
+    }
+
+    .service-card ul li {
         margin-bottom: 0.5rem !important;
-        text-align: center !important;
+        position: relative !important;
     }
-    
-    .mobile-feature-description {
-        font-size: 0.9rem !important;
-        line-height: 1.5 !important;
-        text-align: center !important;
+
+    .service-card ul li:last-child {
+        margin-bottom: 0 !important;
     }
-    
-    /* Mobile Confidence Section */
-    .mobile-confidence-content {
-        padding: 0 1rem !important;
-    }
-    
-    .mobile-confidence-title {
-        font-size: 1.8rem !important;
+
+    /* Service Icon Enhancements */
+    .service-icon-hex {
         margin-bottom: 1rem !important;
     }
-    
-    .mobile-confidence-description {
-        font-size: 1rem !important;
-        line-height: 1.6 !important;
-        margin-bottom: 2rem !important;
+
+    .service-icon-hex svg {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .service-icon-svg {
+        font-size: 1.8rem !important;
+    }
+
+    /* Services Section Container */
+    .services {
+        padding: 2rem 0 !important;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+    }
+
+    .services .container {
+        max-width: 100% !important;
+        padding: 0 1rem !important;
     }
 }
 
 @media (max-width: 480px) {
-    .mobile-guarantee-feature {
-        padding: 1.2rem !important;
+    /* Small Mobile Optimizations */
+    .service-cards {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        padding: 1rem !important;
     }
-    
-    .mobile-feature-icon {
-        font-size: 1.8rem !important;
-        margin-bottom: 0.6rem !important;
+
+    .service-card {
+        padding: 1.25rem 1rem 1rem 1rem !important;
+        border-radius: 10px !important;
     }
-    
-    .mobile-feature-title {
-        font-size: 1rem !important;
+
+    .service-card h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .service-card ul, .service-card p {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+    }
+
+    .service-card ul {
+        padding-left: 1rem !important;
+    }
+
+    .service-card ul li {
         margin-bottom: 0.4rem !important;
     }
-    
-    .mobile-feature-description {
+
+    /* Service Icon Adjustments */
+    .service-icon-hex svg {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    .service-icon-svg {
+        font-size: 1.6rem !important;
+    }
+
+    /* Container Adjustments */
+    .services .container {
+        padding: 0 0.75rem !important;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Extra Small Mobile */
+    .service-cards {
+        padding: 0.75rem !important;
+        gap: 0.75rem !important;
+    }
+
+    .service-card {
+        padding: 1rem 0.75rem 0.75rem 0.75rem !important;
+    }
+
+    .service-card h3 {
+        font-size: 1rem !important;
+    }
+
+    .service-card ul, .service-card p {
         font-size: 0.85rem !important;
-        line-height: 1.4 !important;
     }
-    
-    .mobile-confidence-title {
-        font-size: 1.5rem !important;
+
+    .service-icon-hex svg {
+        width: 60px !important;
+        height: 60px !important;
     }
-    
-    .mobile-confidence-description {
-        font-size: 0.9rem !important;
+
+    .service-icon-svg {
+        font-size: 1.4rem !important;
     }
-}
-
-/* ===== WASTE COLLECTION PAGE MOBILE ENHANCEMENTS ===== */
-
-/* Desktop Styles for Guarantee Features */
-.guarantee-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    align-items: stretch;
-}
-
-.guarantee-feature {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(255,122,0,0.07);
-    padding: 2rem 1.5rem;
-    flex: 1 1 260px;
-    min-width: 220px;
-    max-width: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: box-shadow 0.2s;
-    border: 1.5px solid var(--primary-color);
-}
-
-.guarantee-feature:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(255,122,0,0.15);
-}
-
-.feature-icon {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.feature-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 0.7rem;
-}
-
-.feature-description {
-    color: #444;
-    font-size: 1rem;
-    text-align: center;
 }
