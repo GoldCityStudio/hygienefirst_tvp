@@ -17,7 +17,7 @@
     --grey-light: #F5F5F5;
     --grey-medium: #DDDDDD;
     --grey-dark: #AAAAAA;
-    --section-padding: 80px 0;
+    --section-padding: 145px 0 0 0;
     --transition-standard: 0.3s ease;
     --animation-duration: 0.8s;
     --transition-bezier: cubic-bezier(0.25, 1, 0.5, 1);
@@ -596,9 +596,17 @@ header .container {
 /* Responsive breakpoints for service cards */
 @media (max-width: 1200px) {
     .service-cards {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
         padding: 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .service-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+        padding: 1.25rem;
     }
 }
 
@@ -699,8 +707,8 @@ header .container {
 
 /* Process Step Cards Horizontal Layout */
 .process-steps {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+    /* display: grid !important; */
+    grid-template-columns: repeat(4, 1fr) !important;
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -958,7 +966,7 @@ header .container {
     background-color: var(--primary-color);
     color: var(--white);
     text-align: center;
-    padding: 60px 0;
+    /* padding: 60px 0; */
 }
 
 .stats .container {
@@ -972,22 +980,22 @@ header .container {
 }
 
 .stat h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 10px;
 }
 
 /* Testimonials Section */
 .testimonials {
-    background: var(--grey-light);
-    padding: 60px 0;
+    background: var(--primary-color);
+    padding: 40px 0px 40px 0;
 }
 
 .testimonial-slider {
     display: flex;
-    gap: 32px;
+    gap: 10px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding-bottom: 20px;
+    padding: 0px 10px 0px;
 }
 
 .testimonial {
@@ -1340,8 +1348,8 @@ footer .container {
     }
 }
 
-/* Extra small mobile screens (less than 360px) */
-@media (max-width: 359px) {
+/* Extra small mobile screens (less than 400px) */
+@media (max-width: 400px) {
     header .container {
         padding: 10px 15px !important;
         flex-wrap: nowrap !important;
@@ -1467,6 +1475,7 @@ footer .container {
     
     .testimonial-slider {
         max-width: 100%;
+        display: grid;
     }
     
     .stats .container {
@@ -1505,7 +1514,7 @@ footer .container {
     }
     
     section {
-        padding: 40px 0;
+        padding: 55px 0 0 0;
     }
     
     .main-menu li {
@@ -3275,7 +3284,7 @@ header.sticky .logo a {
     flex-wrap: wrap;
 }
 .real-stories-text {
-    flex: 1 1 320px;
+    /* flex: 1 1 320px; */
     min-width: 280px;
     max-width: 420px;
 }
@@ -5499,7 +5508,7 @@ footer .copyright {
 /* ===== COMPREHENSIVE RESPONSIVE CARD DESIGN ===== */
 
 /* Base card container styles */
-.service-cards,
+
 .mission-cards,
 .pricing-cards,
 .scope-cards,
@@ -5540,13 +5549,17 @@ footer .copyright {
     width: 100%;
 }
 
+.service-cards {
+    grid-template-columns: repeat(4, 1fr);
+}
+
 .related-grid,
 .service-options-grid,
 .trust-grid,
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    display: -moz-inline-grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; */
     padding: 2rem;
     max-width: 1400px;
     margin: 0 auto;
@@ -5913,7 +5926,7 @@ footer .copyright {
     .service-options-grid,
     .trust-grid,
     .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
         padding: 1.5rem;
     }
@@ -5956,7 +5969,7 @@ footer .copyright {
     .service-options-grid,
     .trust-grid,
     .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
         padding: 1rem;
     }

@@ -113,7 +113,7 @@
     background: linear-gradient(135deg, #FF7A00, #E56717) !important;
     padding: 40px 20px !important;
     margin: 0 !important;
-    text-align: center !important;
+    text-align: left !important;
 }
 
 /* Mobile Contact Page Improvements */
@@ -2051,6 +2051,7 @@
         color: #fff !important;
         text-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
         font-weight: 500 !important;
+        text-align: left !important;
     }
     
     .banner-content-mobile p {
@@ -2583,7 +2584,7 @@
         background: linear-gradient(135deg, #FF7A00, #E56717) !important;
         padding: 40px 20px !important;
         margin: 0 !important;
-        text-align: center !important;
+        text-align: left !important;
     }
     
     .mobile-banner-title {
@@ -3872,7 +3873,7 @@
     }
     
     .process-steps {
-        display: flex !important;
+        display: grid !important;
         flex-direction: column !important;
         gap: 1.5rem !important;
         padding: 0 1rem !important;
@@ -4280,13 +4281,25 @@
 }
 
 /* ===== SERVICE CARDS MOBILE ENHANCEMENTS ===== */
+@media (max-width: 900px) {
+    /* Service Cards Tablet Layout */
+    .service-cards {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.25rem !important;
+        padding: 1.25rem !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+}
+
 @media (max-width: 768px) {
     /* Service Cards Mobile Layout */
     .service-cards {
         display: grid !important;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-        gap: 1.5rem !important;
-        padding: 1.5rem !important;
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        padding: 1rem !important;
         max-width: 100% !important;
         margin: 0 auto !important;
     }
