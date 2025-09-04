@@ -1092,6 +1092,11 @@
     .mobile-only {
         display: none !important;
     }
+    
+    /* Hide mobile menu close button on desktop */
+    .mobile-menu-close {
+        display: none !important;
+    }
 }
 
 /* Service Page UI Improvements */
