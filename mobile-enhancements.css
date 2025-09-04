@@ -1977,6 +1977,24 @@
         display: block !important;
     }
     
+    /* Side menu header */
+    .main-menu::before {
+        content: 'Hygiene First 首衛';
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #FF7A00, #E56717);
+        color: white;
+        padding: 20px 25px 15px 25px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 10001;
+        display: block;
+    }
+    
     .main-menu.active {
         right: 0;
     }
@@ -2131,35 +2149,34 @@
     
     /* Close button styling */
     .mobile-menu-close {
-        position: fixed;
-        top: 20px;
-        right: calc(15% + 20px);
-        width: 35px;
-        height: 35px;
-        background: rgba(255, 122, 0, 0.9);
-        color: white;
+        position: absolute;
+        top: 18px;
+        right: 20px;
+        width: 28px;
+        height: 28px;
+        background: rgba(255, 255, 255, 0.95);
+        color: #FF7A00;
         display: none;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
         cursor: pointer;
-        font-size: 1.2rem;
-        z-index: 10000;
+        font-size: 1rem;
+        z-index: 10010;
         border: none;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
     
     /* Show close button when menu is active */
     .main-menu.active ~ .mobile-menu-close {
         display: flex;
-        right: 20px;
     }
     
     .mobile-menu-close:hover {
-        background: rgba(255, 122, 0, 1);
-        transform: scale(1.1);
-        box-shadow: 0 6px 16px rgba(255, 122, 0, 0.4);
+        background: rgba(255, 255, 255, 1);
+        transform: scale(1.05);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     }
     
     /* Special styling for main menu items - matching website theme */
@@ -3016,5 +3033,370 @@
         color: #FF7A00 !important;
         transform: translateY(-2px) !important;
         box-shadow: 0 8px 20px rgba(255,255,255,0.3) !important;
+    }
+    
+    /* ===== INSTITUTIONAL CARE PAGE MOBILE ENHANCEMENTS ===== */
+    
+    /* Mobile Banner Content */
+    .mobile-institutional-banner {
+        height: 200px !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+    
+    .mobile-institutional-banner img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+    
+    .mobile-institutional-banner-title {
+        display: none !important;
+    }
+    
+    /* Mobile Main Container */
+    .mobile-institutional-main {
+        padding: 0 1rem !important;
+        background: #fff !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+    
+    /* Mobile Section Header */
+    .mobile-section-header {
+        text-align: center !important;
+        padding: 2rem 0 !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .mobile-section-title {
+        font-size: 2rem !important;
+        color: #FF7A00 !important;
+        font-weight: 700 !important;
+        margin-bottom: 1rem !important;
+        text-shadow: 0 2px 4px rgba(255,122,0,0.1) !important;
+    }
+    
+    .mobile-section-description {
+        font-size: 1.1rem !important;
+        color: #666 !important;
+        line-height: 1.6 !important;
+        max-width: 600px !important;
+        margin: 0 auto !important;
+    }
+    
+    /* Mobile Institutional Sections */
+    .mobile-institutional-section {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        margin: 3rem 0 !important;
+        padding: 0 !important;
+    }
+    
+    .mobile-institutional-content {
+        order: 1 !important;
+        width: 100% !important;
+        min-width: auto !important;
+    }
+    
+    .mobile-institutional-image {
+        order: 2 !important;
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    /* Mobile Institutional Titles */
+    .mobile-institutional-title {
+        font-size: 1.8rem !important;
+        color: #FF7A00 !important;
+        font-weight: 700 !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+        line-height: 1.3 !important;
+    }
+    
+    .mobile-institutional-description {
+        font-size: 1rem !important;
+        color: #333 !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1.5rem !important;
+        text-align: center !important;
+    }
+    
+    /* Mobile Institutional Buttons */
+    .mobile-institutional-buttons {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+    
+    .mobile-institutional-btn {
+        width: 100% !important;
+        max-width: 300px !important;
+        padding: 1.5rem 1rem !important;
+        font-size: 1rem !important;
+        text-align: center !important;
+        border-radius: 20px !important;
+        box-shadow: 0 4px 16px rgba(255,122,0,0.15) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .mobile-institutional-btn:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 8px 24px rgba(255,122,0,0.25) !important;
+    }
+    
+    /* Mobile Hex Images */
+    .mobile-institutional-hex-layer {
+        width: 280px !important;
+        height: 280px !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+    
+    .mobile-institutional-hex-bg,
+    .mobile-institutional-hex {
+        width: 280px !important;
+        height: 280px !important;
+        max-width: 100% !important;
+    }
+    
+    .mobile-institutional-hex img {
+        border-radius: 12px !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Mobile Service Process Section */
+    .mobile-service-process-section {
+        padding: 3rem 0 !important;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+    }
+    
+    .mobile-process-title {
+        font-size: 2rem !important;
+        color: #333 !important;
+        font-weight: 700 !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+    }
+    
+    .mobile-process-description {
+        font-size: 1.1rem !important;
+        color: #666 !important;
+        text-align: center !important;
+        margin-bottom: 2rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-process-steps {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-process-step-card {
+        width: 100% !important;
+        min-width: auto !important;
+        padding: 1.5rem !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+        border: 1px solid rgba(255,122,0,0.1) !important;
+        background: #fff !important;
+    }
+    
+    .mobile-step-number {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 1rem !important;
+        top: -8px !important;
+        left: 12px !important;
+    }
+    
+    .mobile-card-header {
+        margin-bottom: 1rem !important;
+        margin-top: 0.5rem !important;
+    }
+    
+    .mobile-step-icon {
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 10px !important;
+    }
+    
+    .mobile-step-icon i {
+        font-size: 1.4rem !important;
+    }
+    
+    .mobile-step-title {
+        font-size: 1.1rem !important;
+        color: #333 !important;
+        font-weight: 600 !important;
+        margin: 0 !important;
+    }
+    
+    .mobile-step-description {
+        font-size: 0.95rem !important;
+        color: #666 !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+    }
+    
+    /* Mobile Booking Process Section */
+    .booking-process {
+        padding: 3rem 0 !important;
+        background: #fff !important;
+    }
+    
+    .booking-process .section-header h2 {
+        font-size: 2rem !important;
+        color: #333 !important;
+        font-weight: 700 !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+    }
+    
+    .booking-process .process-steps {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        padding: 0 1rem !important;
+        max-width: 100% !important;
+    }
+    
+    .booking-process .process-step {
+        width: 100% !important;
+        min-width: auto !important;
+        padding: 1.5rem !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+        border: 1px solid rgba(255,122,0,0.1) !important;
+        background: #fff !important;
+    }
+    
+    .booking-process .step-header {
+        gap: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .booking-process .step-icon {
+        width: 60px !important;
+        height: 60px !important;
+        border-radius: 12px !important;
+    }
+    
+    .booking-process .step-icon i {
+        font-size: 1.6rem !important;
+    }
+    
+    .booking-process .step-title-section h3 {
+        font-size: 1.2rem !important;
+        color: #333 !important;
+        font-weight: 600 !important;
+        margin: 0 !important;
+    }
+    
+    .booking-process .process-step p {
+        font-size: 1rem !important;
+        color: #666 !important;
+        line-height: 1.6 !important;
+        margin: 0 !important;
+    }
+    
+    .booking-process button {
+        background: #FF7A00 !important;
+        color: white !important;
+        padding: 1rem 2rem !important;
+        border: none !important;
+        border-radius: 50px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        margin-top: 1rem !important;
+    }
+    
+    .booking-process button:hover {
+        background: #E56717 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 20px rgba(255,122,0,0.3) !important;
+    }
+    
+    /* Mobile Contact Section */
+    .mobile-institutional-contact-section {
+        padding: 3rem 0 !important;
+        background: linear-gradient(135deg, #FF7A00, #E56717) !important;
+        text-align: center !important;
+    }
+    
+    .mobile-contact-title {
+        font-size: 2rem !important;
+        color: #fff !important;
+        font-weight: 700 !important;
+        margin-bottom: 1rem !important;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    }
+    
+    .mobile-contact-description {
+        font-size: 1.1rem !important;
+        color: rgba(255,255,255,0.9) !important;
+        margin-bottom: 2rem !important;
+        line-height: 1.6 !important;
+        padding: 0 1rem !important;
+    }
+    
+    .mobile-contact-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+    }
+    
+    .mobile-contact-btn {
+        display: inline-block !important;
+        padding: 1rem 2rem !important;
+        border-radius: 50px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .mobile-contact-btn.primary-btn {
+        background: #fff !important;
+        color: #FF7A00 !important;
+        border: 2px solid #fff !important;
+    }
+    
+    .mobile-contact-btn.primary-btn:hover {
+        background: transparent !important;
+        color: #fff !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 20px rgba(255,255,255,0.3) !important;
+    }
+    
+    .mobile-contact-btn.secondary-btn {
+        background: transparent !important;
+        color: #fff !important;
+        border: 2px solid #fff !important;
+    }
+    
+    .mobile-contact-btn.secondary-btn:hover {
+        background: #fff !important;
+        color: #FF7A00 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 20px rgba(255,255,255,0.3) !important;
+    }
+    
+    /* Mobile WhatsApp Text Fix */
+    .mobile-whatsapp-text {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
     }
 }
