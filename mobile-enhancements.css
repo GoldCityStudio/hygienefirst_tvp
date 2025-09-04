@@ -1219,6 +1219,15 @@
     .mobile-menu-close {
         display: none !important;
     }
+    
+    /* Ensure process-steps display in single row on desktop */
+    .process-steps {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
 }
 
 /* Service Page UI Improvements */
@@ -4431,36 +4440,6 @@
 /* ===== COMPREHENSIVE MOBILE CARD ENHANCEMENTS ===== */
 @media (max-width: 768px) {
     /* All Card Containers Mobile Layout */
-    .service-cards,
-    .mission-cards,
-    .pricing-cards,
-    .scope-cards,
-    .benefits-cards,
-    .service-content-grid,
-    .features-grid,
-    .audience-grid,
-    .targets-grid,
-    .content-grid,
-    .advantages-grid,
-    .care-content-grid,
-    .stages-grid,
-    .why-choose-grid,
-    .quality-grid,
-    .other-services-grid,
-    .services-grid,
-    .staff-grid,
-    .target-audience-grid,
-    .capabilities-grid,
-    .complications-grid,
-    .support-services-grid,
-    .caregivers-grid,
-    .understanding-grid,
-    .care-services-grid,
-    .care-details-grid,
-    .acute-care-grid,
-    .sub-acute-care-grid,
-    .long-term-care-grid,
-    .benefits-grid,
     .news-grid,
     .related-grid,
     .service-options-grid,
@@ -4894,6 +4873,71 @@
     .process-step-icon i {
         font-size: 1.8rem !important;
     }
+    
+    /* Ensure cards are visible on mobile - override animate-on-scroll */
+    .animate-on-scroll {
+        opacity: 1 !important;
+    }
+    
+    .animate-on-scroll.animated {
+        opacity: 1 !important;
+    }
+    
+    /* Community Page Fanned Images Mobile Layout */
+    .fanned-images-container {
+        position: relative !important;
+        height: auto !important;
+        margin: 2rem 0 !important;
+        overflow: visible !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+    
+    .fanned-image {
+        position: relative !important;
+        width: 100% !important;
+        height: 200px !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+        cursor: pointer !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .fanned-image:nth-child(2),
+    .fanned-image:nth-child(3),
+    .fanned-image:nth-child(4),
+    .fanned-image:nth-child(5) {
+        left: auto !important;
+        transform: none !important;
+        z-index: 1 !important;
+    }
+    
+    .fanned-image:hover {
+        transform: none !important;
+        z-index: 1 !important;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+        border: 2px solid #FF7A00 !important;
+        overflow: hidden !important;
+    }
+    
+    .fanned-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 8px !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .fanned-image:hover img {
+        transform: scale(1.05) !important;
+        object-fit: cover !important;
+        background-color: white !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -5268,6 +5312,17 @@
     .process-step-icon i {
         font-size: 1.6rem !important;
     }
+    
+    /* Community Page Fanned Images Mobile Layout - 480px */
+    .fanned-images-container {
+        gap: 1rem !important;
+        margin: 1.5rem 0 !important;
+    }
+    
+    .fanned-image {
+        height: 180px !important;
+        margin-bottom: 0.75rem !important;
+    }
 }
 
 @media (max-width: 360px) {
@@ -5525,5 +5580,16 @@
     .stat-icon i,
     .process-step-icon i {
         font-size: 1.4rem !important;
+    }
+    
+    /* Community Page Fanned Images Mobile Layout - 360px */
+    .fanned-images-container {
+        gap: 0.75rem !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .fanned-image {
+        height: 160px !important;
+        margin-bottom: 0.5rem !important;
     }
 }
