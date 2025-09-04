@@ -3801,3 +3801,349 @@
         margin: 0 !important;
     }
 }
+
+/* ===== INSTITUTIONAL CARE PAGE MOBILE ENHANCEMENTS ===== */
+@media (max-width: 768px) {
+    /* Hero Section Mobile Improvements */
+    .hero-section {
+        padding: 2rem 0 !important;
+    }
+
+    .hero-layout {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        text-align: center !important;
+    }
+
+    .mobile-hero-title {
+        font-size: 2rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .mobile-hero-description {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .hero-image {
+        order: -1 !important;
+    }
+
+    .hero-image img {
+        height: 250px !important;
+    }
+
+    /* Institutional Main Container Mobile */
+    .institutional-main {
+        padding: 0 1rem !important;
+        border-radius: 16px !important;
+        margin: 0 1rem !important;
+    }
+
+    /* Institutional Section Mobile */
+    .institutional-section {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        margin: 3rem 0 !important;
+        text-align: center !important;
+    }
+
+    .institutional-section:nth-child(even) {
+        flex-direction: column !important;
+    }
+
+    .institutional-section h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .institutional-section p {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .institutional-section img {
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover !important;
+        border-radius: 12px !important;
+    }
+
+    /* Service Features Section Mobile */
+    .service-features-section {
+        padding: 2rem 0 !important;
+    }
+
+    .service-features-section h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .feature-card {
+        padding: 1.5rem !important;
+    }
+
+    .feature-card .feature-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .feature-card .feature-icon i {
+        font-size: 1.3rem !important;
+    }
+
+    .feature-card h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    .feature-card p {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Service Process Section Mobile */
+    .service-process-section {
+        padding: 2rem 0 !important;
+    }
+
+    .service-process-section h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .process-step-card {
+        padding: 1.5rem !important;
+    }
+
+    .process-step-card .step-number {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 1rem !important;
+        top: -10px !important;
+        left: 12px !important;
+    }
+
+    .process-step-card .step-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    .process-step-card .step-icon i {
+        font-size: 1.3rem !important;
+    }
+
+    .process-step-card h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .process-step-card p {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Caregiver Types Section Mobile */
+    .caregiver-types-section {
+        padding: 2rem 0 !important;
+    }
+
+    .caregiver-types-section h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .table-container {
+        overflow-x: auto !important;
+        border-radius: 12px !important;
+    }
+
+    .table-container table {
+        min-width: 600px !important;
+    }
+
+    .table-container th,
+    .table-container td {
+        padding: 1rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Statistics Section Mobile */
+    .statistics-section {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        margin-top: 2rem !important;
+    }
+
+    .stat-card {
+        padding: 1.5rem !important;
+    }
+
+    .stat-number {
+        font-size: 1.8rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .stat-description {
+        font-size: 0.8rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Target Audience Section Mobile */
+    .target-audience-section {
+        padding: 2rem 0 !important;
+    }
+
+    .target-audience-section h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .audience-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .audience-card {
+        padding: 1.5rem !important;
+    }
+
+    .audience-card .audience-icon {
+        width: 40px !important;
+        height: 40px !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    .audience-card .audience-icon i {
+        font-size: 1.1rem !important;
+    }
+
+    .audience-card h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* Mobile Banner Content */
+    .banner-content-mobile {
+        padding: 2rem 1rem !important;
+    }
+
+    .mobile-banner-title {
+        font-size: 2rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .mobile-banner-subtitle {
+        font-size: 1.1rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .mobile-banner-description {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .mobile-banner-buttons {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
+    .mobile-banner-btn {
+        width: 100% !important;
+        padding: 1rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Additional Mobile Responsive Adjustments for Institutional Care */
+@media (max-width: 480px) {
+    .mobile-hero-title {
+        font-size: 1.6rem !important;
+    }
+
+    .institutional-section h2 {
+        font-size: 1.5rem !important;
+    }
+
+    .institutional-section p {
+        font-size: 0.9rem !important;
+    }
+
+    .institutional-section img {
+        height: 180px !important;
+    }
+
+    .feature-card,
+    .process-step-card,
+    .audience-card,
+    .stat-card {
+        padding: 1rem !important;
+    }
+
+    .statistics-section {
+        grid-template-columns: 1fr !important;
+    }
+
+    .stat-number {
+        font-size: 1.5rem !important;
+    }
+
+    .stat-description {
+        font-size: 0.75rem !important;
+    }
+
+    .table-container table {
+        min-width: 500px !important;
+    }
+
+    .table-container th,
+    .table-container td {
+        padding: 0.8rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    .mobile-banner-title {
+        font-size: 1.6rem !important;
+    }
+
+    .mobile-banner-subtitle {
+        font-size: 1rem !important;
+    }
+
+    .mobile-banner-description {
+        font-size: 0.9rem !important;
+    }
+
+    .mobile-banner-btn {
+        padding: 0.8rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    .feature-card .feature-icon,
+    .process-step-card .step-icon,
+    .audience-card .audience-icon {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    .feature-card .feature-icon i,
+    .process-step-card .step-icon i,
+    .audience-card .audience-icon i {
+        font-size: 1.2rem !important;
+    }
+}
