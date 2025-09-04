@@ -536,7 +536,7 @@ header .container {
 
 .service-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     padding: 2rem;
     width: 100%;
@@ -604,7 +604,7 @@ header .container {
 
 @media (max-width: 768px) {
     .service-cards {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: 1fr;
         gap: 1rem;
         padding: 1rem;
     }
@@ -613,6 +613,19 @@ header .container {
     }
     .services {
         padding-top: 2rem;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .news-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .services {
         padding-bottom: 2rem;
     }
 }
@@ -903,7 +916,7 @@ header .container {
 
 .features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 240px);
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     justify-content: center;
 }
@@ -3924,7 +3937,8 @@ header.sticky .logo a {
 
 /* Hide mobile banner content on desktop */
 @media (min-width: 769px) {
-    .banner-content-mobile {
+    .banner-content-mobile,
+    .banner-content-mobile.even {
         display: none !important;
     }
 }
@@ -5516,7 +5530,16 @@ footer .copyright {
 .sub-acute-care-grid,
 .long-term-care-grid,
 .benefits-grid,
-.news-grid,
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
 .related-grid,
 .service-options-grid,
 .trust-grid,
