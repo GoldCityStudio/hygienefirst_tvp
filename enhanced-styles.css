@@ -479,7 +479,7 @@ header.sticky .main-menu a {
 
 /* Main Content Adjustment */
 main {
-    padding-top: 80px; /* Match header height */
+    padding-top: 0px; /* Match header height */
 }
 
 /* Mobile Navigation Enhancement */
@@ -643,7 +643,7 @@ main {
     }
 
     main {
-        padding-top: 70px; /* Adjust for smaller header on mobile */
+        padding-top: 0px; /* Adjust for smaller header on mobile */
     }
 
     .news-grid {
@@ -3660,7 +3660,7 @@ a[href^="tel:"]:hover {
 
 /* Adjust main content to account for promo banner */
 main {
-    padding-top: 120px; /* Adjusted for header with integrated promo banner */
+    padding-top: 0px; /* Adjusted for header with integrated promo banner */
 }
 
 /* Responsive adjustments */
@@ -3691,7 +3691,7 @@ main {
         margin-top: 4px;
     }
     main {
-        padding-top: 150px;
+        padding-top: 0px;
     }
 }
 
@@ -3712,7 +3712,7 @@ main {
         padding: 10px 14px;
     }
     main {
-        padding-top: 130px;
+        padding-top: 0px;
     }
 }
 
