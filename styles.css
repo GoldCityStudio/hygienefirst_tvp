@@ -17,7 +17,7 @@
     --grey-light: #F5F5F5;
     --grey-medium: #DDDDDD;
     --grey-dark: #AAAAAA;
-    --section-padding: 145px 0 0 0;
+    --section-padding: 80px 0;
     --transition-standard: 0.3s ease;
     --animation-duration: 0.8s;
     --transition-bezier: cubic-bezier(0.25, 1, 0.5, 1);
@@ -602,17 +602,9 @@ header .container {
 /* Responsive breakpoints for service cards */
 @media (max-width: 1200px) {
     .service-cards {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.5rem;
         padding: 1.5rem;
-    }
-}
-
-@media (max-width: 900px) {
-    .service-cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-        padding: 1.25rem;
     }
 }
 
@@ -713,8 +705,8 @@ header .container {
 
 /* Process Step Cards Horizontal Layout */
 .process-steps {
-    /* display: grid !important; */
-    grid-template-columns: repeat(4, 1fr) !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -972,7 +964,7 @@ header .container {
     background-color: var(--primary-color);
     color: var(--white);
     text-align: center;
-    /* padding: 60px 0; */
+    padding: 60px 0;
 }
 
 .stats .container {
@@ -986,22 +978,22 @@ header .container {
 }
 
 .stat h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 10px;
 }
 
 /* Testimonials Section */
 .testimonials {
-    background: var(--primary-color);
-    padding: 40px 0px 40px 0;
+    background: var(--grey-light);
+    padding: 60px 0;
 }
 
 .testimonial-slider {
     display: flex;
-    gap: 10px;
+    gap: 32px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding: 0px 10px 0px;
+    padding-bottom: 20px;
 }
 
 .testimonial {
@@ -1354,8 +1346,8 @@ footer .container {
     }
 }
 
-/* Extra small mobile screens (less than 400px) */
-@media (max-width: 400px) {
+/* Extra small mobile screens (less than 360px) */
+@media (max-width: 359px) {
     header .container {
         padding: 10px 15px !important;
         flex-wrap: nowrap !important;
@@ -1481,7 +1473,6 @@ footer .container {
     
     .testimonial-slider {
         max-width: 100%;
-        display: grid;
     }
     
     .stats .container {
@@ -1520,7 +1511,7 @@ footer .container {
     }
     
     section {
-        padding: 55px 0 0 0;
+        padding: 40px 0;
     }
     
     .main-menu li {
@@ -3290,7 +3281,7 @@ header.sticky .logo a {
     flex-wrap: wrap;
 }
 .real-stories-text {
-    /* flex: 1 1 320px; */
+    flex: 1 1 320px;
     min-width: 280px;
     max-width: 420px;
 }
@@ -4052,22 +4043,12 @@ header.sticky .logo a {
     background: linear-gradient(90deg, transparent 0%, var(--primary-color) 50%, transparent 100%);
 }
 
-/* Forms Row */
-.forms-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto 60px auto;
-    position: relative;
-    z-index: 1;
-}
-
-/* Info Map Row */
-.info-map-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+.contact-content {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    justify-content: center;
+    align-items: flex-start;
     max-width: 1200px;
     margin: 0 auto 80px auto;
     position: relative;
@@ -4075,6 +4056,8 @@ header.sticky .logo a {
 }
 
 .contact-info-card {
+    flex: 1;
+    max-width: 400px;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -4083,7 +4066,6 @@ header.sticky .logo a {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
-    width: 100%;
 }
 
 .contact-info-card::before {
@@ -4096,52 +4078,9 @@ header.sticky .logo a {
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
 }
 
-/* Map Card */
-.map-card {
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    padding: 30px;
-    border: 1px solid rgba(255, 122, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    width: 100%;
-    height: fit-content;
-}
-
-.map-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-}
-
-.map-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.map-container {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 400px;
-    border: none;
-    border-radius: 15px;
-}
-
 .contact-form-card {
+    flex: 1;
+    max-width: 500px;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -4150,46 +4089,6 @@ header.sticky .logo a {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
-    width: 100%;
-}
-
-/* Organization Form Card */
-.organization-form-card {
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    padding: 50px 40px;
-    border: 1px solid rgba(255, 122, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.organization-form-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-}
-
-.organization-form-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.organization-form-description {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 30px;
-    line-height: 1.5;
-    text-align: center;
 }
 
 .contact-form-card::before {
@@ -4452,30 +4351,15 @@ header.sticky .logo a {
     border-color: var(--secondary-color);
 }
 
-@media (max-width: 1200px) {
-    .forms-row,
-    .info-map-row {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-}
-
 @media (max-width: 900px) {
-    .forms-row,
-    .info-map-row {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .contact-content {
+        flex-direction: column;
+        gap: 40px;
     }
     
     .contact-info-card,
-    .contact-form-card,
-    .organization-form-card,
-    .map-card {
+    .contact-form-card {
         max-width: 100%;
-    }
-    
-    .map-container iframe {
-        height: 300px;
     }
     
     .contact-info-item {
@@ -5621,7 +5505,7 @@ footer .copyright {
 /* ===== COMPREHENSIVE RESPONSIVE CARD DESIGN ===== */
 
 /* Base card container styles */
-
+.service-cards,
 .mission-cards,
 .pricing-cards,
 .scope-cards,
@@ -5662,17 +5546,13 @@ footer .copyright {
     width: 100%;
 }
 
-.service-cards {
-    grid-template-columns: repeat(4, 1fr);
-}
-
 .related-grid,
 .service-options-grid,
 .trust-grid,
 .stats-grid {
-    display: -moz-inline-grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
     padding: 2rem;
     max-width: 1400px;
     margin: 0 auto;
@@ -5716,7 +5596,7 @@ footer .copyright {
 .stat-card,
 .process-step-card {
     min-width: 280px;
-    max-width: 400px;
+    /* max-width: 400px; */
     width: 100%;
     padding: 2rem 1.5rem 1.75rem 1.5rem;
     border-radius: 16px;
@@ -6039,7 +5919,7 @@ footer .copyright {
     .service-options-grid,
     .trust-grid,
     .stats-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 1.5rem;
         padding: 1.5rem;
     }
@@ -6082,7 +5962,7 @@ footer .copyright {
     .service-options-grid,
     .trust-grid,
     .stats-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1rem;
         padding: 1rem;
     }

@@ -2218,6 +2218,8 @@ a[href^="tel:"]:hover {
     padding: 3rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     height: fit-content;
+    position: sticky;
+    top: 100px;
 }
 
 .contact-info-item {

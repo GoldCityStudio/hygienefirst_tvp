@@ -112,7 +112,7 @@
     background: linear-gradient(135deg, #FF7A00, #E56717) !important;
     padding: 40px 20px !important;
     margin: 0 !important;
-    text-align: left !important;
+    text-align: center !important;
 }
 
 /* Mobile Contact Page Improvements */
@@ -155,13 +155,6 @@
         display: flex !important;
         flex-direction: column !important;
         gap: 30px !important;
-    }
-    
-    .mobile-forms-row,
-    .mobile-info-map-row {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px !important;
     }
     
     /* Contact Info Card Improvements */
@@ -554,91 +547,6 @@
         left: 100% !important;
     }
     
-    /* Organization Form Card Mobile */
-    .mobile-organization-form-card {
-        background: #fff !important;
-        border-radius: 20px !important;
-        padding: 30px 20px !important;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
-        border: 1px solid #e9ecef !important;
-        position: relative !important;
-        overflow: hidden !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
-    
-    .mobile-organization-form-card::before {
-        content: '' !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 4px !important;
-        background: linear-gradient(90deg, #FF7A00, #E56717) !important;
-    }
-    
-    .organization-form-title {
-        font-size: 1.5rem !important;
-        font-weight: 700 !important;
-        color: #FF7A00 !important;
-        margin-bottom: 15px !important;
-        text-align: center !important;
-    }
-    
-    .organization-form-description {
-        font-size: 0.9rem !important;
-        color: #666 !important;
-        margin-bottom: 25px !important;
-        line-height: 1.5 !important;
-        text-align: center !important;
-    }
-    
-    /* Map Card Mobile */
-    .mobile-map-card {
-        background: #fff !important;
-        border-radius: 20px !important;
-        padding: 25px 20px !important;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
-        border: 1px solid #e9ecef !important;
-        position: relative !important;
-        overflow: hidden !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
-    
-    .mobile-map-card::before {
-        content: '' !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 4px !important;
-        background: linear-gradient(90deg, #FF7A00, #E56717) !important;
-    }
-    
-    .map-title {
-        font-size: 1.5rem !important;
-        font-weight: 700 !important;
-        color: #FF7A00 !important;
-        margin-bottom: 15px !important;
-        text-align: center !important;
-    }
-    
-    .mobile-map-container {
-        border-radius: 15px !important;
-        overflow: hidden !important;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.1) !important;
-    }
-    
-    .mobile-map-container iframe {
-        width: 100% !important;
-        height: 250px !important;
-        border: none !important;
-        border-radius: 15px !important;
-    }
-
     /* Enhanced Form Styling */
     .mobile-contact-form-card {
         background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
@@ -2141,7 +2049,6 @@
         color: #fff !important;
         text-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
         font-weight: 500 !important;
-        text-align: left !important;
     }
     
     .banner-content-mobile p {
@@ -2670,11 +2577,11 @@
     
     /* Mobile Banner Content */
     .banner-content-mobile {
-        display: block !important;
+        display: none !important;
         background: linear-gradient(135deg, #FF7A00, #E56717) !important;
         padding: 40px 20px !important;
         margin: 0 !important;
-        text-align: left !important;
+        text-align: center !important;
     }
     
     .mobile-banner-title {
@@ -3962,16 +3869,6 @@
         line-height: 1.6 !important;
     }
     
-<<<<<<< HEAD
-=======
-    .process-steps {
-        display: grid !important;
-        flex-direction: column !important;
-        gap: 1.5rem !important;
-        padding: 0 1rem !important;
-        max-width: 100% !important;
-    }
->>>>>>> 1bdcae0c1c3bc3bfac9969e4dd706df0c4749e28
     
     .mobile-process-step-card {
         width: 100% !important;
@@ -4257,10 +4154,6 @@
         margin-bottom: 0.5rem !important;
     }
 
-    /* Mobile Banner Content */
-    .banner-content-mobile {
-        padding: 2rem 1rem !important;
-    }
 
     .mobile-banner-title {
         font-size: 2rem !important;
@@ -4369,25 +4262,13 @@
 }
 
 /* ===== SERVICE CARDS MOBILE ENHANCEMENTS ===== */
-@media (max-width: 900px) {
-    /* Service Cards Tablet Layout */
-    .service-cards {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 1.25rem !important;
-        padding: 1.25rem !important;
-        max-width: 100% !important;
-        margin: 0 auto !important;
-    }
-}
-
 @media (max-width: 768px) {
     /* Service Cards Mobile Layout */
     .service-cards {
         display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-        padding: 1rem !important;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 1.5rem !important;
+        padding: 1.5rem !important;
         max-width: 100% !important;
         margin: 0 auto !important;
     }
@@ -4998,7 +4879,7 @@
     .fanned-image {
         position: relative !important;
         width: 100% !important;
-        height: 200px !important;
+        height: 400px !important;
         top: auto !important;
         left: auto !important;
         transform: none !important;
@@ -5421,7 +5302,7 @@
     }
     
     .fanned-image {
-        height: 180px !important;
+        height: 100% !important;
         margin-bottom: 0.75rem !important;
     }
 }
@@ -5689,8 +5570,5 @@
         margin: 1rem 0 !important;
     }
     
-    .fanned-image {
-        height: 160px !important;
-        margin-bottom: 0.5rem !important;
-    }
+   
 }
