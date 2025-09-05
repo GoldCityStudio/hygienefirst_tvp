@@ -985,9 +985,9 @@ a[href^="tel:"]:hover {
 
 .pagination-btn:hover,
 .pagination-btn.active {
-    background: #007bff;
+    background: #FF7A00;
     color: #fff;
-    border-color: #007bff;
+    border-color: #FF7A00;
 }
 
 @media (max-width: 768px) {

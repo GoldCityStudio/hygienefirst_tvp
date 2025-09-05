@@ -48,7 +48,6 @@
     .service-cards,
     .mission-cards,
     .features,
-    .process-steps,
     .contact-methods,
     .form-row,
     .contact-form-wrapper,
@@ -120,7 +119,7 @@
 @media (max-width: 768px) {
     /* Contact Banner Improvements */
     .mobile-banner {
-        height: 200px !important;
+        height: 400px !important;
         overflow: hidden !important;
     }
     
@@ -871,7 +870,6 @@
         .service-cards,
         .mission-cards,
         .features,
-        .process-steps,
         .contact-methods,
         .form-row,
         .contact-form-wrapper,
@@ -2784,7 +2782,7 @@
         border: 1px solid rgba(255, 122, 0, 0.1) !important;
         transition: all 0.3s ease !important;
         position: relative !important;
-        overflow: hidden !important;
+      /* //  overflow: hidden !important; */
     }
     
     .mobile-elderly-process-steps .process-step-card:hover {
@@ -3392,7 +3390,7 @@
         text-align: center !important;
     }
     
-    .booking-process .process-steps {
+    .booking-process {
         display: flex !important;
         flex-direction: column !important;
         gap: 1.5rem !important;
@@ -3871,13 +3869,6 @@
         line-height: 1.6 !important;
     }
     
-    .process-steps {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 1.5rem !important;
-        padding: 0 1rem !important;
-        max-width: 100% !important;
-    }
     
     .mobile-process-step-card {
         width: 100% !important;
@@ -4049,11 +4040,6 @@
     .service-process-section h2 {
         font-size: 1.8rem !important;
         margin-bottom: 1rem !important;
-    }
-
-    .process-steps {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
     }
 
     .process-step-card {
