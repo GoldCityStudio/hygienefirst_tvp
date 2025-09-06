@@ -3323,13 +3323,6 @@
         padding: 0 1rem !important;
     }
     
-    .mobile-process-steps {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 1.5rem !important;
-        padding: 0 1rem !important;
-    }
-    
     .mobile-process-step-card {
         width: 100% !important;
         min-width: auto !important;
