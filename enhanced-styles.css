@@ -1556,7 +1556,7 @@ a[href^="tel:"]:hover {
 
 /* Service Options Section */
 .service-options-section {
-    padding: 80px 0;
+    padding: 0 !important;
     background: white;
 }
 
@@ -1675,7 +1675,7 @@ a[href^="tel:"]:hover {
 
 /* Payment Levels Section */
 .payment-levels-section {
-    padding: 80px 0;
+    padding: 0 !important;
     background: #f8f9fa;
 }
 
@@ -1943,7 +1943,7 @@ a[href^="tel:"]:hover {
 
 /* Contact Form Section */
 .contact-form-section {
-    padding: 80px 0;
+    padding: 0;
     background: #f8f9fa;
 }
 
