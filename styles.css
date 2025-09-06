@@ -706,7 +706,7 @@ header .container {
 /* Process Step Cards Horizontal Layout */
 .process-steps {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: repeat(4, 1fr) !important;
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -854,7 +854,14 @@ header .container {
 /* Ensure process steps are in one row on medium and larger screens */
 @media (min-width: 769px) {
     .process-steps {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    .service-plan-and-charges {
+        display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 }
 
