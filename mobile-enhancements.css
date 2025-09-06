@@ -5578,7 +5578,7 @@
     /* Statistics Cards */
     .mobile-about-stats {
         display: grid !important;
-        grid-template-columns: 1fr !important;
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 20px !important;
         margin-top: 30px !important;
         width: 100% !important;
