@@ -2666,7 +2666,7 @@
     /* Mobile Section Headers */
     .mobile-section-header {
         text-align: center !important;
-        margin-bottom: 3rem !important;
+        margin-bottom: 0rem !important;
         padding: 0 1rem !important;
     }
     
@@ -3207,7 +3207,7 @@
     .mobile-section-header {
         text-align: center !important;
         padding: 2rem 0 !important;
-        margin-bottom: 2rem !important;
+        margin-bottom: 0rem !important;
     }
     
     .mobile-section-title {
@@ -3428,6 +3428,7 @@
         color: #333 !important;
         font-weight: 600 !important;
         margin: 0 !important;
+        text-wrap: nowrap !important;
     }
     
     .booking-process .process-step p {

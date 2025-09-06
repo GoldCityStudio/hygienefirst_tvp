@@ -1446,6 +1446,7 @@ a[href^="tel:"]:hover {
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
+    /* text-align: left !important; */
 }
 
 /* What is Section */
@@ -1550,6 +1551,7 @@ a[href^="tel:"]:hover {
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     border-left: 5px solid var(--primary-color);
+    text-align: left !important;
 }
 
 /* Service Options Section */
@@ -1716,7 +1718,7 @@ a[href^="tel:"]:hover {
 
 /* Trust Section */
 .trust-section {
-    padding: 80px 0;
+    padding: 0 !important;
     background: white;
 }
 
