@@ -4470,7 +4470,7 @@ body.zh .page-banner h1 {
 }
 
 .service-tabs {
-    display: flex;
+    display: none;
     gap: 1.5rem;
     justify-content: center;
     margin-bottom: 2.5rem;
@@ -4503,7 +4503,7 @@ body.zh .page-banner h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
-    padding: 2rem 0;
+    padding: 2rem 0 !important; 
 }
 
 .service-card {
@@ -5269,7 +5269,7 @@ footer .copyright {
 }
 
 .service-sort-filter {
-    display: flex;
+    display: none;
     gap: 2rem;
     align-items: center;
     margin-bottom: 2rem;
@@ -5304,6 +5304,7 @@ footer .copyright {
 }
 @media (max-width: 700px) {
     .service-sort-filter {
+        display: none;
         gap: 1rem;
         margin-bottom: 1.2rem;
     }
@@ -5436,10 +5437,6 @@ footer .copyright {
         grid-template-columns: repeat(3, 1fr) !important;
         justify-content: flex-start !important;
     }
-}
-
-.service-grid {
-    gap: 9rem;
 }
 
 /* Footer Address Layout Fixes */
