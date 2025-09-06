@@ -4055,29 +4055,6 @@ header.sticky .logo a {
     z-index: 1;
 }
 
-.contact-info-card {
-    flex: 1;
-    max-width: 400px;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    padding: 50px 40px;
-    border: 1px solid rgba(255, 122, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.contact-info-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-}
-
 .contact-form-card {
     flex: 1;
     max-width: 500px;
@@ -4457,9 +4434,6 @@ body.zh .page-banner h1 {
     padding: 32px 25px;
 }
 
-.contact-info-card {
-    margin-bottom: 48px;
-}
 
 .icon-fallback {
     display: flex;
@@ -5387,7 +5361,8 @@ footer .copyright {
 }
 
 .social-icons {
-    display: flex;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 1rem;
     flex-wrap: wrap;
 }
@@ -5436,7 +5411,7 @@ footer .copyright {
 /* Responsive Footer */
 @media (max-width: 768px) {
     .simple-footer {
-        padding: 2rem 0 1rem;
+        padding: 2rem 1rem 1rem;
     }
     
     .footer-content {
@@ -5450,7 +5425,9 @@ footer .copyright {
     }
     
     .social-icons {
-        justify-content: flex-start;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        justify-content: flex-start !important;
     }
 }
 
@@ -5538,7 +5515,7 @@ footer .copyright {
 .benefits-grid,
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     padding: 2rem;
     max-width: 1400px;

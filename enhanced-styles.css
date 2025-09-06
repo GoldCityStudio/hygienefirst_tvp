@@ -2208,18 +2208,6 @@ a[href^="tel:"]:hover {
     gap: 4rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 4rem 0;
-}
-
-/* Contact Info Card */
-.contact-info-card {
-    background: white;
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    height: fit-content;
-    position: sticky;
-    top: 100px;
 }
 
 .contact-info-item {
