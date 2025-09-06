@@ -923,12 +923,14 @@ a[href^="tel:"]:hover {
     font-weight: 600;
     color: #333;
     line-height: 1.4;
+    text-align: left !important;
 }
 
 .news-date {
     color: #666;
     font-size: 0.9rem;
     margin-bottom: 10px;
+    text-align: left !important;
 }
 
 .news-excerpt {
@@ -940,6 +942,7 @@ a[href^="tel:"]:hover {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-align: left !important;
 }
 
 .read-more {
@@ -1443,7 +1446,6 @@ a[href^="tel:"]:hover {
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
-    text-align: left !important;
 }
 
 /* What is Section */

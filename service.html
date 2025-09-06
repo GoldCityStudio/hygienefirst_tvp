@@ -498,16 +498,14 @@
                 </a>
             </div>
             <div class="header-icons">
-                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i></a>
-                <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i><span></span></a>會員中心
+                <!-- <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a> -->
             </div>
             <nav>
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">關於我們</a>
-                        <div class="dropdown-content" style="background-color: #ffffff !important; opacity: 1 !important; background: #ffffff !important;">
-                            <a href="about.html#features">我們的特色</a>
-                            <a href="about.html#testimonials">客戶評價</a>
+                        <div class="dropdown-content">
                             <a href="news.html">媒體中心</a>
                         </div>
                     </li>
@@ -529,9 +527,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="institutional-care.html">機構護理人手支援</a>
-                        <div class="dropdown-content">
-                            <a href="institutional-care.html#institutional-care">機構護理服務</a>
-                        </div>
+                      
                     </li>
                     <li>
                         <a href="waste-collection.html">醫療及化學廢物收集服務</a>
@@ -552,6 +548,28 @@
         </div>
     </header>
 
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal" style="display:none;">
+      <div class="cart-modal-content">
+        <span class="close-cart-modal" tabindex="0">&times;</span>
+        <h2>購物車</h2>
+        <div class="cart-modal-body">
+          <div class="cart-items-section">
+            <h3>購物車商品</h3>
+            <div id="cart-items">
+              <p>您的購物車是空的。</p>
+            </div>
+          </div>
+          <div class="cart-summary-section">
+            <div class="cart-modal-footer">
+              <span>總計: <span id="cart-total">$0</span></span>
+              <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
+              <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <main id="main-content" >
         <!-- Banner Image -->
                     <div class="full-width-banner mobile-service-banner" style="position: relative;">

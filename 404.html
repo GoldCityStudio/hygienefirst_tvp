@@ -141,17 +141,15 @@
                 </a>
             </div>
             <div class="header-icons">
-                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i></a>
-                <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i><span></span></a>會員中心
+                <!-- <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a> -->
             </div>
             <nav>
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">關於我們</a>
                         <div class="dropdown-content">
-                            <a href="about.html#features">我們的特色</a>
-                            <a href="about.html#testimonials">客戶評價</a>
-                            <a href="news.html#media">媒體中心</a>
+                            <a href="news.html">媒體中心</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -172,9 +170,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="institutional-care.html">機構護理人手支援</a>
-                        <div class="dropdown-content">
-                            <a href="institutional-care.html#institutional-care">機構護理服務</a>
-                        </div>
+                      
                     </li>
                     <li>
                         <a href="waste-collection.html">醫療及化學廢物收集服務</a>
@@ -195,17 +191,35 @@
         </div>
     </header>
 
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal" style="display:none;">
+      <div class="cart-modal-content">
+        <span class="close-cart-modal" tabindex="0">&times;</span>
+        <h2>購物車</h2>
+        <div class="cart-modal-body">
+          <div class="cart-items-section">
+            <h3>購物車商品</h3>
+            <div id="cart-items">
+              <p>您的購物車是空的。</p>
+            </div>
+          </div>
+          <div class="cart-summary-section">
+            <div class="cart-modal-footer">
+              <span>總計: <span id="cart-total">$0</span></span>
+              <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
+              <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <main id="main-content" >
         <section class="error-container">
             <h1 class="error-code">404</h1>
             <h2 class="error-message">頁面未找到</h2>
             <p class="error-description">很抱歉，您要找的頁面不存在或已被移動。請檢查網址或使用以下連結導航。</p>
-            <a href="index.html" class="error-btn">返回首頁</a>
-            <div class="language-switch">
-                <a href="404-zh.html">繁體中文</a>
-                <span>|</span>
-                <a href="404.html">English</a>
-            </div>
+            <a href="index.html" class="error-btn">返回首頁</a>   
         </section>
     </main>
 
