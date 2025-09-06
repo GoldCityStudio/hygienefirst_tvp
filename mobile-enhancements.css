@@ -899,7 +899,8 @@
         .mobile-contact-info-card,
         .mobile-contact-form-card,
         .mobile-organization-form-section {
-            margin: 0 10px !important;
+            margin: block;
+            width: 90% !important;
             padding: 25px 15px !important;
         }
         
