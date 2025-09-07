@@ -4537,8 +4537,10 @@ body.zh .page-banner h1 {
     transition: transform 0.3s, color 0.3s;
 }
 .service-card:hover .service-card__icon i {
-    transform: scale(1.15) rotate(-6deg);
+    transform: scale(1.15);
     color: #ffe5d0;
+  
+
 }
 .service-card__content {
     padding: 2rem 1.5rem 1.5rem 1.5rem;
