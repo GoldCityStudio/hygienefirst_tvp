@@ -243,6 +243,242 @@
         text-decoration: none;
         color: inherit;
     }
+    
+    /* Hospital Support Section Styles - Matching Reference Image */
+    .hospital-support-section {
+        margin: 0 !important;
+        padding: 0 2vw;
+    }
+    
+    .hospital-support-content {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        max-width: 1200px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: none;
+    }
+    
+    .hospital-support-left {
+        flex: 0 0 60%;
+        position: relative;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+    }
+    
+    .hospital-support-hex-container {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hospital-support-hex-bg {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 360px;
+        height: 360px;
+        background: linear-gradient(135deg, #FF7A00 60%, #FF9933 100%);
+        clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
+        z-index: 1;
+        opacity: 0.15;
+        filter: blur(1px);
+    }
+    
+    .hospital-support-hex {
+        position: relative;
+        z-index: 2;
+        clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
+        background: #fff;
+        box-shadow: 0 8px 32px rgba(255, 122, 0, 0.15);
+        border: 4px solid #fff9f5;
+        padding: 0;
+        width: 360px;
+        height: 360px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hospital-support-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    
+    .hospital-support-right {
+        flex: 0 0 40%;
+        display: flex;
+        flex-direction: column;
+        height: 500px;
+    }
+    
+    .hospital-support-text-section {
+        flex: 1;
+        padding: 40px 30px 20px 30px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .hospital-support-title {
+        color: #FF7A00;
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+    }
+    
+    .hospital-support-description {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+    }
+    
+    .hospital-support-services-section {
+        flex: 1;
+        background: linear-gradient(90deg, #FF7A00 0%, #FF6600 100%);
+        padding: 30px;
+        position: relative;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+       border-top-right-radius: 20px !important;
+    }
+    
+    .hospital-support-services-section::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -40px;
+        width: 0;
+        height: 0;
+        border-left: 40px solid #FF6600;
+        border-top: 250px solid transparent;
+        border-bottom: 250px solid transparent;
+    }
+    
+    .hospital-support-services-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        height: 100%;
+    }
+    
+    .hospital-support-services-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    
+    .hospital-support-service-item {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 8px 0;
+        line-height: 1.4;
+    }
+    
+    /* Responsive Design for Hospital Support Section */
+    @media (max-width: 1100px) {
+        .hospital-support-content {
+            flex-direction: column;
+            height: auto;
+        }
+        
+        .hospital-support-left {
+            flex: none;
+            height: 300px;
+            padding: 20px;
+        }
+        
+        .hospital-support-hex-container {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .hospital-support-hex-bg, .hospital-support-hex {
+            width: 280px;
+            height: 280px;
+        }
+        
+        .hospital-support-right {
+            flex: none;
+            height: auto;
+        }
+        
+        .hospital-support-services-section {
+            clip-path: none;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .hospital-support-services-section::after {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .hospital-support-section {
+            margin: 40px 0;
+            padding: 0 1vw;
+        }
+        
+        .hospital-support-left {
+            height: 250px;
+            padding: 15px;
+        }
+        
+        .hospital-support-hex-container {
+            width: 250px;
+            height: 250px;
+        }
+        
+        .hospital-support-hex-bg, .hospital-support-hex {
+            width: 230px;
+            height: 230px;
+        }
+        
+        .hospital-support-text-section {
+            padding: 30px 20px 15px 20px;
+        }
+        
+        .hospital-support-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .hospital-support-description {
+            font-size: 0.9rem;
+        }
+        
+        .hospital-support-services-section {
+            padding: 20px;
+        }
+        
+        .hospital-support-services-grid {
+            gap: 15px;
+        }
+        
+        .hospital-support-service-item {
+            font-size: 0.9rem;
+            padding: 6px 0;
+        }
+    }
     </style>
 </head>
 <body class="zh">
@@ -343,34 +579,36 @@
         <div class="institutional-main mobile-institutional-main">
             
             <!-- 醫院及院舍醫護人員支援 Section -->
-            <section class="institutional-section mobile-institutional-section">
-                <div class="mobile-institutional-content" style="flex:1; min-width:320px;">
-                    <h2 class="mobile-institutional-title">醫院及院舍醫護人員支援</h2>
-                    <p class="mobile-institutional-description">Hygiene First 首衛團隊提供跨專業人手，以支援病患的醫療、社交和康復需要。</p>
-                    <div class="institutional-gradient-btns mobile-institutional-buttons">
-                        <div class="institutional-gradient-btn mobile-institutional-btn">
-                            醫療團隊：<br>
-                            醫生 <br>
-                            護士<br>
-                            保健員<br>
-                            護理員<br>
-                            陪診員 <br>
-                            輔助治療團隊：<br>
-                            社工 <br>
-                            物理治療師 <br>
-                            職業治療師 <br>
-                            言語治療師 <br>
-                            營養師 <br>
-                            藥劑師 <br>
+            <section class="hospital-support-section">
+                <div class="hospital-support-content">
+                    <div class="hospital-support-left">
+                        <div class="hospital-support-hex-container">
+                            <div class="hospital-support-hex-bg"></div>
+                            <div class="hospital-support-hex">
+                                <img src="images/untitled folder/photo 44.jpg" alt="醫院及院舍醫護人員支援" class="hospital-support-image">
+                            </div>
                         </div>
-                        
                     </div>
-                </div>
-                <div class="mobile-institutional-image" style="flex:1; display:flex; justify-content:flex-end;">
-                    <div class="institutional-hex-layer mobile-institutional-hex-layer">
-                        <div class="institutional-hex-bg mobile-institutional-hex-bg"></div>
-                        <div class="institutional-hex mobile-institutional-hex">
-                            <img src="images/untitled folder/photo 44.jpg" alt="醫院及院舍醫護人員支援">
+                    <div class="hospital-support-right">
+                        <div class="hospital-support-text-section">
+                            <h2 class="hospital-support-title">24小時私家護理支援</h2>
+                            <p class="hospital-support-description">Hygiene First團隊為我們的客戶提供24小時醫療護理方案。我們的團隊包括護士、物理治療師、職業治療師、保健員等。</p>
+                        </div>
+                        <div class="hospital-support-services-section">
+                            <div class="hospital-support-services-grid">
+                                <div class="hospital-support-services-column">
+                                    <div class="hospital-support-service-item">住院病人服務</div>
+                                    <div class="hospital-support-service-item">手術後護理</div>
+                                    <div class="hospital-support-service-item">轉院護送</div>
+                                    <div class="hospital-support-service-item">產前及產後護理</div>
+                                </div>
+                                <div class="hospital-support-services-column">
+                                    <div class="hospital-support-service-item">家居護理</div>
+                                    <div class="hospital-support-service-item">物理治療</div>
+                                    <div class="hospital-support-service-item">職業治療</div>
+                                    <div class="hospital-support-service-item">其他護理和治療服務</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -443,141 +681,6 @@
                 </div>
             </section>
         </div>
-
-        <!-- 服務流程 Section -->
-        <section class="service-process-section mobile-service-process-section" style="padding: 4rem 0; background: white;">
-            <div class="container">
-                <div class="section-header mobile-section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 class="mobile-process-title" style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">服務流程</h2>
-                    <p class="mobile-process-description" style="font-size: 1.2rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.6;">我們提供專業且完整的機構護理人手支援服務流程，確保每個機構都能獲得最優質的支援。</p>
-                </div>
-                
-                <div class="process-steps mobile-process-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1400px; margin: 3rem auto;">
-                            <!-- Step 1: 查詢及預約 -->
-                            <div class="process-step-card mobile-process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
-                                <div class="step-number mobile-step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">1</div>
-                                <div class="card-header mobile-card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
-                                    <div class="step-icon mobile-step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
-                                        <i class="fas fa-phone" style="color: white; font-size: 1.6rem;"></i>
-                                    </div>
-                                    <div class="step-title-section mobile-step-title-section" style="flex: 1; margin-left: 0.75rem;">
-                                        <h3 class="mobile-step-title" style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">查詢及預約</h3>
-                                    </div>
-                                </div>
-                                <p class="mobile-step-description" style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">透過WhatsApp 預約專線，專員將於24小時內聯絡安排。</p>
-                            </div>
-                            
-                            <!-- Step 2: 專業評估 -->
-                            <div class="process-step-card mobile-process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
-                                <div class="step-number mobile-step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">2</div>
-                                <div class="card-header mobile-card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
-                                    <div class="step-icon mobile-step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
-                                        <i class="fas fa-clipboard-check" style="color: white; font-size: 1.6rem;"></i>
-                                    </div>
-                                    <div class="step-title-section mobile-step-title-section" style="flex: 1; margin-left: 0.75rem;">
-                                        <h3 class="mobile-step-title" style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">需求評估</h3>
-                                    </div>
-                                </div>
-                                <p class="mobile-step-description" style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">專員上門，詳細了解機構護理人手需求及具體服務要求。</p>
-                            </div>
-                            
-                            <!-- Step 3: 服務實施 -->
-                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
-                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">3</div>
-                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
-                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
-                                        <i class="fas fa-hands" style="color: white; font-size: 1.6rem;"></i>
-                                    </div>
-                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
-                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">服務實施及記錄</h3>
-                                    </div>
-                                </div>
-                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">專業護理人員提供機構護理人手支援服務。詳細記錄服務過程，提供服務報告及後續建議。</p>
-                            </div>
-                                                
-                            <!-- Step 4: 跟進服務 -->
-                            <div class="process-step-card" style="text-align: left; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); min-width: 280px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; flex-shrink: 0;">
-                                <div class="step-number" style="position: absolute; top: -12px; left: 16px; background: #FF7A00; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem;">5</div>
-                                <div class="card-header" style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
-                                    <div class="step-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(255, 122, 0, 0.25);">
-                                        <i class="fas fa-chart-line" style="color: white; font-size: 1.6rem;"></i>
-                                    </div>
-                                    <div class="step-title-section" style="flex: 1; margin-left: 0.75rem;">
-                                        <h3 style="font-size: 1.2rem; color: #333; margin: 0; font-weight: 600; line-height: 1.2;">跟進服務</h3>
-                                    </div>
-                                </div>
-                                <p style="font-size: 0.95rem; color: #666; line-height: 1.5; margin: 0;">如有需要，安排後續支援服務，確保服務持續性。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 預約服務流程 -->
-        <section class="booking-process" style="padding: 4rem 0; background: white;">
-            <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: 600;">預約服務流程</h2>
-                </div>
-                
-                <div class="process-steps" style="display: flex; justify-content: center; gap: 2rem; max-width: 1600px; margin: 0 auto 3rem; flex-wrap: nowrap;">
-                    <!-- Step 1 -->
-                    <div class="process-step" style="text-align: left; background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); min-width: 300px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease;">
-                        <div class="step-header" style="display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem;">
-                            <div class="step-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);">
-                                <i class="fas fa-file-alt" style="color: white; font-size: 1.8rem;"></i>
-                            </div>
-                            <div class="step-title-section" style="flex: 1;">
-                                <h3 style="font-size: 1.3rem; color: #333; margin: 0; font-weight: 600; line-height: 1.3;">提交查詢表格</h3>
-                            </div>
-                        </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">填寫以下表格或WhatsApp聯絡我們查詢。</p>
-                    </div>
-                    
-                    <!-- Step 2 -->
-                    <div class="process-step" style="text-align: left; background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); min-width: 300px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease;">
-                        <div class="step-header" style="display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem;">
-                            <div class="step-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);">
-                                <i class="fas fa-headset" style="color: white; font-size: 1.8rem;"></i>
-                            </div>
-                            <div class="step-title-section" style="flex: 1;">
-                                <h3 style="font-size: 1.3rem; color: #333; margin: 0; font-weight: 600; line-height: 1.3;">聯繫護理專家</h3>
-                            </div>
-                        </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">我們的護理專家們將聯絡你，以了解機構的狀況。</p>
-                    </div>
-                    
-                    <!-- Step 3 -->
-                    <div class="process-step" style="text-align: left; background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); min-width: 300px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease;">
-                        <div class="step-header" style="display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem;">
-                            <div class="step-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);">
-                                <i class="fas fa-calendar-check" style="color: white; font-size: 1.8rem;"></i>
-                            </div>
-                            <div class="step-title-section" style="flex: 1;">
-                                <h3 style="font-size: 1.3rem; color: #333; margin: 0; font-weight: 600; line-height: 1.3;">填寫預訂表格</h3>
-                            </div>
-                        </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">我們會發送服務預訂表格給你，確認服務要求及詳情。</p>
-                    </div>
-                    
-                    <!-- Step 4 -->
-                    <div class="process-step" style="text-align: left; background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); min-width: 300px; border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease;">
-                        <div class="step-header" style="display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem;">
-                            <div class="step-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);">
-                                <i class="fas fa-hands-helping" style="color: white; font-size: 1.8rem;"></i>
-                            </div>
-                            <div class="step-title-section" style="flex: 1;">
-                                <h3 style="font-size: 1.3rem; color: #333; margin: 0; font-weight: 600; line-height: 1.3;">配對護理人員</h3>
-                            </div>
-                        </div>
-                        <p style="font-size: 1rem; color: #666; line-height: 1.6; margin: 0;">我們將盡在1-2日內為你配對到合適的護理人員。</p>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-
     </main>
 
     <!-- 頁尾 -->
