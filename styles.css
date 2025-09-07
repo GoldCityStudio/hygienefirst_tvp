@@ -4679,6 +4679,8 @@ body.zh .page-banner h1 {
 .custom-services__image img {
     width: 100%;
     max-width: 340px;
+    max-height: 340px;
+    object-fit: cover;
     border-radius: 18px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.10);
 }
