@@ -2081,7 +2081,7 @@ footer .container {
 
 .zh p, .zh li {
     font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-    font-size: 1.5rem;
+    font-size: 18px !important;
     text-align: left !important;
 }
 
@@ -2874,7 +2874,7 @@ header.sticky .logo a {
 .zh p, .zh li {
     font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     line-height: 1.8;
-    font-size: 1.1rem;
+    font-size: 18px !important;
 }
 
 /* Booking Modal Styles - Chinese Language Support */
