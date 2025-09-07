@@ -6291,3 +6291,25 @@ footer .copyright {
         font-size: 0.9rem;
          }
 }
+
+@media (max-width: 768px) {
+
+.staff-tabs {
+    display: grid !important;
+        justify-content: left !important;
+        gap: 1rem !important;
+        margin-bottom: 3rem !important;
+        flex-wrap: wrap !important;
+        grid-template-columns: repeat(1, 1fr) !important;
+}   
+}
+@media (max-width: 480px) {
+    .staff-tabs {
+        display: grid !important;
+        justify-content: left !important;
+        gap: 1rem !important;
+        margin-bottom: 3rem !important;
+        flex-wrap: wrap !important;
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+}
