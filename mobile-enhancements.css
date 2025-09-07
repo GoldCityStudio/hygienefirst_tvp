@@ -921,9 +921,9 @@
     }
     
     /* Hide desktop gallery on mobile */
-    .desktop-only {
+    /* .desktop-only {
         display: none !important;
-    }
+    } */
     
     /* Show mobile cards section on mobile */
     .mobile-only {
@@ -3401,10 +3401,10 @@
     .booking-process .process-step {
         width: 100% !important;
         min-width: auto !important;
-        padding: 1.5rem !important;
+        padding: 0rem !important;
         border-radius: 16px !important;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
-        border: 1px solid rgba(255,122,0,0.1) !important;
+        box-shadow: none !important;
+        border: none !important;
         background: #fff !important;
     }
     
@@ -3670,7 +3670,7 @@
     
     .hero-image > div {
         width: 100% !important;
-        height: 250px !important;
+        height: 500px !important;
         border-radius: 16px !important;
         overflow: hidden !important;
     }
@@ -3803,10 +3803,10 @@
     }
     
     .audience-grid {
-        display: flex !important;
+        display: grid !important;
         flex-direction: column !important;
         gap: 1.5rem !important;
-        padding: 0 1rem !important;
+        padding: 0rem 1rem 2rem 1rem!important;
         max-width: 100% !important;
     }
     
@@ -3907,7 +3907,7 @@
     }
     
     .step-icon i {
-        font-size: 1.4rem !important;
+        font-size: 3.4rem !important;
     }
     
     .step-title-section h3 {

@@ -1812,14 +1812,14 @@ a[href^="tel:"]:hover {
 
 .process-steps {
     max-width: 1000px;
-    margin: 0 auto 3rem;
+    margin: 0rem !important;
 }
 
 .process-step {
     display: flex;
     align-items: flex-start;
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 0rem !important;
     background: white;
     padding: 2rem;
     border-radius: 15px;
