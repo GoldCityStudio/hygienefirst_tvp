@@ -5406,7 +5406,7 @@ footer .copyright {
 }
 .social-icons .wechat-btn:hover { 
     background: #e9ecef !important; 
-    color: #07c160 !important;
+    /* color: #07c160 !important; */
 }
 
 .footer-bottom {
