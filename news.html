@@ -27,6 +27,148 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <style>
+        /* News Categories Styling */
+        .news-categories {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+        
+        .news-category-section {
+            margin-bottom: 4rem;
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .news-category-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .category-header {
+            text-align: left;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid #FF7A00;
+        }
+        
+        .category-header h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+        }
+        
+        .category-header h2 i {
+            color: #FF7A00;
+            font-size: 2.2rem;
+        }
+        
+        .category-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0;
+            text-align: left;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .news-image {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-content h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            color: #FF7A00;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .read-more:hover {
+            color: #FF8F00;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .news-category-section {
+                padding: 2rem 1.5rem;
+                margin-bottom: 3rem;
+            }
+            
+            .category-header h2 {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+    
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -269,162 +411,168 @@
                 </div>
             </div>
         </section> -->
-        <!-- News Grid Section -->
-        <section class="latest-news">
+        <!-- News Categories Section -->
+        <section class="news-categories">
             <div class="container">
-                <div class="news-grid">
-                    <article class="news-card animate-on-scroll" data-category="company">
-                        <div class="news-image">
-                            <img src="images/news/news1.jpg" alt="Hygiene First 首衛會員第一波優惠" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>Hygiene First 首衛會員第一波優惠</h3>
-                            <p class="news-date">2025年1月20日</p>
-                            <a href="news-detail-1.html" class="read-more">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <article class="news-card animate-on-scroll" data-category="services">
-                        <div class="news-image">
-                            <img src="images/news/news2.jpg" alt="免費驗血糖 首衛您的健康" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>免費驗血糖｜首衛您的健康</h3>
-                            <p class="news-date">2025年1月15日</p>
-                            <a href="news-detail-2.html" class="read-more">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <article class="news-card animate-on-scroll" data-category="events">
-                        <div class="news-image">
-                            <img src="images/news/news3.jpg" alt="推動殘疾人士共融活動" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>Hygiene First 首衛 贊助活動</h3>
-                            <p class="news-date">2025年1月10日</p>
-             <a href="news-detail-3.html" class="read-more">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <article class="news-card animate-on-scroll" data-category="services">
-                        <div class="news-image">
-                            <img src="https://static.wixstatic.com/media/f05284_62bb50fd5f19446fa62de2b32d782728~mv2.jpg/v1/fill/w_1281,h_960,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_62bb50fd5f19446fa62de2b32d782728~mv2.jpg" alt="居家護理服務全面升級" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>居家護理服務全面升級</h3>
-                            <p class="news-date">2025年4月5日</p>
-                            <a href="news-detail-4.html" class="read-more">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <article class="news-card animate-on-scroll" data-category="events">
-                        <div class="news-image">
-                            <img src="https://static.wixstatic.com/media/f05284_cd85af3ca583496e9255577e9ec78904~mv2.jpg/v1/fill/w_779,h_428,fp_0.50_0.50,lg_1,q_90,enc_avif,quality_auto/f05284_cd85af3ca583496e9255577e9ec78904~mv2.jpg" alt="海上護理培訓工作坊精彩回顧" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>海上護理培訓工作坊精彩回顧</h3>
-                            <p class="news-date">2025年1月5日</p>
-                            <a href="news-detail-5.html" class="read-more">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <article class="news-card animate-on-scroll" data-category="company">
-                        <div class="news-image">
-                            <img src="https://static.wixstatic.com/media/f05284_2506dbf7250f4e9491f941c0f12a9836~mv2.jpg/v1/fill/w_1439,h_1080,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_2506dbf7250f4e9491f941c0f12a9836~mv2.jpg" alt="尚未換領會員證的服務提供者" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>Hygiene First 首衛快訊：尚未換領會員證的服務提供者，請盡快申請！</h3>
-                            <p class="news-date">2025年1月1日</p>
-                            <a href="news-detail-6.html" class="read-more">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <article class="news-card animate-on-scroll" data-category="services">
-                        <div class="news-image">
-                            <img src="https://static.wixstatic.com/media/f05284_7a8b9c2d3e4f5a6b7c8d9e0f1a2b3c4d~mv2.jpg/v1/fill/w_1200,h_800,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_7a8b9c2d3e4f5a6b7c8d9e0f1a2b3c4d~mv2.jpg" alt="全新智能護理服務正式推出" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>全新智能護理服務正式推出</h3>
-                            <p class="news-date">2024年12月20日</p>
-                            <a href="news-detail-7.html" class="read-more">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <article class="news-card animate-on-scroll" data-category="events">
-                        <div class="news-image">
-                            <img src="https://static.wixstatic.com/media/f05284_8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e~mv2.jpg/v1/fill/w_1000,h_600,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e~mv2.jpg" alt="社區健康推廣計劃啟動" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>社區健康推廣計劃啟動</h3>
-                            <p class="news-date">2024年11月15日</p>
-                            <a href="news-detail-8.html" class="read-more">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <article class="news-card animate-on-scroll" data-category="company">
-                        <div class="news-image">
-                            <img src="https://static.wixstatic.com/media/f05284_9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f~mv2.jpg/v1/fill/w_1100,h_700,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f~mv2.jpg" alt="專業護理培訓認證計劃" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>專業護理培訓認證計劃</h3>
-                            <p class="news-date">2024年10月30日</p>
-                            <a href="news-detail-9.html" class="read-more">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <article class="news-card animate-on-scroll" data-category="company">
-                        <div class="news-image">
-                            <img src="https://static.wixstatic.com/media/f05284_0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a~mv2.jpg/v1/fill/w_1300,h_900,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a~mv2.jpg" alt="戰略合作夥伴關係建立" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>戰略合作夥伴關係建立</h3>
-                            <p class="news-date">2024年9月25日</p>
-                            <a href="news-detail-10.html" class="read-more">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <!-- <article class="news-card animate-on-scroll" data-category="services">
-                        <div class="news-image">
-                            <img src="https://static.wixstatic.com/media/f05284_62bb50fd5f19446fa62de2b32d782728~mv2.jpg/v1/fill/w_1281,h_960,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_62bb50fd5f19446fa62de2b32d782728~mv2.jpg" alt="居家護理服務全面升級" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>居家護理服務全面升級</h3>
-                            <p class="news-date">2025年4月5日</p>
-                              <a href="https://www.hygienefirstgroup.com/zh-hk/news/2025/04/05/home-care-service-upgrade" class="read-more" target="_blank">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <article class="news-card animate-on-scroll" data-category="events">
-                        <div class="news-image">
-                            <img src="https://static.wixstatic.com/media/f05284_cd85af3ca583496e9255577e9ec78904~mv2.jpg/v1/fill/w_779,h_428,fp_0.50_0.50,lg_1,q_90,enc_avif,quality_auto/f05284_cd85af3ca583496e9255577e9ec78904~mv2.jpg" alt="海上護理培訓工作坊精彩回顧" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>【Hygiene First首衛 海上護理培訓工作坊精彩回顧】</h3>
-                            <p class="news-date">2025年1月5日</p>
-                             <a href="https://www.hygienefirstgroup.com/zh-hk/news/2025/01/05/maritime-nursing-workshop" class="read-more" target="_blank">了解更多</a>
-                        </div>
-                    </article>
-                    
-                    <article class="news-card animate-on-scroll" data-category="company">
-                        <div class="news-image">
-                            <img src="https://static.wixstatic.com/media/f05284_2506dbf7250f4e9491f941c0f12a9836~mv2.jpg/v1/fill/w_1439,h_1080,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_2506dbf7250f4e9491f941c0f12a9836~mv2.jpg" alt="尚未換領會員證的服務提供者" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>Hygiene First 首衛快訊： 尚未換領會員證的服務提供者，請盡快申請！</h3>
-                            <p class="news-date">2025年1月1日</p>
-                            <a href="https://www.hygienefirstgroup.com/zh-hk/news/2025/01/01/member-card-application-reminder" class="read-more" target="_blank">了解更多</a>
-                        </div>
-                    </article> -->
-                    
-
+                <!-- 最新消息 Section -->
+                <div class="news-category-section">
+                    <div class="category-header">
+                        <h2><i class="fas fa-newspaper"></i> 最新消息</h2>
+                        <p>了解 Hygiene First 首衛的最新動態和重要公告</p>
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card animate-on-scroll" data-category="company">
+                            <div class="news-image">
+                                <img src="images/news/news1.jpg" alt="Hygiene First 首衛會員第一波優惠" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>Hygiene First 首衛會員第一波優惠</h3>
+                                <p class="news-date">2025年1月20日</p>
+                                <a href="news-detail-1.html" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                        
+                        <article class="news-card animate-on-scroll" data-category="services">
+                            <div class="news-image">
+                                <img src="images/news/news2.jpg" alt="免費驗血糖 首衛您的健康" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>免費驗血糖｜首衛您的健康</h3>
+                                <p class="news-date">2025年1月15日</p>
+                                <a href="news-detail-2.html" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                        
+                        <article class="news-card animate-on-scroll" data-category="company">
+                            <div class="news-image">
+                                <img src="https://static.wixstatic.com/media/f05284_2506dbf7250f4e9491f941c0f12a9836~mv2.jpg/v1/fill/w_1439,h_1080,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_2506dbf7250f4e9491f941c0f12a9836~mv2.jpg" alt="尚未換領會員證的服務提供者" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>Hygiene First 首衛快訊：尚未換領會員證的服務提供者，請盡快申請！</h3>
+                                <p class="news-date">2025年1月1日</p>
+                                <a href="news-detail-6.html" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                        
+                        <article class="news-card animate-on-scroll" data-category="services">
+                            <div class="news-image">
+                                <img src="https://static.wixstatic.com/media/f05284_7a8b9c2d3e4f5a6b7c8d9e0f1a2b3c4d~mv2.jpg/v1/fill/w_1200,h_800,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_7a8b9c2d3e4f5a6b7c8d9e0f1a2b3c4d~mv2.jpg" alt="全新智能護理服務正式推出" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>全新智能護理服務正式推出</h3>
+                                <p class="news-date">2024年12月20日</p>
+                                <a href="news-detail-7.html" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-                <!-- <div class="news-pagination">
-                    <a href="#" class="pagination-btn active">1</a>
-                    <a href="#" class="pagination-btn">2</a>
-                    <a href="#" class="pagination-btn">3</a>
-                    <a href="#" class="pagination-btn">4</a>
-                    <a href="#" class="pagination-btn">5</a>
-                </div> -->
+
+                <!-- 媒體中心 Section -->
+                <div class="news-category-section">
+                    <div class="category-header">
+                        <h2><i class="fas fa-video"></i> 媒體中心</h2>
+                        <p>媒體報導、新聞發布和專業採訪內容</p>
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card animate-on-scroll" data-category="media">
+                            <div class="news-image">
+                                <img src="images/news/news3.jpg" alt="推動殘疾人士共融活動" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>Hygiene First 首衛 贊助活動</h3>
+                                <p class="news-date">2025年1月10日</p>
+                                <a href="news-detail-3.html" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                        
+                        <article class="news-card animate-on-scroll" data-category="media">
+                            <div class="news-image">
+                                <img src="https://static.wixstatic.com/media/f05284_cd85af3ca583496e9255577e9ec78904~mv2.jpg/v1/fill/w_779,h_428,fp_0.50_0.50,lg_1,q_90,enc_avif,quality_auto/f05284_cd85af3ca583496e9255577e9ec78904~mv2.jpg" alt="海上護理培訓工作坊精彩回顧" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>海上護理培訓工作坊精彩回顧</h3>
+                                <p class="news-date">2025年1月5日</p>
+                                <a href="news-detail-5.html" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                        
+                        <article class="news-card animate-on-scroll" data-category="media">
+                            <div class="news-image">
+                                <img src="https://static.wixstatic.com/media/f05284_8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e~mv2.jpg/v1/fill/w_1000,h_600,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e~mv2.jpg" alt="社區健康推廣計劃啟動" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>社區健康推廣計劃啟動</h3>
+                                <p class="news-date">2024年11月15日</p>
+                                <a href="news-detail-8.html" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                        
+                        <article class="news-card animate-on-scroll" data-category="media">
+                            <div class="news-image">
+                                <img src="https://static.wixstatic.com/media/f05284_62bb50fd5f19446fa62de2b32d782728~mv2.jpg/v1/fill/w_1281,h_960,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_62bb50fd5f19446fa62de2b32d782728~mv2.jpg" alt="居家護理服務全面升級" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>居家護理服務全面升級</h3>
+                                <p class="news-date">2025年4月5日</p>
+                                <a href="news-detail-4.html" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- 獎項殊榮 Section -->
+                <div class="news-category-section">
+                    <div class="category-header">
+                        <h2><i class="fas fa-trophy"></i> 獎項殊榮</h2>
+                        <p>Hygiene First 首衛獲得的認證、獎項和專業殊榮</p>
+                    </div>
+                    <div class="news-grid">
+                        <article class="news-card animate-on-scroll" data-category="awards">
+                            <div class="news-image">
+                                <img src="https://static.wixstatic.com/media/f05284_9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f~mv2.jpg/v1/fill/w_1100,h_700,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f~mv2.jpg" alt="專業護理培訓認證計劃" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>專業護理培訓認證計劃</h3>
+                                <p class="news-date">2024年10月30日</p>
+                                <a href="news-detail-9.html" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                        
+                        <article class="news-card animate-on-scroll" data-category="awards">
+                            <div class="news-image">
+                                <img src="https://static.wixstatic.com/media/f05284_0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a~mv2.jpg/v1/fill/w_1300,h_900,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a~mv2.jpg" alt="戰略合作夥伴關係建立" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>戰略合作夥伴關係建立</h3>
+                                <p class="news-date">2024年9月25日</p>
+                                <a href="news-detail-10.html" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Additional Award Articles -->
+                        <article class="news-card animate-on-scroll" data-category="awards">
+                            <div class="news-image">
+                                <img src="https://static.wixstatic.com/media/f05284_award1~mv2.jpg/v1/fill/w_1200,h_800,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_award1~mv2.jpg" alt="ISO 9001:2015 品質管理系統認證" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>ISO 9001:2015 品質管理系統認證</h3>
+                                <p class="news-date">2024年8月10日</p>
+                                <a href="#" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                        
+                        <article class="news-card animate-on-scroll" data-category="awards">
+                            <div class="news-image">
+                                <img src="https://static.wixstatic.com/media/f05284_award2~mv2.jpg/v1/fill/w_1200,h_800,fp_0.50_0.50,q_90,enc_avif,quality_auto/f05284_award2~mv2.jpg" alt="社會福利署長者社區照顧服務券商認證" loading="lazy">
+                            </div>
+                            <div class="news-content">
+                                <h3>社會福利署長者社區照顧服務券商認證</h3>
+                                <p class="news-date">2024年7月15日</p>
+                                <a href="#" class="read-more">了解更多</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </div>
         </section>
 
