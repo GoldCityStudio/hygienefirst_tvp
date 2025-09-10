@@ -36,6 +36,61 @@
         }
         
         @media (max-width: 768px) {
+            /* ===== GENERAL MOBILE IMPROVEMENTS ===== */
+            .container {
+                padding: 0 1rem !important;
+            }
+            
+            /* Typography improvements */
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            h2 {
+                font-size: 1.8rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            h3 {
+                font-size: 1.4rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            p {
+                font-size: 1rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            /* Button improvements */
+            button {
+                min-height: 48px !important;
+                padding: 1rem 1.5rem !important;
+                font-size: 1rem !important;
+                border-radius: 12px !important;
+                touch-action: manipulation !important;
+                -webkit-tap-highlight-color: transparent !important;
+            }
+            
+            /* Input field improvements */
+            input, select, textarea {
+                min-height: 48px !important;
+                padding: 1rem !important;
+                font-size: 1rem !important;
+                border-radius: 12px !important;
+                border: 2px solid #E0E0E0 !important;
+                touch-action: manipulation !important;
+            }
+            
+            input:focus, select:focus, textarea:focus {
+                border-color: #FF7A00 !important;
+                box-shadow: 0 0 0 3px rgba(255,122,0,0.1) !important;
+                outline: none !important;
+            }
+            
+            /* Card improvements */
             .booking-section .container > div {
                 flex-direction: column !important;
                 gap: 2rem !important;
@@ -53,6 +108,41 @@
                 order: 1;
             }
             
+            /* Pricing cards mobile layout */
+            .pricing-section .container > div {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            .pricing-section .container > div > div {
+                padding: 1.5rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            /* Deep cleaning services mobile layout */
+            .deep-cleaning-section .container > div:last-child {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            .deep-cleaning-section .container > div:last-child > div {
+                padding: 1.5rem !important;
+                text-align: center !important;
+            }
+            
+            /* Service icons mobile sizing */
+            .deep-cleaning-section .container > div:last-child > div > div:first-child {
+                width: 150px !important;
+                height: 150px !important;
+                margin: 0 auto 1rem !important;
+            }
+            
+            .deep-cleaning-section .container > div:last-child > div > div:first-child img {
+                width: 100% !important;
+                height: 100% !important;
+            }
+            
+            /* Weekly plan section mobile improvements */
             .weekly-plan-section .container > div > div:first-child > div:first-child {
                 flex-direction: column !important;
                 text-align: center !important;
@@ -61,8 +151,15 @@
             
             .weekly-plan-section .container > div > div:first-child > div:first-child > div:last-child > div {
                 grid-template-columns: 1fr !important;
+                gap: 1rem !important;
             }
             
+            .weekly-plan-section .container > div > div:first-child > div:first-child > div:first-child img {
+                width: 80px !important;
+                height: 80px !important;
+            }
+            
+            /* Housekeeping services mobile layout */
             .housekeeping-services-section .container > div:last-child {
                 flex-direction: column !important;
                 gap: 2rem !important;
@@ -100,6 +197,129 @@
             
             .housekeeping-services-section .container > div:nth-child(4) > div:last-child {
                 order: 1;
+            }
+            
+            /* Image improvements */
+            .housekeeping-services-section img {
+                width: 100% !important;
+                height: 350px !important;
+                object-fit: cover !important;
+                border-radius: 12px !important;
+            }
+            
+            /* Housekeeping services mobile layout - Image first, then description */
+            .housekeeping-services-section .container > div:nth-child(2) {
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+            .housekeeping-services-section .container > div:nth-child(2) > div:first-child {
+                order: 1 !important;
+            }
+            .housekeeping-services-section .container > div:nth-child(2) > div:last-child {
+                order: 2 !important;
+            }
+            
+            /* Bedroom section - Image first, then description */
+            .housekeeping-services-section .container > div:nth-child(3) {
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+            .housekeeping-services-section .container > div:nth-child(3) > div:first-child {
+                order: 2 !important;
+            }
+            .housekeeping-services-section .container > div:nth-child(3) > div:last-child {
+                order: 1 !important;
+            }
+            
+            /* Kitchen section - Image first, then description */
+            .housekeeping-services-section .container > div:nth-child(4) {
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+            .housekeeping-services-section .container > div:nth-child(4) > div:first-child {
+                order: 1 !important;
+            }
+            .housekeeping-services-section .container > div:nth-child(4) > div:last-child {
+                order: 2 !important;
+            }
+            
+            /* List improvements */
+            ul, ol {
+                padding-left: 1.5rem !important;
+            }
+            
+            li {
+                margin-bottom: 0.5rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            /* Icon improvements */
+            i {
+                font-size: 1.2rem !important;
+            }
+            
+            /* Form improvements */
+            .booking-section form {
+                padding: 1.5rem !important;
+            }
+            
+            .booking-section form > div {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            /* Rating improvements */
+            .booking-section .container > div:last-child > div:first-child > div:nth-child(3) {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.5rem !important;
+            }
+            
+            /* Section spacing improvements */
+            section {
+                padding: 2rem 0 !important;
+            }
+            
+            /* Text alignment improvements */
+            .booking-section .container > div:last-child > div:first-child > h1,
+            .booking-section .container > div:last-child > div:first-child > p {
+                text-align: left !important;
+            }
+            
+            /* Mobile-specific touch improvements */
+            * {
+                -webkit-tap-highlight-color: transparent !important;
+            }
+            
+            /* Scroll improvements */
+            html {
+                scroll-behavior: smooth !important;
+            }
+            
+            /* Focus improvements for accessibility */
+            button:focus,
+            input:focus,
+            select:focus,
+            textarea:focus,
+            a:focus {
+                outline: 2px solid #FF7A00 !important;
+                outline-offset: 2px !important;
+            }
+        }
+        
+        /* ===== TABLET IMPROVEMENTS ===== */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .container {
+                padding: 0 2rem !important;
+            }
+            
+            .deep-cleaning-section .container > div:last-child {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 2rem !important;
+            }
+            
+            .pricing-section .container > div {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 2rem !important;
             }
         }
     </style>
@@ -172,9 +392,10 @@
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">關於我們</a>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content">   
                             <a href="about.html">關於我們</a>
                             <a href="news.html">媒體中心</a>
+                         
                         </div>
                     </li>
                     <li class="dropdown">
@@ -205,8 +426,7 @@
                         <a href="community-zh.html">長者社區服務劵</a>
                     </li>
                     <li>
-                        <a href="contact.html" style="background: linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%); color: white; padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255,122,0,0.3);"
-                           onmouseover="this.style.background='#FF8F00'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,122,0,0.4)'" onmouseout="this.style.background='linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,122,0,0.3)'">立即預約</a>
+                        <a href="contact.html">立即預約</a>
                     </li>
                 </ul>
             </nav>
@@ -245,60 +465,7 @@
 
        
 
-      <!-- Hero Section -->
-      <section class="hero-section mobile-health-hero desktop-only" style="background: white; padding: 4rem 0;">
-        <div class="container">
-            <div class="hero-content mobile-health-hero-content" style="display: flex; align-items: flex-start; gap: 4rem; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
-                <div class="hero-text mobile-health-hero-text" style="flex: 1; padding-top: 3rem; min-width: 300px;">
-                    <h1 class="mobile-health-hero-title" style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2rem; color: #333; font-weight: bold; line-height: 1.2;">
-                        家務助理服務
-
-                    </h1>
-                    <p class="mobile-health-hero-description" style="font-size: 1.1rem; line-height: 1.6; color: #666; margin-bottom: 2rem;">
-                        Hygiene First 首衛團隊提供專業的家務助理服務，包括家居清潔、烹飪、洗衣、購物等日常家務。我們的專業家務助理團隊為您提供貼心、可靠的家務支援，讓您專注於重要事務，享受更舒適的生活環境。
-                    </p>
-                  
-          
-                    <div class="cta-buttons">
-                        <a href="contact.html" class="btn primary-btn mobile-cta">預約評估</a>
-                     </div>
-                </div>
-                <div class="hero-image mobile-health-hero-image" style="flex: 1; text-align: center; padding-top: 4.5rem !important; min-width: 300px;">
-                    <div style="position: relative; display: inline-block;">
-                        <img src="images/untitled folder/Photo 7.jpg" alt="家務助理服務" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <div style="position: absolute; bottom: 25px; left: 25px; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 1rem 1.2rem; border-radius: 25px; box-shadow: 0 4px 15px rgba(255,122,0,0.2); border: 2px solid #FF7A00;">
-                            <span style="color: #FF7A00; font-weight: bold; font-size: 1rem;">專業家務助理服務</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Statistics Section -->
-    <section class="stats-section mobile-health-stats" style="background: white; padding: 4rem 0;">
-        <div class="container">
-         
-            <div class="stats-grid mobile-health-stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: left !important;">
-                <div class="stat-item">
-                    <h3 style="font-size: 2.0rem; color: #FF7A00; margin-bottom: 1rem; font-weight: bold; text-shadow: 0 2px 4px rgba(255,122,0,0.3);">60,000+</h3>
-                    <p style="font-size: 15px; color: #666; text-wrap: nowrap !important;">平台上擁有超過60,000護理<br>人員並每日迅速增長</p>
-                </div>
-                <div class="stat-item">
-                    <h3 style="font-size: 2.0rem; color: #FF7A00; margin-bottom: 1rem; font-weight: bold; text-shadow: 0 2px 4px rgba(255,122,0,0.3);">24 <span style="font-size: 1.5rem;">小時</span></h3>
-                    <p style="font-size: 15px; color: #666;text-wrap: nowrap !important;">24小時內「衛」您找到<br>合適的護理人員</p>
-                </div>
-                <div class="stat-item">
-                    <h3 style="font-size: 2.0rem; color: #FF7A00; margin-bottom: 1rem; font-weight: bold; text-shadow: 0 2px 4px rgba(255,122,0,0.3);">1,000+</h3>
-                    <p style="font-size: 15px; color: #666;text-wrap: nowrap !important;">每月提供超過1,000次<br>居家護理服務</p>
-                </div>
-                <div class="stat-item">
-                    <h3 style="font-size: 2.0rem; color: #FF7A00; margin-bottom: 1rem; font-weight: bold; text-shadow: 0 2px 4px rgba(255,122,0,0.3);">7/365</h3>
-                    <p style="font-size: 15px; color: #666;text-wrap: nowrap !important; ">堅持每星期7天, <br> 一年365日提供客戶支援</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  
 
     <!-- Booking Section -->
     <section class="booking-section" style="background: linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%); padding: 4rem 0; position: relative; overflow: hidden;">
@@ -308,51 +475,8 @@
                 <div style="flex: 1; position: relative; z-index: 2;">
                     <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.1); position: relative;">
                         <!-- Housekeepers Illustration -->
-                        <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: 2rem;">
-                            <!-- Character 1 - Window cleaning -->
-                            <div style="text-align: center;">
-                                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; border: 3px solid #FF7A00;">
-                                    <i class="fas fa-spray-can" style="font-size: 2rem; color: #FF7A00;"></i>
-                                </div>
-                                <div style="width: 40px; height: 20px; background: #FF7A00; border-radius: 10px; margin: 0 auto;"></div>
-                            </div>
-                            
-                            <!-- Character 2 - Ironing -->
-                            <div style="text-align: center;">
-                                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; border: 3px solid #FF7A00;">
-                                    <i class="fas fa-tshirt" style="font-size: 2rem; color: #FF7A00;"></i>
-                                </div>
-                                <div style="width: 60px; height: 30px; background: #FF7A00; border-radius: 5px; margin: 0 auto;"></div>
-                            </div>
-                            
-                            <!-- Character 3 - Laundry -->
-                            <div style="text-align: center;">
-                                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; border: 3px solid #FF7A00;">
-                                    <i class="fas fa-tshirt" style="font-size: 2rem; color: #FF7A00;"></i>
-                                </div>
-                                <div style="display: flex; gap: 5px; justify-content: center;">
-                                    <div style="width: 15px; height: 20px; background: #FF7A00; border-radius: 3px;"></div>
-                                    <div style="width: 15px; height: 20px; background: white; border-radius: 3px;"></div>
-                                    <div style="width: 15px; height: 20px; background: #FFB74D; border-radius: 3px;"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Character 4 - Vacuuming -->
-                            <div style="text-align: center;">
-                                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; border: 3px solid #FF7A00;">
-                                    <i class="fas fa-broom" style="font-size: 2rem; color: #FF7A00;"></i>
-                                </div>
-                                <div style="width: 50px; height: 25px; background: #FF7A00; border-radius: 5px; margin: 0 auto;"></div>
-                            </div>
-                        </div>
-                        
-                        <!-- Home elements -->
-                        <div style="display: flex; justify-content: space-between; align-items: end; margin-top: 2rem;">
-                            <div style="width: 60px; height: 40px; background: #FF7A00; border-radius: 5px; position: relative;">
-                                <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 30px; height: 20px; background: #FFB74D; border-radius: 3px;"></div>
-                            </div>
-                            <div style="width: 80px; height: 50px; background: #FF7A00; border-radius: 5px;"></div>
-                            <div style="width: 40px; height: 30px; background: #FFB74D; border-radius: 3px;"></div>
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <img src="images/untitled folder/Photo 7.jpg" alt="家務助理服務" style="width: 100%; max-width: 600px; height: 350px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                         </div>
                         
                         <!-- Sparkle effects -->
@@ -367,31 +491,11 @@
                 
                 <!-- Right Side - Booking Form -->
                 <div style="flex: 1; z-index: 2;">
-                    <!-- Breadcrumb -->
-                    <div style="margin-bottom: 2rem;">
-                        <nav style="color: white; font-size: 0.9rem;">
-                            <span>主頁</span> ▸ <span>所有服務</span> ▸ <span style="font-weight: bold;">家務助理服務</span>
-                        </nav>
-                    </div>
-                    
+                   
                     <!-- Service Title -->
                     <h1 style="font-size: 3rem; color: white; margin-bottom: 1rem; font-weight: bold;">家務助理服務</h1>
                     
-                    <!-- Service Description -->
-                    <p style="font-size: 1.2rem; color: white; margin-bottom: 1.5rem;">2千位專業家務助理，提供鐘點家居清潔服務</p>
-                    
-                    <!-- Rating -->
-                    <div style="display: flex; align-items: center; margin-bottom: 2rem;">
-                        <div style="display: flex; gap: 0.2rem; margin-right: 1rem;">
-                            <i class="fas fa-star" style="color: #FF7A00; font-size: 1.2rem;"></i>
-                            <i class="fas fa-star" style="color: #FF7A00; font-size: 1.2rem;"></i>
-                            <i class="fas fa-star" style="color: #FF7A00; font-size: 1.2rem;"></i>
-                            <i class="fas fa-star" style="color: #FF7A00; font-size: 1.2rem;"></i>
-                            <i class="fas fa-star" style="color: #FF7A00; font-size: 1.2rem;"></i>
-                        </div>
-                        <span style="color: white; font-size: 1rem;">2,305評論</span>
-                    </div>
-                    
+        
                     <!-- Booking Form -->
                     <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                         <form>
@@ -435,9 +539,8 @@
     <section class="pricing-section" style="background: #F5F5F5; padding: 4rem 0;">
         <div class="container">
             <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: bold;">選擇您的家務助理服務</h2>
-                <p style="font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto;">鐘點單次家務助理服務和固定家務助理服務月費計劃分別</p>
-            </div>
+                <h2 style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem; font-weight: bold;">選擇您的家務助理服務</h2>
+             </div>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
                 
@@ -569,100 +672,12 @@
         </div>
     </section>
 
-    <!-- Frequent Weekly Cleaning Plan Section -->
-    <section class="weekly-plan-section" style="background: #F5F5F5; padding: 4rem 0;">
-        <div class="container">
-            <div style="max-width: 800px; margin: 0 auto;">
-                <!-- Main Content Card -->
-                <div style="background: white; border-radius: 15px; padding: 3rem; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 2rem;">
-                    <div style="text-align: center; margin-bottom: 2rem;">
-                        <h2 style="font-size: 2.2rem; color: #333; margin-bottom: 0.5rem; font-weight: bold;">定期每週清潔計劃</h2>
-                        <p style="font-size: 1.1rem; color: #666; margin: 0;">長期定期家居清潔服務</p>
-                    </div>
-                    
-                    <div style="display: flex; align-items: center; gap: 3rem; margin-bottom: 2rem;">
-                        <!-- Illustration -->
-                        <div style="flex-shrink: 0;">
-                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                                <!-- Cleaner illustration -->
-                                <div style="position: relative; z-index: 2;">
-                                    <div style="width: 60px; height: 60px; background: #2196F3; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
-                                        <i class="fas fa-user" style="color: white; font-size: 1.5rem;"></i>
-                                    </div>
-                                    <div style="width: 40px; height: 20px; background: #2196F3; border-radius: 10px; margin: 0 auto;"></div>
-                                </div>
-                                <!-- Clock -->
-                                <div style="position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; background: white; border: 3px solid #F44336; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-clock" style="color: #F44336; font-size: 0.8rem;"></i>
-                                </div>
-                                <!-- Background stripes -->
-                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(33, 150, 243, 0.1) 5px, rgba(33, 150, 243, 0.1) 10px); z-index: 1;"></div>
-                            </div>
-                        </div>
-                        
-                        <!-- Benefits List -->
-                        <div style="flex: 1;">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                                <div style="display: flex; align-items: flex-start; gap: 0.8rem;">
-                                    <i class="fas fa-check-circle" style="color: #F44336; font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                    <span style="color: #333; font-size: 0.95rem; line-height: 1.4;">適合每週需要超過6小時清潔服務的客戶</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 0.8rem;">
-                                    <i class="fas fa-check-circle" style="color: #F44336; font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                    <span style="color: #333; font-size: 0.95rem; line-height: 1.4;">提供免費家務助理替換服務</span>
-                                </div>
-                                <div style="display: flex; align-items: flex-start; gap: 0.8rem;">
-                                    <i class="fas fa-check-circle" style="color: #F44336; font-size: 1.2rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                    <span style="color: #333; font-size: 0.95rem; line-height: 1.4;">專人跟進服務</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Book Now Button -->
-                    <div style="text-align: center;">
-                        <button style="background: linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%); color: white; padding: 1.2rem 3rem; border: none; border-radius: 10px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3); transition: all 0.3s ease;"
-                                onmouseover="this.style.background='#FF8F00'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 7px 20px rgba(255,122,0,0.4)'" onmouseout="this.style.background='linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(255, 122, 0, 0.3)'">
-                            立即預約 <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Terms and Conditions -->
-                <div style="background: #F5F5F5; padding: 0;">
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; padding: 0.8rem 0;">
-                            <i class="fas fa-star" style="color: #2196F3; font-size: 0.8rem; margin-top: 0.3rem; flex-shrink: 0;"></i>
-                            <span style="color: #333; font-size: 0.9rem; line-height: 1.4;">收費已包含交通費（偏遠地區除外）</span>
-                        </li>
-                        <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; padding: 0.8rem 0;">
-                            <i class="fas fa-star" style="color: #2196F3; font-size: 0.8rem; margin-top: 0.3rem; flex-shrink: 0;"></i>
-                            <span style="color: #333; font-size: 0.9rem; line-height: 1.4;">晚上6時後每小時額外收費港幣20元；特定地點可能收取額外費用</span>
-                        </li>
-                        <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; padding: 0.8rem 0;">
-                            <i class="fas fa-star" style="color: #2196F3; font-size: 0.8rem; margin-top: 0.3rem; flex-shrink: 0;"></i>
-                            <span style="color: #333; font-size: 0.9rem; line-height: 1.4;">客戶需提供清潔用具及吸塵機</span>
-                        </li>
-                        <li style="display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; padding: 0.8rem 0;">
-                            <i class="fas fa-star" style="color: #2196F3; font-size: 0.8rem; margin-top: 0.3rem; flex-shrink: 0;"></i>
-                            <span style="color: #333; font-size: 0.9rem; line-height: 1.4;">已包含全面的第三者責任保險及個人意外保險</span>
-                        </li>
-                        <li style="display: flex; align-items: flex-start; gap: 0.8rem; padding: 0.8rem 0;">
-                            <i class="fas fa-star" style="color: #2196F3; font-size: 0.8rem; margin-top: 0.3rem; flex-shrink: 0;"></i>
-                            <span style="color: #333; font-size: 0.9rem; line-height: 1.4;">清潔員可拒絕被視為生命或健康風險的工作（例如高空清潔或需要攀爬的工作）</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
+   
     <!-- Deep Cleaning Services Section -->
     <section class="deep-cleaning-section" style="background: white; padding: 4rem 0;">
         <div class="container">
             <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: bold;">深度清潔服務</h2>
-                <p style="font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto;">探索我們提供的深度清潔服務範圍</p>
+                <h2 style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem; font-weight: bold;">深度清潔服務</h2>
             </div>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
@@ -671,18 +686,8 @@
                 <div style="background: white; border-radius: 15px; padding: 2.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;"
                      onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'"
                      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.08)'">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; position: relative; border: 3px solid #FF7A00; box-shadow: 0 4px 15px rgba(255,122,0,0.2);">
-                        <!-- Paint Roller Icon -->
-                        <div style="position: relative;">
-                            <!-- Paint roller handle -->
-                            <div style="width: 4px; height: 30px; background: #1976D2; border-radius: 2px; position: absolute; left: 50%; transform: translateX(-50%); top: 0;"></div>
-                            <!-- Paint roller head -->
-                            <div style="width: 20px; height: 8px; background: #1976D2; border-radius: 4px; position: absolute; left: 50%; transform: translateX(-50%); top: 25px;"></div>
-                            <!-- Paint on roller -->
-                            <div style="width: 18px; height: 6px; background: #FF6B9D; border-radius: 3px; position: absolute; left: 50%; transform: translateX(-50%); top: 26px;"></div>
-                            <!-- Paint drip -->
-                            <div style="width: 2px; height: 8px; background: #1976D2; border-radius: 1px; position: absolute; left: 50%; transform: translateX(-50%); top: 32px;"></div>
-                        </div>
+                    <div style="width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; position: relative; border: 3px solid #FF7A00; box-shadow: 0 4px 15px rgba(255,122,0,0.2); overflow: hidden; border-radius: 15px;">
+                        <img src="images/untitled folder/Photo 1.jpg" alt="裝修後清潔" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                     </div>
                     <h3 style="font-size: 1.4rem; color: #333; margin: 0; font-weight: bold;">裝修後清潔</h3>
                 </div>
@@ -691,23 +696,8 @@
                 <div style="background: white; border-radius: 15px; padding: 2.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;"
                      onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'"
                      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.08)'">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; position: relative; border: 3px solid #FF7A00; box-shadow: 0 4px 15px rgba(255,122,0,0.2);">
-                        <!-- Chinese Lantern Icon -->
-                        <div style="position: relative;">
-                            <!-- Lantern body -->
-                            <div style="width: 25px; height: 35px; background: #FF6B9D; border-radius: 12px; position: relative;">
-                                <!-- Lantern top -->
-                                <div style="width: 30px; height: 8px; background: #FFD54F; border-radius: 4px; position: absolute; top: -4px; left: -2.5px;"></div>
-                                <!-- Lantern bottom -->
-                                <div style="width: 30px; height: 8px; background: #FFD54F; border-radius: 4px; position: absolute; bottom: -4px; left: -2.5px;"></div>
-                                <!-- Tassel -->
-                                <div style="width: 2px; height: 15px; background: #FFD54F; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);"></div>
-                            </div>
-                            <!-- Sparkles around lantern -->
-                            <div style="position: absolute; top: -5px; right: -5px; width: 4px; height: 4px; background: white; border-radius: 50%;"></div>
-                            <div style="position: absolute; bottom: -5px; left: -5px; width: 3px; height: 3px; background: white; border-radius: 50%;"></div>
-                            <div style="position: absolute; top: 10px; left: -8px; width: 3px; height: 3px; background: white; border-radius: 50%;"></div>
-                        </div>
+                    <div style="width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; position: relative; border: 3px solid #FF7A00; box-shadow: 0 4px 15px rgba(255,122,0,0.2); overflow: hidden; border-radius: 15px;">
+                        <img src="images/untitled folder/Photo 2.jpg" alt="春季大掃除" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                     </div>
                     <h3 style="font-size: 1.4rem; color: #333; margin: 0; font-weight: bold;">春季大掃除</h3>
                 </div>
@@ -716,27 +706,40 @@
                 <div style="background: white; border-radius: 15px; padding: 2.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;"
                      onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'"
                      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.08)'">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; position: relative; border: 3px solid #FF7A00; box-shadow: 0 4px 15px rgba(255,122,0,0.2);">
-                        <!-- Cleaning Tools Icon -->
-                        <div style="position: relative;">
-                            <!-- Cleaning bucket -->
-                            <div style="width: 25px; height: 20px; background: #1976D2; border-radius: 0 0 12px 12px; position: relative;">
-                                <!-- Bucket handle -->
-                                <div style="width: 15px; height: 8px; border: 2px solid #1976D2; border-bottom: none; border-radius: 8px 8px 0 0; position: absolute; top: -8px; left: 5px;"></div>
-                            </div>
-                            <!-- Broom leaning against bucket -->
-                            <div style="width: 2px; height: 25px; background: #FF6B9D; position: absolute; top: -5px; right: 5px; transform: rotate(15deg);"></div>
-                            <!-- Broom head -->
-                            <div style="width: 8px; height: 3px; background: #FF6B9D; position: absolute; top: -3px; right: 1px; transform: rotate(15deg);"></div>
-                            <!-- Dustpan -->
-                            <div style="width: 12px; height: 8px; background: #1976D2; border-radius: 0 0 6px 6px; position: absolute; bottom: -8px; left: 2px;"></div>
-                            <!-- Spray bottle -->
-                            <div style="width: 6px; height: 12px; background: #1976D2; border-radius: 3px; position: absolute; top: 5px; left: -8px;"></div>
-                            <!-- Spray bottle top -->
-                            <div style="width: 3px; height: 4px; background: #1976D2; border-radius: 1.5px; position: absolute; top: 3px; left: -7px;"></div>
-                        </div>
+                    <div style="width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; position: relative; border: 3px solid #FF7A00; box-shadow: 0 4px 15px rgba(255,122,0,0.2); overflow: hidden; border-radius: 15px;">
+                        <img src="images/untitled folder/Photo 3.jpg" alt="入伙前清潔" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                     </div>
                     <h3 style="font-size: 1.4rem; color: #333; margin: 0; font-weight: bold;">入伙前清潔</h3>
+                </div>
+                
+                <!-- Card 4: Fogging Disinfection -->
+                <div style="background: white; border-radius: 15px; padding: 2.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                     onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'"
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.08)'">
+                    <div style="width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; position: relative; border: 3px solid #FF7A00; box-shadow: 0 4px 15px rgba(255,122,0,0.2); overflow: hidden; border-radius: 15px;">
+                        <img src="images/untitled folder/Photo 4.jpg" alt="霧化消毒" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; color: #333; margin: 0; font-weight: bold;">霧化消毒</h3>
+                </div>
+                
+                <!-- Card 5: Formaldehyde Removal -->
+                <div style="background: white; border-radius: 15px; padding: 2.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                     onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'"
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.08)'">
+                    <div style="width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; position: relative; border: 3px solid #FF7A00; box-shadow: 0 4px 15px rgba(255,122,0,0.2); overflow: hidden; border-radius: 15px;">
+                        <img src="images/untitled folder/Photo 5.png" alt="除甲醛" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; color: #333; margin: 0; font-weight: bold;">除甲醛</h3>
+                </div>
+                
+                <!-- Card 6: Photocatalyst -->
+                <div style="background: white; border-radius: 15px; padding: 2.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                     onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'"
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.08)'">
+                    <div style="width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; position: relative; border: 3px solid #FF7A00; box-shadow: 0 4px 15px rgba(255,122,0,0.2); overflow: hidden; border-radius: 15px;">
+                        <img src="images/untitled folder/Photo 6.jpg" alt="光觸媒" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; color: #333; margin: 0; font-weight: bold;">光觸媒</h3>
                 </div>
             </div>
         </div>
@@ -747,14 +750,13 @@
         <div class="container">
             <div style="text-align: center; margin-bottom: 3rem;">
                 <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 1rem; font-weight: bold;">家務助理/鐘點家居清潔服務</h2>
-                <p style="font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto;">專業家務助理及鐘點服務範圍</p>
             </div>
             
             <div style="display: flex; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto;">
                 <!-- Left Side - Image -->
                 <div style="flex: 1;">
                     <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <img src="images/untitled folder/Photo 7.jpg" alt="家務助理清潔服務" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+                        <img src="images/untitled folder/Photo 7.jpg" alt="家務助理清潔服務" style="width: 100%; height: 500px; object-fit: cover; display: block;">
                         <!-- Overlay for better text readability if needed -->
                         <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.1)); height: 50px;"></div>
                     </div>
@@ -792,22 +794,7 @@
                             </li>
                         </ul>
                         
-                        <!-- Small Living Room Illustration -->
-                        <div style="position: absolute; bottom: 1rem; right: 1rem; width: 80px; height: 60px;">
-                            <div style="position: relative; width: 100%; height: 100%;">
-                                <!-- Floor -->
-                                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 8px; background: #E0E0E0; border-radius: 4px;"></div>
-                                <!-- Sofa -->
-                                <div style="position: absolute; bottom: 8px; left: 5px; width: 25px; height: 15px; background: #FF7A00; border-radius: 3px;"></div>
-                                <!-- Coffee table -->
-                                <div style="position: absolute; bottom: 8px; left: 35px; width: 20px; height: 8px; background: #FFB74D; border-radius: 2px;"></div>
-                                <!-- Floor lamp -->
-                                <div style="position: absolute; bottom: 8px; right: 10px; width: 3px; height: 20px; background: #666;"></div>
-                                <div style="position: absolute; top: 8px; right: 8px; width: 8px; height: 6px; background: #FF7A00; border-radius: 2px;"></div>
-                                <!-- Picture frame -->
-                                <div style="position: absolute; top: 5px; left: 15px; width: 12px; height: 8px; background: #8D6E63; border-radius: 1px;"></div>
-                            </div>
-                        </div>
+           
                     </div>
                 </div>
             </div>
@@ -838,22 +825,7 @@
                             </li>
                         </ul>
                         
-                        <!-- Small Bedroom Illustration -->
-                        <div style="position: absolute; bottom: 1rem; right: 1rem; width: 80px; height: 60px;">
-                            <div style="position: relative; width: 100%; height: 100%;">
-                                <!-- Floor -->
-                                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 8px; background: #E0E0E0; border-radius: 4px;"></div>
-                                <!-- Bed -->
-                                <div style="position: absolute; bottom: 8px; left: 5px; width: 30px; height: 20px; background: #FF7A00; border-radius: 3px;">
-                                    <!-- Bedding -->
-                                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 8px; background: #FFB74D; border-radius: 3px 3px 0 0;"></div>
-                                </div>
-                                <!-- Bedside table -->
-                                <div style="position: absolute; bottom: 8px; left: 40px; width: 12px; height: 15px; background: #8D6E63; border-radius: 2px;"></div>
-                                <!-- Picture frame on wall -->
-                                <div style="position: absolute; top: 5px; left: 20px; width: 10px; height: 8px; background: #8D6E63; border-radius: 1px;"></div>
-                            </div>
-                        </div>
+           
                     </div>
                 </div>
                 
@@ -902,21 +874,7 @@
                             </li>
                         </ul>
                         
-                        <!-- Small Kitchen Illustration -->
-                        <div style="position: absolute; bottom: 1rem; right: 1rem; width: 80px; height: 60px;">
-                            <div style="position: relative; width: 100%; height: 100%;">
-                                <!-- Floor -->
-                                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 8px; background: #E0E0E0; border-radius: 4px;"></div>
-                                <!-- Kitchen counter -->
-                                <div style="position: absolute; bottom: 8px; left: 5px; width: 35px; height: 12px; background: #FF7A00; border-radius: 2px;"></div>
-                                <!-- Sink -->
-                                <div style="position: absolute; bottom: 8px; left: 20px; width: 15px; height: 8px; background: #FFB74D; border-radius: 1px;"></div>
-                                <!-- Stove -->
-                                <div style="position: absolute; bottom: 8px; left: 45px; width: 12px; height: 10px; background: #FF7A00; border-radius: 1px;"></div>
-                                <!-- Cabinet above -->
-                                <div style="position: absolute; top: 5px; left: 10px; width: 30px; height: 8px; background: #FFB74D; border-radius: 1px;"></div>
-                            </div>
-                        </div>
+                 
                     </div>
                 </div>
             </div>
@@ -1173,6 +1131,31 @@
             </div>
         </section>
 
+
+    <!-- Statistics Section -->
+    <section class="stats-section mobile-health-stats" style="background: white; padding: 4rem 0;">
+        <div class="container">
+         
+            <div class="stats-grid mobile-health-stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: left !important;">
+                <div class="stat-item">
+                    <h3 style="font-size: 2.0rem; color: #FF7A00; margin-bottom: 1rem; font-weight: bold; text-shadow: 0 2px 4px rgba(255,122,0,0.3);">60,000+</h3>
+                    <p style="font-size: 15px; color: #666; text-wrap: nowrap !important;">平台上擁有超過60,000護理<br>人員並每日迅速增長</p>
+                </div>
+                <div class="stat-item">
+                    <h3 style="font-size: 2.0rem; color: #FF7A00; margin-bottom: 1rem; font-weight: bold; text-shadow: 0 2px 4px rgba(255,122,0,0.3);">24 <span style="font-size: 1.5rem;">小時</span></h3>
+                    <p style="font-size: 15px; color: #666;text-wrap: nowrap !important;">24小時內「衛」您找到<br>合適的護理人員</p>
+                </div>
+                <div class="stat-item">
+                    <h3 style="font-size: 2.0rem; color: #FF7A00; margin-bottom: 1rem; font-weight: bold; text-shadow: 0 2px 4px rgba(255,122,0,0.3);">1,000+</h3>
+                    <p style="font-size: 15px; color: #666;text-wrap: nowrap !important;">每月提供超過1,000次<br>居家護理服務</p>
+                </div>
+                <div class="stat-item">
+                    <h3 style="font-size: 2.0rem; color: #FF7A00; margin-bottom: 1rem; font-weight: bold; text-shadow: 0 2px 4px rgba(255,122,0,0.3);">7/365</h3>
+                    <p style="font-size: 15px; color: #666;text-wrap: nowrap !important; ">堅持每星期7天, <br> 一年365日提供客戶支援</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
         <!-- Final CTA Section -->
         <section class="final-cta-section">
@@ -1500,6 +1483,7 @@
         });
     });
     </script>
+
 
 </body>
 </html> 
