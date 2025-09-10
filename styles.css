@@ -7032,3 +7032,11 @@ footer .copyright {
     }
 }
 
+/* News Detail Title Styling */
+.news-detail-title {
+    text-wrap: pretty !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
