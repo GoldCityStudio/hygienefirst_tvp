@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            background: #000;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e8f4fd;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <h1>Video Test Page</h1>
+        <p>Testing video playback functionality:</p>
+        
+        <video controls preload="metadata" playsinline webkit-playsinline>
+            <source src="images/video.mp4" type="video/mp4">
+            <source src="images/untitled folder/file.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="status" id="status">
+            <strong>Status:</strong> <span id="statusText">Loading...</span>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <button onclick="playVideo()">Play Video</button>
+            <button onclick="pauseVideo()">Pause Video</button>
+            <button onclick="checkVideoInfo()">Check Video Info</button>
+        </div>
+    </div>
+
+    <script>
+        const video = document.querySelector('video');
+        const statusText = document.getElementById('statusText');
+        
+        function updateStatus(message) {
+            statusText.textContent = message;
+            console.log(message);
+        }
+        
+        video.addEventListener('loadstart', () => updateStatus('Loading started'));
+        video.addEventListener('loadedmetadata', () => updateStatus(`Metadata loaded - Duration: ${video.duration}s`));
+        video.addEventListener('loadeddata', () => updateStatus('Data loaded'));
+        video.addEventListener('canplay', () => updateStatus('Can play'));
+        video.addEventListener('canplaythrough', () => updateStatus('Can play through'));
+        video.addEventListener('play', () => updateStatus('Playing'));
+        video.addEventListener('pause', () => updateStatus('Paused'));
+        video.addEventListener('error', (e) => {
+            updateStatus(`Error: ${video.error ? video.error.code : 'Unknown error'}`);
+            console.error('Video error:', e, video.error);
+        });
+        
+        function playVideo() {
+            video.play().then(() => {
+                updateStatus('Play command successful');
+            }).catch(error => {
+                updateStatus(`Play failed: ${error.message}`);
+            });
+        }
+        
+        function pauseVideo() {
+            video.pause();
+            updateStatus('Paused');
+        }
+        
+        function checkVideoInfo() {
+            const info = `
+                Ready State: ${video.readyState}
+                Network State: ${video.networkState}
+                Current Time: ${video.currentTime}
+                Duration: ${video.duration}
+                Paused: ${video.paused}
+                Muted: ${video.muted}
+                Volume: ${video.volume}
+                Sources: ${video.querySelectorAll('source').length}
+            `;
+            updateStatus(info);
+        }
+        
+        // Initial check
+        setTimeout(checkVideoInfo, 1000);
+    </script>
+</body>
+</html>

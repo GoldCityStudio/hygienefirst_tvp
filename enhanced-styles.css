@@ -3224,6 +3224,49 @@ a[href^="tel:"]:hover {
     transform: scale(1.02);
 }
 
+/* Video element styling */
+.article-image video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: #000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-width: 100%;
+    object-fit: contain;
+    z-index: 10;
+    position: relative;
+}
+
+.article-image video:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.article-image video:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Ensure video controls are visible */
+.article-image video::-webkit-media-controls {
+    display: flex !important;
+}
+
+.article-image video::-webkit-media-controls-panel {
+    background: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Mobile video fixes */
+@media (max-width: 768px) {
+    .article-image video {
+        max-height: 50vh;
+        object-fit: contain;
+    }
+}
+
 /* Enhanced Breadcrumb */
 .breadcrumb {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);

@@ -82,7 +82,23 @@
                 <div class="article-content">
                     <h1 class="article-title news-detail-title">海上護理培訓工作坊精彩回顧</h1>
                     <div class="article-image">
-                        <img src="images/news/5.png" alt="海上護理培訓工作坊精彩回顧" loading="lazy">
+                        <!-- <img src="images/news/5.png" alt="海上護理培訓工作坊精彩回顧" loading="lazy"> -->
+
+                        <video 
+                            width="100%" 
+                            height="auto" 
+                            controls 
+                            preload="metadata" 
+                            playsinline 
+                            webkit-playsinline
+                            muted
+                            loop
+                            poster="images/news/5.png">
+                            <source src="images/video.mp4" type="video/mp4">
+                            <source src="images/untitled%20folder/file.mp4" type="video/mp4">
+                            <source src="images/untitled folder/file.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                     <p>Hygiene First 首衛很榮幸成功舉辦了海上護理培訓工作坊！這次工作坊為我們的護理團隊提供了專業的海上醫療護理技能培訓。</p>
                     
@@ -105,7 +121,82 @@
      
     </main>
 
-    
+    <script>
+        // Video playback enhancement
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            if (video) {
+                console.log('Video element found:', video);
+                
+                // Remove muted attribute on first user interaction
+                video.addEventListener('click', function() {
+                    if (video.muted) {
+                        video.muted = false;
+                        console.log('Video unmuted');
+                    }
+                });
+                
+                // Ensure video is ready to play
+                video.addEventListener('loadedmetadata', function() {
+                    console.log('Video metadata loaded, duration:', video.duration);
+                });
+                
+                video.addEventListener('loadeddata', function() {
+                    console.log('Video data loaded');
+                });
+                
+                video.addEventListener('canplay', function() {
+                    console.log('Video can play');
+                });
+                
+                video.addEventListener('canplaythrough', function() {
+                    console.log('Video can play through');
+                });
+                
+                // Handle video click to play/pause
+                video.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Video clicked, paused:', video.paused);
+                    
+                    if (video.paused) {
+                        video.play().then(function() {
+                            console.log('Video started playing');
+                        }).catch(function(error) {
+                            console.error('Video play failed:', error);
+                            alert('無法播放影片: ' + error.message);
+                        });
+                    } else {
+                        video.pause();
+                        console.log('Video paused');
+                    }
+                });
+                
+                // Handle video load errors
+                video.addEventListener('error', function(e) {
+                    console.error('Video error:', e);
+                    console.error('Error details:', video.error);
+                    
+                    const errorMsg = document.createElement('div');
+                    errorMsg.innerHTML = `
+                        <p style="color: #e74c3c; text-align: center; padding: 20px; background: #ffe6e6; border-radius: 8px; margin: 10px 0;">
+                            <strong>無法載入影片</strong><br>
+                            錯誤代碼: ${video.error ? video.error.code : '未知'}<br>
+                            請檢查您的網路連線或稍後再試。
+                        </p>
+                    `;
+                    video.parentNode.appendChild(errorMsg);
+                });
+                
+                // Test video source
+                console.log('Video sources:', video.querySelectorAll('source'));
+                video.querySelectorAll('source').forEach(function(source, index) {
+                    console.log(`Source ${index}:`, source.src, source.type);
+                });
+            } else {
+                console.error('Video element not found');
+            }
+        });
+    </script>
 
 </body>
 </html>
