@@ -4330,6 +4330,11 @@
 
     .service-icon-svg {
         font-size: 1.8rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 80px !important;
+        height: 80px !important;
     }
 
     /* Services Section Container */
@@ -4383,6 +4388,11 @@
 
     .service-icon-svg {
         font-size: 1.6rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 70px !important;
+        height: 70px !important;
     }
 
     /* Container Adjustments */
@@ -4417,6 +4427,11 @@
 
     .service-icon-svg {
         font-size: 1.4rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 60px !important;
+        height: 60px !important;
     }
 }
 
