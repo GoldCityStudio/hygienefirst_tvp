@@ -1888,7 +1888,8 @@
     }
     
     .stat-icon i {
-       
+        font-size: 2rem !important;
+        color: #FF7A00 !important;
     }
     
     .stat-number {
@@ -2405,7 +2406,7 @@
     }
     
     .real-stories-flex {
-        flex-direction: column;
+      /*  flex-direction: column;*/
         gap: 25px;
         text-align: center;
         position: relative;
@@ -2566,13 +2567,13 @@
         }
         
         .real-stories-video iframe {
-            height: 180px;
+            height: 260px;
         }
     }
     
      @media (max-width: 360px) {
         .real-stories-video iframe {
-            height: 160px;
+            height: 260px;
         }
         
         .real-stories-title {
@@ -3923,7 +3924,6 @@
         line-height: 1.5 !important;
         margin: 0 !important;
     }
-}
 
 /* ===== INSTITUTIONAL CARE PAGE MOBILE ENHANCEMENTS ===== */
 @media (max-width: 768px) {
@@ -5654,7 +5654,8 @@
     }
     
     .stat-icon i {
-       
+        font-size: 2rem !important;
+        color: #FF7A00 !important;
     }
     
     .stat-number {
@@ -5697,8 +5698,6 @@
         .mobile-stroke-psychological-layout {
             grid-template-columns: repeat(2, 1fr) !important;
         }
-
-      
     }
 }
 
@@ -5821,6 +5820,36 @@
     border-color: rgba(255, 122, 0, 0.8);
 }
 
+/* Mobile Banner Description Styles */
+.mobile-banner-description {
+    display: none;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.mobile-description-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.mobile-description-title {
+    color: #FF7A00;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.mobile-description-text {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 400;
+}
+
 /* Hide desktop banner on mobile */
 @media (max-width: 768px) {
     .desktop-banner {
@@ -5828,6 +5857,10 @@
     }
     
     .mobile-banner-slider {
+        display: block;
+    }
+    
+    .mobile-banner-description {
         display: block;
     }
     

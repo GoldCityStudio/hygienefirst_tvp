@@ -2194,6 +2194,7 @@ footer .container {
     
     .testimonial-slider {
         max-width: 100%;
+        display: grid !important;
     }
     
     .stats .container {
@@ -4555,8 +4556,8 @@ header.sticky .logo a {
 
 /* Hexagon background for service icons */
 .service-icon-hex {
-    width: 108px;
-    height: 108px;
+    /* width: 108px;
+    height: 108px; */
     margin: 0 auto 18px auto;
     position: relative;
     display: flex;
