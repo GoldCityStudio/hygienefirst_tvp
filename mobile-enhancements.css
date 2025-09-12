@@ -5889,17 +5889,13 @@
         margin: 0 auto;
     }
     
-    /* Show only mobile images on mobile devices */
-    .desktop-banner .desktop-image {
+    /* Hide desktop banner and show mobile banner slider on mobile devices */
+    .desktop-banner {
         display: none !important;
-    }
-    
-    .desktop-banner .mobile-image {
-        display: block !important;
     }
     
     .mobile-banner-slider {
-        display: none !important;
+        display: block !important;
     }
     
     .mobile-banner-description {
@@ -5964,7 +5960,7 @@
 }
 
 /* Show desktop banner on larger screens */
-@media (min-width: 370px) {
+@media (min-width: 769px) {
     .desktop-banner {
         display: block;
         height: 100vh;
