@@ -5225,8 +5225,8 @@
     .stat-card ul li,
     .process-step-card ul li {
         margin-bottom: 0.4rem !important;
-        font-size: smaller !important;
-        text-align: center !important
+        /* font-size: smaller !important;
+        text-align: center !important */
     }
 
     /* Card Icon Adjustments */
@@ -5925,22 +5925,42 @@
         padding-left: 0 !important;
     }
     
+    .service-features1 li {
+        font-size: 18px !important;
+        text-align: center !important;
+    }
+
     .service-features2 {
         list-style: none !important;
         padding-left: 0 !important;
     }
     
+    .service-features2 li {
+        font-size: 18px !important;
+        text-align: center !important;
+    }
+
     .service-features3 {
         list-style: none !important;
     
         padding-left: 0 !important;
     }
 
+    .service-features3 li {
+        font-size: 18px !important;
+        text-align: center !important;
+    }
+
     .service-features4 {
         list-style: none !important;
      
         padding-left: 0px !important;
-    }   
+    }  
+    
+    .service-features4 li {
+        font-size: 18px !important;
+        text-align: center !important;
+    }
 }
 
 /* Show desktop banner on larger screens */
@@ -5985,7 +6005,7 @@
     }
     
     .service-features1 li {
-        font-size:18px !important;
+        font-size: 18px !important;
         text-align: center !important;
     }
 
@@ -5995,7 +6015,7 @@
         text-align: center !important;
     }
     .service-features2 li {
-        font-size:18px !important;
+        font-size: 18px !important;
         text-align: center !important;
     }
     .service-features3 {
@@ -6004,7 +6024,7 @@
         text-align: center !important;
     }
     .service-features3 li {
-        font-size:18px !important;
+        font-size: 18px !important;
         text-align: center !important;
     }
     .service-features4 {
@@ -6013,7 +6033,7 @@
         text-align: center !important;
     }   
     .service-features4 li {
-        font-size:18px !important;
+        font-size: 20px !important;
         text-align: center !important;
     }
 
