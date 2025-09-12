@@ -5423,7 +5423,7 @@
     .trust-card h3,
     .stat-card h3,
     .process-step-card h3 {
-        font-size: 1rem !important;
+        font-size: 23px !important;
     }
 
     .service-card ul,
