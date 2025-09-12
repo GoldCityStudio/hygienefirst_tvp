@@ -5730,12 +5730,7 @@
     width: 16.666%; /* 100% / 6 slides */
     height: 100%;
     position: relative;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.mobile-slide.active {
-    opacity: 1;
+    flex-shrink: 0;
 }
 
 .mobile-slide img {
@@ -5850,18 +5845,79 @@
     font-weight: 400;
 }
 
-/* Hide desktop banner on mobile */
+/* Show both banners on mobile */
 @media (max-width: 768px) {
     .desktop-banner {
+        display: block !important;
+        height: 100vh;
+        min-height: 500px;
+    }
+    
+    .desktop-banner .banner-slider-track {
+        height: 100%;
+    }
+    
+    .desktop-banner .banner-slider-track img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    .desktop-banner .banner-slider-overlay {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .desktop-banner .banner-slider-content {
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .desktop-banner .banner-title {
+        font-size: 1.8rem !important;
+        margin-bottom: 10px;
+    }
+    
+    .desktop-banner .banner-subtitle {
+        font-size: 1.2rem !important;
+        margin-bottom: 15px;
+    }
+    
+    .desktop-banner .banner-text {
+        font-size: 0.9rem !important;
+        line-height: 1.4;
+    }
+    
+    .desktop-banner .cta-buttons {
+        margin-top: 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .desktop-banner .cta-buttons .btn {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    /* Show only mobile images on mobile devices */
+    .desktop-banner .desktop-image {
         display: none !important;
     }
     
+    .desktop-banner .mobile-image {
+        display: block !important;
+    }
+    
     .mobile-banner-slider {
-        display: block;
+        display: none !important;
     }
     
     .mobile-banner-description {
         display: block;
+        margin-top: 20px;
     }
     
     .banner-content-mobile {
@@ -5873,6 +5929,8 @@
 @media (min-width: 769px) {
     .desktop-banner {
         display: block;
+        height: 100vh;
+        min-height: 500px;
     }
     
     .mobile-banner-slider {
@@ -5881,5 +5939,14 @@
     
     .banner-content-mobile {
         display: none;
+    }
+    
+    /* Show only desktop images on desktop devices */
+    .desktop-banner .desktop-image {
+        display: block !important;
+    }
+    
+    .desktop-banner .mobile-image {
+        display: none !important;
     }
 }

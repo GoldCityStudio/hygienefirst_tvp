@@ -1564,7 +1564,7 @@ footer .container {
     .banner-slider,
     .main-banner-slider,
     .page-banner {
-        height: 60vh !important;
+        height: 350px !important;
         min-height: 400px !important;
     }
     
