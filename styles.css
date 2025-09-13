@@ -6978,6 +6978,12 @@ footer .copyright {
     .testimonial-slider {
         display: grid !important;
     }
+    .testimonial-avatar img {
+        width: 56px !important;
+        height: 56px !important;
+border-radius: 50% !important;  
+
+    }
     .stats .container {
             display: inline-grid !important;
     }
