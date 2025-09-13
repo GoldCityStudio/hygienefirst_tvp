@@ -7017,6 +7017,7 @@ border-radius: 50% !important;
 }
 h2 {
     font-size: 19px !important;
+    color: var(--primary-color) !important;
 }
 p {
     font-size: 15px !important;
@@ -7043,6 +7044,10 @@ p {
         border-radius: 25px !important;
        
         margin-top: 45px !important;
+    }
+    h2 {
+        font-size: 28px !important;
+        color: var(--primary-color) !important;
     }
 }
 
