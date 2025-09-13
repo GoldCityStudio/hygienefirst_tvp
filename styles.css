@@ -6975,6 +6975,9 @@ footer .copyright {
 
 /* mobile version */
 @media (max-width: 480px) {
+    .service-cards, .mission-cards, .pricing-cards, .scope-cards, .benefits-cards, .service-content-grid, .features-grid, .audience-grid, .targets-grid, .content-grid, .advantages-grid, .care-content-grid, .stages-grid, .why-choose-grid, .quality-grid, .other-services-grid, .services-grid, .staff-grid, .target-audience-grid, .capabilities-grid, .complications-grid, .support-services-grid, .caregivers-grid, .understanding-grid, .care-services-grid, .care-details-grid, .acute-care-grid, .sub-acute-care-grid, .long-term-care-grid, .benefits-grid, .news-grid, .related-grid, .service-options-grid, .trust-grid, .stats-grid {
+        padding: 0 !important;
+    }
     .testimonial-slider {
         display: grid !important;
     }
@@ -7010,17 +7013,16 @@ border-radius: 50% !important;
     }
     .benefits-list {
         text-align: left !important;
-        div {
-            
-        }
+
     }
     .hero-image {
         padding-top: 0 !important;
         min-width: fit-content !important;
 }
 .hero-image img {
-        width: 300px !important;
+        width: 100% !important;
         height: 300px !important;
+        object-fit: cover !important;
 }
 h2 {
     font-size: 24px !important;
