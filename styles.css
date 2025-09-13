@@ -2732,7 +2732,7 @@ footer .container {
 
 .zh p, .zh li {
     font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-    font-size: 18px !important;
+    font-size: 15px !important;
     text-align: left !important;
 }
 
@@ -3525,7 +3525,7 @@ header.sticky .logo a {
 .zh p, .zh li {
     font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     line-height: 1.8;
-    font-size: 18px !important;
+    font-size: 15px !important;
 }
 
 /* Booking Modal Styles - Chinese Language Support */
@@ -6966,6 +6966,13 @@ footer .copyright {
     overflow-wrap: break-word;
     hyphens: auto;
 }
+
+
+
+
+
+
+
 /* mobile version */
 @media (max-width: 360px) {
     .hero-content {
@@ -6994,6 +7001,12 @@ footer .copyright {
 .hero-image img {
         width: 300px !important;
         height: 300px !important;
+}
+h2 {
+    font-size: 19px !important;
+}
+p {
+    font-size: 15px !important;
 }
 }
 
