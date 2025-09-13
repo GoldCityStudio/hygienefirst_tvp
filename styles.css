@@ -6987,6 +6987,18 @@ footer .copyright {
 border-radius: 50% !important;  
 
     }
+    .stats {
+        background: #f8f9fa !important;
+        color: var(--primary-color) !important;
+        h2 {
+            font-size: 25px !important;
+            color: var(--primary-color) !important;
+        }
+        p {
+            font-size: 25px !important;
+            color: var(--primary-color) !important;
+        }
+        }
     .stats .container {
             display: inline-grid !important;
     }
@@ -7011,6 +7023,7 @@ border-radius: 50% !important;
     .hero-text p {
         font-size: 15px !important;
     }
+    
     .benefits-list {
         text-align: left !important;
 
@@ -7041,9 +7054,25 @@ line-height: 1.8 !important;
     padding: 0!important;
     margin: 0!important;
 }
+
+.container-card {
+    padding: 0 !important;
+}
 }
 /* desktop version */
 @media (min-width: 480px) {
+    .stats {
+        background: #f8f9fa !important;
+        color: var(--primary-color) !important;
+            h2 {
+                font-size: 36px !important;
+                color: var(--primary-color) !important;
+            }
+            p {
+                font-size: 34px !important;
+                color: var(--primary-color) !important;
+            }
+        }
     .hero-content {
         display: flex !important;
      }
@@ -7066,5 +7095,6 @@ line-height: 1.8 !important;
         font-size: 28px !important;
         color: var(--primary-color) !important;
     }
+
 }
 
