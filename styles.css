@@ -7039,7 +7039,7 @@ line-height: 1.8 !important;
     padding: 0!important;
     margin: 0!important;
 }
-
+}
 /* desktop version */
 @media (min-width: 480px) {
     .hero-content {
@@ -7050,11 +7050,12 @@ line-height: 1.8 !important;
      }
     .hero-image {
         order: -1 !important;
+        padding-top: 3.6rem !important;
     }
 
     .hero-image img {
-        width: 300px !important;
-        height: 300px !important;
+        width: 500px !important;
+        height: 500px !important;
         border-radius: 25px !important;
        
         margin-top: 45px !important;
