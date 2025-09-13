@@ -7016,7 +7016,7 @@ border-radius: 50% !important;
         height: 300px !important;
 }
 h2 {
-    font-size: 19px !important;
+    font-size: 24px !important;
     color: var(--primary-color) !important;
 }
 p {
@@ -7024,6 +7024,11 @@ p {
     text-wrap: pretty !important;
 
 }
+
+.section-header h2 {
+    font-size: 24px !important;
+    color: var(--primary-color) !important;
+    text-align: center !important;
 }
 
 /* desktop version */

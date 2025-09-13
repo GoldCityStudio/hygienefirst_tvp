@@ -1313,13 +1313,7 @@
         box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3) !important;
     }
     
-    /* Service Grid */
-    .mobile-service-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 25px !important;
-        padding: 0 20px !important;
-    }
+
     
     /* Service Cards */
     .mobile-service-card {
@@ -1627,10 +1621,7 @@
         padding: 0 15px !important;
     }
     
-    .mobile-service-grid {
-        padding: 0 15px !important;
-        gap: 20px !important;
-    }
+ 
     
     .mobile-service-content {
         padding: 20px 15px !important;
@@ -5894,6 +5885,10 @@
     .service-features4 li {
         font-size: 18px !important;
         text-align: center !important;
+    }
+
+    .mobile-service-grid .service-card, .mission-card, .pricing-card, .scope-card, .benefit-card, .service-content-card, .feature-card, .audience-card, .target-card, .content-card, .advantage-card, .care-content-card, .stage-card, .why-choose-card, .quality-card, .other-service-card, .staff-card, .target-audience-card, .capability-card, .complication-card, .support-service-card, .caregiver-card, .understanding-card, .care-service-card, .care-detail-card, .acute-care-card, .sub-acute-care-card, .long-term-care-card, .benefit-card, .news-card, .related-card, .service-option-card, .trust-card, .stat-card, .process-step-card {
+        padding: 0px !important;
     }
 }
 
