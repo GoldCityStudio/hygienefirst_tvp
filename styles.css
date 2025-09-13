@@ -7053,10 +7053,21 @@ line-height: 1.8 !important;
     text-align: center !important;
     padding: 0!important;
     margin: 0!important;
+    text-align: left !important;
 }
+
+.section-header p {
+    font-size: 15px !important;
+    text-align: left !important;
+    padding: 0!important;
+    margin: 0!important;
+    
+}
+
 
 .container-card {
     padding: 0 !important;
+   
 }
 }
 /* desktop version */
@@ -7089,12 +7100,27 @@ line-height: 1.8 !important;
         height: 500px !important;
         border-radius: 25px !important;
        
-        margin-top: 45px !important;
+    }
+
+
+
+    .hero-image iframe {
+        width: 500px !important;
+        height: 500px !important;
+        border-radius: 25px !important;
+       
     }
     h2 {
         font-size: 28px !important;
         color: var(--primary-color) !important;
     }
 
+    .container-card {
+        padding: 0 !important;
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 90% !important;
+    }
 }
 
