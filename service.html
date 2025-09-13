@@ -323,163 +323,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
-        /* Mobile Menu Styles for Service Page */
-        @media (max-width: 992px) {
-            .mobile-menu-toggle {
-                display: flex !important;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 30px;
-                height: 21px;
-                cursor: pointer;
-                z-index: 1001;
-                margin-right: 15px;
-            }
-            
-            .mobile-menu-toggle span {
-                display: block;
-                height: 3px;
-                width: 100%;
-                background-color: var(--primary-color);
-                border-radius: 3px;
-                transition: all 0.3s ease;
-            }
-            
-            .main-menu {
-                position: fixed !important;
-                top: 0 !important;
-                right: -300px !important;
-                width: 300px !important;
-                height: 100vh !important;
-                background-color: #FFFFFF !important;
-                flex-direction: column !important;
-                padding: 80px 25px 30px !important;
-                box-shadow: -5px 0 30px rgba(0,0,0,0.15) !important;
-                transition: right 0.4s cubic-bezier(0.77, 0, 0, 0.175, 1) !important;
-                overflow-y: auto !important;
-                z-index: 1000 !important;
-                align-items: flex-start !important;
-            }
-            
-            .main-menu.active {
-                right: 0 !important;
-            }
-            
-            .main-menu li {
-                margin: 0 !important;
-                padding: 8px 0 !important;
-                width: 100% !important;
-                border-bottom: 1px solid rgba(0,0,0,0.05) !important;
-            }
-            
-            .main-menu li:last-child {
-                border-bottom: none !important;
-            }
-            
-            .main-menu a {
-                padding: 12px 0 !important;
-                font-size: 1.1rem !important;
-            }
-
-            .main-menu a:after {
-                display: none !important;
-            }
-
-            .main-menu a.active {
-                color: var(--primary-color) !important;
-                background: none !important;
-            }
-
-            .main-menu a.active:before {
-                content: '';
-                position: absolute;
-                left: -10px;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 5px;
-                height: 20px;
-                background-color: var(--primary-color);
-                border-radius: 3px;
-            }
-            
-            .dropdown-content {
-                position: static !important;
-                box-shadow: none !important;
-                background-color: #FFFFFF !important;
-                padding: 5px 0 5px 15px !important;
-                min-width: 100% !important;
-                display: none !important;
-                transform: none !important;
-                animation: none !important;
-                max-height: 0 !important;
-                overflow: hidden !important;
-                transition: max-height 0.4s ease !important;
-            }
-            
-            .dropdown.open .dropdown-content {
-                display: block !important;
-                max-height: 500px !important;
-            }
-            
-            .dropdown > a:after {
-                content: '+' !important;
-                position: absolute !important;
-                right: 10px !important;
-                top: 50% !important;
-                transform: translateY(-50%) !important;
-                font-size: 20px !important;
-                transition: transform 0.3s ease !important;
-            }
-            
-            .dropdown.open > a:after {
-                transform: translateY(-50%) rotate(45deg) !important;
-            }
-            
-            .overlay {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0,0,0,0.5);
-                backdrop-filter: blur(3px);
-                z-index: 999;
-            }
-            
-            .overlay.active {
-                display: block;
-            }
-            
-            .mobile-menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-            
-            .mobile-menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .mobile-menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -6px);
-            }
-            
-            body.menu-open {
-                overflow: hidden;
-            }
-            
-            .language-selector {
-                display: none;
-            }
-            
-            .language-selector a {
-                display: none;
-            }
-            
-            main {
-                margin-top: 80px;
-            }
-        }
-
+      
 
     </style>
 </head>
@@ -573,9 +417,9 @@
     </div>
     <main id="main-content" >
         <!-- Banner Image -->
-                    <div class="full-width-banner mobile-service-banner" style="position: relative;">
+                    <div class="full-width-banner mobile-banner" style="position: relative;">
                 <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="我們的服務 Banner" style="width:100%;height:auto;display:block;">
-                <h1 class="mobile-service-banner-title" style="position: absolute; top: 68%; left: 50%; transform: translate(-50%, 0); color: #fff; font-size: 2.8rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.5); margin: 0; padding: 0; letter-spacing: 0.1em;">居家護理服務</h1>
+                <h1 class="mobile-banner-title" style="position: absolute; top: 68% !important; left: 50%; transform: translate(-50%, 0); color: #fff; font-size: 2.8rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.5); margin: 0; padding: 0; letter-spacing: 0.1em;">居家護理服務</h1>
             </div>
 
         <!-- 服務分類 -->

@@ -651,38 +651,8 @@ main {
     }
 }
 
-/* Updated Hero Section */
-.hero {
-    background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1780&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    padding: 100px 0;
-}
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 1;
-}
 
-.hero .container {
-    position: relative;
-    z-index: 2;
-}
-
-.hero-content {
-    color: #fff;
-    max-width: 650px;
-    opacity: 1;
-    transform: none;
-    animation: none;
-}
 
 .hero h1, .hero h2, .hero p {
     color: #fff;

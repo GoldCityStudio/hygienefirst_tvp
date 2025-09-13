@@ -23,307 +23,13 @@
     <title>Hygiene First - 最新消息</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="enhanced-styles.css">
+    <link rel="stylesheet" href="dropdown-fix.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <style>
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* News Categories Styling */
-        .news-categories {
-            padding: 4rem 0;
-            background: #f8f9fa;
-        }
-        
-        .news-category-section {
-            margin-bottom: 4rem;
-            background: white;
-            border-radius: 15px;
-            padding: 3rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-        
-        .news-category-section:last-child {
-            margin-bottom: 0;
-        }
-        
-        .category-header {
-            text-align: left;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 3px solid #FF7A00;
-        }
-        
-        .category-header h2 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 1rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 1rem;
-        }
-        
-        .category-header h2 i {
-            color: #FF7A00;
-            font-size: 2.2rem;
-        }
-        
-        .category-header p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0;
-            text-align: left;
-        }
-        
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .news-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 1px solid #e9ecef;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .news-image {
-            position: relative;
-            overflow: hidden;
-            height: 200px;
-        }
-        
-        .news-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .news-card:hover .news-image img {
-            transform: scale(1.05);
-        }
-        
-        .news-content {
-            padding: 1.5rem;
-        }
-        
-        .news-content h3 {
-            font-size: 1.2rem;
-            color: #333;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .news-date {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .read-more {
-            color: #FF7A00;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-        
-        .read-more:hover {
-            color: #FF8F00;
-            text-decoration: underline;
-        }
-        
-        /* Navigation Hover Effects */
-        .news-navigation a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 122, 0, 0.4) !important;
-        }
-        
-        /* Pagination Styles */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin: 3rem 0;
-            padding: 0 1rem;
-        }
-        
-        .pagination button {
-            background: white;
-            border: 2px solid #FF7A00;
-            color: #FF7A00;
-            padding: 0.8rem 1.2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            min-width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .pagination button:hover:not(:disabled) {
-            background: #FF7A00;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
-        }
-        
-        .pagination button.active {
-            background: #FF7A00;
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
-        }
-        
-        .pagination button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            background: #f5f5f5;
-            border-color: #ddd;
-            color: #999;
-        }
-        
-        .pagination .page-info {
-            background: linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
-            white-space: nowrap;
-        }
-        
-        .pagination .ellipsis {
-            color: #666;
-            font-weight: bold;
-            padding: 0 0.5rem;
-        }
-        
-        #page-numbers {
-            display: flex;
-            flex-direction: row;
-            gap: 0.5rem;
-            align-items: center;
-        }
-        
-        #page-numbers button {
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-        
-        .pagination .nav-button {
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            font-size: 1.2rem;
-        }
-        
-        @media (max-width: 1024px) {
-            .news-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .news-category-section {
-                padding: 2rem 1.5rem;
-                margin-bottom: 3rem;
-            }
-            
-            .category-header h2 {
-                font-size: 2rem;
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .news-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .news-navigation {
-                padding: 1.5rem 1rem !important;
-            }
-            
-            .news-navigation div {
-                flex-direction: column !important;
-                gap: 1rem !important;
-            }
-            
-            .news-navigation a {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .pagination {
-                flex-wrap: wrap;
-                gap: 0.5rem;
-                margin: 2rem 0;
-            }
-            
-            .pagination button {
-                padding: 0.6rem 0.8rem;
-                min-width: 40px;
-                height: 40px;
-                font-size: 0.9rem;
-            }
-            
-            .pagination .page-info {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
-                margin: 0 0.5rem;
-            }
-            
-            #page-numbers {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 0.3rem;
-                justify-content: center;
-            }
-            
-            #page-numbers button {
-                width: 40px;
-                height: 40px;
-                font-size: 0.9rem;
-            }
-            
-            .pagination .nav-button {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-        }
-    </style>
-    
+   
     <!-- Google Analytics (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -371,13 +77,10 @@
     <div class="overlay"></div>
     <div class="page-transition"></div>
     <header>
-        <!-- Promo Banner -->
-
-        
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="https://static.wixstatic.com/media/f05284_3647ed5067de49c38c32522636dd8932~mv2.png/v1/fill/w_730,h_124,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo.png" alt="Hygiene First Company Limited" style="max-height: 50px; width: auto;">
+                    <img src="https://static.wixstatic.com/media/f05284_3647ed5067de49c38c32522636dd8932~mv2.png/v1/fill/w_730,h_124,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo.png" alt="Hygiene First Company Limited" style="max-height: 50px; width: auto; border-radius: 0px !important;">
                 </a>
             </div>
             <div class="header-icons">
@@ -388,9 +91,10 @@
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">關於我們</a>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content">   
                             <a href="about.html">關於我們</a>
                             <a href="news.html">媒體中心</a>
+                         
                         </div>
                     </li>
                     <li class="dropdown">
@@ -407,6 +111,7 @@
                             <a href="dementia-care.html">認知障礙症護理服務</a>
                             <a href="post-surgery-care.html">專業手術後護理服務</a>
                             <a href="rehabilitation-care.html">復康護理</a>
+                            <a href="housekeeping-assistant.html">家務助理</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -455,119 +160,12 @@
       </div>
     </div>
     <main id="main-content" >
+      <!-- Banner Image -->
         <div class="full-width-banner mobile-banner" style="position: relative;">
-            <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="最新消息 Banner" style="width:100%;height:auto;display:block;">
-            <h1 class="banner-title mobile-banner-title" style="position: absolute; top: 68%; left: 50%; transform: translate(-50%, 0); color: #fff; font-size: 2.8rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.5); margin: 0; padding: 0; letter-spacing: 0.1em; text-wrap: nowrap !important;">最新消息</h1>
+            <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="最新消息 Banner" style="min-height:400px; width:100%;height:auto;display:block; object-fit: cover;">
+            <h1 class="mobile-banner-title" style="position: absolute; top: 68%; left: 50%; transform: translate(-50%, 0); color: #fff; font-size: 2.8rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.5); margin: 0; padding: 0; letter-spacing: 0.1em; text-wrap: nowrap !important;">最新消息</h1>
         </div>
 
-        <!-- News Filter Section
-        <section class="news-filter">
-            <div class="container">
-                <div class="filter-options">
-                    <button class="filter-btn active" data-filter="all">全部</button>
-                    <button class="filter-btn" data-filter="events">活動</button>
-                    <button class="filter-btn" data-filter="services">服務更新</button>
-                    <button class="filter-btn" data-filter="company">公司動態</button>
-                </div>
-            </div>
-        </section> -->
-
-        <!-- Media Center Section -->
-        <!-- <section id="media" class="media-center">
-            <div class="container">
-                <div class="section-header">
-                    <h2>媒體中心</h2>
-                </div>
-                
-                <div class="media-content">
-                    <div class="media-categories">
-                        <div class="media-category">
-                            <h3><i class="fas fa-newspaper"></i> 新聞發布</h3>
-                            <div class="media-items">
-                                <div class="media-item">
-                                    <div class="media-icon">
-                                        <i class="fas fa-file-alt"></i>
-                                    </div>
-                                    <div class="media-text">
-                                        <h4>Hygiene First 首衛榮獲「2024年度最佳醫療護理服務商」獎項</h4>
-                                        <p>2024年12月15日</p>
-                                        <p>我們很榮幸獲得香港醫療護理協會頒發的年度大獎，這是對我們專業服務的肯定。</p>
-                                    </div>
-                          
-                          
-                                </div>
-                                <div class="media-item">
-                                    <div class="media-icon">
-                                        <i class="fas fa-file-alt"></i>
-                                    </div>
-                                    <div class="media-text">
-                                        <h4>首衛推出全新居家護理服務計劃</h4>
-                                        <p>2024年11月20日</p>
-                                        <p>為回應社會對優質居家護理服務的需求，我們推出了全新的服務計劃。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="media-category">
-                            <h3><i class="fas fa-video"></i> 媒體報導</h3>
-                            <div class="media-items">
-                                <div class="media-item">
-                                    <div class="media-icon">
-                                        <i class="fas fa-play-circle"></i>
-                                    </div>
-                                    <div class="media-text">
-                                        <h4>TVB 新聞報導：居家護理服務的重要性</h4>
-                                        <p>2024年10月18日</p>
-                                        <p>TVB 新聞專題報導了居家護理服務在現代社會的重要性，並採訪了我們的專業團隊。</p>
-                                    </div>
-                                </div>
-                                <div class="media-item">
-                                    <div class="media-icon">
-                                        <i class="fas fa-play-circle"></i>
-                                    </div>
-                                    <div class="media-text">
-                                        <h4>商業電台專訪：護理行業的未來發展</h4>
-                                        <p>2024年9月25日</p>
-                                        <p>我們的創辦人接受了商業電台的專訪，分享了護理行業的發展前景和挑戰。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="media-category">
-                            <h3><i class="fas fa-award"></i> 獎項與認證</h3>
-                            <div class="media-items">
-                                <div class="media-item">
-                                    <div class="media-icon">
-                                        <i class="fas fa-trophy"></i>
-                                    </div>
-                                    <div class="media-text">
-                                        <h4>ISO 9001:2015 品質管理系統認證</h4>
-                                        <p>2024年8月10日</p>
-                                        <p>我們成功通過了 ISO 9001:2015 品質管理系統認證，進一步提升服務品質。</p>
-                                    </div>
-                                </div>
-                                <div class="media-item">
-                                    <div class="media-icon">
-                                        <i class="fas fa-certificate"></i>
-                                    </div>
-                                    <div class="media-text">
-                                        <h4>社會福利署長者社區照顧服務券商認證</h4>
-                                        <p>2024年7月15日</p>
-                                        <p>我們獲得了社會福利署頒發的長者社區照顧服務券商認證，編號：RSP 11901。</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-            
-                </div>
-            </div>
-        </section> -->
-        <!-- News Categories Section -->
-      
         <section class="news-categories">
             <div class="container">
                 <!-- Navigation Menu -->

@@ -496,18 +496,7 @@
     
     /* Enhanced Content UI Improvements */
     
-    /* Contact Section Header */
-    .mobile-contact-section::before {
-        content: '' !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 4px !important;
-        background: linear-gradient(90deg, #FF7A00, #E56717) !important;
-        z-index: 1 !important;
-    }
-    
+ 
     /* Enhanced Contact Info Card */
     .mobile-contact-info-card {
         position: relative !important;
@@ -1268,15 +1257,6 @@
         position: relative !important;
     }
     
-    .mobile-service-categories::before {
-        content: '' !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 4px !important;
-        background: linear-gradient(90deg, #FF7A00 0%, #ff8c1a 50%, #FF7A00 100%) !important;
-    }
     
     /* Section Headers */
     .mobile-section-header {
@@ -1725,16 +1705,7 @@
         position: relative !important;
     }
     
-    .mobile-about-intro::before {
-        content: '' !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 4px !important;
-        background: linear-gradient(90deg, #FF7A00, #E56717) !important;
-    }
-    
+  
     .mobile-section-header {
         text-align: center !important;
         margin-bottom: 30px !important;
@@ -1870,11 +1841,7 @@
         transform: scale(1.1) !important;
     }
     
-    .stat-icon i {
-        font-size: 2rem !important;
-        color: #FF7A00 !important;
-    }
-    
+  
     .stat-number {
         color: #FF7A00 !important;
         font-size: 1.6rem !important;
@@ -3537,11 +3504,7 @@
     }
     
     /* Mobile Hero Content */
-    .hero-content {
-        order: 1 !important;
-        width: 100% !important;
-        padding: 0 1rem !important;
-    }
+
     
     .mobile-hero-title {
         font-size: 2rem !important;
@@ -3646,27 +3609,8 @@
         margin: 0 !important;
     }
     
-    /* Mobile Hero Image */
-    .hero-image {
-        order: 2 !important;
-        width: 100% !important;
-        padding: 0 1rem !important;
-    }
-    
-    .hero-image > div {
-        width: 100% !important;
-        height: 500px !important;
-        border-radius: 16px !important;
-        overflow: hidden !important;
-    }
-    
-    .hero-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        border-radius: 16px !important;
-    }
-    
+
+
     /* Mobile Statistics Section */
     .statistics-section {
         display: flex !important;
@@ -3933,13 +3877,6 @@
         margin-bottom: 1.5rem !important;
     }
 
-    .hero-image {
-        order: -1 !important;
-    }
-
-    .hero-image img {
-        height: 250px !important;
-    }
 
     /* Institutional Main Container Mobile */
     .institutional-main {
@@ -5423,7 +5360,7 @@
     .trust-card h3,
     .stat-card h3,
     .process-step-card h3 {
-        font-size: 23px !important;
+        font-size: 15px !important;
     }
 
     .service-card ul,
@@ -5496,7 +5433,7 @@
     .trust-card p,
     .stat-card p,
     .process-step-card p {
-        font-size: 1rem !important;
+        font-size: 15px !important;
         padding-left: 0 !important;
     }
 
@@ -5638,11 +5575,6 @@
     
     .mobile-stat-card:hover .stat-icon {
         transform: scale(1.1) !important;
-    }
-    
-    .stat-icon i {
-        font-size: 2rem !important;
-        color: #FF7A00 !important;
     }
     
     .stat-number {

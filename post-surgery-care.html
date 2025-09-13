@@ -26,6 +26,627 @@
     <link rel="stylesheet" href="dropdown-fix.css">
     <link rel="stylesheet" href="mobile-enhancements.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Post-Surgery Care Mobile Styles -->
+    <style>
+        /* Mobile-specific styles for post-surgery-care page */
+        @media (max-width: 768px) {
+            /* Hero Section Mobile Improvements */
+            .mobile-health-hero {
+                padding: 2rem 0 !important;
+            }
+            
+            .mobile-health-hero-content {
+                flex-direction: column !important;
+                gap: 2rem !important;
+                text-align: center !important;
+            }
+            
+            .mobile-health-hero-text {
+                padding-top: 0 !important;
+                min-width: unset !important;
+            }
+            
+            .mobile-health-hero-title {
+                font-size: 2.2rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .mobile-health-hero-description {
+                font-size: 1rem !important;
+                line-height: 1.5 !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .mobile-health-hero-image {
+                padding-top: 0 !important;
+                min-width: unset !important;
+            }
+            
+            .mobile-health-hero-image img {
+                width: 250px !important;
+                height: 250px !important;
+            }
+
+            
+            /* Statistics Section Mobile */
+            .mobile-health-stats {
+                padding: 2rem 0 !important;
+            }
+            
+            .mobile-health-stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1.5rem !important;
+            }
+            
+            .stat-item h3 {
+                font-size: 1.8rem !important;
+            }
+            
+            .stat-item p {
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+            }
+            
+            /* Understanding Section Mobile */
+            .mobile-understanding-title {
+                font-size: 1.6rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .mobile-understanding-description {
+                font-size: 1rem !important;
+                margin-bottom: 2rem !important;
+            }
+            
+            .understanding-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            .mobile-understanding-item {
+                padding: 1.5rem !important;
+            }
+            
+            .mobile-understanding-item h3 {
+                font-size: 1.2rem !important;
+            }
+            
+            .mobile-understanding-item ul li {
+                margin-bottom: 0.6rem !important;
+            }
+            
+            .mobile-understanding-item ul li span {
+                font-size: 0.9rem !important;
+            }
+            
+            /* Comparison Table Mobile */
+            .comparison-table {
+                overflow-x: auto !important;
+                margin: 0 -1rem 2rem !important;
+            }
+            
+            .comparison-table table {
+                min-width: 600px !important;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1rem !important;
+                font-size: 0.9rem !important;
+            }
+            
+            /* Decision Section Mobile */
+            .care-categories {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            .care-category {
+                padding: 1.5rem !important;
+            }
+            
+            .care-category h3 {
+                font-size: 1.2rem !important;
+            }
+            
+            .care-category p {
+                font-size: 0.9rem !important;
+            }
+            
+            .care-category ul li span {
+                font-size: 0.9rem !important;
+            }
+            
+            /* Process Flow Mobile */
+            .process-flow {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            
+            .process-step {
+                padding: 2rem !important;
+            }
+            
+            .step-number {
+                width: 60px !important;
+                height: 60px !important;
+                font-size: 1.5rem !important;
+            }
+            
+            .process-step h3 {
+                font-size: 1.4rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .process-step ul li {
+                margin-bottom: 1rem !important;
+                padding: 0.8rem !important;
+            }
+            
+            .process-step ul li span {
+                font-size: 0.9rem !important;
+            }
+            
+            /* Booking Process Mobile */
+            .mobile-health-booking-process {
+                padding: 2rem 0 !important;
+            }
+            
+            .mobile-health-booking-title {
+                font-size: 2rem !important;
+                margin-bottom: 2rem !important;
+            }
+            
+            .mobile-health-booking-steps {
+                flex-direction: column !important;
+                gap: 1.5rem !important;
+            }
+            
+            .mobile-health-booking-steps .process-step {
+                min-width: unset !important;
+                padding: 1.5rem !important;
+            }
+            
+            .mobile-health-booking-steps .step-header {
+                gap: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .mobile-health-booking-steps .step-icon {
+                width: 60px !important;
+                height: 60px !important;
+            }
+            
+            .mobile-health-booking-steps .step-icon i {
+                font-size: 1.5rem !important;
+            }
+            
+            .mobile-health-booking-steps h3 {
+                font-size: 1.1rem !important;
+            }
+            
+            .mobile-health-booking-steps p {
+                font-size: 0.9rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Extra small mobile devices */
+            .mobile-health-hero-title {
+                font-size: 1.8rem !important;
+            }
+            
+            .mobile-health-hero-description {
+                font-size: 0.95rem !important;
+            }
+            
+            .mobile-health-hero-image img {
+                width: 200px !important;
+                height: 200px !important;
+            }
+            
+            .mobile-health-stats-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .stat-item h3 {
+                font-size: 1.6rem !important;
+            }
+            
+            .stat-item p {
+                font-size: 0.85rem !important;
+            }
+            
+            .mobile-understanding-title {
+                font-size: 1.4rem !important;
+            }
+            
+            .mobile-understanding-item {
+                padding: 1rem !important;
+            }
+            
+            .mobile-understanding-item h3 {
+                font-size: 1.1rem !important;
+            }
+            
+            .care-category {
+                padding: 1rem !important;
+            }
+            
+            .care-category h3 {
+                font-size: 1.1rem !important;
+            }
+            
+            .process-step {
+                padding: 1.5rem !important;
+            }
+            
+            .process-step h3 {
+                font-size: 1.2rem !important;
+            }
+            
+            .mobile-health-booking-title {
+                font-size: 1.6rem !important;
+            }
+            
+            .mobile-health-booking-steps .process-step {
+                padding: 1rem !important;
+            }
+            
+            .mobile-health-booking-steps .step-icon {
+                width: 50px !important;
+                height: 50px !important;
+            }
+            
+            .mobile-health-booking-steps .step-icon i {
+                font-size: 1.2rem !important;
+            }
+            
+            .mobile-health-booking-steps h3 {
+                font-size: 1rem !important;
+            }
+            
+            .mobile-health-booking-steps p {
+                font-size: 0.85rem !important;
+            }
+        }
+        
+        /* Additional Mobile Enhancements */
+        @media (max-width: 768px) {
+            /* Touch-friendly interactions */
+            .btn, .mobile-cta {
+                min-height: 44px !important;
+                padding: 12px 24px !important;
+                font-size: 1rem !important;
+            }
+            
+            /* Better spacing for mobile */
+            .container {
+                padding: 0 1rem !important;
+            }
+            
+            /* Improved card shadows for mobile */
+            .mobile-understanding-item,
+            .care-category,
+            .process-step,
+            .mobile-health-booking-steps .process-step {
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+                border: 1px solid rgba(255, 122, 0, 0.1) !important;
+            }
+            
+            /* Better text contrast */
+            .mobile-health-hero-description,
+            .mobile-understanding-description,
+            .care-category p,
+            .process-step ul li span {
+                color: #555 !important;
+            }
+            
+            /* Improved button styling */
+            .mobile-cta {
+                background: linear-gradient(135deg, #FF7A00 0%, #E56717 100%) !important;
+                border: none !important;
+                border-radius: 25px !important;
+                color: white !important;
+                font-weight: 600 !important;
+                text-decoration: none !important;
+                display: inline-block !important;
+                transition: all 0.3s ease !important;
+                box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3) !important;
+            }
+            
+            .mobile-cta:hover {
+                transform: translateY(-2px) !important;
+                box-shadow: 0 6px 20px rgba(255, 122, 0, 0.4) !important;
+            }
+            
+            /* Better icon sizing */
+            .mobile-understanding-item .item-image i,
+            .care-category .category-icon i {
+                font-size: 2.5rem !important;
+            }
+            
+            /* Improved list styling */
+            .mobile-understanding-item ul li,
+            .care-category ul li {
+                padding: 0.5rem 0 !important;
+                border-bottom: 1px solid rgba(255, 122, 0, 0.1) !important;
+            }
+            
+            .mobile-understanding-item ul li:last-child,
+            .care-category ul li:last-child {
+                border-bottom: none !important;
+            }
+            
+            /* Better table styling for mobile */
+            .comparison-table {
+                border-radius: 10px !important;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+            }
+            
+            .comparison-table th {
+                font-size: 0.85rem !important;
+                padding: 0.8rem !important;
+            }
+            
+            .comparison-table td {
+                font-size: 0.8rem !important;
+                padding: 0.8rem !important;
+            }
+            
+            /* Improved section headers */
+            .section-header h2 {
+                line-height: 1.3 !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .section-header p {
+                line-height: 1.5 !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Extra small mobile enhancements */
+            .container {
+                padding: 0 0.75rem !important;
+            }
+            
+            .btn, .mobile-cta {
+                min-height: 48px !important;
+                padding: 14px 28px !important;
+                font-size: 1.1rem !important;
+            }
+            
+            .mobile-understanding-item,
+            .care-category,
+            .process-step {
+                border-radius: 12px !important;
+            }
+            
+            /* Better icon sizing for small screens */
+            .mobile-understanding-item .item-image i,
+            .care-category .category-icon i {
+                font-size: 2rem !important;
+            }
+            
+            .step-number {
+                width: 50px !important;
+                height: 50px !important;
+                font-size: 1.2rem !important;
+            }
+            
+            /* Extra small mobile enhancements for Usage Stage */
+            .usage-stage-section .section-header h2 {
+                font-size: 1.4rem !important;
+            }
+            
+            .usage-stage-section .section-header p {
+                font-size: 0.95rem !important;
+            }
+            
+            .process-step {
+                padding: 1.5rem !important;
+            }
+            
+            .step-number {
+                width: 50px !important;
+                height: 50px !important;
+                font-size: 1.2rem !important;
+            }
+            
+            .step-number div {
+                width: 18px !important;
+                height: 18px !important;
+            }
+            
+            .step-number div i {
+                font-size: 0.6rem !important;
+            }
+            
+            .process-step h3 {
+                font-size: 1.2rem !important;
+            }
+            
+            .process-step .step-header-enhanced p {
+                font-size: 0.85rem !important;
+            }
+            
+            .process-step ul li {
+                padding: 0.6rem !important;
+            }
+            
+            .process-step ul li span {
+                font-size: 0.85rem !important;
+            }
+            
+            .process-summary {
+                padding: 1rem !important;
+            }
+            
+            .process-summary h3 {
+                font-size: 1rem !important;
+            }
+            
+            .process-summary p {
+                font-size: 0.85rem !important;
+            }
+        }
+        
+        /* Enhanced Usage Stage Section Mobile Styles */
+        .usage-stage-section .section-header h2 {
+            font-size: 1.6rem !important;
+            line-height: 1.3 !important;
+        }
+        
+        .usage-stage-section .section-header p {
+            font-size: 1rem !important;
+            margin-bottom: 2rem !important;
+        }
+        
+        .process-flow-container {
+            margin: 0 !important;
+        }
+        
+        .process-flow {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+            margin-bottom: 2rem !important;
+        }
+        
+        .process-connector {
+            display: block !important;
+            width: 4px !important;
+            height: 60px !important;
+            left: 50% !important;
+            top: auto !important;
+            bottom: -30px !important;
+            transform: translateX(-50%) !important;
+            background: linear-gradient(180deg, #FF7A00 0%, #28a745 100%) !important;
+        }
+        
+        .process-connector div {
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) rotate(90deg) !important;
+        }
+        
+        .process-step {
+            padding: 2rem !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .step-header-enhanced {
+            margin-bottom: 1.5rem !important;
+        }
+        
+        .step-number {
+            width: 60px !important;
+            height: 60px !important;
+            font-size: 1.5rem !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        .step-number div {
+            width: 20px !important;
+            height: 20px !important;
+            top: -3px !important;
+            right: -3px !important;
+        }
+        
+        .step-number div i {
+            font-size: 0.7rem !important;
+        }
+        
+        .process-step h3 {
+            font-size: 1.4rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .process-step .step-header-enhanced p {
+            font-size: 0.9rem !important;
+            margin-bottom: 0 !important;
+        }
+        
+        .process-step ul li {
+            margin-bottom: 1rem !important;
+            padding: 0.8rem !important;
+        }
+        
+        .process-step ul li span {
+            font-size: 0.9rem !important;
+        }
+        
+        .process-step ul li i {
+            font-size: 1rem !important;
+            margin-right: 0.8rem !important;
+        }
+        
+        .process-summary {
+            margin-top: 2rem !important;
+            padding: 1.5rem !important;
+        }
+        
+        .process-summary h3 {
+            font-size: 1.1rem !important;
+            margin-bottom: 0.8rem !important;
+        }
+        
+        .process-summary p {
+            font-size: 0.9rem !important;
+        }
+        
+        /* Smooth scrolling and performance optimizations */
+        html {
+            scroll-behavior: smooth !important;
+        }
+        
+        /* Mobile-specific animations */
+        @media (max-width: 768px) {
+            .mobile-understanding-item,
+            .care-category,
+            .process-step,
+            .mobile-health-booking-steps .process-step {
+                transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+            }
+            
+            .mobile-understanding-item:hover,
+            .care-category:hover,
+            .process-step:hover {
+                transform: translateY(-2px) !important;
+            }
+            
+            /* Better focus states for accessibility */
+            .btn:focus,
+            .mobile-cta:focus {
+                outline: 2px solid #FF7A00 !important;
+                outline-offset: 2px !important;
+            }
+            
+            /* Improved readability */
+            .mobile-health-hero-description,
+            .mobile-understanding-description {
+                text-align: left !important;
+            }
+            
+            /* Better visual hierarchy */
+            .mobile-understanding-item h3,
+            .care-category h3 {
+                color: #333 !important;
+                font-weight: 600 !important;
+            }
+            
+            /* Enhanced visual feedback */
+            .stat-item {
+                transition: transform 0.2s ease !important;
+            }
+            
+            .stat-item:hover {
+                transform: scale(1.02) !important;
+            }
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -169,15 +790,15 @@
 
       
               <!-- Hero Section -->
-              <section class="hero-section mobile-health-hero desktop-only" style="background: white; padding: 4rem 0;">
+              <section class="hero-section" style="">
                 <div class="container">
-                    <div class="hero-content mobile-health-hero-content" style="display: flex; align-items: flex-start; gap: 4rem; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
-                        <div class="hero-text mobile-health-hero-text" style="flex: 1; padding-top: 3rem; min-width: 300px;">
-                            <h1 class="mobile-health-hero-title" style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2rem; color: #333; font-weight: bold; line-height: 1.2;">
+                    <div class="hero-content" style="display: flex; align-items: flex-start; gap: 4rem; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
+                        <div class="hero-text" style="flex: 1; padding-top: 3rem; min-width: 300px;">
+                            <h1 class="" style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2rem; color: #333; font-weight: bold; line-height: 1.2;">
                                 手術後護理
     
                             </h1>
-                            <p class="mobile-health-hero-description" style="font-size: 1.1rem; line-height: 1.6; color: #666; margin-bottom: 2rem;">
+                            <p style="font-size: 1.1rem; line-height: 1.6; color: #666; margin-bottom: 2rem;">
                                 為人子女、伴侶或家人，當摯親在手術後需要長時間或臨時貼身照顧，作為照顧者的您或許正「衛」分身乏術而感到無奈與憂心。看著他們在康復路上掙扎，您的心也在揪緊，渴望「衛」他們提供最好的照顧，卻不知從何入手。近年，香港越來越多家庭選擇上門護理或私家看護服務，支援摯親在手術後的生活自理與復康需求。無論是夜間貼身看護，還是外展私人護理，需求日益殷切。Hygiene First 首衛 深深明白，作為上門照顧員或私家看護，承擔的不僅是責任，更是一份對生命的承諾與關愛。            </p>
                           
                     
@@ -185,7 +806,7 @@
                                 <a href="contact.html" class="btn primary-btn mobile-cta">預約評估</a>
                              </div>
                         </div>
-                        <div class="hero-image mobile-health-hero-image" style="flex: 1; text-align: center; padding-top: 4.5rem !important; min-width: 300px;">
+                        <div class="hero-image" style="flex: 1; text-align: center;">
                             <div style="position: relative; display: inline-block;">
                                 <img src="images/untitled folder/Photo 36.jpg" alt="健康評估服務" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                                 <div style="position: absolute; bottom: 25px; left: 25px; background: #fff3e0; padding: 1rem 1.2rem; border-radius: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
@@ -532,76 +1153,115 @@
                     </p>
                 </div>
                 
-                <div class="process-flow" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem; margin-bottom: 4rem; max-width: 1200px; margin-left: auto; margin-right: auto;">
-                    <!-- Process 1 -->
-                    <div class="process-step" style="background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 2px solid #f0f8f0; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">
-                        <div class="step-number" style="width: 80px; height: 80px; background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; font-size: 2rem; font-weight: 700; color: white; box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);">
-                            1
-                        </div>
-                        <h3 style="font-size: 1.8rem; color: #333; margin-bottom: 2rem; font-weight: 600; text-align: center; position: relative;">
-                            住院期間
-                            <div style="width: 60px; height: 3px; background: linear-gradient(90deg, #FF7A00, #ff8c1a); margin: 1rem auto 0; border-radius: 2px;"></div>
-                        </h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 1.5rem; padding: 1rem; background: #f8fdf8; border-radius: 10px; border-left: 4px solid #FF7A00;">
-                                <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 1rem; font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0;"></i>
-                                <span style="font-size: 1rem; color: #555; font-weight: 500;">醫生評估患者狀況</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 1.5rem; padding: 1rem; background: #f8fdf8; border-radius: 10px; border-left: 4px solid #FF7A00;">
-                                <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 1rem; font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0;"></i>
-                                <span style="font-size: 1rem; color: #555; font-weight: 500;">制定出院計劃</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 1.5rem; padding: 1rem; background: #f8fdf8; border-radius: 10px; border-left: 4px solid #FF7A00;">
-                                <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 1rem; font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0;"></i>
-                                <span style="font-size: 1rem; color: #555; font-weight: 500;">安排護理服務</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 1.5rem; padding: 1rem; background: #f8fdf8; border-radius: 10px; border-left: 4px solid #FF7A00;">
-                                <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 1rem; font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0;"></i>
-                                <span style="font-size: 1rem; color: #555; font-weight: 500;">準備出院文件</span>
-                            </li>
-                        </ul>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <div style="display: inline-block; padding: 0.5rem 1.5rem; background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%); border-radius: 20px; border: 1px solid #d4edda;">
-                                <i class="fas fa-hospital" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
-                                <span style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">醫院階段</span>
-                            </div>
-                        </div>
+                <!-- Process Flow Comparison Table -->
+                <div class="process-flow-container" style="margin-bottom: 4rem;">
+                    <div class="comparison-table" style="background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 3rem;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th style="padding: 2rem 1.5rem; text-align: left; font-weight: 600; font-size: 1.2rem; color: #333; background: linear-gradient(135deg, #f8fdf8 0%, #ffffff 100%); border-bottom: 3px solid #FF7A00;">流程階段</th>
+                                    <th style="padding: 2rem 1.5rem; text-align: center; font-weight: 600; font-size: 1.2rem; background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); color: white; border-bottom: 3px solid #FF7A00;">
+                                        <i class="fas fa-hospital" style="margin-right: 0.5rem;"></i>
+                                        住院期間
+                                    </th>
+                                    <th style="padding: 2rem 1.5rem; text-align: center; font-weight: 600; font-size: 1.2rem; background: linear-gradient(135deg, #28a745 0%, #34ce57 100%); color: white; border-bottom: 3px solid #28a745;">
+                                        <i class="fas fa-home" style="margin-right: 0.5rem;"></i>
+                                        出院後
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 2px solid #f0f8f0;">
+                                    <td style="padding: 1.5rem; font-weight: 600; color: #333; background: #f8fdf8; vertical-align: top;">
+                                        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem; font-weight: 700; color: white;">1</div>
+                                            <span style="font-size: 1.1rem;">評估與計劃</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">醫生評估患者狀況</span>
+                                        </div>
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">制定出院計劃</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">護理人員到訪評估</span>
+                                        </div>
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">制定個性化護理計劃</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 2px solid #f0f8f0;">
+                                    <td style="padding: 1.5rem; font-weight: 600; color: #333; background: #f8fdf8; vertical-align: top;">
+                                        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem; font-weight: 700; color: white;">2</div>
+                                            <span style="font-size: 1.1rem;">服務安排</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">安排護理服務</span>
+                                        </div>
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">準備出院文件</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">開始居家護理服務</span>
+                                        </div>
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">定期跟進和調整</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1.5rem; font-weight: 600; color: #333; background: #f8fdf8; vertical-align: top;">
+                                        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem; font-weight: 700; color: white;">3</div>
+                                            <span style="font-size: 1.1rem;">持續護理</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">醫療團隊協調</span>
+                                        </div>
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">家屬教育與指導</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">24小時護理支援</span>
+                                        </div>
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500;">康復進度監測</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     
-                    <!-- Process 2 -->
-                    <div class="process-step" style="background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 2px solid #f0f8f0; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden;">
-                        <div class="step-number" style="width: 80px; height: 80px; background: linear-gradient(135deg, #28a745 0%, #34ce57 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; font-size: 2rem; font-weight: 700; color: white; box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);">
-                            2
-                        </div>
-                        <h3 style="font-size: 1.8rem; color: #333; margin-bottom: 2rem; font-weight: 600; text-align: center; position: relative;">
-                            出院後
-                            <div style="width: 60px; height: 3px; background: linear-gradient(90deg, #28a745, #34ce57); margin: 1rem auto 0; border-radius: 2px;"></div>
-                        </h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 1.5rem; padding: 1rem; background: #f8fdf8; border-radius: 10px; border-left: 4px solid #28a745;">
-                                <i class="fas fa-check-circle" style="color: #28a745; margin-right: 1rem; font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0;"></i>
-                                <span style="font-size: 1rem; color: #555; font-weight: 500;">護理人員到訪評估</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 1.5rem; padding: 1rem; background: #f8fdf8; border-radius: 10px; border-left: 4px solid #28a745;">
-                                <i class="fas fa-check-circle" style="color: #28a745; margin-right: 1rem; font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0;"></i>
-                                <span style="font-size: 1rem; color: #555; font-weight: 500;">制定個性化護理計劃</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 1.5rem; padding: 1rem; background: #f8fdf8; border-radius: 10px; border-left: 4px solid #28a745;">
-                                <i class="fas fa-check-circle" style="color: #28a745; margin-right: 1rem; font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0;"></i>
-                                <span style="font-size: 1rem; color: #555; font-weight: 500;">開始居家護理服務</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; margin-bottom: 1.5rem; padding: 1rem; background: #f8fdf8; border-radius: 10px; border-left: 4px solid #28a745;">
-                                <i class="fas fa-check-circle" style="color: #28a745; margin-right: 1rem; font-size: 1.1rem; margin-top: 0.1rem; flex-shrink: 0;"></i>
-                                <span style="font-size: 1rem; color: #555; font-weight: 500;">定期跟進和調整</span>
-                            </li>
-                        </ul>
-                        <div style="text-align: center; margin-top: 2rem;">
-                            <div style="display: inline-block; padding: 0.5rem 1.5rem; background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%); border-radius: 20px; border: 1px solid #d4edda;">
-                                <i class="fas fa-home" style="color: #28a745; margin-right: 0.5rem;"></i>
-                                <span style="color: #28a745; font-weight: 600; font-size: 0.9rem;">居家階段</span>
-                            </div>
-                        </div>
-                    </div>
+           
+                    
+               
                 </div>
                 
                 
