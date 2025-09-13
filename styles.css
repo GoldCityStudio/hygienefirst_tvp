@@ -7007,6 +7007,8 @@ h2 {
 }
 p {
     font-size: 15px !important;
+    text-wrap: pretty !important;
+    
 }
 }
 

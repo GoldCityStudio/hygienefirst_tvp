@@ -5738,8 +5738,13 @@
 .mobile-banner-description {
     display: none;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 2rem 0;
-    text-align: center;
+    background-image: url('images/HomePage/mobile banner/mobile background.png');
+    background-size: cover;
+    background-position: 50% 100% !important;
+    background-repeat: no-repeat;
+    padding: 40px 15px 180px 15px !important;
+    text-align: left !important;
+    height: 620px !important;
 }
 
 .mobile-description-content {
@@ -5750,22 +5755,24 @@
 
 .mobile-description-title {
     color: #FF7A00;
-    font-size: 1.5rem;
+    font-size: 36px !important;
     font-weight: 600;
     margin-bottom: 1rem;
-    line-height: 1.3;
+    line-height: 1.3;   
+    text-align: left !important;
+
 }
 
 .mobile-description-text {
     color: #333;
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 16px !important;
+    line-height: 2.2;
     margin: 0;
     font-weight: 400;
 }
 
 /* Show both banners on mobile */
-@media (max-width: 375px) {
+@media (max-width: 480px) {
     .desktop-banner {
         display: block !important;
         height: 100vh;
