@@ -5775,7 +5775,6 @@
 @media (max-width: 480px) {
     .desktop-banner {
         display: block !important;
-        height: 100vh;
         min-height: 500px;
     }
     
@@ -5902,7 +5901,6 @@
 @media (min-width: 769px) {
     .desktop-banner {
         display: block;
-        height: 100vh;
         min-height: 500px;
     }
     

@@ -6974,7 +6974,14 @@ footer .copyright {
 
 
 /* mobile version */
-@media (max-width: 360px) {
+@media (max-width: 480px) {
+    .testimonial-slider {
+        display: grid !important;
+    }
+    .stats .container {
+            display: inline-grid !important;
+    }
+
     .hero-content {
        display: block !important;
     }
@@ -7008,12 +7015,12 @@ h2 {
 p {
     font-size: 15px !important;
     text-wrap: pretty !important;
-    
+
 }
 }
 
 /* desktop version */
-@media (min-width: 360px) {
+@media (min-width: 480px) {
     .hero-content {
         display: flex !important;
      }
