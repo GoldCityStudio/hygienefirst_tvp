@@ -7022,7 +7022,7 @@ border-radius: 50% !important;
 
     .hero-text h1 {
         margin-top: 16px !important;
-        font-size: 28px !important;
+        font-size: 25px !important;
         color: var(--primary-color) !important;
         text-align: left !important;
     }
@@ -7045,7 +7045,7 @@ border-radius: 50% !important;
         object-fit: cover !important;
 }
 h2 {
-    font-size: 24px !important;
+    font-size: 22px !important;
     color: var(--primary-color) !important;
 }
 p {
@@ -7055,7 +7055,7 @@ line-height: 1.8 !important;
 }
 
 .section-header h2 {
-    font-size: 24px !important;
+    font-size: 20px !important;
     color: var(--primary-color) !important;
     text-align: center !important;
     padding: 0!important;
