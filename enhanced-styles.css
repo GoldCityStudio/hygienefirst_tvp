@@ -577,7 +577,7 @@ main {
     
     .dropdown.open .dropdown-content {
         display: block;
-        max-height: 500px;
+        max-height: max-content !important;
     }
     
     .dropdown > a:after {
