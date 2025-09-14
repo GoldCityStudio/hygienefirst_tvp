@@ -247,7 +247,7 @@
                             <img src="images/news/6.png" alt="全新智能護理服務正式推出" loading="lazy">
                         </div>
                         <div class="news-content">
-                            <h3>🛡 Hygiene First首衛 海上護理培訓工作坊圓滿結束！</h3>
+                            <h3>Hygiene First首衛 海上護理培訓工作坊圓滿結束！</h3>
                             <p class="news-date">2024年12月20日</p>
                             <a href="news-detail-7.html" class="read-more">了解更多</a>
                         </div>
@@ -599,12 +599,12 @@
                     
                     <!-- Pagination for 最新消息 -->
                     <div class="pagination" id="latest-news-pagination">
-                        <button id="prev-page" class="nav-button" disabled>
+                        <button id="prev-page" class="nav-button" disabled title="上一頁">
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <div id="page-numbers"></div>
                         <div class="page-info" id="page-info">第 1 頁，共 5 頁</div>
-                        <button id="next-page" class="nav-button">
+                        <button id="next-page" class="nav-button" title="下一頁">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
@@ -1058,7 +1058,7 @@
         function createPageButton(pageNum) {
             const button = document.createElement('button');
             button.textContent = pageNum;
-            button.className = pageNum === currentPage ? 'active' : '';
+            button.className = `page-number ${pageNum === currentPage ? 'active' : ''}`;
             button.addEventListener('click', () => goToPage(pageNum));
             pageNumbers.appendChild(button);
         }
@@ -1067,7 +1067,7 @@
         function createEllipsis() {
             const ellipsis = document.createElement('span');
             ellipsis.textContent = '...';
-            ellipsis.className = 'ellipsis';
+            ellipsis.className = 'page-number ellipsis';
             pageNumbers.appendChild(ellipsis);
         }
         
@@ -1089,17 +1089,26 @@
         function goToPage(page) {
             if (page < 1 || page > totalPages) return;
             
-            currentPage = page;
-            showPage(page);
-            updatePageInfo();
-            createPageNumbers();
-            updateButtons();
+            // Add loading state
+            pagination.classList.add('loading');
             
-            // Scroll to top of news section
-            document.getElementById('latest-news').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
+            // Small delay for smooth transition
+            setTimeout(() => {
+                currentPage = page;
+                showPage(page);
+                updatePageInfo();
+                createPageNumbers();
+                updateButtons();
+                
+                // Remove loading state
+                pagination.classList.remove('loading');
+                
+                // Scroll to top of news section with smooth animation
+                document.getElementById('latest-news').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 150);
         }
         
         // Update prev/next buttons

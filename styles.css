@@ -7146,3 +7146,225 @@ line-height: 1.8 !important;
     }
 }
 
+/* ===== IMPROVED PAGINATION STYLES ===== */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 40px 0;
+    padding: 20px 0;
+    background: linear-gradient(135deg, #fff9f5 0%, #ffe5cc 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(255, 122, 0, 0.08);
+    border: 1px solid rgba(255, 122, 0, 0.1);
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--primary-color);
+    background: #fff;
+    color: var(--primary-color);
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 122, 0, 0.1);
+}
+
+.nav-button:hover:not(:disabled) {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 122, 0, 0.25);
+}
+
+.nav-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: #f5f5f5;
+    border-color: #ddd;
+    color: #999;
+}
+
+.nav-button:disabled:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(255, 122, 0, 0.1);
+}
+
+#page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 16px;
+}
+
+.page-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 12px;
+    border: 2px solid transparent;
+    background: #fff;
+    color: var(--text-dark);
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.page-number:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 122, 0, 0.2);
+}
+
+.page-number.active {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--dark-orange);
+    box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+}
+
+.page-number.ellipsis {
+    cursor: default;
+    background: transparent;
+    color: var(--text-medium);
+    box-shadow: none;
+}
+
+.page-number.ellipsis:hover {
+    transform: none;
+    background: transparent;
+    color: var(--text-medium);
+    box-shadow: none;
+}
+
+.page-info {
+    background: #fff;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    border: 2px solid rgba(255, 122, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(255, 122, 0, 0.05);
+    white-space: nowrap;
+}
+
+/* Mobile Responsive Pagination */
+@media (max-width: 768px) {
+    .pagination {
+        gap: 8px;
+        margin: 30px 0;
+        padding: 16px 0;
+        border-radius: 12px;
+    }
+    
+    .nav-button {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+    
+    .page-number {
+        min-width: 36px;
+        height: 36px;
+        font-size: 13px;
+        border-radius: 8px;
+    }
+    
+    .page-info {
+        padding: 8px 16px;
+        font-size: 12px;
+        border-radius: 20px;
+    }
+    
+    #page-numbers {
+        gap: 6px;
+        margin: 0 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pagination {
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 12px 0;
+    }
+    
+    .nav-button {
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
+    }
+    
+    .page-number {
+        min-width: 32px;
+        height: 32px;
+        font-size: 12px;
+        padding: 0 8px;
+    }
+    
+    .page-info {
+        order: -1;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 8px;
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+    
+    #page-numbers {
+        margin: 0 8px;
+        gap: 4px;
+    }
+}
+
+/* Animation for page transitions */
+@keyframes pageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.news-card {
+    animation: pageSlideIn 0.4s ease-out;
+}
+
+/* Loading state for pagination */
+.pagination.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.pagination.loading .nav-button,
+.pagination.loading .page-number {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
