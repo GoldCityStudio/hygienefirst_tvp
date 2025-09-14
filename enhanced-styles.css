@@ -1413,10 +1413,10 @@ a[href^="tel:"]:hover {
 .section-header p {
     font-size: 1.2rem;
     color: #666;
-    max-width: 800px !important;
+   
     margin: 0 auto;
     line-height: 1.6;
-    text-align: center !important;
+   
 }
 
 /* What is Section */

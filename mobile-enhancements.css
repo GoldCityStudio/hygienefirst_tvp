@@ -1397,7 +1397,7 @@
     .mobile-service-features li:last-child {
         border-bottom: none !important;
     }
-    
+/*     
     .mobile-service-features li::before {
         content: '✓' !important;
         position: absolute !important;
@@ -1407,7 +1407,7 @@
         font-weight: bold !important;
         font-size: 1rem !important;
     }
-    
+     */
     /* Service Price */
     .mobile-service-price {
         text-align: center !important;
