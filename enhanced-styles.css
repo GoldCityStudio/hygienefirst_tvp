@@ -2184,12 +2184,7 @@ a[href^="tel:"]:hover {
     border-left: 4px solid transparent;
 }
 
-.contact-info-item:hover {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-left-color: var(--primary-color);
-    transform: translateX(5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
+
 
 .contact-icon {
     width: 60px;

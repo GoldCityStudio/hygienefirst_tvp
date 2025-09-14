@@ -4741,17 +4741,7 @@ header.sticky .logo a {
     overflow: hidden;
 }
 
-.contact-info-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--primary-color);
-    transform: scaleY(0);
-    transition: transform 0.3s ease;
-}
+
 
 .contact-info-item:hover {
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
@@ -7446,6 +7436,118 @@ line-height: 1.8 !important;
     }
     50% {
         opacity: 0.6;
+    }
+}
+
+/* ===== PROCESS STAGE CARDS RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+    .process-stages-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        margin-bottom: 2rem !important;
+    }
+    
+    .process-stage-card {
+        margin-bottom: 1rem !important;
+    }
+    
+    .stage-header {
+        padding: 0.5rem !important;
+    }
+    
+    .stage-header h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    /* .stage-header div {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1.2rem !important;
+    } */
+    
+    .stage-content {
+        padding: 1.5rem !important;
+    }
+    
+    .phase-section {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .phase-header {
+        margin-bottom: 1rem !important;
+        padding-bottom: 0.8rem !important;
+    }
+    
+    .phase-header h4 {
+        font-size: 1.1rem !important;
+    }
+    
+    .phase-header i {
+        font-size: 1rem !important;
+    }
+    
+    .phase-items div {
+        margin-bottom: 0.8rem !important;
+    }
+    
+    .phase-items span {
+        font-size: 0.95rem !important;
+    }
+    
+    .phase-items i {
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .process-stages-grid {
+        gap: 1rem !important;
+    }
+    
+    .stage-header {
+        padding: 0rem !important;
+    }
+    
+    .stage-header h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    /* .stage-header div {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 1rem !important;
+        margin-right: 0.8rem !important;
+    }
+     */
+    .stage-content {
+        padding: 1rem !important;
+    }
+    
+    .phase-section {
+        margin-bottom: 1rem !important;
+    }
+    
+    .phase-header {
+        margin-bottom: 0.8rem !important;
+        padding-bottom: 0.6rem !important;
+    }
+    
+    .phase-header h4 {
+        font-size: 1rem !important;
+    }
+    
+    .phase-items div {
+        margin-bottom: 0.6rem !important;
+    }
+    
+    .phase-items span {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .phase-items i {
+        font-size: 0.8rem !important;
+        margin-right: 0.6rem !important;
     }
 }
 

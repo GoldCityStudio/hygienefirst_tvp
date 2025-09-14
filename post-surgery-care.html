@@ -127,7 +127,7 @@
             }
             
             .comparison-table table {
-                min-width: 600px !important;
+                min-width: max-content !important;
             }
             
             .comparison-table th,
@@ -437,10 +437,7 @@
                 font-size: 1.2rem !important;
             }
             
-            /* Extra small mobile enhancements for Usage Stage */
-            .usage-stage-section .section-header h2 {
-                font-size: 1.4rem !important;
-            }
+         
             
             .usage-stage-section .section-header p {
                 font-size: 0.95rem !important;
@@ -496,7 +493,7 @@
         
         /* Enhanced Usage Stage Section Mobile Styles */
         .usage-stage-section .section-header h2 {
-            font-size: 1.6rem !important;
+          
             line-height: 1.3 !important;
         }
         
@@ -1165,110 +1162,151 @@
               
                 </div>
                 
-                <!-- Process Flow Comparison Table -->
+                <!-- Process Flow Cards -->
                 <div class="process-flow-container" style="margin-bottom: 4rem;">
-                    <div class="comparison-table" style="background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 3rem;">
-                        <table style="width: 100%; border-collapse: collapse;">
-                            <thead>
-                                <tr>
-                                    <th style="padding: 2rem 1.5rem; text-align: left; font-weight: 600; font-size: 1.2rem; color: #333; background: linear-gradient(135deg, #f8fdf8 0%, #ffffff 100%); border-bottom: 3px solid #FF7A00;">流程階段</th>
-                                    <th style="padding: 2rem 1.5rem; text-align: center; font-weight: 600; font-size: 1.2rem; background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); color: white; border-bottom: 3px solid #FF7A00;">
-                                        <i class="fas fa-hospital" style="margin-right: 0.5rem;"></i>
-                                        住院期間
-                                    </th>
-                                    <th style="padding: 2rem 1.5rem; text-align: center; font-weight: 600; font-size: 1.2rem; background: linear-gradient(135deg, #28a745 0%, #34ce57 100%); color: white; border-bottom: 3px solid #28a745;">
-                                        <i class="fas fa-home" style="margin-right: 0.5rem;"></i>
-                                        出院後
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="border-bottom: 2px solid #f0f8f0;">
-                                    <td style="padding: 1.5rem; font-weight: 600; color: #333; background: #f8fdf8; vertical-align: top;">
-                                        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem; font-weight: 700; color: white;">1</div>
-                                            <span style="font-size: 1.1rem;">評估與計劃</span>
-                                        </div>
-                                    </td>
-                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
+                    <!-- Process Stage Cards -->
+                    <div class="process-stages-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                        
+                        <!-- Stage 1: 評估與計劃 -->
+                        <div class="process-stage-card" style="background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid rgba(255, 122, 0, 0.1);">
+                            <div class="stage-header" style="background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); padding: 2rem; text-align: center; color: white;">
+                                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                                          <h3 style="font-size: 1.4rem; margin: 0; font-weight: 600;">評估與計劃</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="stage-content" style="padding: 2rem;">
+                                <!-- 住院期間 -->
+                                <div class="phase-section" style="margin-bottom: 2rem;">
+                                    <div class="phase-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #f0f8f0;">
+                                        <i class="fas fa-hospital" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1.2rem;"></i>
+                                        <h4 style="font-size: 1.2rem; color: #FF7A00; margin: 0; font-weight: 600;">住院期間</h4>
+                                    </div>
+                                    <div class="phase-items">
                                         <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
                                             <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">醫生評估患者狀況</span>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">醫生評估患者狀況</span>
                                         </div>
                                         <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
                                             <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">制定出院計劃</span>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">制定出院計劃</span>
                                         </div>
-                                    </td>
-                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
+                                    </div>
+                                </div>
+                                
+                                <!-- 出院後 -->
+                                <div class="phase-section">
+                                    <div class="phase-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #f0f8f0;">
+                                        <i class="fas fa-home" style="color: #28a745; margin-right: 0.8rem; font-size: 1.2rem;"></i>
+                                        <h4 style="font-size: 1.2rem; color: #28a745; margin: 0; font-weight: 600;">出院後</h4>
+                                    </div>
+                                    <div class="phase-items">
                                         <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
                                             <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">護理人員到訪評估</span>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">護理人員到訪評估</span>
                                         </div>
                                         <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
                                             <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">制定個性化護理計劃</span>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">制定個性化護理計劃</span>
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr style="border-bottom: 2px solid #f0f8f0;">
-                                    <td style="padding: 1.5rem; font-weight: 600; color: #333; background: #f8fdf8; vertical-align: top;">
-                                        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem; font-weight: 700; color: white;">2</div>
-                                            <span style="font-size: 1.1rem;">服務安排</span>
-                                        </div>
-                                    </td>
-                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stage 2: 服務安排 -->
+                        <div class="process-stage-card" style="background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid rgba(255, 122, 0, 0.1);">
+                            <div class="stage-header" style="background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); padding: 2rem; text-align: center; color: white;">
+                                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                                     <h3 style="font-size: 1.4rem; margin: 0; font-weight: 600;">服務安排</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="stage-content" style="padding: 2rem;">
+                                <!-- 住院期間 -->
+                                <div class="phase-section" style="margin-bottom: 2rem;">
+                                    <div class="phase-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #f0f8f0;">
+                                        <i class="fas fa-hospital" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1.2rem;"></i>
+                                        <h4 style="font-size: 1.2rem; color: #FF7A00; margin: 0; font-weight: 600;">住院期間</h4>
+                                    </div>
+                                    <div class="phase-items">
                                         <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
                                             <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">安排護理服務</span>
-                                        </div>
-                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
-                                            <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">準備出院文件</span>
-                                        </div>
-                                    </td>
-                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
-                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
-                                            <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">開始居家護理服務</span>
-                                        </div>
-                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
-                                            <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">定期跟進和調整</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 1.5rem; font-weight: 600; color: #333; background: #f8fdf8; vertical-align: top;">
-                                        <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
-                                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem; font-weight: 700; color: white;">3</div>
-                                            <span style="font-size: 1.1rem;">持續護理</span>
-                                        </div>
-                                    </td>
-                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
-                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
-                                            <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">醫療團隊協調</span>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">安排護理服務</span>
                                         </div>
                                         <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
                                             <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">家屬教育與指導</span>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">準備出院文件</span>
                                         </div>
-                                    </td>
-                                    <td style="padding: 1.5rem; text-align: left; color: #555; vertical-align: top;">
+                                    </div>
+                                </div>
+                                
+                                <!-- 出院後 -->
+                                <div class="phase-section">
+                                    <div class="phase-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #f0f8f0;">
+                                        <i class="fas fa-home" style="color: #28a745; margin-right: 0.8rem; font-size: 1.2rem;"></i>
+                                        <h4 style="font-size: 1.2rem; color: #28a745; margin: 0; font-weight: 600;">出院後</h4>
+                                    </div>
+                                    <div class="phase-items">
                                         <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
                                             <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">24小時護理支援</span>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">開始居家護理服務</span>
                                         </div>
                                         <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
                                             <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
-                                            <span style="font-size: 1rem; font-weight: 500;">康復進度監測</span>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">定期跟進和調整</span>
                                         </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stage 3: 持續護理 -->
+                        <div class="process-stage-card" style="background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid rgba(255, 122, 0, 0.1);">
+                            <div class="stage-header" style="background: linear-gradient(135deg, #FF7A00 0%, #ff8c1a 100%); padding: 2rem; text-align: center; color: white;">
+                                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                                     <h3 style="font-size: 1.4rem; margin: 0; font-weight: 600;">持續護理</h3>
+                                </div>
+                            </div>
+                            
+                            <div class="stage-content" style="padding: 2rem;">
+                                <!-- 住院期間 -->
+                                <div class="phase-section" style="margin-bottom: 2rem;">
+                                    <div class="phase-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #f0f8f0;">
+                                        <i class="fas fa-hospital" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1.2rem;"></i>
+                                        <h4 style="font-size: 1.2rem; color: #FF7A00; margin: 0; font-weight: 600;">住院期間</h4>
+                                    </div>
+                                    <div class="phase-items">
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">醫療團隊協調</span>
+                                        </div>
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #FF7A00; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">家屬教育與指導</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 出院後 -->
+                                <div class="phase-section">
+                                    <div class="phase-header" style="display: flex; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #f0f8f0;">
+                                        <i class="fas fa-home" style="color: #28a745; margin-right: 0.8rem; font-size: 1.2rem;"></i>
+                                        <h4 style="font-size: 1.2rem; color: #28a745; margin: 0; font-weight: 600;">出院後</h4>
+                                    </div>
+                                    <div class="phase-items">
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">24小時護理支援</span>
+                                        </div>
+                                        <div style="display: flex; align-items: flex-start; margin-bottom: 1rem;">
+                                            <i class="fas fa-check-circle" style="color: #28a745; margin-right: 0.8rem; font-size: 1rem; margin-top: 0.2rem; flex-shrink: 0;"></i>
+                                            <span style="font-size: 1rem; font-weight: 500; color: #555;">康復進度監測</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
            
