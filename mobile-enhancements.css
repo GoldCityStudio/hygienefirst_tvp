@@ -4306,12 +4306,12 @@
 @media (max-width: 360px) {
     /* Extra Small Mobile */
     .service-cards {
-        padding: 0.75rem !important;
-        gap: 0.75rem !important;
+        padding: 0.rem !important;
+        gap: 0rem !important;
     }
 
     .service-card {
-        padding: 1rem 0.75rem 0.75rem 0.75rem !important;
+        padding: 0.5rem 0.25rem 0.25rem 0.25rem !important;
     }
 
     .service-card h3 {
@@ -5264,7 +5264,7 @@
     .service-options-grid,
     .trust-grid,
     .stats-grid {
-        padding: 0.75rem !important;
+        padding: 0rem !important;
         gap: 0.75rem !important;
     }
 

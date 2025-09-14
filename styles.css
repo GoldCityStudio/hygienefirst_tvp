@@ -6975,7 +6975,28 @@ footer .copyright {
 
 /* mobile version */
 @media (max-width: 480px) {
-
+    .audience-header div {
+        width: 50px !important;
+        height: 50px !important;
+        background: linear-gradient(135deg, #FF7A00, #E56717);
+        border-radius: 18px;
+        display: flex
+    ;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1.5rem;
+        box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);
+    }
+    .audience-item {
+        background: white;
+        padding: 20px !important;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 122, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
     .testimonial-slider {
         display: grid !important;
     }
