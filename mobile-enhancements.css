@@ -2666,11 +2666,11 @@
     }
     
     .mobile-elderly-service-scope .service-header h3 {
-        font-size: 1.4rem !important;
+        font-size: 20px !important;
         color: #333 !important;
         font-weight: 700 !important;
         margin: 0 !important;
-        margin-left: 1rem !important;
+        margin-left: 0rem !important;
     }
     
     .mobile-elderly-service-scope ul {
@@ -4878,8 +4878,8 @@
     .trust-grid,
     .stats-grid {
         grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-        padding: 1rem !important;
+        gap: 10px  !important;
+        padding: 0rem !important;
     }
 
     .service-card,
