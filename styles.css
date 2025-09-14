@@ -6975,6 +6975,33 @@ footer .copyright {
 
 /* mobile version */
 @media (max-width: 480px) {
+    .early-dementia-layout  {
+display: block !important;
+    }
+
+.middle-dementia-layout  {
+        display: block !important;
+            }
+
+.late-dementia-layout {
+                display: block !important;
+                    }
+
+                    .early-dementia-layout div {
+                        height: auto !important;
+                        box-shadow: none !important;
+                    }
+
+                    .middle-dementia-layout div {
+                        height: auto !important;
+                        box-shadow: none !important;
+                    }
+
+                    .late-dementia-image div {
+height: auto !important;
+box-shadow: none !important;
+                    }
+
     .audience-header div {
         width: 50px !important;
         height: 50px !important;
