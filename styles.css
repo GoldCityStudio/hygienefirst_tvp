@@ -7082,6 +7082,11 @@ border-radius: 50% !important;
         text-align: left !important;
 
     }
+
+    .benefits-list div span {
+        margin-top: -5px !important;
+        line-height: 22px !important;
+    }
     .hero-image {
         padding-top: 0 !important;
         min-width: fit-content !important;
