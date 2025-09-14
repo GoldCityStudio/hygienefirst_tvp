@@ -1088,10 +1088,7 @@
         
         // Go to specific page
         function goToPage(page) {
-            console.log(`Attempting to go to page ${page}, current page: ${currentPage}, total pages: ${totalPages}`);
-            
             if (page < 1 || page > totalPages) {
-                console.log(`Invalid page number: ${page}`);
                 return;
             }
             
@@ -1101,7 +1098,6 @@
             // Small delay for smooth transition
             setTimeout(() => {
                 currentPage = page;
-                console.log(`Now on page ${currentPage}`);
                 
                 showPage(page);
                 updatePageInfo();
@@ -1143,13 +1139,11 @@
         
         // Event listeners
         prevButton.addEventListener('click', (e) => {
-            console.log('Previous button clicked, current page:', currentPage);
             e.preventDefault();
             goToPage(currentPage - 1);
         });
         
         nextButton.addEventListener('click', (e) => {
-            console.log('Next button clicked, current page:', currentPage);
             e.preventDefault();
             goToPage(currentPage + 1);
         });

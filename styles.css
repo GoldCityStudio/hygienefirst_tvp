@@ -6975,6 +6975,13 @@ footer .copyright {
 
 /* mobile version */
 @media (max-width: 480px) {
+
+    .remark-section {
+        text-align: left !important;
+    }
+    p {
+        text-align: left !important;
+    }
     .early-dementia-layout  {
 display: block !important;
     }
@@ -7147,6 +7154,12 @@ line-height: 1.8 !important;
 }
 /* desktop version */
 @media (min-width: 480px) {
+    .remark-section {
+        text-align: center !important;
+    }
+   .remark-section p {
+        text-align: center !important;
+    }
     .stats {
         background: #f8f9fa !important;
         color: var(--primary-color) !important;
