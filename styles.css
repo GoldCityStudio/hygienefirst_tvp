@@ -7001,6 +7001,14 @@ border-radius: 50% !important;
             display: inline-grid !important;
     }
 
+    .stat-item h3 {
+        text-align: center !important;
+    }
+
+    .stat-item p {
+        text-align: center !important;
+    }
+
     .stats-grid {
         text-align: center !important;
     }
