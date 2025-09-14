@@ -6975,9 +6975,7 @@ footer .copyright {
 
 /* mobile version */
 @media (max-width: 480px) {
-    .service-cards, .mission-cards, .pricing-cards, .scope-cards, .benefits-cards, .service-content-grid, .features-grid, .audience-grid, .targets-grid, .content-grid, .advantages-grid, .care-content-grid, .stages-grid, .why-choose-grid, .quality-grid, .other-services-grid, .services-grid, .staff-grid, .target-audience-grid, .capabilities-grid, .complications-grid, .support-services-grid, .caregivers-grid, .understanding-grid, .care-services-grid, .care-details-grid, .acute-care-grid, .sub-acute-care-grid, .long-term-care-grid, .benefits-grid, .news-grid, .related-grid, .service-options-grid, .trust-grid, .stats-grid {
-        padding: 0 !important;
-    }
+
     .testimonial-slider {
         display: grid !important;
     }
@@ -7034,6 +7032,7 @@ border-radius: 50% !important;
 }
 .hero-image img {
         width: 100% !important;
+        min-width: 300px !important;
         height: 300px !important;
         object-fit: cover !important;
 }
@@ -7068,6 +7067,21 @@ line-height: 1.8 !important;
 .container-card {
     padding: 0 !important;
    
+}
+
+.service-cards, .mission-cards, .pricing-cards, .scope-cards, .benefits-cards, .service-content-grid, .features-grid, .audience-grid, .targets-grid, .content-grid, .advantages-grid, .care-content-grid, .stages-grid, .why-choose-grid, .quality-grid, .other-services-grid, .services-grid, .staff-grid, .target-audience-grid, .capabilities-grid, .complications-grid, .support-services-grid, .caregivers-grid, .understanding-grid, .care-services-grid, .care-details-grid, .acute-care-grid, .sub-acute-care-grid, .long-term-care-grid, .benefits-grid, .news-grid, .related-grid, .service-options-grid, .trust-grid, .stats-grid {
+    padding: 0 !important;
+    /* min-width: 280px; */
+    /* max-width: 400px; */
+    /* width: 100%;
+    padding: 2rem 1.5rem 1.75rem 1.5rem;
+    border-radius: 16px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    position: relative;
+    z-index: 1; */
+
 }
 }
 /* desktop version */
