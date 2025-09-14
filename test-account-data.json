@@ -1,0 +1,30 @@
+{
+  "testAccounts": [
+    {
+      "name": "Test User 1",
+      "email": "test1@hygienefirst.com",
+      "password": "test123456",
+      "phone": "+852-1234-5678",
+      "description": "Primary test account for registration testing"
+    },
+    {
+      "name": "Test User 2", 
+      "email": "test2@hygienefirst.com",
+      "password": "password123",
+      "phone": "+852-9876-5432",
+      "description": "Secondary test account for login testing"
+    },
+    {
+      "name": "Admin Test",
+      "email": "admin@hygienefirst.com", 
+      "password": "admin123456",
+      "phone": "+852-5555-5555",
+      "description": "Admin test account"
+    }
+  ],
+  "instructions": {
+    "registration": "Use any of these test accounts to test the registration functionality",
+    "login": "Use these credentials to test the login functionality",
+    "note": "These are test accounts only - not real user data"
+  }
+}

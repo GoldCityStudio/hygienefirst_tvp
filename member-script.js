@@ -9,14 +9,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (switchToRegister && switchToLogin) {
         switchToRegister.addEventListener('click', function(e) {
             e.preventDefault();
-            loginForm.classList.add('hidden');
-            registerForm.classList.remove('hidden');
+            loginForm.classList.remove('active');
+            registerForm.classList.add('active');
         });
 
         switchToLogin.addEventListener('click', function(e) {
             e.preventDefault();
-            registerForm.classList.add('hidden');
-            loginForm.classList.remove('hidden');
+            registerForm.classList.remove('active');
+            loginForm.classList.add('active');
         });
     }
 
@@ -695,14 +695,14 @@ async function handleRegistration(name, email, phone, password) {
 
 function handleLogout() {
     localStorage.removeItem('token');
-    document.getElementById('memberDashboard').classList.add('hidden');
-    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('memberDashboard').classList.remove('active');
+    document.getElementById('loginForm').classList.add('active');
 }
 
 function showDashboard(user, email) {
-    document.getElementById('loginForm').classList.add('hidden');
-    document.getElementById('registerForm').classList.add('hidden');
-    document.getElementById('memberDashboard').classList.remove('hidden');
+    document.getElementById('loginForm').classList.remove('active');
+    document.getElementById('registerForm').classList.remove('active');
+    document.getElementById('memberDashboard').classList.add('active');
     document.getElementById('userName').textContent = user && user.user && user.user.id ? '會員' : email;
     document.getElementById('userEmail').textContent = email;
 }

@@ -2356,10 +2356,10 @@
     
     .real-stories-text {
         order: 2;
-        background: rgba(255, 255, 255, 0.9);
+      background: transparent !important;
         padding: 25px 20px;
         border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(44, 169, 122, 0.1);
+        box-shadow: none !important;
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2);
     }
@@ -2374,17 +2374,7 @@
         position: relative;
     }
     
-    .real-stories-heading::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 40px;
-        height: 2px;
-        background: linear-gradient(90deg, #2ca97a, #ff7a00);
-        border-radius: 1px;
-    }
+
     
     .real-stories-title {
         font-size: 1.4rem;
