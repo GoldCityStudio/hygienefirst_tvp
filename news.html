@@ -1008,6 +1008,7 @@
             updatePageInfo();
             createPageNumbers();
             showPage(1);
+            updateButtons();
         }
         
         // Update page info display
@@ -1087,7 +1088,12 @@
         
         // Go to specific page
         function goToPage(page) {
-            if (page < 1 || page > totalPages) return;
+            console.log(`Attempting to go to page ${page}, current page: ${currentPage}, total pages: ${totalPages}`);
+            
+            if (page < 1 || page > totalPages) {
+                console.log(`Invalid page number: ${page}`);
+                return;
+            }
             
             // Add loading state
             pagination.classList.add('loading');
@@ -1095,6 +1101,8 @@
             // Small delay for smooth transition
             setTimeout(() => {
                 currentPage = page;
+                console.log(`Now on page ${currentPage}`);
+                
                 showPage(page);
                 updatePageInfo();
                 createPageNumbers();
@@ -1113,13 +1121,38 @@
         
         // Update prev/next buttons
         function updateButtons() {
-            prevButton.disabled = currentPage === 1;
-            nextButton.disabled = currentPage === totalPages;
+            const isFirstPage = currentPage === 1;
+            const isLastPage = currentPage === totalPages;
+            
+            prevButton.disabled = isFirstPage;
+            nextButton.disabled = isLastPage;
+            
+            // Ensure proper styling for disabled state
+            if (isFirstPage) {
+                prevButton.classList.add('disabled');
+            } else {
+                prevButton.classList.remove('disabled');
+            }
+            
+            if (isLastPage) {
+                nextButton.classList.add('disabled');
+            } else {
+                nextButton.classList.remove('disabled');
+            }
         }
         
         // Event listeners
-        prevButton.addEventListener('click', () => goToPage(currentPage - 1));
-        nextButton.addEventListener('click', () => goToPage(currentPage + 1));
+        prevButton.addEventListener('click', (e) => {
+            console.log('Previous button clicked, current page:', currentPage);
+            e.preventDefault();
+            goToPage(currentPage - 1);
+        });
+        
+        nextButton.addEventListener('click', (e) => {
+            console.log('Next button clicked, current page:', currentPage);
+            e.preventDefault();
+            goToPage(currentPage + 1);
+        });
         
         // Initialize pagination
         initPagination();
