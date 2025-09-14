@@ -5888,7 +5888,7 @@
     }
 
     .mobile-service-grid .service-card, .mission-card, .pricing-card, .scope-card, .benefit-card, .service-content-card, .feature-card, .audience-card, .target-card, .content-card, .advantage-card, .care-content-card, .stage-card, .why-choose-card, .quality-card, .other-service-card, .staff-card, .target-audience-card, .capability-card, .complication-card, .support-service-card, .caregiver-card, .understanding-card, .care-service-card, .care-detail-card, .acute-care-card, .sub-acute-care-card, .long-term-care-card, .benefit-card, .news-card, .related-card, .service-option-card, .trust-card, .stat-card, .process-step-card {
-        padding: 0px !important;
+        padding: 10px 0px !important;
     }
 }
 
