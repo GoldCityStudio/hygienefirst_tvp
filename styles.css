@@ -6965,7 +6965,9 @@ footer .copyright {
 
 /* mobile version */
 @media (max-width: 480px) {
-
+    .header-icons {
+        font-size: 12px !important;
+    }
     .remark-section {
         text-align: left !important;
     }
