@@ -2245,7 +2245,6 @@ footer .container {
 
 .section-header p {
     font-size: 1.1rem;
-    max-width: 800px !important;
     margin: 0 auto;
     color: var(--text-medium);
 }
