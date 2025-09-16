@@ -1818,10 +1818,43 @@ a[href^="tel:"]:hover {
     font-size: 1.1rem;
 }
 
-/* FAQ Section */
+/* FAQ Section - Simplified */
 .faq-section {
     padding: 80px 0;
     background: white;
+}
+
+/* Simple FAQ Styles - No Interactive Elements */
+.faq-item {
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    padding: 2rem;
+    border: 1px solid #f0f0f0;
+}
+
+.faq-question {
+    margin-bottom: 1rem;
+}
+
+.faq-question h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+    color: #333;
+}
+
+.faq-answer {
+    padding: 0;
+}
+
+.faq-answer p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
 }
 
 .faq-list {
