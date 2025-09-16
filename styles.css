@@ -7074,6 +7074,8 @@ border-radius: 50% !important;
     }
     .hero-text p {
         font-size: 15px !important;
+        text-align: justify !important;   
+text-justify:inter-ideograph !important; 
     }
     
     .benefits-list {
@@ -7119,7 +7121,8 @@ line-height: 1.8 !important;
     text-align: left !important;
     padding: 0!important;
     margin: 0!important;
-    
+    text-align: justify !important;   
+text-justify:inter-ideograph !important; 
 }
 
 

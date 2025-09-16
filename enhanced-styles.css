@@ -4615,7 +4615,7 @@ header .main-menu li:first-child .dropdown-content {
         padding: 1rem 0.8rem;
         border-right: 1px solid #e9ecef;
         border-bottom: none;
-        text-align: center;
+        text-align: left !important;
         font-size: 0.9rem;
     }
     
