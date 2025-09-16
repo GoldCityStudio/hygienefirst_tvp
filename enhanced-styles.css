@@ -2904,8 +2904,23 @@ a[href^="tel:"]:hover {
     font-weight: 700;
     color: #2c3e50;
     margin-bottom: 2rem;
-    line-height: 1.2;
+    line-height: 1.3;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+    text-wrap: wrap;
+    word-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+.news-detail-title {
+    text-align: justify;
+    text-wrap: wrap;
+    word-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
 }
 
 .article-image {
@@ -3158,10 +3173,16 @@ a[href^="tel:"]:hover {
     font-weight: 700;
     color: #2c3e50;
     margin-bottom: 2rem;
-    line-height: 1.2;
+    line-height: 1.3;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
     padding-bottom: 1rem;
+    text-align: justify;
+    text-wrap: wrap;
+    word-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
 }
 
 .article-title::after {
@@ -3280,6 +3301,9 @@ a[href^="tel:"]:hover {
 @media (max-width: 768px) {
     .article-title {
         font-size: 2.2rem;
+        text-align: justify;
+        text-wrap: wrap;
+        word-wrap: break-word;
     }
     
     .article-content {
@@ -3336,6 +3360,9 @@ a[href^="tel:"]:hover {
 @media (max-width: 480px) {
     .article-title {
         font-size: 1.8rem;
+        text-align: justify;
+        text-wrap: wrap;
+        word-wrap: break-word;
     }
     
     .article-content {
