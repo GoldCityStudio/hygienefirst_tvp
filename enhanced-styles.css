@@ -4720,6 +4720,866 @@ header .main-menu li:first-child .dropdown-content {
     }
 }
 
+/* Patent Principles Section Styles */
+.patent-principles-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.patent-principles-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="patent-pattern" patternUnits="userSpaceOnUse" width="50" height="50"><circle cx="25" cy="25" r="2" fill="rgba(255,122,0,0.1)"/><circle cx="75" cy="75" r="1.5" fill="rgba(255,87,34,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23patent-pattern)"/></svg>');
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.patent-principles-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Technology Overview */
+.tech-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.overview-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.overview-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+    border-color: var(--secondary-color);
+}
+
+.overview-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.overview-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-orange);
+    margin-bottom: 1rem;
+}
+
+.overview-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Technical Process */
+.technical-process {
+    margin-bottom: 4rem;
+}
+
+.process-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-orange);
+    margin-bottom: 3rem;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.step-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.step-content h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark-orange);
+    margin: 1rem 0 1rem;
+}
+
+.step-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.step-image {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(255,122,0,0.1), rgba(255,87,34,0.1));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+
+/* Light Activation Diagram */
+.light-activation-diagram {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    margin-bottom: 4rem;
+}
+
+.diagram-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark-orange);
+    margin-bottom: 3rem;
+}
+
+.diagram-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.light-sources {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.light-source {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.light-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.light-icon.sunlight {
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+}
+
+.light-icon.indoor-light {
+    background: linear-gradient(135deg, #ffa500, #ff6347);
+}
+
+.light-icon.uv-light {
+    background: linear-gradient(135deg, #9370db, #8a2be2);
+}
+
+.light-source span {
+    font-weight: 600;
+    color: var(--dark-orange);
+}
+
+.activation-arrow,
+.effect-arrow {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.catalyst-surface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(255,122,0,0.1), rgba(255,87,34,0.1));
+    border-radius: 16px;
+    border: 2px solid var(--secondary-color);
+}
+
+.surface-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.catalyst-surface span {
+    font-weight: 600;
+    color: var(--dark-orange);
+}
+
+.catalytic-effect {
+    width: 100%;
+    max-width: 600px;
+}
+
+.effect-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+}
+
+.effect-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(255,122,0,0.05), rgba(255,87,34,0.05));
+    border-radius: 12px;
+    border: 1px solid rgba(255,122,0,0.2);
+}
+
+.effect-item i {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.effect-item span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--dark-orange);
+    text-align: center;
+}
+
+/* Technical Advantages */
+.technical-advantages {
+    margin-bottom: 4rem;
+}
+
+.advantages-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark-orange);
+    margin-bottom: 3rem;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.advantage-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+    border-color: var(--secondary-color);
+}
+
+.advantage-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+}
+
+.advantage-card h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark-orange);
+    margin-bottom: 1rem;
+}
+
+.advantage-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Patent Information */
+.patent-info {
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.patent-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.patent-badge i {
+    font-size: 1.5rem;
+}
+
+.patent-details h4 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-orange);
+    margin-bottom: 1rem;
+}
+
+.patent-details p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.certification-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.cert-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(255,122,0,0.05), rgba(255,87,34,0.05));
+    border-radius: 12px;
+    border: 1px solid rgba(255,122,0,0.2);
+}
+
+.cert-item i {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+.cert-item span {
+    font-weight: 600;
+    color: var(--dark-orange);
+}
+
+/* Responsive Design for Patent Principles */
+@media (max-width: 1024px) {
+    .tech-overview {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .process-steps {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    
+    .light-sources {
+        gap: 2rem;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .patent-principles-section {
+        padding: 60px 0;
+    }
+    
+    .tech-overview {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .process-title {
+        font-size: 2rem;
+    }
+    
+    .process-steps {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .light-activation-diagram {
+        padding: 2rem;
+    }
+    
+    .diagram-title {
+        font-size: 1.5rem;
+    }
+    
+    .light-sources {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .effect-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .advantages-title {
+        font-size: 1.5rem;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .patent-info {
+        padding: 2rem;
+    }
+    
+    .certification-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .patent-principles-section {
+        padding: 40px 0;
+    }
+    
+    .overview-card,
+    .step-card,
+    .advantage-card {
+        padding: 1.5rem;
+    }
+    
+    .light-activation-diagram {
+        padding: 1.5rem;
+    }
+    
+    .light-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .effect-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .patent-info {
+        padding: 1.5rem;
+    }
+}
+
+/* Application Scope Section Styles */
+.application-scope-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.application-scope-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hex-pattern" patternUnits="userSpaceOnUse" width="20" height="20"><polygon points="10,2 18,6 18,14 10,18 2,14 2,6" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23hex-pattern)"/></svg>');
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.application-scope-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.scope-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.scope-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.scope-description {
+    font-size: 1.2rem;
+    color: var(--white);
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+.application-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.application-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.application-item:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+}
+
+.application-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--secondary-color);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.application-item:hover .application-icon {
+    transform: scale(1.1);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+
+.application-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Scientific Proof Section Styles */
+.scientific-proof-section {
+    padding: 80px 0;
+    background: var(--white);
+    position: relative;
+}
+
+.proof-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.proof-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-orange);
+    margin-bottom: 2rem;
+    line-height: 1.3;
+}
+
+.proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.proof-item {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.proof-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,122,0,0.05), rgba(255,87,34,0.05));
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.proof-item:hover::before {
+    opacity: 1;
+}
+
+.proof-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    border-color: var(--secondary-color);
+}
+
+.proof-item > * {
+    position: relative;
+    z-index: 2;
+}
+
+.proof-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--white);
+    box-shadow: 0 12px 32px rgba(255,122,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.proof-item:hover .proof-icon {
+    transform: scale(1.1);
+    box-shadow: 0 16px 48px rgba(255,122,0,0.4);
+}
+
+.proof-category {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-orange);
+    margin-bottom: 1rem;
+}
+
+.proof-description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* Responsive Design for Application Scope and Scientific Proof */
+@media (max-width: 1024px) {
+    .application-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .proof-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .application-scope-section {
+        padding: 60px 0;
+    }
+    
+    .scope-title {
+        font-size: 2.5rem;
+    }
+    
+    .scope-description {
+        font-size: 1.1rem;
+    }
+    
+    .application-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .application-item {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .application-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .application-text {
+        font-size: 1rem;
+    }
+    
+    .scientific-proof-section {
+        padding: 60px 0;
+    }
+    
+    .proof-title {
+        font-size: 2rem;
+    }
+    
+    .proof-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .proof-item {
+        padding: 2rem 1.5rem;
+    }
+    
+    .proof-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .application-scope-section {
+        padding: 40px 0;
+    }
+    
+    .scope-title {
+        font-size: 2rem;
+    }
+    
+    .scope-description {
+        font-size: 1rem;
+    }
+    
+    .application-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .application-item {
+        padding: 1rem 0.5rem;
+    }
+    
+    .application-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .application-text {
+        font-size: 0.9rem;
+    }
+    
+    .scientific-proof-section {
+        padding: 40px 0;
+    }
+    
+    .proof-title {
+        font-size: 1.8rem;
+    }
+    
+    .proof-item {
+        padding: 1.5rem 1rem;
+    }
+    
+    .proof-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+    
+    .proof-category {
+        font-size: 1.3rem;
+    }
+    
+    .proof-description {
+        font-size: 0.9rem;
+    }
+}
+
 /* Antiviral Principles Section Styles */
 .antiviral-principles-section {
     padding: 80px 0;
