@@ -24,6 +24,31 @@
     <link rel="stylesheet" href="enhanced-styles.css">
     <link rel="stylesheet" href="dropdown-fix.css">
     <link rel="stylesheet" href="mobile-enhancements.css">
+    
+    <!-- FAQ Fix Styles -->
+    <style>
+        .faq-answer {
+            display: none !important;
+            max-height: 0 !important;
+            overflow: hidden !important;
+            transition: all 0.3s ease !important;
+            padding: 0 2rem !important;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block !important;
+            max-height: 500px !important;
+            padding: 2rem !important;
+        }
+        
+        .faq-question {
+            cursor: pointer !important;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg) !important;
+        }
+    </style>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1054,6 +1079,7 @@
 
     // FAQ functionality
     function initFAQ() {
+        console.log('Initializing FAQ...');
         const faqItems = document.querySelectorAll('.faq-item');
         console.log('FAQ items found:', faqItems.length);
         
@@ -1064,6 +1090,13 @@
         
         faqItems.forEach((item, index) => {
             const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            console.log(`FAQ item ${index}:`, {
+                question: question ? 'found' : 'missing',
+                answer: answer ? 'found' : 'missing',
+                hasActiveClass: item.classList.contains('active')
+            });
             
             if (question) {
                 console.log('Adding click listener to FAQ item', index);
@@ -1077,6 +1110,8 @@
                     
                     const isActive = item.classList.contains('active');
                     console.log('FAQ clicked, isActive:', isActive);
+                    console.log('Answer element:', answer);
+                    console.log('Answer computed style:', answer ? window.getComputedStyle(answer) : 'No answer element');
                     
                     // Close all other FAQ items
                     faqItems.forEach(otherItem => {
@@ -1086,7 +1121,10 @@
                     // Toggle current item
                     if (!isActive) {
                         item.classList.add('active');
-                        console.log('FAQ item activated');
+                        console.log('FAQ item activated, classes:', item.className);
+                    } else {
+                        item.classList.remove('active');
+                        console.log('FAQ item deactivated');
                     }
                 });
             } else {
