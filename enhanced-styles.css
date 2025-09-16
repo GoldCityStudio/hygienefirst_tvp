@@ -1867,6 +1867,7 @@ a[href^="tel:"]:hover {
     font-size: 1.5rem;
     font-weight: bold;
     transition: transform 0.3s ease;
+    transform: rotate(45deg);
 }
 
 .faq-item.active .faq-icon {
@@ -1874,9 +1875,9 @@ a[href^="tel:"]:hover {
 }
 
 .faq-answer {
-    padding: 0 2rem;
-    max-height: 0;
-    overflow: hidden;
+    padding: 2rem;
+    max-height: 500px;
+    overflow: visible;
     transition: all 0.3s ease;
 }
 
@@ -2458,6 +2459,7 @@ a[href^="tel:"]:hover {
     font-weight: bold;
     transition: transform 0.3s ease;
     color: var(--primary-color);
+    transform: rotate(45deg);
 }
 
 .faq-question:hover .faq-icon {
@@ -2469,9 +2471,9 @@ a[href^="tel:"]:hover {
 }
 
 .faq-answer {
-    padding: 0 2rem;
-    max-height: 0;
-    overflow: hidden;
+    padding: 2rem;
+    max-height: 500px;
+    overflow: visible;
     transition: all 0.3s ease;
 }
 
@@ -7070,6 +7072,7 @@ header .main-menu li:first-child .dropdown-content {
     font-weight: bold;
     transition: transform 0.3s ease;
     color: #FF7A00;
+    transform: rotate(45deg);
 }
 
 .faq-question:hover .faq-icon {
@@ -7081,9 +7084,9 @@ header .main-menu li:first-child .dropdown-content {
 }
 
 .faq-answer {
-    padding: 0 2rem;
-    max-height: 0;
-    overflow: hidden;
+    padding: 2rem;
+    max-height: 500px;
+    overflow: visible;
     transition: all 0.3s ease;
 }
 
