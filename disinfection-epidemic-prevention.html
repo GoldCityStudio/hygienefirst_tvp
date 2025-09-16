@@ -318,7 +318,7 @@
                         <div class="proof-icon">
                             <i class="fas fa-virus"></i>
                         </div>
-                        <h3 class="proof-category">病毒</h3>
+                        <h3 class="proof-category">殺滅病毒</h3>
                     </div>
                     
                     <div class="proof-item">
@@ -1053,27 +1053,54 @@
     });
 
     // FAQ functionality
-    document.addEventListener('DOMContentLoaded', function() {
+    function initFAQ() {
         const faqItems = document.querySelectorAll('.faq-item');
+        console.log('FAQ items found:', faqItems.length);
         
-        faqItems.forEach(item => {
+        if (faqItems.length === 0) {
+            console.error('No FAQ items found!');
+            return;
+        }
+        
+        faqItems.forEach((item, index) => {
             const question = item.querySelector('.faq-question');
             
-            question.addEventListener('click', function() {
-                const isActive = item.classList.contains('active');
+            if (question) {
+                console.log('Adding click listener to FAQ item', index);
                 
-                // Close all other FAQ items
-                faqItems.forEach(otherItem => {
-                    otherItem.classList.remove('active');
+                // Add visual feedback
+                question.style.cursor = 'pointer';
+                
+                question.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const isActive = item.classList.contains('active');
+                    console.log('FAQ clicked, isActive:', isActive);
+                    
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+                    
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                        console.log('FAQ item activated');
+                    }
                 });
-                
-                // Toggle current item
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
+            } else {
+                console.error('No question element found in FAQ item', index);
+            }
         });
-    });
+    }
+    
+    // Initialize FAQ when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFAQ);
+    } else {
+        initFAQ();
+    }
 
     // Animated Counter Effect for Statistics Section
     function animateCounter(element, target, suffix) {
