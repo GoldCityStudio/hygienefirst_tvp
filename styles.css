@@ -7145,6 +7145,10 @@ line-height: 1.8 !important;
 }
 /* desktop version */
 @media (min-width: 480px) {
+    .hero-section {
+        background: linear-gradient(195deg, var(--primary-color) 0%, #ffffff 100%) !important;
+
+    }
     .remark-section {
         text-align: center !important;
     }
