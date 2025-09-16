@@ -47,6 +47,33 @@
         .faq-item.active .faq-icon {
             transform: rotate(45deg) !important;
         }
+        
+        /* Mobile Menu Fix Styles */
+        .mobile-menu-toggle {
+            cursor: pointer !important;
+            z-index: 1001 !important;
+        }
+        
+        .main-menu {
+            transition: right 0.3s ease !important;
+        }
+        
+        .main-menu.active {
+            right: 0 !important;
+        }
+        
+        .overlay {
+            transition: opacity 0.3s ease !important;
+        }
+        
+        .overlay.active {
+            display: block !important;
+            opacity: 1 !important;
+        }
+        
+        body.menu-open {
+            overflow: hidden !important;
+        }
     </style>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -851,35 +878,68 @@
         });
 
         // Mobile menu functionality
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const mainMenu = document.querySelector('.main-menu');
-        const overlay = document.querySelector('.overlay');
+        function initMobileMenu() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainMenu = document.querySelector('.main-menu');
+            const overlay = document.querySelector('.overlay');
 
-        mobileMenuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            mainMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
-        });
-
-        // Close mobile menu when clicking overlay
-        overlay.addEventListener('click', function() {
-            mobileMenuToggle.classList.remove('active');
-            mainMenu.classList.remove('active');
-            this.classList.remove('active');
-            document.body.classList.remove('menu-open');
-        });
-
-        // Close mobile menu when clicking on a link
-        const menuLinks = document.querySelectorAll('.main-menu a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenuToggle.classList.remove('active');
-                mainMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.classList.remove('menu-open');
+            console.log('Mobile menu elements:', {
+                toggle: mobileMenuToggle ? 'found' : 'missing',
+                menu: mainMenu ? 'found' : 'missing',
+                overlay: overlay ? 'found' : 'missing'
             });
-        });
+
+            if (mobileMenuToggle && mainMenu && overlay) {
+                mobileMenuToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    console.log('Mobile menu toggle clicked');
+                    
+                    this.classList.toggle('active');
+                    mainMenu.classList.toggle('active');
+                    overlay.classList.toggle('active');
+                    document.body.classList.toggle('menu-open');
+                    
+                    console.log('Mobile menu state:', {
+                        toggleActive: this.classList.contains('active'),
+                        menuActive: mainMenu.classList.contains('active'),
+                        overlayActive: overlay.classList.contains('active'),
+                        bodyClass: document.body.classList.contains('menu-open')
+                    });
+                });
+
+                // Close mobile menu when clicking overlay
+                overlay.addEventListener('click', function() {
+                    console.log('Overlay clicked - closing mobile menu');
+                    mobileMenuToggle.classList.remove('active');
+                    mainMenu.classList.remove('active');
+                    this.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+
+                // Close mobile menu when clicking on a link
+                const menuLinks = document.querySelectorAll('.main-menu a');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        console.log('Menu link clicked - closing mobile menu');
+                        mobileMenuToggle.classList.remove('active');
+                        mainMenu.classList.remove('active');
+                        overlay.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    });
+                });
+            } else {
+                console.error('Mobile menu elements not found!');
+            }
+        }
+
+        // Initialize mobile menu when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileMenu);
+        } else {
+            initMobileMenu();
+        }
     </script>
 
     <!-- Chatbot Component -->
