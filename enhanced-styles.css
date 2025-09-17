@@ -4099,7 +4099,7 @@ header .main-menu li:first-child .dropdown-content {
 }
 
 .stat-icon::before {
-    content: '';
+    /* content: '';
     position: absolute;
     top: -3px;
     left: -3px;
@@ -4107,7 +4107,7 @@ header .main-menu li:first-child .dropdown-content {
     bottom: -3px;
     background: white;
     border-radius: 50%;
-    z-index: -1;
+    z-index: -1; */
 }
 
 .stat-number {

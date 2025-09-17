@@ -2733,6 +2733,7 @@ footer .container {
     font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     font-size: 15px !important;
     text-align: left !important;
+   
 }
 
 /* Card hover effect improvements */
@@ -3525,6 +3526,7 @@ header.sticky .logo a {
     font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     line-height: 1.8;
     font-size: 15px !important;
+
 }
 
 /* Booking Modal Styles - Chinese Language Support */
@@ -5699,6 +5701,7 @@ footer .copyright {
     align-items: center;
     gap: 18px;
     margin-left: auto;
+    font-size: 14px;
 }
 .header-icon {
     display: inline-flex;
