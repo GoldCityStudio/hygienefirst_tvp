@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/家居藥物回收計劃",
+      "destination": "/家居藥物回收計劃.html"
+    },
+    {
+      "source": "/藥物分類搜尋引擎器",
+      "destination": "/藥物分類搜尋引擎器.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/$1.html"
     }
