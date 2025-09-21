@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="enhanced-styles.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQFkghNWGW5jGAaiwzcGhk_vX-LgZwzaY&libraries=places&callback=initMap"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Google Tag Manager -->
@@ -71,7 +73,7 @@
     
     <style>
         .drug-recovery-hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FF7A00 0%, #FF9933 100%);
             color: white;
             padding: 4rem 0;
             text-align: center;
@@ -91,12 +93,12 @@
         
         .recovery-features {
             padding: 4rem 0;
-            background: #f8f9fa;
+            background: #FFF9F5;
         }
         
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -116,7 +118,7 @@
         
         .feature-icon {
             font-size: 3rem;
-            color: #667eea;
+            color: #FF7A00;
             margin-bottom: 1rem;
         }
         
@@ -141,7 +143,7 @@
         }
         
         .step-number {
-            background: #667eea;
+            background: #FF7A00;
             color: white;
             width: 50px;
             height: 50px;
@@ -156,7 +158,7 @@
         
         .drug-types {
             padding: 4rem 0;
-            background: #f8f9fa;
+            background: #FFF9F5;
         }
         
         .drug-grid {
@@ -171,7 +173,7 @@
             padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #FF7A00;
         }
         
         .drug-card h4 {
@@ -196,7 +198,7 @@
         }
         
         .cta-section {
-            background: #667eea;
+            background: #FF7A00;
             color: white;
             padding: 4rem 0;
             text-align: center;
@@ -222,7 +224,7 @@
         
         .btn-primary {
             background: white;
-            color: #667eea;
+            color: #FF7A00;
             padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
@@ -231,7 +233,7 @@
         }
         
         .btn-primary:hover {
-            background: #f8f9fa;
+            background: #FFF9F5;
             transform: translateY(-2px);
         }
         
@@ -248,7 +250,7 @@
         
         .btn-secondary:hover {
             background: white;
-            color: #667eea;
+            color: #FF7A00;
         }
         
         @media (max-width: 768px) {
@@ -277,24 +279,27 @@
     <div class="overlay"></div>
     <div class="page-transition"></div>
     <header>
+        <!-- Promo Banner -->
+
+        
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="images/HF logo/logo.png" alt="Hygiene First Company Limited" style="max-height: 50px; width: auto;">
+                    <img src="images/HF logo/logo.png" alt="Hygiene First Company Limited" style="max-height: 50px; width: auto; border-radius: 0px !important;">
                 </a>
             </div>
             <div class="header-icons">
-                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i></a>
-                <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i><span></span></a>會員中心
+                <!-- <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a> -->
             </div>
             <nav>
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">關於我們</a>
-                        <div class="dropdown-content">
-                            <a href="about.html#features">我們的特色</a>
-                            <a href="about.html#testimonials">客戶評價</a>
-                            <a href="news.html#media">媒體中心</a>
+                        <div class="dropdown-content">   
+                            <a href="about.html">關於我們</a>
+                            <a href="news.html">媒體中心</a>
+                         
                         </div>
                     </li>
                     <li class="dropdown">
@@ -311,13 +316,24 @@
                             <a href="dementia-care.html">認知障礙症護理服務</a>
                             <a href="post-surgery-care.html">專業手術後護理服務</a>
                             <a href="rehabilitation-care.html">復康護理</a>
+                      
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="家居藥物回收計劃">家居藥物回收計劃</a>
+                        <div class="dropdown-content">
+                            <a href="藥物分類搜尋引擎器">藥物分類搜尋引擎器</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="housekeeping-assistant.html">家務助理</a>
+                        <div class="dropdown-content">
+                            <a href="disinfection-epidemic-prevention.html">消毒服務</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="institutional-care.html">機構護理人手支援</a>
-                        <div class="dropdown-content">
-                            <a href="institutional-care.html#institutional-care">機構護理服務</a>
-                        </div>
+                      
                     </li>
                     <li>
                         <a href="waste-collection.html">醫療及化學廢物收集服務</a>
@@ -366,8 +382,6 @@
         <section class="drug-recovery-hero">
             <div class="container">
                 <h1>家居藥物回收計劃</h1>
-                <p>專業、安全、環保的藥物回收服務</p>
-                <p>保護環境，守護健康，從正確處理過期藥物開始</p>
             </div>
         </section>
 
@@ -375,137 +389,350 @@
         <section class="recovery-features">
             <div class="container">
                 <div class="section-header">
-                    <h2>為什麼選擇我們的藥物回收服務？</h2>
-                    <p>我們提供專業、安全、環保的藥物回收解決方案</p>
+                    <h2>活動簡介</h2>
+                    <p>「過期藥物回收計劃」由 大灣區醫護教師社工協會 主辦，新界社團聯會 合辦，並獲得醫療、教育、社福界別及多個地區議員支持。計劃將於 2025年10月起在全港展開，透過回收藥物與教育推廣，達成以下四大目標：</p>
                 </div>
                 <div class="feature-grid">
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3>安全處理</h3>
-                        <p>專業人員安全收集和處理各種藥物，確保不會對環境和人體造成危害</p>
+                        <h3>減低誤服風險</h3>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="fas fa-leaf"></i>
                         </div>
-                        <h3>環保回收</h3>
-                        <p>採用環保方式處理藥物廢料，減少對環境的污染，保護地球資源</p>
+                        <h3>降低環境污染</h3>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <i class="fas fa-home"></i>
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <h3>上門服務</h3>
-                        <p>提供便利的上門回收服務，讓您無需出門即可安全處理過期藥物</p>
+                        <h3>強化公眾教育</h3>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <i class="fas fa-certificate"></i>
+                            <i class="fas fa-recycle"></i>
                         </div>
-                        <h3>合規處理</h3>
-                        <p>嚴格遵守香港環保署相關法規，確保藥物回收過程合法合規</p>
+                        <h3>驅動末端回收</h3>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Process Steps -->
-        <section class="process-steps">
+        <!-- Supporting Organizations Section -->
+        <!-- <section class="supporting-orgs" style="padding: 4rem 0; background: white;">
             <div class="container">
                 <div class="section-header">
-                    <h2>藥物回收流程</h2>
-                    <p>簡單四步，安全處理您的過期藥物</p>
+                    <h2>支持機構及商標</h2>
+                    <p>感謝以下機構對「過期藥物回收計劃」的支持</p>
                 </div>
-                <div class="step-container">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h3>聯絡預約</h3>
-                        <p>致電或網上預約藥物回收服務，我們會安排合適的時間上門收集</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h3>藥物分類</h3>
-                        <p>專業人員到府協助您將藥物按類別分類，確保安全處理</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h3>安全收集</h3>
-                        <p>使用專業設備和容器安全收集藥物，避免污染和意外</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">4</div>
-                        <h3>環保處理</h3>
-                        <p>將收集的藥物送往指定處理設施，進行安全無害化處理</p>
-                    </div>
+                <div style="text-align: center; padding: 2rem 0;">
+                    <p style="font-size: 1.1rem; color: #666; font-style: italic;">Maggie Will All Logos / names</p>
+                    <p style="font-size: 0.9rem; color: #999;">（機構標誌及名稱將於稍後更新）</p>
                 </div>
             </div>
-        </section>
+        </section> -->
 
-        <!-- Drug Types Section -->
-        <section class="drug-types">
+        <!-- Launch Event Section -->
+        <!-- <section class="launch-event" style="padding: 4rem 0; background: #FFF9F5;">
             <div class="container">
                 <div class="section-header">
-                    <h2>可回收藥物類型</h2>
-                    <p>我們接受各種類型的藥物回收</p>
+                    <h2>藥物回收啟動禮花絮</h2>
+                    <div style="text-align: center; margin: 2rem 0;">
+                        <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>日期：</strong>2025年9月29日</p>
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem;"><strong>地點：</strong>西貢賽馬會大會堂</p>
+                        <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                            <p style="font-size: 1rem; color: #666; font-style: italic;">相片集/短片回顧</p>
+                            <p style="font-size: 0.9rem; color: #999;">（將於9月29日後更新）</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="drug-grid">
-                    <div class="drug-card">
-                        <h4>處方藥物</h4>
-                        <ul>
-                            <li>抗生素</li>
-                            <li>降血壓藥</li>
-                            <li>降血糖藥</li>
-                            <li>心臟病藥物</li>
-                            <li>其他處方藥</li>
-                        </ul>
+            </div>
+        </section> -->
+
+        <!-- Collection Points Images Section -->
+        <section class="collection-points" style="padding: 4rem 0; background: white;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>回收點圖片</h2>
+                    <p>展示不同場景的回收點設置</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                    <div style="background: #FFF9F5; padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-building" style="font-size: 2rem; color: #FF7A00; margin-bottom: 1rem;"></i>
+                        <h4>商場回收點</h4>
                     </div>
-                    <div class="drug-card">
-                        <h4>非處方藥物</h4>
-                        <ul>
-                            <li>止痛藥</li>
-                            <li>感冒藥</li>
-                            <li>維生素</li>
-                            <li>保健品</li>
-                            <li>外用藥膏</li>
-                        </ul>
+                    <div style="background: #FFF9F5; padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-university" style="font-size: 2rem; color: #FF7A00; margin-bottom: 1rem;"></i>
+                        <h4>大學</h4>
                     </div>
-                    <div class="drug-card">
-                        <h4>特殊藥物</h4>
-                        <ul>
-                            <li>化療藥物</li>
-                            <li>精神科藥物</li>
-                            <li>管制藥物</li>
-                            <li>疫苗</li>
-                            <li>注射藥物</li>
-                        </ul>
+                    <div style="background: #FFF9F5; padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-home" style="font-size: 2rem; color: #FF7A00; margin-bottom: 1rem;"></i>
+                        <h4>住宅</h4>
                     </div>
-                    <div class="drug-card">
-                        <h4>中藥材</h4>
-                        <ul>
-                            <li>中藥材</li>
-                            <li>中成藥</li>
-                            <li>藥酒</li>
-                            <li>藥膏</li>
-                            <li>其他中藥製品</li>
-                        </ul>
+                    <div style="background: #FFF9F5; padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-users" style="font-size: 2rem; color: #FF7A00; margin-bottom: 1rem;"></i>
+                        <h4>鄰舍中心</h4>
+                    </div>
+                    <div style="background: #FFF9F5; padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-landmark" style="font-size: 2rem; color: #FF7A00; margin-bottom: 1rem;"></i>
+                        <h4>議員辦事處</h4>
+                    </div>
+                    <div style="background: #FFF9F5; padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-map-marker-alt" style="font-size: 2rem; color: #FF7A00; margin-bottom: 1rem;"></i>
+                        <h4>地區中心</h4>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="cta-section">
+        <!-- Collection Boxes Section -->
+        <!-- <section class="collection-boxes" style="padding: 4rem 0; background: #FFF9F5;">
             <div class="container">
-                <h2>立即預約藥物回收服務</h2>
-                <p>保護環境，守護健康，從正確處理過期藥物開始</p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="btn-primary">立即預約</a>
-                    <a href="tel:+85228278889" class="btn-secondary">致電 2827 8889</a>
+                <div class="section-header">
+                    <h2>回收盒圖片</h2>
+                    <p>展示回收箱設計</p>
+                </div>
+                <div style="text-align: center; padding: 2rem 0;">
+                    <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: inline-block;">
+                        <i class="fas fa-box" style="font-size: 3rem; color: #FF7A00; margin-bottom: 1rem;"></i>
+                        <p style="font-size: 1rem; color: #666; font-style: italic;">回收箱設計</p>
+                        <p style="font-size: 0.9rem; color: #999;">（將於9月26日前更新）</p>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+    
+
+        <!-- Collection Points List Section -->
+        <section class="collection-points-list" style="padding: 4rem 0; background: white;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>回收點列表（固定回收點）</h2>
+                  
+                </div>
+                
+                <!-- Search and Filter Function -->
+                <div style="margin: 2rem 0; text-align: center;">
+                    <!-- Search Bar -->
+                    <div style="display: inline-block; background: #FFF9F5; padding: 1rem 2rem; border-radius: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 1rem;">
+                        <i class="fas fa-search" style="color: #FF7A00; margin-right: 0.5rem;"></i>
+                        <input type="text" id="locationSearch" placeholder="輸入地區、機構或地址搜尋..." style="border: none; background: transparent; outline: none; font-size: 1rem; width: 300px;">
+                    </div>
+                    
+                    <!-- Region Filter Buttons -->
+                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                        <button class="filter-btn active" data-filter="all" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-weight: 600;">
+                            <i class="fas fa-globe" style="margin-right: 0.5rem;"></i>全部地區
+                        </button>
+                        <button class="filter-btn" data-filter="香港島" style="background: #FFF9F5; color: #FF7A00; border: 2px solid #FF7A00; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-weight: 600;">
+                            <i class="fas fa-building" style="margin-right: 0.5rem;"></i>香港島
+                        </button>
+                        <button class="filter-btn" data-filter="九龍" style="background: #FFF9F5; color: #FF7A00; border: 2px solid #FF7A00; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-weight: 600;">
+                            <i class="fas fa-city" style="margin-right: 0.5rem;"></i>九龍
+                        </button>
+                        <button class="filter-btn" data-filter="新界" style="background: #FFF9F5; color: #FF7A00; border: 2px solid #FF7A00; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-weight: 600;">
+                            <i class="fas fa-home" style="margin-right: 0.5rem;"></i>新界
+                        </button>
+                    </div>
+                    
+                    <!-- District Filters -->
+                    <!-- <div style="margin-top: 1rem;">
+                        <h4 style="color: #FF7A00; margin-bottom: 0.5rem; font-size: 1rem;">按區域篩選：</h4>
+                        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 0.3rem;">
+                            <button class="district-filter-btn" data-district="中西區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">中西區</button>
+                            <button class="district-filter-btn" data-district="灣仔區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">灣仔區</button>
+                            <button class="district-filter-btn" data-district="東區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">東區</button>
+                            <button class="district-filter-btn" data-district="南區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">南區</button>
+                            <button class="district-filter-btn" data-district="油尖旺區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">油尖旺區</button>
+                            <button class="district-filter-btn" data-district="深水埗區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">深水埗區</button>
+                            <button class="district-filter-btn" data-district="九龍城區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">九龍城區</button>
+                            <button class="district-filter-btn" data-district="黃大仙區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">黃大仙區</button>
+                            <button class="district-filter-btn" data-district="觀塘區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">觀塘區</button>
+                            <button class="district-filter-btn" data-district="沙田區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">沙田區</button>
+                            <button class="district-filter-btn" data-district="大埔區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">大埔區</button>
+                            <button class="district-filter-btn" data-district="北區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">北區</button>
+                        </div>
+                    </div> -->
+                </div>
+
+                <!-- Collection Points Table -->
+                <div style="background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; margin: 2rem 0;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead style="background: #FF7A00; color: white;">
+                            <tr>
+                                <th style="padding: 1rem; text-align: left;">地區</th>
+                                <th style="padding: 1rem; text-align: left;">支持機構</th>
+                                <th style="padding: 1rem; text-align: left;">回收點名稱</th>
+                                <th style="padding: 1rem; text-align: left;">地址</th>
+                            </tr>
+                        </thead>
+                        <tbody id="collectionPointsTableBody">
+                            <!-- Data will be loaded dynamically from collectionpoints.json -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Google Maps Integration -->
+                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 2rem 0;">
+                    <h3 style="text-align: center; color: #FF7A00; margin-bottom: 1.5rem;">
+                        <i class="fas fa-map-marked-alt" style="margin-right: 0.5rem;"></i>
+                        互動地圖 - 全港回收點位置
+                    </h3>
+                    
+                    <!-- Location Search -->
+                    <div style="margin-bottom: 1.5rem; text-align: center;">
+                     
+                        
+                        <!-- Auto-detect Location Button -->
+                        <div style="margin-top: 1rem;">
+                            <button id="detectLocationBtn" style="background: #28a745; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                                <i class="fas fa-crosshairs" style="margin-right: 0.5rem;"></i>自動偵測我的位置
+                            </button>
+                            <div id="locationStatus" style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Container -->
+                    <div id="googleMap" style="height: 500px; border-radius: 10px; border: 2px solid #FF7A00; position: relative; overflow: hidden;">
+                        <!-- Google Map will be rendered here -->
+                        <div id="mapLoading" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #FFF9F5 0%, #FFE5D9 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000;">
+                            <i class="fas fa-map-marked-alt" style="font-size: 4rem; color: #FF7A00; margin-bottom: 1rem;"></i>
+                            <h4 style="color: #FF7A00; margin-bottom: 0.5rem;">載入地圖中...</h4>
+                            <p style="color: #666; text-align: center; max-width: 400px;">
+                                正在載入Google地圖<br>
+                                將顯示全港293個回收點位置
+                            </p>
+                            <div style="margin-top: 1rem;">
+                                <div style="width: 40px; height: 40px; border: 4px solid #FF7A00; border-top: 4px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Controls -->
+                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
+                        <button id="showAllPointsBtn" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600;">
+                            <i class="fas fa-globe" style="margin-right: 0.5rem;"></i>顯示所有回收點
+                        </button>
+                        <button id="centerHongKongBtn" style="background: #FF9933; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600;">
+                            <i class="fas fa-home" style="margin-right: 0.5rem;"></i>回到香港中心
+                        </button>
+                        <button id="toggleClustersBtn" style="background: #E56717; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600;">
+                            <i class="fas fa-layer-group" style="margin-right: 0.5rem;"></i>切換群組顯示
+                        </button>
+                    </div>
+                    
+                    <!-- Map Legend -->
+                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 20px; height: 20px; background: #0066CC; border-radius: 50%;"></div>
+                            <span style="color: #666; font-size: 0.9rem;">香港島回收點</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 20px; height: 20px; background: #FF9933; border-radius: 50%;"></div>
+                            <span style="color: #666; font-size: 0.9rem;">九龍回收點</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 20px; height: 20px; background: #00AA44; border-radius: 50%;"></div>
+                            <span style="color: #666; font-size: 0.9rem;">新界回收點</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 20px; height: 20px; background: #28a745; border-radius: 50%;"></div>
+                            <span style="color: #666; font-size: 0.9rem;">您的位置</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Mobile Collection Points Section -->
+        <!-- <section class="mobile-collection-points" style="padding: 4rem 0; background: #FFF9F5;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>回收流動點</h2>
+                    <p>每月臨時回收點時間表</p>
+                </div>
+                
+                <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 2rem 0;">
+                    <div style="text-align: center; padding: 2rem 0;">
+                        <i class="fas fa-calendar-alt" style="font-size: 3rem; color: #FF7A00; margin-bottom: 1rem;"></i>
+                        <h4>流動回收點時間表</h4>
+                        <p style="color: #666; font-style: italic;">日期、時段、地點</p>
+                        <p style="font-size: 0.9rem; color: #999;">（將於9月29日後更新）</p>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+  
+
+        <!-- FAQ Section -->
+        <section class="faq-section" style="padding: 4rem 0; background: white;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>常見問題</h2>
+                    <p>解答您對藥物回收的疑問</p>
+                </div>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="faq-item" style="background: #FFF9F5; margin: 1rem 0; border-radius: 10px; overflow: hidden;">
+                        <div class="faq-question" style="background: #FF7A00; color: white; padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="margin: 0;">哪些藥物可回收？</h4>
+                            <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+                        </div>
+                        <div class="faq-answer" style="padding: 1.5rem; display: none;">
+                            <p>包括處方藥、非處方藥中的固體藥丸／錠劑。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" style="background: #FFF9F5; margin: 1rem 0; border-radius: 10px; overflow: hidden;">
+                        <div class="faq-question" style="background: #FF7A00; color: white; padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="margin: 0;">哪些藥物不可回收？</h4>
+                            <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+                        </div>
+                        <div class="faq-answer" style="padding: 1.5rem; display: none;">
+                            <p>藥水／液體藥劑、藥膏、中成藥、氣體藥物等（與萬寧指引一致，僅限固體藥物）。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" style="background: #FFF9F5; margin: 1rem 0; border-radius: 10px; overflow: hidden;">
+                        <div class="faq-question" style="background: #FF7A00; color: white; padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="margin: 0;">藥物需要拆包裝嗎？</h4>
+                            <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+                        </div>
+                        <div class="faq-answer" style="padding: 1.5rem; display: none;">
+                            <p>無需拆藥丸本身，但請保持原包裝（例如錫紙包裝）以避免洩漏與污染。</p>
+                            <p style="color: #dc3545; font-weight: bold; margin-top: 1rem;">⚠️ 請刪除任何個人資料（如姓名、病歷號碼、地址等）以保護私隱。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" style="background: #FFF9F5; margin: 1rem 0; border-radius: 10px; overflow: hidden;">
+                        <div class="faq-question" style="background: #FF7A00; color: white; padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="margin: 0;">交回後怎樣處理？</h4>
+                            <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+                        </div>
+                        <div class="faq-answer" style="padding: 1.5rem; display: none;">
+                            <p>回收的藥物會由政府認可的持牌醫療或化學廢物收集商收取，然後送往化學廢物處理中心進行安全、無害化銷毀。</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" style="background: #FFF9F5; margin: 1rem 0; border-radius: 10px; overflow: hidden;">
+                        <div class="faq-question" style="background: #FF7A00; color: white; padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="margin: 0;">是否免費？</h4>
+                            <i class="fas fa-chevron-down" style="transition: transform 0.3s ease;"></i>
+                        </div>
+                        <div class="faq-answer" style="padding: 1.5rem; display: none;">
+                            <p>是。市民交回過期／不用藥物不需負擔費用。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+     
     </main>
 
     <footer class="simple-footer">
@@ -586,5 +813,916 @@
     </script>
 
     <script src="script.js"></script>
+    
+    <!-- FAQ and Search Functionality -->
+    <script>
+        // FAQ Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Close all other FAQ items
+                    faqQuestions.forEach(otherQuestion => {
+                        if (otherQuestion !== this) {
+                            const otherAnswer = otherQuestion.nextElementSibling;
+                            const otherIcon = otherQuestion.querySelector('i');
+                            otherAnswer.style.display = 'none';
+                            otherIcon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                    
+                    // Toggle current FAQ item
+                    if (answer.style.display === 'none' || answer.style.display === '') {
+                        answer.style.display = 'block';
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        answer.style.display = 'none';
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        });
+
+        // Load Collection Points Data
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCollectionPointsData();
+        });
+
+        // Sample collection points data (first 50 entries from each region)
+        const sampleCollectionPointsData = [
+            // Hong Kong Island entries
+            {"支持機構": "招商局港口控股有限公司", "回收過期藥物點": "上環信德中心招商局大廈38樓", "回收點地址": "上環干諾道中168-200號", "地區": "香港島"},
+            {"支持機構": "仲量聯行", "回收過期藥物點": "美國銀行中心", "回收點地址": "中環夏愨道12號", "地區": "香港島"},
+            {"支持機構": "夏利文物業管理有限公司", "回收過期藥物點": "中保集團大廈", "回收點地址": "中環德輔道中141號中保集團大廈", "地區": "香港島"},
+            {"支持機構": "第一太平戴維斯(香港)有限公司", "回收過期藥物點": "雲咸街33號", "回收點地址": "中環雲咸街33號", "地區": "香港島"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "蘇長荣議員地區辦事處", "回收點地址": "中區添美道1號中信大廈13樓1316室", "地區": "香港島"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳仲尼議員地區辦事處", "回收點地址": "中區添美道1號中信大廈1521室", "地區": "香港島"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "龍漢標議員地區辦事處", "回收點地址": "中環德輔道中19號環球大廈1403室", "地區": "香港島"},
+            {"支持機構": "第一太平戴維斯(香港)有限公司", "回收過期藥物點": "太古灣道14號", "回收點地址": "太古太古城中心第3期", "地區": "香港島"},
+            {"支持機構": "第一太平戴維斯(香港)有限公司", "回收過期藥物點": "太古灣道12號", "回收點地址": "太古太古城中心第4期", "地區": "香港島"},
+            {"支持機構": "太古地產", "回收過期藥物點": "太古城物業管理公司", "回收點地址": "太古太古城道31號太古城金殿台唐宮閣", "地區": "香港島"},
+            {"支持機構": "香港房屋協會", "回收過期藥物點": "健康村", "回收點地址": "北角七姊妹道176號", "地區": "香港島"},
+            {"支持機構": "香港房屋協會", "回收過期藥物點": "雋悦", "回收點地址": "北角丹拿道8號", "地區": "香港島"},
+            {"支持機構": "康業服務有限公司", "回收過期藥物點": "明軒", "回收點地址": "北角明園西街16-22號", "地區": "香港島"},
+            {"支持機構": "康業服務有限公司", "回收過期藥物點": "形品", "回收點地址": "北角明園西街38號", "地區": "香港島"},
+            {"支持機構": "香港復康會", "回收過期藥物點": "東區地區康健站", "回收點地址": "北角英皇道663號泓富產業千禧廣場12樓1209室", "地區": "香港島"},
+            {"支持機構": "永年物業管理有限公司", "回收過期藥物點": "華翠園", "回收點地址": "半山干德道62A-62F號", "地區": "香港島"},
+            {"支持機構": "康業服務有限公司", "回收過期藥物點": "寶雲閣", "回收點地址": "半山寶雲道11A", "地區": "香港島"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "大學閣 (地下保安控制室)", "回收點地址": "西半山旭龢道42號", "地區": "香港島"},
+            {"支持機構": "康業服務有限公司", "回收過期藥物點": "堅城中心", "回收點地址": "西區卑路乍街23號", "地區": "香港島"},
+            
+            // Kowloon entries
+            {"支持機構": "華懋集團", "回收過期藥物點": "金‧御門 (地下大堂)", "回收點地址": "九龍城衙前圍道39號", "地區": "九龍"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "御門‧前 (地下大堂)", "回收點地址": "九龍城衙前塱道62號", "地區": "九龍"},
+            {"支持機構": "香港房屋協會", "回收過期藥物點": "真善美村", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
+            
+            // New Territories entries
+            {"支持機構": "第一太平戴維斯(香港)有限公司", "回收過期藥物點": "上水匯", "回收點地址": "上水龍琛路48號", "地區": "新界"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "琨崙（會所）", "回收點地址": "小欖青發里8號", "地區": "新界"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"}
+        ];
+
+        function loadCollectionPointsData() {
+            try {
+                console.log('Loading collection points data...');
+                
+                const tableBody = document.getElementById('collectionPointsTableBody');
+                let rowCount = 0;
+                
+                // Clear existing content
+                tableBody.innerHTML = '';
+                
+                sampleCollectionPointsData.forEach((item, index) => {
+                    // Create table row
+                    const row = document.createElement('tr');
+                    row.style.borderBottom = '1px solid #eee';
+                    row.setAttribute('data-region', item.地區);
+                    
+                    row.innerHTML = `
+                        <td style="padding: 1rem;">${item.地區}</td>
+                        <td style="padding: 1rem;">${item.支持機構}</td>
+                        <td style="padding: 1rem;">${item.回收過期藥物點}</td>
+                        <td style="padding: 1rem;">${item.回收點地址}</td>
+                    `;
+                    
+                    tableBody.appendChild(row);
+                    rowCount++;
+                });
+                
+                console.log('Total rows created:', rowCount);
+                
+                // Initialize search functionality after data is loaded
+                initializeSearchFunctionality();
+                
+            } catch (error) {
+                console.error('Error loading collection points data:', error);
+                // Show error message in table
+                const tableBody = document.getElementById('collectionPointsTableBody');
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="4" style="padding: 2rem; text-align: center; color: #666;">
+                            <i class="fas fa-exclamation-triangle" style="margin-right: 0.5rem;"></i>
+                            無法載入回收點資料，請稍後再試<br>
+                            <small style="color: #999;">錯誤: ${error.message}</small>
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        function initializeSearchFunctionality() {
+            const searchInput = document.getElementById('locationSearch');
+            const tableRows = document.querySelectorAll('#collectionPointsTableBody tr');
+            const totalCountElement = document.getElementById('totalCount');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const districtButtons = document.querySelectorAll('.district-filter-btn');
+            
+            let currentFilter = 'all';
+            let currentDistrict = null;
+            
+            // Function to update visible count
+            function updateVisibleCount() {
+                const visibleRows = Array.from(tableRows).filter(row => row.style.display !== 'none');
+                const visibleCount = visibleRows.length;
+                
+                if (totalCountElement) {
+                    if (searchInput && searchInput.value.trim()) {
+                        totalCountElement.innerHTML = `<i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>找到 ${visibleCount} 個回收點`;
+                    } else {
+                        totalCountElement.innerHTML = `<i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>全港共 293 個回收點`;
+                    }
+                }
+            }
+            
+            // Function to filter rows
+            function filterRows() {
+                const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+                
+                tableRows.forEach(row => {
+                    const region = row.getAttribute('data-region');
+                    const text = row.textContent.toLowerCase();
+                    
+                    let showRow = true;
+                    
+                    // Apply region filter
+                    if (currentFilter !== 'all' && region !== currentFilter) {
+                        showRow = false;
+                    }
+                    
+                    // Apply district filter
+                    if (currentDistrict && !text.includes(currentDistrict.toLowerCase())) {
+                        showRow = false;
+                    }
+                    
+                    // Apply search filter
+                    if (searchTerm && !text.includes(searchTerm)) {
+                        showRow = false;
+                    }
+                    
+                    row.style.display = showRow ? '' : 'none';
+                });
+                
+                updateVisibleCount();
+            }
+            
+            // Region filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active state
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.style.background = '#FFF9F5';
+                        btn.style.color = '#FF7A00';
+                        btn.style.border = '2px solid #FF7A00';
+                    });
+                    
+                    this.classList.add('active');
+                    this.style.background = '#FF7A00';
+                    this.style.color = 'white';
+                    this.style.border = 'none';
+                    
+                    // Update filter
+                    currentFilter = this.getAttribute('data-filter');
+                    
+                    // Clear district filter when changing region
+                    currentDistrict = null;
+                    districtButtons.forEach(btn => {
+                        btn.style.background = '#FFF9F5';
+                        btn.style.color = '#666';
+                        btn.style.border = '1px solid #DDD';
+                    });
+                    
+                    filterRows();
+                });
+            });
+            
+            // District filter buttons
+            districtButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Toggle district filter
+                    if (currentDistrict === this.getAttribute('data-district')) {
+                        // Clear district filter
+                        currentDistrict = null;
+                        this.style.background = '#FFF9F5';
+                        this.style.color = '#666';
+                        this.style.border = '1px solid #DDD';
+                    } else {
+                        // Set district filter
+                        currentDistrict = this.getAttribute('data-district');
+                        districtButtons.forEach(btn => {
+                            btn.style.background = '#FFF9F5';
+                            btn.style.color = '#666';
+                            btn.style.border = '1px solid #DDD';
+                        });
+                        this.style.background = '#FF7A00';
+                        this.style.color = 'white';
+                        this.style.border = '1px solid #FF7A00';
+                    }
+                    
+                    filterRows();
+                });
+            });
+            
+            // Search input
+            if (searchInput) {
+                searchInput.addEventListener('input', filterRows);
+            }
+            
+            // Initial count update
+            updateVisibleCount();
+        }
+
+        // Google Maps Integration
+        let map;
+        let markers = [];
+        let userLocationMarker = null;
+        let infoWindow = null;
+        let isClustered = false;
+        let clusterManager = null;
+
+        // Initialize Google Map
+        function initMap() {
+            try {
+                // Hide loading screen
+                const loadingElement = document.getElementById('mapLoading');
+                if (loadingElement) {
+                    loadingElement.style.display = 'none';
+                }
+
+                // Create map centered on Hong Kong
+                map = new google.maps.Map(document.getElementById('googleMap'), {
+                    zoom: 11,
+                    center: { lat: 22.3193, lng: 114.1694 }, // Hong Kong center
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    styles: [
+                        {
+                            featureType: 'poi',
+                            elementType: 'labels',
+                            stylers: [{ visibility: 'off' }]
+                        }
+                    ]
+                });
+
+                // Create info window
+                infoWindow = new google.maps.InfoWindow();
+
+                // Load collection points
+                loadCollectionPointsOnMap();
+
+            // Initialize map controls
+            initializeMapControls();
+
+            // Auto-detect location on page load (with user permission)
+            detectUserLocation(true);
+            } catch (error) {
+                console.error('Google Maps initialization error:', error);
+                showMapError();
+            }
+        }
+
+        // Show map error and fallback
+        function showMapError() {
+            const mapContainer = document.getElementById('googleMap');
+            const loadingElement = document.getElementById('mapLoading');
+            
+            if (loadingElement) {
+                loadingElement.style.display = 'none';
+            }
+            
+            mapContainer.innerHTML = `
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #FFF9F5 0%, #FFE5D9 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #FF7A00; margin-bottom: 1rem;"></i>
+                    <h4 style="color: #FF7A00; margin-bottom: 0.5rem;">地圖載入失敗</h4>
+                    <p style="color: #666; text-align: center; max-width: 400px; margin-bottom: 1rem;">
+                        無法載入Google地圖，請檢查API密鑰設定或網路連線
+                    </p>
+                    <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 500px;">
+                        <h5 style="color: #FF7A00; margin-bottom: 1rem;">設定Google Maps API密鑰：</h5>
+                        <ol style="color: #666; font-size: 0.9rem; line-height: 1.6; text-align: left;">
+                            <li>前往 <a href="https://console.cloud.google.com/" target="_blank" style="color: #FF7A00;">Google Cloud Console</a></li>
+                            <li>建立新專案或選擇現有專案</li>
+                            <li>啟用「Maps JavaScript API」和「Places API」</li>
+                            <li>建立憑證（API 金鑰）</li>
+                            <li>將第29行的 <code>YOUR_API_KEY</code> 替換為您的實際API金鑰</li>
+                        </ol>
+                        <div style="margin-top: 1rem; padding: 1rem; background: #FFF9F5; border-radius: 5px;">
+                            <p style="margin: 0; color: #666; font-size: 0.8rem;">
+                                <strong>目前狀態：</strong> 使用範例回收點資料，地圖功能需要有效的API金鑰才能運作
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load collection points on map
+        function loadCollectionPointsOnMap() {
+            // Clear existing markers
+            markers.forEach(marker => marker.setMap(null));
+            markers = [];
+
+            // Load all collection points from the embedded data
+            const collectionPoints = sampleCollectionPointsData.filter(item => 
+                item.回收過期藥物點 && item.回收點地址 && item.回收過期藥物點.trim() !== ''
+            ).map(item => {
+                // Generate approximate coordinates based on address patterns
+                const coordinates = getApproximateCoordinates(item.回收點地址, item.地區);
+                return {
+                    name: item.回收過期藥物點,
+                    address: item.回收點地址,
+                    region: item.地區,
+                    organization: item.支持機構,
+                    lat: coordinates.lat,
+                    lng: coordinates.lng
+                };
+            });
+
+            // Log the number of collection points loaded
+            console.log(`Loading ${collectionPoints.length} collection points on map`);
+
+            // Create markers for each collection point
+            collectionPoints.forEach(point => {
+                const marker = new google.maps.Marker({
+                    position: { lat: point.lat, lng: point.lng },
+                    map: map,
+                    title: point.name,
+                    icon: {
+                        url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="10" cy="10" r="8" fill="${getRegionColor(point.region)}" stroke="white" stroke-width="2"/>
+                                <circle cx="10" cy="10" r="3" fill="white"/>
+                            </svg>
+                        `),
+                        scaledSize: new google.maps.Size(20, 20)
+                    }
+                });
+
+                // Store region information for clustering
+                marker.set('region', point.region);
+                marker.set('name', point.name);
+                marker.set('address', point.address);
+                marker.set('organization', point.organization);
+
+                // Add click listener
+                marker.addListener('click', function() {
+                    infoWindow.setContent(`
+                        <div style="padding: 1rem; max-width: 300px;">
+                            <h4 style="margin: 0 0 0.5rem 0; color: #FF7A00;">${point.name}</h4>
+                            <p style="margin: 0 0 0.5rem 0; color: #666; font-size: 0.9rem;">${point.address}</p>
+                            <p style="margin: 0 0 0.5rem 0; color: #999; font-size: 0.8rem;">支持機構: ${point.organization}</p>
+                            <p style="margin: 0; color: #999; font-size: 0.8rem;">地區: ${point.region}</p>
+                            <div style="margin-top: 0.5rem;">
+                                <button onclick="findNearestToPoint(${point.lat}, ${point.lng})" 
+                                        style="background: #FF7A00; color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; font-size: 0.8rem; margin-right: 0.5rem;">
+                                    <i class="fas fa-route" style="margin-right: 0.3rem;"></i>導航
+                                </button>
+                                <button onclick="centerOnPoint(${point.lat}, ${point.lng})" 
+                                        style="background: #28a745; color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; font-size: 0.8rem;">
+                                    <i class="fas fa-crosshairs" style="margin-right: 0.3rem;"></i>居中
+                                </button>
+                            </div>
+                        </div>
+                    `);
+                    infoWindow.open(map, marker);
+                });
+
+                markers.push(marker);
+            });
+        }
+
+        // Get region color
+        function getRegionColor(region) {
+            switch(region) {
+                case '香港島': return '#0066CC';  // Blue for Hong Kong Island
+                case '九龍': return '#FF9933';    // Orange for Kowloon
+                case '新界': return '#00AA44';    // Green for New Territories
+                default: return '#FF7A00';
+            }
+        }
+
+        // Generate approximate coordinates based on address patterns
+        function getApproximateCoordinates(address, region) {
+            // Base coordinates for each region
+            const regionCenters = {
+                '香港島': { lat: 22.2819, lng: 114.1619 },
+                '九龍': { lat: 22.3193, lng: 114.1694 },
+                '新界': { lat: 22.5014, lng: 114.1245 }
+            };
+
+            // Specific area coordinates
+            const areaCoordinates = {
+                // Hong Kong Island areas
+                '中環': { lat: 22.2819, lng: 114.1619 },
+                '上環': { lat: 22.2855, lng: 114.1577 },
+                '灣仔': { lat: 22.2783, lng: 114.1747 },
+                '銅鑼灣': { lat: 22.2783, lng: 114.1747 },
+                '北角': { lat: 22.2900, lng: 114.2000 },
+                '太古': { lat: 22.2900, lng: 114.2000 },
+                '半山': { lat: 22.2800, lng: 114.1500 },
+                '西區': { lat: 22.2850, lng: 114.1400 },
+                '南區': { lat: 22.2500, lng: 114.1500 },
+                
+                // Kowloon areas
+                '九龍城': { lat: 22.3193, lng: 114.1694 },
+                '油尖旺': { lat: 22.3193, lng: 114.1694 },
+                '深水埗': { lat: 22.3300, lng: 114.1600 },
+                '黃大仙': { lat: 22.3400, lng: 114.2000 },
+                '觀塘': { lat: 22.3100, lng: 114.2200 },
+                '紅磡': { lat: 22.3000, lng: 114.1800 },
+                '土瓜灣': { lat: 22.3200, lng: 114.1900 },
+                
+                // New Territories areas
+                '沙田': { lat: 22.3800, lng: 114.1900 },
+                '大埔': { lat: 22.4500, lng: 114.1700 },
+                '上水': { lat: 22.5000, lng: 114.1200 },
+                '小欖': { lat: 22.4000, lng: 114.0000 },
+                '屯門': { lat: 22.4000, lng: 113.9700 },
+                '元朗': { lat: 22.4500, lng: 114.0300 },
+                '荃灣': { lat: 22.3700, lng: 114.1100 },
+                '葵涌': { lat: 22.3600, lng: 114.1300 }
+            };
+
+            // Try to find specific area coordinates
+            for (const [area, coords] of Object.entries(areaCoordinates)) {
+                if (address.includes(area)) {
+                    // Add some random variation to spread markers
+                    const variation = 0.005; // ~500m variation
+                    return {
+                        lat: coords.lat + (Math.random() - 0.5) * variation,
+                        lng: coords.lng + (Math.random() - 0.5) * variation
+                    };
+                }
+            }
+
+            // Fallback to region center with variation
+            const regionCenter = regionCenters[region] || regionCenters['香港島'];
+            const variation = 0.01; // ~1km variation
+            return {
+                lat: regionCenter.lat + (Math.random() - 0.5) * variation,
+                lng: regionCenter.lng + (Math.random() - 0.5) * variation
+            };
+        }
+
+        // Initialize map controls
+        function initializeMapControls() {
+            // Find nearest button
+            const findNearestBtn = document.getElementById('findNearestBtn');
+            if (findNearestBtn) {
+                findNearestBtn.addEventListener('click', findNearestCollectionPoint);
+            }
+
+            // Show all points button
+            const showAllPointsBtn = document.getElementById('showAllPointsBtn');
+            if (showAllPointsBtn) {
+                showAllPointsBtn.addEventListener('click', showAllCollectionPoints);
+            }
+
+            // Center Hong Kong button
+            const centerHongKongBtn = document.getElementById('centerHongKongBtn');
+            if (centerHongKongBtn) {
+                centerHongKongBtn.addEventListener('click', centerOnHongKong);
+            }
+
+            // Toggle clusters button
+            const toggleClustersBtn = document.getElementById('toggleClustersBtn');
+            if (toggleClustersBtn) {
+                toggleClustersBtn.addEventListener('click', toggleClusters);
+            }
+
+            // Detect location button
+            const detectLocationBtn = document.getElementById('detectLocationBtn');
+            if (detectLocationBtn) {
+                detectLocationBtn.addEventListener('click', function() {
+                    detectUserLocation(false);
+                });
+            }
+        }
+
+        // Enhanced location detection function
+        function detectUserLocation(isAutoDetect = false) {
+            const statusElement = document.getElementById('locationStatus');
+            const detectBtn = document.getElementById('detectLocationBtn');
+            
+            if (!navigator.geolocation) {
+                if (statusElement) {
+                    statusElement.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: #FF7A00;"></i> 您的瀏覽器不支援位置偵測功能';
+                }
+                return;
+            }
+
+            // Update button state
+            if (detectBtn && !isAutoDetect) {
+                detectBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>偵測中...';
+                detectBtn.disabled = true;
+            }
+
+            // Update status
+            if (statusElement && !isAutoDetect) {
+                statusElement.innerHTML = '<i class="fas fa-spinner fa-spin" style="color: #FF7A00;"></i> 正在偵測您的位置...';
+            }
+
+            const options = {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 300000 // 5 minutes
+            };
+
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    const userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    
+                    // Remove existing user location marker
+                    if (userLocationMarker) {
+                        userLocationMarker.setMap(null);
+                    }
+                    
+                    // Add new user location marker
+                    userLocationMarker = new google.maps.Marker({
+                        position: userLocation,
+                        map: map,
+                        title: '您的位置',
+                        icon: {
+                            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="8" fill="#28a745" stroke="white" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="3" fill="white"/>
+                                </svg>
+                            `),
+                            scaledSize: new google.maps.Size(24, 24)
+                        }
+                    });
+
+                    // Center map on user location
+                    map.setCenter(userLocation);
+                    map.setZoom(15);
+
+                    // Find nearest collection point
+                    findNearestToPoint(userLocation.lat, userLocation.lng);
+
+                    // Update status
+                    if (statusElement) {
+                        const accuracy = Math.round(position.coords.accuracy);
+                        statusElement.innerHTML = `<i class="fas fa-check-circle" style="color: #28a745;"></i> 位置已偵測 (精確度: ±${accuracy}米)`;
+                    }
+
+                    // Reset button
+                    if (detectBtn) {
+                        detectBtn.innerHTML = '<i class="fas fa-crosshairs" style="margin-right: 0.5rem;"></i>重新偵測位置';
+                        detectBtn.disabled = false;
+                    }
+
+                    // Show success message
+                    if (!isAutoDetect) {
+                        setTimeout(() => {
+                            alert('位置偵測成功！已為您找到最近的回收點。');
+                        }, 500);
+                    }
+                },
+                function(error) {
+                    let errorMessage = '';
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMessage = '位置存取被拒絕，請允許瀏覽器存取您的位置';
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMessage = '無法取得位置資訊';
+                            break;
+                        case error.TIMEOUT:
+                            errorMessage = '位置偵測逾時，請重試';
+                            break;
+                        default:
+                            errorMessage = '位置偵測失敗';
+                            break;
+                    }
+
+                    if (statusElement) {
+                        statusElement.innerHTML = `<i class="fas fa-exclamation-triangle" style="color: #FF7A00;"></i> ${errorMessage}`;
+                    }
+
+                    // Reset button
+                    if (detectBtn) {
+                        detectBtn.innerHTML = '<i class="fas fa-crosshairs" style="margin-right: 0.5rem;"></i>自動偵測我的位置';
+                        detectBtn.disabled = false;
+                    }
+
+                    console.log('Geolocation error:', error);
+                },
+                options
+            );
+        }
+
+        // Fallback functions when Google Maps is not available
+        function findNearestCollectionPoint() {
+            if (!map) {
+                alert('地圖功能需要有效的Google Maps API金鑰才能使用。請參考頁面上的設定說明。');
+                return;
+            }
+            
+            const locationInput = document.getElementById('mapLocationSearch');
+            const location = locationInput.value.trim();
+
+            if (!location) {
+                alert('請輸入您的位置');
+                return;
+            }
+
+            // Use Google Places API to geocode the location
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ address: location }, function(results, status) {
+                if (status === 'OK' && results[0]) {
+                    const userLocation = results[0].geometry.location;
+                    
+                    // Add user location marker
+                    if (userLocationMarker) {
+                        userLocationMarker.setMap(null);
+                    }
+                    
+                    userLocationMarker = new google.maps.Marker({
+                        position: userLocation,
+                        map: map,
+                        title: '您的位置',
+                        icon: {
+                            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="8" fill="#28a745" stroke="white" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="3" fill="white"/>
+                                </svg>
+                            `),
+                            scaledSize: new google.maps.Size(24, 24)
+                        }
+                    });
+
+                    // Find nearest collection point
+                    findNearestToPoint(userLocation.lat(), userLocation.lng());
+                    
+                    // Center map on user location
+                    map.setCenter(userLocation);
+                    map.setZoom(13);
+                } else {
+                    alert('無法找到該位置，請檢查地址是否正確');
+                }
+            });
+        }
+
+        function showAllCollectionPoints() {
+            if (!map) {
+                alert('地圖功能需要有效的Google Maps API金鑰才能使用。');
+                return;
+            }
+            
+            if (markers.length === 0) return;
+
+            const bounds = new google.maps.LatLngBounds();
+            markers.forEach(marker => {
+                bounds.extend(marker.getPosition());
+            });
+            
+            if (userLocationMarker) {
+                bounds.extend(userLocationMarker.getPosition());
+            }
+            
+            map.fitBounds(bounds);
+        }
+
+        function centerOnHongKong() {
+            if (!map) {
+                alert('地圖功能需要有效的Google Maps API金鑰才能使用。');
+                return;
+            }
+            
+            map.setCenter({ lat: 22.3193, lng: 114.1694 });
+            map.setZoom(11);
+        }
+
+        function toggleClusters() {
+            if (!map) {
+                alert('地圖功能需要有效的Google Maps API金鑰才能使用。');
+                return;
+            }
+
+            const toggleBtn = document.getElementById('toggleClustersBtn');
+            
+            if (isClustered) {
+                // Disable clustering - show individual markers
+                disableClustering();
+                toggleBtn.innerHTML = '<i class="fas fa-layer-group" style="margin-right: 0.5rem;"></i>切換群組顯示';
+                toggleBtn.style.background = '#E56717';
+                isClustered = false;
+            } else {
+                // Enable clustering - group nearby markers
+                enableClustering();
+                toggleBtn.innerHTML = '<i class="fas fa-th-large" style="margin-right: 0.5rem;"></i>顯示個別標記';
+                toggleBtn.style.background = '#28a745';
+                isClustered = true;
+            }
+        }
+
+        function enableClustering() {
+            // Hide individual markers
+            markers.forEach(marker => {
+                marker.setMap(null);
+            });
+
+            // Create cluster groups based on region
+            const clusters = {
+                '香港島': [],
+                '九龍': [],
+                '新界': []
+            };
+
+            // Group markers by region
+            markers.forEach(marker => {
+                const region = marker.get('region') || '香港島';
+                clusters[region].push(marker);
+            });
+
+            // Create cluster markers
+            Object.entries(clusters).forEach(([region, regionMarkers]) => {
+                if (regionMarkers.length > 0) {
+                    const clusterMarker = new google.maps.Marker({
+                        position: getClusterCenter(regionMarkers),
+                        map: map,
+                        title: `${region} - ${regionMarkers.length} 個回收點`,
+                        icon: {
+                            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20" r="18" fill="${getRegionColor(region)}" stroke="white" stroke-width="3"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="14" font-weight="bold">${regionMarkers.length}</text>
+                                </svg>
+                            `),
+                            scaledSize: new google.maps.Size(40, 40)
+                        }
+                    });
+
+                    // Add click listener for cluster
+                    clusterMarker.addListener('click', function() {
+                        // Show all markers in this region
+                        showRegionMarkers(region, regionMarkers);
+                    });
+
+                    // Store cluster info
+                    clusterMarker.set('isCluster', true);
+                    clusterMarker.set('region', region);
+                    clusterMarker.set('markers', regionMarkers);
+                }
+            });
+        }
+
+        function disableClustering() {
+            // Remove all markers from map
+            markers.forEach(marker => {
+                marker.setMap(null);
+            });
+
+            // Show individual markers again
+            markers.forEach(marker => {
+                marker.setMap(map);
+            });
+        }
+
+        function getClusterCenter(markers) {
+            let latSum = 0;
+            let lngSum = 0;
+            
+            markers.forEach(marker => {
+                const pos = marker.getPosition();
+                latSum += pos.lat();
+                lngSum += pos.lng();
+            });
+            
+            return {
+                lat: latSum / markers.length,
+                lng: lngSum / markers.length
+            };
+        }
+
+        function showRegionMarkers(region, regionMarkers) {
+            // Hide all markers first
+            markers.forEach(marker => {
+                marker.setMap(null);
+            });
+
+            // Show only this region's markers
+            regionMarkers.forEach(marker => {
+                marker.setMap(map);
+            });
+
+            // Center map on this region
+            const bounds = new google.maps.LatLngBounds();
+            regionMarkers.forEach(marker => {
+                bounds.extend(marker.getPosition());
+            });
+            map.fitBounds(bounds);
+
+            // Show info about this region
+            infoWindow.setContent(`
+                <div style="padding: 1rem; max-width: 300px;">
+                    <h4 style="margin: 0 0 0.5rem 0; color: #FF7A00;">${region} 回收點</h4>
+                    <p style="margin: 0 0 0.5rem 0; color: #666; font-size: 0.9rem;">共 ${regionMarkers.length} 個回收點</p>
+                    <p style="margin: 0; color: #999; font-size: 0.8rem;">點擊個別標記查看詳情</p>
+                    <div style="margin-top: 0.5rem;">
+                        <button onclick="toggleClusters()" 
+                                style="background: #FF7A00; color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; font-size: 0.8rem;">
+                            <i class="fas fa-layer-group" style="margin-right: 0.3rem;"></i>返回群組顯示
+                        </button>
+                    </div>
+                </div>
+            `);
+            infoWindow.open(map);
+        }
+
+        // Center map on a specific point
+        function centerOnPoint(lat, lng) {
+            if (!map) return;
+            
+            map.setCenter({ lat: lat, lng: lng });
+            map.setZoom(16);
+        }
+
+
+        // Find nearest point to given coordinates
+        function findNearestToPoint(lat, lng) {
+            let nearestMarker = null;
+            let minDistance = Infinity;
+
+            markers.forEach(marker => {
+                const markerPosition = marker.getPosition();
+                const distance = google.maps.geometry.spherical.computeDistanceBetween(
+                    new google.maps.LatLng(lat, lng),
+                    markerPosition
+                );
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    nearestMarker = marker;
+                }
+            });
+
+            if (nearestMarker) {
+                // Center map on nearest marker
+                map.setCenter(nearestMarker.getPosition());
+                map.setZoom(15);
+                
+                // Open info window for nearest marker
+                google.maps.event.trigger(nearestMarker, 'click');
+                
+                // Show distance info
+                const distanceKm = (minDistance / 1000).toFixed(2);
+                alert(`最近的回收點距離您約 ${distanceKm} 公里`);
+            }
+        }
+
+
+        // Add CSS for loading animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>

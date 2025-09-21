@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,7 @@
     <link rel="alternate" hreflang="zh-TW" href="https://www.hygienefirst.com/藥物分類搜尋引擎器" />
     <title>藥物分類搜尋引擎器 - Hygiene First</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="enhanced-styles.css">
+    <link rel="stylesheet" href="enhanced-styles.css">`n    <link rel="stylesheet" href="dropdown-fix.css">`n    <link rel="stylesheet" href="mobile-enhancements.css">    <link rel="stylesheet" href="dropdown-fix.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -384,12 +384,12 @@
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="images/HF logo/logo.png" alt="Hygiene First Company Limited" style="max-height: 50px; width: auto;">
+                    <img src="images/HF logo/logo.png" alt="Hygiene First Company Limited" style="max-height: 50px; width: auto; border-radius: 0px !important;">
                 </a>
             </div>
             <div class="header-icons">
-                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i></a>
-                <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i><span></span></a>會員中心
+                <!-- <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a> -->
             </div>
             <nav>
                 <ul class="main-menu">
@@ -415,6 +415,19 @@
                             <a href="dementia-care.html">認知障礙症護理服務</a>
                             <a href="post-surgery-care.html">專業手術後護理服務</a>
                             <a href="rehabilitation-care.html">復康護理</a>
+                      
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="家居藥物回收計劃">家居藥物回收計劃</a>
+                        <div class="dropdown-content">
+                            <a href="藥物分類搜尋引擎器">藥物分類搜尋引擎器</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="housekeeping-assistant.html">家務助理</a>
+                        <div class="dropdown-content">
+                            <a href="disinfection-epidemic-prevention.html">消毒服務</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -475,8 +488,8 @@
                 
                 <div class="search-container">
                     <div class="search-box">
-                        <input type="text" class="search-input" placeholder="輸入藥物名稱、成分或用途..." id="drugSearchInput">
-                        <button class="search-btn" onclick="searchDrugs()">
+                        <input type="text" class="search-input" placeholder="正在載入藥物資料庫..." id="drugSearchInput" disabled>
+                        <button class="search-btn" onclick="searchDrugs()" id="searchBtn" disabled>
                             <i class="fas fa-search"></i> 搜尋
                         </button>
                     </div>
@@ -709,49 +722,97 @@
 
     <!-- Drug Search JavaScript -->
     <script>
-        // Sample drug database
-        const drugDatabase = [
-            {
-                name: "阿司匹林",
-                category: "otc",
-                type: "pain",
-                description: "非類固醇消炎藥，用於止痛、退燒和抗炎",
-                ingredients: ["阿司匹林"],
-                usage: "口服，飯後服用",
-                sideEffects: "可能引起胃部不適、出血風險",
-                tags: ["止痛", "退燒", "抗炎"]
-            },
-            {
-                name: "美托洛爾",
-                category: "prescription",
-                type: "cardiovascular",
-                description: "β受體阻斷劑，用於治療高血壓和心臟病",
-                ingredients: ["美托洛爾"],
-                usage: "口服，每日一次",
-                sideEffects: "可能引起疲勞、頭暈、心跳緩慢",
-                tags: ["降血壓", "心臟病", "β阻斷劑"]
-            },
-            {
-                name: "二甲雙胍",
-                category: "prescription",
-                type: "diabetes",
-                description: "口服降血糖藥，用於治療2型糖尿病",
-                ingredients: ["二甲雙胍"],
-                usage: "口服，飯中或飯後服用",
-                sideEffects: "可能引起胃腸道不適、乳酸中毒",
-                tags: ["糖尿病", "降血糖", "口服藥"]
-            },
-            {
-                name: "人參",
-                category: "herbal",
-                type: "supplement",
-                description: "中藥材，具有補氣、提神、增強免疫力等功效",
-                ingredients: ["人參"],
-                usage: "煎服或泡茶飲用",
-                sideEffects: "過量可能引起失眠、血壓升高",
-                tags: ["補氣", "提神", "中藥"]
+        // Production drug database - loaded from Compendium.json
+        let drugDatabase = [];
+        
+        // Load production drug data
+        async function loadDrugDatabase() {
+            try {
+                const response = await fetch('./drug-database.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                
+                // Transform the data to match our search interface
+                drugDatabase = data.map(item => {
+                    const drugName = item["Drug Name"] || "";
+                    const classification = item[""] || "";
+                    const ingredients = item["__1"] || "";
+                    const isClassA = item["甲類藥物? (Y/N)"] || "";
+                    
+                    // Determine category based on classification
+                    let category = "unknown";
+                    if (classification.includes("POM")) {
+                        category = "prescription";
+                    } else if (classification.includes("OTC")) {
+                        category = "otc";
+                    } else if (classification.includes("P")) {
+                        category = "prescription";
+                    }
+                    
+                    // Extract drug name without registration number
+                    const cleanName = drugName.replace(/\(HK-\d+\)/g, "").trim();
+                    
+                    // Create tags based on drug name and ingredients
+                    const tags = [];
+                    if (cleanName.toLowerCase().includes("injection")) tags.push("注射劑");
+                    if (cleanName.toLowerCase().includes("tablet") || cleanName.toLowerCase().includes("tab")) tags.push("片劑");
+                    if (cleanName.toLowerCase().includes("capsule")) tags.push("膠囊");
+                    if (cleanName.toLowerCase().includes("cream")) tags.push("乳膏");
+                    if (cleanName.toLowerCase().includes("drops")) tags.push("滴劑");
+                    if (cleanName.toLowerCase().includes("solution")) tags.push("溶液");
+                    if (ingredients) tags.push("含成分");
+                    
+                    return {
+                        name: cleanName,
+                        originalName: drugName,
+                        category: category,
+                        classification: classification,
+                        ingredients: ingredients,
+                        isClassA: isClassA,
+                        description: `${cleanName} - ${classification}`,
+                        usage: "請諮詢醫生或藥劑師",
+                        sideEffects: "請參考藥物說明書或諮詢專業人士",
+                        tags: tags,
+                        registrationNumber: drugName.match(/\(HK-\d+\)/)?.[0] || ""
+                    };
+                }).filter(drug => drug.name && drug.name.length > 0);
+                
+                console.log(`Loaded ${drugDatabase.length} drugs from production database`);
+                
+                // Enable search functionality
+                document.getElementById('drugSearchInput').placeholder = "輸入藥物名稱、成分或用途...";
+                document.getElementById('drugSearchInput').disabled = false;
+                document.getElementById('searchBtn').disabled = false;
+                
+            } catch (error) {
+                console.error('Error loading drug database:', error);
+                // Fallback to sample data if loading fails
+                drugDatabase = [
+                    {
+                        name: "AFSTYLA POWDER AND SOLVENT FOR SOLUTION FOR INJECTION 1500 IU",
+                        category: "prescription",
+                        classification: "POM (P1S1S3)",
+                        ingredients: "",
+                        description: "AFSTYLA POWDER AND SOLVENT FOR SOLUTION FOR INJECTION 1500 IU - POM (P1S1S3)",
+                        usage: "請諮詢醫生或藥劑師",
+                        sideEffects: "請參考藥物說明書或諮詢專業人士",
+                        tags: ["注射劑", "處方藥"]
+                    }
+                ];
+                
+                // Enable search functionality even with fallback data
+                document.getElementById('drugSearchInput').placeholder = "輸入藥物名稱、成分或用途...";
+                document.getElementById('drugSearchInput').disabled = false;
+                document.getElementById('searchBtn').disabled = false;
             }
-        ];
+        }
+        
+        // Initialize database when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDrugDatabase();
+        });
 
         function searchDrugs() {
             const searchInput = document.getElementById('drugSearchInput');
@@ -764,31 +825,47 @@
                 return;
             }
 
+            if (drugDatabase.length === 0) {
+                resultsContainer.innerHTML = '<p>正在載入藥物資料庫，請稍候再試...</p>';
+                searchResults.style.display = 'block';
+                return;
+            }
+
             // Filter drugs based on search term
             const filteredDrugs = drugDatabase.filter(drug => 
                 drug.name.toLowerCase().includes(searchTerm) ||
+                drug.originalName.toLowerCase().includes(searchTerm) ||
                 drug.description.toLowerCase().includes(searchTerm) ||
-                drug.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchTerm)) ||
-                drug.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                (drug.ingredients && drug.ingredients.toLowerCase().includes(searchTerm)) ||
+                drug.tags.some(tag => tag.toLowerCase().includes(searchTerm)) ||
+                (drug.registrationNumber && drug.registrationNumber.toLowerCase().includes(searchTerm))
             );
 
             // Display results
             if (filteredDrugs.length === 0) {
                 resultsContainer.innerHTML = '<p>未找到相關藥物，請嘗試其他關鍵字。</p>';
             } else {
-                resultsContainer.innerHTML = filteredDrugs.map(drug => `
-                    <div class="result-item">
-                        <h4>${drug.name}</h4>
-                        <p><strong>分類：</strong>${getCategoryName(drug.category)}</p>
-                        <p><strong>描述：</strong>${drug.description}</p>
-                        <p><strong>成分：</strong>${drug.ingredients.join(', ')}</p>
-                        <p><strong>用法：</strong>${drug.usage}</p>
-                        <p><strong>副作用：</strong>${drug.sideEffects}</p>
-                        <div class="result-tags">
-                            ${drug.tags.map(tag => `<span class="result-tag">${tag}</span>`).join('')}
+                // Limit results to first 50 for performance
+                const displayDrugs = filteredDrugs.slice(0, 50);
+                resultsContainer.innerHTML = `
+                    <p style="margin-bottom: 1rem; color: #666;">找到 ${filteredDrugs.length} 個結果，顯示前 ${displayDrugs.length} 個：</p>
+                    ${displayDrugs.map(drug => `
+                        <div class="result-item">
+                            <h4>${drug.name}</h4>
+                            ${drug.registrationNumber ? `<p><strong>註冊號碼：</strong>${drug.registrationNumber}</p>` : ''}
+                            <p><strong>分類：</strong>${getCategoryName(drug.category)}</p>
+                            <p><strong>藥物分類：</strong>${drug.classification}</p>
+                            ${drug.ingredients ? `<p><strong>成分：</strong>${drug.ingredients}</p>` : ''}
+                            ${drug.isClassA ? `<p><strong>甲類藥物：</strong>${drug.isClassA}</p>` : ''}
+                            <p><strong>用法：</strong>${drug.usage}</p>
+                            <p><strong>注意事項：</strong>${drug.sideEffects}</p>
+                            <div class="result-tags">
+                                ${drug.tags.map(tag => `<span class="result-tag">${tag}</span>`).join('')}
+                            </div>
                         </div>
-                    </div>
-                `).join('');
+                    `).join('')}
+                    ${filteredDrugs.length > 50 ? '<p style="margin-top: 1rem; color: #666;">更多結果請縮小搜尋範圍</p>' : ''}
+                `;
             }
 
             searchResults.style.display = 'block';
@@ -800,7 +877,8 @@
                 'prescription': '處方藥',
                 'otc': '非處方藥',
                 'herbal': '中藥',
-                'supplement': '保健品'
+                'supplement': '保健品',
+                'unknown': '未分類'
             };
             return categoryNames[category] || category;
         }
@@ -809,26 +887,42 @@
             const searchInput = document.getElementById('drugSearchInput');
             searchInput.value = '';
             
-            const filteredDrugs = drugDatabase.filter(drug => drug.type === category);
+            if (drugDatabase.length === 0) {
+                const resultsContainer = document.getElementById('resultsContainer');
+                const searchResults = document.getElementById('searchResults');
+                resultsContainer.innerHTML = '<p>正在載入藥物資料庫，請稍候再試...</p>';
+                searchResults.style.display = 'block';
+                return;
+            }
+            
+            const filteredDrugs = drugDatabase.filter(drug => drug.category === category);
             const resultsContainer = document.getElementById('resultsContainer');
             const searchResults = document.getElementById('searchResults');
 
             if (filteredDrugs.length === 0) {
                 resultsContainer.innerHTML = '<p>該分類暫無藥物資料。</p>';
             } else {
-                resultsContainer.innerHTML = filteredDrugs.map(drug => `
-                    <div class="result-item">
-                        <h4>${drug.name}</h4>
-                        <p><strong>分類：</strong>${getCategoryName(drug.category)}</p>
-                        <p><strong>描述：</strong>${drug.description}</p>
-                        <p><strong>成分：</strong>${drug.ingredients.join(', ')}</p>
-                        <p><strong>用法：</strong>${drug.usage}</p>
-                        <p><strong>副作用：</strong>${drug.sideEffects}</p>
-                        <div class="result-tags">
-                            ${drug.tags.map(tag => `<span class="result-tag">${tag}</span>`).join('')}
+                // Limit results to first 50 for performance
+                const displayDrugs = filteredDrugs.slice(0, 50);
+                resultsContainer.innerHTML = `
+                    <p style="margin-bottom: 1rem; color: #666;">找到 ${filteredDrugs.length} 個${getCategoryName(category)}，顯示前 ${displayDrugs.length} 個：</p>
+                    ${displayDrugs.map(drug => `
+                        <div class="result-item">
+                            <h4>${drug.name}</h4>
+                            ${drug.registrationNumber ? `<p><strong>註冊號碼：</strong>${drug.registrationNumber}</p>` : ''}
+                            <p><strong>分類：</strong>${getCategoryName(drug.category)}</p>
+                            <p><strong>藥物分類：</strong>${drug.classification}</p>
+                            ${drug.ingredients ? `<p><strong>成分：</strong>${drug.ingredients}</p>` : ''}
+                            ${drug.isClassA ? `<p><strong>甲類藥物：</strong>${drug.isClassA}</p>` : ''}
+                            <p><strong>用法：</strong>${drug.usage}</p>
+                            <p><strong>注意事項：</strong>${drug.sideEffects}</p>
+                            <div class="result-tags">
+                                ${drug.tags.map(tag => `<span class="result-tag">${tag}</span>`).join('')}
+                            </div>
                         </div>
-                    </div>
-                `).join('');
+                    `).join('')}
+                    ${filteredDrugs.length > 50 ? '<p style="margin-top: 1rem; color: #666;">更多結果請使用搜尋功能縮小範圍</p>' : ''}
+                `;
             }
 
             searchResults.style.display = 'block';
@@ -852,48 +946,37 @@
                         const resultsContainer = document.getElementById('resultsContainer');
                         const searchResults = document.getElementById('searchResults');
                         
-                        resultsContainer.innerHTML = drugDatabase.map(drug => `
-                            <div class="result-item">
-                                <h4>${drug.name}</h4>
-                                <p><strong>分類：</strong>${getCategoryName(drug.category)}</p>
-                                <p><strong>描述：</strong>${drug.description}</p>
-                                <p><strong>成分：</strong>${drug.ingredients.join(', ')}</p>
-                                <p><strong>用法：</strong>${drug.usage}</p>
-                                <p><strong>副作用：</strong>${drug.sideEffects}</p>
-                                <div class="result-tags">
-                                    ${drug.tags.map(tag => `<span class="result-tag">${tag}</span>`).join('')}
-                                </div>
-                            </div>
-                        `).join('');
+                        if (drugDatabase.length === 0) {
+                            resultsContainer.innerHTML = '<p>正在載入藥物資料庫，請稍候再試...</p>';
+                        } else {
+                            // Limit results to first 100 for performance
+                            const displayDrugs = drugDatabase.slice(0, 100);
+                            resultsContainer.innerHTML = `
+                                <p style="margin-bottom: 1rem; color: #666;">資料庫中共有 ${drugDatabase.length} 個藥物，顯示前 ${displayDrugs.length} 個：</p>
+                                ${displayDrugs.map(drug => `
+                                    <div class="result-item">
+                                        <h4>${drug.name}</h4>
+                                        ${drug.registrationNumber ? `<p><strong>註冊號碼：</strong>${drug.registrationNumber}</p>` : ''}
+                                        <p><strong>分類：</strong>${getCategoryName(drug.category)}</p>
+                                        <p><strong>藥物分類：</strong>${drug.classification}</p>
+                                        ${drug.ingredients ? `<p><strong>成分：</strong>${drug.ingredients}</p>` : ''}
+                                        ${drug.isClassA ? `<p><strong>甲類藥物：</strong>${drug.isClassA}</p>` : ''}
+                                        <p><strong>用法：</strong>${drug.usage}</p>
+                                        <p><strong>注意事項：</strong>${drug.sideEffects}</p>
+                                        <div class="result-tags">
+                                            ${drug.tags.map(tag => `<span class="result-tag">${tag}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                                ${drugDatabase.length > 100 ? '<p style="margin-top: 1rem; color: #666;">更多結果請使用搜尋功能或分類篩選</p>' : ''}
+                            `;
+                        }
                         
                         searchResults.style.display = 'block';
                         searchResults.scrollIntoView({ behavior: 'smooth' });
                     } else {
                         // Filter by category
-                        const filteredDrugs = drugDatabase.filter(drug => drug.category === category);
-                        const resultsContainer = document.getElementById('resultsContainer');
-                        const searchResults = document.getElementById('searchResults');
-
-                        if (filteredDrugs.length === 0) {
-                            resultsContainer.innerHTML = '<p>該分類暫無藥物資料。</p>';
-                        } else {
-                            resultsContainer.innerHTML = filteredDrugs.map(drug => `
-                                <div class="result-item">
-                                    <h4>${drug.name}</h4>
-                                    <p><strong>分類：</strong>${getCategoryName(drug.category)}</p>
-                                    <p><strong>描述：</strong>${drug.description}</p>
-                                    <p><strong>成分：</strong>${drug.ingredients.join(', ')}</p>
-                                    <p><strong>用法：</strong>${drug.usage}</p>
-                                    <p><strong>副作用：</strong>${drug.sideEffects}</p>
-                                    <div class="result-tags">
-                                        ${drug.tags.map(tag => `<span class="result-tag">${tag}</span>`).join('')}
-                                    </div>
-                                </div>
-                            `).join('');
-                        }
-
-                        searchResults.style.display = 'block';
-                        searchResults.scrollIntoView({ behavior: 'smooth' });
+                        filterByCategory(category);
                     }
                 });
             });
@@ -910,3 +993,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+

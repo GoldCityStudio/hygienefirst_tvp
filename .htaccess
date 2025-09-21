@@ -30,7 +30,7 @@ RewriteRule ^([^.]+)$ $1.html [NC,L]
 RewriteRule ^家居藥物回收計劃/?$ 家居藥物回收計劃.html [NC,L]
 
 # 藥物分類搜尋引擎器
-RewriteRule ^藥物分類搜尋引擎器/?$ 藥物分類搜尋引擎器.html [NC,L]
+RewriteRule ^藥物分類搜尋引擎器/?$ drug-classification-search.html [NC,L]
 
 # Handle trailing slashes
 RewriteCond %{REQUEST_FILENAME} !-d
