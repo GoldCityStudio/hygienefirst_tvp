@@ -23,7 +23,9 @@
     <title>藥物分類搜尋引擎器 - Hygiene First</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="enhanced-styles.css">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="dropdown-fix.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+ <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -599,8 +601,40 @@
                 font-size: 2rem;
             }
             
+            .search-container {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+            
             .search-box {
                 flex-direction: column;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .search-input {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                border-radius: 25px;
+            }
+            
+            .search-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                border-radius: 25px;
+                width: 100%;
+            }
+            
+            .info-center-btn-container {
+                margin-top: 1.5rem !important;
+            }
+            
+            .info-center-btn {
+                padding: 1rem 1.5rem !important;
+                font-size: 1rem !important;
+                border-radius: 25px !important;
+                width: 100%;
+                max-width: 300px;
             }
             
             .search-filters {
@@ -644,6 +678,7 @@
             text-align: left;
             font-weight: 600;
             border-bottom: 2px solid #FF7A00;
+            min-width: 148px;
         }
         
         .drug-table td {
@@ -652,9 +687,9 @@
             vertical-align: top;
         }
         
-        .drug-table tr:hover {
+        /* .drug-table tr:hover {
             background-color: #f8f9fa;
-        }
+        } */
         
         .drug-table tr:nth-child(even) {
             background-color: #fdfdfd;
@@ -879,12 +914,25 @@
         
          /* Responsive accordion */
          @media (max-width: 768px) {
+             .accordion-filters {
+                 margin-top: 1.5rem;
+             }
+             
+             .accordion-item {
+                 margin-bottom: 1rem;
+             }
+             
              .accordion-header {
-                 padding: 0.8rem 1rem;
+                 padding: 1rem 1.5rem;
+             
              }
              
              .accordion-header h4 {
                  font-size: 1rem;
+             }
+             
+             .accordion-content {
+                 padding: 0rem;
              }
              
              .accordion-content .class-a-buttons,
@@ -894,18 +942,22 @@
              }
              
              .class-a-btn {
-                 padding: 0.6rem 1rem;
+                 padding: 0.8rem 1.2rem;
                  font-size: 0.9rem;
+                 border-radius: 20px;
+                 margin: 0.2rem;
              }
              
              .alphabet-btn {
-                 padding: 0.4rem 0.6rem;
+                 padding: 0.6rem 1rem;
                  min-width: 35px;
-                 font-size: 0.9rem;
+                 font-size: 0.8rem;
+                 border-radius: 15px;
+                 margin: 0.1rem;
              }
              
              .pagination-buttons {
-                 flex-direction: column;
+                 flex-direction: flex;
                  gap: 0.5rem;
              }
              
@@ -1029,9 +1081,7 @@
             <div class="container">
                 <h1>藥物分類搜尋引擎器</h1>
                 <p>專業的藥物分類和搜尋工具，提供全面、準確、即時的藥物資訊查詢服務。透過先進的搜尋技術和完整的藥物資料庫，幫助醫療專業人員、藥劑師、護理人員及一般民眾快速找到正確的藥物資訊，包括藥物分類、成分、用途、副作用、注意事項等詳細資料。本系統提供甲類藥物與非甲類藥物的精確分類，並提供註冊號碼查詢、字母分類瀏覽等多種篩選功能，確保用藥安全，提升醫療品質，為您的健康把關。</p>
-                <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 10px; margin-top: 1rem; backdrop-filter: blur(10px);">
-                    <p style="margin: 0; color: white; font-size: 0.9rem;"><i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i><strong>資料庫統計:</strong> 完整資料庫包含 14,350 個藥物 (甲類藥物: 11,114 個, 非甲類藥物: 3,235 個)</p>
-                </div>
+           
                 
                 <div class="search-container">
                     <div class="search-box">
@@ -1242,13 +1292,13 @@
             {
                 "Drug Name": "ALUMINIUM HYDROXIDE TAB 500MG CHEWABLE\n(HK-29626)",
                 "": "OTC\n(NP)",
-                "__1": "",
+                "__1": "ALUMINIUM HYDROXIDE",
                 "甲類藥物? (Y/N)": "N"
             },
             {
                 "Drug Name": "APREPITANT STADA CAPSULES 125MG AND 80MG",
                 "": "POM\n(P1S1S3)",
-                "__1": "",
+                "__1": "APREPITANT",
                 "甲類藥物? (Y/N)": ""
             },
             {
@@ -1682,8 +1732,16 @@
                 console.log(`Loaded ${drugDatabase.length} drugs from production database`);
                 console.log('Sample drug:', drugDatabase[0]);
                 
+                // Debug: Check for drugs with ingredients
+                const drugsWithIngredients = drugDatabase.filter(drug => drug.ingredients && drug.ingredients.trim() !== '');
+                console.log(`Found ${drugsWithIngredients.length} drugs with ingredients`);
+                if (drugsWithIngredients.length > 0) {
+                    console.log('Sample drug with ingredients:', drugsWithIngredients[0]);
+                    console.log('First 3 drugs with ingredients:', drugsWithIngredients.slice(0, 3));
+                }
+                
                 // Enable search functionality
-                document.getElementById('drugSearchInput').placeholder = "輸入藥物名稱、成分或用途...";
+                document.getElementById('drugSearchInput').placeholder = "輸入藥物名稱";
                 document.getElementById('drugSearchInput').disabled = false;
                 document.getElementById('searchBtn').disabled = false;
                 
@@ -1746,6 +1804,14 @@
                 
                 console.log(`Loaded ${drugDatabase.length} drugs from embedded sample data`);
                 console.log('Note: This is expanded sample data. Full database contains 14,350 drugs (11,114 Class A, 3,235 Non-Class A)');
+                
+                // Debug: Check for drugs with ingredients in sample data
+                const drugsWithIngredients = drugDatabase.filter(drug => drug.ingredients && drug.ingredients.trim() !== '');
+                console.log(`Found ${drugsWithIngredients.length} drugs with ingredients in sample data`);
+                if (drugsWithIngredients.length > 0) {
+                    console.log('Sample drug with ingredients:', drugsWithIngredients[0]);
+                    console.log('First 3 drugs with ingredients:', drugsWithIngredients.slice(0, 3));
+                }
                 
                 // Show loading status to user
                 const loadingStatus = document.createElement('div');
@@ -1828,13 +1894,24 @@
             }
 
              // Filter drugs based on search term
-             const filteredDrugs = drugDatabase.filter(drug => 
-                 drug.name.toLowerCase().includes(searchTerm) ||
-                 drug.originalName.toLowerCase().includes(searchTerm) ||
-                 drug.description.toLowerCase().includes(searchTerm) ||
-                 (drug.ingredients && drug.ingredients.toLowerCase().includes(searchTerm)) ||
-                 (drug.registrationNumber && drug.registrationNumber.toLowerCase().includes(searchTerm))
-             );
+             const filteredDrugs = drugDatabase.filter(drug => {
+                 const nameMatch = drug.name.toLowerCase().includes(searchTerm);
+                 const originalNameMatch = drug.originalName.toLowerCase().includes(searchTerm);
+                 const descriptionMatch = drug.description.toLowerCase().includes(searchTerm);
+                 const ingredientsMatch = drug.ingredients && drug.ingredients.toLowerCase().includes(searchTerm);
+                 const registrationMatch = drug.registrationNumber && drug.registrationNumber.toLowerCase().includes(searchTerm);
+                 
+                 // Debug logging for ingredient search
+                 if (searchTerm.includes('diluent') || searchTerm.includes('syringe') || searchTerm.includes('hypro') || searchTerm.includes('sodium') || searchTerm.includes('aluminium')) {
+                     console.log('Search term:', searchTerm);
+                     console.log('Drug:', drug.name);
+                     console.log('Ingredients:', drug.ingredients);
+                     console.log('Ingredients match:', ingredientsMatch);
+                     console.log('All matches:', {nameMatch, originalNameMatch, descriptionMatch, ingredientsMatch, registrationMatch});
+                 }
+                 
+                 return nameMatch || originalNameMatch || descriptionMatch || ingredientsMatch || registrationMatch;
+             });
 
             // Display results
             if (filteredDrugs.length === 0) {
@@ -1855,8 +1932,8 @@
                 
                 resultsContainer.innerHTML = `
                     <p style="margin-bottom: 1rem; color: #666;">找到 ${filteredDrugs.length} 個結果，顯示前 ${displayDrugs.length} 個：</p>
-                    <p style="margin-bottom: 1rem; color: #28a745; font-size: 0.9rem;"><i class="fas fa-database" style="margin-right: 0.5rem;"></i>完整資料庫: 14,350 個藥物 (當前顯示: ${drugDatabase.length} 個)</p>
-                    ${weight && weight > 0 ? `<p style="margin-bottom: 1rem; color: #28a745; font-weight: 600;"><i class="fas fa-chart-bar" style="margin-right: 0.5rem;"></i>已記錄藥物重量: ${weight} ${unit}，感謝您的統計貢獻！</p>` : ''}
+                    <p style="margin-bottom: 1rem; color: var(--primary-color); font-size: 0.9rem;"><i class="fas fa-database" style="margin-right: 0.5rem;"></i>完整資料庫: 14,350 個藥物 (當前顯示: ${drugDatabase.length} 個)</p>
+                    ${weight && weight > 0 ? `<p style="margin-bottom: 1rem; color: var(--primary-color); font-weight: 600;"><i class="fas fa-chart-bar" style="margin-right: 0.5rem;"></i>已記錄藥物重量: ${weight} ${unit}，感謝您的統計貢獻！</p>` : ''}
                     <div class="table-container">
                         <table class="drug-table">
                             <thead>
@@ -1882,7 +1959,7 @@
                                     <td class="drug-registration">${drug.registrationNumber || '-'}</td>
                                     <td class="drug-class-a">${drug.isClassA || '-'}</td>
                                     <td class="disposal-guidance">
-                                        <span style="color: ${drug.isClassA === 'N' ? '#28a745' : '#dc3545'}; font-weight: 600;">
+                                        <span style="color: ${drug.isClassA === 'N' ? 'blue' : '#dc3545'}; font-weight: 600;">
                                             ${drug.isClassA === 'N' ? '🔵 藍色回收盒' : '🔴 紅色回收盒'}
                                         </span>
                                     </td>
@@ -1942,7 +2019,7 @@
                     top: 20px;
                     right: 20px;
                     background: white;
-                    border: 2px solid #28a745;
+                    border: 2px solid blue;
                     border-radius: 10px;
                     padding: 1rem;
                     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -2040,7 +2117,7 @@
                                     <td class="drug-registration">${drug.registrationNumber || '-'}</td>
                                     <td class="drug-class-a">${drug.isClassA || '-'}</td>
                                     <td class="disposal-guidance">
-                                        <span style="color: ${drug.isClassA === 'N' ? '#28a745' : '#dc3545'}; font-weight: 600;">
+                                        <span style="color: ${drug.isClassA === 'N' ? 'blue' : '#dc3545'}; font-weight: 600;">
                                             ${drug.isClassA === 'N' ? '🔵 藍色回收盒' : '🔴 紅色回收盒'}
                                         </span>
                                     </td>
@@ -2157,7 +2234,7 @@
             if (currentClassA !== 'all') {
                 filteredDrugs = filteredDrugs.filter(drug => {
                     if (currentClassA === 'yes') {
-                        return drug.isClassA === 'Y';
+                        return drug.isClassA !== 'N'; // Class A drugs are those that are NOT 'N'
                     } else if (currentClassA === 'no') {
                         return drug.isClassA === 'N';
                     }
@@ -2188,7 +2265,7 @@
             
              // Display results in table format
              resultsContainer.innerHTML = `
-                 <p style="margin-bottom: 1rem; color: #28a745; font-size: 0.9rem;"><i class="fas fa-database" style="margin-right: 0.5rem;"></i>完整資料庫: 14,350 個藥物 (當前顯示: ${drugDatabase.length} 個)</p>
+                 <p style="margin-bottom: 1rem; color: var(--primary-color); font-size: 0.9rem;"><i class="fas fa-database" style="margin-right: 0.5rem;"></i>完整資料庫: 14,350 個藥物 (當前顯示: ${drugDatabase.length} 個)</p>
                  <div class="table-container">
                      <table class="drug-table">
                          <thead>
@@ -2198,7 +2275,6 @@
                                  <th>藥物分類</th>
                                  <th>成分</th>
                                  <th>註冊號碼</th>
-                                 <th>甲類藥物</th>
                                  <th>回收指引</th>
                              </tr>
                          </thead>
@@ -2212,9 +2288,8 @@
                                  <td class="drug-classification">${drug.classification}</td>
                                  <td class="drug-ingredients">${drug.ingredients || '-'}</td>
                                  <td class="drug-registration">${drug.registrationNumber || '-'}</td>
-                                 <td class="drug-class-a">${drug.isClassA || '-'}</td>
                                  <td class="disposal-guidance">
-                                     <span style="color: ${drug.isClassA === 'N' ? '#28a745' : '#dc3545'}; font-weight: 600;">
+                                     <span style="color: ${drug.isClassA === 'N' ? 'blue' : '#dc3545'}; font-weight: 600;">
                                          ${drug.isClassA === 'N' ? '🔵 藍色回收盒' : '🔴 紅色回收盒'}
                                      </span>
                                  </td>
@@ -2306,7 +2381,7 @@
             if (currentClassA !== 'all') {
                 filteredDrugs = filteredDrugs.filter(drug => {
                     if (currentClassA === 'yes') {
-                        return drug.isClassA === 'Y';
+                        return drug.isClassA !== 'N'; // Class A drugs are those that are NOT 'N'
                     } else if (currentClassA === 'no') {
                         return drug.isClassA === 'N';
                     }
@@ -2347,9 +2422,9 @@
             if (classA !== 'all') {
                 filteredDrugs = filteredDrugs.filter(drug => {
                     if (classA === 'yes') {
-                        return drug.isClassA === 'Y';
+                        return drug.isClassA !== 'N'; // Class A drugs are those that are NOT 'N'
                     } else if (classA === 'no') {
-                        return drug.isClassA === 'N';
+                        return drug.isClassA === 'N'; // Non-Class A drugs are those that are 'N'
                     }
                     return true;
                 });

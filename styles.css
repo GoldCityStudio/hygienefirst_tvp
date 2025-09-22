@@ -1876,7 +1876,7 @@ footer .container {
         padding: 1rem !important;
         font-size: 1.1rem !important;
         font-weight: 600 !important;
-        background: #f8f9fa !important;
+        background: var(--primary-color) !important;
         border: none !important;
         width: 100% !important;
         text-align: left !important;
@@ -1887,7 +1887,7 @@ footer .container {
     }
     
     .accordion-content {
-        padding: 0 1rem 1rem 1rem !important;
+        padding: 0rem !important;
         font-size: 0.95rem !important;
         line-height: 1.6 !important;
     }

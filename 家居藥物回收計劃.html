@@ -23,7 +23,9 @@
     <title>家居藥物回收計劃 - Hygiene First</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="enhanced-styles.css">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="dropdown-fix.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+   <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Maps API -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQFkghNWGW5jGAaiwzcGhk_vX-LgZwzaY&libraries=places&callback=initMap"></script>
@@ -516,48 +518,7 @@
                 </div>
                 
                 <!-- Search and Filter Function -->
-                <div style="margin: 2rem 0; text-align: center;">
-                    <!-- Search Bar -->
-                    <div style="display: inline-block; background: #FFF9F5; padding: 1rem 2rem; border-radius: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 1rem;">
-                        <i class="fas fa-search" style="color: #FF7A00; margin-right: 0.5rem;"></i>
-                        <input type="text" id="locationSearch" placeholder="輸入地區、機構或地址搜尋..." style="border: none; background: transparent; outline: none; font-size: 1rem; width: 300px;">
-                    </div>
-                    
-                    <!-- Region Filter Buttons -->
-                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
-                        <button class="filter-btn active" data-filter="all" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-weight: 600;">
-                            <i class="fas fa-globe" style="margin-right: 0.5rem;"></i>全部地區
-                        </button>
-                        <button class="filter-btn" data-filter="香港島" style="background: #FFF9F5; color: #FF7A00; border: 2px solid #FF7A00; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-weight: 600;">
-                            <i class="fas fa-building" style="margin-right: 0.5rem;"></i>香港島
-                        </button>
-                        <button class="filter-btn" data-filter="九龍" style="background: #FFF9F5; color: #FF7A00; border: 2px solid #FF7A00; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-weight: 600;">
-                            <i class="fas fa-city" style="margin-right: 0.5rem;"></i>九龍
-                        </button>
-                        <button class="filter-btn" data-filter="新界" style="background: #FFF9F5; color: #FF7A00; border: 2px solid #FF7A00; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; font-weight: 600;">
-                            <i class="fas fa-home" style="margin-right: 0.5rem;"></i>新界
-                        </button>
-                    </div>
-                    
-                    <!-- District Filters -->
-                    <!-- <div style="margin-top: 1rem;">
-                        <h4 style="color: #FF7A00; margin-bottom: 0.5rem; font-size: 1rem;">按區域篩選：</h4>
-                        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 0.3rem;">
-                            <button class="district-filter-btn" data-district="中西區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">中西區</button>
-                            <button class="district-filter-btn" data-district="灣仔區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">灣仔區</button>
-                            <button class="district-filter-btn" data-district="東區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">東區</button>
-                            <button class="district-filter-btn" data-district="南區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">南區</button>
-                            <button class="district-filter-btn" data-district="油尖旺區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">油尖旺區</button>
-                            <button class="district-filter-btn" data-district="深水埗區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">深水埗區</button>
-                            <button class="district-filter-btn" data-district="九龍城區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">九龍城區</button>
-                            <button class="district-filter-btn" data-district="黃大仙區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">黃大仙區</button>
-                            <button class="district-filter-btn" data-district="觀塘區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">觀塘區</button>
-                            <button class="district-filter-btn" data-district="沙田區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">沙田區</button>
-                            <button class="district-filter-btn" data-district="大埔區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">大埔區</button>
-                            <button class="district-filter-btn" data-district="北區" style="background: #FFF9F5; color: #666; border: 1px solid #DDD; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">北區</button>
-                        </div>
-                    </div> -->
-                </div>
+            
 
                 <!-- Collection Points Table -->
                 <div style="background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; margin: 2rem 0;">
@@ -640,7 +601,7 @@
                             <span style="color: #666; font-size: 0.9rem;">新界回收點</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <div style="width: 20px; height: 20px; background: #28a745; border-radius: 50%;"></div>
+                            <div style="width: 20px; height: 20px; background: #dc3545; border-radius: 50%;"></div>
                             <span style="color: #666; font-size: 0.9rem;">您的位置</span>
                         </div>
                     </div>
@@ -1385,7 +1346,7 @@
                         icon: {
                             url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="8" fill="#28a745" stroke="white" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="8" fill="#dc3545" stroke="white" stroke-width="2"/>
                                     <circle cx="12" cy="12" r="3" fill="white"/>
                                 </svg>
                             `),
@@ -1485,7 +1446,7 @@
                         icon: {
                             url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="12" r="8" fill="#28a745" stroke="white" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="8" fill="#dc3545" stroke="white" stroke-width="2"/>
                                     <circle cx="12" cy="12" r="3" fill="white"/>
                                 </svg>
                             `),
