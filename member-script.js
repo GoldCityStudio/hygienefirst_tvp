@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if user is already logged in
+    checkLoginStatus();
+    
     // Form switching
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
@@ -27,11 +30,20 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginFormElement) {
         loginFormElement.addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
+            const email = document.getElementById('loginEmail').value.trim();
             const password = document.getElementById('loginPassword').value;
             
-            // Here you would typically make an API call to your backend
-            // For now, we'll just simulate a successful login
+            // Basic validation
+            if (!email || !password) {
+                alert('請填寫所有必填欄位');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                alert('請輸入有效的電子郵件地址');
+                return;
+            }
+            
             handleLogin(email, password);
         });
     }
@@ -39,13 +51,32 @@ document.addEventListener('DOMContentLoaded', function() {
     if (registerFormElement) {
         registerFormElement.addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('registerName').value;
-            const email = document.getElementById('registerEmail').value;
-            const phone = document.getElementById('registerPhone').value;
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const phone = document.getElementById('registerPhone').value.trim();
             const password = document.getElementById('registerPassword').value;
             
-            // Here you would typically make an API call to your backend
-            // For now, we'll just simulate a successful registration
+            // Basic validation
+            if (!name || !email || !phone || !password) {
+                alert('請填寫所有必填欄位');
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                alert('請輸入有效的電子郵件地址');
+                return;
+            }
+            
+            if (password.length < 6) {
+                alert('密碼至少需要6個字符');
+                return;
+            }
+            
+            if (!isValidPhone(phone)) {
+                alert('請輸入有效的電話號碼');
+                return;
+            }
+            
             handleRegistration(name, email, phone, password);
         });
     }
@@ -655,46 +686,189 @@ document.addEventListener('DOMContentLoaded', function() {
     checkPromoBanner();
 });
 
-// Real login function
+// Check if user is already logged in
+async function checkLoginStatus() {
+    // Check Firebase auth state
+    if (window.firebase && window.firebase.auth) {
+        try {
+            const { onAuthStateChanged } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
+            onAuthStateChanged(window.firebase.auth, async (user) => {
+                if (user) {
+                    // User is signed in
+                    const userData = await getUserDataFromFirestore(user.uid);
+                    showDashboard({ user: { id: user.uid } }, user.email, userData);
+                }
+            });
+        } catch (error) {
+            console.error('Firebase auth state check error:', error);
+        }
+    }
+    
+    // Fallback: Check local storage
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser && !window.firebase) {
+        const userData = JSON.parse(currentUser);
+        showDashboard({ user: { id: userData.id } }, userData.email);
+    }
+}
+
+// Validation helper functions
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function isValidPhone(phone) {
+    // Accept various phone formats: +852-1234-5678, 1234-5678, 12345678, etc.
+    const phoneRegex = /^[\+]?[\d\s\-\(\)]{8,}$/;
+    return phoneRegex.test(phone);
+}
+
+// Firebase + Local Storage login function
 async function handleLogin(email, password) {
     try {
-        const res = await fetch('/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.msg || 'Login failed');
-        localStorage.setItem('token', data.token);
-        // Decode token to get user info
-        const user = parseJwt(data.token);
-        showDashboard(user, email);
+        // Try Firebase first
+        if (window.firebase && window.firebase.auth) {
+            try {
+                const { signInWithEmailAndPassword } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
+                const userCredential = await signInWithEmailAndPassword(window.firebase.auth, email, password);
+                const user = userCredential.user;
+                
+                // Get user data from Firestore
+                const userData = await getUserDataFromFirestore(user.uid);
+                showDashboard({ user: { id: user.uid } }, email, userData);
+                return;
+            } catch (firebaseError) {
+                console.log('Firebase auth failed, trying local storage:', firebaseError.message);
+            }
+        }
+        
+        // Fallback to local storage authentication
+        const users = JSON.parse(localStorage.getItem('localUsers') || '[]');
+        const user = users.find(u => u.email === email && u.password === password);
+        
+        if (user) {
+            localStorage.setItem('currentUser', JSON.stringify({
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                phone: user.phone
+            }));
+            showDashboard({ user: { id: user.id } }, email);
+        } else {
+            throw new Error('無效的電子郵件或密碼');
+        }
     } catch (err) {
         alert('登入失敗: ' + err.message);
     }
 }
 
-// Real registration function
+// Firebase + Local Storage registration function
 async function handleRegistration(name, email, phone, password) {
     try {
-        const res = await fetch('/api/auth/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, password })
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.msg || 'Registration failed');
-        localStorage.setItem('token', data.token);
-        // Decode token to get user info
-        const user = parseJwt(data.token);
-        showDashboard(user, email);
+        // Try Firebase first
+        if (window.firebase && window.firebase.auth) {
+            try {
+                const { createUserWithEmailAndPassword } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
+                const userCredential = await createUserWithEmailAndPassword(window.firebase.auth, email, password);
+                const user = userCredential.user;
+                
+                // Save user data to Firestore
+                await saveUserDataToFirestore(user.uid, {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    createdAt: new Date().toISOString()
+                });
+                
+                showDashboard({ user: { id: user.uid } }, email, { name, email, phone });
+                alert('註冊成功！歡迎加入 Hygiene First！');
+                return;
+            } catch (firebaseError) {
+                console.log('Firebase registration failed, trying local storage:', firebaseError.message);
+                if (firebaseError.code === 'auth/email-already-in-use') {
+                    throw new Error('此電子郵件已被使用');
+                }
+            }
+        }
+        
+        // Fallback to local storage registration
+        const users = JSON.parse(localStorage.getItem('localUsers') || '[]');
+        
+        // Check if user already exists
+        if (users.find(u => u.email === email)) {
+            throw new Error('用戶已存在');
+        }
+        
+        // Create new user
+        const newUser = {
+            id: Date.now().toString(),
+            name: name,
+            email: email,
+            phone: phone,
+            password: password, // In real app, this should be hashed
+            date: new Date().toISOString()
+        };
+        
+        users.push(newUser);
+        localStorage.setItem('localUsers', JSON.stringify(users));
+        localStorage.setItem('currentUser', JSON.stringify({
+            id: newUser.id,
+            name: newUser.name,
+            email: newUser.email,
+            phone: newUser.phone
+        }));
+        
+        showDashboard({ user: { id: newUser.id } }, email);
+        alert('註冊成功！歡迎加入 Hygiene First！');
+        
     } catch (err) {
         alert('註冊失敗: ' + err.message);
     }
 }
 
-function handleLogout() {
+// Firebase helper functions
+async function saveUserDataToFirestore(userId, userData) {
+    if (window.firebase && window.firebase.db) {
+        try {
+            const { doc, setDoc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+            await setDoc(doc(window.firebase.db, 'users', userId), userData);
+        } catch (error) {
+            console.error('Error saving user data to Firestore:', error);
+        }
+    }
+}
+
+async function getUserDataFromFirestore(userId) {
+    if (window.firebase && window.firebase.db) {
+        try {
+            const { doc, getDoc } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+            const userDoc = await getDoc(doc(window.firebase.db, 'users', userId));
+            return userDoc.exists() ? userDoc.data() : null;
+        } catch (error) {
+            console.error('Error getting user data from Firestore:', error);
+            return null;
+        }
+    }
+    return null;
+}
+
+async function handleLogout() {
+    // Firebase logout
+    if (window.firebase && window.firebase.auth) {
+        try {
+            const { signOut } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js');
+            await signOut(window.firebase.auth);
+        } catch (error) {
+            console.error('Firebase logout error:', error);
+        }
+    }
+    
+    // Clear local storage
     localStorage.removeItem('token');
+    localStorage.removeItem('currentUser');
+    
+    // Show login form
     document.getElementById('memberDashboard').classList.remove('active');
     document.getElementById('loginForm').classList.add('active');
 }
@@ -703,8 +877,28 @@ function showDashboard(user, email) {
     document.getElementById('loginForm').classList.remove('active');
     document.getElementById('registerForm').classList.remove('active');
     document.getElementById('memberDashboard').classList.add('active');
-    document.getElementById('userName').textContent = user && user.user && user.user.id ? '會員' : email;
-    document.getElementById('userEmail').textContent = email;
+    
+    // Get user data from localStorage
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    
+    // Update dashboard with user info
+    const userNameElements = document.querySelectorAll('#userName');
+    userNameElements.forEach(el => {
+        el.textContent = currentUser.name || email;
+    });
+    
+    const userEmailElements = document.querySelectorAll('#userEmail');
+    userEmailElements.forEach(el => {
+        el.textContent = email;
+    });
+    
+    const userPhoneElements = document.querySelectorAll('#userPhone');
+    userPhoneElements.forEach(el => {
+        el.textContent = currentUser.phone || '未設定';
+    });
+    
+    // Load user data
+    loadUserData();
 }
 
 // Helper to decode JWT
@@ -721,21 +915,21 @@ function loadUserData() {
     // Here you would typically make an API call to your backend
     // For now, we'll just simulate loading user data
     const userData = {
-        name: 'John Doe',
-        email: 'john@example.com',
+        name: '張三',
+        email: 'zhang@example.com',
         phone: '+1234567890',
         orders: [
             {
                 id: 'ORD001',
                 date: '2024-03-15',
                 status: 'completed',
-                items: ['Basic Cleaning', 'Window Cleaning']
+                items: ['基本清潔', '窗戶清潔']
             },
             {
                 id: 'ORD002',
                 date: '2024-03-20',
                 status: 'pending',
-                items: ['Deep Cleaning']
+                items: ['深度清潔']
             }
         ],
         appointments: [
@@ -743,13 +937,13 @@ function loadUserData() {
                 id: 'APT001',
                 date: '2024-03-25',
                 time: '10:00 AM',
-                service: 'Basic Cleaning'
+                service: '基本清潔'
             }
         ],
         favorites: [
             {
                 id: 'FAV001',
-                name: 'Deep Cleaning',
+                name: '深度清潔',
                 price: '$150',
                 image: 'path/to/image.jpg'
             }
@@ -757,9 +951,9 @@ function loadUserData() {
         notifications: [
             {
                 id: 'NOT001',
-                title: 'Appointment Confirmed',
-                message: 'Your cleaning appointment for March 25 has been confirmed.',
-                time: '2 hours ago'
+                title: '預約確認',
+                message: '您3月25日的清潔預約已確認。',
+                time: '2小時前'
             }
         ]
     };

@@ -30,6 +30,32 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         
+        <!-- Firebase SDK -->
+        <script type="module">
+            import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+            import { getAuth } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+            import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+            
+            // Firebase configuration (replace with your config)
+            const firebaseConfig = {
+                apiKey: "AIzaSyBDohkPFBU63W1qiFuR1CvDX7dRCWntT-M",
+  authDomain: "hygienefirst-member-system.firebaseapp.com",
+  projectId: "hygienefirst-member-system",
+  storageBucket: "hygienefirst-member-system.firebasestorage.app",
+  messagingSenderId: "535268528733",
+  appId: "1:535268528733:web:89b150dcbc785d68c873b4",
+  measurementId: "G-NFT58KR02S"
+            };
+            
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+            const db = getFirestore(app);
+            
+            // Make Firebase available globally
+            window.firebase = { auth, db };
+        </script>
+        
     
             <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -181,45 +207,20 @@
       </div>
     </div>
 
-  
-
-    <!-- Cart Modal -->
-    <div id="cartModal" class="cart-modal" style="display:none;">
-      <div class="cart-modal-content">
-        <span class="close-cart-modal" tabindex="0">&times;</span>
-        <h2>購物車</h2>
-        <div class="cart-modal-body">
-          <div class="cart-items-section">
-            <h3>購物車商品</h3>
-            <div id="cart-items">
-              <p>您的購物車是空的。</p>
-            </div>
-          </div>
-          <div class="cart-summary-section">
-            <div class="cart-modal-footer">
-              <span>總計: <span id="cart-total">$0</span></span>
-              <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
-              <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Main Content -->
     <main id="main-content" style="padding-top: 152px !important;">
-        <div class="member-container">
+        <div class="member-container" style="max-width: 100% !important;">
             <!-- Login Form -->
             <div id="loginForm" class="member-form active">
                 <h2>會員登入</h2>
                  <form id="loginFormElement">
                     <div class="form-group">
-                        <label for="loginEmail">Email</label>
+                        <label for="loginEmail">電子郵件</label>
                         <span class="input-icon"><i class="fas fa-envelope"></i></span>
                         <input type="email" id="loginEmail" required>
                     </div>
                     <div class="form-group">
-                        <label for="loginPassword">Password</label>
+                        <label for="loginPassword">密碼</label>
                         <span class="input-icon"><i class="fas fa-lock"></i></span>
                         <input type="password" id="loginPassword" required>
                     </div>
@@ -248,7 +249,7 @@
                         <input type="text" id="registerName" required>
                     </div>
                     <div class="form-group">
-                        <label for="registerEmail">Email</label>
+                        <label for="registerEmail">電子郵件</label>
                         <span class="input-icon"><i class="fas fa-envelope"></i></span>
                         <input type="email" id="registerEmail" required>
                     </div>
@@ -278,8 +279,8 @@
             <!-- Member Dashboard -->
             <div id="memberDashboard" class="member-dashboard">
                 <div class="dashboard-header">
-                    <h2>Welcome, <span id="userName">User</span></h2>
-                    <button id="logoutButton" class="btn btn-secondary">Logout</button>
+                    <h2>歡迎，<span id="userName">會員</span></h2>
+                    <button id="logoutButton" class="btn btn-secondary">登出</button>
                 </div>
                 <div class="dashboard-content">
                     <div class="dashboard-sidebar">
@@ -287,37 +288,37 @@
                             <li class="active">
                                 <a href="#profile">
                                     <i class="fas fa-user"></i>
-                                    Profile
+                                    個人資料
                                 </a>
                             </li>
                             <li>
                                 <a href="#orders">
                                     <i class="fas fa-shopping-bag"></i>
-                                    Orders
+                                    訂單
                                 </a>
                             </li>
                             <li>
                                 <a href="#appointments">
                                     <i class="fas fa-calendar"></i>
-                                    Appointments
+                                    預約
                                 </a>
                             </li>
                             <li>
                                 <a href="#favorites">
                                     <i class="fas fa-heart"></i>
-                                    Favorites
+                                    我的最愛
                                 </a>
                             </li>
                             <li>
                                 <a href="#notifications">
                                     <i class="fas fa-bell"></i>
-                                    Notifications
+                                    通知
                                 </a>
                             </li>
                             <li>
                                 <a href="#settings">
                                     <i class="fas fa-cog"></i>
-                                    Settings
+                                    設定
                                 </a>
                             </li>
                         </ul>
@@ -325,11 +326,11 @@
                     <div class="dashboard-main">
                         <!-- Profile Section -->
                         <div id="profile" class="dashboard-section active">
-                            <h3>Profile Information</h3>
+                            <h3>個人資料</h3>
                             <div class="profile-info">
-                                <p><strong>Name:</strong> <span id="userName">John Doe</span></p>
-                                <p><strong>Email:</strong> <span id="userEmail">john@example.com</span></p>
-                                <p><strong>Phone:</strong> <span id="userPhone">+1234567890</span></p>
+                                <p><strong>姓名：</strong> <span id="userName">會員</span></p>
+                                <p><strong>電子郵件：</strong> <span id="userEmail">example@email.com</span></p>
+                                <p><strong>電話：</strong> <span id="userPhone">未設定</span></p>
                             </div>
                         </div>
                         <!-- ... other dashboard sections ... -->
@@ -448,7 +449,6 @@
 
     <script src="script.js"></script>
     <script src="member-script.js"></script>
-    </main>
     
     <!-- Chatbot Component -->
     <div id="chatbot-container" class="chatbot-container">
@@ -644,14 +644,10 @@
                 chatbotWindow.style.display = 'none';
             }
         });
-    });
+        });
     </script>
 </body>
-</html> 
-
-
-
-
+</html>
 
 
 
