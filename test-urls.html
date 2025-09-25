@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Testing - Hygiene First</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .test-link { display: block; margin: 10px 0; padding: 10px; background: #f0f0f0; text-decoration: none; color: #333; }
+        .test-link:hover { background: #e0e0e0; }
+        .status { margin: 20px 0; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>URL Rewriting Test</h1>
+    
+    <div class="status success">
+        <strong>✅ Test Links:</strong> Click these links to test if URL rewriting works properly.
+    </div>
+    
+    <h2>Chinese URL Tests:</h2>
+    <a href="家居藥物回收計劃" class="test-link">家居藥物回收計劃 (Clean URL)</a>
+    <a href="藥物分類搜尋引擎器" class="test-link">藥物分類搜尋引擎器 (Clean URL)</a>
+    
+    <h2>Direct File Access Tests:</h2>
+    <a href="家居藥物回收計劃.html" class="test-link">家居藥物回收計劃.html (Direct file)</a>
+    <a href="藥物分類搜尋引擎器.html" class="test-link">藥物分類搜尋引擎器.html (Direct file)</a>
+    
+    <h2>Other Pages:</h2>
+    <a href="index.html" class="test-link">index.html</a>
+    <a href="about.html" class="test-link">about.html</a>
+    
+    <div class="status">
+        <strong>Expected Behavior:</strong><br>
+        • Clean URLs should work without showing .html in the address bar<br>
+        • Direct .html URLs should also work<br>
+        • Both should show the same content
+    </div>
+    
+    <script>
+        // Test if we can access the files
+        function testUrl(url) {
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        console.log(`✅ ${url} - OK`);
+                    } else {
+                        console.log(`❌ ${url} - Error: ${response.status}`);
+                    }
+                })
+                .catch(error => {
+                    console.log(`❌ ${url} - Network Error: ${error.message}`);
+                });
+        }
+        
+        // Test all URLs on page load
+        window.addEventListener('load', function() {
+            console.log('Testing URLs...');
+            testUrl('家居藥物回收計劃');
+            testUrl('藥物分類搜尋引擎器');
+            testUrl('家居藥物回收計劃.html');
+            testUrl('藥物分類搜尋引擎器.html');
+        });
+    </script>
+</body>
+</html>

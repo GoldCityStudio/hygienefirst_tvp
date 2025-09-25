@@ -9,8 +9,13 @@
       "destination": "/藥物分類搜尋引擎器.html"
     },
     {
-      "source": "/(.*)",
-      "destination": "/$1.html"
+      "source": "/:path*",
+      "destination": "/:path*.html"
     }
-  ]
+  ],
+  "functions": {
+    "app/api/rewrite.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }

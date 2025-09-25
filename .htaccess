@@ -1,66 +1,34 @@
-# Apache URL Rewriting Configuration for Clean Chinese URLs
+# Apache .htaccess for Clean Chinese URLs
 # Hygiene First Website - Traditional Chinese Pages
 
+# Enable URL rewriting
 RewriteEngine On
 
-# Enable UTF-8 encoding for Chinese characters
+# Set UTF-8 encoding
 AddDefaultCharset UTF-8
+
+# Specific rules for Chinese pages
+RewriteRule ^家居藥物回收計劃/?$ /家居藥物回收計劃.html [L]
+RewriteRule ^藥物分類搜尋引擎器/?$ /藥物分類搜尋引擎器.html [L]
+
+# General rule: add .html extension if file exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
+# Handle trailing slashes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ $1 [R=301,L]
 
 # Security headers
 Header always set X-Content-Type-Options nosniff
 Header always set X-Frame-Options DENY
 Header always set X-XSS-Protection "1; mode=block"
 
-# Redirect www to non-www (optional)
-RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
-
-# Force HTTPS (optional)
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Clean URL Rewriting Rules
-# Remove .html extension from URLs while keeping files with .html
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^.]+)$ $1.html [NC,L]
-
-# Specific rules for Chinese pages
-# 家居藥物回收計劃
-RewriteRule ^家居藥物回收計劃/?$ 家居藥物回收計劃.html [NC,L]
-
-# 藥物分類搜尋引擎器
-RewriteRule ^藥物分類搜尋引擎器/?$ drug-classification-search.html [NC,L]
-
-# Handle trailing slashes
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.+)/$ /$1 [R=301,L]
-
-# Custom error pages
-ErrorDocument 404 /404.html
-ErrorDocument 500 /500.html
-
 # Cache control for static files
 <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg)$">
     ExpiresActive On
-    ExpiresDefault "access plus 1 month"
-</FilesMatch>
-
-# Compression
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/xml
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE application/xml
-    AddOutputFilterByType DEFLATE application/xhtml+xml
-    AddOutputFilterByType DEFLATE application/rss+xml
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/x-javascript
-</IfModule>
-
-# Prevent access to sensitive files
-<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
-    Order Allow,Deny
-    Deny from all
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, immutable"
 </FilesMatch>

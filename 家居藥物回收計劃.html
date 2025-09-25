@@ -328,9 +328,11 @@
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="housekeeping-assistant.html">家務助理</a>
+                        <a href="#">居家清潔消毒服務</a>
                         <div class="dropdown-content">
-                            <a href="disinfection-epidemic-prevention.html">消毒服務</a>
+                            <a href="housekeeping-assistant.html">專業家務助理</a>
+                            <a href="disinfection-epidemic-prevention.html">Hygiene First x SAMBO
+                                光自潔™納米消毒</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -548,12 +550,18 @@
                     <div style="margin-bottom: 1.5rem; text-align: center;">
                      
                         
-                        <!-- Auto-detect Location Button -->
+                        <!-- Location Detection Options -->
                         <div style="margin-top: 1rem;">
-                            <button id="detectLocationBtn" style="background: #28a745; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
-                                <i class="fas fa-crosshairs" style="margin-right: 0.5rem;"></i>自動偵測我的位置
+                            <button id="detectLocationBtn" style="background: #28a745; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; margin-right: 0.5rem;">
+                                <i class="fas fa-crosshairs" style="margin-right: 0.5rem;"></i>自動偵測位置
+                            </button>
+                            <button id="manualLocationBtn" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                                <i class="fas fa-hand-pointer" style="margin-right: 0.5rem;"></i>手動選擇位置
                             </button>
                             <div id="locationStatus" style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;"></div>
+                            <div style="font-size: 0.8rem; color: #999; margin-top: 0.5rem;">
+                                💡 提示：如果自動偵測位置不準確，請使用「手動選擇位置」功能
+                            </div>
                         </div>
                     </div>
                     
@@ -747,7 +755,7 @@
     </footer>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/85295024162" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/85228278883" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1295,6 +1303,14 @@
                     detectUserLocation(false);
                 });
             }
+
+            // Manual location button
+            const manualLocationBtn = document.getElementById('manualLocationBtn');
+            if (manualLocationBtn) {
+                manualLocationBtn.addEventListener('click', function() {
+                    enableManualLocationSelection();
+                });
+            }
         }
 
         // Enhanced location detection function
@@ -1322,8 +1338,8 @@
 
             const options = {
                 enableHighAccuracy: true,
-                timeout: 10000,
-                maximumAge: 300000 // 5 minutes
+                timeout: 20000, // Increased timeout for better accuracy
+                maximumAge: 0 // No cache - always get fresh location
             };
 
             navigator.geolocation.getCurrentPosition(
@@ -1361,16 +1377,26 @@
                     // Find nearest collection point
                     findNearestToPoint(userLocation.lat, userLocation.lng);
 
-                    // Update status
+                    // Show accuracy information and manual correction option
                     if (statusElement) {
                         const accuracy = Math.round(position.coords.accuracy);
-                        statusElement.innerHTML = `<i class="fas fa-check-circle" style="color: #28a745;"></i> 位置已偵測 (精確度: ±${accuracy}米)`;
+                        statusElement.innerHTML = `
+                            <div style="margin-bottom: 0.5rem;">
+                                <i class="fas fa-check-circle" style="color: #28a745;"></i> 位置已偵測 (精確度: ±${accuracy}米)
+                            </div>
+                            <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">
+                                如果位置不正確，請點擊地圖上的正確位置
+                            </div>
+                            <button onclick="hideLocationInfo()" style="background: #6c757d; color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; font-size: 0.8rem;">
+                                隱藏此訊息
+                            </button>
+                        `;
+                        statusElement.style.display = 'block';
                     }
 
-                    // Reset button
+                    // Hide the detection button after successful detection
                     if (detectBtn) {
-                        detectBtn.innerHTML = '<i class="fas fa-crosshairs" style="margin-right: 0.5rem;"></i>重新偵測位置';
-                        detectBtn.disabled = false;
+                        detectBtn.style.display = 'none';
                     }
 
                     // Show success message
@@ -1379,6 +1405,49 @@
                             alert('位置偵測成功！已為您找到最近的回收點。');
                         }, 500);
                     }
+                    
+                    // Add click listener to map for manual location correction
+                    map.addListener('click', function(event) {
+                        const clickedLocation = {
+                            lat: event.latLng.lat(),
+                            lng: event.latLng.lng()
+                        };
+                        
+                        // Update user location marker
+                        if (userLocationMarker) {
+                            userLocationMarker.setMap(null);
+                        }
+                        
+                        userLocationMarker = new google.maps.Marker({
+                            position: clickedLocation,
+                            map: map,
+                            title: '您的位置 (手動設定)',
+                            icon: {
+                                url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="8" fill="#28a745" stroke="white" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="3" fill="white"/>
+                                    </svg>
+                                `),
+                                scaledSize: new google.maps.Size(24, 24)
+                            }
+                        });
+                        
+                        // Find nearest collection point to new location
+                        findNearestToPoint(clickedLocation.lat, clickedLocation.lng);
+                        
+                        // Update status
+                        if (statusElement) {
+                            statusElement.innerHTML = `
+                                <div style="margin-bottom: 0.5rem;">
+                                    <i class="fas fa-hand-pointer" style="color: #28a745;"></i> 位置已手動設定
+                                </div>
+                                <button onclick="hideLocationInfo()" style="background: #6c757d; color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; font-size: 0.8rem;">
+                                    隱藏此訊息
+                                </button>
+                            `;
+                        }
+                    });
                 },
                 function(error) {
                     let errorMessage = '';
@@ -1401,10 +1470,11 @@
                         statusElement.innerHTML = `<i class="fas fa-exclamation-triangle" style="color: #FF7A00;"></i> ${errorMessage}`;
                     }
 
-                    // Reset button
+                    // Show button again on error (in case it was hidden)
                     if (detectBtn) {
                         detectBtn.innerHTML = '<i class="fas fa-crosshairs" style="margin-right: 0.5rem;"></i>自動偵測我的位置';
                         detectBtn.disabled = false;
+                        detectBtn.style.display = 'block';
                     }
 
                     console.log('Geolocation error:', error);
@@ -1674,6 +1744,88 @@
             }
         }
 
+
+        // Function to hide location info
+        function hideLocationInfo() {
+            const statusElement = document.getElementById('locationStatus');
+            if (statusElement) {
+                statusElement.style.display = 'none';
+            }
+        }
+
+        // Enable manual location selection
+        function enableManualLocationSelection() {
+            const statusElement = document.getElementById('locationStatus');
+            const manualLocationBtn = document.getElementById('manualLocationBtn');
+            
+            if (statusElement) {
+                statusElement.innerHTML = `
+                    <div style="margin-bottom: 0.5rem; color: #FF7A00;">
+                        <i class="fas fa-hand-pointer"></i> 請點擊地圖上的正確位置
+                    </div>
+                    <div style="font-size: 0.8rem; color: #666;">
+                        點擊地圖上的任何位置來設定您的位置
+                    </div>
+                `;
+                statusElement.style.display = 'block';
+            }
+            
+            if (manualLocationBtn) {
+                manualLocationBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i>選擇中...';
+                manualLocationBtn.disabled = true;
+            }
+            
+            // Enable map click for manual selection
+            if (map) {
+                map.addListener('click', function(event) {
+                    const clickedLocation = {
+                        lat: event.latLng.lat(),
+                        lng: event.latLng.lng()
+                    };
+                    
+                    // Update user location marker
+                    if (userLocationMarker) {
+                        userLocationMarker.setMap(null);
+                    }
+                    
+                    userLocationMarker = new google.maps.Marker({
+                        position: clickedLocation,
+                        map: map,
+                        title: '您的位置 (手動設定)',
+                        icon: {
+                            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="8" fill="#28a745" stroke="white" stroke-width="2"/>
+                                    <circle cx="12" cy="12" r="3" fill="white"/>
+                                </svg>
+                            `),
+                            scaledSize: new google.maps.Size(24, 24)
+                        }
+                    });
+                    
+                    // Find nearest collection point to new location
+                    findNearestToPoint(clickedLocation.lat, clickedLocation.lng);
+                    
+                    // Update status
+                    if (statusElement) {
+                        statusElement.innerHTML = `
+                            <div style="margin-bottom: 0.5rem;">
+                                <i class="fas fa-check-circle" style="color: #28a745;"></i> 位置已手動設定
+                            </div>
+                            <button onclick="hideLocationInfo()" style="background: #6c757d; color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; font-size: 0.8rem;">
+                                隱藏此訊息
+                            </button>
+                        `;
+                    }
+                    
+                    // Reset manual location button
+                    if (manualLocationBtn) {
+                        manualLocationBtn.innerHTML = '<i class="fas fa-hand-pointer" style="margin-right: 0.5rem;"></i>手動選擇位置';
+                        manualLocationBtn.disabled = false;
+                    }
+                });
+            }
+        }
 
         // Add CSS for loading animation
         const style = document.createElement('style');
