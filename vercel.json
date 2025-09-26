@@ -12,10 +12,5 @@
       "source": "/:path*",
       "destination": "/:path*.html"
     }
-  ],
-  "functions": {
-    "app/api/rewrite.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  ]
 }
