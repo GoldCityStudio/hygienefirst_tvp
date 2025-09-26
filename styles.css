@@ -4056,12 +4056,12 @@ header.sticky .logo a {
     filter: grayscale(0) contrast(1.2) drop-shadow(0 2px 8px rgba(0,0,0,0.08));
 }
 @keyframes marquee-ltr {
-    0% { transform: translateX(-50%); }
+    0% { transform: translateX(-100%); }
     100% { transform: translateX(0); }
 }
 @keyframes marquee-rtl {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-100%); }
 }
 @media (max-width: 700px) {
     .partners-row { height: 64px; }

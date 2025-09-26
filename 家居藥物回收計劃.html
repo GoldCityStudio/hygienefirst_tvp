@@ -270,6 +270,149 @@
                 max-width: 300px;
             }
         }
+        
+        /* Category Section Styling */
+        .category-section {
+            margin-bottom: 3rem;
+        }
+        
+        .category-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+            justify-content: flex-start;
+        }
+        
+        .category-title-left {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
+            width: 180px;
+            flex-shrink: 0;
+            text-align: left;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .category-title-left br {
+            line-height: 1.2;
+        }
+        
+        .logo-rows-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: calc(100% - 200px);
+            margin-left: 0;
+            overflow: hidden;
+        }
+        
+        .partners-row {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Ensure marquee content stays within bounds */
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        .marquee-content .partner-logo {
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .marquee-content .partner-logo:last-child {
+            margin-right: 0;
+        }
+        
+        /* Office Item Styling */
+        .office-item {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 0.8rem 1.2rem;
+            margin: 0 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #333;
+            text-align: center;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            min-width: 200px;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+        
+        .office-item:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+        
+        /* Consistent scrolling speed for all office sections */
+        .marquee-ltr {
+            animation: marquee-ltr 45s linear infinite;
+        }
+        
+        .marquee-rtl {
+            animation: marquee-rtl 45s linear infinite;
+        }
+        
+        /* Slower animation for district council offices */
+        .marquee-ltr-slow {
+            animation: marquee-ltr 90s linear infinite;
+        }
+        
+        .marquee-rtl-slow {
+            animation: marquee-rtl 90s linear infinite;
+        }
+        
+        /* Ensure proper spacing in marquee content */
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+        
+        .marquee-content .office-item {
+            margin-right: 1rem;
+        }
+        
+        .marquee-content .office-item:last-child {
+            margin-right: 0;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .category-layout {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .category-title-left {
+                text-align: center;
+                width: auto;
+                font-size: 1.2rem;
+                position: static;
+                z-index: auto;
+            }
+            
+            .logo-rows-container {
+                max-width: 100%;
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body class="zh">
@@ -426,18 +569,306 @@
         </section>
 
         <!-- Supporting Organizations Section -->
-        <!-- <section class="supporting-orgs" style="padding: 4rem 0; background: white;">
+        <section class="about-partners mobile-about-partners">
             <div class="container">
-                <div class="section-header">
-                    <h2>支持機構及商標</h2>
+                <div class="section-header mobile-section-header">
+                    <h2 class="section-title mobile-section-title">支持機構及合作伙伴</h2>
                     <p>感謝以下機構對「過期藥物回收計劃」的支持</p>
                 </div>
-                <div style="text-align: center; padding: 2rem 0;">
-                    <p style="font-size: 1.1rem; color: #666; font-style: italic;">Maggie Will All Logos / names</p>
-                    <p style="font-size: 0.9rem; color: #999;">（機構標誌及名稱將於稍後更新）</p>
+                <div class="partners-slider">
+                    <!-- Property Management Section -->
+                    <div class="category-section">
+                        <div class="category-layout">
+                            <h3 class="category-title-left">支持機構：<br>(物管)</h3>
+                            <div class="logo-rows-container">
+                                <div class="partners-row marquee marquee-ltr">
+                                    <div class="marquee-content">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/HKHS_H_4C.jpg" alt="Hong Kong Housing Society" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/DBSML Logo(License no) (1).png" alt="DBSML" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Savills-Chinese.png" alt="Savills" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/SG-Logo-2025.png" alt="SG Property" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104051.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104103.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104114.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104123.png" alt="物業管理" class="partner-logo">
+                                        <!-- Duplicate content for seamless scrolling -->
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/HKHS_H_4C.jpg" alt="Hong Kong Housing Society" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/DBSML Logo(License no) (1).png" alt="DBSML" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Savills-Chinese.png" alt="Savills" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/SG-Logo-2025.png" alt="SG Property" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104051.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104103.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104114.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104123.png" alt="物業管理" class="partner-logo">
                 </div>
             </div>
-        </section> -->
+                                <div class="partners-row marquee marquee-rtl">
+                                    <div class="marquee-content">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104135.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104146.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104156.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/WhatsApp Image 2025-09-25 at 10.16.21 AM (1).jpeg" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/WhatsApp Image 2025-09-26 at 9.35.16 AM (2).jpeg" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/WhatsApp 圖片儲存時間2025-08-27，17.16.56_d98eaa96.jpg" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/WhatsApp 圖片儲存時間2025-08-28，09.10.11_1a7897ba.jpg" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/WhatsApp 圖片儲存時間2025-09-12，12.11.52_2b7de5b8.jpg" alt="物業管理" class="partner-logo">
+                                        <!-- Duplicate content for seamless scrolling -->
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104135.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104146.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/Screenshot 2025-09-26 104156.png" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/WhatsApp Image 2025-09-25 at 10.16.21 AM (1).jpeg" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/WhatsApp Image 2025-09-26 at 9.35.16 AM (2).jpeg" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/WhatsApp 圖片儲存時間2025-08-27，17.16.56_d98eaa96.jpg" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/WhatsApp 圖片儲存時間2025-08-28，09.10.11_1a7897ba.jpg" alt="物業管理" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（物管）/WhatsApp 圖片儲存時間2025-09-12，12.11.52_2b7de5b8.jpg" alt="物業管理" class="partner-logo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charitable Organizations Section -->
+                    <div class="category-section">
+                        <div class="category-layout">
+                            <h3 class="category-title-left">支持機構：<br>(慈善團體)</h3>
+                            <div class="logo-rows-container">
+                                <div class="partners-row marquee marquee-ltr">
+                                    <div class="marquee-content">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/HC_60_logo_PMS_Horizontal (1).png" alt="Hong Kong Council of Social Service" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/浸信會欣悅社會服務處.png" alt="浸信會欣悅社會服務處" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104316.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104323.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104330.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104344.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104350.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104403.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104410.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104418.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104504.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104511.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104519.png" alt="慈善團體" class="partner-logo">
+                                    </div>
+                                </div>
+                                <div class="partners-row marquee marquee-rtl">
+                                    <div class="marquee-content">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104530.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104539.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104546.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104554.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104602.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104607.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104616.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104623.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 104637.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/Screenshot 2025-09-26 105145.png" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/WhatsApp Image 2025-09-25 at 10.16.21 AM.jpeg" alt="慈善團體" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（慈善團體）/WhatsApp Image 2025-09-26 at 9.35.16 AM (3).jpeg" alt="慈善團體" class="partner-logo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Universities Section -->
+                    <div class="category-section">
+                        <div class="category-layout">
+                            <h3 class="category-title-left">支持機構：<br>(大專院校)</h3>
+                            <div class="logo-rows-container">
+                                <div class="partners-row marquee marquee-ltr">
+                                    <div class="marquee-content">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（大專院校）/CUHK Full Logo-Horizontal_CMYK_Full colour (1).png" alt="Chinese University of Hong Kong" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（大專院校）/Screenshot 2025-09-26 104753.png" alt="大專院校" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（大專院校）/Screenshot 2025-09-26 104807.png" alt="大專院校" class="partner-logo">
+                                    </div>
+                                </div>
+                                <div class="partners-row marquee marquee-rtl">
+                                    <div class="marquee-content">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（大專院校）/Screenshot 2025-09-26 104819.png" alt="大專院校" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（大專院校）/Screenshot 2025-09-26 104826.png" alt="大專院校" class="partner-logo">
+                                        <img src="images/Corp Logo for drug collection/支持機構：（大專院校）/Screenshot 2025-09-26 104837.png" alt="大專院校" class="partner-logo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legislative and District Council Offices Section -->
+        <section class="about-partners mobile-about-partners">
+            <div class="container">
+                <div class="section-header mobile-section-header">
+                    <h2 class="section-title mobile-section-title">支持機構：（立法會、區議會議辦）</h2>
+                    <p>感謝以下立法會及區議會議員辦事處對「過期藥物回收計劃」的支持</p>
+                </div>
+                <div class="partners-slider">
+                    <!-- Legislative Council Offices -->
+                    <div class="category-section">
+                        <div class="category-layout">
+                            <h3 class="category-title-left">支持機構：<br>(立法會議辦)</h3>
+                            <div class="logo-rows-container">
+                                <div class="partners-row marquee marquee-ltr">
+                                    <div class="marquee-content">
+                                        <div class="office-item">黎棟國議員地區辦事處</div>
+                                        <div class="office-item">陳仲尼議員地區辦事處</div>
+                                        <div class="office-item">蘇長荣議員地區辦事處</div>
+                                        <div class="office-item">嚴剛議員地區辦事處</div>
+                                        <div class="office-item">周小松議員地區辦事處</div>
+                                        <div class="office-item">謝偉俊議員地區辦事處</div>
+                                        <div class="office-item">陳沛良議員地區辦事處</div>
+                                        <div class="office-item">龍漢標議員地區辦事處</div>
+                                    </div>
+                                </div>
+                                <div class="partners-row marquee marquee-rtl">
+                                    <div class="marquee-content">
+                                        <div class="office-item">黎棟國議員地區辦事處</div>
+                                        <div class="office-item">陳仲尼議員地區辦事處</div>
+                                        <div class="office-item">蘇長荣議員地區辦事處</div>
+                                        <div class="office-item">嚴剛議員地區辦事處</div>
+                                        <div class="office-item">周小松議員地區辦事處</div>
+                                        <div class="office-item">謝偉俊議員地區辦事處</div>
+                                        <div class="office-item">陳沛良議員地區辦事處</div>
+                                        <div class="office-item">龍漢標議員地區辦事處</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- District Council Offices -->
+                    <div class="category-section">
+                        <div class="category-layout">
+                            <h3 class="category-title-left">支持機構：<br>(區議會議辦)</h3>
+                            <div class="logo-rows-container">
+                                <div class="partners-row marquee marquee-ltr-slow">
+                                    <div class="marquee-content">
+                                        <div class="office-item">譚鎮國議員辦事處</div>
+                                        <div class="office-item">胡綽謙議員辦事處</div>
+                                        <div class="office-item">陳建君議員辦事處</div>
+                                        <div class="office-item">黃碧嬌議員辦事處</div>
+                                        <div class="office-item">董健莉議員辦事處</div>
+                                        <div class="office-item">林玉華議員辦事處</div>
+                                        <div class="office-item">林松茵議員辦事處</div>
+                                        <div class="office-item">黃秋萍議員辦事處</div>
+                                        <div class="office-item">李靜儀議員辦事處</div>
+                                        <div class="office-item">林宗賢議員辦事處</div>
+                                        <div class="office-item">譚德開議員辦事處</div>
+                                        <div class="office-item">王曉山議員辦事處</div>
+                                        <div class="office-item">黃頴灝議員辦事處</div>
+                                        <div class="office-item">陳燕君議員辦事處</div>
+                                        <div class="office-item">文祿星議員辦事處</div>
+                                        <div class="office-item">何曉雯議員辦事處</div>
+                                        <div class="office-item">馮鈺鋒議員辦事處</div>
+                                        <div class="office-item">葉文斌先生議員辦事處</div>
+                                        <div class="office-item">蘇嘉雯議員辦事處</div>
+                                        <div class="office-item">李家良議員辦事處</div>
+                                        <div class="office-item">俞卓君議員辦事處</div>
+                                        <div class="office-item">梁家瑋議員辦事處</div>
+                                        <div class="office-item">郭宣彤議員辦事處</div>
+                                        <div class="office-item">潘國山議員辦事處</div>
+                                        <div class="office-item">劉淑嫻議員辦事處</div>
+                                        <div class="office-item">葉培基議員辦事處</div>
+                                        <div class="office-item">吳彩華議員辦事處</div>
+                                        <div class="office-item">陳志榮議員辦事處</div>
+                                        <div class="office-item">李國鳳議員辦事處</div>
+                                        <div class="office-item">朱德榮議員辦事處</div>
+                                        <div class="office-item">邱錦平議員辦事處</div>
+                                        <div class="office-item">陳曉津先生議員辦事處</div>
+                                        <div class="office-item">莫遠君議員辦事處</div>
+                                        <div class="office-item">龔美姿議員辦事處</div>
+                                        <div class="office-item">吳啟泰議員辦事處</div>
+                                        <div class="office-item">梁振邦議員辦事處</div>
+                                        <div class="office-item">鄧開荣議員辦事處</div>
+                                        <div class="office-item">莊雅婷議員辦事處</div>
+                                        <div class="office-item">黃遠康議員辦事處</div>
+                                        <div class="office-item">祁麗媚議員辦事處</div>
+                                        <div class="office-item">施彬彬議員辦事處</div>
+                                        <div class="office-item">曾國家議員辦事處</div>
+                                        <div class="office-item">陳廣輝議員辦事處</div>
+                                        <div class="office-item">莊元苳議員辦事處</div>
+                                        <div class="office-item">雷啟蓮議員辦事處</div>
+                                        <div class="office-item">鄭捷彬議員辦事處</div>
+                                        <div class="office-item">彭熠銘議員辦事處</div>
+                                        <div class="office-item">黃淑雯議員辦事處</div>
+                                        <div class="office-item">陳藹怡議員辦事處</div>
+                                        <div class="office-item">張展鵬議員辦事處</div>
+                                        <div class="office-item">蔡明揚議員辦事處</div>
+                                        <div class="office-item">諸樂為議員辦事處</div>
+                                        <div class="office-item">利哲宏議員辦事處</div>
+                                        <div class="office-item">張德偉議員辦事處</div>
+                                        <div class="office-item">丘燿誠議員辦事處</div>
+                                        <div class="office-item">劉淑燕女士議員</div>
+                                        <div class="office-item">林玉珍女士議員辦事處</div>
+                                    </div>
+                                </div>
+                                <div class="partners-row marquee marquee-rtl-slow">
+                                    <div class="marquee-content">
+                                        <div class="office-item">譚鎮國議員辦事處</div>
+                                        <div class="office-item">胡綽謙議員辦事處</div>
+                                        <div class="office-item">陳建君議員辦事處</div>
+                                        <div class="office-item">黃碧嬌議員辦事處</div>
+                                        <div class="office-item">董健莉議員辦事處</div>
+                                        <div class="office-item">林玉華議員辦事處</div>
+                                        <div class="office-item">林松茵議員辦事處</div>
+                                        <div class="office-item">黃秋萍議員辦事處</div>
+                                        <div class="office-item">李靜儀議員辦事處</div>
+                                        <div class="office-item">林宗賢議員辦事處</div>
+                                        <div class="office-item">譚德開議員辦事處</div>
+                                        <div class="office-item">王曉山議員辦事處</div>
+                                        <div class="office-item">黃頴灝議員辦事處</div>
+                                        <div class="office-item">陳燕君議員辦事處</div>
+                                        <div class="office-item">文祿星議員辦事處</div>
+                                        <div class="office-item">何曉雯議員辦事處</div>
+                                        <div class="office-item">馮鈺鋒議員辦事處</div>
+                                        <div class="office-item">葉文斌先生議員辦事處</div>
+                                        <div class="office-item">蘇嘉雯議員辦事處</div>
+                                        <div class="office-item">李家良議員辦事處</div>
+                                        <div class="office-item">俞卓君議員辦事處</div>
+                                        <div class="office-item">梁家瑋議員辦事處</div>
+                                        <div class="office-item">郭宣彤議員辦事處</div>
+                                        <div class="office-item">潘國山議員辦事處</div>
+                                        <div class="office-item">劉淑嫻議員辦事處</div>
+                                        <div class="office-item">葉培基議員辦事處</div>
+                                        <div class="office-item">吳彩華議員辦事處</div>
+                                        <div class="office-item">陳志榮議員辦事處</div>
+                                        <div class="office-item">李國鳳議員辦事處</div>
+                                        <div class="office-item">朱德榮議員辦事處</div>
+                                        <div class="office-item">邱錦平議員辦事處</div>
+                                        <div class="office-item">陳曉津先生議員辦事處</div>
+                                        <div class="office-item">莫遠君議員辦事處</div>
+                                        <div class="office-item">龔美姿議員辦事處</div>
+                                        <div class="office-item">吳啟泰議員辦事處</div>
+                                        <div class="office-item">梁振邦議員辦事處</div>
+                                        <div class="office-item">鄧開荣議員辦事處</div>
+                                        <div class="office-item">莊雅婷議員辦事處</div>
+                                        <div class="office-item">黃遠康議員辦事處</div>
+                                        <div class="office-item">祁麗媚議員辦事處</div>
+                                        <div class="office-item">施彬彬議員辦事處</div>
+                                        <div class="office-item">曾國家議員辦事處</div>
+                                        <div class="office-item">陳廣輝議員辦事處</div>
+                                        <div class="office-item">莊元苳議員辦事處</div>
+                                        <div class="office-item">雷啟蓮議員辦事處</div>
+                                        <div class="office-item">鄭捷彬議員辦事處</div>
+                                        <div class="office-item">彭熠銘議員辦事處</div>
+                                        <div class="office-item">黃淑雯議員辦事處</div>
+                                        <div class="office-item">陳藹怡議員辦事處</div>
+                                        <div class="office-item">張展鵬議員辦事處</div>
+                                        <div class="office-item">蔡明揚議員辦事處</div>
+                                        <div class="office-item">諸樂為議員辦事處</div>
+                                        <div class="office-item">利哲宏議員辦事處</div>
+                                        <div class="office-item">張德偉議員辦事處</div>
+                                        <div class="office-item">丘燿誠議員辦事處</div>
+                                        <div class="office-item">劉淑燕女士議員</div>
+                                        <div class="office-item">林玉珍女士議員辦事處</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Launch Event Section -->
         <!-- <section class="launch-event" style="padding: 4rem 0; background: #FFF9F5;">
@@ -457,7 +888,7 @@
         </section> -->
 
         <!-- Collection Points Images Section -->
-        <section class="collection-points" style="padding: 4rem 0; background: white;">
+        <!-- <section class="collection-points" style="padding: 4rem 0; background: white;">
             <div class="container">
                 <div class="section-header">
                     <h2>回收點圖片</h2>
@@ -490,7 +921,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Collection Boxes Section -->
         <!-- <section class="collection-boxes" style="padding: 4rem 0; background: #FFF9F5;">
@@ -522,18 +953,60 @@
                 <!-- Search and Filter Function -->
             
 
-                <!-- Collection Points Table -->
+                <!-- Collection Points Tables by Region -->
+                
+                <!-- Hong Kong Island Table -->
                 <div style="background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; margin: 2rem 0;">
+                    <div style="background: #FF7A00; color: white; padding: 1rem; font-size: 1.2rem; font-weight: 600;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>香港島回收點
+                    </div>
                     <table style="width: 100%; border-collapse: collapse;">
-                        <thead style="background: #FF7A00; color: white;">
+                        <thead style="background: #f8f9fa; color: #333;">
                             <tr>
-                                <th style="padding: 1rem; text-align: left;">地區</th>
-                                <th style="padding: 1rem; text-align: left;">支持機構</th>
-                                <th style="padding: 1rem; text-align: left;">回收點名稱</th>
-                                <th style="padding: 1rem; text-align: left;">地址</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">地區</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">支持機構</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">回收點名稱及地址</th>
                             </tr>
                         </thead>
-                        <tbody id="collectionPointsTableBody">
+                        <tbody id="hkIslandTableBody">
+                            <!-- Data will be loaded dynamically from collectionpoints.json -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Kowloon Table -->
+                <div style="background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; margin: 2rem 0;">
+                    <div style="background: #FF7A00; color: white; padding: 1rem; font-size: 1.2rem; font-weight: 600;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>九龍回收點
+                    </div>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead style="background: #f8f9fa; color: #333;">
+                            <tr>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">地區</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">支持機構</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">回收點名稱及地址</th>
+                            </tr>
+                        </thead>
+                        <tbody id="kowloonTableBody">
+                            <!-- Data will be loaded dynamically from collectionpoints.json -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- New Territories Table -->
+                <div style="background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; margin: 2rem 0;">
+                    <div style="background: #FF7A00; color: white; padding: 1rem; font-size: 1.2rem; font-weight: 600;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>新界回收點
+                    </div>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead style="background: #f8f9fa; color: #333;">
+                            <tr>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">地區</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">支持機構</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">回收點名稱及地址</th>
+                            </tr>
+                        </thead>
+                        <tbody id="newTerritoriesTableBody">
                             <!-- Data will be loaded dynamically from collectionpoints.json -->
                         </tbody>
                     </table>
@@ -873,53 +1346,107 @@
             try {
                 console.log('Loading collection points data...');
                 
-                const tableBody = document.getElementById('collectionPointsTableBody');
-                let rowCount = 0;
+                // Get table bodies for each region
+                const hkIslandTableBody = document.getElementById('hkIslandTableBody');
+                const kowloonTableBody = document.getElementById('kowloonTableBody');
+                const newTerritoriesTableBody = document.getElementById('newTerritoriesTableBody');
                 
                 // Clear existing content
-                tableBody.innerHTML = '';
+                hkIslandTableBody.innerHTML = '';
+                kowloonTableBody.innerHTML = '';
+                newTerritoriesTableBody.innerHTML = '';
                 
-                sampleCollectionPointsData.forEach((item, index) => {
-                    // Create table row
+                let hkIslandCount = 0;
+                let kowloonCount = 0;
+                let newTerritoriesCount = 0;
+                
+                // Function to determine region based on the 地區 field
+                function getRegion(region) {
+                    switch (region) {
+                        case '香港島':
+                            return 'hkIsland';
+                        case '九龍':
+                            return 'kowloon';
+                        case '新界':
+                            return 'newTerritories';
+                        default:
+                            return 'newTerritories'; // Default to New Territories for unknown regions
+                    }
+                }
+                
+                // Function to create table row
+                function createTableRow(item) {
                     const row = document.createElement('tr');
                     row.style.borderBottom = '1px solid #eee';
                     row.setAttribute('data-region', item.地區);
                     
+                    // Combine 回收點名稱 and 地址 into one column
+                    const combinedInfo = `${item.回收過期藥物點}<br><small style="color: #666; font-size: 0.9rem;">${item.回收點地址}</small>`;
+                    
                     row.innerHTML = `
                         <td style="padding: 1rem;">${item.地區}</td>
                         <td style="padding: 1rem;">${item.支持機構}</td>
-                        <td style="padding: 1rem;">${item.回收過期藥物點}</td>
-                        <td style="padding: 1rem;">${item.回收點地址}</td>
+                        <td style="padding: 1rem;">${combinedInfo}</td>
                     `;
                     
-                    tableBody.appendChild(row);
-                    rowCount++;
+                    return row;
+                }
+                
+                // Process each collection point
+                sampleCollectionPointsData.forEach((item, index) => {
+                    const region = getRegion(item.地區);
+                    const row = createTableRow(item);
+                    
+                    switch (region) {
+                        case 'hkIsland':
+                            hkIslandTableBody.appendChild(row);
+                            hkIslandCount++;
+                            break;
+                        case 'kowloon':
+                            kowloonTableBody.appendChild(row);
+                            kowloonCount++;
+                            break;
+                        case 'newTerritories':
+                            newTerritoriesTableBody.appendChild(row);
+                            newTerritoriesCount++;
+                            break;
+                    }
                 });
                 
-                console.log('Total rows created:', rowCount);
+                console.log('Collection points loaded by region:');
+                console.log('Hong Kong Island:', hkIslandCount);
+                console.log('Kowloon:', kowloonCount);
+                console.log('New Territories:', newTerritoriesCount);
+                console.log('Total:', hkIslandCount + kowloonCount + newTerritoriesCount);
                 
                 // Initialize search functionality after data is loaded
                 initializeSearchFunctionality();
                 
             } catch (error) {
                 console.error('Error loading collection points data:', error);
-                // Show error message in table
-                const tableBody = document.getElementById('collectionPointsTableBody');
-                tableBody.innerHTML = `
+                // Show error message in all tables
+                const errorMessage = `
                     <tr>
-                        <td colspan="4" style="padding: 2rem; text-align: center; color: #666;">
+                        <td colspan="3" style="padding: 2rem; text-align: center; color: #666;">
                             <i class="fas fa-exclamation-triangle" style="margin-right: 0.5rem;"></i>
                             無法載入回收點資料，請稍後再試<br>
                             <small style="color: #999;">錯誤: ${error.message}</small>
                         </td>
                     </tr>
                 `;
+                
+                document.getElementById('hkIslandTableBody').innerHTML = errorMessage;
+                document.getElementById('kowloonTableBody').innerHTML = errorMessage;
+                document.getElementById('newTerritoriesTableBody').innerHTML = errorMessage;
             }
         }
 
         function initializeSearchFunctionality() {
             const searchInput = document.getElementById('locationSearch');
-            const tableRows = document.querySelectorAll('#collectionPointsTableBody tr');
+            const hkIslandRows = document.querySelectorAll('#hkIslandTableBody tr');
+            const kowloonRows = document.querySelectorAll('#kowloonTableBody tr');
+            const newTerritoriesRows = document.querySelectorAll('#newTerritoriesTableBody tr');
+            const allTableRows = [...hkIslandRows, ...kowloonRows, ...newTerritoriesRows];
             const totalCountElement = document.getElementById('totalCount');
             const filterButtons = document.querySelectorAll('.filter-btn');
             const districtButtons = document.querySelectorAll('.district-filter-btn');
@@ -929,7 +1456,7 @@
             
             // Function to update visible count
             function updateVisibleCount() {
-                const visibleRows = Array.from(tableRows).filter(row => row.style.display !== 'none');
+                const visibleRows = Array.from(allTableRows).filter(row => row.style.display !== 'none');
                 const visibleCount = visibleRows.length;
                 
                 if (totalCountElement) {
@@ -945,7 +1472,7 @@
             function filterRows() {
                 const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
                 
-                tableRows.forEach(row => {
+                allTableRows.forEach(row => {
                     const region = row.getAttribute('data-region');
                     const text = row.textContent.toLowerCase();
                     
