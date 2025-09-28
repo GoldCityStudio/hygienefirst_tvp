@@ -7561,3 +7561,20 @@ text-justify:inter-ideograph !important;
         margin-right: 0.6rem !important;
     }
 }
+
+/* DISABLE WHATSAPP BUTTON AND CHATBOT */
+.whatsapp-button {
+    display: none !important;
+}
+
+.chatbot-container {
+    display: none !important;
+}
+
+.chatbot-toggle {
+    display: none !important;
+}
+
+.chatbot-window {
+    display: none !important;
+}
