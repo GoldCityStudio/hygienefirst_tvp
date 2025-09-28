@@ -535,15 +535,13 @@
             border: none;
         }
         
+        /* Remove the problematic CSS that forces first FAQ to be closed */
         .faq-item:first-child .faq-answer {
-            padding: 0 1.5rem;
-            max-height: 0;
-            opacity: 0;
-            transform: translateY(-10px);
+            /* Remove the forced closed state - let it behave like other FAQ items */
         }
         
         .faq-item:first-child .faq-question i {
-            transform: rotate(0deg);
+            /* Remove the forced rotation - let it behave like other FAQ items */
         }
         
         .faq-answer p {
