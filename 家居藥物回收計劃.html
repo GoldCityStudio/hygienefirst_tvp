@@ -466,8 +466,12 @@
                         <a href="institutional-care.html">機構護理人手支援</a>
                       
                     </li>
-                    <li>
-                        <a href="waste-collection.html">醫療及化學廢物收集服務</a>
+                    <li class="dropdown">
+                        <a href="waste-collection.html">醫療及化學廢物</a>
+                        <div class="dropdown-content">
+                            <a href="waste-collection.html">醫療及化學廢物收集服務</a>
+                            <a href="醫療廢棄物處理及管理.html">醫療廢棄物處理及管理</a>
+                        </div>
                     </li>
                     <li>
                         <a href="community-zh.html">長者社區服務劵</a>
@@ -919,21 +923,61 @@
                 <!-- Search and Filter Function -->
             
 
-                <!-- Collection Points Table - All Regions Combined -->
+                <!-- Collection Points Tables - Separated by Region -->
+                
+                <!-- Hong Kong Island Table -->
                 <div style="background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; margin: 2rem 0;">
                     <div style="background: #FF7A00; color: white; padding: 1rem; font-size: 1.2rem; font-weight: 600;">
-                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>全港回收點列表
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>香港島回收點列表
+                        <span id="hkIslandCount" style="float: right; font-size: 0.9rem; opacity: 0.9;">0 個回收點</span>
                     </div>
                     <table style="width: 100%; border-collapse: collapse;">
                         <thead style="background: #f8f9fa; color: #333;">
                             <tr>
-                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">地區</th>
                                 <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">支持機構</th>
                                 <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">回收點名稱及地址</th>
                             </tr>
                         </thead>
-                        <tbody id="allCollectionPointsTableBody">
-                            <!-- Data will be loaded dynamically from collectionpoints.json -->
+                        <tbody id="hkIslandTableBody">
+                            <!-- Data will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Kowloon Table -->
+                <div style="background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; margin: 2rem 0;">
+                    <div style="background: #FF7A00; color: white; padding: 1rem; font-size: 1.2rem; font-weight: 600;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>九龍回收點列表
+                        <span id="kowloonCount" style="float: right; font-size: 0.9rem; opacity: 0.9;">0 個回收點</span>
+                    </div>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead style="background: #f8f9fa; color: #333;">
+                            <tr>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">支持機構</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">回收點名稱及地址</th>
+                            </tr>
+                        </thead>
+                        <tbody id="kowloonTableBody">
+                            <!-- Data will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- New Territories Table -->
+                <div style="background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; margin: 2rem 0;">
+                    <div style="background: #FF7A00; color: white; padding: 1rem; font-size: 1.2rem; font-weight: 600;">
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>新界回收點列表
+                        <span id="newTerritoriesCount" style="float: right; font-size: 0.9rem; opacity: 0.9;">0 個回收點</span>
+                    </div>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead style="background: #f8f9fa; color: #333;">
+                            <tr>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">支持機構</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">回收點名稱及地址</th>
+                            </tr>
+                        </thead>
+                        <tbody id="newTerritoriesTableBody">
+                            <!-- Data will be loaded dynamically -->
                         </tbody>
                     </table>
                 </div>
@@ -1217,8 +1261,8 @@
             loadCollectionPointsData();
         });
 
-        // Sample collection points data (first 50 entries from each region)
-        const sampleCollectionPointsData = [
+        // Complete collection points data from collectionpoints.json
+        const completeCollectionPointsData = [
             // Hong Kong Island entries
             {"支持機構": "招商局港口控股有限公司", "回收過期藥物點": "上環信德中心招商局大廈38樓", "回收點地址": "上環干諾道中168-200號", "地區": "香港島"},
             {"支持機構": "仲量聯行", "回收過期藥物點": "美國銀行中心", "回收點地址": "中環夏愨道12號", "地區": "香港島"},
@@ -1239,55 +1283,82 @@
             {"支持機構": "康業服務有限公司", "回收過期藥物點": "寶雲閣", "回收點地址": "半山寶雲道11A", "地區": "香港島"},
             {"支持機構": "華懋集團", "回收過期藥物點": "大學閣 (地下保安控制室)", "回收點地址": "西半山旭龢道42號", "地區": "香港島"},
             {"支持機構": "康業服務有限公司", "回收過期藥物點": "堅城中心", "回收點地址": "西區卑路乍街23號", "地區": "香港島"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "蘇長荣議員地區辦事處", "回收點地址": "灣仔軒尼詩道395-399號東區商業大廈12樓F室", "地區": "香港島"},
             
             // Kowloon entries
             {"支持機構": "華懋集團", "回收過期藥物點": "金‧御門 (地下大堂)", "回收點地址": "九龍城衙前圍道39號", "地區": "九龍"},
             {"支持機構": "華懋集團", "回收過期藥物點": "御門‧前 (地下大堂)", "回收點地址": "九龍城衙前塱道62號", "地區": "九龍"},
-            {"支持機構": "香港房屋協會", "回收過期藥物點": "真善美村", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
+            {"支持機構": "香港房屋協會", "回收過期藥物點": "真善美村", "回收點地址": "九龍城富寧街21號", "地區": "九龍"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "賢文禮士 (地下大堂)", "回收點地址": "九龍塘延文禮士道38號", "地區": "九龍"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "雲門（會所）", "回收點地址": "九龍塘義德道5-11號", "地區": "九龍"},
+            {"支持機構": "香港城市大學", "回收過期藥物點": "香港城市大學", "回收點地址": "九龍塘達之路83號香港城市大學校務處", "地區": "九龍"},
+            {"支持機構": "首衛有限公司", "回收過期藥物點": "首衛有限公司", "回收點地址": "九龍灣臨樂街19號南豐商業中心18樓12室", "地區": "九龍"},
+            {"支持機構": "夏利文物業管理有限公司", "回收過期藥物點": "夏利文物業管理有限公司 (總辦事處)", "回收點地址": "九龍灣灣宏照道33號國際交易中心6樓601室", "地區": "九龍"},
+            {"支持機構": "夏利文物業管理有限公司", "回收過期藥物點": "Bailey Garden", "回收點地址": "土瓜灣庇利街23號", "地區": "九龍"},
             {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
+            {"支持機構": "香港房屋協會", "回收過期藥物點": "悅庭軒", "回收點地址": "鑽石山龍蟠街1號", "地區": "九龍"},
             
             // New Territories entries
             {"支持機構": "第一太平戴維斯(香港)有限公司", "回收過期藥物點": "上水匯", "回收點地址": "上水龍琛路48號", "地區": "新界"},
             {"支持機構": "華懋集團", "回收過期藥物點": "琨崙（會所）", "回收點地址": "小欖青發里8號", "地區": "新界"},
             {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"}
+            {"支持機構": "香港心理衞生會", "回收過期藥物點": "賽馬會心薈庭", "回收點地址": "大埔廣福邨廣智樓B翼地下101至108室", "地區": "新界"},
+            {"支持機構": "新界社團總會", "回收過期藥物點": "新界社團總會辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心9字樓", "地區": "新界"},
+            {"支持機構": "區議員辦事處", "回收過期藥物點": "董健莉議員辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心9字樓", "地區": "新界"},
+            {"支持機構": "香港房屋協會", "回收過期藥物點": "兆軒苑", "回收點地址": "屯門市中心良運街1號", "地區": "新界"},
+            {"支持機構": "香港聾人福利促進會", "回收過期藥物點": "新界綜合服務中心 (良景)", "回收點地址": "屯門田景路31號良景邨良賢樓地下18-23", "地區": "新界"},
+            {"支持機構": "博愛醫院", "回收過期藥物點": "屯門護養院", "回收點地址": "屯門青松觀路33號", "地區": "新界"},
+            {"支持機構": "香港房屋協會", "回收過期藥物點": "裕明苑", "回收點地址": "將軍澳常寧路1號", "地區": "新界"},
+            {"支持機構": "大灣區醫護教師社工協會", "回收過期藥物點": "新界辦事處", "回收點地址": "將軍澳景林商場 1 樓 104 室", "地區": "新界"},
+            {"支持機構": "香港房屋協會", "回收過期藥物點": "茵怡花園", "回收點地址": "將軍澳茵怡花園", "地區": "新界"},
+            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "嚴剛議員地區辦事處", "回收點地址": "愉景灣地區辦事處大嶼山愉景灣海澄湖畔96號辦公室大樓第2座1樓22室", "地區": "新界"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "安泰工貿中心（地下大堂）", "回收點地址": "新界粉嶺粉嶺安全街4號", "地區": "新界"},
+            {"支持機構": "華懋集團", "回收過期藥物點": "安匯中心（地下大堂）", "回收點地址": "新界粉嶺粉嶺樂業路25號", "地區": "新界"},
+            {"支持機構": "聖方濟各大學", "回收過期藥物點": "聖方濟各大學", "回收點地址": "聖方濟各大學管理處", "地區": "新界"},
+            {"支持機構": "區議員辦事處", "回收過期藥物點": "彭熠銘議員辦事處", "回收點地址": "葵青區青衣青衣邨宜偉樓地下12號", "地區": "新界"},
+            {"支持機構": "區議員辦事處", "回收過期藥物點": "黃淑雯議員辦事處", "回收點地址": "葵涌石蔭邨勇石樓地下B室", "地區": "新界"},
+            {"支持機構": "康業服務有限公司", "回收過期藥物點": "葵星商場", "回收點地址": "葵涌青山公路412號", "地區": "新界"},
+            {"支持機構": "香港房屋協會", "回收過期藥物點": "浩景臺", "回收點地址": "葵涌荔崗街11號", "地區": "新界"},
+            {"支持機構": "康業服務有限公司", "回收過期藥物點": "華景山莊", "回收點地址": "葵涌華景山路9號", "地區": "新界"},
+            {"支持機構": "康業服務有限公司", "回收過期藥物點": "華景山莊商場", "回收點地址": "葵涌華景山路9號", "地區": "新界"},
+            {"支持機構": "香港房屋協會", "回收過期藥物點": "祖堯邨", "回收點地址": "葵涌麗祖路3號", "地區": "新界"},
+            {"支持機構": "區議員辦事處", "回收過期藥物點": "陳藹怡議員辦事處", "回收點地址": "葵涌麗瑤邨樂瑤樓115號G樓地下", "地區": "新界"},
+            {"支持機構": "區議員辦事處", "回收過期藥物點": "張展鵬議員辦事處", "回收點地址": "調景嶺善明邨善禮樓附翼地下1號", "地區": "新界"},
+            {"支持機構": "區議員辦事處", "回收過期藥物點": "諸樂為議員辦事處", "回收點地址": "藍田匯景廣場4樓309舖", "地區": "新界"}
         ];
 
         function loadCollectionPointsData() {
             try {
                 console.log('Loading collection points data...');
                 
-                // Get unified table body
-                const allCollectionPointsTableBody = document.getElementById('allCollectionPointsTableBody');
+                // Get table bodies for each region
+                const hkIslandTableBody = document.getElementById('hkIslandTableBody');
+                const kowloonTableBody = document.getElementById('kowloonTableBody');
+                const newTerritoriesTableBody = document.getElementById('newTerritoriesTableBody');
+                
+                // Get count elements
+                const hkIslandCount = document.getElementById('hkIslandCount');
+                const kowloonCount = document.getElementById('kowloonCount');
+                const newTerritoriesCount = document.getElementById('newTerritoriesCount');
                 
                 // Clear existing content
-                allCollectionPointsTableBody.innerHTML = '';
+                hkIslandTableBody.innerHTML = '';
+                kowloonTableBody.innerHTML = '';
+                newTerritoriesTableBody.innerHTML = '';
                 
-                let totalCount = 0;
+                let hkIslandTotal = 0;
+                let kowloonTotal = 0;
+                let newTerritoriesTotal = 0;
                 
                 // Function to create table row
                 function createTableRow(item) {
                     const row = document.createElement('tr');
                     row.style.borderBottom = '1px solid #eee';
-                    row.setAttribute('data-region', item.地區);
                     
                     // Combine 回收點名稱 and 地址 into one column
                     const combinedInfo = `${item.回收過期藥物點}<br><small style="color: #666; font-size: 0.9rem;">${item.回收點地址}</small>`;
                     
                     row.innerHTML = `
-                        <td style="padding: 1rem;">${item.地區}</td>
                         <td style="padding: 1rem;">${item.支持機構}</td>
                         <td style="padding: 1rem;">${combinedInfo}</td>
                     `;
@@ -1295,151 +1366,108 @@
                     return row;
                 }
                 
-                // Process each collection point and add to unified table
-                sampleCollectionPointsData.forEach((item, index) => {
+                // Process each collection point and add to appropriate table
+                completeCollectionPointsData.forEach((item, index) => {
                     const row = createTableRow(item);
-                    allCollectionPointsTableBody.appendChild(row);
-                    totalCount++;
+                    
+                    if (item.地區 === '香港島') {
+                        hkIslandTableBody.appendChild(row);
+                        hkIslandTotal++;
+                    } else if (item.地區 === '九龍') {
+                        kowloonTableBody.appendChild(row);
+                        kowloonTotal++;
+                    } else if (item.地區 === '新界') {
+                        newTerritoriesTableBody.appendChild(row);
+                        newTerritoriesTotal++;
+                    }
                 });
                 
-                console.log('Collection points loaded:', totalCount);
+                // Update counts
+                hkIslandCount.textContent = `${hkIslandTotal} 個回收點`;
+                kowloonCount.textContent = `${kowloonTotal} 個回收點`;
+                newTerritoriesCount.textContent = `${newTerritoriesTotal} 個回收點`;
+                
+                console.log('Collection points loaded:', {
+                    hkIsland: hkIslandTotal,
+                    kowloon: kowloonTotal,
+                    newTerritories: newTerritoriesTotal,
+                    total: hkIslandTotal + kowloonTotal + newTerritoriesTotal
+                });
                 
                 // Initialize search functionality after data is loaded
                 initializeSearchFunctionality();
                 
             } catch (error) {
                 console.error('Error loading collection points data:', error);
-                // Show error message in table
+                // Show error message in all tables
                 const errorMessage = `
                     <tr>
-                        <td colspan="3" style="padding: 2rem; text-align: center; color: #666;">
+                        <td colspan="2" style="padding: 2rem; text-align: center; color: #dc3545;">
                             <i class="fas fa-exclamation-triangle" style="margin-right: 0.5rem;"></i>
-                            無法載入回收點資料，請稍後再試<br>
+                            載入回收點資料時發生錯誤
+                            <br>
                             <small style="color: #999;">錯誤: ${error.message}</small>
                         </td>
                     </tr>
                 `;
                 
-                document.getElementById('allCollectionPointsTableBody').innerHTML = errorMessage;
+                document.getElementById('hkIslandTableBody').innerHTML = errorMessage;
+                document.getElementById('kowloonTableBody').innerHTML = errorMessage;
+                document.getElementById('newTerritoriesTableBody').innerHTML = errorMessage;
             }
         }
 
         function initializeSearchFunctionality() {
             const searchInput = document.getElementById('locationSearch');
-            const allTableRows = document.querySelectorAll('#allCollectionPointsTableBody tr');
+            const hkIslandRows = document.querySelectorAll('#hkIslandTableBody tr');
+            const kowloonRows = document.querySelectorAll('#kowloonTableBody tr');
+            const newTerritoriesRows = document.querySelectorAll('#newTerritoriesTableBody tr');
             const totalCountElement = document.getElementById('totalCount');
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const districtButtons = document.querySelectorAll('.district-filter-btn');
-            
-            let currentFilter = 'all';
-            let currentDistrict = null;
             
             // Function to update visible count
             function updateVisibleCount() {
-                const visibleRows = Array.from(allTableRows).filter(row => row.style.display !== 'none');
-                const visibleCount = visibleRows.length;
+                const visibleHkIslandRows = Array.from(hkIslandRows).filter(row => row.style.display !== 'none');
+                const visibleKowloonRows = Array.from(kowloonRows).filter(row => row.style.display !== 'none');
+                const visibleNewTerritoriesRows = Array.from(newTerritoriesRows).filter(row => row.style.display !== 'none');
+                const totalVisible = visibleHkIslandRows.length + visibleKowloonRows.length + visibleNewTerritoriesRows.length;
                 
                 if (totalCountElement) {
                     if (searchInput && searchInput.value.trim()) {
-                        totalCountElement.innerHTML = `<i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>找到 ${visibleCount} 個回收點`;
+                        totalCountElement.innerHTML = `<i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>找到 ${totalVisible} 個回收點`;
                     } else {
-                        totalCountElement.innerHTML = `<i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>全港共 ${allTableRows.length} 個回收點`;
+                        totalCountElement.innerHTML = `<i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>全港共 ${totalVisible} 個回收點`;
                     }
                 }
             }
             
-            // Function to filter rows
-            function filterRows() {
-                const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
-                
-                allTableRows.forEach(row => {
-                    const region = row.getAttribute('data-region');
+            // Function to filter rows based on search term
+            function filterRows(rows, searchTerm) {
+                rows.forEach(row => {
                     const text = row.textContent.toLowerCase();
-                    
-                    let showRow = true;
-                    
-                    // Apply region filter
-                    if (currentFilter !== 'all' && region !== currentFilter) {
-                        showRow = false;
-                    }
-                    
-                    // Apply district filter
-                    if (currentDistrict && !text.includes(currentDistrict.toLowerCase())) {
-                        showRow = false;
-                    }
-                    
-                    // Apply search filter
-                    if (searchTerm && !text.includes(searchTerm)) {
-                        showRow = false;
-                    }
-                    
-                    row.style.display = showRow ? '' : 'none';
+                    const matches = text.includes(searchTerm.toLowerCase());
+                    row.style.display = matches ? '' : 'none';
                 });
-                
-                updateVisibleCount();
             }
             
-            // Region filter buttons
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Update active state
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                        btn.style.background = '#FFF9F5';
-                        btn.style.color = '#FF7A00';
-                        btn.style.border = '2px solid #FF7A00';
-                    });
+            // Search functionality
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.trim();
                     
-                    this.classList.add('active');
-                    this.style.background = '#FF7A00';
-                    this.style.color = 'white';
-                    this.style.border = 'none';
-                    
-                    // Update filter
-                    currentFilter = this.getAttribute('data-filter');
-                    
-                    // Clear district filter when changing region
-                    currentDistrict = null;
-                    districtButtons.forEach(btn => {
-                        btn.style.background = '#FFF9F5';
-                        btn.style.color = '#666';
-                        btn.style.border = '1px solid #DDD';
-                    });
-                    
-                    filterRows();
-                });
-            });
-            
-            // District filter buttons
-            districtButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Toggle district filter
-                    if (currentDistrict === this.getAttribute('data-district')) {
-                        // Clear district filter
-                        currentDistrict = null;
-                        this.style.background = '#FFF9F5';
-                        this.style.color = '#666';
-                        this.style.border = '1px solid #DDD';
-                    } else {
-                        // Set district filter
-                        currentDistrict = this.getAttribute('data-district');
-                        districtButtons.forEach(btn => {
-                            btn.style.background = '#FFF9F5';
-                            btn.style.color = '#666';
-                            btn.style.border = '1px solid #DDD';
+                    if (searchTerm === '') {
+                        // Show all rows
+                        [...hkIslandRows, ...kowloonRows, ...newTerritoriesRows].forEach(row => {
+                            row.style.display = '';
                         });
-                        this.style.background = '#FF7A00';
-                        this.style.color = 'white';
-                        this.style.border = '1px solid #FF7A00';
+                    } else {
+                        // Filter rows based on search term
+                        filterRows(hkIslandRows, searchTerm);
+                        filterRows(kowloonRows, searchTerm);
+                        filterRows(newTerritoriesRows, searchTerm);
                     }
                     
-                    filterRows();
+                    updateVisibleCount();
                 });
-            });
-            
-            // Search input
-            if (searchInput) {
-                searchInput.addEventListener('input', filterRows);
             }
             
             // Initial count update
@@ -1536,7 +1564,7 @@
             markers = [];
 
             // Load all collection points from the embedded data
-            const collectionPoints = sampleCollectionPointsData.filter(item => 
+            const collectionPoints = completeCollectionPointsData.filter(item =>  
                 item.回收過期藥物點 && item.回收點地址 && item.回收過期藥物點.trim() !== ''
             ).map(item => {
                 // Generate approximate coordinates based on address patterns
@@ -2271,6 +2299,212 @@
             }
         `;
         document.head.appendChild(style);
+    </script>
+
+    <!-- Drug Recovery Poster Popup -->
+    <div id="drugRecoveryPopup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closeDrugRecoveryPopup()">&times;</button>
+            <img src="images/popup/HYG022 - 藥物回收海報 - v12 - no english - RGB.jpg" alt="藥物回收海報" class="popup-image">
+        </div>
+    </div>
+
+    <!-- Floating Button to Show Poster -->
+    <button id="showPosterBtn" class="floating-btn" onclick="showDrugRecoveryPopup()" title="查看藥物回收海報">
+        <i class="fas fa-image"></i>
+        <span class="btn-text">海報</span>
+    </button>
+
+    <style>
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            font-size: 24px;
+            font-weight: bold;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-close:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .popup-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .popup-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+            
+            .popup-close {
+                top: 5px;
+                right: 10px;
+                width: 30px;
+                height: 30px;
+                font-size: 20px;
+            }
+        }
+
+        /* Floating Button Styles */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
+        }
+
+        .floating-btn:active {
+            transform: scale(0.95);
+        }
+
+        .floating-btn i {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+
+        .floating-btn .btn-text {
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .floating-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 16px;
+            }
+
+            .floating-btn i {
+                font-size: 18px;
+            }
+
+            .floating-btn .btn-text {
+                font-size: 9px;
+            }
+        }
+    </style>
+
+    <script>
+        // Show drug recovery popup on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if popup was already shown in this session
+            if (!sessionStorage.getItem('drugRecoveryPopupShown')) {
+                setTimeout(function() {
+                    document.getElementById('drugRecoveryPopup').classList.add('show');
+                }, 1000); // Show popup after 1 second delay
+            }
+        });
+
+        function closeDrugRecoveryPopup() {
+            const popup = document.getElementById('drugRecoveryPopup');
+            popup.classList.remove('show');
+            
+            // Mark popup as shown in this session
+            sessionStorage.setItem('drugRecoveryPopupShown', 'true');
+        }
+
+        function showDrugRecoveryPopup() {
+            const popup = document.getElementById('drugRecoveryPopup');
+            popup.classList.add('show');
+        }
+
+        // Close popup when clicking outside the image
+        document.getElementById('drugRecoveryPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDrugRecoveryPopup();
+            }
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const popup = document.getElementById('drugRecoveryPopup');
+                if (popup.classList.contains('show')) {
+                    closeDrugRecoveryPopup();
+                }
+            }
+        });
     </script>
 </body>
 </html>

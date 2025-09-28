@@ -29,11 +29,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <style>
-        @keyframes sparkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W24RG7SG');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="t8zzq2DovJMgoChag0ygoc_s76A2aTRXv4N78KJkw6I" />
+    
+    <!-- Structured Data for Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Hygiene First - 家務助理服務",
+        "url": "https://www.hygienefirst.com/housekeeping-assistant",
+        "logo": "https://www.hygienefirst.com/images/HF logo/logo.png",
+        "image": "https://www.hygienefirst.com/images/building.jpg",
+        "description": "專業的家務助理服務，包括家居清潔、烹飪、洗衣、購物等日常家務。",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "香港九龍尖沙咀廣東道30號新港中心1座12樓",
+            "addressLocality": "香港",
+            "addressRegion": "九龍",
+            "postalCode": "",
+            "addressCountry": "HK"
+        },
+        "telephone": "+852-2345-6789",
+        "email": "info@hygienefirst.hk",
+        "openingHours": "Mo-Su 09:00-18:00",
+        "priceRange": "$$",
+        "sameAs": [
+            "https://www.facebook.com/hygienefirst",
+            "https://www.instagram.com/hygienefirst",
+            "https://twitter.com/hygienefirst",
+            "https://www.linkedin.com/company/hygienefirst"
+        ]
+    }
+    </script>
         
         @media (max-width: 768px) {
             /* ===== GENERAL MOBILE IMPROVEMENTS ===== */
@@ -444,8 +488,12 @@
                         <a href="institutional-care.html">機構護理人手支援</a>
                       
                     </li>
-                    <li>
-                        <a href="waste-collection.html">醫療及化學廢物收集服務</a>
+                    <li class="dropdown">
+                        <a href="waste-collection.html">醫療及化學廢物</a>
+                        <div class="dropdown-content">
+                            <a href="waste-collection.html">醫療及化學廢物收集服務</a>
+                            <a href="醫療廢棄物處理及管理.html">醫療廢棄物處理及管理</a>
+                        </div>
                     </li>
                     <li>
                         <a href="community-zh.html">長者社區服務劵</a>
