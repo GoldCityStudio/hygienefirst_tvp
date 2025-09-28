@@ -1408,6 +1408,11 @@
                         
                         // Populate the tables
                         populateCollectionPointsTables();
+                        
+                        // Load collection points on map if map is initialized
+                        if (typeof map !== 'undefined' && map) {
+                            loadCollectionPointsOnMap();
+                        }
                     })
                     .catch(error => {
                         console.error('Error loading collection points data:', error);
@@ -1695,8 +1700,11 @@
                 // Create info window
                 infoWindow = new google.maps.InfoWindow();
 
-                // Load collection points
-                loadCollectionPointsOnMap();
+                // Collection points will be loaded after data is fetched
+                // If data is already loaded, load markers now
+                if (completeCollectionPointsData && completeCollectionPointsData.length > 0) {
+                    loadCollectionPointsOnMap();
+                }
 
             // Initialize map controls
             initializeMapControls();
