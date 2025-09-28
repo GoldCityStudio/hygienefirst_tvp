@@ -1421,6 +1421,7 @@
                             const address = item.回收點地址 || '';
                             
                             if (address.includes('香港島') || 
+                                address.includes('中區') || 
                                 address.includes('中環') || 
                                 address.includes('上環') || 
                                 address.includes('灣仔') || 
@@ -1429,6 +1430,7 @@
                                 address.includes('太古') || 
                                 address.includes('西環') || 
                                 address.includes('西營盤') || 
+                                address.includes('西區') || 
                                 address.includes('香港仔') || 
                                 address.includes('柴灣') || 
                                 address.includes('堅尼地城') || 
@@ -1440,12 +1442,18 @@
                                 address.includes('鴨脷洲') || 
                                 address.includes('鰂魚涌') || 
                                 address.includes('半山') || 
-                                address.includes('西半山')) {
+                                address.includes('西半山') || 
+                                address.includes('添美道') || 
+                                address.includes('添馬') || 
+                                address.includes('金鐘') || 
+                                address.includes('金鐘道') || 
+                                address.includes('大潭')) {
                                 region = '香港島';
                             } else if (address.includes('九龍') || 
                                        address.includes('尖沙咀') || 
                                        address.includes('旺角') || 
                                        address.includes('油麻地') || 
+                                       address.includes('油蔴地') || 
                                        address.includes('深水埗') || 
                                        address.includes('長沙灣') || 
                                        address.includes('荔枝角') || 
@@ -1466,7 +1474,10 @@
                                        address.includes('深水灣') || 
                                        address.includes('清水灣道') || 
                                        address.includes('藍田') || 
-                                       address.includes('調景嶺')) {
+                                       address.includes('調景嶺') || 
+                                       address.includes('東頭邨') || 
+                                       address.includes('橫頭磡') || 
+                                       address.includes('延文禮士道')) {
                                 region = '九龍';
                             }
                             

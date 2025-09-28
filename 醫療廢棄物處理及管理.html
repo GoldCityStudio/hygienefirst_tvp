@@ -536,15 +536,6 @@
             border: none;
         }
         
-        /* Remove the problematic CSS that forces first FAQ to be closed */
-        .faq-item:first-child .faq-answer {
-            /* Remove the forced closed state - let it behave like other FAQ items */
-        }
-        
-        .faq-item:first-child .faq-question i {
-            /* Remove the forced rotation - let it behave like other FAQ items */
-        }
-        
         .faq-answer p {
             color: #666;
             line-height: 1.6;
@@ -562,6 +553,93 @@
             
             .faq-item.active .faq-answer {
                 padding: 1rem;
+            }
+            
+            /* Fix mobile menu positioning and visibility */
+            .main-menu {
+                position: fixed !important;
+                top: 0 !important;
+                right: -300px !important;
+                left: auto !important;
+                width: 300px !important;
+                height: 100vh !important;
+                background: white !important;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.15) !important;
+                transition: right 0.4s cubic-bezier(0.77, 0, 0, 0.175, 1) !important;
+                overflow-y: auto !important;
+                z-index: 10000 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 80px 25px 30px !important;
+                align-items: flex-start !important;
+            }
+            
+            .main-menu.active {
+                right: 0 !important;
+            }
+            
+            .main-menu li {
+                margin: 0 !important;
+                padding: 8px 0 !important;
+                width: 100% !important;
+                border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+            }
+            
+            .main-menu li:last-child {
+                border-bottom: none !important;
+            }
+            
+            .main-menu a {
+                padding: 12px 0 !important;
+                font-size: 1.1rem !important;
+                display: block !important;
+                width: 100% !important;
+            }
+            
+            .main-menu a:after {
+                display: none !important;
+            }
+            
+            .main-menu a.active {
+                color: var(--primary-color) !important;
+                background: none !important;
+            }
+            
+            /* Ensure mobile menu toggle is visible */
+            .mobile-menu-toggle {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                z-index: 10001 !important;
+                position: relative !important;
+                width: 30px !important;
+                height: 24px !important;
+                cursor: pointer !important;
+                margin-left: 10px !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .mobile-menu-toggle span {
+                display: block !important;
+                height: 3px !important;
+                width: 100% !important;
+                background: var(--primary-color) !important;
+                border-radius: 2px !important;
+                position: absolute !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .mobile-menu-toggle span:nth-child(1) {
+                top: 0 !important;
+            }
+            
+            .mobile-menu-toggle span:nth-child(2) {
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+            }
+            
+            .mobile-menu-toggle span:nth-child(3) {
+                bottom: 0 !important;
             }
         }
     </style>
@@ -1180,11 +1258,6 @@
     <!-- Scripts -->
     <script src="script.js"></script>
     <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-            document.querySelector('.main-menu').classList.toggle('active');
-        });
-
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
