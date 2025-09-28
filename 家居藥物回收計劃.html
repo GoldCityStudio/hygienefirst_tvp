@@ -269,6 +269,51 @@
                 width: 100%;
                 max-width: 300px;
             }
+            
+            /* Mobile table responsiveness */
+            .table-responsive {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+                margin: 0 -1rem !important;
+                padding: 0 1rem !important;
+            }
+            
+            .table-responsive table {
+                min-width: 600px !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .table-responsive th,
+            .table-responsive td {
+                padding: 0.8rem 0.5rem !important;
+                white-space: nowrap !important;
+            }
+            
+            .table-responsive th:first-child,
+            .table-responsive td:first-child {
+                min-width: 180px !important;
+            }
+            
+            .table-responsive th:last-child,
+            .table-responsive td:last-child {
+                min-width: 400px !important;
+                white-space: normal !important;
+            }
+            
+            /* Pagination controls mobile optimization */
+            .pagination-controls {
+                flex-direction: column !important;
+                gap: 1rem !important;
+                text-align: center !important;
+            }
+            
+            .pagination-controls > div:first-child {
+                order: 2 !important;
+            }
+            
+            .pagination-controls > div:last-child {
+                order: 1 !important;
+            }
         }
         
         /* Category Section Styling */
@@ -931,20 +976,22 @@
                         <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>香港島回收點列表
                         <span id="hkIslandCount" style="float: right; font-size: 0.9rem; opacity: 0.9;">0 個回收點</span>
                     </div>
-                    <table style="width: 100%; border-collapse: collapse;">
-                        <thead style="background: #f8f9fa; color: #333;">
-                            <tr>
-                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">支持機構</th>
-                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">回收點名稱及地址</th>
-                            </tr>
-                        </thead>
-                        <tbody id="hkIslandTableBody">
-                            <!-- Data will be loaded dynamically -->
-                        </tbody>
-                    </table>
+                    <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                        <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+                            <thead style="background: #f8f9fa; color: #333;">
+                                <tr>
+                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 200px;">支持機構</th>
+                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 400px;">回收點名稱及地址</th>
+                                </tr>
+                            </thead>
+                            <tbody id="hkIslandTableBody">
+                                <!-- Data will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
                     
                     <!-- Pagination Controls for Hong Kong Island -->
-                    <div id="hkIslandPagination" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
+                    <div id="hkIslandPagination" class="pagination-controls" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
                         <div style="color: #666; font-size: 0.9rem;">
                             顯示 <span id="hkIslandStart">1</span> - <span id="hkIslandEnd">10</span> 項，共 <span id="hkIslandTotal">0</span> 項
                         </div>
@@ -968,20 +1015,22 @@
                         <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>九龍回收點列表
                         <span id="kowloonCount" style="float: right; font-size: 0.9rem; opacity: 0.9;">0 個回收點</span>
                     </div>
-                    <table style="width: 100%; border-collapse: collapse;">
-                        <thead style="background: #f8f9fa; color: #333;">
-                            <tr>
-                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">支持機構</th>
-                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">回收點名稱及地址</th>
-                            </tr>
-                        </thead>
-                        <tbody id="kowloonTableBody">
-                            <!-- Data will be loaded dynamically -->
-                        </tbody>
-                    </table>
+                    <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                        <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+                            <thead style="background: #f8f9fa; color: #333;">
+                                <tr>
+                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 200px;">支持機構</th>
+                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 400px;">回收點名稱及地址</th>
+                                </tr>
+                            </thead>
+                            <tbody id="kowloonTableBody">
+                                <!-- Data will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
                     
                     <!-- Pagination Controls for Kowloon -->
-                    <div id="kowloonPagination" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
+                    <div id="kowloonPagination" class="pagination-controls" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
                         <div style="color: #666; font-size: 0.9rem;">
                             顯示 <span id="kowloonStart">1</span> - <span id="kowloonEnd">10</span> 項，共 <span id="kowloonTotal">0</span> 項
                         </div>
@@ -1005,20 +1054,22 @@
                         <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>新界回收點列表
                         <span id="newTerritoriesCount" style="float: right; font-size: 0.9rem; opacity: 0.9;">0 個回收點</span>
                     </div>
-                    <table style="width: 100%; border-collapse: collapse;">
-                        <thead style="background: #f8f9fa; color: #333;">
-                            <tr>
-                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">支持機構</th>
-                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00;">回收點名稱及地址</th>
-                            </tr>
-                        </thead>
-                        <tbody id="newTerritoriesTableBody">
-                            <!-- Data will be loaded dynamically -->
-                        </tbody>
-                    </table>
+                    <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                        <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+                            <thead style="background: #f8f9fa; color: #333;">
+                                <tr>
+                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 200px;">支持機構</th>
+                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 400px;">回收點名稱及地址</th>
+                                </tr>
+                            </thead>
+                            <tbody id="newTerritoriesTableBody">
+                                <!-- Data will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
                     
                     <!-- Pagination Controls for New Territories -->
-                    <div id="newTerritoriesPagination" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
+                    <div id="newTerritoriesPagination" class="pagination-controls" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
                         <div style="color: #666; font-size: 0.9rem;">
                             顯示 <span id="newTerritoriesStart">1</span> - <span id="newTerritoriesEnd">10</span> 項，共 <span id="newTerritoriesTotal">0</span> 項
                         </div>
