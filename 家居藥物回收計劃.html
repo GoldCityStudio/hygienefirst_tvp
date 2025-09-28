@@ -1046,7 +1046,7 @@
                                 <h4 style="color: #FF7A00; margin-bottom: 0.5rem;">載入地圖中...</h4>
                                 <p style="color: #666; text-align: center; max-width: 400px;">
                                     正在載入Google地圖<br>
-                                    將顯示全港293個回收點位置
+                                    將顯示全港493個回收點位置
                                 </p>
                                 <div style="margin-top: 1rem;">
                                     <div style="width: 40px; height: 40px; border: 4px solid #FF7A00; border-top: 4px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
@@ -1261,76 +1261,118 @@
             loadCollectionPointsData();
         });
 
-        // Complete collection points data from collectionpoints.json
-        const completeCollectionPointsData = [
-            // Hong Kong Island entries
-            {"支持機構": "招商局港口控股有限公司", "回收過期藥物點": "上環信德中心招商局大廈38樓", "回收點地址": "上環干諾道中168-200號", "地區": "香港島"},
-            {"支持機構": "仲量聯行", "回收過期藥物點": "美國銀行中心", "回收點地址": "中環夏愨道12號", "地區": "香港島"},
-            {"支持機構": "夏利文物業管理有限公司", "回收過期藥物點": "中保集團大廈", "回收點地址": "中環德輔道中141號中保集團大廈", "地區": "香港島"},
-            {"支持機構": "第一太平戴維斯(香港)有限公司", "回收過期藥物點": "雲咸街33號", "回收點地址": "中環雲咸街33號", "地區": "香港島"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "蘇長荣議員地區辦事處", "回收點地址": "中區添美道1號中信大廈13樓1316室", "地區": "香港島"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳仲尼議員地區辦事處", "回收點地址": "中區添美道1號中信大廈1521室", "地區": "香港島"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "龍漢標議員地區辦事處", "回收點地址": "中環德輔道中19號環球大廈1403室", "地區": "香港島"},
-            {"支持機構": "第一太平戴維斯(香港)有限公司", "回收過期藥物點": "太古灣道14號", "回收點地址": "太古太古城中心第3期", "地區": "香港島"},
-            {"支持機構": "第一太平戴維斯(香港)有限公司", "回收過期藥物點": "太古灣道12號", "回收點地址": "太古太古城中心第4期", "地區": "香港島"},
-            {"支持機構": "太古地產", "回收過期藥物點": "太古城物業管理公司", "回收點地址": "太古太古城道31號太古城金殿台唐宮閣", "地區": "香港島"},
-            {"支持機構": "香港房屋協會", "回收過期藥物點": "健康村", "回收點地址": "北角七姊妹道176號", "地區": "香港島"},
-            {"支持機構": "香港房屋協會", "回收過期藥物點": "雋悦", "回收點地址": "北角丹拿道8號", "地區": "香港島"},
-            {"支持機構": "康業服務有限公司", "回收過期藥物點": "明軒", "回收點地址": "北角明園西街16-22號", "地區": "香港島"},
-            {"支持機構": "康業服務有限公司", "回收過期藥物點": "形品", "回收點地址": "北角明園西街38號", "地區": "香港島"},
-            {"支持機構": "香港復康會", "回收過期藥物點": "東區地區康健站", "回收點地址": "北角英皇道663號泓富產業千禧廣場12樓1209室", "地區": "香港島"},
-            {"支持機構": "永年物業管理有限公司", "回收過期藥物點": "華翠園", "回收點地址": "半山干德道62A-62F號", "地區": "香港島"},
-            {"支持機構": "康業服務有限公司", "回收過期藥物點": "寶雲閣", "回收點地址": "半山寶雲道11A", "地區": "香港島"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "大學閣 (地下保安控制室)", "回收點地址": "西半山旭龢道42號", "地區": "香港島"},
-            {"支持機構": "康業服務有限公司", "回收過期藥物點": "堅城中心", "回收點地址": "西區卑路乍街23號", "地區": "香港島"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "蘇長荣議員地區辦事處", "回收點地址": "灣仔軒尼詩道395-399號東區商業大廈12樓F室", "地區": "香港島"},
-            
-            // Kowloon entries
-            {"支持機構": "華懋集團", "回收過期藥物點": "金‧御門 (地下大堂)", "回收點地址": "九龍城衙前圍道39號", "地區": "九龍"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "御門‧前 (地下大堂)", "回收點地址": "九龍城衙前塱道62號", "地區": "九龍"},
-            {"支持機構": "香港房屋協會", "回收過期藥物點": "真善美村", "回收點地址": "九龍城富寧街21號", "地區": "九龍"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "賢文禮士 (地下大堂)", "回收點地址": "九龍塘延文禮士道38號", "地區": "九龍"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "雲門（會所）", "回收點地址": "九龍塘義德道5-11號", "地區": "九龍"},
-            {"支持機構": "香港城市大學", "回收過期藥物點": "香港城市大學", "回收點地址": "九龍塘達之路83號香港城市大學校務處", "地區": "九龍"},
-            {"支持機構": "首衛有限公司", "回收過期藥物點": "首衛有限公司", "回收點地址": "九龍灣臨樂街19號南豐商業中心18樓12室", "地區": "九龍"},
-            {"支持機構": "夏利文物業管理有限公司", "回收過期藥物點": "夏利文物業管理有限公司 (總辦事處)", "回收點地址": "九龍灣灣宏照道33號國際交易中心6樓601室", "地區": "九龍"},
-            {"支持機構": "夏利文物業管理有限公司", "回收過期藥物點": "Bailey Garden", "回收點地址": "土瓜灣庇利街23號", "地區": "九龍"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "御‧豪門 (地下大堂)", "回收點地址": "九龍城太子道西369號", "地區": "九龍"},
-            {"支持機構": "香港房屋協會", "回收過期藥物點": "悅庭軒", "回收點地址": "鑽石山龍蟠街1號", "地區": "九龍"},
-            
-            // New Territories entries
-            {"支持機構": "第一太平戴維斯(香港)有限公司", "回收過期藥物點": "上水匯", "回收點地址": "上水龍琛路48號", "地區": "新界"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "琨崙（會所）", "回收點地址": "小欖青發里8號", "地區": "新界"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "陳克勤議員地區辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心1樓", "地區": "新界"},
-            {"支持機構": "香港心理衞生會", "回收過期藥物點": "賽馬會心薈庭", "回收點地址": "大埔廣福邨廣智樓B翼地下101至108室", "地區": "新界"},
-            {"支持機構": "新界社團總會", "回收過期藥物點": "新界社團總會辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心9字樓", "地區": "新界"},
-            {"支持機構": "區議員辦事處", "回收過期藥物點": "董健莉議員辦事處", "回收點地址": "大埔廣福道152-172號大埔商業中心9字樓", "地區": "新界"},
-            {"支持機構": "香港房屋協會", "回收過期藥物點": "兆軒苑", "回收點地址": "屯門市中心良運街1號", "地區": "新界"},
-            {"支持機構": "香港聾人福利促進會", "回收過期藥物點": "新界綜合服務中心 (良景)", "回收點地址": "屯門田景路31號良景邨良賢樓地下18-23", "地區": "新界"},
-            {"支持機構": "博愛醫院", "回收過期藥物點": "屯門護養院", "回收點地址": "屯門青松觀路33號", "地區": "新界"},
-            {"支持機構": "香港房屋協會", "回收過期藥物點": "裕明苑", "回收點地址": "將軍澳常寧路1號", "地區": "新界"},
-            {"支持機構": "大灣區醫護教師社工協會", "回收過期藥物點": "新界辦事處", "回收點地址": "將軍澳景林商場 1 樓 104 室", "地區": "新界"},
-            {"支持機構": "香港房屋協會", "回收過期藥物點": "茵怡花園", "回收點地址": "將軍澳茵怡花園", "地區": "新界"},
-            {"支持機構": "立法會議員辦事處", "回收過期藥物點": "嚴剛議員地區辦事處", "回收點地址": "愉景灣地區辦事處大嶼山愉景灣海澄湖畔96號辦公室大樓第2座1樓22室", "地區": "新界"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "安泰工貿中心（地下大堂）", "回收點地址": "新界粉嶺粉嶺安全街4號", "地區": "新界"},
-            {"支持機構": "華懋集團", "回收過期藥物點": "安匯中心（地下大堂）", "回收點地址": "新界粉嶺粉嶺樂業路25號", "地區": "新界"},
-            {"支持機構": "聖方濟各大學", "回收過期藥物點": "聖方濟各大學", "回收點地址": "聖方濟各大學管理處", "地區": "新界"},
-            {"支持機構": "區議員辦事處", "回收過期藥物點": "彭熠銘議員辦事處", "回收點地址": "葵青區青衣青衣邨宜偉樓地下12號", "地區": "新界"},
-            {"支持機構": "區議員辦事處", "回收過期藥物點": "黃淑雯議員辦事處", "回收點地址": "葵涌石蔭邨勇石樓地下B室", "地區": "新界"},
-            {"支持機構": "康業服務有限公司", "回收過期藥物點": "葵星商場", "回收點地址": "葵涌青山公路412號", "地區": "新界"},
-            {"支持機構": "香港房屋協會", "回收過期藥物點": "浩景臺", "回收點地址": "葵涌荔崗街11號", "地區": "新界"},
-            {"支持機構": "康業服務有限公司", "回收過期藥物點": "華景山莊", "回收點地址": "葵涌華景山路9號", "地區": "新界"},
-            {"支持機構": "康業服務有限公司", "回收過期藥物點": "華景山莊商場", "回收點地址": "葵涌華景山路9號", "地區": "新界"},
-            {"支持機構": "香港房屋協會", "回收過期藥物點": "祖堯邨", "回收點地址": "葵涌麗祖路3號", "地區": "新界"},
-            {"支持機構": "區議員辦事處", "回收過期藥物點": "陳藹怡議員辦事處", "回收點地址": "葵涌麗瑤邨樂瑤樓115號G樓地下", "地區": "新界"},
-            {"支持機構": "區議員辦事處", "回收過期藥物點": "張展鵬議員辦事處", "回收點地址": "調景嶺善明邨善禮樓附翼地下1號", "地區": "新界"},
-            {"支持機構": "區議員辦事處", "回收過期藥物點": "諸樂為議員辦事處", "回收點地址": "藍田匯景廣場4樓309舖", "地區": "新界"}
-        ];
+        // Collection points data will be loaded from JSON file
+        let completeCollectionPointsData = [];
 
         function loadCollectionPointsData() {
             try {
-                console.log('Loading collection points data...');
+                console.log('Loading collection points data from JSON file...');
                 
+                // Load data from collectionpoints.json
+                fetch('Collection points database/collectionpoints.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Collection points data loaded:', data.length, 'entries');
+                        
+                        // Filter out header entries and empty entries
+                        completeCollectionPointsData = data.filter(item => 
+                            item.支持機構 && 
+                            item.回收過期藥物點 && 
+                            item.回收點地址 &&
+                            item.支持機構.trim() !== '' &&
+                            item.回收過期藥物點.trim() !== '' &&
+                            item.回收點地址.trim() !== '' &&
+                            !item.支持機構.includes('：') && // Remove regional headers
+                            item.支持機構 !== '支持機構' // Remove template entry
+                        ).map(item => {
+                            // Determine region based on address patterns
+                            let region = '新界'; // Default
+                            const address = item.回收點地址 || '';
+                            
+                            if (address.includes('香港島') || 
+                                address.includes('中環') || 
+                                address.includes('上環') || 
+                                address.includes('灣仔') || 
+                                address.includes('銅鑼灣') || 
+                                address.includes('北角') || 
+                                address.includes('太古') || 
+                                address.includes('西環') || 
+                                address.includes('西營盤') || 
+                                address.includes('香港仔') || 
+                                address.includes('柴灣') || 
+                                address.includes('堅尼地城') || 
+                                address.includes('淺水灣') || 
+                                address.includes('清水灣') || 
+                                address.includes('跑馬地') || 
+                                address.includes('黃竹坑') || 
+                                address.includes('筲箕灣') || 
+                                address.includes('鴨脷洲') || 
+                                address.includes('鰂魚涌') || 
+                                address.includes('半山') || 
+                                address.includes('西半山')) {
+                                region = '香港島';
+                            } else if (address.includes('九龍') || 
+                                       address.includes('尖沙咀') || 
+                                       address.includes('旺角') || 
+                                       address.includes('油麻地') || 
+                                       address.includes('深水埗') || 
+                                       address.includes('長沙灣') || 
+                                       address.includes('荔枝角') || 
+                                       address.includes('紅磡') || 
+                                       address.includes('何文田') || 
+                                       address.includes('土瓜灣') || 
+                                       address.includes('九龍城') || 
+                                       address.includes('九龍塘') || 
+                                       address.includes('九龍灣') || 
+                                       address.includes('觀塘') || 
+                                       address.includes('牛頭角') || 
+                                       address.includes('黃大仙') || 
+                                       address.includes('鑽石山') || 
+                                       address.includes('慈雲山') || 
+                                       address.includes('新蒲崗') || 
+                                       address.includes('秀茂坪') || 
+                                       address.includes('啟德') || 
+                                       address.includes('深水灣') || 
+                                       address.includes('清水灣道') || 
+                                       address.includes('藍田') || 
+                                       address.includes('調景嶺')) {
+                                region = '九龍';
+                            }
+                            
+                            return {
+                                ...item,
+                                地區: region
+                            };
+                        });
+                        
+                        console.log('Processed collection points:', completeCollectionPointsData.length);
+                        console.log('Regional distribution:', {
+                            '香港島': completeCollectionPointsData.filter(item => item.地區 === '香港島').length,
+                            '九龍': completeCollectionPointsData.filter(item => item.地區 === '九龍').length,
+                            '新界': completeCollectionPointsData.filter(item => item.地區 === '新界').length
+                        });
+                        
+                        // Populate the tables
+                        populateCollectionPointsTables();
+                    })
+                    .catch(error => {
+                        console.error('Error loading collection points data:', error);
+                        // Show error message to user
+                        const errorDiv = document.createElement('div');
+                        errorDiv.style.cssText = 'background: #ffebee; color: #c62828; padding: 1rem; margin: 1rem; border-radius: 4px; text-align: center;';
+                        errorDiv.innerHTML = `
+                            <i class="fas fa-exclamation-triangle" style="margin-right: 0.5rem;"></i>
+                            載入回收點資料時發生錯誤，請稍後再試
+                        `;
+                        document.querySelector('.collection-points-list').appendChild(errorDiv);
+                    });
+            } catch (error) {
+                console.error('Error in loadCollectionPointsData:', error);
+            }
+        }
+
+        function populateCollectionPointsTables() {
+            try {
                 // Get table bodies for each region
                 const hkIslandTableBody = document.getElementById('hkIslandTableBody');
                 const kowloonTableBody = document.getElementById('kowloonTableBody');
@@ -1398,7 +1440,7 @@
                 initializeSearchFunctionality();
                 
             } catch (error) {
-                console.error('Error loading collection points data:', error);
+                console.error('Error populating collection points tables:', error);
                 // Show error message in all tables
                 const errorMessage = `
                     <tr>
