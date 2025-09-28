@@ -550,75 +550,17 @@
             margin: 0;
         }
         
-        /* Mobile Menu Fixes */
         @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                z-index: 10001 !important;
-                cursor: pointer !important;
+            .faq-question {
+                padding: 1rem;
             }
             
-            .main-menu {
-                position: fixed !important;
-                top: 0 !important;
-                right: -100% !important;
-                width: 80% !important;
-                max-width: 300px !important;
-                height: 100vh !important;
-                background: white !important;
-                box-shadow: -2px 0 10px rgba(0,0,0,0.1) !important;
-                transition: right 0.3s ease !important;
-                z-index: 10000 !important;
-                overflow-y: auto !important;
-                padding-top: 80px !important;
+            .faq-question h3 {
+                font-size: 1.1rem;
             }
             
-            .main-menu.active {
-                right: 0 !important;
-            }
-            
-            .main-menu li {
-                margin: 0 !important;
-                border-bottom: 1px solid #f0f0f0 !important;
-            }
-            
-            .main-menu li:last-child {
-                border-bottom: none !important;
-            }
-            
-            .main-menu a {
-                display: block !important;
-                padding: 1rem 2rem !important;
-                color: #333 !important;
-                text-decoration: none !important;
-                font-size: 1rem !important;
-            }
-            
-            .main-menu a:hover {
-                background: #f8f9fa !important;
-                color: var(--primary-color) !important;
-            }
-            
-            .dropdown-content {
-                position: static !important;
-                display: none !important;
-                background: #f8f9fa !important;
-                box-shadow: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-            
-            .dropdown:hover .dropdown-content,
-            .dropdown.active .dropdown-content {
-                display: block !important;
-            }
-            
-            .dropdown-content a {
-                padding: 0.8rem 3rem !important;
-                font-size: 0.9rem !important;
-                color: #666 !important;
+            .faq-item.active .faq-answer {
+                padding: 1rem;
             }
         }
     </style>
@@ -1239,45 +1181,7 @@
     <script>
         // Mobile menu toggle
         document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-            const mainMenu = document.querySelector('.main-menu');
-            const toggleButton = this;
-            
-            // Toggle the main menu
-            mainMenu.classList.toggle('active');
-            
-            // Toggle the hamburger animation
-            toggleButton.classList.toggle('active');
-            
-            // Prevent body scroll when menu is open
-            if (mainMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const mainMenu = document.querySelector('.main-menu');
-            const toggleButton = document.querySelector('.mobile-menu-toggle');
-            
-            if (!mainMenu.contains(e.target) && !toggleButton.contains(e.target)) {
-                mainMenu.classList.remove('active');
-                toggleButton.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-        
-        // Close mobile menu when clicking on a menu item
-        document.querySelectorAll('.main-menu a').forEach(link => {
-            link.addEventListener('click', function() {
-                const mainMenu = document.querySelector('.main-menu');
-                const toggleButton = document.querySelector('.mobile-menu-toggle');
-                
-                mainMenu.classList.remove('active');
-                toggleButton.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+            document.querySelector('.main-menu').classList.toggle('active');
         });
 
         // Smooth scrolling for anchor links
