@@ -942,6 +942,24 @@
                             <!-- Data will be loaded dynamically -->
                         </tbody>
                     </table>
+                    
+                    <!-- Pagination Controls for Hong Kong Island -->
+                    <div id="hkIslandPagination" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="color: #666; font-size: 0.9rem;">
+                            顯示 <span id="hkIslandStart">1</span> - <span id="hkIslandEnd">10</span> 項，共 <span id="hkIslandTotal">0</span> 項
+                        </div>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button id="hkIslandPrev" onclick="changePage('hkIsland', -1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
+                                <i class="fas fa-chevron-left"></i> 上一頁
+                            </button>
+                            <div id="hkIslandPageNumbers" style="display: flex; gap: 0.25rem;">
+                                <!-- Page numbers will be generated dynamically -->
+                            </div>
+                            <button id="hkIslandNext" onclick="changePage('hkIsland', 1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
+                                下一頁 <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Kowloon Table -->
@@ -961,6 +979,24 @@
                             <!-- Data will be loaded dynamically -->
                         </tbody>
                     </table>
+                    
+                    <!-- Pagination Controls for Kowloon -->
+                    <div id="kowloonPagination" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="color: #666; font-size: 0.9rem;">
+                            顯示 <span id="kowloonStart">1</span> - <span id="kowloonEnd">10</span> 項，共 <span id="kowloonTotal">0</span> 項
+                        </div>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button id="kowloonPrev" onclick="changePage('kowloon', -1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
+                                <i class="fas fa-chevron-left"></i> 上一頁
+                            </button>
+                            <div id="kowloonPageNumbers" style="display: flex; gap: 0.25rem;">
+                                <!-- Page numbers will be generated dynamically -->
+                            </div>
+                            <button id="kowloonNext" onclick="changePage('kowloon', 1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
+                                下一頁 <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- New Territories Table -->
@@ -980,6 +1016,24 @@
                             <!-- Data will be loaded dynamically -->
                         </tbody>
                     </table>
+                    
+                    <!-- Pagination Controls for New Territories -->
+                    <div id="newTerritoriesPagination" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="color: #666; font-size: 0.9rem;">
+                            顯示 <span id="newTerritoriesStart">1</span> - <span id="newTerritoriesEnd">10</span> 項，共 <span id="newTerritoriesTotal">0</span> 項
+                        </div>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button id="newTerritoriesPrev" onclick="changePage('newTerritories', -1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
+                                <i class="fas fa-chevron-left"></i> 上一頁
+                            </button>
+                            <div id="newTerritoriesPageNumbers" style="display: flex; gap: 0.25rem;">
+                                <!-- Page numbers will be generated dynamically -->
+                            </div>
+                            <button id="newTerritoriesNext" onclick="changePage('newTerritories', 1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
+                                下一頁 <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Google Maps Integration -->
@@ -1371,69 +1425,45 @@
             }
         }
 
+        // Pagination state
+        const paginationState = {
+            hkIsland: { currentPage: 1, itemsPerPage: 10, totalItems: 0, totalPages: 0 },
+            kowloon: { currentPage: 1, itemsPerPage: 10, totalItems: 0, totalPages: 0 },
+            newTerritories: { currentPage: 1, itemsPerPage: 10, totalItems: 0, totalPages: 0 }
+        };
+
         function populateCollectionPointsTables() {
             try {
-                // Get table bodies for each region
-                const hkIslandTableBody = document.getElementById('hkIslandTableBody');
-                const kowloonTableBody = document.getElementById('kowloonTableBody');
-                const newTerritoriesTableBody = document.getElementById('newTerritoriesTableBody');
+                // Separate data by region
+                const hkIslandData = completeCollectionPointsData.filter(item => item.地區 === '香港島');
+                const kowloonData = completeCollectionPointsData.filter(item => item.地區 === '九龍');
+                const newTerritoriesData = completeCollectionPointsData.filter(item => item.地區 === '新界');
                 
-                // Get count elements
-                const hkIslandCount = document.getElementById('hkIslandCount');
-                const kowloonCount = document.getElementById('kowloonCount');
-                const newTerritoriesCount = document.getElementById('newTerritoriesCount');
+                // Update pagination state
+                paginationState.hkIsland.totalItems = hkIslandData.length;
+                paginationState.hkIsland.totalPages = Math.ceil(hkIslandData.length / paginationState.hkIsland.itemsPerPage);
                 
-                // Clear existing content
-                hkIslandTableBody.innerHTML = '';
-                kowloonTableBody.innerHTML = '';
-                newTerritoriesTableBody.innerHTML = '';
+                paginationState.kowloon.totalItems = kowloonData.length;
+                paginationState.kowloon.totalPages = Math.ceil(kowloonData.length / paginationState.kowloon.itemsPerPage);
                 
-                let hkIslandTotal = 0;
-                let kowloonTotal = 0;
-                let newTerritoriesTotal = 0;
+                paginationState.newTerritories.totalItems = newTerritoriesData.length;
+                paginationState.newTerritories.totalPages = Math.ceil(newTerritoriesData.length / paginationState.newTerritories.itemsPerPage);
                 
-                // Function to create table row
-                function createTableRow(item) {
-                    const row = document.createElement('tr');
-                    row.style.borderBottom = '1px solid #eee';
-                    
-                    // Combine 回收點名稱 and 地址 into one column
-                    const combinedInfo = `${item.回收過期藥物點}<br><small style="color: #666; font-size: 0.9rem;">${item.回收點地址}</small>`;
-                    
-                    row.innerHTML = `
-                        <td style="padding: 1rem;">${item.支持機構}</td>
-                        <td style="padding: 1rem;">${combinedInfo}</td>
-                    `;
-                    
-                    return row;
-                }
-                
-                // Process each collection point and add to appropriate table
-                completeCollectionPointsData.forEach((item, index) => {
-                    const row = createTableRow(item);
-                    
-                    if (item.地區 === '香港島') {
-                        hkIslandTableBody.appendChild(row);
-                        hkIslandTotal++;
-                    } else if (item.地區 === '九龍') {
-                        kowloonTableBody.appendChild(row);
-                        kowloonTotal++;
-                    } else if (item.地區 === '新界') {
-                        newTerritoriesTableBody.appendChild(row);
-                        newTerritoriesTotal++;
-                    }
-                });
+                // Populate each table with pagination
+                populateTable('hkIsland', hkIslandData);
+                populateTable('kowloon', kowloonData);
+                populateTable('newTerritories', newTerritoriesData);
                 
                 // Update counts
-                hkIslandCount.textContent = `${hkIslandTotal} 個回收點`;
-                kowloonCount.textContent = `${kowloonTotal} 個回收點`;
-                newTerritoriesCount.textContent = `${newTerritoriesTotal} 個回收點`;
+                document.getElementById('hkIslandCount').textContent = `${hkIslandData.length} 個回收點`;
+                document.getElementById('kowloonCount').textContent = `${kowloonData.length} 個回收點`;
+                document.getElementById('newTerritoriesCount').textContent = `${newTerritoriesData.length} 個回收點`;
                 
-                console.log('Collection points loaded:', {
-                    hkIsland: hkIslandTotal,
-                    kowloon: kowloonTotal,
-                    newTerritories: newTerritoriesTotal,
-                    total: hkIslandTotal + kowloonTotal + newTerritoriesTotal
+                console.log('Collection points loaded with pagination:', {
+                    hkIsland: hkIslandData.length,
+                    kowloon: kowloonData.length,
+                    newTerritories: newTerritoriesData.length,
+                    total: completeCollectionPointsData.length
                 });
                 
                 // Initialize search functionality after data is loaded
@@ -1457,6 +1487,121 @@
                 document.getElementById('kowloonTableBody').innerHTML = errorMessage;
                 document.getElementById('newTerritoriesTableBody').innerHTML = errorMessage;
             }
+        }
+
+        function populateTable(region, data) {
+            const tableBody = document.getElementById(`${region}TableBody`);
+            const state = paginationState[region];
+            
+            // Clear existing content
+            tableBody.innerHTML = '';
+            
+            // Calculate pagination
+            const startIndex = (state.currentPage - 1) * state.itemsPerPage;
+            const endIndex = Math.min(startIndex + state.itemsPerPage, data.length);
+            const pageData = data.slice(startIndex, endIndex);
+            
+            // Create table rows
+            pageData.forEach(item => {
+                const row = createTableRow(item);
+                tableBody.appendChild(row);
+            });
+            
+            // Update pagination controls
+            updatePaginationControls(region, state);
+        }
+
+        function createTableRow(item) {
+            const row = document.createElement('tr');
+            row.style.borderBottom = '1px solid #eee';
+            
+            // Combine 回收點名稱 and 地址 into one column
+            const combinedInfo = `${item.回收過期藥物點}<br><small style="color: #666; font-size: 0.9rem;">${item.回收點地址}</small>`;
+            
+            row.innerHTML = `
+                <td style="padding: 1rem;">${item.支持機構}</td>
+                <td style="padding: 1rem;">${combinedInfo}</td>
+            `;
+            
+            return row;
+        }
+
+        function updatePaginationControls(region, state) {
+            const startIndex = (state.currentPage - 1) * state.itemsPerPage + 1;
+            const endIndex = Math.min(state.currentPage * state.itemsPerPage, state.totalItems);
+            
+            // Update display text
+            document.getElementById(`${region}Start`).textContent = startIndex;
+            document.getElementById(`${region}End`).textContent = endIndex;
+            document.getElementById(`${region}Total`).textContent = state.totalItems;
+            
+            // Update buttons
+            const prevButton = document.getElementById(`${region}Prev`);
+            const nextButton = document.getElementById(`${region}Next`);
+            
+            prevButton.disabled = state.currentPage === 1;
+            nextButton.disabled = state.currentPage === state.totalPages;
+            
+            // Update button styles
+            prevButton.style.opacity = prevButton.disabled ? '0.5' : '1';
+            nextButton.style.opacity = nextButton.disabled ? '0.5' : '1';
+            
+            // Generate page numbers
+            generatePageNumbers(region, state);
+        }
+
+        function generatePageNumbers(region, state) {
+            const container = document.getElementById(`${region}PageNumbers`);
+            container.innerHTML = '';
+            
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, state.currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(state.totalPages, startPage + maxVisiblePages - 1);
+            
+            if (endPage - startPage + 1 < maxVisiblePages) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                pageButton.style.cssText = `
+                    padding: 0.5rem 0.75rem; 
+                    border: 1px solid #ddd; 
+                    background: ${i === state.currentPage ? '#FF7A00' : 'white'}; 
+                    color: ${i === state.currentPage ? 'white' : '#666'}; 
+                    border-radius: 4px; 
+                    cursor: pointer;
+                    min-width: 40px;
+                `;
+                pageButton.onclick = () => goToPage(region, i);
+                container.appendChild(pageButton);
+            }
+        }
+
+        function goToPage(region, page) {
+            const state = paginationState[region];
+            if (page >= 1 && page <= state.totalPages) {
+                state.currentPage = page;
+                
+                // Get the data for this region
+                let data;
+                if (region === 'hkIsland') {
+                    data = completeCollectionPointsData.filter(item => item.地區 === '香港島');
+                } else if (region === 'kowloon') {
+                    data = completeCollectionPointsData.filter(item => item.地區 === '九龍');
+                } else if (region === 'newTerritories') {
+                    data = completeCollectionPointsData.filter(item => item.地區 === '新界');
+                }
+                
+                populateTable(region, data);
+            }
+        }
+
+        function changePage(region, direction) {
+            const state = paginationState[region];
+            const newPage = state.currentPage + direction;
+            goToPage(region, newPage);
         }
 
         function initializeSearchFunctionality() {
