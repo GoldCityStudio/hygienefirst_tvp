@@ -555,56 +555,9 @@
                 padding: 1rem;
             }
             
-            /* Fix mobile menu positioning and visibility */
-            .main-menu {
-                position: fixed !important;
-                top: 0 !important;
-                right: -300px !important;
-                left: auto !important;
-                width: 300px !important;
-                height: 100vh !important;
-                background: white !important;
-                box-shadow: -5px 0 30px rgba(0,0,0,0.15) !important;
-                transition: right 0.4s cubic-bezier(0.77, 0, 0, 0.175, 1) !important;
-                overflow-y: auto !important;
-                z-index: 10000 !important;
-                display: flex !important;
-                flex-direction: column !important;
-                padding: 80px 25px 30px !important;
-                align-items: flex-start !important;
-            }
+      
             
-            .main-menu.active {
-                right: 0 !important;
-            }
-            
-            .main-menu li {
-                margin: 0 !important;
-                padding: 8px 0 !important;
-                width: 100% !important;
-                border-bottom: 1px solid rgba(0,0,0,0.05) !important;
-            }
-            
-            .main-menu li:last-child {
-                border-bottom: none !important;
-            }
-            
-            .main-menu a {
-                padding: 12px 0 !important;
-                font-size: 1.1rem !important;
-                display: block !important;
-                width: 100% !important;
-            }
-            
-            .main-menu a:after {
-                display: none !important;
-            }
-            
-            .main-menu a.active {
-                color: var(--primary-color) !important;
-                background: none !important;
-            }
-            
+   
             /* Ensure mobile menu toggle is visible */
             .mobile-menu-toggle {
                 display: flex !important;
