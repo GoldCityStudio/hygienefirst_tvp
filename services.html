@@ -87,8 +87,10 @@
     <div class="overlay"></div>
     <div class="page-transition"></div>
 
-    
     <header>
+        <!-- Promo Banner -->
+
+        
         <div class="container">
             <div class="logo">
                 <a href="index.html">
@@ -103,10 +105,10 @@
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">關於我們</a>
-                        <div class="dropdown-content">
-                            <a href="about.html#features">我們的特色</a>
-                            <a href="about.html#testimonials">客戶評價</a>
+                        <div class="dropdown-content">   
+                            <a href="about.html">關於我們</a>
                             <a href="news.html">媒體中心</a>
+                         
                         </div>
                     </li>
                     <li class="dropdown">
@@ -142,12 +144,14 @@
                     </li>
                     <li class="dropdown">
                         <a href="institutional-care.html">機構護理人手支援</a>
-                        <div class="dropdown-content">
-                            <a href="institutional-care.html#institutional-care">機構護理服務</a>
-                        </div>
+                      
                     </li>
-                    <li>
-                        <a href="waste-collection.html">醫療及化學廢物收集服務</a>
+                    <li class="dropdown">
+                        <a href="waste-collection.html">醫療及化學廢物</a>
+                        <div class="dropdown-content">
+                            <a href="waste-collection.html">醫療及化學廢物收集服務</a>
+                            <a href="醫療廢棄物處理及管理.html">醫療廢棄物處理及管理</a>
+                        </div>
                     </li>
                     <li>
                         <a href="community-zh.html">長者社區服務劵</a>
@@ -195,230 +199,419 @@
             <h1 style="position: absolute; top: 68%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 2.8rem; font-weight: bold; text-shadow: 0 2px 16px rgba(0,0,0,0.5); margin: 0; padding: 0; letter-spacing: 0.1em;">服務方案</h1>
         </div>
 
-    <section class="page-header">
-        <div class="container">
-            <h1>Our Cleaning Services</h1>
-            <p>Professional cleaning solutions for every need</p>
-        </div>
-    </section>
-
-    <section class="services-intro">
-        <div class="container">
-            <div class="intro-content">
-                <h2>Comprehensive Cleaning Solutions</h2>
-                <p>At Hygiene First, we understand that every home and business has unique cleaning needs. That's why we offer a wide range of professional cleaning services tailored to meet your specific requirements. Whether you need a one-time deep clean or ongoing maintenance, our team of experienced cleaners is equipped with the knowledge, skills, and tools to deliver exceptional results.</p>
-                <p>All our cleaning staff undergo rigorous training and adhere to strict quality standards to ensure your complete satisfaction. We use eco-friendly cleaning products that are safe for your family, pets, and the environment.</p>
-            </div>
-        </div>
-    </section>
-
     <section class="service-categories">
         <div class="container">
-            <h2>Our Service Categories</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
+                <h2 style="margin: 0;">我們的服務類別</h2>
+                <div id="serviceCount" style="background: #FF7A00; color: white; padding: 0.5rem 1.2rem; border-radius: 25px; font-weight: 600; font-size: 0.95rem;">
+                    <i class="fas fa-check-circle"></i> 顯示 <span id="countNumber">12</span> 項服務
+                </div>
+            </div>
             
-            <div class="category">
-                <h3>Residential Cleaning</h3>
+            <!-- Service Sorting and Filtering Controls -->
+            <div>
+                <!-- Sorting Buttons -->
+                <div style="margin-bottom: 1.5rem;">
+                   
+                    <div class="sorting-buttons" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                        <button class="sort-btn active" data-sort="default" style="padding: 0.6rem 1.2rem; border: 2px solid #FF7A00; background: #FF7A00; color: white; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-list"></i> 預設順序
+                        </button>
+                        <button class="sort-btn" data-sort="price-asc" style="padding: 0.6rem 1.2rem; border: 2px solid #ddd; background: white; color: #333; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-arrow-up"></i> 價格最低
+                        </button>
+                        <button class="sort-btn" data-sort="price-desc" style="padding: 0.6rem 1.2rem; border: 2px solid #ddd; background: white; color: #333; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-arrow-down"></i> 價格最高
+                        </button>
+                        <button class="sort-btn" data-sort="name-asc" style="padding: 0.6rem 1.2rem; border: 2px solid #ddd; background: white; color: #333; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-sort-alpha-down"></i> 名稱 A-Z
+                        </button>
+                        <button class="sort-btn" data-sort="name-desc" style="padding: 0.6rem 1.2rem; border: 2px solid #ddd; background: white; color: #333; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-sort-alpha-up"></i> 名稱 Z-A
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Category Filter Buttons -->
+                <div style="margin-bottom: 1.5rem;">
+                  
+                    <div class="category-buttons" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                        <button class="category-btn active" data-category="all" style="padding: 0.6rem 1.2rem; border: 2px solid #FF7A00; background: #FF7A00; color: white; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-th"></i> 所有類別
+                        </button>
+                        <button class="category-btn" data-category="residential" style="padding: 0.6rem 1.2rem; border: 2px solid #ddd; background: white; color: #333; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-home"></i> 住宅清潔
+                        </button>
+                        <button class="category-btn" data-category="specialized" style="padding: 0.6rem 1.2rem; border: 2px solid #ddd; background: white; color: #333; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-tools"></i> 專業清潔
+                        </button>
+                        <button class="category-btn" data-category="commercial" style="padding: 0.6rem 1.2rem; border: 2px solid #ddd; background: white; color: #333; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-building"></i> 商業清潔
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Filter -->
+                <div>
+                   
+                    <input type="text" id="searchFilter" placeholder="輸入關鍵字搜尋服務..." style="width: 100%; max-width: 500px; padding: 0.75rem 1rem; border: 2px solid #ddd; border-radius: 25px; font-size: 1rem; transition: border-color 0.3s ease;">
+                </div>
+            </div>
+
+        
+            
+            <div class="category" data-category="residential">
+                <h3>住宅清潔服務</h3>
                 <div class="service-grid">
-                    <div class="service-item">
+                    <div class="service-item" data-name="定期家居清潔" data-price="800" data-category="residential" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-home"></i></div>
-                        <h4>Regular Home Cleaning</h4>
-                        <p>Comprehensive cleaning service for homes of all sizes, focusing on living areas, kitchens, bathrooms, and bedrooms.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>定期家居清潔</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 800 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" data-name="深層清潔" data-price="1200" data-category="residential" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-broom"></i></div>
-                        <h4>Deep Cleaning</h4>
-                        <p>Intensive cleaning that reaches areas often missed during regular cleaning, including behind appliances, inside cabinets, and other hard-to-reach spots.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>深層清潔</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 1,200 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" data-name="家居消毒服務" data-price="1000" data-category="residential" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-spray-can"></i></div>
-                        <h4>Home Sanitization</h4>
-                        <p>Thorough disinfection service that kills germs, bacteria, and viruses on high-touch surfaces throughout your home.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>家居消毒服務</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 1,000 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" data-name="傢俬及布藝清潔" data-price="1500" data-category="residential" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-couch"></i></div>
-                        <h4>Upholstery & Furniture Cleaning</h4>
-                        <p>Professional cleaning for sofas, chairs, mattresses, and other upholstered furniture to remove stains, odors, and allergens.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>傢俬及布藝清潔</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 1,500 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
                 </div>
             </div>
             
-            <div class="category">
-                <h3>Specialized Cleaning</h3>
+            <div class="category" data-category="specialized">
+                <h3>專業清潔服務</h3>
                 <div class="service-grid">
-                    <div class="service-item">
+                    <div class="service-item" data-name="裝修後清潔" data-price="2000" data-category="specialized" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-tools"></i></div>
-                        <h4>Post-Construction Cleaning</h4>
-                        <p>Thorough cleaning after construction or renovation projects to remove dust, debris, and construction materials.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>裝修後清潔</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 2,000 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" data-name="地毯及地板清潔" data-price="1300" data-category="specialized" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-layer-group"></i></div>
-                        <h4>Carpet & Floor Cleaning</h4>
-                        <p>Deep cleaning for carpets, hardwood floors, tile, and other flooring surfaces to remove dirt, stains, and allergens.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>地毯及地板清潔</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 1,300 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" data-name="黴菌清除" data-price="1800" data-category="specialized" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-leaf"></i></div>
-                        <h4>Mold Remediation</h4>
-                        <p>Safe and effective removal of mold and prevention of future growth to improve indoor air quality and protect your health.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>黴菌清除</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 1,800 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" data-name="窗戶及玻璃清潔" data-price="900" data-category="specialized" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-window-restore"></i></div>
-                        <h4>Window & Glass Cleaning</h4>
-                        <p>Professional cleaning for windows, glass doors, mirrors, and other glass surfaces to achieve a streak-free shine.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>窗戶及玻璃清潔</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 900 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
                 </div>
             </div>
             
-            <div class="category">
-                <h3>Commercial Cleaning</h3>
+            <div class="category" data-category="commercial">
+                <h3>商業清潔服務</h3>
                 <div class="service-grid">
-                    <div class="service-item">
+                    <div class="service-item" data-name="辦公室清潔" data-price="1500" data-category="commercial" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-building"></i></div>
-                        <h4>Office Cleaning</h4>
-                        <p>Regular cleaning services for offices and workspaces to maintain a clean, healthy, and productive environment for employees and clients.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>辦公室清潔</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 1,500 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" data-name="醫療設施清潔" data-price="2500" data-category="commercial" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-hospital"></i></div>
-                        <h4>Healthcare Facility Cleaning</h4>
-                        <p>Specialized cleaning for medical offices, clinics, and other healthcare facilities that meets strict health and safety standards.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>醫療設施清潔</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 2,500 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" data-name="餐廳及廚房清潔" data-price="2200" data-category="commercial" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-utensils"></i></div>
-                        <h4>Restaurant & Kitchen Cleaning</h4>
-                        <p>Thorough cleaning for commercial kitchens and dining areas to ensure food safety and compliance with health regulations.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>餐廳及廚房清潔</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 2,200 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" data-name="零售店舖清潔" data-price="1600" data-category="commercial" style="text-align: center;">
                         <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-                        <h4>Retail & Store Cleaning</h4>
-                        <p>Professional cleaning for retail spaces to create a clean and inviting environment for customers and employees.</p>
-                        <a href="#" class="link-arrow">Learn More →</a>
+                        <h4>零售店舖清潔</h4>
+                        <div style="margin: 1.5rem 0; color: #FF7A00; font-weight: 700; font-size: 1.3rem;">HK$ 1,600 起</div>
+                        <a href="contact.html" class="btn primary-btn" style="width: 100%; display: block;">了解更多</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="service-process">
-        <div class="container">
-            <h2>Our Cleaning Process</h2>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h4>Assessment</h4>
-                    <p>We evaluate your space and discuss your specific cleaning needs and preferences.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h4>Customized Plan</h4>
-                    <p>We create a tailored cleaning plan based on your requirements and schedule.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h4>Professional Cleaning</h4>
-                    <p>Our trained cleaners execute the plan using professional techniques and eco-friendly products.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h4>Quality Check</h4>
-                    <p>We conduct a thorough inspection to ensure everything meets our high standards.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">5</div>
-                    <h4>Feedback</h4>
-                    <p>We welcome your feedback to continually improve our service.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="pricing">
+    <section class="pricing" id="quotation-section">
         <div class="container">
-            <h2>Flexible Pricing Options</h2>
-            <p>We offer transparent pricing with no hidden fees. Choose from our standard packages or request a customized quote based on your specific needs.</p>
-            
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Basic</h3>
-                        <p class="price">From $XX</p>
-                        <p>Per session</p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>General dusting and wiping</li>
-                            <li>Vacuuming and mopping</li>
-                            <li>Bathroom cleaning</li>
-                            <li>Kitchen cleaning</li>
-                            <li>Trash removal</li>
-                        </ul>
-                    </div>
-                    <a href="contact.html" class="btn primary-btn">Get Quote</a>
-                </div>
-                
-                <div class="pricing-card featured">
-                    <div class="pricing-header">
-                        <span class="featured-tag">Most Popular</span>
-                        <h3>Standard</h3>
-                        <p class="price">From $XX</p>
-                        <p>Per session</p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>All Basic services</li>
-                            <li>Inside cabinet cleaning</li>
-                            <li>Interior window cleaning</li>
-                            <li>Refrigerator cleaning</li>
-                            <li>Oven cleaning</li>
-                            <li>Baseboards and door frames</li>
-                        </ul>
-                    </div>
-                    <a href="contact.html" class="btn primary-btn">Get Quote</a>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Premium</h3>
-                        <p class="price">From $XX</p>
-                        <p>Per session</p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>All Standard services</li>
-                            <li>Wall cleaning</li>
-                            <li>Ceiling fans and light fixtures</li>
-                            <li>Deep furniture cleaning</li>
-                            <li>Carpet deep cleaning</li>
-                            <li>Window tracks and blinds</li>
-                            <li>Sanitization and disinfection</li>
-                        </ul>
-                    </div>
-                    <a href="contact.html" class="btn primary-btn">Get Quote</a>
-                </div>
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">靈活定價選項</h2>
+                <p style="font-size: 1.1rem; color: #666;">我們提供透明定價，沒有隱藏費用。使用我們的即時報價系統，獲取個人化服務方案。</p>
             </div>
-            
-            <div class="custom-quote">
-                <h3>Need a Custom Solution?</h3>
-                <p>We understand that each space has unique cleaning requirements. Contact us for a personalized quote tailored to your specific needs.</p>
-                <a href="contact.html" class="btn secondary-btn">Request Custom Quote</a>
+
+            <!-- Quotation System -->
+            <div class="quotation-system" style="background: #fff; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2rem; margin-bottom: 3rem;">
+                <h3 style="color: #FF7A00; margin-bottom: 2rem; text-align: center;">
+                    <i class="fas fa-calculator"></i> 即時報價系統
+                </h3>
+                
+                <!-- Step 1: Service Selection -->
+                <div class="quote-step active" id="step1">
+                    <h4 style="margin-bottom: 1.5rem;"><i class="fas fa-1"></i> 選擇服務類型</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <div class="service-option" data-service="residential" data-base-price="800">
+                            <input type="radio" name="serviceType" id="service-residential" value="residential">
+                            <label for="service-residential">
+                                <i class="fas fa-home"></i>
+                                <h5>住宅清潔服務</h5>
+                                <p>基本價格: HK$ 800 起</p>
+                            </label>
+                        </div>
+                        <div class="service-option" data-service="specialized" data-base-price="1300">
+                            <input type="radio" name="serviceType" id="service-specialized" value="specialized">
+                            <label for="service-specialized">
+                                <i class="fas fa-tools"></i>
+                                <h5>專業清潔服務</h5>
+                                <p>基本價格: HK$ 1,300 起</p>
+                            </label>
+                        </div>
+                        <div class="service-option" data-service="commercial" data-base-price="1500">
+                            <input type="radio" name="serviceType" id="service-commercial" value="commercial">
+                            <label for="service-commercial">
+                                <i class="fas fa-building"></i>
+                                <h5>商業清潔服務</h5>
+                                <p>基本價格: HK$ 1,500 起</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Property Details -->
+                <div class="quote-step" id="step2">
+                    <h4 style="margin-bottom: 1.5rem;"><i class="fas fa-2"></i> 物業詳情</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                        <div class="form-group">
+                            <label for="propertySize">物業面積 (平方呎)</label>
+                            <select id="propertySize" class="quote-select">
+                                <option value="500" data-multiplier="1.0">少於 500</option>
+                                <option value="800" data-multiplier="1.2">500 - 800</option>
+                                <option value="1000" data-multiplier="1.4">800 - 1,000</option>
+                                <option value="1500" data-multiplier="1.6">1,000 - 1,500</option>
+                                <option value="2000" data-multiplier="2.0">1,500 - 2,000</option>
+                                <option value="2500" data-multiplier="2.5">2,000 以上</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bedrooms">睡房數量</label>
+                            <select id="bedrooms" class="quote-select">
+                                <option value="1">1 間</option>
+                                <option value="2">2 間</option>
+                                <option value="3">3 間</option>
+                                <option value="4">4 間或以上</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bathrooms">浴室數量</label>
+                            <select id="bathrooms" class="quote-select">
+                                <option value="1">1 間</option>
+                                <option value="2">2 間</option>
+                                <option value="3">3 間或以上</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Service Frequency -->
+                <div class="quote-step" id="step3">
+                    <h4 style="margin-bottom: 1.5rem;"><i class="fas fa-3"></i> 服務頻率</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div class="frequency-option">
+                            <input type="radio" name="frequency" id="freq-once" value="once" data-discount="0">
+                            <label for="freq-once">
+                                <h5>一次性服務</h5>
+                                <p>無折扣</p>
+                            </label>
+                        </div>
+                        <div class="frequency-option">
+                            <input type="radio" name="frequency" id="freq-weekly" value="weekly" data-discount="0.15" checked>
+                            <label for="freq-weekly">
+                                <h5>每週一次</h5>
+                                <p class="discount-badge">節省 15%</p>
+                            </label>
+                        </div>
+                        <div class="frequency-option">
+                            <input type="radio" name="frequency" id="freq-biweekly" value="biweekly" data-discount="0.10">
+                            <label for="freq-biweekly">
+                                <h5>每兩週一次</h5>
+                                <p class="discount-badge">節省 10%</p>
+                            </label>
+                        </div>
+                        <div class="frequency-option">
+                            <input type="radio" name="frequency" id="freq-monthly" value="monthly" data-discount="0.05">
+                            <label for="freq-monthly">
+                                <h5>每月一次</h5>
+                                <p class="discount-badge">節省 5%</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Add-on Services -->
+                <div class="quote-step" id="step4">
+                    <h4 style="margin-bottom: 1.5rem;"><i class="fas fa-4"></i> 額外服務 (可選)</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <div class="addon-option">
+                            <input type="checkbox" id="addon-window" value="300" data-addon="window">
+                            <label for="addon-window">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <i class="fas fa-window-restore"></i>
+                                        <span>窗戶清潔</span>
+                                    </div>
+                                    <span class="addon-price">+HK$ 300</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="addon-option">
+                            <input type="checkbox" id="addon-carpet" value="500" data-addon="carpet">
+                            <label for="addon-carpet">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <i class="fas fa-layer-group"></i>
+                                        <span>地毯深層清潔</span>
+                                    </div>
+                                    <span class="addon-price">+HK$ 500</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="addon-option">
+                            <input type="checkbox" id="addon-appliance" value="400" data-addon="appliance">
+                            <label for="addon-appliance">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <i class="fas fa-blender"></i>
+                                        <span>家電深層清潔</span>
+                                    </div>
+                                    <span class="addon-price">+HK$ 400</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="addon-option">
+                            <input type="checkbox" id="addon-disinfect" value="350" data-addon="disinfect">
+                            <label for="addon-disinfect">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <i class="fas fa-spray-can"></i>
+                                        <span>專業消毒服務</span>
+                                    </div>
+                                    <span class="addon-price">+HK$ 350</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="addon-option">
+                            <input type="checkbox" id="addon-furniture" value="600" data-addon="furniture">
+                            <label for="addon-furniture">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <i class="fas fa-couch"></i>
+                                        <span>傢俬清潔</span>
+                                    </div>
+                                    <span class="addon-price">+HK$ 600</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="addon-option">
+                            <input type="checkbox" id="addon-mold" value="800" data-addon="mold">
+                            <label for="addon-mold">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <i class="fas fa-leaf"></i>
+                                        <span>黴菌清除</span>
+                                    </div>
+                                    <span class="addon-price">+HK$ 800</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Summary -->
+                <div class="price-summary" style="background: linear-gradient(135deg, #FF7A00 0%, #ff9933 100%); color: white; padding: 2rem; border-radius: 10px; margin: 2rem 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div>
+                            <h4 style="margin: 0 0 0.5rem 0; font-size: 1.2rem;">預估總價</h4>
+                            <p style="margin: 0; opacity: 0.9; font-size: 0.9rem;">*最終價格可能因實際情況而調整</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div id="totalPrice" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem;">HK$ 0</div>
+                            <div id="discountInfo" style="font-size: 0.9rem; opacity: 0.9;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Breakdown -->
+                    <div id="priceBreakdown" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.3); display: none;">
+                        <h5 style="margin-bottom: 1rem;">價格明細：</h5>
+                        <div id="breakdownDetails" style="font-size: 0.95rem;"></div>
+                    </div>
+                </div>
+
+                <!-- Contact Form for Quote -->
+                <div class="quote-contact-form">
+                    <h4 style="margin-bottom: 1.5rem; text-align: center;">
+                        <i class="fas fa-envelope"></i> 提交報價請求
+                    </h4>
+                    <form id="quoteForm" style="display: grid; gap: 1rem;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                            <div class="form-group">
+                                <label for="quoteName">姓名 *</label>
+                                <input type="text" id="quoteName" required class="quote-input" placeholder="請輸入您的姓名">
+                            </div>
+                            <div class="form-group">
+                                <label for="quotePhone">電話 *</label>
+                                <input type="tel" id="quotePhone" required class="quote-input" placeholder="請輸入您的電話">
+                            </div>
+                            <div class="form-group">
+                                <label for="quoteEmail">電郵</label>
+                                <input type="email" id="quoteEmail" class="quote-input" placeholder="請輸入您的電郵">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="quoteAddress">服務地址 *</label>
+                            <input type="text" id="quoteAddress" required class="quote-input" placeholder="請輸入服務地址">
+                        </div>
+                        <div class="form-group">
+                            <label for="quoteDate">首選服務日期</label>
+                            <input type="date" id="quoteDate" class="quote-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="quoteNotes">備註</label>
+                            <textarea id="quoteNotes" rows="4" class="quote-input" placeholder="請告訴我們任何特別要求或注意事項..."></textarea>
+                        </div>
+                        <button type="submit" class="btn primary-btn" style="padding: 1rem 2rem; font-size: 1.1rem; background: #FF7A00;">
+                            <i class="fas fa-paper-plane"></i> 提交報價請求
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to Experience the Hygiene First Difference?</h2>
-            <p>Schedule a cleaning service today and enjoy a cleaner, healthier environment.</p>
-            <a href="contact.html" class="btn primary-btn">Book Now</a>
+            <h2>準備體驗 Hygiene First 首衛的與眾不同？</h2>
+            <p>立即預約清潔服務，享受更清潔、更健康的環境。</p>
+            <a href="contact.html" class="btn primary-btn">立即預約</a>
         </div>
     </section>
 
@@ -428,43 +621,73 @@
         <div class="container">
             <div class="footer-content">
                                    <!-- Contact Info -->
-                   <div class="footer-section">
-                       <h3 style="color: #FF7A00;">聯絡我們</h3>
-                                        <p style="font-size: 0.8rem;"><i class="fas fa-phone"></i> 電話：<strong>2827 8889</strong></p>
-                    <p style="font-size: 0.8rem;"><i class="fas fa-fax"></i> 傳真：<strong>3020 1710</strong></p>
-                    <p style="font-size: 0.8rem;"><i class="fas fa-envelope"></i> 電郵：<strong>careteam@hygienefirstgroup.com</strong></p>
-                    <p style="font-size: 0.8rem;"><i class="fas fa-building"></i> 總部：<strong>新界屯門新合里3號匯賢一號 · 雋峰12樓17室</strong></p>
-                    <p style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt"></i> 辦事處：<strong>九龍灣臨樂街19號南豐商業中心18樓12室</strong></p>
-                </div>
-                
-                <!-- License Info -->
-                <div class="footer-section">
-                    <h3 style="color: #FF7A00;">牌照資訊</h3>
-                    <p style="font-size: 0.8rem;"><i class="fas fa-shield-alt"></i> 社會福利署長者社區照顧服務券商：<strong>RSP 11901</strong></p>
-                    <p style="font-size: 0.8rem;"><i class="fas fa-recycle"></i> 環保署持牌醫療廢物收集商：<strong>0001-423-H0001-L1</strong></p>
-                    <p style="font-size: 0.8rem;"><i class="fas fa-flask"></i> 環保署持牌化學廢物收集商：<strong>9210-423-H0027-WC</strong></p>
-                    <p style="font-size: 0.8rem;"><i class="fas fa-briefcase"></i> 勞工處持牌職業介紹所：<strong>79409</strong></p>
-                    <p style="font-size: 0.8rem;"><i class="fas fa-bolt"></i> 電業承辨商註冊號碼：<strong>037517</strong></p>
-                </div>
-                
-                <!-- Social Links -->
-                <div class="footer-section">
-                    <h3 style="color: #FF7A00;">關注我們</h3>
-                    <div class="social-icons" style="font-size: 0.8rem;">
-                        <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/hygiene.first?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Threads" style="color: #FF7A00;">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
-                            <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161" fill="currentColor"/>
-                          </svg>
-                        </a>
-                        <!-- WeChat Button -->
-                        <button class="social-icon wechat-btn" type="button" aria-label="WeChat" style="color: #FF7A00;">
-                          <i class="fab fa-weixin"></i>
-                        </button>
-                        <a href="https://www.youtube.com/channel/UC9TLXQ6bz97kcY94QDkitJA" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.linkedin.com/company/hygiene-first-company-limited-%E9%A6%96%E8%A1%9B%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-linkedin"></i></a>
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">聯絡我們</h3>
+                                        <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-phone" style="color: #FF7A00;"></i> 電話</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">2827 8889</div>
                     </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-fax" style="color: #FF7A00;"></i> 傳真</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">3020 1710</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-envelope" style="color: #FF7A00;"></i> 電郵</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">careteam@hygienefirstgroup.com</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-building" style="color: #FF7A00;"></i> 總部</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem; text-wrap: nowrap !important;">新界屯門新合里3號匯賢一號 · 雋峰12樓17室</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-map-marker-alt" style="color: #FF7A00;"></i> 辦事處</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">九龍灣臨樂街19號南豐商業中心18樓12室</div>
+                    </div>
+                </div>
+                
+                                   <!-- License Info -->
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">牌照資訊</h3>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-shield-alt" style="color: #FF7A00;"></i> 社會福利署長者社區照顧服務券商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">RSP 11901</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-recycle" style="color: #FF7A00;"></i> 環保署持牌醫療廢物收集商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">0001-423-H0001-L1</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-flask" style="color: #FF7A00;"></i> 環保署持牌化學廢物收集商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">9210-423-H0027-WC</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-briefcase" style="color: #FF7A00;"></i> 勞工處持牌職業介紹所</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">79409</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-bolt" style="color: #FF7A00;"></i> 電業承辨商註冊號碼</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">037517</div>
+                    </div>
+                </div>
+                
+                                   <!-- Social Links -->
+                                       <div class="footer-section">
+                        <h3 style="color: #FF7A00;">關注我們</h3>
+                                           <div class="social-icons" style="font-size: 0.8rem;">
+                           <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-facebook"></i></a>
+                           <a href="https://www.instagram.com/hygiene.first?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-instagram"></i></a>
+                           <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Threads" style="color: #FF7A00;">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
+                               <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161" fill="currentColor"/>
+                             </svg>
+                           </a>
+                           <!-- WeChat Button -->
+                           <button class="social-icon wechat-btn" type="button" aria-label="WeChat" style="color: #FF7A00;">
+                             <i class="fab fa-weixin"></i>
+                           </button>
+                           <a href="https://www.youtube.com/channel/UC9TLXQ6bz97kcY94QDkitJA" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-youtube"></i></a>
+                           <a href="https://www.linkedin.com/company/hygiene-first-company-limited-%E9%A6%96%E8%A1%9B%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-linkedin"></i></a>
+                       </div>
                 </div>
             </div>
             
@@ -502,6 +725,659 @@
         </script>
 
     <script src="script.js"></script>
+    
+    <!-- Service Sorting and Filtering Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sortBtns = document.querySelectorAll('.sort-btn');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const searchFilter = document.getElementById('searchFilter');
+        const categories = document.querySelectorAll('.category');
+        
+        let currentSort = 'default';
+        let currentCategory = 'all';
+        
+        // Function to get all service items
+        function getAllServiceItems() {
+            const items = [];
+            categories.forEach(category => {
+                const categoryItems = category.querySelectorAll('.service-item');
+                categoryItems.forEach(item => {
+                    items.push({
+                        element: item,
+                        name: item.getAttribute('data-name'),
+                        price: parseInt(item.getAttribute('data-price')),
+                        category: item.getAttribute('data-category'),
+                        parent: category
+                    });
+                });
+            });
+            return items;
+        }
+        
+        // Function to update service count
+        function updateServiceCount(count) {
+            const countElement = document.getElementById('countNumber');
+            const countContainer = document.getElementById('serviceCount');
+            
+            countElement.textContent = count;
+            countContainer.style.animation = 'none';
+            setTimeout(() => {
+                countContainer.style.animation = 'pulse 0.5s ease';
+            }, 10);
+        }
+        
+        // Function to apply filters and sorting
+        function applyFiltersAndSort() {
+            const sortValue = currentSort;
+            const categoryValue = currentCategory;
+            const searchValue = searchFilter.value.toLowerCase().trim();
+            
+            let items = getAllServiceItems();
+            
+            // Add sorting animation class
+            items.forEach(item => {
+                item.element.classList.add('sorting');
+            });
+            
+            // Remove animation class after a short delay
+            setTimeout(() => {
+                items.forEach(item => {
+                    item.element.classList.remove('sorting');
+                });
+            }, 400);
+            
+            // Filter by category
+            if (categoryValue !== 'all') {
+                categories.forEach(cat => {
+                    if (cat.getAttribute('data-category') === categoryValue) {
+                        cat.style.display = 'block';
+                    } else {
+                        cat.style.display = 'none';
+                    }
+                });
+                items = items.filter(item => item.category === categoryValue);
+            } else {
+                categories.forEach(cat => cat.style.display = 'block');
+            }
+            
+            // Filter by search
+            items.forEach(item => {
+                const name = item.name.toLowerCase();
+                
+                if (searchValue === '' || name.includes(searchValue)) {
+                    item.element.style.display = 'block';
+                } else {
+                    item.element.style.display = 'none';
+                }
+            });
+            
+            // Get visible items after filtering
+            const visibleItems = items.filter(item => item.element.style.display !== 'none');
+            
+            // Sort visible items
+            if (sortValue !== 'default') {
+                visibleItems.sort((a, b) => {
+                    switch(sortValue) {
+                        case 'price-asc':
+                            return a.price - b.price;
+                        case 'price-desc':
+                            return b.price - a.price;
+                        case 'name-asc':
+                            return a.name.localeCompare(b.name, 'zh-TW');
+                        case 'name-desc':
+                            return b.name.localeCompare(a.name, 'zh-TW');
+                        default:
+                            return 0;
+                    }
+                });
+                
+                // Reorder elements in DOM
+                const categoryGroups = {};
+                visibleItems.forEach(item => {
+                    if (!categoryGroups[item.category]) {
+                        categoryGroups[item.category] = [];
+                    }
+                    categoryGroups[item.category].push(item.element);
+                });
+                
+                // Append sorted items back to their parent grids
+                Object.keys(categoryGroups).forEach(catKey => {
+                    const category = document.querySelector(`.category[data-category="${catKey}"]`);
+                    const grid = category.querySelector('.service-grid');
+                    categoryGroups[catKey].forEach(element => {
+                        grid.appendChild(element);
+                    });
+                });
+            }
+            
+            // Show "no results" message if needed and count visible services
+            let totalVisible = 0;
+            categories.forEach(category => {
+                if (category.style.display !== 'none') {
+                    const visibleInCategory = category.querySelectorAll('.service-item[style*="display: block"], .service-item:not([style*="display: none"])').length;
+                    totalVisible += visibleInCategory;
+                    let noResultsMsg = category.querySelector('.no-results-message');
+                    
+                    if (visibleInCategory === 0) {
+                        if (!noResultsMsg) {
+                            noResultsMsg = document.createElement('p');
+                            noResultsMsg.className = 'no-results-message';
+                            noResultsMsg.style.cssText = 'text-align: center; padding: 2rem; color: #666; font-size: 1.1rem;';
+                            noResultsMsg.innerHTML = '<i class="fas fa-search"></i><br>沒有找到符合條件的服務';
+                            category.querySelector('.service-grid').appendChild(noResultsMsg);
+                        }
+                    } else {
+                        if (noResultsMsg) {
+                            noResultsMsg.remove();
+                        }
+                    }
+                }
+            });
+            
+            // Update service count
+            updateServiceCount(totalVisible);
+            
+            // Show message if no services found at all
+            if (totalVisible === 0) {
+                let globalMessage = document.getElementById('globalNoResults');
+                if (!globalMessage) {
+                    globalMessage = document.createElement('div');
+                    globalMessage.id = 'globalNoResults';
+                    globalMessage.style.cssText = 'text-align: center; padding: 3rem; background: #f8f9fa; border-radius: 10px; margin: 2rem 0;';
+                    globalMessage.innerHTML = `
+                        <i class="fas fa-inbox" style="font-size: 3rem; color: #ddd; margin-bottom: 1rem;"></i>
+                        <h3 style="color: #666; margin-bottom: 0.5rem;">找不到相關服務</h3>
+                        <p style="color: #999;">請嘗試調整篩選條件或搜尋關鍵字</p>
+                    `;
+                    document.querySelector('.service-categories .container').appendChild(globalMessage);
+                }
+            } else {
+                const globalMessage = document.getElementById('globalNoResults');
+                if (globalMessage) {
+                    globalMessage.remove();
+                }
+            }
+        }
+        
+        // Sort button event listeners
+        sortBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                sortBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.style.background = 'white';
+                    b.style.color = '#333';
+                    b.style.borderColor = '#ddd';
+                });
+                this.classList.add('active');
+                this.style.background = '#FF7A00';
+                this.style.color = 'white';
+                this.style.borderColor = '#FF7A00';
+                
+                currentSort = this.getAttribute('data-sort');
+                applyFiltersAndSort();
+            });
+        });
+        
+        // Category button event listeners
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.style.background = 'white';
+                    b.style.color = '#333';
+                    b.style.borderColor = '#ddd';
+                });
+                this.classList.add('active');
+                this.style.background = '#FF7A00';
+                this.style.color = 'white';
+                this.style.borderColor = '#FF7A00';
+                
+                currentCategory = this.getAttribute('data-category');
+                applyFiltersAndSort();
+            });
+        });
+        
+        // Search input event listener with debounce for better performance
+        let searchTimeout;
+        searchFilter.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                applyFiltersAndSort();
+            }, 300);
+        });
+        
+        // Add highlight effect on filtered items
+        searchFilter.addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase().trim();
+            if (searchValue) {
+                document.querySelectorAll('.service-item').forEach(item => {
+                    if (item.style.display !== 'none') {
+                        item.style.transition = 'all 0.3s ease';
+                        item.style.boxShadow = '0 4px 12px rgba(255, 122, 0, 0.2)';
+                    } else {
+                        item.style.boxShadow = '';
+                    }
+                });
+            } else {
+                document.querySelectorAll('.service-item').forEach(item => {
+                    item.style.boxShadow = '';
+                });
+            }
+        });
+        
+        // Reset button functionality
+        function addResetButton() {
+            const filterContainer = document.querySelector('.service-sort-filter');
+            const resetBtn = document.createElement('button');
+            resetBtn.innerHTML = '<i class="fas fa-redo"></i> 重設所有篩選';
+            resetBtn.style.cssText = 'padding: 0.6rem 1.2rem; border: 2px solid #dc3545; background: white; color: #dc3545; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;';
+            
+            resetBtn.addEventListener('click', function() {
+                // Reset sort buttons
+                sortBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.style.background = 'white';
+                    b.style.color = '#333';
+                    b.style.borderColor = '#ddd';
+                });
+                sortBtns[0].classList.add('active');
+                sortBtns[0].style.background = '#FF7A00';
+                sortBtns[0].style.color = 'white';
+                sortBtns[0].style.borderColor = '#FF7A00';
+                
+                // Reset category buttons
+                categoryBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.style.background = 'white';
+                    b.style.color = '#333';
+                    b.style.borderColor = '#ddd';
+                });
+                categoryBtns[0].classList.add('active');
+                categoryBtns[0].style.background = '#FF7A00';
+                categoryBtns[0].style.color = 'white';
+                categoryBtns[0].style.borderColor = '#FF7A00';
+                
+                // Reset search
+                searchFilter.value = '';
+                
+                // Reset state
+                currentSort = 'default';
+                currentCategory = 'all';
+                
+                // Apply reset
+                applyFiltersAndSort();
+                
+                // Visual feedback
+                this.style.background = '#dc3545';
+                this.style.color = 'white';
+                setTimeout(() => {
+                    this.style.background = 'white';
+                    this.style.color = '#dc3545';
+                }, 200);
+            });
+            
+            resetBtn.addEventListener('mouseenter', function() {
+                this.style.background = '#dc3545';
+                this.style.color = 'white';
+            });
+            
+            resetBtn.addEventListener('mouseleave', function() {
+                this.style.background = 'white';
+                this.style.color = '#dc3545';
+            });
+            
+            filterContainer.appendChild(resetBtn);
+        }
+        
+        addResetButton();
+    });
+    </script>
+
+    <!-- Quotation System Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const quoteForm = document.getElementById('quoteForm');
+        const totalPriceEl = document.getElementById('totalPrice');
+        const discountInfoEl = document.getElementById('discountInfo');
+        const priceBreakdown = document.getElementById('priceBreakdown');
+        const breakdownDetails = document.getElementById('breakdownDetails');
+        
+        let basePrice = 0;
+        let sizeMultiplier = 1.0;
+        let frequencyDiscount = 0.15;
+        let addonsTotal = 0;
+
+        // Service type selection
+        document.querySelectorAll('input[name="serviceType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const option = this.closest('.service-option');
+                basePrice = parseInt(option.dataset.basePrice);
+                
+                // Visual feedback
+                document.querySelectorAll('.service-option').forEach(opt => {
+                    opt.style.borderColor = '#ddd';
+                    opt.style.background = '#fff';
+                });
+                option.style.borderColor = '#FF7A00';
+                option.style.background = '#fff8f0';
+                
+                calculateTotal();
+            });
+        });
+
+        // Property size selection
+        document.getElementById('propertySize').addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            sizeMultiplier = parseFloat(selectedOption.dataset.multiplier);
+            calculateTotal();
+        });
+
+        // Bedrooms and bathrooms (optional future use)
+        document.getElementById('bedrooms').addEventListener('change', calculateTotal);
+        document.getElementById('bathrooms').addEventListener('change', calculateTotal);
+
+        // Frequency selection
+        document.querySelectorAll('input[name="frequency"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                frequencyDiscount = parseFloat(this.dataset.discount);
+                
+                // Visual feedback
+                document.querySelectorAll('.frequency-option').forEach(opt => {
+                    opt.style.borderColor = '#ddd';
+                    opt.style.background = '#fff';
+                });
+                this.closest('.frequency-option').style.borderColor = '#FF7A00';
+                this.closest('.frequency-option').style.background = '#fff8f0';
+                
+                calculateTotal();
+            });
+        });
+
+        // Add-on services
+        document.querySelectorAll('.addon-option input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const label = this.closest('.addon-option');
+                if (this.checked) {
+                    label.style.borderColor = '#FF7A00';
+                    label.style.background = '#fff8f0';
+                } else {
+                    label.style.borderColor = '#ddd';
+                    label.style.background = '#fff';
+                }
+                calculateTotal();
+            });
+        });
+
+        function calculateTotal() {
+            if (basePrice === 0) {
+                totalPriceEl.textContent = 'HK$ 0';
+                discountInfoEl.textContent = '請選擇服務類型';
+                priceBreakdown.style.display = 'none';
+                return;
+            }
+
+            // Calculate base price with size multiplier
+            let subtotal = basePrice * sizeMultiplier;
+            
+            // Calculate add-ons
+            addonsTotal = 0;
+            const selectedAddons = [];
+            document.querySelectorAll('.addon-option input[type="checkbox"]:checked').forEach(checkbox => {
+                const addonPrice = parseInt(checkbox.value);
+                addonsTotal += addonPrice;
+                const label = checkbox.closest('.addon-option').querySelector('label span');
+                selectedAddons.push({
+                    name: label.textContent,
+                    price: addonPrice
+                });
+            });
+
+            subtotal += addonsTotal;
+
+            // Apply frequency discount
+            const discountAmount = subtotal * frequencyDiscount;
+            const total = subtotal - discountAmount;
+
+            // Update display
+            totalPriceEl.textContent = 'HK$ ' + total.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            
+            if (frequencyDiscount > 0) {
+                discountInfoEl.textContent = `已節省 HK$ ${discountAmount.toFixed(0)} (${(frequencyDiscount * 100).toFixed(0)}% 折扣)`;
+            } else {
+                discountInfoEl.textContent = '';
+            }
+
+            // Show breakdown
+            priceBreakdown.style.display = 'block';
+            let breakdownHTML = `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>基本服務費用：</span>
+                    <span>HK$ ${basePrice.toFixed(0)}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                    <span>面積調整 (x${sizeMultiplier})：</span>
+                    <span>HK$ ${(basePrice * sizeMultiplier - basePrice).toFixed(0)}</span>
+                </div>
+            `;
+
+            if (selectedAddons.length > 0) {
+                selectedAddons.forEach(addon => {
+                    breakdownHTML += `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>${addon.name}：</span>
+                            <span>HK$ ${addon.price}</span>
+                        </div>
+                    `;
+                });
+            }
+
+            breakdownHTML += `
+                <div style="display: flex; justify-content: space-between; margin: 0.5rem 0; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.3);">
+                    <span>小計：</span>
+                    <span>HK$ ${subtotal.toFixed(0)}</span>
+                </div>
+            `;
+
+            if (frequencyDiscount > 0) {
+                breakdownHTML += `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: #FFD700;">
+                        <span>頻率折扣 (-${(frequencyDiscount * 100).toFixed(0)}%)：</span>
+                        <span>-HK$ ${discountAmount.toFixed(0)}</span>
+                    </div>
+                `;
+            }
+
+            breakdownDetails.innerHTML = breakdownHTML;
+        }
+
+        // Form submission
+        quoteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get service type label
+            const serviceTypeElement = document.querySelector('input[name="serviceType"]:checked');
+            const serviceTypeLabel = serviceTypeElement ? serviceTypeElement.closest('.service-option').querySelector('h5').textContent : '未選擇';
+            
+            // Get frequency label
+            const frequencyElement = document.querySelector('input[name="frequency"]:checked');
+            const frequencyLabel = frequencyElement ? frequencyElement.closest('.frequency-option').querySelector('h5').textContent : '未選擇';
+            
+            // Get selected addons
+            const selectedAddons = Array.from(document.querySelectorAll('.addon-option input[type="checkbox"]:checked')).map(cb => {
+                return cb.closest('.addon-option').querySelector('label span').textContent;
+            });
+            
+            // Get property size label
+            const propertySizeElement = document.getElementById('propertySize');
+            const propertySizeLabel = propertySizeElement.options[propertySizeElement.selectedIndex].text;
+            
+            // Build WhatsApp message
+            let message = `🏠 *清潔服務報價請求*\n\n`;
+            message += `📋 *客戶資料*\n`;
+            message += `姓名：${document.getElementById('quoteName').value}\n`;
+            message += `電話：${document.getElementById('quotePhone').value}\n`;
+            
+            const email = document.getElementById('quoteEmail').value;
+            if (email) {
+                message += `電郵：${email}\n`;
+            }
+            
+            message += `服務地址：${document.getElementById('quoteAddress').value}\n`;
+            
+            const preferredDate = document.getElementById('quoteDate').value;
+            if (preferredDate) {
+                message += `首選日期：${preferredDate}\n`;
+            }
+            
+            message += `\n🧹 *服務詳情*\n`;
+            message += `服務類型：${serviceTypeLabel}\n`;
+            message += `物業面積：${propertySizeLabel}\n`;
+            message += `睡房數量：${document.getElementById('bedrooms').options[document.getElementById('bedrooms').selectedIndex].text}\n`;
+            message += `浴室數量：${document.getElementById('bathrooms').options[document.getElementById('bathrooms').selectedIndex].text}\n`;
+            message += `服務頻率：${frequencyLabel}\n`;
+            
+            if (selectedAddons.length > 0) {
+                message += `\n➕ *額外服務*\n`;
+                selectedAddons.forEach(addon => {
+                    message += `✓ ${addon}\n`;
+                });
+            }
+            
+            const notes = document.getElementById('quoteNotes').value;
+            if (notes) {
+                message += `\n📝 *備註*\n${notes}\n`;
+            }
+            
+            message += `\n💰 *預估價格*\n`;
+            message += `*${totalPriceEl.textContent}*\n`;
+            
+            if (discountInfoEl.textContent) {
+                message += `${discountInfoEl.textContent}\n`;
+            }
+            
+            message += `\n_*最終價格可能因實際情況而調整_`;
+            
+            // Encode message for WhatsApp URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/85296769157?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+            
+            // Show success message
+            setTimeout(() => {
+                alert('報價請求已準備好！請在 WhatsApp 中發送訊息。\n\n預估價格：' + totalPriceEl.textContent);
+                
+                // Reset form
+                quoteForm.reset();
+                document.querySelectorAll('.service-option, .frequency-option, .addon-option').forEach(opt => {
+                    opt.style.borderColor = '#ddd';
+                    opt.style.background = '#fff';
+                });
+                basePrice = 0;
+                calculateTotal();
+            }, 500);
+        });
+
+        // Initialize first frequency option as checked
+        document.querySelector('input[name="frequency"]:checked').closest('.frequency-option').style.borderColor = '#FF7A00';
+        document.querySelector('input[name="frequency"]:checked').closest('.frequency-option').style.background = '#fff8f0';
+    });
+    </script>
+
+    <style>
+        .service-option, .frequency-option, .addon-option {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .service-option:hover, .frequency-option:hover, .addon-option:hover {
+            border-color: #FF7A00;
+            box-shadow: 0 4px 12px rgba(255, 122, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .service-option input[type="radio"],
+        .frequency-option input[type="radio"],
+        .addon-option input[type="checkbox"] {
+            display: none;
+        }
+
+        .service-option label,
+        .frequency-option label,
+        .addon-option label {
+            cursor: pointer;
+            margin: 0;
+            display: block;
+        }
+
+        .service-option h5,
+        .frequency-option h5 {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .service-option p,
+        .frequency-option p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .discount-badge {
+            color: #FF7A00;
+            font-weight: 600;
+        }
+
+        .addon-price {
+            color: #FF7A00;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .quote-select, .quote-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .quote-select:focus, .quote-input:focus {
+            outline: none;
+            border-color: #FF7A00;
+            box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.1);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        textarea.quote-input {
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        @media (max-width: 768px) {
+            .quotation-system {
+                padding: 1rem;
+            }
+            
+            .service-option, .frequency-option, .addon-option {
+                padding: 1rem;
+            }
+        }
+    </style>
     </main>
 
     <!-- Chatbot Component -->
