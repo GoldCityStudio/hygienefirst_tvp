@@ -1022,12 +1022,28 @@ function updateDashboard(userData) {
                             color: white;
                             padding: 1rem;
                             border-radius: 8px;
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
                         ">
-                            <span style="font-size: 1rem;">預估總價</span>
-                            <span style="font-size: 1.5rem; font-weight: bold;">HK$ ${order.pricing.total.toFixed(0)}</span>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: ${(order.pricing.frequencyDiscount > 0 || order.pricing.couponDiscount > 0) ? '0.8rem' : '0'};">
+                                <span style="font-size: 1rem;">預估總價</span>
+                                <span style="font-size: 1.5rem; font-weight: bold;">HK$ ${order.pricing.total.toFixed(0)}</span>
+                            </div>
+                            ${(order.pricing.frequencyDiscount > 0 || order.pricing.couponDiscount > 0) ? `
+                                <div style="font-size: 0.85rem; opacity: 0.95; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.3);">
+                                    ${order.pricing.frequencyDiscount > 0 ? `
+                                        <div style="margin-bottom: 0.3rem;">
+                                            <i class="fas fa-percentage"></i> 頻率折扣：-HK$ ${order.pricing.frequencyDiscount.toFixed(0)}
+                                        </div>
+                                    ` : ''}
+                                    ${order.coupon ? `
+                                        <div style="margin-bottom: 0.3rem;">
+                                            <i class="fas fa-ticket-alt"></i> 優惠券 (${order.coupon.code})：-HK$ ${order.coupon.discountAmount.toFixed(0)}
+                                        </div>
+                                    ` : ''}
+                                    <div style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.3); font-weight: bold;">
+                                        <i class="fas fa-piggy-bank"></i> 總共節省：HK$ ${(order.pricing.frequencyDiscount + order.pricing.couponDiscount).toFixed(0)}
+                                    </div>
+                                </div>
+                            ` : ''}
                         </div>
                     </div>
                 `;

@@ -546,6 +546,78 @@
                     </div>
                 </div>
 
+                <!-- Step 5: 優惠券 -->
+                <div class="quotation-step" style="margin-bottom: 2rem;">
+                    <h3 style="color: #FF7A00; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #FF7A00;">
+                        <i class="fas fa-ticket-alt"></i> Step 5: 優惠券折扣
+                    </h3>
+                    <div class="coupon-section" style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px;">
+                        <div id="couponInputGroup" class="coupon-input-group" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                            <input 
+                                type="text" 
+                                id="couponCode" 
+                                placeholder="輸入優惠券代碼"
+                                style="
+                                    flex: 1;
+                                    padding: 0.8rem 1rem;
+                                    border: 2px solid #ddd;
+                                    border-radius: 8px;
+                                    font-size: 1rem;
+                                    text-transform: uppercase;
+                                    transition: all 0.3s ease;
+                                "
+                                maxlength="20"
+                            >
+                            <button 
+                                type="button" 
+                                id="applyCouponBtn" 
+                                style="
+                                    padding: 0.8rem 2rem;
+                                    background: #FF7A00;
+                                    color: white;
+                                    border: none;
+                                    border-radius: 8px;
+                                    font-weight: 600;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                    white-space: nowrap;
+                                "
+                                onmouseover="this.style.background='#FF9A40'"
+                                onmouseout="this.style.background='#FF7A00'"
+                            >
+                                <i class="fas fa-check"></i> 套用
+                            </button>
+                        </div>
+                        
+                        <!-- Coupon Message -->
+                        <div id="couponMessage" style="
+                            padding: 0.8rem 1rem;
+                            border-radius: 8px;
+                            margin-bottom: 1rem;
+                            display: none;
+                            align-items: center;
+                            gap: 0.5rem;
+                        "></div>
+                        
+                        <!-- Applied Coupon Display -->
+                        <div id="appliedCouponDisplay" style="display: none;">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                        
+                        <!-- Available Coupons Info -->
+                        <div style="margin-top: 1rem; padding: 1rem; background: white; border-radius: 8px; border-left: 4px solid #FF7A00;">
+                            <h5 style="margin: 0 0 0.5rem 0; color: #FF7A00;">
+                                <i class="fas fa-info-circle"></i> 可用優惠券範例：
+                            </h5>
+                            <div style="display: grid; gap: 0.5rem; font-size: 0.9rem; color: #666;">
+                                <div><strong>WELCOME10</strong> - 新客戶 10% 折扣</div>
+                                <div><strong>SAVE100</strong> - 滿 $1000 減 $100</div>
+                                <div><strong>VIP20</strong> - VIP 會員 20% 折扣</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Price Summary -->
                 <div class="price-summary" style="background: linear-gradient(135deg, #FF7A00 0%, #ff9933 100%); color: white; padding: 2rem; border-radius: 10px; margin: 2rem 0;">
                     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
@@ -1047,6 +1119,208 @@
         let sizeMultiplier = 1.0;
         let frequencyDiscount = 0.15;
         let addonsTotal = 0;
+        let appliedCoupon = null;
+
+        // Coupon database (in production, this would be fetched from backend)
+        const availableCoupons = {
+            'WELCOME10': {
+                code: 'WELCOME10',
+                description: '新客戶 10% 折扣',
+                type: 'percentage',
+                value: 10,
+                minAmount: 0,
+                maxDiscount: null,
+                active: true
+            },
+            'SAVE100': {
+                code: 'SAVE100',
+                description: '滿 $1000 減 $100',
+                type: 'fixed',
+                value: 100,
+                minAmount: 1000,
+                maxDiscount: null,
+                active: true
+            },
+            'VIP20': {
+                code: 'VIP20',
+                description: 'VIP 會員 20% 折扣',
+                type: 'percentage',
+                value: 20,
+                minAmount: 500,
+                maxDiscount: 500,
+                active: true
+            },
+            'SAVE50': {
+                code: 'SAVE50',
+                description: '任何訂單減 $50',
+                type: 'fixed',
+                value: 50,
+                minAmount: 0,
+                maxDiscount: null,
+                active: true
+            },
+            'SUMMER15': {
+                code: 'SUMMER15',
+                description: '夏季優惠 15% 折扣',
+                type: 'percentage',
+                value: 15,
+                minAmount: 800,
+                maxDiscount: 300,
+                active: true
+            }
+        };
+
+        // Coupon functions
+        function validateCoupon(code) {
+            const upperCode = code.toUpperCase().trim();
+            const coupon = availableCoupons[upperCode];
+            
+            if (!coupon) {
+                return { valid: false, message: '優惠券代碼無效' };
+            }
+            
+            if (!coupon.active) {
+                return { valid: false, message: '此優惠券已過期' };
+            }
+            
+            // Calculate current subtotal (before coupon)
+            const subtotal = (basePrice * sizeMultiplier + addonsTotal);
+            const afterFrequencyDiscount = subtotal - (subtotal * frequencyDiscount);
+            
+            if (afterFrequencyDiscount < coupon.minAmount) {
+                return { 
+                    valid: false, 
+                    message: `此優惠券需滿 HK$ ${coupon.minAmount} 才能使用` 
+                };
+            }
+            
+            return { valid: true, coupon: coupon };
+        }
+
+        function applyCoupon() {
+            const couponInput = document.getElementById('couponCode');
+            const code = couponInput.value.trim();
+            
+            if (!code) {
+                showCouponMessage('請輸入優惠券代碼', 'error');
+                return;
+            }
+            
+            const validation = validateCoupon(code);
+            
+            if (!validation.valid) {
+                showCouponMessage(validation.message, 'error');
+                return;
+            }
+            
+            appliedCoupon = validation.coupon;
+            showCouponMessage(`優惠券已套用！${validation.coupon.description}`, 'success');
+            showAppliedCoupon(validation.coupon);
+            calculateTotal();
+            
+            // Clear input
+            couponInput.value = '';
+        }
+
+        function removeCoupon() {
+            appliedCoupon = null;
+            document.getElementById('appliedCouponDisplay').style.display = 'none';
+            document.getElementById('couponInputGroup').style.display = 'flex';
+            showCouponMessage('優惠券已移除', 'info');
+            calculateTotal();
+            
+            // Hide message after 2 seconds
+            setTimeout(() => {
+                document.getElementById('couponMessage').style.display = 'none';
+            }, 2000);
+        }
+
+        function showCouponMessage(message, type) {
+            const messageEl = document.getElementById('couponMessage');
+            messageEl.style.display = 'flex';
+            
+            const colors = {
+                success: { bg: '#d4edda', text: '#155724', icon: 'check-circle' },
+                error: { bg: '#f8d7da', text: '#721c24', icon: 'exclamation-circle' },
+                info: { bg: '#d1ecf1', text: '#0c5460', icon: 'info-circle' }
+            };
+            
+            const style = colors[type] || colors.info;
+            messageEl.style.background = style.bg;
+            messageEl.style.color = style.text;
+            messageEl.innerHTML = `
+                <i class="fas fa-${style.icon}"></i>
+                <span>${message}</span>
+            `;
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 5000);
+        }
+
+        function showAppliedCoupon(coupon) {
+            const displayEl = document.getElementById('appliedCouponDisplay');
+            displayEl.style.display = 'block';
+            displayEl.innerHTML = `
+                <div style="
+                    background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+                    color: white;
+                    padding: 1rem 1.5rem;
+                    border-radius: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+                ">
+                    <div style="display: flex; align-items: center; gap: 0.8rem;">
+                        <i class="fas fa-ticket-alt" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <div style="font-weight: bold; font-size: 1.1rem;">${coupon.code}</div>
+                            <div style="font-size: 0.9rem; opacity: 0.9;">${coupon.description}</div>
+                        </div>
+                    </div>
+                    <button 
+                        onclick="removeCoupon()" 
+                        style="
+                            background: rgba(255,255,255,0.2);
+                            color: white;
+                            border: 2px solid white;
+                            border-radius: 50%;
+                            width: 32px;
+                            height: 32px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                        "
+                        onmouseover="this.style.background='rgba(255,255,255,0.3)'"
+                        onmouseout="this.style.background='rgba(255,255,255,0.2)'"
+                        title="移除優惠券"
+                    >
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            // Hide input group when coupon is applied
+            document.getElementById('couponInputGroup').style.display = 'none';
+        }
+
+        // Make removeCoupon available globally
+        window.removeCoupon = removeCoupon;
+
+        // Coupon button event listener
+        document.getElementById('applyCouponBtn').addEventListener('click', applyCoupon);
+        
+        // Allow Enter key to apply coupon
+        document.getElementById('couponCode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                applyCoupon();
+            }
+        });
 
         // Service type selection
         document.querySelectorAll('input[name="serviceType"]').forEach(radio => {
@@ -1136,14 +1410,43 @@
             subtotal += addonsTotal;
 
             // Apply frequency discount
-            const discountAmount = subtotal * frequencyDiscount;
-            const total = subtotal - discountAmount;
+            const frequencyDiscountAmount = subtotal * frequencyDiscount;
+            let afterFrequencyDiscount = subtotal - frequencyDiscountAmount;
+            
+            // Apply coupon discount
+            let couponDiscountAmount = 0;
+            let finalTotal = afterFrequencyDiscount;
+            
+            if (appliedCoupon) {
+                if (appliedCoupon.type === 'percentage') {
+                    couponDiscountAmount = afterFrequencyDiscount * (appliedCoupon.value / 100);
+                    // Apply max discount cap if exists
+                    if (appliedCoupon.maxDiscount && couponDiscountAmount > appliedCoupon.maxDiscount) {
+                        couponDiscountAmount = appliedCoupon.maxDiscount;
+                    }
+                } else if (appliedCoupon.type === 'fixed') {
+                    couponDiscountAmount = appliedCoupon.value;
+                }
+                finalTotal = afterFrequencyDiscount - couponDiscountAmount;
+                // Ensure total doesn't go below 0
+                finalTotal = Math.max(0, finalTotal);
+            }
 
             // Update display
-            totalPriceEl.textContent = 'HK$ ' + total.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            totalPriceEl.textContent = 'HK$ ' + finalTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             
-            if (frequencyDiscount > 0) {
-                discountInfoEl.textContent = `已節省 HK$ ${discountAmount.toFixed(0)} (${(frequencyDiscount * 100).toFixed(0)}% 折扣)`;
+            // Show total savings
+            const totalSavings = frequencyDiscountAmount + couponDiscountAmount;
+            if (totalSavings > 0) {
+                let savingsText = `已節省 HK$ ${totalSavings.toFixed(0)} `;
+                if (frequencyDiscount > 0 && appliedCoupon) {
+                    savingsText += `(頻率折扣 + 優惠券)`;
+                } else if (frequencyDiscount > 0) {
+                    savingsText += `(${(frequencyDiscount * 100).toFixed(0)}% 頻率折扣)`;
+                } else if (appliedCoupon) {
+                    savingsText += `(優惠券折扣)`;
+                }
+                discountInfoEl.textContent = savingsText;
             } else {
                 discountInfoEl.textContent = '';
             }
@@ -1183,7 +1486,19 @@
                 breakdownHTML += `
                     <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: #FFD700;">
                         <span>頻率折扣 (-${(frequencyDiscount * 100).toFixed(0)}%)：</span>
-                        <span>-HK$ ${discountAmount.toFixed(0)}</span>
+                        <span>-HK$ ${frequencyDiscountAmount.toFixed(0)}</span>
+                    </div>
+                `;
+            }
+            
+            if (appliedCoupon) {
+                const discountText = appliedCoupon.type === 'percentage' 
+                    ? `-${appliedCoupon.value}%` 
+                    : `HK$ ${appliedCoupon.value}`;
+                breakdownHTML += `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; color: #4CAF50;">
+                        <span>優惠券折扣 (${appliedCoupon.code})：</span>
+                        <span>-HK$ ${couponDiscountAmount.toFixed(0)}</span>
                     </div>
                 `;
             }
@@ -1290,8 +1605,25 @@
             const adjustedBasePrice = basePrice * sizeMultiplier;
             const addonsTotal = selectedAddonsWithPrices.reduce((sum, addon) => sum + addon.price, 0);
             const subtotal = adjustedBasePrice + addonsTotal;
-            const discountAmount = subtotal * frequencyDiscount;
-            const totalPrice = subtotal - discountAmount;
+            const frequencyDiscountAmount = subtotal * frequencyDiscount;
+            const afterFrequencyDiscount = subtotal - frequencyDiscountAmount;
+            
+            // Calculate coupon discount
+            let couponDiscountAmount = 0;
+            let finalTotal = afterFrequencyDiscount;
+            
+            if (appliedCoupon) {
+                if (appliedCoupon.type === 'percentage') {
+                    couponDiscountAmount = afterFrequencyDiscount * (appliedCoupon.value / 100);
+                    if (appliedCoupon.maxDiscount && couponDiscountAmount > appliedCoupon.maxDiscount) {
+                        couponDiscountAmount = appliedCoupon.maxDiscount;
+                    }
+                } else if (appliedCoupon.type === 'fixed') {
+                    couponDiscountAmount = appliedCoupon.value;
+                }
+                finalTotal = afterFrequencyDiscount - couponDiscountAmount;
+                finalTotal = Math.max(0, finalTotal);
+            }
             
             // Create order object
             const order = {
@@ -1308,12 +1640,20 @@
                     frequencyDiscount: (frequencyDiscount * 100).toFixed(0) + '%',
                     addons: selectedAddonsWithPrices
                 },
+                coupon: appliedCoupon ? {
+                    code: appliedCoupon.code,
+                    description: appliedCoupon.description,
+                    type: appliedCoupon.type,
+                    value: appliedCoupon.value,
+                    discountAmount: couponDiscountAmount
+                } : null,
                 pricing: {
                     basePrice: basePrice,
                     sizeMultiplier: sizeMultiplier,
                     subtotal: subtotal,
-                    discount: discountAmount,
-                    total: totalPrice
+                    frequencyDiscount: frequencyDiscountAmount,
+                    couponDiscount: couponDiscountAmount,
+                    total: finalTotal
                 }
             };
             
@@ -1449,9 +1789,25 @@
                                 <span style="font-size: 1.1rem;">預估總價</span>
                                 <span style="font-size: 1.8rem; font-weight: bold;">HK$ ${order.pricing.total.toFixed(0)}</span>
                             </div>
-                            ${order.pricing.discount > 0 ? `
-                                <div style="font-size: 0.9rem; opacity: 0.9;">
-                                    已享 ${order.service.frequencyDiscount} 折扣優惠 (省 HK$ ${order.pricing.discount.toFixed(0)})
+                            ${order.pricing.frequencyDiscount > 0 || order.pricing.couponDiscount > 0 ? `
+                                <div style="font-size: 0.9rem; opacity: 0.9; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 0.8rem;">
+                                    <div style="margin-bottom: 0.3rem;">💰 優惠詳情：</div>
+                                    ${order.pricing.frequencyDiscount > 0 ? `
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.2rem;">
+                                            <span>• 頻率折扣 (${order.service.frequencyDiscount})：</span>
+                                            <span>-HK$ ${order.pricing.frequencyDiscount.toFixed(0)}</span>
+                                        </div>
+                                    ` : ''}
+                                    ${order.coupon ? `
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.2rem;">
+                                            <span>• 優惠券折扣 (${order.coupon.code})：</span>
+                                            <span>-HK$ ${order.coupon.discountAmount.toFixed(0)}</span>
+                                        </div>
+                                    ` : ''}
+                                    <div style="display: flex; justify-content: space-between; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.3); font-weight: bold;">
+                                        <span>總共節省：</span>
+                                        <span>HK$ ${(order.pricing.frequencyDiscount + order.pricing.couponDiscount).toFixed(0)}</span>
+                                    </div>
                                 </div>
                             ` : ''}
                         </div>
