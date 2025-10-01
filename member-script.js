@@ -915,8 +915,11 @@ function loadUserData() {
     // Load orders from localStorage
     const orders = JSON.parse(localStorage.getItem('hygiene_orders') || '[]');
     
-    // Update dashboard with orders
-    updateDashboard({ orders });
+    // Load bookings from localStorage
+    const bookings = JSON.parse(localStorage.getItem('hygiene_bookings') || '[]');
+    
+    // Update dashboard with orders and bookings
+    updateDashboard({ orders, bookings });
     
     // Check if URL has #orders hash
     if (window.location.hash === '#orders') {
@@ -924,6 +927,15 @@ function loadUserData() {
         const ordersTab = document.querySelector('[href="#orders"]');
         if (ordersTab) {
             ordersTab.click();
+        }
+    }
+    
+    // Check if URL has #bookings hash
+    if (window.location.hash === '#bookings') {
+        // Switch to bookings tab
+        const bookingsTab = document.querySelector('[href="#bookings"]');
+        if (bookingsTab) {
+            bookingsTab.click();
         }
     }
 }
@@ -1044,6 +1056,104 @@ function updateDashboard(userData) {
                                     </div>
                                 </div>
                             ` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+    }
+    
+    // Update bookings from localStorage
+    const bookingsList = document.getElementById('bookingsList');
+    if (bookingsList && userData.bookings) {
+        if (userData.bookings.length === 0) {
+            bookingsList.innerHTML = '<p style="text-align: center; color: #999; padding: 2rem;">暫無預約</p>';
+        } else {
+            bookingsList.innerHTML = userData.bookings.map(booking => {
+                const bookingDate = new Date(booking.createdAt);
+                const formattedDate = bookingDate.toLocaleDateString('zh-TW', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                const statusColor = {
+                    'pending': { bg: '#FFF3CD', text: '#856404', label: '待確認', icon: 'fa-clock' },
+                    'confirmed': { bg: '#D4EDDA', text: '#155724', label: '已確認', icon: 'fa-check-circle' },
+                    'completed': { bg: '#D1ECF1', text: '#0C5460', label: '已完成', icon: 'fa-check-double' },
+                    'cancelled': { bg: '#F8D7DA', text: '#721C24', label: '已取消', icon: 'fa-times-circle' }
+                };
+                
+                const status = statusColor[booking.status] || statusColor.pending;
+                
+                return `
+                    <div class="booking-card" style="
+                        background: white;
+                        border: 2px solid #eee;
+                        border-radius: 12px;
+                        padding: 1.5rem;
+                        margin-bottom: 1rem;
+                        transition: all 0.3s ease;
+                    ">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; color: #FF7A00; font-size: 1.1rem; margin-bottom: 0.3rem;">
+                                    預約編號: ${booking.id}
+                                </div>
+                                <div style="color: #999; font-size: 0.9rem;">
+                                    <i class="fas fa-calendar-alt"></i> ${formattedDate}
+                                </div>
+                            </div>
+                            <span style="
+                                background: ${status.bg};
+                                color: ${status.text};
+                                padding: 0.4rem 1rem;
+                                border-radius: 20px;
+                                font-size: 0.9rem;
+                                font-weight: 600;
+                            ">
+                                <i class="fas ${status.icon}"></i> ${status.label}
+                            </span>
+                        </div>
+                        
+                        <div style="border-top: 1px solid #eee; padding-top: 1rem; margin-bottom: 1rem;">
+                            <div style="display: grid; gap: 0.8rem;">
+                                <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                    <i class="fas ${booking.service.icon}" style="font-size: 2rem; color: #FF7A00;"></i>
+                                    <div>
+                                        <div style="font-weight: bold; font-size: 1.1rem;">${booking.service.name}</div>
+                                        <div style="color: #666; font-size: 0.9rem;">${booking.service.description}</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding-top: 0.8rem; border-top: 1px solid #eee;">
+                                    <span style="color: #666;"><i class="fas fa-calendar-day"></i> ${booking.date}</span>
+                                    <span style="color: #666;"><i class="fas fa-clock"></i> ${booking.time}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="border-top: 1px solid #eee; padding-top: 1rem;">
+                            <div style="display: grid; gap: 0.5rem; font-size: 0.95rem;">
+                                <div><i class="fas fa-user"></i> ${booking.customer.name}</div>
+                                <div><i class="fas fa-phone"></i> ${booking.customer.phone}</div>
+                                <div><i class="fas fa-map-marker-alt"></i> ${booking.customer.address}</div>
+                            </div>
+                        </div>
+                        
+                        <div style="
+                            background: linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%);
+                            color: white;
+                            padding: 1rem;
+                            border-radius: 8px;
+                            margin-top: 1rem;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        ">
+                            <span>預估費用</span>
+                            <span style="font-size: 1.3rem; font-weight: bold;">HK$ ${booking.service.price}起</span>
                         </div>
                     </div>
                 `;

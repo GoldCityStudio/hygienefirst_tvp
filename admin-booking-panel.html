@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預約管理系統 - Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="background: #f5f7fa; font-family: 'Noto Sans TC', sans-serif;">
+    
+    <!-- Admin Header -->
+    <div style="background: linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%); color: white; padding: 1.5rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1 style="margin: 0; font-size: 1.8rem;">
+                    <i class="fas fa-calendar-check"></i> 預約管理系統
+                </h1>
+                <p style="margin: 0.5rem 0 0 0; opacity: 0.9; font-size: 0.9rem;">Booking Management System</p>
+            </div>
+            <div>
+                <button onclick="location.href='admin-panel.html'" style="
+                    background: rgba(255,255,255,0.2);
+                    border: 2px solid white;
+                    color: white;
+                    padding: 0.8rem 1.5rem;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: 600;
+                    margin-right: 1rem;
+                ">
+                    <i class="fas fa-arrow-left"></i> 返回主控台
+                </button>
+                <button onclick="location.href='index.html'" style="
+                    background: white;
+                    border: none;
+                    color: #FF7A00;
+                    padding: 0.8rem 1.5rem;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: 600;
+                ">
+                    <i class="fas fa-home"></i> 前台首頁
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div style="max-width: 1400px; margin: 0 auto; padding: 2rem;">
+        
+        <!-- Stats Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #FF7A00;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="color: #999; font-size: 0.9rem; margin-bottom: 0.5rem;">總預約數</div>
+                        <div id="totalBookings" style="font-size: 2rem; font-weight: bold; color: #333;">0</div>
+                    </div>
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-calendar" style="font-size: 1.8rem; color: white;"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #FFC107;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="color: #999; font-size: 0.9rem; margin-bottom: 0.5rem;">待確認</div>
+                        <div id="pendingBookings" style="font-size: 2rem; font-weight: bold; color: #333;">0</div>
+                    </div>
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #FFC107 0%, #FFD54F 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-clock" style="font-size: 1.8rem; color: white;"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #4CAF50;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="color: #999; font-size: 0.9rem; margin-bottom: 0.5rem;">已確認</div>
+                        <div id="confirmedBookings" style="font-size: 2rem; font-weight: bold; color: #333;">0</div>
+                    </div>
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-check-circle" style="font-size: 1.8rem; color: white;"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #2196F3;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="color: #999; font-size: 0.9rem; margin-bottom: 0.5rem;">已完成</div>
+                        <div id="completedBookings" style="font-size: 2rem; font-weight: bold; color: #333;">0</div>
+                    </div>
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #2196F3 0%, #64B5F6 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-check-double" style="font-size: 1.8rem; color: white;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters and Actions -->
+        <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 2rem;">
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; flex: 1;">
+                    <!-- Search -->
+                    <div style="flex: 1; min-width: 250px;">
+                        <input type="text" id="searchInput" placeholder="搜尋預約編號、客戶姓名、電話..." style="
+                            width: 100%;
+                            padding: 0.8rem 1rem;
+                            border: 2px solid #ddd;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                        ">
+                    </div>
+                    
+                    <!-- Status Filter -->
+                    <div>
+                        <select id="statusFilter" style="
+                            padding: 0.8rem 1rem;
+                            border: 2px solid #ddd;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                            min-width: 150px;
+                        ">
+                            <option value="all">所有狀態</option>
+                            <option value="pending">待確認</option>
+                            <option value="confirmed">已確認</option>
+                            <option value="completed">已完成</option>
+                            <option value="cancelled">已取消</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Date Filter -->
+                    <div>
+                        <input type="date" id="dateFilter" style="
+                            padding: 0.8rem 1rem;
+                            border: 2px solid #ddd;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                        ">
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem;">
+                    <button onclick="resetFilters()" style="
+                        padding: 0.8rem 1.5rem;
+                        background: #f5f7fa;
+                        border: 2px solid #ddd;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        color: #666;
+                    ">
+                        <i class="fas fa-redo"></i> 重設
+                    </button>
+                    <button onclick="exportBookings()" style="
+                        padding: 0.8rem 1.5rem;
+                        background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        color: white;
+                    ">
+                        <i class="fas fa-file-export"></i> 匯出
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bookings Table -->
+        <div style="background: white; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); overflow: hidden;">
+            <div style="padding: 1.5rem; border-bottom: 2px solid #f5f7fa;">
+                <h2 style="margin: 0; color: #333; font-size: 1.3rem;">
+                    <i class="fas fa-list"></i> 預約清單
+                </h2>
+            </div>
+            
+            <div id="bookingsTableContainer" style="overflow-x: auto;">
+                <table id="bookingsTable" style="width: 100%; border-collapse: collapse;">
+                    <thead style="background: #f5f7fa;">
+                        <tr>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600; color: #666; border-bottom: 2px solid #e0e0e0;">預約編號</th>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600; color: #666; border-bottom: 2px solid #e0e0e0;">客戶資料</th>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600; color: #666; border-bottom: 2px solid #e0e0e0;">服務項目</th>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600; color: #666; border-bottom: 2px solid #e0e0e0;">預約日期</th>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600; color: #666; border-bottom: 2px solid #e0e0e0;">時間</th>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600; color: #666; border-bottom: 2px solid #e0e0e0;">狀態</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600; color: #666; border-bottom: 2px solid #e0e0e0;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsTableBody">
+                        <!-- Bookings will be dynamically loaded -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="emptyState" style="text-align: center; padding: 4rem 2rem; display: none;">
+                <i class="fas fa-inbox" style="font-size: 4rem; color: #ddd; margin-bottom: 1rem;"></i>
+                <p style="color: #999; font-size: 1.1rem;">暫無預約記錄</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Booking Details Modal -->
+    <div id="bookingModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; align-items: center; justify-content: center;">
+        <div style="background: white; border-radius: 20px; max-width: 800px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+            <div style="padding: 2rem; border-bottom: 2px solid #f5f7fa; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: white; z-index: 1;">
+                <h2 style="margin: 0; color: #333;">
+                    <i class="fas fa-file-alt"></i> 預約詳情
+                </h2>
+                <button onclick="closeModal()" style="
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    color: #999;
+                    cursor: pointer;
+                    padding: 0.5rem;
+                ">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div id="bookingDetails" style="padding: 2rem;">
+                <!-- Details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allBookings = [];
+        let filteredBookings = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadBookings();
+            setupFilters();
+            updateStats();
+        });
+
+        // Load Bookings
+        function loadBookings() {
+            allBookings = JSON.parse(localStorage.getItem('hygiene_bookings') || '[]');
+            filteredBookings = [...allBookings];
+            renderBookings();
+            updateStats();
+        }
+
+        // Render Bookings
+        function renderBookings() {
+            const tbody = document.getElementById('bookingsTableBody');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (filteredBookings.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            
+            tbody.innerHTML = filteredBookings.map(booking => {
+                const statusColors = {
+                    'pending': { bg: '#FFF3CD', text: '#856404', label: '待確認' },
+                    'confirmed': { bg: '#D4EDDA', text: '#155724', label: '已確認' },
+                    'completed': { bg: '#D1ECF1', text: '#0C5460', label: '已完成' },
+                    'cancelled': { bg: '#F8D7DA', text: '#721C24', label: '已取消' }
+                };
+                
+                const status = statusColors[booking.status] || statusColors.pending;
+                const createdDate = new Date(booking.createdAt);
+                
+                return `
+                    <tr style="border-bottom: 1px solid #f5f7fa; transition: background 0.3s ease;" onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='white'">
+                        <td style="padding: 1rem;">
+                            <div style="font-weight: 600; color: #FF7A00;">${booking.id}</div>
+                            <div style="font-size: 0.8rem; color: #999; margin-top: 0.3rem;">
+                                ${createdDate.toLocaleDateString('zh-TW')} ${createdDate.toLocaleTimeString('zh-TW', {hour: '2-digit', minute: '2-digit'})}
+                            </div>
+                        </td>
+                        <td style="padding: 1rem;">
+                            <div style="font-weight: 600; color: #333;">${booking.customer.name}</div>
+                            <div style="font-size: 0.9rem; color: #666; margin-top: 0.3rem;">
+                                <i class="fas fa-phone" style="color: #FF7A00;"></i> ${booking.customer.phone}
+                            </div>
+                        </td>
+                        <td style="padding: 1rem;">
+                            <div style="font-weight: 600; color: #333;">
+                                <i class="fas ${booking.service.icon}" style="color: #FF7A00;"></i> ${booking.service.name}
+                            </div>
+                            <div style="font-size: 0.8rem; color: #999; margin-top: 0.3rem;">HK$ ${booking.service.price}起</div>
+                        </td>
+                        <td style="padding: 1rem;">
+                            <div style="font-weight: 600; color: #333;">${booking.date}</div>
+                        </td>
+                        <td style="padding: 1rem;">
+                            <div style="color: #666;">${booking.time}</div>
+                        </td>
+                        <td style="padding: 1rem;">
+                            <span style="
+                                background: ${status.bg};
+                                color: ${status.text};
+                                padding: 0.4rem 1rem;
+                                border-radius: 20px;
+                                font-size: 0.85rem;
+                                font-weight: 600;
+                                display: inline-block;
+                            ">${status.label}</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <button onclick="viewBooking('${booking.id}')" style="
+                                background: #2196F3;
+                                color: white;
+                                border: none;
+                                padding: 0.5rem 1rem;
+                                border-radius: 6px;
+                                cursor: pointer;
+                                margin-right: 0.5rem;
+                                font-size: 0.9rem;
+                            " title="查看詳情">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            ${booking.status === 'pending' ? `
+                                <button onclick="confirmBooking('${booking.id}')" style="
+                                    background: #4CAF50;
+                                    color: white;
+                                    border: none;
+                                    padding: 0.5rem 1rem;
+                                    border-radius: 6px;
+                                    cursor: pointer;
+                                    font-size: 0.9rem;
+                                " title="確認預約">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            ` : ''}
+                            ${booking.status !== 'cancelled' && booking.status !== 'completed' ? `
+                                <button onclick="cancelBooking('${booking.id}')" style="
+                                    background: #f44336;
+                                    color: white;
+                                    border: none;
+                                    padding: 0.5rem 1rem;
+                                    border-radius: 6px;
+                                    cursor: pointer;
+                                    margin-left: 0.5rem;
+                                    font-size: 0.9rem;
+                                " title="取消預約">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            ` : ''}
+                            ${booking.status === 'confirmed' ? `
+                                <button onclick="completeBooking('${booking.id}')" style="
+                                    background: #2196F3;
+                                    color: white;
+                                    border: none;
+                                    padding: 0.5rem 1rem;
+                                    border-radius: 6px;
+                                    cursor: pointer;
+                                    margin-left: 0.5rem;
+                                    font-size: 0.9rem;
+                                " title="標記完成">
+                                    <i class="fas fa-check-double"></i>
+                                </button>
+                            ` : ''}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Update Stats
+        function updateStats() {
+            document.getElementById('totalBookings').textContent = allBookings.length;
+            document.getElementById('pendingBookings').textContent = allBookings.filter(b => b.status === 'pending').length;
+            document.getElementById('confirmedBookings').textContent = allBookings.filter(b => b.status === 'confirmed').length;
+            document.getElementById('completedBookings').textContent = allBookings.filter(b => b.status === 'completed').length;
+        }
+
+        // Setup Filters
+        function setupFilters() {
+            const searchInput = document.getElementById('searchInput');
+            const statusFilter = document.getElementById('statusFilter');
+            const dateFilter = document.getElementById('dateFilter');
+            
+            searchInput.addEventListener('input', applyFilters);
+            statusFilter.addEventListener('change', applyFilters);
+            dateFilter.addEventListener('change', applyFilters);
+        }
+
+        // Apply Filters
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const statusValue = document.getElementById('statusFilter').value;
+            const dateValue = document.getElementById('dateFilter').value;
+            
+            filteredBookings = allBookings.filter(booking => {
+                const matchesSearch = !searchTerm || 
+                    booking.id.toLowerCase().includes(searchTerm) ||
+                    booking.customer.name.toLowerCase().includes(searchTerm) ||
+                    booking.customer.phone.includes(searchTerm);
+                
+                const matchesStatus = statusValue === 'all' || booking.status === statusValue;
+                const matchesDate = !dateValue || booking.date === dateValue;
+                
+                return matchesSearch && matchesStatus && matchesDate;
+            });
+            
+            renderBookings();
+        }
+
+        // Reset Filters
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('statusFilter').value = 'all';
+            document.getElementById('dateFilter').value = '';
+            filteredBookings = [...allBookings];
+            renderBookings();
+        }
+
+        // View Booking Details
+        function viewBooking(bookingId) {
+            const booking = allBookings.find(b => b.id === bookingId);
+            if (!booking) return;
+            
+            const modal = document.getElementById('bookingModal');
+            const details = document.getElementById('bookingDetails');
+            
+            const statusColors = {
+                'pending': { bg: '#FFF3CD', text: '#856404', label: '待確認', icon: 'fa-clock' },
+                'confirmed': { bg: '#D4EDDA', text: '#155724', label: '已確認', icon: 'fa-check-circle' },
+                'completed': { bg: '#D1ECF1', text: '#0C5460', label: '已完成', icon: 'fa-check-double' },
+                'cancelled': { bg: '#F8D7DA', text: '#721C24', label: '已取消', icon: 'fa-times-circle' }
+            };
+            
+            const status = statusColors[booking.status] || statusColors.pending;
+            const createdDate = new Date(booking.createdAt);
+            
+            details.innerHTML = `
+                <div style="display: grid; gap: 1.5rem;">
+                    <!-- Status Badge -->
+                    <div style="text-align: center;">
+                        <span style="
+                            background: ${status.bg};
+                            color: ${status.text};
+                            padding: 0.8rem 2rem;
+                            border-radius: 25px;
+                            font-size: 1.1rem;
+                            font-weight: 600;
+                            display: inline-block;
+                        ">
+                            <i class="fas ${status.icon}"></i> ${status.label}
+                        </span>
+                    </div>
+                    
+                    <!-- Booking ID -->
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; text-align: center;">
+                        <div style="color: #999; font-size: 0.9rem; margin-bottom: 0.5rem;">預約編號</div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: #FF7A00;">${booking.id}</div>
+                        <div style="color: #999; font-size: 0.9rem; margin-top: 0.5rem;">
+                            建立時間：${createdDate.toLocaleDateString('zh-TW')} ${createdDate.toLocaleTimeString('zh-TW')}
+                        </div>
+                    </div>
+                    
+                    <!-- Service Info -->
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #f0f0f0;">
+                        <h3 style="color: #FF7A00; margin: 0 0 1rem 0;">
+                            <i class="fas fa-briefcase-medical"></i> 服務資訊
+                        </h3>
+                        <div style="display: grid; gap: 1rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <i class="fas ${booking.service.icon}" style="font-size: 2rem; color: #FF7A00;"></i>
+                                <div>
+                                    <div style="font-weight: bold; font-size: 1.1rem;">${booking.service.name}</div>
+                                    <div style="color: #666; font-size: 0.9rem;">${booking.service.description}</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-top: 1rem; border-top: 1px solid #eee;">
+                                <span style="color: #FF7A00; font-weight: bold;">費用：HK$ ${booking.service.price}起</span>
+                                <span style="color: #999;">預計時長：${booking.service.duration}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Date & Time -->
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #f0f0f0;">
+                        <h3 style="color: #4CAF50; margin: 0 0 1rem 0;">
+                            <i class="fas fa-calendar-alt"></i> 預約日期時間
+                        </h3>
+                        <div style="display: grid; gap: 0.8rem;">
+                            <div style="font-size: 1.1rem;">
+                                <i class="fas fa-calendar-day" style="color: #4CAF50; margin-right: 0.5rem;"></i>
+                                <strong>日期：</strong>${booking.date}
+                            </div>
+                            <div style="font-size: 1.1rem;">
+                                <i class="fas fa-clock" style="color: #4CAF50; margin-right: 0.5rem;"></i>
+                                <strong>時間：</strong>${booking.time}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Customer Info -->
+                    <div style="background: white; padding: 1.5rem; border-radius: 12px; border: 2px solid #f0f0f0;">
+                        <h3 style="color: #2196F3; margin: 0 0 1rem 0;">
+                            <i class="fas fa-user-circle"></i> 客戶資料
+                        </h3>
+                        <div style="display: grid; gap: 0.8rem;">
+                            <div><i class="fas fa-user" style="color: #2196F3; width: 20px;"></i> <strong>姓名：</strong>${booking.customer.name}</div>
+                            <div><i class="fas fa-phone" style="color: #2196F3; width: 20px;"></i> <strong>電話：</strong>${booking.customer.phone}</div>
+                            ${booking.customer.email ? `<div><i class="fas fa-envelope" style="color: #2196F3; width: 20px;"></i> <strong>電郵：</strong>${booking.customer.email}</div>` : ''}
+                            <div><i class="fas fa-map-marker-alt" style="color: #2196F3; width: 20px;"></i> <strong>地址：</strong>${booking.customer.address}</div>
+                            ${booking.customer.notes ? `<div style="margin-top: 0.5rem; padding-top: 0.8rem; border-top: 1px solid #eee;">
+                                <i class="fas fa-sticky-note" style="color: #2196F3; width: 20px;"></i> <strong>備註：</strong><br>
+                                <div style="margin-top: 0.5rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">${booking.customer.notes}</div>
+                            </div>` : ''}
+                        </div>
+                    </div>
+                    
+                    <!-- Actions -->
+                    <div style="display: flex; gap: 1rem; padding-top: 1rem; border-top: 2px solid #f0f0f0;">
+                        ${booking.status === 'pending' ? `
+                            <button onclick="confirmBookingAndClose('${booking.id}')" style="
+                                flex: 1;
+                                padding: 1rem;
+                                background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+                                color: white;
+                                border: none;
+                                border-radius: 10px;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                            ">
+                                <i class="fas fa-check"></i> 確認預約
+                            </button>
+                        ` : ''}
+                        ${booking.status === 'confirmed' ? `
+                            <button onclick="completeBookingAndClose('${booking.id}')" style="
+                                flex: 1;
+                                padding: 1rem;
+                                background: linear-gradient(135deg, #2196F3 0%, #64B5F6 100%);
+                                color: white;
+                                border: none;
+                                border-radius: 10px;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                            ">
+                                <i class="fas fa-check-double"></i> 標記完成
+                            </button>
+                        ` : ''}
+                        ${booking.status !== 'cancelled' && booking.status !== 'completed' ? `
+                            <button onclick="cancelBookingAndClose('${booking.id}')" style="
+                                flex: 1;
+                                padding: 1rem;
+                                background: #f44336;
+                                color: white;
+                                border: none;
+                                border-radius: 10px;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                            ">
+                                <i class="fas fa-times"></i> 取消預約
+                            </button>
+                        ` : ''}
+                        <button onclick="closeModal()" style="
+                            flex: 1;
+                            padding: 1rem;
+                            background: white;
+                            color: #666;
+                            border: 2px solid #ddd;
+                            border-radius: 10px;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            cursor: pointer;
+                        ">
+                            關閉
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            modal.style.display = 'flex';
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        // Confirm Booking
+        function confirmBooking(bookingId) {
+            if (!confirm('確認此預約？')) return;
+            
+            updateBookingStatus(bookingId, 'confirmed');
+            alert('預約已確認！');
+        }
+
+        function confirmBookingAndClose(bookingId) {
+            confirmBooking(bookingId);
+            closeModal();
+        }
+
+        // Complete Booking
+        function completeBooking(bookingId) {
+            if (!confirm('標記此預約為已完成？')) return;
+            
+            updateBookingStatus(bookingId, 'completed');
+            alert('預約已標記為完成！');
+        }
+
+        function completeBookingAndClose(bookingId) {
+            completeBooking(bookingId);
+            closeModal();
+        }
+
+        // Cancel Booking
+        function cancelBooking(bookingId) {
+            if (!confirm('確定要取消此預約嗎？')) return;
+            
+            updateBookingStatus(bookingId, 'cancelled');
+            alert('預約已取消！');
+        }
+
+        function cancelBookingAndClose(bookingId) {
+            cancelBooking(bookingId);
+            closeModal();
+        }
+
+        // Update Booking Status
+        function updateBookingStatus(bookingId, newStatus) {
+            const bookings = JSON.parse(localStorage.getItem('hygiene_bookings') || '[]');
+            const bookingIndex = bookings.findIndex(b => b.id === bookingId);
+            
+            if (bookingIndex !== -1) {
+                bookings[bookingIndex].status = newStatus;
+                bookings[bookingIndex].updatedAt = new Date().toISOString();
+                localStorage.setItem('hygiene_bookings', JSON.stringify(bookings));
+                loadBookings();
+            }
+        }
+
+        // Export Bookings
+        function exportBookings() {
+            if (filteredBookings.length === 0) {
+                alert('沒有可匯出的資料');
+                return;
+            }
+            
+            const csv = convertToCSV(filteredBookings);
+            downloadCSV(csv, 'bookings_export.csv');
+            alert('匯出成功！');
+        }
+
+        function convertToCSV(bookings) {
+            const headers = ['預約編號', '客戶姓名', '電話', '電郵', '服務項目', '預約日期', '時間', '狀態', '建立時間'];
+            const rows = bookings.map(b => [
+                b.id,
+                b.customer.name,
+                b.customer.phone,
+                b.customer.email || '',
+                b.service.name,
+                b.date,
+                b.time,
+                b.status,
+                new Date(b.createdAt).toLocaleString('zh-TW')
+            ]);
+            
+            return [headers, ...rows].map(row => row.join(',')).join('\n');
+        }
+
+        function downloadCSV(csv, filename) {
+            const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+        }
+    </script>
+</body>
+</html>
+
