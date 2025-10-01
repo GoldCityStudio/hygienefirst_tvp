@@ -912,133 +912,126 @@ function parseJwt(token) {
 
 // Load user data function
 function loadUserData() {
-    // Here you would typically make an API call to your backend
-    // For now, we'll just simulate loading user data
-    const userData = {
-        name: '張三',
-        email: 'zhang@example.com',
-        phone: '+1234567890',
-        orders: [
-            {
-                id: 'ORD001',
-                date: '2024-03-15',
-                status: 'completed',
-                items: ['基本清潔', '窗戶清潔']
-            },
-            {
-                id: 'ORD002',
-                date: '2024-03-20',
-                status: 'pending',
-                items: ['深度清潔']
-            }
-        ],
-        appointments: [
-            {
-                id: 'APT001',
-                date: '2024-03-25',
-                time: '10:00 AM',
-                service: '基本清潔'
-            }
-        ],
-        favorites: [
-            {
-                id: 'FAV001',
-                name: '深度清潔',
-                price: '$150',
-                image: 'path/to/image.jpg'
-            }
-        ],
-        notifications: [
-            {
-                id: 'NOT001',
-                title: '預約確認',
-                message: '您3月25日的清潔預約已確認。',
-                time: '2小時前'
-            }
-        ]
-    };
-
-    // Update dashboard with user data
-    updateDashboard(userData);
+    // Load orders from localStorage
+    const orders = JSON.parse(localStorage.getItem('hygiene_orders') || '[]');
+    
+    // Update dashboard with orders
+    updateDashboard({ orders });
+    
+    // Check if URL has #orders hash
+    if (window.location.hash === '#orders') {
+        // Switch to orders tab
+        const ordersTab = document.querySelector('[href="#orders"]');
+        if (ordersTab) {
+            ordersTab.click();
+        }
+    }
 }
 
 // Update dashboard with user data
 function updateDashboard(userData) {
-    // Update user info
-    document.getElementById('userName').textContent = userData.name;
-    document.getElementById('userEmail').textContent = userData.email;
-    document.getElementById('userPhone').textContent = userData.phone;
-
-    // Update orders
+    // Update orders from localStorage
     const ordersList = document.getElementById('ordersList');
-    if (ordersList) {
-        ordersList.innerHTML = userData.orders.map(order => `
-            <div class="order-card">
-                <div class="order-header">
-                    <div>
-                        <span class="order-number">Order #${order.id}</span>
-                        <span class="order-date">${order.date}</span>
+    if (ordersList && userData.orders) {
+        if (userData.orders.length === 0) {
+            ordersList.innerHTML = '<p style="text-align: center; color: #999; padding: 2rem;">暫無訂單</p>';
+        } else {
+            ordersList.innerHTML = userData.orders.map(order => {
+                const orderDate = new Date(order.orderDate);
+                const formattedDate = orderDate.toLocaleDateString('zh-TW', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                const statusColor = {
+                    'pending': { bg: '#fff3cd', text: '#856404', label: '待確認' },
+                    'confirmed': { bg: '#d1ecf1', text: '#0c5460', label: '已確認' },
+                    'completed': { bg: '#d4edda', text: '#155724', label: '已完成' },
+                    'cancelled': { bg: '#f8d7da', text: '#721c24', label: '已取消' }
+                };
+                
+                const status = statusColor[order.status] || statusColor.pending;
+                
+                return `
+                    <div class="order-card" style="
+                        background: white;
+                        border: 2px solid #eee;
+                        border-radius: 12px;
+                        padding: 1.5rem;
+                        margin-bottom: 1rem;
+                        transition: all 0.3s ease;
+                    ">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; color: #FF7A00; font-size: 1.1rem; margin-bottom: 0.3rem;">
+                                    訂單編號: ${order.orderId}
+                                </div>
+                                <div style="color: #999; font-size: 0.9rem;">
+                                    <i class="fas fa-calendar-alt"></i> ${formattedDate}
+                                </div>
+                            </div>
+                            <span style="
+                                background: ${status.bg};
+                                color: ${status.text};
+                                padding: 0.4rem 1rem;
+                                border-radius: 20px;
+                                font-size: 0.9rem;
+                                font-weight: 600;
+                            ">${status.label}</span>
+                        </div>
+                        
+                        <div style="border-top: 1px solid #eee; padding-top: 1rem; margin-bottom: 1rem;">
+                            <div style="display: grid; gap: 0.6rem;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: #666;"><i class="fas fa-broom"></i> 服務類型：</span>
+                                    <strong>${order.service.type}</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: #666;"><i class="fas fa-home"></i> 物業面積：</span>
+                                    <strong>${order.service.propertySize}</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: #666;"><i class="fas fa-clock"></i> 服務頻率：</span>
+                                    <strong>${order.service.frequency}</strong>
+                                </div>
+                                ${order.service.addons && order.service.addons.length > 0 ? `
+                                <div style="color: #666;">
+                                    <i class="fas fa-plus-circle"></i> 額外服務：
+                                    <ul style="margin: 0.3rem 0 0 1.5rem; color: #333;">
+                                        ${order.service.addons.map(addon => `<li>${addon.name}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                        
+                        <div style="border-top: 1px solid #eee; padding-top: 1rem; margin-bottom: 1rem;">
+                            <div style="display: grid; gap: 0.5rem; font-size: 0.95rem;">
+                                <div><i class="fas fa-user"></i> ${order.customer.name}</div>
+                                <div><i class="fas fa-phone"></i> ${order.customer.phone}</div>
+                                <div><i class="fas fa-map-marker-alt"></i> ${order.customer.address}</div>
+                                ${order.customer.preferredDate ? `<div><i class="fas fa-calendar-check"></i> 首選日期: ${order.customer.preferredDate}</div>` : ''}
+                            </div>
+                        </div>
+                        
+                        <div style="
+                            background: linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%);
+                            color: white;
+                            padding: 1rem;
+                            border-radius: 8px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        ">
+                            <span style="font-size: 1rem;">預估總價</span>
+                            <span style="font-size: 1.5rem; font-weight: bold;">HK$ ${order.pricing.total.toFixed(0)}</span>
+                        </div>
                     </div>
-                    <span class="order-status ${order.status}">${order.status}</span>
-                </div>
-                <div class="order-items">
-                    ${order.items.join(', ')}
-                </div>
-            </div>
-        `).join('');
-    }
-
-    // Update appointments
-    const appointmentsList = document.getElementById('appointmentsList');
-    if (appointmentsList) {
-        appointmentsList.innerHTML = userData.appointments.map(appointment => `
-            <div class="appointment-card">
-                <div class="appointment-header">
-                    <div class="appointment-time">
-                        ${appointment.date} at ${appointment.time}
-                    </div>
-                    <div class="appointment-actions">
-                        <button class="btn btn-primary">Reschedule</button>
-                        <button class="btn btn-danger">Cancel</button>
-                    </div>
-                </div>
-                <div class="appointment-service">
-                    ${appointment.service}
-                </div>
-            </div>
-        `).join('');
-    }
-
-    // Update favorites
-    const favoritesList = document.getElementById('favoritesList');
-    if (favoritesList) {
-        favoritesList.innerHTML = userData.favorites.map(favorite => `
-            <div class="favorite-card">
-                <div class="favorite-image">
-                    <img src="${favorite.image}" alt="${favorite.name}">
-                </div>
-                <div class="favorite-content">
-                    <h4 class="favorite-title">${favorite.name}</h4>
-                    <div class="favorite-price">${favorite.price}</div>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    // Update notifications
-    const notificationsList = document.getElementById('notificationsList');
-    if (notificationsList) {
-        notificationsList.innerHTML = userData.notifications.map(notification => `
-            <div class="notification-card">
-                <div class="notification-icon">
-                    <i class="fas fa-bell"></i>
-                </div>
-                <div class="notification-content">
-                    <h4 class="notification-title">${notification.title}</h4>
-                    <p class="notification-message">${notification.message}</p>
-                    <span class="notification-time">${notification.time}</span>
-                </div>
-            </div>
-        `).join('');
+                `;
+            }).join('');
+        }
     }
 } 

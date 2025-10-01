@@ -569,7 +569,7 @@
                 <!-- Contact Form for Quote -->
                 <div class="quote-contact-form">
                     <h4 style="margin-bottom: 1.5rem; text-align: center;">
-                        <i class="fas fa-envelope"></i> 提交報價請求
+                        <i class="fas fa-check-circle"></i> 提交訂單
                     </h4>
                     <form id="quoteForm" style="display: grid; gap: 1rem;">
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
@@ -599,7 +599,7 @@
                             <textarea id="quoteNotes" rows="4" class="quote-input" placeholder="請告訴我們任何特別要求或注意事項..."></textarea>
                         </div>
                         <button type="submit" class="btn primary-btn" style="padding: 1rem 2rem; font-size: 1.1rem; background: #FF7A00;">
-                            <i class="fas fa-paper-plane"></i> 提交報價請求
+                            <i class="fas fa-check-circle"></i> 提交訂單
                         </button>
                     </form>
                 </div>
@@ -1258,31 +1258,275 @@
             
             message += `\n_*最終價格可能因實際情況而調整_`;
             
-            // Encode message for WhatsApp URL
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/85296769157?text=${encodedMessage}`;
+            // Get service type details for order
+            const basePrice = serviceTypeElement ? parseFloat(serviceTypeElement.dataset.basePrice) : 0;
+            const frequencyDiscount = frequencyElement ? parseFloat(frequencyElement.dataset.discount) : 0;
             
-            // Open WhatsApp
-            window.open(whatsappURL, '_blank');
+            // Get selected addons with prices
+            const selectedAddonsWithPrices = Array.from(document.querySelectorAll('.addon-option input[type="checkbox"]:checked')).map(cb => {
+                const label = cb.closest('.addon-option').querySelector('label span').textContent;
+                const price = parseFloat(cb.value);
+                return { name: label, price: price };
+            });
             
-            // Show success message
-            setTimeout(() => {
-                alert('報價請求已準備好！請在 WhatsApp 中發送訊息。\n\n預估價格：' + totalPriceEl.textContent);
-                
-                // Reset form
-                quoteForm.reset();
-                document.querySelectorAll('.service-option, .frequency-option, .addon-option').forEach(opt => {
-                    opt.style.borderColor = '#ddd';
-                    opt.style.background = '#fff';
-                });
-                basePrice = 0;
-                calculateTotal();
-            }, 500);
+            // Get property details
+            const sizeMultiplier = parseFloat(propertySizeElement.value);
+            const bedroomsElement = document.getElementById('bedrooms');
+            const bedroomsLabel = bedroomsElement.options[bedroomsElement.selectedIndex].text;
+            const bathroomsElement = document.getElementById('bathrooms');
+            const bathroomsLabel = bathroomsElement.options[bathroomsElement.selectedIndex].text;
+            
+            // Get customer data
+            const customerData = {
+                name: document.getElementById('quoteName').value,
+                phone: document.getElementById('quotePhone').value,
+                email: email,
+                address: document.getElementById('quoteAddress').value,
+                preferredDate: preferredDate,
+                notes: notes
+            };
+            
+            // Calculate total price
+            const adjustedBasePrice = basePrice * sizeMultiplier;
+            const addonsTotal = selectedAddonsWithPrices.reduce((sum, addon) => sum + addon.price, 0);
+            const subtotal = adjustedBasePrice + addonsTotal;
+            const discountAmount = subtotal * frequencyDiscount;
+            const totalPrice = subtotal - discountAmount;
+            
+            // Create order object
+            const order = {
+                orderId: 'HF' + Date.now(),
+                orderDate: new Date().toISOString(),
+                status: 'pending',
+                customer: customerData,
+                service: {
+                    type: serviceTypeLabel,
+                    propertySize: propertySizeLabel,
+                    bedrooms: bedroomsLabel,
+                    bathrooms: bathroomsLabel,
+                    frequency: frequencyLabel,
+                    frequencyDiscount: (frequencyDiscount * 100).toFixed(0) + '%',
+                    addons: selectedAddonsWithPrices
+                },
+                pricing: {
+                    basePrice: basePrice,
+                    sizeMultiplier: sizeMultiplier,
+                    subtotal: subtotal,
+                    discount: discountAmount,
+                    total: totalPrice
+                }
+            };
+            
+            // Save order to localStorage
+            const orders = JSON.parse(localStorage.getItem('hygiene_orders') || '[]');
+            orders.unshift(order); // Add to beginning of array
+            localStorage.setItem('hygiene_orders', JSON.stringify(orders));
+            
+            // Show success modal
+            showOrderConfirmation(order);
+            
+            // Reset form
+            quoteForm.reset();
+            document.querySelectorAll('.service-option, .frequency-option, .addon-option').forEach(opt => {
+                opt.style.borderColor = '#ddd';
+                opt.style.background = '#fff';
+            });
+            calculateTotal();
         });
 
         // Initialize first frequency option as checked
         document.querySelector('input[name="frequency"]:checked').closest('.frequency-option').style.borderColor = '#FF7A00';
         document.querySelector('input[name="frequency"]:checked').closest('.frequency-option').style.background = '#fff8f0';
+        
+        // Order confirmation modal function
+        function showOrderConfirmation(order) {
+            // Create modal HTML
+            const modalHTML = `
+                <div id="orderConfirmationModal" style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.7);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    animation: fadeIn 0.3s ease;
+                ">
+                    <div style="
+                        background: white;
+                        border-radius: 20px;
+                        padding: 3rem;
+                        max-width: 600px;
+                        width: 90%;
+                        max-height: 90vh;
+                        overflow-y: auto;
+                        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+                        animation: slideUp 0.4s ease;
+                    ">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <div style="
+                                width: 80px;
+                                height: 80px;
+                                background: linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%);
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin: 0 auto 1rem;
+                            ">
+                                <i class="fas fa-check" style="color: white; font-size: 2.5rem;"></i>
+                            </div>
+                            <h2 style="color: #FF7A00; margin: 0 0 0.5rem 0;">訂單已成功提交！</h2>
+                            <p style="color: #666; margin: 0;">我們已收到您的服務預約</p>
+                        </div>
+                        
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="color: #666;">訂單編號</span>
+                                <strong style="color: #FF7A00; font-size: 1.1rem;">${order.orderId}</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: #666;">訂單狀態</span>
+                                <span style="
+                                    background: #fff3cd;
+                                    color: #856404;
+                                    padding: 0.3rem 1rem;
+                                    border-radius: 20px;
+                                    font-size: 0.9rem;
+                                    font-weight: 600;
+                                ">待確認</span>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: #333; margin: 0 0 1rem 0; border-bottom: 2px solid #FF7A00; padding-bottom: 0.5rem;">服務詳情</h4>
+                            <div style="display: grid; gap: 0.8rem;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: #666;">服務類型：</span>
+                                    <strong>${order.service.type}</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: #666;">物業面積：</span>
+                                    <strong>${order.service.propertySize}</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: #666;">服務頻率：</span>
+                                    <strong>${order.service.frequency}</strong>
+                                </div>
+                                ${order.service.addons.length > 0 ? `
+                                <div>
+                                    <span style="color: #666;">額外服務：</span>
+                                    <ul style="margin: 0.5rem 0 0 0; padding-left: 1.2rem;">
+                                        ${order.service.addons.map(addon => `<li style="color: #333;">${addon.name}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: #333; margin: 0 0 1rem 0; border-bottom: 2px solid #FF7A00; padding-bottom: 0.5rem;">客戶資料</h4>
+                            <div style="display: grid; gap: 0.8rem;">
+                                <div><strong>姓名：</strong> ${order.customer.name}</div>
+                                <div><strong>電話：</strong> ${order.customer.phone}</div>
+                                ${order.customer.email ? `<div><strong>電郵：</strong> ${order.customer.email}</div>` : ''}
+                                <div><strong>地址：</strong> ${order.customer.address}</div>
+                                ${order.customer.preferredDate ? `<div><strong>首選日期：</strong> ${order.customer.preferredDate}</div>` : ''}
+                            </div>
+                        </div>
+                        
+                        <div style="
+                            background: linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%);
+                            color: white;
+                            padding: 1.5rem;
+                            border-radius: 12px;
+                            margin-bottom: 1.5rem;
+                        ">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span style="font-size: 1.1rem;">預估總價</span>
+                                <span style="font-size: 1.8rem; font-weight: bold;">HK$ ${order.pricing.total.toFixed(0)}</span>
+                            </div>
+                            ${order.pricing.discount > 0 ? `
+                                <div style="font-size: 0.9rem; opacity: 0.9;">
+                                    已享 ${order.service.frequencyDiscount} 折扣優惠 (省 HK$ ${order.pricing.discount.toFixed(0)})
+                                </div>
+                            ` : ''}
+                        </div>
+                        
+                        <div style="background: #e7f3ff; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                            <p style="margin: 0; color: #004085; font-size: 0.95rem;">
+                                <i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>
+                                我們的客服團隊將於 24 小時內與您聯絡，確認服務詳情及最終報價。
+                            </p>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem;">
+                            <button onclick="closeOrderModal()" style="
+                                flex: 1;
+                                padding: 1rem;
+                                background: white;
+                                color: #FF7A00;
+                                border: 2px solid #FF7A00;
+                                border-radius: 10px;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            " onmouseover="this.style.background='#fff8f0'" onmouseout="this.style.background='white'">
+                                關閉
+                            </button>
+                            <button onclick="viewMyOrders()" style="
+                                flex: 1;
+                                padding: 1rem;
+                                background: linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%);
+                                color: white;
+                                border: none;
+                                border-radius: 10px;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,122,0,0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                                查看我的訂單
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <style>
+                    @keyframes slideUp {
+                        from {
+                            transform: translateY(50px);
+                            opacity: 0;
+                        }
+                        to {
+                            transform: translateY(0);
+                            opacity: 1;
+                        }
+                    }
+                </style>
+            `;
+            
+            // Add modal to page
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+        
+        // Close order modal
+        window.closeOrderModal = function() {
+            const modal = document.getElementById('orderConfirmationModal');
+            if (modal) {
+                modal.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => modal.remove(), 300);
+            }
+        };
+        
+        // View my orders
+        window.viewMyOrders = function() {
+            window.location.href = 'member-account.html#orders';
+        };
     });
     </script>
 
