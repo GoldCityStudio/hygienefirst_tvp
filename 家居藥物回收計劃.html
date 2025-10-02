@@ -300,6 +300,20 @@
                 white-space: normal !important;
             }
             
+            /* Photo Gallery Styles */
+            .photo-item:hover {
+                transform: translateY(-5px) !important;
+                box-shadow: 0 8px 30px rgba(0,0,0,0.15) !important;
+            }
+            
+            .photo-item img {
+                transition: transform 0.3s ease;
+            }
+            
+            .photo-item:hover img {
+                transform: scale(1.05);
+            }
+            
             /* Pagination controls mobile optimization */
             .pagination-controls {
                 flex-direction: column !important;
@@ -957,6 +971,114 @@
 
     
 
+        <!-- Launch Ceremony Highlights Section -->
+        <section class="launch-ceremony-highlights" style="padding: 4rem 0; background: #FFF9F5;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 style="color: #FF7A00; text-align: center; margin-bottom: 1rem;">
+                        <i class="fas fa-camera" style="margin-right: 0.5rem;"></i>啟動禮花絮
+                    </h2>
+                    <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 3rem;">
+                        記錄「過期藥物回收計劃」啟動典禮的精彩時刻
+                    </p>
+                </div>
+                
+                <!-- Photo Gallery -->
+                <div class="photo-gallery" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <!-- Photo 1 -->
+                    <div class="photo-item" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 12.14.46 PM.jpeg" 
+                             alt="啟動禮花絮 - 典禮現場" 
+                             style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
+                             onclick="openLightbox(this.src, this.alt)">
+                        <div style="padding: 1rem;">
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">啟動典禮現場</h4>
+                            <p style="color: #666; font-size: 0.9rem;">2025年10月1日啟動典禮精彩瞬間</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 2 -->
+                    <div class="photo-item" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.49 PM.jpeg" 
+                             alt="啟動禮花絮 - 嘉賓致辭" 
+                             style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
+                             onclick="openLightbox(this.src, this.alt)">
+                        <div style="padding: 1rem;">
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">嘉賓致辭</h4>
+                            <p style="color: #666; font-size: 0.9rem;">重要嘉賓在啟動典禮上致辭</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 3 -->
+                    <div class="photo-item" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.51 PM (1).jpeg" 
+                             alt="啟動禮花絮 - 典禮儀式" 
+                             style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
+                             onclick="openLightbox(this.src, this.alt)">
+                        <div style="padding: 1rem;">
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">典禮儀式</h4>
+                            <p style="color: #666; font-size: 0.9rem;">正式啟動藥物回收計劃</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 4 -->
+                    <div class="photo-item" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.51 PM.jpeg" 
+                             alt="啟動禮花絮 - 參與者合影" 
+                             style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
+                             onclick="openLightbox(this.src, this.alt)">
+                        <div style="padding: 1rem;">
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">參與者合影</h4>
+                            <p style="color: #666; font-size: 0.9rem;">所有參與者共同見證重要時刻</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 5 -->
+                    <div class="photo-item" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.52 PM (1).jpeg" 
+                             alt="啟動禮花絮 - 活動現場" 
+                             style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
+                             onclick="openLightbox(this.src, this.alt)">
+                        <div style="padding: 1rem;">
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">活動現場</h4>
+                            <p style="color: #666; font-size: 0.9rem;">熱鬧的啟動典禮現場</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 6 -->
+                    <div class="photo-item" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.52 PM (2).jpeg" 
+                             alt="啟動禮花絮 - 典禮佈置" 
+                             style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
+                             onclick="openLightbox(this.src, this.alt)">
+                        <div style="padding: 1rem;">
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">典禮佈置</h4>
+                            <p style="color: #666; font-size: 0.9rem;">精心佈置的啟動典禮會場</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- View More Photos Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="showAllPhotos()" style="
+                        background: linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%);
+                        color: white;
+                        border: none;
+                        padding: 1rem 2rem;
+                        border-radius: 25px;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
+                    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 122, 0, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 122, 0, 0.3)'">
+                        <i class="fas fa-images" style="margin-right: 0.5rem;"></i>查看更多花絮照片
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- Collection Points List Section -->
         <section class="collection-points-list" style="padding: 4rem 0; background: white;">
             <div class="container">
@@ -1360,6 +1482,192 @@
                 });
             });
         });
+
+        // Photo Gallery Functions
+        function openLightbox(imageSrc, imageAlt) {
+            // Create lightbox overlay
+            const lightbox = document.createElement('div');
+            lightbox.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                z-index: 10000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            `;
+            
+            // Create image element
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.alt = imageAlt;
+            img.style.cssText = `
+                max-width: 90%;
+                max-height: 90%;
+                object-fit: contain;
+                border-radius: 10px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            `;
+            
+            // Create close button
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                color: white;
+                font-size: 2rem;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.3s ease;
+            `;
+            closeBtn.onmouseover = () => closeBtn.style.background = 'rgba(255, 255, 255, 0.3)';
+            closeBtn.onmouseout = () => closeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+            
+            // Add event listeners
+            lightbox.onclick = () => document.body.removeChild(lightbox);
+            closeBtn.onclick = () => document.body.removeChild(lightbox);
+            
+            // Prevent image click from closing lightbox
+            img.onclick = (e) => e.stopPropagation();
+            
+            // Add elements to lightbox
+            lightbox.appendChild(img);
+            lightbox.appendChild(closeBtn);
+            document.body.appendChild(lightbox);
+            
+            // Add escape key listener
+            const escapeHandler = (e) => {
+                if (e.key === 'Escape') {
+                    document.body.removeChild(lightbox);
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
+        }
+        
+        function showAllPhotos() {
+            // Create modal for all photos
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                z-index: 10000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                overflow-y: auto;
+            `;
+            
+            // Create header
+            const header = document.createElement('div');
+            header.style.cssText = `
+                color: white;
+                text-align: center;
+                margin-bottom: 2rem;
+                position: relative;
+                width: 100%;
+            `;
+            header.innerHTML = `
+                <h2 style="margin: 0; font-size: 2rem;">啟動禮花絮 - 完整相冊</h2>
+                <button onclick="document.body.removeChild(this.closest('div').parentElement)" 
+                        style="position: absolute; top: 0; right: 0; background: rgba(255, 255, 255, 0.2); 
+                               border: none; color: white; font-size: 1.5rem; width: 40px; height: 40px; 
+                               border-radius: 50%; cursor: pointer;">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            // Create photo grid
+            const photoGrid = document.createElement('div');
+            photoGrid.style.cssText = `
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+                max-width: 1200px;
+                width: 100%;
+            `;
+            
+            // All photo files
+            const photoFiles = [
+                'WhatsApp Image 2025-10-01 at 12.14.46 PM.jpeg',
+                'WhatsApp Image 2025-10-01 at 7.24.49 PM.jpeg',
+                'WhatsApp Image 2025-10-01 at 7.24.51 PM (1).jpeg',
+                'WhatsApp Image 2025-10-01 at 7.24.51 PM.jpeg',
+                'WhatsApp Image 2025-10-01 at 7.24.52 PM (1).jpeg',
+                'WhatsApp Image 2025-10-01 at 7.24.52 PM (2).jpeg',
+                'WhatsApp Image 2025-10-01 at 7.24.52 PM.jpeg',
+                'WhatsApp Image 2025-10-01 at 7.24.53 PM (1).jpeg',
+                'WhatsApp Image 2025-10-01 at 7.24.53 PM.jpeg',
+                'WhatsApp Image 2025-10-01 at 7.24.54 PM.jpeg',
+                'WhatsApp Image 2025-10-01 at 7.36.04 PM (1).jpeg',
+                'WhatsApp Image 2025-10-01 at 7.36.04 PM.jpeg',
+                'WhatsApp Image 2025-10-01 at 7.36.05 PM (1).jpeg',
+                'WhatsApp Image 2025-10-01 at 7.36.05 PM (2).jpeg',
+                'WhatsApp Image 2025-10-01 at 7.36.05 PM.jpeg',
+                'WhatsApp Image 2025-10-01 at 7.36.06 PM (1).jpeg',
+                'WhatsApp Image 2025-10-01 at 7.36.06 PM.jpeg',
+                'WhatsApp Image 2025-10-01 at 7.36.07 PM.jpeg'
+            ];
+            
+            // Add photos to grid
+            photoFiles.forEach((filename, index) => {
+                const photoDiv = document.createElement('div');
+                photoDiv.style.cssText = `
+                    background: white;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    cursor: pointer;
+                    transition: transform 0.3s ease;
+                `;
+                photoDiv.onmouseover = () => photoDiv.style.transform = 'scale(1.05)';
+                photoDiv.onmouseout = () => photoDiv.style.transform = 'scale(1)';
+                
+                const img = document.createElement('img');
+                img.src = `images/啟動花絮/${filename}`;
+                img.alt = `啟動禮花絮 ${index + 1}`;
+                img.style.cssText = `
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                `;
+                img.onclick = () => openLightbox(img.src, img.alt);
+                
+                photoDiv.appendChild(img);
+                photoGrid.appendChild(photoDiv);
+            });
+            
+            // Add elements to modal
+            modal.appendChild(header);
+            modal.appendChild(photoGrid);
+            document.body.appendChild(modal);
+            
+            // Add escape key listener
+            const escapeHandler = (e) => {
+                if (e.key === 'Escape') {
+                    document.body.removeChild(modal);
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
+        }
 
         // Load Collection Points Data
         document.addEventListener('DOMContentLoaded', function() {
