@@ -12,6 +12,10 @@
     
     <!-- Dialogflow SDK -->
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    
+    <!-- Google Sign-In SDK for Authentication -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <div class="overlay"></div>
@@ -967,6 +971,9 @@
             
             // Initialize Chatbot
             initializeChatbot();
+            
+            // Initialize Dialogflow Authentication
+            initializeDialogflowAuth();
         });
 
         // Dialogflow Chatbot Integration
@@ -987,7 +994,11 @@
             const DIALOGFLOW_CONFIG = {
                 projectId: 'hygiene-first-booking', // Replace with your actual project ID
                 languageCode: 'zh-TW',
-                sessionId: sessionId
+                sessionId: sessionId,
+                // For production, you'll need to implement proper authentication
+                // This is a demo configuration - replace with your actual setup
+                accessToken: null, // Will be set dynamically
+                apiEndpoint: 'https://dialogflow.googleapis.com/v2'
             };
 
             // Quick Reply Templates
@@ -1032,16 +1043,38 @@
                 // Show typing indicator
                 showTypingIndicator();
 
-                // Send to Dialogflow (simulated for demo)
-                setTimeout(() => {
+                // Send to Dialogflow
+                try {
+                    const response = await sendToDialogflow(message);
                     hideTypingIndicator();
-                    const response = getDialogflowResponse(message);
-                    addMessage(response.text, 'bot');
                     
-                    if (response.quickReplies) {
-                        showQuickReplies(response.quickReplies);
+                    if (response.success) {
+                        addMessage(response.text, 'bot');
+                        
+                        if (response.quickReplies) {
+                            showQuickReplies(response.quickReplies);
+                        }
+                    } else {
+                        // Fallback to simulated response if API fails
+                        const fallbackResponse = getDialogflowResponse(message);
+                        addMessage(fallbackResponse.text, 'bot');
+                        
+                        if (fallbackResponse.quickReplies) {
+                            showQuickReplies(fallbackResponse.quickReplies);
+                        }
                     }
-                }, 1500);
+                } catch (error) {
+                    hideTypingIndicator();
+                    console.error('Chatbot Error:', error);
+                    
+                    // Fallback response
+                    const fallbackResponse = getDialogflowResponse(message);
+                    addMessage(fallbackResponse.text, 'bot');
+                    
+                    if (fallbackResponse.quickReplies) {
+                        showQuickReplies(fallbackResponse.quickReplies);
+                    }
+                }
             }
 
             // Send button click
@@ -1264,34 +1297,179 @@
                 };
             }
 
-            // Real Dialogflow API Integration (Uncomment and configure)
-            /*
+            // Real Dialogflow API Integration
             async function sendToDialogflow(message) {
                 try {
-                    const response = await fetch(`https://dialogflow.googleapis.com/v2/projects/${DIALOGFLOW_CONFIG.projectId}/agent/sessions/${DIALOGFLOW_CONFIG.sessionId}:detectIntent`, {
+                    // Check if we have a valid access token
+                    if (!DIALOGFLOW_CONFIG.accessToken) {
+                        console.log('No Dialogflow access token configured, using fallback responses');
+                        return { success: false, text: 'API not configured' };
+                    }
+
+                    const url = `${DIALOGFLOW_CONFIG.apiEndpoint}/projects/${DIALOGFLOW_CONFIG.projectId}/agent/sessions/${DIALOGFLOW_CONFIG.sessionId}:detectIntent`;
+                    
+                    const requestBody = {
+                        queryInput: {
+                            text: {
+                                text: message,
+                                languageCode: DIALOGFLOW_CONFIG.languageCode
+                            }
+                        },
+                        queryParams: {
+                            timeZone: 'Asia/Hong_Kong'
+                        }
+                    };
+
+                    const response = await fetch(url, {
                         method: 'POST',
                         headers: {
-                            'Authorization': `Bearer ${YOUR_ACCESS_TOKEN}`,
+                            'Authorization': `Bearer ${DIALOGFLOW_CONFIG.accessToken}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(requestBody)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    if (data.queryResult && data.queryResult.fulfillmentText) {
+                        return {
+                            success: true,
+                            text: data.queryResult.fulfillmentText,
+                            quickReplies: extractQuickReplies(data.queryResult),
+                            intent: data.queryResult.intent?.displayName || 'unknown'
+                        };
+                    } else {
+                        throw new Error('Invalid response format from Dialogflow');
+                    }
+                } catch (error) {
+                    console.error('Dialogflow API Error:', error);
+                    return { 
+                        success: false, 
+                        text: '抱歉，我暫時無法回應。請稍後再試或聯繫我們的客服。',
+                        error: error.message
+                    };
+                }
+            }
+
+            // Extract quick replies from Dialogflow response
+            function extractQuickReplies(queryResult) {
+                const quickReplies = [];
+                
+                // Check for quick replies in fulfillment messages
+                if (queryResult.fulfillmentMessages) {
+                    queryResult.fulfillmentMessages.forEach(message => {
+                        if (message.quickReplies && message.quickReplies.quickReplies) {
+                            quickReplies.push(...message.quickReplies.quickReplies);
+                        }
+                    });
+                }
+                
+                // Check for suggestions in the response
+                if (queryResult.outputContexts) {
+                    queryResult.outputContexts.forEach(context => {
+                        if (context.parameters && context.parameters.suggestions) {
+                            quickReplies.push(...context.parameters.suggestions);
+                        }
+                    });
+                }
+                
+                return quickReplies.length > 0 ? quickReplies : null;
+            }
+
+            // Initialize Dialogflow Authentication
+            async function initializeDialogflowAuth() {
+                console.log('Initializing Dialogflow authentication...');
+                
+                // Option 1: Check for pre-configured access token
+                if (window.DIALOGFLOW_ACCESS_TOKEN) {
+                    DIALOGFLOW_CONFIG.accessToken = window.DIALOGFLOW_ACCESS_TOKEN;
+                    console.log('✅ Dialogflow token loaded from environment');
+                    return true;
+                }
+                
+                // Option 2: Use server-side proxy for authentication (Recommended for production)
+                try {
+                    const response = await fetch('/api/dialogflow-token', {
+                        method: 'POST',
+                        headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            queryInput: {
-                                text: {
-                                    text: message,
-                                    languageCode: DIALOGFLOW_CONFIG.languageCode
-                                }
-                            }
+                            projectId: DIALOGFLOW_CONFIG.projectId
                         })
                     });
                     
-                    const data = await response.json();
-                    return data.queryResult.fulfillmentText;
+                    if (response.ok) {
+                        const data = await response.json();
+                        DIALOGFLOW_CONFIG.accessToken = data.accessToken;
+                        console.log('✅ Dialogflow token obtained from server');
+                        return true;
+                    }
                 } catch (error) {
-                    console.error('Dialogflow API Error:', error);
-                    return '抱歉，我暫時無法回應。請稍後再試或聯繫我們的客服。';
+                    console.log('Server-side authentication not available:', error.message);
                 }
+                
+                // Option 3: Use Google Sign-In for authentication
+                if (typeof gapi !== 'undefined') {
+                    try {
+                        await gapi.load('auth2', async () => {
+                            await gapi.auth2.init({
+                                client_id: 'YOUR_GOOGLE_CLIENT_ID' // Replace with your actual client ID
+                            });
+                            
+                            const authInstance = gapi.auth2.getAuthInstance();
+                            const user = authInstance.currentUser.get();
+                            
+                            if (user.isSignedIn()) {
+                                DIALOGFLOW_CONFIG.accessToken = user.getAuthResponse().access_token;
+                                console.log('✅ Dialogflow authentication via Google Sign-In successful');
+                                return true;
+                            }
+                        });
+                    } catch (error) {
+                        console.log('Google Sign-In authentication failed:', error.message);
+                    }
+                }
+                
+                // Option 4: Use service account key (for development only)
+                if (window.DIALOGFLOW_SERVICE_ACCOUNT_KEY) {
+                    try {
+                        // This would require additional implementation for JWT token generation
+                        console.log('Service account key detected, but JWT implementation needed');
+                    } catch (error) {
+                        console.log('Service account authentication failed:', error.message);
+                    }
+                }
+                
+                console.log('⚠️ Dialogflow authentication not configured, using fallback responses');
+                console.log('To enable Dialogflow integration:');
+                console.log('1. Set window.DIALOGFLOW_ACCESS_TOKEN with your access token');
+                console.log('2. Implement server-side token endpoint at /api/dialogflow-token');
+                console.log('3. Configure Google Sign-In with proper client ID');
+                console.log('4. Set up service account authentication');
+                
+                return false;
             }
-            */
+
+            // Configuration Helper Function
+            function configureDialogflow(options = {}) {
+                if (options.projectId) DIALOGFLOW_CONFIG.projectId = options.projectId;
+                if (options.accessToken) DIALOGFLOW_CONFIG.accessToken = options.accessToken;
+                if (options.languageCode) DIALOGFLOW_CONFIG.languageCode = options.languageCode;
+                
+                console.log('Dialogflow configuration updated:', {
+                    projectId: DIALOGFLOW_CONFIG.projectId,
+                    languageCode: DIALOGFLOW_CONFIG.languageCode,
+                    hasAccessToken: !!DIALOGFLOW_CONFIG.accessToken
+                });
+            }
+
+            // Make configuration function globally available
+            window.configureDialogflow = configureDialogflow;
         }
     </script>
 </body>
