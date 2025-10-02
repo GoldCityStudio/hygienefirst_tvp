@@ -1438,6 +1438,45 @@
                             }
                         });
                         
+                        // Sort collection points by district within each region
+                        completeCollectionPointsData.sort((a, b) => {
+                            // First sort by region
+                            const regionOrder = { '香港島': 1, '九龍': 2, '新界': 3 };
+                            const regionA = regionOrder[a.地區] || 4;
+                            const regionB = regionOrder[b.地區] || 4;
+                            
+                            if (regionA !== regionB) {
+                                return regionA - regionB;
+                            }
+                            
+                            // Then sort by district within the same region
+                            const districtA = extractDistrict(a.回收點地址);
+                            const districtB = extractDistrict(b.回收點地址);
+                            
+                            return districtA.localeCompare(districtB, 'zh-TW');
+                        });
+                        
+                        // Helper function to extract district from address
+                        function extractDistrict(address) {
+                            const districts = [
+                                // Hong Kong Island
+                                '中環', '上環', '灣仔', '銅鑼灣', '北角', '太古', '西環', '西營盤', '西區', '香港仔', '柴灣', '堅尼地城', '淺水灣', '深水灣', '清水灣', '跑馬地', '黃竹坑', '筲箕灣', '鴨脷洲', '鰂魚涌', '半山', '西半山', '添美道', '添馬', '金鐘', '金鐘道', '大潭',
+                                // Kowloon
+                                '尖沙咀', '旺角', '油麻地', '油蔴地', '深水埗', '長沙灣', '荔枝角', '紅磡', '何文田', '土瓜灣', '九龍城', '九龍塘', '九龍灣', '觀塘', '牛頭角', '黃大仙', '鑽石山', '慈雲山', '新蒲崗', '秀茂坪', '啟德', '清水灣道', '藍田', '東頭邨', '橫頭磡', '延文禮士道', '彩虹道', '西九',
+                                // New Territories
+                                '大圍', '大埔', '沙田', '火炭', '西貢', '馬鞍山', '將軍澳', '屯門', '元朗', '天水圍', '上水', '粉嶺', '大嶼山', '東涌', '長洲', '南丫島', '坪洲', '荃灣', '葵涌', '青衣', '深井', '馬灣', '北區', '離島'
+                            ];
+                            
+                            for (const district of districts) {
+                                if (address.includes(district)) {
+                                    return district;
+                                }
+                            }
+                            
+                            // If no specific district found, return the first part of address
+                            return address.split(/[路街號]/)[0] || address;
+                        }
+                        
                         console.log('Processed collection points:', completeCollectionPointsData.length);
                         console.log('Regional distribution:', {
                             '香港島': completeCollectionPointsData.filter(item => item.地區 === '香港島').length,
@@ -1452,6 +1491,18 @@
                             completeCollectionPointsData.filter(item => item.地區 === '九龍').slice(0, 3));
                         console.log('Sample New Territories points:', 
                             completeCollectionPointsData.filter(item => item.地區 === '新界').slice(0, 3));
+                        
+                        // Debug: Show district grouping for New Territories
+                        const newTerritoriesPoints = completeCollectionPointsData.filter(item => item.地區 === '新界');
+                        const districtGroups = {};
+                        newTerritoriesPoints.forEach(point => {
+                            const district = extractDistrict(point.回收點地址);
+                            if (!districtGroups[district]) {
+                                districtGroups[district] = [];
+                            }
+                            districtGroups[district].push(point);
+                        });
+                        console.log('New Territories district groups:', districtGroups);
                         
                         // Populate the tables
                         populateCollectionPointsTables();
