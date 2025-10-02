@@ -314,6 +314,12 @@
                 transform: scale(1.05);
             }
             
+            /* Media Coverage Styles */
+            .media-item:hover {
+                border-color: #FF7A00 !important;
+                box-shadow: 0 2px 8px rgba(255, 122, 0, 0.1) !important;
+            }
+            
             /* Pagination controls mobile optimization */
             .pagination-controls {
                 flex-direction: column !important;
@@ -1023,7 +1029,7 @@
                     
                     <!-- Photo 5 -->
                     <div class="photo-item" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.52 PM (1).jpeg" 
+                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.53 PM (1).jpeg" 
                              alt="啟動禮花絮 - 活動現場" 
                              style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
                              onclick="openLightbox(this.src, this.alt)">
@@ -1074,6 +1080,132 @@
                     " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 122, 0, 0.4)'" 
                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 122, 0, 0.3)'">
                         <i class="fas fa-images" style="margin-right: 0.5rem;"></i>查看更多花絮照片
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Coverage Section -->
+        <section class="media-coverage" style="padding: 4rem 0; background: #F8F9FA;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 style="color: #FF7A00; text-align: center; margin-bottom: 1rem;">
+                        <i class="fas fa-newspaper" style="margin-right: 0.5rem;"></i>傳媒報導
+                    </h2>
+                    <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 3rem;">
+                        各大媒體對「過期藥物回收計劃」的詳細報導
+                    </p>
+                </div>
+                
+                <!-- Media Coverage Grid -->
+                <div class="media-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem;">
+                    <!-- Media 1 -->
+                    <div class="media-item" style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; transition: all 0.2s ease;">
+                        <h4 style="color: #333; margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 600;">點新聞</h4>
+                        <p style="color: #666; font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.4;">
+                            詳細報導過期藥物回收計劃的啟動典禮和重要意義
+                        </p>
+                        <a href="https://m.dotdotnews.com/s/202509/29/AP68da80a5e4b08d2905389f70.html" 
+                           target="_blank" 
+                           style="color: #FF7A00; text-decoration: none; font-size: 0.85rem; font-weight: 500;"
+                           onmouseover="this.style.textDecoration='underline'" 
+                           onmouseout="this.style.textDecoration='none'">
+                            閱讀報導 →
+                        </a>
+                    </div>
+                    
+                    <!-- Media 2 -->
+                    <div class="media-item" style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; transition: all 0.2s ease;">
+                        <h4 style="color: #333; margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 600;">香港商報</h4>
+                        <p style="color: #666; font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.4;">
+                            專業分析藥物回收對環境保護和公共衛生的積極影響
+                        </p>
+                        <a href="https://www.hkcd.com.hk/content_app/2025-09/29/content_8716697.html" 
+                           target="_blank" 
+                           style="color: #FF7A00; text-decoration: none; font-size: 0.85rem; font-weight: 500;"
+                           onmouseover="this.style.textDecoration='underline'" 
+                           onmouseout="this.style.textDecoration='none'">
+                            閱讀報導 →
+                        </a>
+                    </div>
+                    
+                    <!-- Media 3 -->
+                    <div class="media-item" style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; transition: all 0.2s ease;">
+                        <h4 style="color: #333; margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 600;">紫荊雜誌社</h4>
+                        <p style="color: #666; font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.4;">
+                            深入探討藥物回收計劃的社會價值和環保意義
+                        </p>
+                        <a href="https://bau.com.hk/site/article/1423008545481695232/app/content_1423008545481695232.html?from=share" 
+                           target="_blank" 
+                           style="color: #FF7A00; text-decoration: none; font-size: 0.85rem; font-weight: 500;"
+                           onmouseover="this.style.textDecoration='underline'" 
+                           onmouseout="this.style.textDecoration='none'">
+                            閱讀報導 →
+                        </a>
+                    </div>
+                    
+                    <!-- Media 4 -->
+                    <div class="media-item" style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; transition: all 0.2s ease;">
+                        <h4 style="color: #333; margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 600;">CAPITAL</h4>
+                        <p style="color: #666; font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.4;">
+                            報導藥物回收計劃的啟動儀式和未來發展方向
+                        </p>
+                        <a href="https://www.capital-hk.com/topics/local-news/nsm30925p01" 
+                           target="_blank" 
+                           style="color: #FF7A00; text-decoration: none; font-size: 0.85rem; font-weight: 500;"
+                           onmouseover="this.style.textDecoration='underline'" 
+                           onmouseout="this.style.textDecoration='none'">
+                            閱讀報導 →
+                        </a>
+                    </div>
+                    
+                    <!-- Media 5 -->
+                    <div class="media-item" style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; transition: all 0.2s ease;">
+                        <h4 style="color: #333; margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 600;">橙新聞</h4>
+                        <p style="color: #666; font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.4;">
+                            關注藥物回收計劃對市民健康和環境保護的積極作用
+                        </p>
+                        <a href="https://apps.orangenews.hk/app/share/UyF3luC" 
+                           target="_blank" 
+                           style="color: #FF7A00; text-decoration: none; font-size: 0.85rem; font-weight: 500;"
+                           onmouseover="this.style.textDecoration='underline'" 
+                           onmouseout="this.style.textDecoration='none'">
+                            閱讀報導 →
+                        </a>
+                    </div>
+                    
+                    <!-- Media 6 -->
+                    <div class="media-item" style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; transition: all 0.2s ease;">
+                        <h4 style="color: #333; margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 600;">港人講地</h4>
+                        <p style="color: #666; font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.4;">
+                            支持環保愛地球，過期藥物回收活動全港18區正式啟動
+                        </p>
+                        <a href="https://www.speakout.hk/焦點新聞/101472/-支持環保-愛地球-過期藥物回收-活動全港18區正式啟動" 
+                           target="_blank" 
+                           style="color: #FF7A00; text-decoration: none; font-size: 0.85rem; font-weight: 500;"
+                           onmouseover="this.style.textDecoration='underline'" 
+                           onmouseout="this.style.textDecoration='none'">
+                            閱讀報導 →
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- View All Media Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button onclick="showAllMedia()" style="
+                        background: linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%);
+                        color: white;
+                        border: none;
+                        padding: 1rem 2rem;
+                        border-radius: 25px;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
+                    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 122, 0, 0.4)'" 
+                       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 122, 0, 0.3)'">
+                        <i class="fas fa-newspaper" style="margin-right: 0.5rem;"></i>查看所有媒體報導
                     </button>
                 </div>
             </div>
@@ -1610,7 +1742,6 @@
                 'WhatsApp Image 2025-10-01 at 7.24.49 PM.jpeg',
                 'WhatsApp Image 2025-10-01 at 7.24.51 PM (1).jpeg',
                 'WhatsApp Image 2025-10-01 at 7.24.51 PM.jpeg',
-                'WhatsApp Image 2025-10-01 at 7.24.52 PM (1).jpeg',
                 'WhatsApp Image 2025-10-01 at 7.24.52 PM (2).jpeg',
                 'WhatsApp Image 2025-10-01 at 7.24.52 PM.jpeg',
                 'WhatsApp Image 2025-10-01 at 7.24.53 PM (1).jpeg',
@@ -1656,6 +1787,137 @@
             // Add elements to modal
             modal.appendChild(header);
             modal.appendChild(photoGrid);
+            document.body.appendChild(modal);
+            
+            // Add escape key listener
+            const escapeHandler = (e) => {
+                if (e.key === 'Escape') {
+                    document.body.removeChild(modal);
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
+        }
+        
+        function showAllMedia() {
+            // Create modal for all media coverage
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                z-index: 10000;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                overflow-y: auto;
+            `;
+            
+            // Create header
+            const header = document.createElement('div');
+            header.style.cssText = `
+                color: white;
+                text-align: center;
+                margin-bottom: 2rem;
+                position: relative;
+                width: 100%;
+            `;
+            header.innerHTML = `
+                <h2 style="margin: 0; font-size: 2rem;">傳媒報導 - 完整列表</h2>
+                <button onclick="document.body.removeChild(this.closest('div').parentElement)" 
+                        style="position: absolute; top: 0; right: 0; background: rgba(255, 255, 255, 0.2); 
+                               border: none; color: white; font-size: 1.5rem; width: 40px; height: 40px; 
+                               border-radius: 50%; cursor: pointer;">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            // Create media list
+            const mediaList = document.createElement('div');
+            mediaList.style.cssText = `
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                max-width: 800px;
+                width: 100%;
+            `;
+            
+            // All media coverage data
+            const mediaCoverage = [
+                {
+                    name: '點新聞',
+                    description: '詳細報導過期藥物回收計劃的啟動典禮和重要意義',
+                    url: 'https://m.dotdotnews.com/s/202509/29/AP68da80a5e4b08d2905389f70.html'
+                },
+                {
+                    name: '香港商報',
+                    description: '專業分析藥物回收對環境保護和公共衛生的積極影響',
+                    url: 'https://www.hkcd.com.hk/content_app/2025-09/29/content_8716697.html'
+                },
+                {
+                    name: '紫荊雜誌社',
+                    description: '深入探討藥物回收計劃的社會價值和環保意義',
+                    url: 'https://bau.com.hk/site/article/1423008545481695232/app/content_1423008545481695232.html?from=share'
+                },
+                {
+                    name: 'CAPITAL',
+                    description: '報導藥物回收計劃的啟動儀式和未來發展方向',
+                    url: 'https://www.capital-hk.com/topics/local-news/nsm30925p01'
+                },
+                {
+                    name: '橙新聞',
+                    description: '關注藥物回收計劃對市民健康和環境保護的積極作用',
+                    url: 'https://apps.orangenews.hk/app/share/UyF3luC'
+                },
+                {
+                    name: '港人講地',
+                    description: '支持環保愛地球，過期藥物回收活動全港18區正式啟動',
+                    url: 'https://www.speakout.hk/焦點新聞/101472/-支持環保-愛地球-過期藥物回收-活動全港18區正式啟動'
+                }
+            ];
+            
+            // Add media items to list
+            mediaCoverage.forEach((media, index) => {
+                const mediaItem = document.createElement('div');
+                mediaItem.style.cssText = `
+                    background: white;
+                    border-radius: 10px;
+                    padding: 1.5rem;
+                    border-left: 4px solid #FF7A00;
+                    transition: transform 0.3s ease;
+                `;
+                mediaItem.onmouseover = () => mediaItem.style.transform = 'translateX(5px)';
+                mediaItem.onmouseout = () => mediaItem.style.transform = 'translateX(0)';
+                
+                mediaItem.innerHTML = `
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 40px; height: 40px; background: #FF7A00; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                            <i class="fas fa-newspaper" style="color: white; font-size: 1.2rem;"></i>
+                        </div>
+                        <h4 style="color: #333; margin: 0; font-size: 1.1rem;">${media.name}</h4>
+                    </div>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.5;">
+                        ${media.description}
+                    </p>
+                    <a href="${media.url}" 
+                       target="_blank" 
+                       style="color: #FF7A00; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; transition: color 0.3s ease;"
+                       onmouseover="this.style.color='#FF9A40'" 
+                       onmouseout="this.style.color='#FF7A00'">
+                        <i class="fas fa-external-link-alt" style="margin-right: 0.5rem; font-size: 0.8rem;"></i>閱讀報導
+                    </a>
+                `;
+                
+                mediaList.appendChild(mediaItem);
+            });
+            
+            // Add elements to modal
+            modal.appendChild(header);
+            modal.appendChild(mediaList);
             document.body.appendChild(modal);
             
             // Add escape key listener
@@ -1731,11 +1993,11 @@
                             
                             // Only include valid collection points
                             if (item.支持機構 && 
-                                item.支持機構.trim() !== '' &&
+                            item.支持機構.trim() !== '' &&
                                 item.回收過期藥物點 && 
-                                item.回收過期藥物點.trim() !== '' &&
+                            item.回收過期藥物點.trim() !== '' &&
                                 item.回收點地址 && 
-                                item.回收點地址.trim() !== '' &&
+                            item.回收點地址.trim() !== '' &&
                                 item.支持機構 !== '支持機構') { // Remove template entry
                                 
                                 completeCollectionPointsData.push({
