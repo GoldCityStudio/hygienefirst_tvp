@@ -164,6 +164,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    
     <!-- Dialogflow SDK -->
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
     
@@ -177,7 +182,8 @@
         
         // Dialogflow Configuration
         // Method 1: Direct Access Token (Recommended for testing)
-        window.DIALOGFLOW_ACCESS_TOKEN = 'YOUR_NEW_ACCESS_TOKEN_HERE';
+        // Replace with your actual access token
+        window.DIALOGFLOW_ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN_HERE';
         
         // Method 2: OAuth Client ID (Requires origin registration)
         // window.DIALOGFLOW_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID_HERE';
@@ -278,7 +284,7 @@
     </header>
 
     <!-- Main Booking Content -->
-    <main style="padding-top: 120px; min-height: 100vh; background: #f8f9fa;">
+    <main style="padding-top: 180px !important; min-height: 100vh; background: #f8f9fa;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
             
             <!-- Page Header -->
@@ -326,6 +332,17 @@
                         <i class="fas fa-briefcase-medical"></i> 選擇服務類型
                     </h2>
                     
+                    <!-- Quick Service Buttons -->
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="color: #FF7A00; margin-bottom: 1rem; text-align: center; font-size: 1.1rem;">
+                            <i class="fas fa-bolt"></i> 快速選擇熱門服務
+                        </h3>
+                        <div id="quickServiceButtons" style="display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-bottom: 1.5rem;">
+                            <!-- Quick service buttons will be generated -->
+                        </div>
+                    </div>
+                    
+                    <!-- Service Cards -->
                     <div id="serviceList" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
                         <!-- Services will be dynamically loaded -->
                     </div>
@@ -342,6 +359,16 @@
                     <h2 style="color: #333; margin-bottom: 2rem; text-align: center;">
                         <i class="fas fa-calendar-alt"></i> 選擇日期和時間
                     </h2>
+                    
+                    <!-- Quick Date Buttons -->
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="color: #FF7A00; margin-bottom: 1rem; text-align: center; font-size: 1.1rem;">
+                            <i class="fas fa-bolt"></i> 快速選擇日期
+                        </h3>
+                        <div id="quickDateButtons" style="display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-bottom: 1.5rem;">
+                            <!-- Quick date buttons will be generated -->
+                        </div>
+                    </div>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
                         <!-- Date Selection -->
@@ -375,6 +402,130 @@
                     <h2 style="color: #333; margin-bottom: 2rem; text-align: center;">
                         <i class="fas fa-user-edit"></i> 填寫您的資料
                     </h2>
+                    
+                    <!-- Authentication Section -->
+                    <div id="authSection" style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; border-left: 4px solid #FF7A00;">
+                        <h3 style="color: #FF7A00; margin-bottom: 1rem; font-size: 1.1rem;">
+                            <i class="fas fa-shield-alt"></i> 登入以保存預約記錄
+                        </h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">
+                            登入後，您的預約記錄將安全保存，並可在任何設備上查看。
+                        </p>
+                        
+                        <!-- Guest Mode (Default) -->
+                        <div id="guestMode" class="guest-only" style="display: block;">
+                            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                                <button onclick="showLoginForm()" style="
+                                    background: #FF7A00;
+                                    color: white;
+                                    border: none;
+                                    padding: 0.8rem 1.5rem;
+                                    border-radius: 8px;
+                                    font-size: 0.9rem;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                " onmouseover="this.style.background='#e66a00'" onmouseout="this.style.background='#FF7A00'">
+                                    <i class="fas fa-sign-in-alt"></i> 登入
+                                </button>
+                                <button onclick="showSignupForm()" style="
+                                    background: white;
+                                    color: #FF7A00;
+                                    border: 2px solid #FF7A00;
+                                    padding: 0.8rem 1.5rem;
+                                    border-radius: 8px;
+                                    font-size: 0.9rem;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                " onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'">
+                                    <i class="fas fa-user-plus"></i> 註冊
+                                </button>
+                                <span style="color: #999; font-size: 0.8rem;">或</span>
+                                <button onclick="continueAsGuest()" style="
+                                    background: transparent;
+                                    color: #666;
+                                    border: 1px solid #ddd;
+                                    padding: 0.8rem 1.5rem;
+                                    border-radius: 8px;
+                                    font-size: 0.9rem;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                " onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'">
+                                    <i class="fas fa-user"></i> 繼續訪客模式
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Authenticated Mode -->
+                        <div id="authenticatedMode" class="auth-required" style="display: none;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="
+                                    width: 40px;
+                                    height: 40px;
+                                    background: #4CAF50;
+                                    border-radius: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    color: white;
+                                ">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <div style="color: #4CAF50; font-weight: 600; font-size: 0.9rem;">
+                                        <i class="fas fa-shield-alt"></i> 已登入
+                                    </div>
+                                    <div style="color: #666; font-size: 0.8rem;">
+                                        預約記錄將安全保存
+                                    </div>
+                                </div>
+                                <button onclick="signOut()" style="
+                                    background: transparent;
+                                    color: #999;
+                                    border: 1px solid #ddd;
+                                    padding: 0.5rem 1rem;
+                                    border-radius: 6px;
+                                    font-size: 0.8rem;
+                                    cursor: pointer;
+                                    margin-left: auto;
+                                ">
+                                    <i class="fas fa-sign-out-alt"></i> 登出
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Fill Buttons -->
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="color: #FF7A00; margin-bottom: 1rem; text-align: center; font-size: 1.1rem;">
+                            <i class="fas fa-bolt"></i> 快速填寫
+                        </h3>
+                        <div id="quickFillButtons" style="display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-bottom: 1.5rem;">
+                            <button class="quick-fill-btn" onclick="quickFillFromStorage()" style="
+                                background: #e8f5e8;
+                                border: 2px solid #4CAF50;
+                                color: #4CAF50;
+                                padding: 0.8rem 1.5rem;
+                                border-radius: 25px;
+                                font-size: 0.9rem;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            ">
+                                <i class="fas fa-history"></i> 使用上次資料
+                            </button>
+                            <button class="quick-fill-btn" onclick="quickFillSample()" style="
+                                background: #fff3e0;
+                                border: 2px solid #FF9800;
+                                color: #FF9800;
+                                padding: 0.8rem 1.5rem;
+                                border-radius: 25px;
+                                font-size: 0.9rem;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            ">
+                                <i class="fas fa-magic"></i> 填寫範例資料
+                            </button>
+                        </div>
+                    </div>
                     
                     <form id="customerForm" style="max-width: 600px; margin: 0 auto;">
                         <div style="display: grid; gap: 1.5rem;">
@@ -492,8 +643,8 @@
             height: 550px;
             max-height: 70vh;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             flex-direction: column;
             overflow: hidden;
         ">
@@ -525,6 +676,22 @@
                         </div>
                     </div>
                 </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <!-- Language Selector -->
+                    <select id="language-selector" style="
+                        background: rgba(255,255,255,0.2);
+                        border: 1px solid rgba(255,255,255,0.3);
+                        color: white;
+                        padding: 0.3rem 0.5rem;
+                        border-radius: 6px;
+                        font-size: 0.8rem;
+                        cursor: pointer;
+                        outline: none;
+                    " onchange="languageManager.setLanguage(this.value)">
+                        <option value="zh-TW" style="color: #333;">繁體中文</option>
+                        <option value="zh-CN" style="color: #333;">简体中文</option>
+                        <option value="en" style="color: #333;">English</option>
+                    </select>
                 <button id="chatbot-close" style="
                     background: none;
                     border: none;
@@ -535,13 +702,14 @@
                 ">
                     <i class="fas fa-times"></i>
                 </button>
+                </div>
             </div>
             
             <!-- Chat Messages -->
             <div id="chatbot-messages" style="
                 flex: 1;
                 overflow-y: auto;
-                padding: 1.5rem;
+                padding: 2rem;
                 background: #f8f9fa;
             ">
                 <!-- Messages will be added here -->
@@ -550,16 +718,17 @@
             <!-- Typing Indicator -->
             <div id="typing-indicator" style="
                 display: none;
-                padding: 0 1.5rem 1rem;
+                padding: 0 2rem 1rem;
                 background: #f8f9fa;
             ">
                 <div style="
                     background: white;
-                    padding: 0.8rem 1rem;
+                    padding: 1rem;
                     border-radius: 15px;
                     display: inline-flex;
                     gap: 0.3rem;
                     align-items: center;
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
                 ">
                     <div class="typing-dot" style="width: 8px; height: 8px; background: #999; border-radius: 50%; animation: typing 1.4s infinite;"></div>
                     <div class="typing-dot" style="width: 8px; height: 8px; background: #999; border-radius: 50%; animation: typing 1.4s infinite 0.2s;"></div>
@@ -569,16 +738,18 @@
             
             <!-- Quick Replies -->
             <div id="quick-replies" style="
-                padding: 0.5rem 1.5rem;
+                padding: 0.5rem 1rem;
                 background: #f8f9fa;
                 display: none;
-                gap: 0.5rem;
+                gap: 0.4rem;
                 flex-wrap: wrap;
+                max-height: 120px;
+                overflow-y: auto;
             "></div>
             
             <!-- Chat Input -->
             <div style="
-                padding: 1rem 1.5rem;
+                padding: 2rem;
                 background: white;
                 border-top: 1px solid #eee;
                 display: flex;
@@ -586,17 +757,17 @@
             ">
                 <input type="text" id="chatbot-input" placeholder="輸入您的問題..." style="
                     flex: 1;
-                    padding: 0.8rem 1rem;
+                    padding: 1rem;
                     border: 2px solid #ddd;
-                    border-radius: 25px;
-                    font-size: 0.95rem;
+                    border-radius: 10px;
+                    font-size: 1rem;
                     outline: none;
                     transition: border-color 0.3s ease;
                 " onfocus="this.style.borderColor='#FF7A00'" onblur="this.style.borderColor='#ddd'">
                 <button id="chatbot-send" style="
-                    width: 45px;
-                    height: 45px;
-                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 10px;
                     background: linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%);
                     border: none;
                     color: white;
@@ -763,6 +934,42 @@
             `).join('');
             
             console.log('Services loaded successfully');
+            
+            // Load quick service buttons
+            loadQuickServiceButtons();
+        }
+        
+        // Load Quick Service Buttons
+        function loadQuickServiceButtons() {
+            const quickButtonsContainer = document.getElementById('quickServiceButtons');
+            if (!quickButtonsContainer) return;
+            
+            // Popular services for quick selection
+            const popularServices = [
+                { id: 'health-assessment', name: '健康評估', icon: 'fa-stethoscope' },
+                { id: 'elderly-care', name: '長者照顧', icon: 'fa-hands-helping' },
+                { id: 'wound-care', name: '傷口護理', icon: 'fa-band-aid' },
+                { id: 'housekeeping', name: '家居清潔', icon: 'fa-broom' }
+            ];
+            
+            quickButtonsContainer.innerHTML = popularServices.map(service => `
+                <button class="quick-service-btn" onclick="selectService('${service.id}')" style="
+                    background: #f0f8ff;
+                    border: 2px solid #FF7A00;
+                    color: #FF7A00;
+                    padding: 0.8rem 1.2rem;
+                    border-radius: 25px;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                " onmouseover="this.style.background='#FF7A00'; this.style.color='white'" onmouseout="this.style.background='#f0f8ff'; this.style.color='#FF7A00'">
+                    <i class="fas ${service.icon}"></i>
+                    ${service.name}
+                </button>
+            `).join('');
         }
 
         // Select Service
@@ -813,6 +1020,54 @@
                 updateDateHelp();
                 checkStep2Complete();
             });
+            
+            // Load quick date buttons
+            loadQuickDateButtons();
+        }
+        
+        // Load Quick Date Buttons
+        function loadQuickDateButtons() {
+            const quickDateContainer = document.getElementById('quickDateButtons');
+            if (!quickDateContainer) return;
+            
+            const today = new Date();
+            const quickDates = [
+                { label: '明天', days: 1 },
+                { label: '後天', days: 2 },
+                { label: '三天後', days: 3 },
+                { label: '一週後', days: 7 }
+            ];
+            
+            quickDateContainer.innerHTML = quickDates.map(item => {
+                const date = new Date(today);
+                date.setDate(date.getDate() + item.days);
+                const dateString = date.toISOString().split('T')[0];
+                const dayName = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'][date.getDay()];
+                
+                return `
+                    <button class="quick-date-btn" onclick="quickSelectDate('${dateString}')" style="
+                        background: #f0f8ff;
+                        border: 2px solid #2196F3;
+                        color: #2196F3;
+                        padding: 0.8rem 1.2rem;
+                        border-radius: 25px;
+                        font-size: 0.9rem;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.background='#2196F3'; this.style.color='white'" onmouseout="this.style.background='#f0f8ff'; this.style.color='#2196F3'">
+                        <i class="fas fa-calendar-day"></i> ${item.label} (${dayName})
+                    </button>
+                `;
+            }).join('');
+        }
+        
+        // Quick Select Date
+        function quickSelectDate(dateString) {
+            const dateInput = document.getElementById('bookingDate');
+            dateInput.value = dateString;
+            bookingData.date = dateString;
+            updateDateHelp();
+            checkStep2Complete();
         }
 
         // Update Date Help Text
@@ -974,6 +1229,34 @@
                 address: document.getElementById('customerAddress').value.trim(),
                 notes: document.getElementById('customerNotes').value.trim()
             };
+            
+            // Save customer data to localStorage for quick fill
+            localStorage.setItem('last_customer_data', JSON.stringify(bookingData.customer));
+        }
+        
+        // Quick Fill from Storage
+        function quickFillFromStorage() {
+            const lastCustomerData = localStorage.getItem('last_customer_data');
+            if (!lastCustomerData) {
+                alert('沒有找到上次的資料');
+                return;
+            }
+            
+            const customerData = JSON.parse(lastCustomerData);
+            document.getElementById('customerName').value = customerData.name || '';
+            document.getElementById('customerPhone').value = customerData.phone || '';
+            document.getElementById('customerEmail').value = customerData.email || '';
+            document.getElementById('customerAddress').value = customerData.address || '';
+            document.getElementById('customerNotes').value = customerData.notes || '';
+        }
+        
+        // Quick Fill Sample Data
+        function quickFillSample() {
+            document.getElementById('customerName').value = '陳大文';
+            document.getElementById('customerPhone').value = '9123 4567';
+            document.getElementById('customerEmail').value = 'chan@example.com';
+            document.getElementById('customerAddress').value = '香港九龍旺角彌敦道123號';
+            document.getElementById('customerNotes').value = '';
         }
 
         // Display Booking Summary
@@ -1046,13 +1329,15 @@
                 trackBookingCompletion(booking);
             }
             
-            // Save to localStorage
-            const bookings = JSON.parse(localStorage.getItem('hygiene_bookings') || '[]');
-            bookings.unshift(booking);
-            localStorage.setItem('hygiene_bookings', JSON.stringify(bookings));
-            
+            // Save booking with Firebase authentication
+            saveUserBooking(booking).then(() => {
             // Show success modal
             showSuccessModal(booking);
+            }).catch((error) => {
+                console.error('Error saving booking:', error);
+                // Still show success modal even if save fails
+                showSuccessModal(booking);
+            });
         }
 
         // Show Success Modal
@@ -1116,9 +1401,10 @@
                             我們會盡快致電確認您的預約。請保持電話暢通。
                         </p>
                         
-                        <div style="display: flex; gap: 1rem;">
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                             <button onclick="location.href='index.html'" style="
                                 flex: 1;
+                                min-width: 120px;
                                 padding: 1rem;
                                 background: white;
                                 color: #FF7A00;
@@ -1132,6 +1418,7 @@
                             </button>
                             <button onclick="location.href='member-account.html#bookings'" style="
                                 flex: 1;
+                                min-width: 120px;
                                 padding: 1rem;
                                 background: linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%);
                                 color: white;
@@ -1142,6 +1429,20 @@
                                 cursor: pointer;
                             ">
                                 查看預約
+                            </button>
+                            <button onclick="showBookingDetails('${booking.id}')" style="
+                                flex: 1;
+                                min-width: 120px;
+                                padding: 1rem;
+                                background: #4CAF50;
+                                color: white;
+                                border: none;
+                                border-radius: 10px;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                            ">
+                                預約詳情
                             </button>
                         </div>
                     </div>
@@ -1211,6 +1512,300 @@
 
             let isOpen = false;
             let sessionId = 'session_' + Date.now();
+            let chatbotBookingData = {
+                service: null,
+                date: null,
+                time: null,
+                customer: {}
+            };
+            
+            // Chat history manager will be initialized after it's defined
+            
+            // Create dummy chat history data for demonstration
+            function createDummyChatHistory() {
+                const dummyMessages = [
+                    {
+                        id: 'msg_1705123456789',
+                        text: '您好！我想了解你們的服務',
+                        sender: 'user',
+                        timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(), // 7 days ago
+                        sessionId: 'chat_session_1705123456789'
+                    },
+                    {
+                        id: 'msg_1705123456790',
+                        text: '您好！歡迎使用 Hygiene First 預約助手！🤖\n\n我可以幫助您：\n• 了解服務項目和價格\n• 解答預約相關問題\n• 提供服務詳情\n• 協助完成預約\n\n請告訴我您需要什麼幫助！',
+                        sender: 'bot',
+                        timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000 + 1000).toISOString(),
+                        sessionId: 'chat_session_1705123456789'
+                    },
+                    {
+                        id: 'msg_1705123456791',
+                        text: '我想預約健康評估服務',
+                        sender: 'user',
+                        timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000 + 2000).toISOString(),
+                        sessionId: 'chat_session_1705123456789'
+                    },
+                    {
+                        id: 'msg_1705123456792',
+                        text: '好的！健康評估服務非常適合您。\n\n🏠 健康評估 - HK$500起\n\n服務內容包括：\n• 基本健康檢查\n• 血壓、血糖檢測\n• 健康建議\n• 後續護理計劃\n\n請選擇您需要的服務：',
+                        sender: 'bot',
+                        timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000 + 3000).toISOString(),
+                        sessionId: 'chat_session_1705123456789'
+                    },
+                    {
+                        id: 'msg_1705123456793',
+                        text: '我想了解服務價格',
+                        sender: 'user',
+                        timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days ago
+                        sessionId: 'chat_session_1705123456793'
+                    },
+                    {
+                        id: 'msg_1705123456794',
+                        text: '我們的服務價格如下：\n\n🏠 上門健康評估：HK$800起\n🧹 家居清潔服務：HK$300起\n🏥 醫療護理服務：HK$500起\n💊 藥物管理服務：HK$400起\n🛠️ 康復護理服務：HK$600起\n🍽️ 營養餐食服務：HK$200起\n🧼 個人護理服務：HK$350起\n🏥 術後護理服務：HK$700起\n\n*實際價格會根據服務內容和時間長度調整',
+                        sender: 'bot',
+                        timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000 + 1000).toISOString(),
+                        sessionId: 'chat_session_1705123456793'
+                    },
+                    {
+                        id: 'msg_1705123456795',
+                        text: '如何預約服務？',
+                        sender: 'user',
+                        timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(), // 3 days ago
+                        sessionId: 'chat_session_1705123456795'
+                    },
+                    {
+                        id: 'msg_1705123456796',
+                        text: '預約流程非常簡單：\n\n1️⃣ 選擇您需要的服務\n2️⃣ 選擇合適的日期和時間\n3️⃣ 填寫您的聯絡資料\n4️⃣ 確認預約詳情\n\n您現在就可以在頁面上完成預約，或者我可以協助您了解更多詳情！',
+                        sender: 'bot',
+                        timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000 + 1000).toISOString(),
+                        sessionId: 'chat_session_1705123456795'
+                    },
+                    {
+                        id: 'msg_1705123456797',
+                        text: '我想提供意見反饋',
+                        sender: 'user',
+                        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 days ago
+                        sessionId: 'chat_session_1705123456797'
+                    },
+                    {
+                        id: 'msg_1705123456798',
+                        text: '感謝您想要提供意見！\n\n您的反饋對我們非常重要，可以幫助我們改善服務品質。\n\n請選擇您想要提供的反饋類型：',
+                        sender: 'bot',
+                        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000 + 1000).toISOString(),
+                        sessionId: 'chat_session_1705123456797'
+                    },
+                    {
+                        id: 'msg_1705123456799',
+                        text: '服務評價',
+                        sender: 'user',
+                        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000 + 2000).toISOString(),
+                        sessionId: 'chat_session_1705123456797'
+                    },
+                    {
+                        id: 'msg_1705123456800',
+                        text: '請為我們的服務評分：\n\n⭐ 1星 - 非常不滿意\n⭐⭐ 2星 - 不滿意\n⭐⭐⭐ 3星 - 普通\n⭐⭐⭐⭐ 4星 - 滿意\n⭐⭐⭐⭐⭐ 5星 - 非常滿意\n\n請輸入您的評分（1-5星）：',
+                        sender: 'bot',
+                        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000 + 3000).toISOString(),
+                        sessionId: 'chat_session_1705123456797'
+                    },
+                    {
+                        id: 'msg_1705123456801',
+                        text: '⭐⭐⭐⭐⭐',
+                        sender: 'user',
+                        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000 + 4000).toISOString(),
+                        sessionId: 'chat_session_1705123456797'
+                    },
+                    {
+                        id: 'msg_1705123456802',
+                        text: '感謝您的評分！\n\n您給予了 5 星評價（非常滿意）\n\n您的意見對我們非常重要，我們會持續改善服務品質。\n\n還有其他想要分享的嗎？',
+                        sender: 'bot',
+                        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000 + 5000).toISOString(),
+                        sessionId: 'chat_session_1705123456797'
+                    },
+                    {
+                        id: 'msg_1705123456803',
+                        text: '整體滿意，服務很好，希望預約流程可以更簡單一些',
+                        sender: 'user',
+                        timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
+                        sessionId: 'chat_session_1705123456803'
+                    },
+                    {
+                        id: 'msg_1705123456804',
+                        text: '感謝您的詳細意見！\n\n我們已經記錄了您的反饋：\n"整體滿意，服務很好，希望預約流程可以更簡單一些"\n\n您的意見對我們非常重要，我們會認真考慮並持續改善服務。\n\n還有其他需要協助的嗎？',
+                        sender: 'bot',
+                        timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000 + 1000).toISOString(),
+                        sessionId: 'chat_session_1705123456803'
+                    },
+                    {
+                        id: 'msg_1705123456805',
+                        text: '我想查看我的預約狀態',
+                        sender: 'user',
+                        timestamp: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(), // 12 hours ago
+                        sessionId: 'chat_session_1705123456805'
+                    },
+                    {
+                        id: 'msg_1705123456806',
+                        text: '📋 最近的預約記錄：\n\n1. 預約編號：BK1705123456789\n   服務：健康評估\n   日期：2025-01-20 09:00-11:00\n   狀態：已確認\n\n2. 預約編號：BK1705123456790\n   服務：家居清潔\n   日期：2025-01-18 14:00-16:00\n   狀態：已完成\n\n3. 預約編號：BK1705123456791\n   服務：長者照顧\n   日期：2025-01-22 10:00-12:00\n   狀態：待確認',
+                        sender: 'bot',
+                        timestamp: new Date(Date.now() - 12 * 60 * 60 * 1000 + 1000).toISOString(),
+                        sessionId: 'chat_session_1705123456805'
+                    }
+                ];
+                
+                // Save dummy messages to localStorage for demonstration
+                const existingMessages = JSON.parse(localStorage.getItem('chat_messages') || '[]');
+                const allMessages = [...existingMessages, ...dummyMessages];
+                localStorage.setItem('chat_messages', JSON.stringify(allMessages));
+                
+                console.log('✅ Dummy chat history created:', dummyMessages.length, 'messages');
+                return dummyMessages;
+            }
+            
+            // Create dummy data on page load
+            setTimeout(() => {
+                createDummyChatHistory();
+            }, 2000);
+            
+            // Create dummy booking data for demonstration
+            function createDummyBookingData() {
+                const dummyBookings = [
+                    {
+                        id: 'BK1705123456789',
+                        service: { name: '健康評估', price: 800 },
+                        date: '2025-01-20',
+                        time: '09:00-11:00',
+                        customer: {
+                            name: '陳大文',
+                            phone: '9123 4567',
+                            email: 'chan@example.com',
+                            address: '香港九龍旺角彌敦道123號',
+                            notes: '需要輪椅協助'
+                        },
+                        status: 'confirmed',
+                        createdAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
+                    },
+                    {
+                        id: 'BK1705123456790',
+                        service: { name: '家居清潔', price: 300 },
+                        date: '2025-01-18',
+                        time: '14:00-16:00',
+                        customer: {
+                            name: '李小明',
+                            phone: '9876 5432',
+                            email: 'lee@example.com',
+                            address: '香港港島中環皇后大道中456號',
+                            notes: '重點清潔廚房和浴室'
+                        },
+                        status: 'completed',
+                        createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString()
+                    },
+                    {
+                        id: 'BK1705123456791',
+                        service: { name: '長者照顧', price: 500 },
+                        date: '2025-01-22',
+                        time: '10:00-12:00',
+                        customer: {
+                            name: '王阿婆',
+                            phone: '8765 4321',
+                            email: 'wong@example.com',
+                            address: '香港新界沙田大圍789號',
+                            notes: '需要協助服藥和量血壓'
+                        },
+                        status: 'pending',
+                        createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString()
+                    },
+                    {
+                        id: 'BK1705123456792',
+                        service: { name: '傷口護理', price: 400 },
+                        date: '2025-01-25',
+                        time: '15:00-17:00',
+                        customer: {
+                            name: '張先生',
+                            phone: '7654 3210',
+                            email: 'cheung@example.com',
+                            address: '香港九龍觀塘道321號',
+                            notes: '術後傷口護理，需要專業護士'
+                        },
+                        status: 'pending',
+                        createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString()
+                    }
+                ];
+                
+                // Save dummy bookings to localStorage
+                const existingBookings = JSON.parse(localStorage.getItem('hygiene_bookings') || '[]');
+                const allBookings = [...existingBookings, ...dummyBookings];
+                localStorage.setItem('hygiene_bookings', JSON.stringify(allBookings));
+                
+                console.log('✅ Dummy booking data created:', dummyBookings.length, 'bookings');
+                return dummyBookings;
+            }
+            
+            // Create dummy feedback data for demonstration
+            function createDummyFeedbackData() {
+                const dummyFeedbacks = [
+                    {
+                        id: 'FB1705123456789',
+                        type: 'service_rating',
+                        rating: 5,
+                        feedback: '',
+                        createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString()
+                    },
+                    {
+                        id: 'FB1705123456790',
+                        type: 'detailed_feedback',
+                        rating: null,
+                        feedback: '整體滿意，服務很好，希望預約流程可以更簡單一些',
+                        createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString()
+                    },
+                    {
+                        id: 'FB1705123456791',
+                        type: 'service_rating',
+                        rating: 4,
+                        feedback: '',
+                        createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString()
+                    },
+                    {
+                        id: 'FB1705123456792',
+                        type: 'detailed_feedback',
+                        rating: null,
+                        feedback: '護士很專業，但等待時間有點長',
+                        createdAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString()
+                    }
+                ];
+                
+                // Save dummy feedback to localStorage
+                const existingFeedbacks = JSON.parse(localStorage.getItem('hygiene_feedbacks') || '[]');
+                const allFeedbacks = [...existingFeedbacks, ...dummyFeedbacks];
+                localStorage.setItem('hygiene_feedbacks', JSON.stringify(allFeedbacks));
+                
+                console.log('✅ Dummy feedback data created:', dummyFeedbacks.length, 'feedbacks');
+                return dummyFeedbacks;
+            }
+            
+            // Create dummy customer data for quick fill
+            function createDummyCustomerData() {
+                const dummyCustomerData = {
+                    name: '陳大文',
+                    phone: '9123 4567',
+                    email: 'chan@example.com',
+                    address: '香港九龍旺角彌敦道123號',
+                    notes: '需要輪椅協助'
+                };
+                
+                localStorage.setItem('last_customer_data', JSON.stringify(dummyCustomerData));
+                console.log('✅ Dummy customer data created for quick fill');
+                return dummyCustomerData;
+            }
+            
+            // Chat history manager will be initialized after it's defined
+            
+            // Create dummy data on page load (excluding chat history)
+            setTimeout(() => {
+                createDummyBookingData();
+                createDummyFeedbackData();
+                createDummyCustomerData();
+            }, 2000);
+            let chatbotStep = 0; // 0: greeting, 1: service, 2: date, 3: time, 4: customer info, 5: confirmation
 
             // Dialogflow Configuration
             const DIALOGFLOW_CONFIG = {
@@ -1223,15 +1818,1324 @@
                 apiEndpoint: 'https://dialogflow.googleapis.com/v2'
             };
 
-            // Quick Reply Templates
-            const quickReplyTemplates = [
-                '我想了解服務價格',
-                '如何預約服務？',
-                '服務時間多長？',
-                '可以取消預約嗎？',
-                '有什麼優惠嗎？',
-                '聯繫客服'
-            ];
+            // Firebase Configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyBDohkPFBU63W1qiFuR1CvDX7dRCWntT-M",
+                authDomain: "hygienefirst-member-system.firebaseapp.com",
+                projectId: "hygienefirst-member-system",
+                storageBucket: "hygienefirst-member-system.firebasestorage.app",
+                messagingSenderId: "535268528733",
+                appId: "1:535268528733:web:89b150dcbc785d68c873b4",
+                measurementId: "G-NFT58KR02S"
+            };
+
+            // Initialize Firebase
+            let db = null;
+            let auth = null;
+            let currentUser = null;
+            
+            try {
+                // Check if Firebase is already initialized
+                if (typeof firebase !== 'undefined' && firebase.apps.length > 0) {
+                    db = firebase.database();
+                    auth = firebase.auth();
+                } else {
+                    // Initialize Firebase
+                    firebase.initializeApp(firebaseConfig);
+                    db = firebase.database();
+                    auth = firebase.auth();
+                }
+                console.log('✅ Firebase initialized successfully');
+                
+                // Set up authentication state listener
+                auth.onAuthStateChanged((user) => {
+                    currentUser = user;
+                    if (user) {
+                        console.log('✅ User authenticated:', user.email);
+                        updateUIForAuthenticatedUser(user);
+                    } else {
+                        console.log('❌ User not authenticated');
+                        updateUIForUnauthenticatedUser();
+                    }
+                });
+                
+            } catch (error) {
+                console.log('⚠️ Firebase not available, falling back to localStorage:', error.message);
+            }
+
+            // Authentication Functions
+            function signInWithEmail(email, password) {
+                return auth.signInWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        console.log('✅ Signed in successfully:', userCredential.user.email);
+                        return userCredential.user;
+                    })
+                    .catch((error) => {
+                        console.error('❌ Sign in error:', error.message);
+                        throw error;
+                    });
+            }
+
+            function signUpWithEmail(email, password, userData) {
+                return auth.createUserWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        // Save additional user data to Firebase
+                        const userRef = db.ref('users/' + userCredential.user.uid);
+                        return userRef.set({
+                            email: email,
+                            name: userData.name,
+                            phone: userData.phone,
+                            address: userData.address,
+                            createdAt: new Date().toISOString(),
+                            lastLogin: new Date().toISOString()
+                        }).then(() => {
+                            console.log('✅ User created successfully:', userCredential.user.email);
+                            return userCredential.user;
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('❌ Sign up error:', error.message);
+                        throw error;
+                    });
+            }
+
+            function signOut() {
+                return auth.signOut()
+                    .then(() => {
+                        console.log('✅ Signed out successfully');
+                        currentUser = null;
+                    })
+                    .catch((error) => {
+                        console.error('❌ Sign out error:', error.message);
+                        throw error;
+                    });
+            }
+
+            function updateUIForAuthenticatedUser(user) {
+                // Update UI elements for authenticated user
+                const authElements = document.querySelectorAll('.auth-required');
+                authElements.forEach(element => {
+                    element.style.display = 'block';
+                });
+                
+                const guestElements = document.querySelectorAll('.guest-only');
+                guestElements.forEach(element => {
+                    element.style.display = 'none';
+                });
+                
+                // Update user info in UI
+                const userEmailElements = document.querySelectorAll('.user-email');
+                userEmailElements.forEach(element => {
+                    element.textContent = user.email;
+                });
+            }
+
+            function updateUIForUnauthenticatedUser() {
+                // Update UI elements for unauthenticated user
+                const authElements = document.querySelectorAll('.auth-required');
+                authElements.forEach(element => {
+                    element.style.display = 'none';
+                });
+                
+                const guestElements = document.querySelectorAll('.guest-only');
+                guestElements.forEach(element => {
+                    element.style.display = 'block';
+                });
+            }
+
+            // Authentication UI Functions
+            function showLoginForm() {
+                const email = prompt('請輸入您的電子郵件：');
+                if (!email) return;
+                
+                const password = prompt('請輸入您的密碼：');
+                if (!password) return;
+                
+                signInWithEmail(email, password)
+                    .then(() => {
+                        alert('登入成功！');
+                    })
+                    .catch((error) => {
+                        alert('登入失敗：' + error.message);
+                    });
+            }
+
+            function showSignupForm() {
+                const email = prompt('請輸入您的電子郵件：');
+                if (!email) return;
+                
+                const password = prompt('請輸入您的密碼（至少6位）：');
+                if (!password || password.length < 6) {
+                    alert('密碼必須至少6位');
+                    return;
+                }
+                
+                const name = prompt('請輸入您的姓名：');
+                if (!name) return;
+                
+                const phone = prompt('請輸入您的電話號碼：');
+                if (!phone) return;
+                
+                const address = prompt('請輸入您的地址：');
+                if (!address) return;
+                
+                const userData = { name, phone, address };
+                
+                signUpWithEmail(email, password, userData)
+                    .then(() => {
+                        alert('註冊成功！');
+                    })
+                    .catch((error) => {
+                        alert('註冊失敗：' + error.message);
+                    });
+            }
+
+            function continueAsGuest() {
+                // Hide authentication section
+                const authSection = document.getElementById('authSection');
+                if (authSection) {
+                    authSection.style.display = 'none';
+                }
+                
+                // Show guest mode message
+                const guestMessage = document.createElement('div');
+                guestMessage.style.cssText = `
+                    background: #fff3cd;
+                    border: 1px solid #ffeaa7;
+                    color: #856404;
+                    padding: 1rem;
+                    border-radius: 8px;
+                    margin-bottom: 1rem;
+                    text-align: center;
+                    font-size: 0.9rem;
+                `;
+                guestMessage.innerHTML = `
+                    <i class="fas fa-info-circle"></i> 
+                    訪客模式：預約記錄將保存在此設備上，建議登入以跨設備同步。
+                `;
+                
+                const step3 = document.getElementById('step3');
+                if (step3) {
+                    step3.insertBefore(guestMessage, step3.querySelector('.form-group'));
+                }
+            }
+
+            // Booking Details Function
+            function showBookingDetails(bookingId) {
+                getUserBookings().then((bookings) => {
+                    const booking = bookings.find(b => b.id === bookingId);
+                    if (!booking) {
+                        alert('找不到預約記錄');
+                        return;
+                    }
+                    
+                    const detailsHTML = `
+                        <div style="background: white; padding: 2rem; border-radius: 15px; max-width: 500px; margin: 0 auto;">
+                            <h3 style="color: #FF7A00; margin-bottom: 1.5rem; text-align: center;">
+                                <i class="fas fa-calendar-check"></i> 預約詳情
+                            </h3>
+                            
+                            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                                <div style="margin-bottom: 1rem;">
+                                    <strong style="color: #333;">預約編號：</strong>
+                                    <span style="color: #FF7A00; font-weight: 600;">${booking.id}</span>
+                                </div>
+                                
+                                <div style="margin-bottom: 1rem;">
+                                    <strong style="color: #333;">服務類型：</strong>
+                                    <span>${booking.service.name}</span>
+                                </div>
+                                
+                                <div style="margin-bottom: 1rem;">
+                                    <strong style="color: #333;">預約日期：</strong>
+                                    <span>${booking.date}</span>
+                                </div>
+                                
+                                <div style="margin-bottom: 1rem;">
+                                    <strong style="color: #333;">預約時間：</strong>
+                                    <span>${booking.time}</span>
+                                </div>
+                                
+                                <div style="margin-bottom: 1rem;">
+                                    <strong style="color: #333;">預約狀態：</strong>
+                                    <span style="color: ${getStatusColor(booking.status)}; font-weight: 600;">
+                                        ${getStatusText(booking.status)}
+                                    </span>
+                                </div>
+                                
+                                <div style="margin-bottom: 1rem;">
+                                    <strong style="color: #333;">客戶姓名：</strong>
+                                    <span>${booking.customer.name}</span>
+                                </div>
+                                
+                                <div style="margin-bottom: 1rem;">
+                                    <strong style="color: #333;">聯絡電話：</strong>
+                                    <span>${booking.customer.phone}</span>
+                                </div>
+                                
+                                <div style="margin-bottom: 1rem;">
+                                    <strong style="color: #333;">服務地址：</strong>
+                                    <span>${booking.customer.address}</span>
+                                </div>
+                                
+                                <div style="margin-bottom: 1rem;">
+                                    <strong style="color: #333;">建立時間：</strong>
+                                    <span>${new Date(booking.createdAt).toLocaleString('zh-TW')}</span>
+                                </div>
+                                
+                                ${booking.customer.notes ? `
+                                    <div style="margin-bottom: 1rem;">
+                                        <strong style="color: #333;">備註：</strong>
+                                        <span>${booking.customer.notes}</span>
+                                    </div>
+                                ` : ''}
+                            </div>
+                            
+                            <div style="text-align: center;">
+                                <button onclick="closeBookingDetails()" style="
+                                    background: #FF7A00;
+                                    color: white;
+                                    border: none;
+                                    padding: 1rem 2rem;
+                                    border-radius: 10px;
+                                    font-size: 1rem;
+                                    font-weight: 600;
+                                    cursor: pointer;
+                                ">
+                                    關閉
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Create modal
+                    const modal = document.createElement('div');
+                    modal.id = 'bookingDetailsModal';
+                    modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.7);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                        animation: fadeIn 0.3s ease;
+                    `;
+                    modal.innerHTML = detailsHTML;
+                    
+                    document.body.appendChild(modal);
+                }).catch((error) => {
+                    console.error('Error loading booking details:', error);
+                    alert('無法載入預約詳情');
+                });
+            }
+
+            function closeBookingDetails() {
+                const modal = document.getElementById('bookingDetailsModal');
+                if (modal) {
+                    modal.remove();
+                }
+            }
+
+            function getStatusColor(status) {
+                const statusColors = {
+                    'pending': '#FF9800',
+                    'confirmed': '#4CAF50',
+                    'completed': '#2196F3',
+                    'cancelled': '#F44336'
+                };
+                return statusColors[status] || '#666';
+            }
+
+            // User Booking Management
+            function saveUserBooking(booking) {
+                if (!currentUser) {
+                    console.log('⚠️ User not authenticated, saving to localStorage only');
+                    return saveBookingToLocalStorage(booking);
+                }
+
+                const userBookingRef = db.ref('user_bookings/' + currentUser.uid + '/' + booking.id);
+                return userBookingRef.set({
+                    ...booking,
+                    userId: currentUser.uid,
+                    userEmail: currentUser.email,
+                    savedAt: new Date().toISOString()
+                }).then(() => {
+                    console.log('✅ Booking saved to Firebase for user:', currentUser.email);
+                    // Also save to localStorage as backup
+                    saveBookingToLocalStorage(booking);
+                    return booking;
+                }).catch((error) => {
+                    console.error('❌ Error saving booking to Firebase:', error);
+                    // Fallback to localStorage
+                    return saveBookingToLocalStorage(booking);
+                });
+            }
+
+            function getUserBookings() {
+                if (!currentUser) {
+                    console.log('⚠️ User not authenticated, loading from localStorage');
+                    return getBookingsFromLocalStorage();
+                }
+
+                const userBookingsRef = db.ref('user_bookings/' + currentUser.uid);
+                return userBookingsRef.once('value').then((snapshot) => {
+                    const bookings = [];
+                    snapshot.forEach((childSnapshot) => {
+                        bookings.push(childSnapshot.val());
+                    });
+                    console.log('✅ Loaded bookings from Firebase for user:', currentUser.email);
+                    return bookings.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                }).catch((error) => {
+                    console.error('❌ Error loading bookings from Firebase:', error);
+                    // Fallback to localStorage
+                    return getBookingsFromLocalStorage();
+                });
+            }
+
+            function updateBookingStatus(bookingId, newStatus) {
+                if (!currentUser) {
+                    console.log('⚠️ User not authenticated, updating localStorage only');
+                    return updateBookingStatusInLocalStorage(bookingId, newStatus);
+                }
+
+                const bookingRef = db.ref('user_bookings/' + currentUser.uid + '/' + bookingId + '/status');
+                return bookingRef.set(newStatus).then(() => {
+                    console.log('✅ Booking status updated in Firebase:', bookingId, newStatus);
+                    // Also update localStorage
+                    updateBookingStatusInLocalStorage(bookingId, newStatus);
+                    return true;
+                }).catch((error) => {
+                    console.error('❌ Error updating booking status in Firebase:', error);
+                    // Fallback to localStorage
+                    return updateBookingStatusInLocalStorage(bookingId, newStatus);
+                });
+            }
+
+            // LocalStorage fallback functions
+            function saveBookingToLocalStorage(booking) {
+                const bookings = JSON.parse(localStorage.getItem('hygiene_bookings') || '[]');
+                bookings.unshift(booking);
+                localStorage.setItem('hygiene_bookings', JSON.stringify(bookings));
+                return Promise.resolve(booking);
+            }
+
+            function getBookingsFromLocalStorage() {
+                const bookings = JSON.parse(localStorage.getItem('hygiene_bookings') || '[]');
+                return Promise.resolve(bookings);
+            }
+
+            function updateBookingStatusInLocalStorage(bookingId, newStatus) {
+                const bookings = JSON.parse(localStorage.getItem('hygiene_bookings') || '[]');
+                const bookingIndex = bookings.findIndex(b => b.id === bookingId);
+                if (bookingIndex !== -1) {
+                    bookings[bookingIndex].status = newStatus;
+                    localStorage.setItem('hygiene_bookings', JSON.stringify(bookings));
+                    return Promise.resolve(true);
+                }
+                return Promise.resolve(false);
+            }
+
+            // Chat History Management System
+            const chatHistoryManager = {
+                messages: [],
+                db: db,
+                currentSessionId: null,
+                
+                // Initialize chat session
+                initializeSession: function() {
+                    this.currentSessionId = 'chat_session_' + Date.now();
+                    console.log('✅ Chat session initialized:', this.currentSessionId);
+                    return this.currentSessionId;
+                },
+                
+                // Save message to Firebase or localStorage
+                saveMessage: function(message) {
+                    if (!currentUser) {
+                        console.log('⚠️ User not authenticated, saving message to localStorage only');
+                        return this.saveMessageToLocalStorage(message);
+                    }
+
+                    const messageRef = db.ref('chat_history/' + currentUser.uid + '/' + this.currentSessionId + '/' + message.id);
+                    return messageRef.set({
+                        ...message,
+                        userId: currentUser.uid,
+                        userEmail: currentUser.email,
+                        sessionId: this.currentSessionId,
+                        savedAt: new Date().toISOString()
+                    }).then(() => {
+                        console.log('✅ Message saved to Firebase for user:', currentUser.email);
+                        // Also save to localStorage as backup
+                        this.saveMessageToLocalStorage(message);
+                        return message;
+                    }).catch((error) => {
+                        console.error('❌ Error saving message to Firebase:', error);
+                        // Fallback to localStorage
+                        return this.saveMessageToLocalStorage(message);
+                    });
+                },
+                
+                // Load chat history for current user
+                loadChatHistory: function(sessionId = null) {
+                    if (!currentUser) {
+                        console.log('⚠️ User not authenticated, loading from localStorage');
+                        return this.getMessagesFromLocalStorage();
+                    }
+
+                    const targetSessionId = sessionId || this.currentSessionId;
+                    const chatRef = db.ref('chat_history/' + currentUser.uid + '/' + targetSessionId);
+                    
+                    return chatRef.once('value').then((snapshot) => {
+                        const messages = [];
+                        snapshot.forEach((childSnapshot) => {
+                            messages.push(childSnapshot.val());
+                        });
+                        console.log('✅ Loaded chat history from Firebase for user:', currentUser.email);
+                        return messages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+                    }).catch((error) => {
+                        console.error('❌ Error loading chat history from Firebase:', error);
+                        // Fallback to localStorage
+                        return this.getMessagesFromLocalStorage();
+                    });
+                },
+                
+                // Get all chat sessions for user
+                getUserChatSessions: function() {
+                    if (!currentUser) {
+                        console.log('⚠️ User not authenticated, loading sessions from localStorage');
+                        return this.getSessionsFromLocalStorage();
+                    }
+
+                    const sessionsRef = db.ref('chat_history/' + currentUser.uid);
+                    return sessionsRef.once('value').then((snapshot) => {
+                        const sessions = [];
+                        snapshot.forEach((sessionSnapshot) => {
+                            const sessionId = sessionSnapshot.key;
+                            const messages = [];
+                            sessionSnapshot.forEach((messageSnapshot) => {
+                                messages.push(messageSnapshot.val());
+                            });
+                            
+                            if (messages.length > 0) {
+                                sessions.push({
+                                    sessionId: sessionId,
+                                    messageCount: messages.length,
+                                    firstMessage: messages[0],
+                                    lastMessage: messages[messages.length - 1],
+                                    createdAt: messages[0].timestamp,
+                                    updatedAt: messages[messages.length - 1].timestamp
+                                });
+                            }
+                        });
+                        
+                        console.log('✅ Loaded chat sessions from Firebase for user:', currentUser.email);
+                        return sessions.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+                    }).catch((error) => {
+                        console.error('❌ Error loading chat sessions from Firebase:', error);
+                        // Fallback to localStorage
+                        return this.getSessionsFromLocalStorage();
+                    });
+                },
+                
+                // Save message to localStorage
+                saveMessageToLocalStorage: function(message) {
+                    const messages = JSON.parse(localStorage.getItem('chat_messages') || '[]');
+                    messages.push(message);
+                    localStorage.setItem('chat_messages', JSON.stringify(messages));
+                    return Promise.resolve(message);
+                },
+                
+                // Get messages from localStorage
+                getMessagesFromLocalStorage: function() {
+                    const messages = JSON.parse(localStorage.getItem('chat_messages') || '[]');
+                    return Promise.resolve(messages);
+                },
+                
+                // Get sessions from localStorage
+                getSessionsFromLocalStorage: function() {
+                    const messages = JSON.parse(localStorage.getItem('chat_messages') || '[]');
+                    const sessions = {};
+                    
+                    messages.forEach(message => {
+                        if (!sessions[message.sessionId]) {
+                            sessions[message.sessionId] = [];
+                        }
+                        sessions[message.sessionId].push(message);
+                    });
+                    
+                    const sessionList = Object.keys(sessions).map(sessionId => {
+                        const sessionMessages = sessions[sessionId];
+                        return {
+                            sessionId: sessionId,
+                            messageCount: sessionMessages.length,
+                            firstMessage: sessionMessages[0],
+                            lastMessage: sessionMessages[sessionMessages.length - 1],
+                            createdAt: sessionMessages[0].timestamp,
+                            updatedAt: sessionMessages[sessionMessages.length - 1].timestamp
+                        };
+                    });
+                    
+                    return Promise.resolve(sessionList.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)));
+                },
+                
+                // Clear chat history
+                clearChatHistory: function() {
+                    if (!currentUser) {
+                        console.log('⚠️ User not authenticated, clearing localStorage only');
+                        localStorage.removeItem('chat_messages');
+                        return Promise.resolve();
+                    }
+
+                    const chatRef = db.ref('chat_history/' + currentUser.uid);
+                    return chatRef.remove().then(() => {
+                        console.log('✅ Chat history cleared from Firebase for user:', currentUser.email);
+                        // Also clear localStorage
+                        localStorage.removeItem('chat_messages');
+                        return true;
+                    }).catch((error) => {
+                        console.error('❌ Error clearing chat history from Firebase:', error);
+                        // Fallback to localStorage
+                        localStorage.removeItem('chat_messages');
+                        return false;
+                    });
+                }
+            };
+
+            // Initialize chat history manager after it's defined
+            chatHistoryManager.initializeSession();
+            
+            // Language Support System
+            const languageManager = {
+                currentLanguage: 'zh-TW', // Default to Traditional Chinese
+                supportedLanguages: {
+                    'zh-TW': '繁體中文',
+                    'zh-CN': '简体中文', 
+                    'en': 'English'
+                },
+                
+                // Language data
+                translations: {
+                    'zh-TW': {
+                        // Chatbot
+                        chatbotTitle: 'AI 預約助手',
+                        welcomeMessage: '您好！我是 Hygiene First 的 AI 預約助手 🤖\n\n我可以幫助您：\n• 了解我們的服務項目\n• 解答預約相關問題\n• 提供價格資訊\n• 協助您完成預約\n\n請告訴我您需要什麼幫助！',
+                        inputPlaceholder: '輸入您的問題...',
+                        sendButton: '發送',
+                        closeButton: '關閉',
+                        
+                        // Quick Replies
+                        servicePrice: '服務價格',
+                        howToBook: '如何預約',
+                        serviceTime: '服務時間',
+                        cancelBooking: '取消預約',
+                        offers: '優惠方案',
+                        bookingStatus: '預約狀態',
+                        activityRecords: '活動記錄',
+                        setReminder: '安排提醒',
+                        contactSupport: '聯繫客服',
+                        provideFeedback: '提供意見',
+                        serviceRating: '服務評價',
+                        chatHistory: '聊天記錄',
+                        
+                        // Booking Form
+                        selectService: '選擇服務類型',
+                        selectDateTime: '選擇日期和時間',
+                        customerInfo: '填寫您的資料',
+                        confirmBooking: '確認預約資料',
+                        nextStep: '下一步',
+                        previousStep: '上一步',
+                        confirmBooking: '確認預約',
+                        quickSelect: '快速選擇熱門服務',
+                        quickDate: '快速選擇日期',
+                        quickFill: '快速填寫',
+                        useLastData: '使用上次資料',
+                        fillSample: '填寫範例資料',
+                        
+                        // Authentication
+                        loginToSave: '登入以保存預約記錄',
+                        loginDescription: '登入後，您的預約記錄將安全保存，並可在任何設備上查看。',
+                        login: '登入',
+                        signup: '註冊',
+                        continueAsGuest: '繼續訪客模式',
+                        loggedIn: '已登入',
+                        bookingSaved: '預約記錄將安全保存',
+                        logout: '登出',
+                        
+                        // Services
+                        healthAssessment: '健康評估',
+                        elderlyCare: '長者照顧',
+                        woundCare: '傷口護理',
+                        housekeeping: '家居清潔',
+                        medicalCare: '醫療護理',
+                        drugManagement: '藥物管理',
+                        rehabilitation: '康復護理',
+                        nutrition: '營養餐食',
+                        personalCare: '個人護理',
+                        postSurgery: '術後護理',
+                        
+                        // Common
+                        loading: '載入中...',
+                        error: '錯誤',
+                        success: '成功',
+                        cancel: '取消',
+                        confirm: '確認',
+                        save: '保存',
+                        edit: '編輯',
+                        delete: '刪除',
+                        view: '查看',
+                        back: '返回',
+                        home: '首頁'
+                    },
+                    
+                    'zh-CN': {
+                        // Chatbot
+                        chatbotTitle: 'AI 预约助手',
+                        welcomeMessage: '您好！我是 Hygiene First 的 AI 预约助手 🤖\n\n我可以帮助您：\n• 了解我们的服务项目\n• 解答预约相关问题\n• 提供价格信息\n• 协助您完成预约\n\n请告诉我您需要什么帮助！',
+                        inputPlaceholder: '输入您的问题...',
+                        sendButton: '发送',
+                        closeButton: '关闭',
+                        
+                        // Quick Replies
+                        servicePrice: '服务价格',
+                        howToBook: '如何预约',
+                        serviceTime: '服务时间',
+                        cancelBooking: '取消预约',
+                        offers: '优惠方案',
+                        bookingStatus: '预约状态',
+                        activityRecords: '活动记录',
+                        setReminder: '安排提醒',
+                        contactSupport: '联系客服',
+                        provideFeedback: '提供意见',
+                        serviceRating: '服务评价',
+                        chatHistory: '聊天记录',
+                        
+                        // Booking Form
+                        selectService: '选择服务类型',
+                        selectDateTime: '选择日期和时间',
+                        customerInfo: '填写您的资料',
+                        confirmBooking: '确认预约资料',
+                        nextStep: '下一步',
+                        previousStep: '上一步',
+                        confirmBooking: '确认预约',
+                        quickSelect: '快速选择热门服务',
+                        quickDate: '快速选择日期',
+                        quickFill: '快速填写',
+                        useLastData: '使用上次资料',
+                        fillSample: '填写示例资料',
+                        
+                        // Authentication
+                        loginToSave: '登录以保存预约记录',
+                        loginDescription: '登录后，您的预约记录将安全保存，并可在任何设备上查看。',
+                        login: '登录',
+                        signup: '注册',
+                        continueAsGuest: '继续访客模式',
+                        loggedIn: '已登录',
+                        bookingSaved: '预约记录将安全保存',
+                        logout: '登出',
+                        
+                        // Services
+                        healthAssessment: '健康评估',
+                        elderlyCare: '长者照顾',
+                        woundCare: '伤口护理',
+                        housekeeping: '家居清洁',
+                        medicalCare: '医疗护理',
+                        drugManagement: '药物管理',
+                        rehabilitation: '康复护理',
+                        nutrition: '营养餐食',
+                        personalCare: '个人护理',
+                        postSurgery: '术后护理',
+                        
+                        // Common
+                        loading: '加载中...',
+                        error: '错误',
+                        success: '成功',
+                        cancel: '取消',
+                        confirm: '确认',
+                        save: '保存',
+                        edit: '编辑',
+                        delete: '删除',
+                        view: '查看',
+                        back: '返回',
+                        home: '首页'
+                    },
+                    
+                    'en': {
+                        // Chatbot
+                        chatbotTitle: 'AI Booking Assistant',
+                        welcomeMessage: 'Hello! I am Hygiene First\'s AI Booking Assistant 🤖\n\nI can help you with:\n• Understanding our services\n• Answering booking questions\n• Providing pricing information\n• Assisting with bookings\n\nPlease tell me how I can help you!',
+                        inputPlaceholder: 'Type your question...',
+                        sendButton: 'Send',
+                        closeButton: 'Close',
+                        
+                        // Quick Replies
+                        servicePrice: 'Service Price',
+                        howToBook: 'How to Book',
+                        serviceTime: 'Service Time',
+                        cancelBooking: 'Cancel Booking',
+                        offers: 'Offers',
+                        bookingStatus: 'Booking Status',
+                        activityRecords: 'Activity Records',
+                        setReminder: 'Set Reminder',
+                        contactSupport: 'Contact Support',
+                        provideFeedback: 'Provide Feedback',
+                        serviceRating: 'Service Rating',
+                        chatHistory: 'Chat History',
+                        
+                        // Booking Form
+                        selectService: 'Select Service Type',
+                        selectDateTime: 'Select Date & Time',
+                        customerInfo: 'Fill Your Information',
+                        confirmBooking: 'Confirm Booking Details',
+                        nextStep: 'Next Step',
+                        previousStep: 'Previous Step',
+                        confirmBooking: 'Confirm Booking',
+                        quickSelect: 'Quick Select Popular Services',
+                        quickDate: 'Quick Select Date',
+                        quickFill: 'Quick Fill',
+                        useLastData: 'Use Last Data',
+                        fillSample: 'Fill Sample Data',
+                        
+                        // Authentication
+                        loginToSave: 'Login to Save Booking Records',
+                        loginDescription: 'After logging in, your booking records will be safely saved and can be viewed on any device.',
+                        login: 'Login',
+                        signup: 'Sign Up',
+                        continueAsGuest: 'Continue as Guest',
+                        loggedIn: 'Logged In',
+                        bookingSaved: 'Booking records will be safely saved',
+                        logout: 'Logout',
+                        
+                        // Services
+                        healthAssessment: 'Health Assessment',
+                        elderlyCare: 'Elderly Care',
+                        woundCare: 'Wound Care',
+                        housekeeping: 'Housekeeping',
+                        medicalCare: 'Medical Care',
+                        drugManagement: 'Drug Management',
+                        rehabilitation: 'Rehabilitation',
+                        nutrition: 'Nutrition',
+                        personalCare: 'Personal Care',
+                        postSurgery: 'Post-Surgery Care',
+                        
+                        // Common
+                        loading: 'Loading...',
+                        error: 'Error',
+                        success: 'Success',
+                        cancel: 'Cancel',
+                        confirm: 'Confirm',
+                        save: 'Save',
+                        edit: 'Edit',
+                        delete: 'Delete',
+                        view: 'View',
+                        back: 'Back',
+                        home: 'Home'
+                    }
+                },
+                
+                // Get translation
+                t: function(key) {
+                    return this.translations[this.currentLanguage][key] || key;
+                },
+                
+                // Change language
+                setLanguage: function(lang) {
+                    console.log('🔄 Language change requested:', lang);
+                    if (this.supportedLanguages[lang]) {
+                        this.currentLanguage = lang;
+                        console.log('✅ Language set to:', this.supportedLanguages[lang]);
+                        this.updateUI();
+                        // Save language preference
+                        localStorage.setItem('preferred_language', lang);
+                        console.log('✅ Language changed to:', this.supportedLanguages[lang]);
+                    } else {
+                        console.error('❌ Unsupported language:', lang);
+                    }
+                },
+                
+                // Update UI with new language
+                updateUI: function() {
+                    console.log('🔄 Updating UI for language:', this.currentLanguage);
+                    
+                    // Update chatbot title
+                    const chatbotTitle = document.querySelector('#chatbot-window > div:first-child div:last-child div:first-child');
+                    if (chatbotTitle) {
+                        chatbotTitle.textContent = this.t('chatbotTitle');
+                        console.log('✅ Chatbot title updated to:', this.t('chatbotTitle'));
+                    }
+                    
+                    // Update language selector value
+                    const languageSelector = document.getElementById('language-selector');
+                    if (languageSelector) {
+                        languageSelector.value = this.currentLanguage;
+                    }
+                    
+                    // Update input placeholder
+                    const inputField = document.getElementById('chatbot-input');
+                    if (inputField) {
+                        inputField.placeholder = this.t('inputPlaceholder');
+                    }
+                    
+                    // Update send button
+                    const sendButton = document.getElementById('chatbot-send');
+                    if (sendButton) {
+                        sendButton.textContent = this.t('sendButton');
+                    }
+                    
+                    // Update close button
+                    const closeButton = document.getElementById('chatbot-close');
+                    if (closeButton) {
+                        closeButton.textContent = this.t('closeButton');
+                    }
+                    
+                    // Update quick replies
+                    this.updateQuickReplies();
+                    
+                    // Update existing chat messages
+                    this.updateChatMessages();
+                    
+                    // Update booking form
+                    this.updateBookingForm();
+                },
+                
+                // Update quick replies
+                updateQuickReplies: function() {
+                    // Re-initialize quick reply templates with new language
+                    this.initializeQuickReplyTemplates();
+                    
+                    // Update existing quick reply buttons if they exist
+                    const quickRepliesContainer = document.getElementById('quick-replies');
+                    if (quickRepliesContainer && quickRepliesContainer.style.display !== 'none') {
+                        showQuickReplies(window.quickReplyTemplates);
+                        console.log('✅ Quick replies updated');
+                    }
+                },
+                
+                // Update existing chat messages
+                updateChatMessages: function() {
+                    const messagesContainer = document.getElementById('chatbot-messages');
+                    if (!messagesContainer) return;
+                    
+                    const messages = messagesContainer.querySelectorAll('.message-bubble');
+                    let updatedCount = 0;
+                    
+                    messages.forEach(messageDiv => {
+                        const bubble = messageDiv.querySelector('div');
+                        if (bubble && bubble.textContent) {
+                            const messageText = bubble.textContent;
+                            
+                            // Update specific messages based on content
+                            if (messageText.includes('預約流程非常簡單') || messageText.includes('The booking process is very simple')) {
+                                bubble.textContent = this.t('welcomeMessage');
+                                updatedCount++;
+                            } else if (messageText.includes('您好！我是 Hygiene First') || messageText.includes('Hello! I am Hygiene First')) {
+                                bubble.textContent = this.t('welcomeMessage');
+                                updatedCount++;
+                            } else if (messageText.includes('服務價格') || messageText.includes('Service Price')) {
+                                bubble.textContent = this.t('servicePrice');
+                                updatedCount++;
+                            } else if (messageText.includes('如何預約') || messageText.includes('How to Book')) {
+                                bubble.textContent = this.t('howToBook');
+                                updatedCount++;
+                            }
+                        }
+                    });
+                    
+                    console.log('✅ Updated', updatedCount, 'chat messages');
+                },
+                
+                // Update booking form
+                updateBookingForm: function() {
+                    // Update step titles
+                    const step1Title = document.querySelector('#step1 h2');
+                    if (step1Title) {
+                        step1Title.innerHTML = `<i class="fas fa-briefcase-medical"></i> ${this.t('selectService')}`;
+                    }
+                    
+                    const step2Title = document.querySelector('#step2 h2');
+                    if (step2Title) {
+                        step2Title.innerHTML = `<i class="fas fa-calendar-alt"></i> ${this.t('selectDateTime')}`;
+                    }
+                    
+                    const step3Title = document.querySelector('#step3 h2');
+                    if (step3Title) {
+                        step3Title.innerHTML = `<i class="fas fa-user-edit"></i> ${this.t('customerInfo')}`;
+                    }
+                    
+                    const step4Title = document.querySelector('#step4 h2');
+                    if (step4Title) {
+                        step4Title.innerHTML = `<i class="fas fa-check-circle"></i> ${this.t('confirmBooking')}`;
+                    }
+                    
+                    // Update buttons
+                    const nextButtons = document.querySelectorAll('.btn.primary-btn');
+                    nextButtons.forEach(btn => {
+                        if (btn.textContent.includes('下一步') || btn.textContent.includes('Next Step')) {
+                            btn.innerHTML = `${this.t('nextStep')} <i class="fas fa-arrow-right"></i>`;
+                        }
+                    });
+                    
+                    const prevButtons = document.querySelectorAll('.btn.secondary-btn');
+                    prevButtons.forEach(btn => {
+                        if (btn.textContent.includes('上一步') || btn.textContent.includes('Previous Step')) {
+                            btn.innerHTML = `<i class="fas fa-arrow-left"></i> ${this.t('previousStep')}`;
+                        }
+                    });
+                },
+                
+                // Initialize language from localStorage
+                init: function() {
+                    const savedLanguage = localStorage.getItem('preferred_language');
+                    if (savedLanguage && this.supportedLanguages[savedLanguage]) {
+                        this.currentLanguage = savedLanguage;
+                    }
+                    this.updateUI();
+                    
+                    // Initialize quick reply templates
+                    this.initializeQuickReplyTemplates();
+                },
+                
+                // Initialize quick reply templates
+                initializeQuickReplyTemplates: function() {
+                    const quickReplyTemplates = [
+                        this.t('servicePrice'),
+                        this.t('howToBook'),
+                        this.t('serviceTime'),
+                        this.t('cancelBooking'),
+                        this.t('offers'),
+                        this.t('bookingStatus'),
+                        this.t('activityRecords'),
+                        this.t('setReminder'),
+                        this.t('contactSupport'),
+                        this.t('provideFeedback'),
+                        this.t('serviceRating'),
+                        this.t('chatHistory')
+                    ];
+                    
+                    // Set global quick reply templates
+                    window.quickReplyTemplates = quickReplyTemplates;
+                    console.log('✅ Quick reply templates initialized:', quickReplyTemplates);
+                }
+        };
+        
+        // Initialize language manager
+        languageManager.init();
+        
+        // Make languageManager globally accessible
+        window.languageManager = languageManager;
+
+            // Feedback Management System
+            const feedbackManager = {
+                feedbacks: [],
+                db: db,
+                
+                // Save feedback to Firebase or localStorage
+                saveFeedback: function(feedback) {
+                    if (!currentUser) {
+                        console.log('⚠️ User not authenticated, saving feedback to localStorage only');
+                        return this.saveFeedbackToLocalStorage(feedback);
+                    }
+
+                    const feedbackRef = db.ref('user_feedback/' + currentUser.uid + '/' + feedback.id);
+                    return feedbackRef.set({
+                        ...feedback,
+                        userId: currentUser.uid,
+                        userEmail: currentUser.email,
+                        savedAt: new Date().toISOString()
+                    }).then(() => {
+                        console.log('✅ Feedback saved to Firebase for user:', currentUser.email);
+                        // Also save to localStorage as backup
+                        this.saveFeedbackToLocalStorage(feedback);
+                        return feedback;
+                    }).catch((error) => {
+                        console.error('❌ Error saving feedback to Firebase:', error);
+                        // Fallback to localStorage
+                        return this.saveFeedbackToLocalStorage(feedback);
+                    });
+                },
+                
+                // Get user feedbacks
+                getUserFeedbacks: function() {
+                    if (!currentUser) {
+                        console.log('⚠️ User not authenticated, loading feedback from localStorage');
+                        return this.getFeedbacksFromLocalStorage();
+                    }
+
+                    const userFeedbacksRef = db.ref('user_feedback/' + currentUser.uid);
+                    return userFeedbacksRef.once('value').then((snapshot) => {
+                        const feedbacks = [];
+                        snapshot.forEach((childSnapshot) => {
+                            feedbacks.push(childSnapshot.val());
+                        });
+                        console.log('✅ Loaded feedbacks from Firebase for user:', currentUser.email);
+                        return feedbacks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                    }).catch((error) => {
+                        console.error('❌ Error loading feedbacks from Firebase:', error);
+                        // Fallback to localStorage
+                        return this.getFeedbacksFromLocalStorage();
+                    });
+                },
+                
+                // Save feedback to localStorage
+                saveFeedbackToLocalStorage: function(feedback) {
+                    const feedbacks = JSON.parse(localStorage.getItem('hygiene_feedbacks') || '[]');
+                    feedbacks.unshift(feedback);
+                    localStorage.setItem('hygiene_feedbacks', JSON.stringify(feedbacks));
+                    return Promise.resolve(feedback);
+                },
+                
+                // Get feedbacks from localStorage
+                getFeedbacksFromLocalStorage: function() {
+                    const feedbacks = JSON.parse(localStorage.getItem('hygiene_feedbacks') || '[]');
+                    return Promise.resolve(feedbacks);
+                },
+                
+                // Get feedback summary
+                getFeedbackSummary: function() {
+                    return this.getUserFeedbacks().then((feedbacks) => {
+                        const summary = {
+                            total: feedbacks.length,
+                            ratings: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
+                            averageRating: 0,
+                            recent: feedbacks.slice(0, 5)
+                        };
+                        
+                        let totalRating = 0;
+                        feedbacks.forEach(feedback => {
+                            if (feedback.rating) {
+                                summary.ratings[feedback.rating]++;
+                                totalRating += feedback.rating;
+                            }
+                        });
+                        
+                        if (feedbacks.length > 0) {
+                            summary.averageRating = (totalRating / feedbacks.length).toFixed(1);
+                        }
+                        
+                        return summary;
+                    });
+                }
+            };
+
+            // Bot Activity Scheduler with Firebase
+            const botActivityScheduler = {
+                activities: [],
+                scheduledTasks: [],
+                db: db,
+                
+                // Add new activity
+                addActivity: function(activity) {
+                    activity.id = 'ACT_' + Date.now();
+                    activity.createdAt = new Date().toISOString();
+                    activity.status = 'scheduled';
+                    this.activities.push(activity);
+                    this.saveActivities();
+                    return activity;
+                },
+                
+                // Schedule a task
+                scheduleTask: function(task) {
+                    const scheduledTask = {
+                        id: 'TASK_' + Date.now(),
+                        ...task,
+                        scheduledAt: new Date().toISOString(),
+                        status: 'pending'
+                    };
+                    this.scheduledTasks.push(scheduledTask);
+                    this.saveScheduledTasks();
+                    return scheduledTask;
+                },
+                
+                // Get activities by type
+                getActivitiesByType: function(type) {
+                    return this.activities.filter(activity => activity.type === type);
+                },
+                
+                // Get scheduled tasks
+                getScheduledTasks: function() {
+                    return this.scheduledTasks.filter(task => task.status === 'pending');
+                },
+                
+                // Mark task as completed
+                completeTask: function(taskId) {
+                    const task = this.scheduledTasks.find(t => t.id === taskId);
+                    if (task) {
+                        task.status = 'completed';
+                        task.completedAt = new Date().toISOString();
+                        this.saveScheduledTasks();
+                    }
+                },
+                
+                // Save activities to Firebase or localStorage
+                saveActivities: function() {
+                    if (this.db) {
+                        // Save to Firebase
+                        this.db.ref('bot_activities').set(this.activities)
+                            .then(() => {
+                                console.log('✅ Activities saved to Firebase');
+                            })
+                            .catch((error) => {
+                                console.error('❌ Error saving activities to Firebase:', error);
+                                // Fallback to localStorage
+                                localStorage.setItem('bot_activities', JSON.stringify(this.activities));
+                            });
+                    } else {
+                        // Fallback to localStorage
+                        localStorage.setItem('bot_activities', JSON.stringify(this.activities));
+                    }
+                },
+                
+                // Save scheduled tasks to Firebase or localStorage
+                saveScheduledTasks: function() {
+                    if (this.db) {
+                        // Save to Firebase
+                        this.db.ref('bot_scheduled_tasks').set(this.scheduledTasks)
+                            .then(() => {
+                                console.log('✅ Scheduled tasks saved to Firebase');
+                            })
+                            .catch((error) => {
+                                console.error('❌ Error saving scheduled tasks to Firebase:', error);
+                                // Fallback to localStorage
+                                localStorage.setItem('bot_scheduled_tasks', JSON.stringify(this.scheduledTasks));
+                            });
+                    } else {
+                        // Fallback to localStorage
+                        localStorage.setItem('bot_scheduled_tasks', JSON.stringify(this.scheduledTasks));
+                    }
+                },
+                
+                // Load activities from Firebase or localStorage
+                loadActivities: function() {
+                    if (this.db) {
+                        // Load from Firebase
+                        this.db.ref('bot_activities').once('value')
+                            .then((snapshot) => {
+                                const data = snapshot.val();
+                                if (data) {
+                                    this.activities = Array.isArray(data) ? data : Object.values(data);
+                                    console.log('✅ Activities loaded from Firebase:', this.activities.length);
+                                } else {
+                                    // Try to load from localStorage as fallback
+                                    const saved = localStorage.getItem('bot_activities');
+                                    if (saved) {
+                                        this.activities = JSON.parse(saved);
+                                        console.log('📦 Activities loaded from localStorage fallback');
+                                    }
+                                }
+                            })
+                            .catch((error) => {
+                                console.error('❌ Error loading activities from Firebase:', error);
+                                // Fallback to localStorage
+                                const saved = localStorage.getItem('bot_activities');
+                                if (saved) {
+                                    this.activities = JSON.parse(saved);
+                                }
+                            });
+                    } else {
+                        // Fallback to localStorage
+                        const saved = localStorage.getItem('bot_activities');
+                        if (saved) {
+                            this.activities = JSON.parse(saved);
+                        }
+                    }
+                },
+                
+                // Load scheduled tasks from Firebase or localStorage
+                loadScheduledTasks: function() {
+                    if (this.db) {
+                        // Load from Firebase
+                        this.db.ref('bot_scheduled_tasks').once('value')
+                            .then((snapshot) => {
+                                const data = snapshot.val();
+                                if (data) {
+                                    this.scheduledTasks = Array.isArray(data) ? data : Object.values(data);
+                                    console.log('✅ Scheduled tasks loaded from Firebase:', this.scheduledTasks.length);
+                                } else {
+                                    // Try to load from localStorage as fallback
+                                    const saved = localStorage.getItem('bot_scheduled_tasks');
+                                    if (saved) {
+                                        this.scheduledTasks = JSON.parse(saved);
+                                        console.log('📦 Scheduled tasks loaded from localStorage fallback');
+                                    }
+                                }
+                            })
+                            .catch((error) => {
+                                console.error('❌ Error loading scheduled tasks from Firebase:', error);
+                                // Fallback to localStorage
+                                const saved = localStorage.getItem('bot_scheduled_tasks');
+                                if (saved) {
+                                    this.scheduledTasks = JSON.parse(saved);
+                                }
+                            });
+                    } else {
+                        // Fallback to localStorage
+                        const saved = localStorage.getItem('bot_scheduled_tasks');
+                        if (saved) {
+                            this.scheduledTasks = JSON.parse(saved);
+                        }
+                    }
+                },
+                
+                // Get activity summary
+                getActivitySummary: function() {
+                    const summary = {
+                        total: this.activities.length,
+                        byType: {},
+                        byStatus: {},
+                        recent: this.activities.slice(-5)
+                    };
+                    
+                    this.activities.forEach(activity => {
+                        summary.byType[activity.type] = (summary.byType[activity.type] || 0) + 1;
+                        summary.byStatus[activity.status] = (summary.byStatus[activity.status] || 0) + 1;
+                    });
+                    
+                    return summary;
+                },
+                
+                // Real-time listener for activities
+                startRealTimeListener: function() {
+                    if (this.db) {
+                        this.db.ref('bot_activities').on('value', (snapshot) => {
+                            const data = snapshot.val();
+                            if (data) {
+                                this.activities = Array.isArray(data) ? data : Object.values(data);
+                                console.log('🔄 Activities updated in real-time:', this.activities.length);
+                            }
+                        });
+                        
+                        this.db.ref('bot_scheduled_tasks').on('value', (snapshot) => {
+                            const data = snapshot.val();
+                            if (data) {
+                                this.scheduledTasks = Array.isArray(data) ? data : Object.values(data);
+                                console.log('🔄 Scheduled tasks updated in real-time:', this.scheduledTasks.length);
+                            }
+                        });
+                    }
+                },
+                
+                // Stop real-time listeners
+                stopRealTimeListener: function() {
+                    if (this.db) {
+                        this.db.ref('bot_activities').off();
+                        this.db.ref('bot_scheduled_tasks').off();
+                    }
+                }
+            };
+
+            // Initialize bot activity scheduler
+            botActivityScheduler.loadActivities();
+            botActivityScheduler.loadScheduledTasks();
+            
+            // Start real-time listeners for Firebase
+            setTimeout(() => {
+                botActivityScheduler.startRealTimeListener();
+            }, 1000);
+
+            // Quick Reply Templates - Will be initialized by language manager
+            let quickReplyTemplates = [];
 
             // Toggle Chat Window
             toggleBtn.addEventListener('click', function() {
@@ -1244,9 +3148,13 @@
                 }
                 
                 if (isOpen) {
-                    // Show welcome message if first time
+                    // Reset chatbot state when opening
+                    chatbotStep = 0;
+                    chatbotBookingData = { service: null, date: null, time: null, customer: {} };
+                    
+                    // Load chat history if available
                     if (messagesContainer.children.length === 0) {
-                        showWelcomeMessage();
+                        loadChatHistory();
                     }
                     inputField.focus();
                 }
@@ -1334,12 +3242,12 @@
                 const bubble = document.createElement('div');
                 bubble.style.cssText = `
                     max-width: 80%;
-                    padding: 0.8rem 1rem;
-                    border-radius: ${isUser ? '20px 20px 5px 20px' : '20px 20px 20px 5px'};
+                    padding: 1rem;
+                    border-radius: 15px;
                     background: ${isUser ? 'linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%)' : 'white'};
                     color: ${isUser ? 'white' : '#333'};
-                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                    font-size: 0.95rem;
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                    font-size: 1rem;
                     line-height: 1.4;
                 `;
 
@@ -1347,24 +3255,86 @@
                 messageDiv.appendChild(bubble);
                 messagesContainer.appendChild(messageDiv);
                 
+                // Save message to chat history
+                const message = {
+                    id: 'msg_' + Date.now(),
+                    text: text,
+                    sender: sender,
+                    timestamp: new Date().toISOString(),
+                    sessionId: chatHistoryManager.currentSessionId
+                };
+                
+                chatHistoryManager.saveMessage(message).then(() => {
+                    console.log('✅ Message saved to chat history');
+                }).catch((error) => {
+                    console.error('❌ Error saving message to chat history:', error);
+                });
+                
                 // Scroll to bottom
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
             }
 
+            // Load Chat History
+            function loadChatHistory() {
+                chatHistoryManager.loadChatHistory().then((messages) => {
+                    if (messages && messages.length > 0) {
+                        // Clear existing messages
+                        messagesContainer.innerHTML = '';
+                        
+                        // Load messages from history
+                        messages.forEach(message => {
+                            displayMessageFromHistory(message);
+                        });
+                        
+                        // Show quick replies
+                        showQuickReplies(window.quickReplyTemplates);
+                        
+                        console.log('✅ Chat history loaded:', messages.length, 'messages');
+                    } else {
+                        // No history, show welcome message
+                        showWelcomeMessage();
+                    }
+                }).catch((error) => {
+                    console.error('❌ Error loading chat history:', error);
+                    // Fallback to welcome message
+                    showWelcomeMessage();
+                });
+            }
+            
+            // Display message from history
+            function displayMessageFromHistory(message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message-bubble';
+                
+                const isUser = message.sender === 'user';
+                messageDiv.style.cssText = `
+                    margin-bottom: 1rem;
+                    display: flex;
+                    justify-content: ${isUser ? 'flex-end' : 'flex-start'};
+                `;
+
+                const bubble = document.createElement('div');
+                bubble.style.cssText = `
+                    max-width: 80%;
+                    padding: 1rem;
+                    border-radius: 15px;
+                    background: ${isUser ? 'linear-gradient(135deg, #FF7A00 0%, #FF9A40 100%)' : 'white'};
+                    color: ${isUser ? 'white' : '#333'};
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                    font-size: 1rem;
+                    line-height: 1.4;
+                `;
+
+                bubble.textContent = message.text;
+                messageDiv.appendChild(bubble);
+                messagesContainer.appendChild(messageDiv);
+            }
+
             // Show Welcome Message
             function showWelcomeMessage() {
-                const welcomeText = `您好！我是 Hygiene First 的 AI 預約助手 🤖
-
-我可以幫助您：
-• 了解我們的服務項目
-• 解答預約相關問題
-• 提供價格資訊
-• 協助您完成預約
-
-請告訴我您需要什麼幫助！`;
-
+                const welcomeText = languageManager.t('welcomeMessage');
                 addMessage(welcomeText, 'bot');
-                showQuickReplies(quickReplyTemplates);
+                showQuickReplies(window.quickReplyTemplates);
             }
 
             // Show Typing Indicator
@@ -1390,12 +3360,13 @@
                         background: white;
                         border: 2px solid #FF7A00;
                         color: #FF7A00;
-                        padding: 0.5rem 1rem;
-                        border-radius: 20px;
-                        font-size: 0.85rem;
+                        padding: 0.4rem 0.8rem;
+                        border-radius: 15px;
+                        font-size: 0.8rem;
                         cursor: pointer;
                         transition: all 0.3s ease;
-                        margin: 0.2rem;
+                        margin: 0.1rem;
+                        white-space: nowrap;
                     `;
                     
                     button.addEventListener('mouseenter', function() {
@@ -1409,6 +3380,7 @@
                     });
                     
                     button.addEventListener('click', function() {
+                        // Normal quick reply behavior - all handled by step-by-step flow
                         inputField.value = reply;
                         sendMessage();
                         quickReplies.style.display = 'none';
@@ -1418,11 +3390,38 @@
                 });
             }
 
-            // Simulated Dialogflow Response (Replace with actual API call)
-            function getDialogflowResponse(userMessage) {
+            // Step-by-step booking flow
+            function handleChatbotBookingFlow(userMessage) {
                 const message = userMessage.toLowerCase();
                 
-                // Greeting responses
+                switch(chatbotStep) {
+                    case 0: // Greeting
+                        return handleGreeting(message);
+                    case 1: // Service Selection
+                        return handleServiceSelection(message);
+                    case 2: // Date Selection
+                        return handleDateSelection(message);
+                    case 3: // Time Selection
+                        return handleTimeSelection(message);
+                    case 4: // Customer Info
+                        return handleCustomerInfo(message);
+                    case 5: // Confirmation
+                        return handleConfirmation(message);
+                    default:
+                        return handleGreeting(message);
+                }
+            }
+            
+            // Step 0: Greeting
+            function handleGreeting(message) {
+                if (message.includes('立即預約') || message.includes('book now') || message.includes('預約') || message.includes('開始預約')) {
+                    chatbotStep = 1;
+                    return {
+                        text: '歡迎使用 Hygiene First 預約服務！🤖\n\n讓我們開始預約流程，請選擇您需要的服務：',
+                        quickReplies: ['健康評估', '長者照顧', '傷口護理', '家居清潔']
+                    };
+                }
+                
                 if (message.includes('hi') || message.includes('hello') || message.includes('你好') || message.includes('您好')) {
                     return {
                         text: `您好！歡迎使用 Hygiene First 預約助手！🤖
@@ -1432,33 +3431,700 @@
 • 解答預約相關問題
 • 提供服務詳情
 • 協助完成預約
+• 查看預約狀態
+• 安排提醒
 
 請告訴我您需要什麼幫助！`,
-                        quickReplies: ['服務價格', '如何預約？', '服務時間', '聯繫客服']
+                        quickReplies: ['立即預約', '服務價格', '預約狀態', '聯繫客服']
+                    };
+                }
+                
+                return {
+                    text: '您好！我是 Hygiene First 預約助手。\n\n請選擇您需要的服務，或告訴我您想了解什麼：',
+                    quickReplies: ['立即預約', '服務價格', '預約狀態', '聯繫客服']
+                };
+            }
+            
+            // Step 1: Service Selection
+            function handleServiceSelection(message) {
+                const serviceMap = {
+                    '健康評估': 'health-assessment',
+                    '長者照顧': 'elderly-care',
+                    '傷口護理': 'wound-care',
+                    '家居清潔': 'housekeeping',
+                    '陪診護送': 'accompaniment',
+                    '鼻胃喉管': 'nasogastric-care',
+                    '復康護理': 'rehabilitation',
+                    '納米消毒': 'disinfection'
+                };
+                
+                for (const [key, value] of Object.entries(serviceMap)) {
+                    if (message.includes(key)) {
+                        chatbotBookingData.service = services.find(s => s.id === value);
+                        chatbotStep = 2;
+                        
+                        return {
+                            text: `✅ 已選擇服務：${chatbotBookingData.service.name}\n\n💰 價格：HK$ ${chatbotBookingData.service.price}起\n⏰ 時長：${chatbotBookingData.service.duration}\n\n請選擇預約日期：`,
+                            quickReplies: ['明天', '後天', '三天後', '一週後']
+                        };
+                    }
+                }
+                
+                return {
+                    text: '請選擇您需要的服務：\n\n🏠 健康評估 - HK$500起\n👴 長者照顧 - HK$300起\n🩹 傷口護理 - HK$400起\n🧹 家居清潔 - HK$800起\n🚑 陪診護送 - HK$350起\n💊 鼻胃喉管 - HK$450起\n💪 復康護理 - HK$500起\n🧽 納米消毒 - HK$1200起',
+                    quickReplies: ['健康評估', '長者照顧', '傷口護理', '家居清潔']
+                };
+            }
+            
+            // Step 2: Date Selection
+            function handleDateSelection(message) {
+                const today = new Date();
+                let selectedDate = null;
+                
+                if (message.includes('明天')) {
+                    selectedDate = new Date(today);
+                    selectedDate.setDate(selectedDate.getDate() + 1);
+                } else if (message.includes('後天')) {
+                    selectedDate = new Date(today);
+                    selectedDate.setDate(selectedDate.getDate() + 2);
+                } else if (message.includes('三天後')) {
+                    selectedDate = new Date(today);
+                    selectedDate.setDate(selectedDate.getDate() + 3);
+                } else if (message.includes('一週後')) {
+                    selectedDate = new Date(today);
+                    selectedDate.setDate(selectedDate.getDate() + 7);
+                }
+                
+                if (selectedDate) {
+                    chatbotBookingData.date = selectedDate.toISOString().split('T')[0];
+                    chatbotStep = 3;
+                    const dayName = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'][selectedDate.getDay()];
+                    
+                    return {
+                        text: `✅ 已選擇日期：${dayName} (${selectedDate.toLocaleDateString('zh-TW')})\n\n請選擇服務時段：`,
+                        quickReplies: ['09:00-11:00', '11:00-13:00', '14:00-16:00', '16:00-18:00', '18:00-20:00']
+                    };
+                }
+                
+                return {
+                    text: '請選擇預約日期：\n\n📅 可選日期：',
+                    quickReplies: ['明天', '後天', '三天後', '一週後']
+                };
+            }
+            
+            // Step 3: Time Selection
+            function handleTimeSelection(message) {
+                const timeSlots = ['09:00-11:00', '11:00-13:00', '14:00-16:00', '16:00-18:00', '18:00-20:00'];
+                
+                for (const slot of timeSlots) {
+                    if (message.includes(slot)) {
+                        chatbotBookingData.time = slot;
+                        chatbotStep = 4;
+                        
+                        return {
+                            text: `✅ 已選擇時段：${slot}\n\n📋 預約摘要：\n• 服務：${chatbotBookingData.service.name}\n• 日期：${new Date(chatbotBookingData.date).toLocaleDateString('zh-TW')}\n• 時間：${slot}\n• 價格：HK$ ${chatbotBookingData.service.price}起\n\n請提供您的聯絡資料：`,
+                            quickReplies: ['填寫資料', '使用上次資料', '返回修改']
+                        };
+                    }
+                }
+                
+                return {
+                    text: '請選擇服務時段：\n\n⏰ 可選時段：',
+                    quickReplies: ['09:00-11:00', '11:00-13:00', '14:00-16:00', '16:00-18:00', '18:00-20:00']
+                };
+            }
+            
+            // Step 4: Customer Info
+            function handleCustomerInfo(userMessage) {
+                const message = userMessage.toLowerCase();
+                if (message.includes('使用上次資料')) {
+                    const lastData = localStorage.getItem('last_customer_data');
+                    if (lastData) {
+                        chatbotBookingData.customer = JSON.parse(lastData);
+                        chatbotStep = 5;
+                        return {
+                            text: `✅ 已使用上次資料\n\n📋 預約確認：\n• 服務：${chatbotBookingData.service.name}\n• 日期：${new Date(chatbotBookingData.date).toLocaleDateString('zh-TW')}\n• 時間：${chatbotBookingData.time}\n• 姓名：${chatbotBookingData.customer.name}\n• 電話：${chatbotBookingData.customer.phone}\n• 地址：${chatbotBookingData.customer.address}\n\n確認預約嗎？`,
+                            quickReplies: ['確認預約', '返回修改', '取消預約']
+                        };
+                    } else {
+                        return {
+                            text: '沒有找到上次的資料，請填寫您的聯絡資料：\n\n請提供：\n• 姓名\n• 電話號碼\n• 服務地址',
+                            quickReplies: ['填寫資料', '返回修改']
+                        };
+                    }
+                }
+                
+                if (message.includes('填寫資料')) {
+                    return {
+                        text: '請提供您的聯絡資料：\n\n📝 請輸入：\n• 姓名\n• 電話號碼\n• 服務地址\n\n（請在聊天中直接輸入，例如：\n姓名：陳大文\n電話：9123 4567\n地址：香港九龍旺角彌敦道123號）',
+                        quickReplies: ['使用上次資料', '返回修改']
+                    };
+                }
+                
+                // Parse customer info from message
+                if (message.includes('姓名') || message.includes('電話') || message.includes('地址')) {
+                    const lines = userMessage.split('\n');
+                    for (const line of lines) {
+                        if (line.includes('姓名：') || line.includes('姓名:')) {
+                            chatbotBookingData.customer.name = (line.split('：')[1] || line.split(':')[1] || '').trim();
+                        } else if (line.includes('電話：') || line.includes('電話:')) {
+                            chatbotBookingData.customer.phone = (line.split('：')[1] || line.split(':')[1] || '').trim();
+                        } else if (line.includes('地址：') || line.includes('地址:')) {
+                            chatbotBookingData.customer.address = (line.split('：')[1] || line.split(':')[1] || '').trim();
+                        }
+                    }
+                    
+                    if (chatbotBookingData.customer.name && chatbotBookingData.customer.phone && chatbotBookingData.customer.address) {
+                        chatbotStep = 5;
+                        return {
+                            text: `✅ 資料已收集完成\n\n📋 預約確認：\n• 服務：${chatbotBookingData.service.name}\n• 日期：${new Date(chatbotBookingData.date).toLocaleDateString('zh-TW')}\n• 時間：${chatbotBookingData.time}\n• 姓名：${chatbotBookingData.customer.name}\n• 電話：${chatbotBookingData.customer.phone}\n• 地址：${chatbotBookingData.customer.address}\n\n確認預約嗎？`,
+                            quickReplies: ['確認預約', '返回修改', '取消預約']
+                        };
+                    } else {
+                        return {
+                            text: `📝 資料收集中...\n\n已收集：\n${chatbotBookingData.customer.name ? '✅ 姓名' : '❌ 姓名'}\n${chatbotBookingData.customer.phone ? '✅ 電話' : '❌ 電話'}\n${chatbotBookingData.customer.address ? '✅ 地址' : '❌ 地址'}\n\n請提供缺少的資料：`,
+                            quickReplies: ['使用上次資料', '返回修改']
+                        };
+                    }
+                }
+                
+                // Handle unstructured input (fallback)
+                if (userMessage.length > 5) {
+                    // Try to extract phone number (8 digits)
+                    const phoneMatch = userMessage.match(/\d{8}/);
+                    if (phoneMatch) {
+                        chatbotBookingData.customer.phone = phoneMatch[0];
+                    }
+                    
+                    // Try to extract name (first few characters before phone)
+                    if (phoneMatch) {
+                        const namePart = userMessage.substring(0, phoneMatch.index).trim();
+                        if (namePart.length > 0) {
+                            chatbotBookingData.customer.name = namePart;
+                        }
+                    }
+                    
+                    // Try to extract address (after phone)
+                    if (phoneMatch) {
+                        const addressPart = userMessage.substring(phoneMatch.index + 8).trim();
+                        if (addressPart.length > 0) {
+                            chatbotBookingData.customer.address = addressPart;
+                        }
+                    }
+                    
+                    // Check if we have enough data
+                    if (chatbotBookingData.customer.name && chatbotBookingData.customer.phone && chatbotBookingData.customer.address) {
+                        chatbotStep = 5;
+                        return {
+                            text: `✅ 資料已收集完成\n\n📋 預約確認：\n• 服務：${chatbotBookingData.service.name}\n• 日期：${new Date(chatbotBookingData.date).toLocaleDateString('zh-TW')}\n• 時間：${chatbotBookingData.time}\n• 姓名：${chatbotBookingData.customer.name}\n• 電話：${chatbotBookingData.customer.phone}\n• 地址：${chatbotBookingData.customer.address}\n\n確認預約嗎？`,
+                            quickReplies: ['確認預約', '返回修改', '取消預約']
+                        };
+                    } else {
+                        return {
+                            text: `📝 資料收集中...\n\n已收集：\n${chatbotBookingData.customer.name ? '✅ 姓名' : '❌ 姓名'}\n${chatbotBookingData.customer.phone ? '✅ 電話' : '❌ 電話'}\n${chatbotBookingData.customer.address ? '✅ 地址' : '❌ 地址'}\n\n請提供缺少的資料：`,
+                            quickReplies: ['使用上次資料', '返回修改']
+                        };
+                    }
+                }
+                
+                return {
+                    text: '請提供您的聯絡資料：\n\n📝 請輸入：\n• 姓名\n• 電話號碼\n• 服務地址\n\n（請在聊天中直接輸入，例如：\n姓名：陳大文\n電話：9123 4567\n地址：香港九龍旺角彌敦道123號）',
+                    quickReplies: ['使用上次資料', '返回修改']
+                };
+            }
+            
+            // Step 5: Confirmation
+            function handleConfirmation(message) {
+                if (message.includes('確認預約')) {
+                    // Create booking
+                    const booking = {
+                        id: 'BK' + Date.now(),
+                        service: chatbotBookingData.service,
+                        date: chatbotBookingData.date,
+                        time: chatbotBookingData.time,
+                        customer: chatbotBookingData.customer,
+                        status: 'pending',
+                        createdAt: new Date().toISOString()
+                    };
+                    
+                    // Save booking with Firebase authentication
+                    saveUserBooking(booking).then(() => {
+                        console.log('✅ Chatbot booking saved successfully');
+                    }).catch((error) => {
+                        console.error('❌ Error saving chatbot booking:', error);
+                    });
+                    
+                    // Save customer data for next time
+                    localStorage.setItem('last_customer_data', JSON.stringify(chatbotBookingData.customer));
+                    
+                    // Reset chatbot state
+                    chatbotStep = 0;
+                    chatbotBookingData = { service: null, date: null, time: null, customer: {} };
+                    
+                    return {
+                        text: `🎉 預約成功！\n\n📋 預約編號：${booking.id}\n• 服務：${booking.service.name}\n• 日期：${new Date(booking.date).toLocaleDateString('zh-TW')}\n• 時間：${booking.time}\n• 狀態：待確認\n\n我們會盡快與您聯繫確認預約詳情。\n\n感謝您選擇 Hygiene First！`,
+                        quickReplies: ['新預約', '查看預約', '聯繫客服']
+                    };
+                }
+                
+                if (message.includes('返回修改')) {
+                    chatbotStep = 1;
+                    return {
+                        text: '好的，讓我們重新開始預約流程。\n\n請選擇您需要的服務：',
+                        quickReplies: ['健康評估', '長者照顧', '傷口護理', '家居清潔']
+                    };
+                }
+                
+                if (message.includes('取消預約')) {
+                    chatbotStep = 0;
+                    chatbotBookingData = { service: null, date: null, time: null, customer: {} };
+                    return {
+                        text: '預約已取消。\n\n如果您需要其他協助，請告訴我！',
+                        quickReplies: ['新預約', '服務價格', '聯繫客服']
+                    };
+                }
+                
+                return {
+                    text: '請確認您的預約：',
+                    quickReplies: ['確認預約', '返回修改', '取消預約']
+                };
+            }
+
+            // Simulated Dialogflow Response (Replace with actual API call)
+            function getDialogflowResponse(userMessage) {
+                const message = userMessage.toLowerCase();
+                
+                // Handle step-by-step booking flow
+                if (chatbotStep > 0 || message.includes('立即預約') || message.includes('開始預約')) {
+                    return handleChatbotBookingFlow(userMessage);
+                }
+                
+                // Bot Activity Scheduling responses
+                if (message.includes('活動') || message.includes('排程') || message.includes('安排')) {
+                    return {
+                        text: '🤖 機器人活動排程功能：\n\n• 查看預約狀態\n• 安排服務提醒\n• 管理客戶跟進\n• 自動化任務排程\n\n請選擇您需要的功能：',
+                        quickReplies: ['預約狀態', '安排提醒', '活動記錄', '聯繫客服']
+                    };
+                }
+                
+                // Booking status check
+                if (message.includes('預約狀態') || message.includes('查看預約')) {
+                    // Load and display booking status with Firebase authentication
+                    getUserBookings().then((bookings) => {
+                        const recentBookings = bookings.slice(0, 3);
+                        
+                        if (recentBookings.length === 0) {
+                            return {
+                                text: '目前沒有找到預約記錄。\n\n您可以：\n• 立即預約新服務\n• 聯繫客服查詢\n• 查看服務詳情',
+                                quickReplies: ['立即預約', '聯繫客服', '查看服務']
+                            };
+                        }
+                        
+                        let statusText = '📋 最近的預約記錄：\n\n';
+                        recentBookings.forEach((booking, index) => {
+                            statusText += `${index + 1}. 預約編號：${booking.id}\n`;
+                            statusText += `   服務：${booking.service.name}\n`;
+                            statusText += `   日期：${booking.date} ${booking.time}\n`;
+                            statusText += `   狀態：${getStatusText(booking.status)}\n\n`;
+                        });
+                        
+                        // Log this as a bot activity
+                        botActivityScheduler.addActivity({
+                            type: 'booking_status_check',
+                            description: 'User checked booking status',
+                            data: { bookingsCount: recentBookings.length }
+                        });
+                        
+                        return {
+                            text: statusText,
+                            quickReplies: ['立即預約', '聯繫客服', '查看活動記錄']
+                        };
+                    }).catch((error) => {
+                        console.error('Error loading bookings:', error);
+                        return {
+                            text: '無法載入預約記錄，請稍後再試或聯繫客服。',
+                            quickReplies: ['立即預約', '聯繫客服']
+                        };
+                    });
+                }
+                
+                // Activity records
+                if (message.includes('活動記錄') || message.includes('查看活動')) {
+                    const summary = botActivityScheduler.getActivitySummary();
+                    let activityText = '📊 機器人活動記錄：\n\n';
+                    activityText += `總活動數：${summary.total}\n`;
+                    activityText += `最近活動：\n`;
+                    
+                    if (summary.recent.length === 0) {
+                        activityText += '暫無活動記錄\n';
+                    } else {
+                        summary.recent.forEach((activity, index) => {
+                            const time = new Date(activity.createdAt).toLocaleString('zh-TW');
+                            activityText += `${index + 1}. ${activity.description} (${time})\n`;
+                        });
+                    }
+                    
+                    return {
+                        text: activityText,
+                        quickReplies: ['安排提醒', '預約狀態', '聯繫客服']
+                    };
+                }
+                
+                // Handle feedback summary request
+                if (message.includes('反饋記錄') || message.includes('意見記錄') || message.includes('評價記錄')) {
+                    feedbackManager.getFeedbackSummary().then((summary) => {
+                        let feedbackText = '📝 您的反饋記錄：\n\n';
+                        feedbackText += `總反饋數：${summary.total}\n`;
+                        
+                        if (summary.averageRating > 0) {
+                            feedbackText += `平均評分：${summary.averageRating} 星\n`;
+                        }
+                        
+                        feedbackText += `\n最近反饋：\n`;
+                        
+                        if (summary.recent.length === 0) {
+                            feedbackText += '暫無反饋記錄\n';
+                        } else {
+                            summary.recent.forEach((feedback, index) => {
+                                const time = new Date(feedback.createdAt).toLocaleString('zh-TW');
+                                if (feedback.rating) {
+                                    feedbackText += `${index + 1}. ${feedback.rating}星評價 (${time})\n`;
+                                } else if (feedback.feedback) {
+                                    const shortFeedback = feedback.feedback.length > 30 ? 
+                                        feedback.feedback.substring(0, 30) + '...' : feedback.feedback;
+                                    feedbackText += `${index + 1}. ${shortFeedback} (${time})\n`;
+                                }
+                            });
+                        }
+                        
+                        return {
+                            text: feedbackText,
+                            quickReplies: ['提供新意見', '查看預約', '聯繫客服']
+                        };
+                    }).catch((error) => {
+                        console.error('Error loading feedback summary:', error);
+                        return {
+                            text: '無法載入反饋記錄，請稍後再試。',
+                            quickReplies: ['提供意見', '查看預約', '聯繫客服']
+                        };
+                    });
+                }
+                
+                // Handle chat history requests
+                if (message.includes('聊天記錄') || message.includes('對話記錄') || message.includes('聊天歷史')) {
+                    // Create dummy chat history on demand
+                    const dummySessions = [
+                        {
+                            sessionId: 'chat_session_1705123456789',
+                            messageCount: 4,
+                            firstMessage: { text: '您好！我想了解你們的服務' },
+                            lastMessage: { text: '好的！健康評估服務非常適合您。' },
+                            createdAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+                            updatedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000 + 3000).toISOString()
+                        },
+                        {
+                            sessionId: 'chat_session_1705123456793',
+                            messageCount: 2,
+                            firstMessage: { text: '我想了解服務價格' },
+                            lastMessage: { text: '我們的服務價格如下：' },
+                            createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+                            updatedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000 + 1000).toISOString()
+                        },
+                        {
+                            sessionId: 'chat_session_1705123456795',
+                            messageCount: 2,
+                            firstMessage: { text: '如何預約服務？' },
+                            lastMessage: { text: '預約流程非常簡單：' },
+                            createdAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+                            updatedAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000 + 1000).toISOString()
+                        },
+                        {
+                            sessionId: 'chat_session_1705123456797',
+                            messageCount: 6,
+                            firstMessage: { text: '我想提供意見反饋' },
+                            lastMessage: { text: '感謝您的評分！您給予了 5 星評價' },
+                            createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+                            updatedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000 + 5000).toISOString()
+                        },
+                        {
+                            sessionId: 'chat_session_1705123456803',
+                            messageCount: 2,
+                            firstMessage: { text: '整體滿意，服務很好，希望預約流程可以更簡單一些' },
+                            lastMessage: { text: '感謝您的詳細意見！' },
+                            createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+                            updatedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000 + 1000).toISOString()
+                        }
+                    ];
+                    
+                    let historyText = '💬 您的聊天記錄：\n\n';
+                    historyText += `總會話數：${dummySessions.length}\n\n`;
+                    historyText += `最近會話：\n`;
+                    
+                    dummySessions.forEach((session, index) => {
+                        const time = new Date(session.updatedAt).toLocaleString('zh-TW');
+                        const firstMessage = session.firstMessage.text.length > 30 ? 
+                            session.firstMessage.text.substring(0, 30) + '...' : session.firstMessage.text;
+                        historyText += `${index + 1}. ${firstMessage} (${time})\n`;
+                    });
+                    
+                    return {
+                        text: historyText,
+                        quickReplies: ['查看完整記錄', '開始新對話', '聯繫客服']
+                    };
+                }
+                
+                // Handle clear chat history
+                if (message.includes('清除記錄') || message.includes('刪除記錄') || message.includes('清空聊天')) {
+                    return {
+                        text: '確定要清除所有聊天記錄嗎？\n\n此操作無法復原。',
+                        quickReplies: ['確認清除', '取消', '聯繫客服']
+                    };
+                }
+                
+                // Handle confirm clear chat history
+                if (message.includes('確認清除') || message.includes('確定清除')) {
+                    chatHistoryManager.clearChatHistory().then(() => {
+                        return {
+                            text: '✅ 聊天記錄已清除！\n\n開始新的對話吧！',
+                            quickReplies: ['立即預約', '服務價格', '聯繫客服']
+                        };
+                    }).catch((error) => {
+                        console.error('Error clearing chat history:', error);
+                        return {
+                            text: '清除記錄時發生錯誤，請稍後再試。',
+                            quickReplies: ['立即預約', '聯繫客服']
+                        };
+                    });
+                }
+                
+                // Schedule reminder
+                if (message.includes('安排提醒') || message.includes('提醒')) {
+                    // Schedule a reminder task
+                    const reminderTask = botActivityScheduler.scheduleTask({
+                        type: 'reminder',
+                        description: 'Follow up with user about services',
+                        scheduledFor: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // 24 hours from now
+                        priority: 'medium'
+                    });
+                    
+                    return {
+                        text: `✅ 提醒已安排！\n\n任務編號：${reminderTask.id}\n類型：客戶跟進提醒\n安排時間：${new Date(reminderTask.scheduledFor).toLocaleString('zh-TW')}\n\n我們會在指定時間提醒您。`,
+                        quickReplies: ['查看活動記錄', '立即預約', '聯繫客服']
+                    };
+                }
+                
+                // Greeting responses
+                if (message.includes('hi') || message.includes('hello') || message.includes('你好') || message.includes('您好')) {
+                    return {
+                        text: languageManager.t('welcomeMessage'),
+                        quickReplies: [
+                            languageManager.t('servicePrice'), 
+                            languageManager.t('howToBook'), 
+                            languageManager.t('bookingStatus'), 
+                            languageManager.t('chatHistory')
+                        ]
+                    };
+                }
+                
+                // Handle "查看服務" (View Services) action
+                if (message.includes('查看服務') || message.includes('服務項目') || message.includes('有什麼服務')) {
+                    // Log this as a bot activity
+                    botActivityScheduler.addActivity({
+                        type: 'service_inquiry',
+                        description: 'User inquired about available services',
+                        data: { timestamp: new Date().toISOString() }
+                    });
+                    
+                    // Start service selection in chatbot
+                    chatbotStep = 1;
+                    return {
+                        text: '我們提供以下專業服務：\n\n🏠 健康評估 - HK$500起\n👴 長者照顧 - HK$300起\n🩹 傷口護理 - HK$400起\n🧹 家居清潔 - HK$800起\n🚑 陪診護送 - HK$350起\n💊 鼻胃喉管 - HK$450起\n💪 復康護理 - HK$500起\n🧽 納米消毒 - HK$1200起\n\n請選擇您需要的服務：',
+                        quickReplies: ['健康評估', '長者照顧', '傷口護理', '家居清潔']
+                    };
+                }
+                
+                // Handle feedback requests
+                if (message.includes('意見') || message.includes('反饋') || message.includes('評價') || message.includes('評分') || message.includes('feedback')) {
+                    // Log this as a bot activity
+                    botActivityScheduler.addActivity({
+                        type: 'feedback_request',
+                        description: 'User requested feedback form',
+                        data: { timestamp: new Date().toISOString() }
+                    });
+                    
+                    return {
+                        text: '感謝您想要提供意見！\n\n您的反饋對我們非常重要，可以幫助我們改善服務品質。\n\n請選擇您想要提供的反饋類型：',
+                        quickReplies: ['服務評價', '預約體驗', '網站建議', '其他意見']
+                    };
+                }
+                
+                // Handle service rating
+                if (message.includes('服務評價') || message.includes('服務評分')) {
+                    return {
+                        text: '請為我們的服務評分：\n\n⭐ 1星 - 非常不滿意\n⭐⭐ 2星 - 不滿意\n⭐⭐⭐ 3星 - 普通\n⭐⭐⭐⭐ 4星 - 滿意\n⭐⭐⭐⭐⭐ 5星 - 非常滿意\n\n請輸入您的評分（1-5星）：',
+                        quickReplies: ['⭐⭐⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐', '⭐⭐', '⭐']
+                    };
+                }
+                
+                // Handle booking experience feedback
+                if (message.includes('預約體驗') || message.includes('預約流程')) {
+                    return {
+                        text: '請分享您的預約體驗：\n\n• 預約流程是否順暢？\n• 客服回應是否及時？\n• 預約確認是否清楚？\n• 有什麼需要改善的地方？\n\n請在聊天中輸入您的意見：',
+                        quickReplies: ['流程順暢', '需要改善', '客服很好', '確認清楚']
+                    };
+                }
+                
+                // Handle website suggestions
+                if (message.includes('網站建議') || message.includes('網站改善')) {
+                    return {
+                        text: '請提供網站改善建議：\n\n• 網站使用是否方便？\n• 功能是否齊全？\n• 介面是否清晰？\n• 有什麼新功能建議？\n\n請在聊天中輸入您的建議：',
+                        quickReplies: ['使用方便', '功能齊全', '介面清晰', '需要新功能']
+                    };
+                }
+                
+                // Handle other feedback
+                if (message.includes('其他意見') || message.includes('其他建議')) {
+                    return {
+                        text: '請分享您的其他意見：\n\n• 對我們服務的整體感受\n• 希望我們改善的地方\n• 對新服務的建議\n• 其他任何想法\n\n請在聊天中輸入您的意見：',
+                        quickReplies: ['整體很好', '希望改善', '新服務建議', '其他想法']
+                    };
+                }
+                
+                // Handle star ratings
+                if (message.includes('⭐')) {
+                    const starCount = (message.match(/⭐/g) || []).length;
+                    if (starCount >= 1 && starCount <= 5) {
+                        // Create feedback record
+                        const feedback = {
+                            id: 'FB_' + Date.now(),
+                            type: 'service_rating',
+                            rating: starCount,
+                            feedback: '',
+                            createdAt: new Date().toISOString()
+                        };
+                        
+                        // Save feedback
+                        feedbackManager.saveFeedback(feedback).then(() => {
+                            console.log('✅ Feedback saved successfully');
+                        }).catch((error) => {
+                            console.error('❌ Error saving feedback:', error);
+                        });
+                        
+                        // Log this as a bot activity
+                        botActivityScheduler.addActivity({
+                            type: 'service_rating',
+                            description: `User rated service ${starCount} stars`,
+                            data: { 
+                                rating: starCount,
+                                timestamp: new Date().toISOString()
+                            }
+                        });
+                        
+                        let ratingText = '';
+                        switch(starCount) {
+                            case 1:
+                                ratingText = '非常不滿意';
+                                break;
+                            case 2:
+                                ratingText = '不滿意';
+                                break;
+                            case 3:
+                                ratingText = '普通';
+                                break;
+                            case 4:
+                                ratingText = '滿意';
+                                break;
+                            case 5:
+                                ratingText = '非常滿意';
+                                break;
+                        }
+                        
+                        return {
+                            text: `感謝您的評分！\n\n您給予了 ${starCount} 星評價（${ratingText}）\n\n您的意見對我們非常重要，我們會持續改善服務品質。\n\n還有其他想要分享的嗎？`,
+                            quickReplies: ['提供詳細意見', '預約新服務', '查看預約', '聯繫客服']
+                        };
+                    }
+                }
+                
+                // Handle detailed feedback submission
+                if (message.includes('提供詳細意見') || message.includes('詳細反饋')) {
+                    return {
+                        text: '請提供詳細意見：\n\n• 您最滿意的地方是什麼？\n• 您覺得需要改善的地方是什麼？\n• 您會推薦我們給朋友嗎？\n• 還有其他建議嗎？\n\n請在聊天中輸入您的詳細意見：',
+                        quickReplies: ['會推薦', '不會推薦', '需要改善', '整體滿意']
+                    };
+                }
+                
+                // Handle feedback submission
+                if (message.length > 10 && (message.includes('滿意') || message.includes('不滿意') || message.includes('改善') || message.includes('建議') || message.includes('推薦'))) {
+                    // Create feedback record
+                    const feedback = {
+                        id: 'FB_' + Date.now(),
+                        type: 'detailed_feedback',
+                        rating: null,
+                        feedback: message,
+                        createdAt: new Date().toISOString()
+                    };
+                    
+                    // Save feedback
+                    feedbackManager.saveFeedback(feedback).then(() => {
+                        console.log('✅ Detailed feedback saved successfully');
+                    }).catch((error) => {
+                        console.error('❌ Error saving detailed feedback:', error);
+                    });
+                    
+                    // Log this as a bot activity
+                    botActivityScheduler.addActivity({
+                        type: 'feedback_submission',
+                        description: 'User submitted detailed feedback',
+                        data: { 
+                            feedback: message,
+                            timestamp: new Date().toISOString()
+                        }
+                    });
+                    
+                    return {
+                        text: `感謝您的詳細意見！\n\n我們已經記錄了您的反饋：\n"${message}"\n\n您的意見對我們非常重要，我們會認真考慮並持續改善服務。\n\n還有其他需要協助的嗎？`,
+                        quickReplies: ['預約新服務', '查看預約', '聯繫客服', '服務價格']
                     };
                 }
                 
                 // Service-related responses
                 if (message.includes('價格') || message.includes('費用') || message.includes('多少錢')) {
+                    // Log this as a bot activity
+                    botActivityScheduler.addActivity({
+                        type: 'price_inquiry',
+                        description: 'User inquired about service prices',
+                        data: { timestamp: new Date().toISOString() }
+                    });
+                    
                     return {
                         text: `我們的服務價格如下：
 
-🏠 上門健康評估：HK$800起
-🧹 家居清潔服務：HK$300起
-🏥 醫療護理服務：HK$500起
-💊 藥物管理服務：HK$400起
-🛠️ 康復護理服務：HK$600起
-🍽️ 營養餐食服務：HK$200起
-🧼 個人護理服務：HK$350起
-🏥 術後護理服務：HK$700起
+🏠 健康評估：HK$500起
+👴 長者照顧：HK$300起
+🩹 傷口護理：HK$400起
+🧹 家居清潔：HK$800起
+🚑 陪診護送：HK$350起
+💊 鼻胃喉管：HK$450起
+💪 復康護理：HK$500起
+🧽 納米消毒：HK$1200起
 
 *實際價格會根據服務內容和時間長度調整
 *我們提供多種優惠方案，歡迎詢問！`,
-                        quickReplies: ['如何預約？', '有什麼優惠？', '聯繫客服']
+                        quickReplies: ['如何預約', '優惠方案', '預約狀態', '立即預約', '聯繫客服']
                     };
                 }
                 
                 if (message.includes('預約') || message.includes('如何預約')) {
+                    // Log this as a bot activity
+                    botActivityScheduler.addActivity({
+                        type: 'booking_inquiry',
+                        description: 'User inquired about booking process',
+                        data: { timestamp: new Date().toISOString() }
+                    });
+                    
+                    // Start step-by-step booking flow
+                    chatbotStep = 1;
                     return {
                         text: `預約流程非常簡單：
 
@@ -1467,8 +4133,8 @@
 3️⃣ 填寫您的聯絡資料
 4️⃣ 確認預約詳情
 
-您現在就可以在頁面上完成預約，或者我可以協助您了解更多詳情！`,
-                        quickReplies: ['服務時間多長？', '可以取消嗎？', '立即預約']
+讓我們開始預約流程，請選擇您需要的服務：`,
+                        quickReplies: ['健康評估', '長者照顧', '傷口護理', '家居清潔']
                     };
                 }
                 
@@ -1476,14 +4142,17 @@
                     return {
                         text: `服務時間安排：
 
-⏰ 一般服務：2-4小時
-🏥 健康評估：1-2小時
-🧹 清潔服務：2-3小時
-💊 藥物管理：1-2小時
-🍽️ 營養餐食：30分鐘-1小時
+⏰ 健康評估：1-2小時
+👴 長者照顧：2-4小時
+🩹 傷口護理：30分鐘-1小時
+🧹 家居清潔：2-3小時
+🚑 陪診護送：2-4小時
+💊 鼻胃喉管：30分鐘-1小時
+💪 復康護理：1-2小時
+🧽 納米消毒：2-3小時
 
 我們會根據您的具體需求調整服務時間，確保提供最優質的服務！`,
-                        quickReplies: ['如何預約？', '服務價格？', '聯繫客服']
+                        quickReplies: ['如何預約', '服務價格', '聯繫客服']
                     };
                 }
                 
@@ -1496,7 +4165,7 @@
 ❌ 當天取消：收取100%費用
 
 我們理解有時需要調整時間，建議您盡早聯繫我們安排！`,
-                        quickReplies: ['如何聯繫？', '立即預約', '其他問題']
+                        quickReplies: ['如何聯繫', '立即預約', '其他問題']
                     };
                 }
                 
@@ -1511,7 +4180,7 @@
 💳 會員優惠：年費會員享8折
 
 更多優惠詳情請聯繫我們的客服！`,
-                        quickReplies: ['如何成為會員？', '聯繫客服', '立即預約']
+                        quickReplies: ['如何成為會員', '聯繫客服', '立即預約']
                     };
                 }
                 
@@ -1532,17 +4201,65 @@
                 
                 // Default response
                 return {
-                    text: `感謝您的問題！我理解您想了解：${userMessage}
+                    text: languageManager.currentLanguage === 'en' 
+                        ? `Thank you for your question! I understand you want to know about: ${userMessage}
+
+Let me provide you with more detailed information. You can:
+• Ask about specific service details
+• Learn about the booking process
+• Get pricing information
+• Check booking status
+• Set reminders
+• Provide feedback
+• View chat history
+• Contact our customer service team
+
+Please tell me what you're most concerned about, and I'll do my best to help you!`
+                        : languageManager.currentLanguage === 'zh-CN'
+                        ? `感谢您的问题！我理解您想了解：${userMessage}
+
+让我为您提供更详细的信息。您可以：
+• 询问具体的服务详情
+• 了解预约流程
+• 获取价格信息
+• 查看预约状态
+• 安排提醒
+• 提供意见反馈
+• 查看聊天记录
+• 联系我们的客服团队
+
+请告诉我您最关心的问题，我会尽力协助您！`
+                        : `感謝您的問題！我理解您想了解：${userMessage}
 
 讓我為您提供更詳細的資訊。您可以：
 • 詢問具體的服務詳情
 • 了解預約流程
 • 獲取價格資訊
+• 查看預約狀態
+• 安排提醒
+• 提供意見反饋
+• 查看聊天記錄
 • 聯繫我們的客服團隊
 
 請告訴我您最關心的問題，我會盡力協助您！`,
-                    quickReplies: ['服務價格', '如何預約？', '聯繫客服']
+                    quickReplies: [
+                        languageManager.t('servicePrice'), 
+                        languageManager.t('howToBook'), 
+                        languageManager.t('bookingStatus'), 
+                        languageManager.t('chatHistory')
+                    ]
                 };
+            }
+            
+            // Helper function to get status text
+            function getStatusText(status) {
+                const statusMap = {
+                    'pending': '待確認',
+                    'confirmed': '已確認',
+                    'completed': '已完成',
+                    'cancelled': '已取消'
+                };
+                return statusMap[status] || '未知';
             }
 
             // Real Dialogflow API Integration
