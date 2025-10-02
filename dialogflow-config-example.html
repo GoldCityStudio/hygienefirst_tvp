@@ -1,0 +1,44 @@
+<!-- COPY THIS CODE INTO YOUR booking.html FILE -->
+<!-- Add this script tag BEFORE the chatbot script (around line 460) -->
+
+<script>
+    // Dialogflow Configuration - Easiest Method
+    // Replace these values with your actual Dialogflow settings
+    
+    window.DIALOGFLOW_ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN_HERE';
+    window.DIALOGFLOW_PROJECT_ID = 'YOUR_PROJECT_ID_HERE';
+    
+    // Optional: You can also configure other settings
+    window.DIALOGFLOW_LANGUAGE_CODE = 'zh-TW';
+    
+    console.log('Dialogflow configuration loaded:', {
+        hasToken: !!window.DIALOGFLOW_ACCESS_TOKEN,
+        projectId: window.DIALOGFLOW_PROJECT_ID,
+        languageCode: window.DIALOGFLOW_LANGUAGE_CODE
+    });
+</script>
+
+<!-- 
+INSTRUCTIONS:
+1. Replace 'YOUR_ACCESS_TOKEN_HERE' with your actual Dialogflow access token
+2. Replace 'YOUR_PROJECT_ID_HERE' with your actual Dialogflow project ID
+3. Save the file and test the chatbot
+
+TO GET YOUR ACCESS TOKEN:
+1. Go to Google Cloud Console
+2. Select your Dialogflow project
+3. Go to APIs & Services → Credentials
+4. Create OAuth 2.0 Client ID or use Service Account
+5. Generate access token
+
+TO GET YOUR PROJECT ID:
+1. Go to Dialogflow Console
+2. Look at the URL or project settings
+3. Copy the project ID (usually looks like: my-project-12345)
+
+TESTING:
+1. Open booking.html in browser
+2. Open Developer Console (F12)
+3. Click the robot button
+4. Type "服務價格" and see if you get a real response
+-->
