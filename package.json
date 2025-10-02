@@ -13,7 +13,8 @@
     "seo": "node seo-generator.js",
     "seo:all": "node seo-generator.js",
     "ga:setup": "echo 'Please update G-XXXXXXXXXX in google-analytics-config.js and meta-tag-generator.js with your actual GA4 tracking ID'",
-    "ga:test": "node test-google-analytics.js"
+    "ga:test": "node test-google-analytics.js",
+    "seo:urls": "node seo-url-generator.js"
   },
   "dependencies": {
     "express": "^4.18.2",

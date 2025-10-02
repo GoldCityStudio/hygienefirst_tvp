@@ -1405,88 +1405,37 @@
                     .then(data => {
                         console.log('Collection points data loaded:', data.length, 'entries');
                         
-                        // Filter out header entries and empty entries
-                        completeCollectionPointsData = data.filter(item => 
-                            item.支持機構 && 
-                            item.回收過期藥物點 && 
-                            item.回收點地址 &&
-                            item.支持機構.trim() !== '' &&
-                            item.回收過期藥物點.trim() !== '' &&
-                            item.回收點地址.trim() !== '' &&
-                            !item.支持機構.includes('：') && // Remove regional headers
-                            item.支持機構 !== '支持機構' // Remove template entry
-                        ).map(item => {
-                            // Determine region based on address patterns
-                            let region = '新界'; // Default
-                            const address = item.回收點地址 || '';
-                            
-                            if (address.includes('香港島') || 
-                                address.includes('中區') || 
-                                address.includes('中環') || 
-                                address.includes('上環') || 
-                                address.includes('灣仔') || 
-                                address.includes('銅鑼灣') || 
-                                address.includes('北角') || 
-                                address.includes('太古') || 
-                                address.includes('西環') || 
-                                address.includes('西營盤') || 
-                                address.includes('西區') || 
-                                address.includes('香港仔') || 
-                                address.includes('柴灣') || 
-                                address.includes('堅尼地城') || 
-                                address.includes('淺水灣') || 
-                                address.includes('深水灣') || 
-                                address.includes('清水灣') || 
-                                address.includes('跑馬地') || 
-                                address.includes('黃竹坑') || 
-                                address.includes('筲箕灣') || 
-                                address.includes('鴨脷洲') || 
-                                address.includes('鰂魚涌') || 
-                                address.includes('半山') || 
-                                address.includes('西半山') || 
-                                address.includes('添美道') || 
-                                address.includes('添馬') || 
-                                address.includes('金鐘') || 
-                                address.includes('金鐘道') || 
-                                address.includes('大潭')) {
-                                region = '香港島';
-                            } else if (address.includes('九龍') || 
-                                       address.includes('尖沙咀') || 
-                                       address.includes('旺角') || 
-                                       address.includes('油麻地') || 
-                                       address.includes('油蔴地') || 
-                                       address.includes('深水埗') || 
-                                       address.includes('長沙灣') || 
-                                       address.includes('荔枝角') || 
-                                       address.includes('紅磡') || 
-                                       address.includes('何文田') || 
-                                       address.includes('土瓜灣') || 
-                                       address.includes('九龍城') || 
-                                       address.includes('九龍塘') || 
-                                       address.includes('九龍灣') || 
-                                       address.includes('觀塘') || 
-                                       address.includes('牛頭角') || 
-                                       address.includes('黃大仙') || 
-                                       address.includes('鑽石山') || 
-                                       address.includes('慈雲山') || 
-                                       address.includes('新蒲崗') || 
-                                       address.includes('秀茂坪') || 
-                                       address.includes('啟德') || 
-                                       address.includes('清水灣道') || 
-                                       address.includes('藍田') || 
-                                       address.includes('東頭邨') || 
-                                       address.includes('橫頭磡') || 
-                                       address.includes('延文禮士道') || 
-                                       address.includes('彩虹道') || 
-                                       address.includes('西九') || 
-                                       item.回收過期藥物點.includes('西九')) {
-                                region = '九龍';
+                        // Process data and group by region based on JSON structure
+                        let currentRegion = '新界'; // Default region
+                        completeCollectionPointsData = [];
+                        
+                        data.forEach(item => {
+                            // Check if this is a region header
+                            if (item.支持機構 && item.支持機構.includes('：')) {
+                                if (item.支持機構.includes('香港島')) {
+                                    currentRegion = '香港島';
+                                } else if (item.支持機構.includes('九龍')) {
+                                    currentRegion = '九龍';
+                                } else if (item.支持機構.includes('新界')) {
+                                    currentRegion = '新界';
+                                }
+                                return; // Skip region headers
                             }
                             
-                            return {
-                                ...item,
-                                地區: region
-                            };
+                            // Only include valid collection points
+                            if (item.支持機構 && 
+                                item.支持機構.trim() !== '' &&
+                                item.回收過期藥物點 && 
+                                item.回收過期藥物點.trim() !== '' &&
+                                item.回收點地址 && 
+                                item.回收點地址.trim() !== '' &&
+                                item.支持機構 !== '支持機構') { // Remove template entry
+                                
+                                completeCollectionPointsData.push({
+                                    ...item,
+                                    地區: currentRegion
+                                });
+                            }
                         });
                         
                         console.log('Processed collection points:', completeCollectionPointsData.length);
@@ -1495,6 +1444,14 @@
                             '九龍': completeCollectionPointsData.filter(item => item.地區 === '九龍').length,
                             '新界': completeCollectionPointsData.filter(item => item.地區 === '新界').length
                         });
+                        
+                        // Debug: Show first few items from each region
+                        console.log('Sample Hong Kong Island points:', 
+                            completeCollectionPointsData.filter(item => item.地區 === '香港島').slice(0, 3));
+                        console.log('Sample Kowloon points:', 
+                            completeCollectionPointsData.filter(item => item.地區 === '九龍').slice(0, 3));
+                        console.log('Sample New Territories points:', 
+                            completeCollectionPointsData.filter(item => item.地區 === '新界').slice(0, 3));
                         
                         // Populate the tables
                         populateCollectionPointsTables();
