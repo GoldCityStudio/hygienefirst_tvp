@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test Collection Points - First 10</title>
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+        .info-window {
+            max-width: 300px;
+        }
+        .info-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .info-address {
+            margin-bottom: 5px;
+        }
+        .info-district {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        // First 10 collection points from the JSON file
+        const collectionPoints = [
+            {
+                "支持機構": "招商局港口控股有限公司",
+                "回收過期藥物點": "上環信德中心招商局大廈38樓",
+                "回收點地址": "上環干諾道中168-200號",
+                "district": "中西區",
+                "region": "香港島",
+                "latitude": 22.28790,
+                "longitude": 114.151813
+            },
+            {
+                "支持機構": "仲量聯行",
+                "回收過期藥物點": "美國銀行中心",
+                "回收點地址": "中環夏愨道12號",
+                "district": "中西區",
+                "region": "香港島",
+                "latitude": 22.280611096303012,
+                "longitude": 114.16293558026179
+            },
+            {
+                "支持機構": "夏利文物業管理有限公司",
+                "回收過期藥物點": "中保集團大廈",
+                "回收點地址": "中環德輔道中141號中保集團大廈",
+                "district": "中西區",
+                "region": "香港島",
+                "latitude": 22.2824,
+                "longitude": 114.1585
+            },
+            {
+                "支持機構": "第一太平戴維斯(香港)有限公司",
+                "回收過期藥物點": "國際金融中心二期",
+                "回收點地址": "中環金融街8號",
+                "district": "中西區",
+                "region": "香港島",
+                "latitude": 22.2805,
+                "longitude": 114.1551
+            },
+            {
+                "支持機構": "第一太平戴維斯(香港)有限公司",
+                "回收過期藥物點": "中信大廈",
+                "回收點地址": "中區添美道1號中信大廈1521室",
+                "district": "中西區",
+                "region": "香港島",
+                "latitude": 22.2751,
+                "longitude": 114.1670
+            },
+            {
+                "支持機構": "立法會議員辦事處",
+                "回收過期藥物點": "龍漢標議員地區辦事處",
+                "回收點地址": "中環德輔道中19號環球大廈1403室",
+                "district": "中西區",
+                "region": "香港島",
+                "latitude": 22.2855,
+                "longitude": 114.1535
+            },
+            {
+                "支持機構": "第一太平戴維斯(香港)有限公司",
+                "回收過期藥物點": "太古灣道14號",
+                "回收點地址": "太古太古城中心第3期",
+                "district": "東區",
+                "region": "香港島",
+                "latitude": 22.2780,
+                "longitude": 114.2180
+            },
+            {
+                "支持機構": "第一太平戴維斯(香港)有限公司",
+                "回收過期藥物點": "太古灣道12號",
+                "回收點地址": "太古太古城中心第4期",
+                "district": "東區",
+                "region": "香港島",
+                "latitude": 22.2780,
+                "longitude": 114.2180
+            },
+            {
+                "支持機構": "第一太平戴維斯(香港)有限公司",
+                "回收過期藥物點": "太古城物業管理公司",
+                "回收點地址": "太古太古城道31號太古城金殿台唐宮閣",
+                "district": "東區",
+                "region": "香港島",
+                "latitude": 22.2790,
+                "longitude": 114.2150
+            },
+            {
+                "支持機構": "香港房屋協會",
+                "回收過期藥物點": "健康村",
+                "回收點地址": "北角七姊妹道176號",
+                "district": "東區",
+                "region": "香港島",
+                "latitude": 22.2845,
+                "longitude": 114.2195
+            }
+        ];
+
+        function initMap() {
+            // Use OpenLayers with LandsD Map API
+            var basemapAPI = 'https://mapapi.geodata.gov.hk/gs/api/v1.0.0/xyz/basemap/wgs84/{z}/{x}/{y}.png';
+            var attributionInfo = '<a href="https://api.portal.hkmapservice.gov.hk/disclaimer" target="_blank">&copy; Map information from Lands Department</a>';
+            
+            var map = new ol.Map({
+                controls: ol.control.defaults.defaults({attribution: false}).extend([
+                    new ol.control.Attribution({collapsible: false})
+                ]),
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.XYZ({
+                            url: basemapAPI,
+                            attributions: attributionInfo
+                        })
+                    })
+                ],
+                target: 'map',
+                logo: false,
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([114.1694, 22.3193]), // Hong Kong center
+                    zoom: 11,
+                    minZoom: 10,
+                    maxZoom: 20
+                })
+            });
+
+            // Create markers for each collection point
+            collectionPoints.forEach((point, index) => {
+                const marker = new ol.Feature({
+                    geometry: new ol.geom.Point(ol.proj.fromLonLat([point.longitude, point.latitude]))
+                });
+
+                // Create marker style with number
+                const markerStyle = new ol.style.Style({
+                    image: new ol.style.Circle({
+                        radius: 15,
+                        fill: new ol.style.Fill({ color: '#ff6b6b' }),
+                        stroke: new ol.style.Stroke({ color: '#fff', width: 2 })
+                    }),
+                    text: new ol.style.Text({
+                        text: (index + 1).toString(),
+                        fill: new ol.style.Fill({ color: '#fff' }),
+                        font: 'bold 12px Arial',
+                        offsetY: 3
+                    })
+                });
+
+                marker.setStyle(markerStyle);
+
+                // Create vector layer for markers
+                const vectorLayer = new ol.layer.Vector({
+                    source: new ol.source.Vector({
+                        features: [marker]
+                    })
+                });
+
+                map.addLayer(vectorLayer);
+
+                // Create popup content
+                const popupContent = `
+                    <div class="info-window">
+                        <div class="info-title">${index + 1}. ${point.回收過期藥物點}</div>
+                        <div class="info-address">${point.回收點地址}</div>
+                        <div class="info-district">${point.district} | ${point.region}</div>
+                        <div class="info-district">支持機構: ${point.支持機構}</div>
+                        <div class="info-district">座標: ${point.latitude}, ${point.longitude}</div>
+                    </div>
+                `;
+
+                // Add click event to marker
+                map.on('click', function(evt) {
+                    const feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
+                        return feature;
+                    });
+                    
+                    if (feature === marker) {
+                        // Create popup
+                        const popup = document.createElement('div');
+                        popup.className = 'ol-popup';
+                        popup.innerHTML = popupContent;
+                        popup.style.cssText = `
+                            position: absolute;
+                            background: white;
+                            padding: 15px;
+                            border-radius: 5px;
+                            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                            max-width: 300px;
+                            z-index: 1000;
+                        `;
+                        
+                        // Remove existing popups
+                        document.querySelectorAll('.ol-popup').forEach(p => p.remove());
+                        
+                        // Add popup to map
+                        map.getTarget().appendChild(popup);
+                        
+                        // Position popup
+                        const coordinate = evt.coordinate;
+                        const pixel = map.getPixelFromCoordinate(coordinate);
+                        popup.style.left = (pixel[0] + 10) + 'px';
+                        popup.style.top = (pixel[1] - 10) + 'px';
+                    }
+                });
+            });
+
+            // Add legend
+            const legend = document.createElement('div');
+            legend.innerHTML = `
+                <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); margin: 10px;">
+                    <h3>測試回收點 (前10個)</h3>
+                    <p>點擊紅色標記查看詳細信息</p>
+                    <p>數字標籤對應JSON文件中的順序</p>
+                </div>
+            `;
+            legend.style.cssText = `
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                z-index: 1000;
+            `;
+            map.getTarget().appendChild(legend);
+        }
+
+        // Initialize map when page loads
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
+
+    <!-- OpenLayers instead of Google Maps -->
+    <script src="https://cdn.jsdelivr.net/npm/ol@v10.2.1/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.2.1/ol.css">
+</body>
+</html>

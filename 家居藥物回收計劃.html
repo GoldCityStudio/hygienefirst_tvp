@@ -1002,18 +1002,19 @@
                         </div>
                     </div>
                     
-                    <!-- Photo 3 -->
-                    <div class="photo-item" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.51 PM (1).jpeg" 
-                             alt="啟動禮花絮 - 典禮儀式" 
+                      <!-- Photo 2 -->
+                      <div class="photo-item" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.53 PM (1).jpeg" 
+                             alt="啟動禮花絮 - 活動現場" 
                              style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
                              onclick="openLightbox(this.src, this.alt)">
                         <div style="padding: 1rem;">
-                            <h4 style="color: #333; margin-bottom: 0.5rem;">頒發感謝狀</h4>
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">啟動禮攤位現場</h4>
                         </div>
                     </div>
+
                     
-                    <!-- Photo 4 -->
+                    <!-- Photo 3 -->
                     <div class="photo-item" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
                         <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.51 PM.jpeg" 
                              alt="啟動禮花絮 - 參與者合影" 
@@ -1024,14 +1025,15 @@
                         </div>
                     </div>
                     
-                    <!-- Photo 5 -->
+                  
+                    <!-- Photo 4 -->
                     <div class="photo-item" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.53 PM (1).jpeg" 
-                             alt="啟動禮花絮 - 活動現場" 
+                        <img src="images/啟動花絮/WhatsApp Image 2025-10-01 at 7.24.51 PM (1).jpeg" 
+                             alt="啟動禮花絮 - 典禮儀式" 
                              style="width: 100%; height: 250px; object-fit: cover; cursor: pointer;"
                              onclick="openLightbox(this.src, this.alt)">
                         <div style="padding: 1rem;">
-                            <h4 style="color: #333; margin-bottom: 0.5rem;">啟動禮攤位現場</h4>
+                            <h4 style="color: #333; margin-bottom: 0.5rem;">頒發感謝狀</h4>
                         </div>
                     </div>
                     
@@ -1201,211 +1203,6 @@
                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 122, 0, 0.3)'">
                         <i class="fas fa-newspaper" style="margin-right: 0.5rem;"></i>查看所有媒體報導
                     </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Collection Points List Section -->
-        <section class="collection-points-list" style="padding: 4rem 0; background: white;">
-            <div class="container">
-                <div class="section-header">
-                    <h2>回收點列表（固定回收點）</h2>
-                  
-                </div>
-                
-                <!-- Search and Filter Function -->
-            
-
-                <!-- Collection Points Tables - Separated by Region -->
-                
-                <!-- Hong Kong Island Table -->
-                <div style="background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; margin: 2rem 0;">
-                    <div style="background: #FF7A00; color: white; padding: 1rem; font-size: 1.2rem; font-weight: 600;">
-                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>香港島回收點列表
-                        <span id="hkIslandCount" style="float: right; font-size: 0.9rem; opacity: 0.9;">0 個回收點</span>
-                    </div>
-                    <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
-                        <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
-                            <thead style="background: #f8f9fa; color: #333;">
-                                <tr>
-                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 200px;">支持機構</th>
-                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 400px;">回收點名稱及地址</th>
-                                </tr>
-                            </thead>
-                            <tbody id="hkIslandTableBody">
-                                <!-- Data will be loaded dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <!-- Pagination Controls for Hong Kong Island -->
-                    <div id="hkIslandPagination" class="pagination-controls" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
-                        <div style="color: #666; font-size: 0.9rem;">
-                            顯示 <span id="hkIslandStart">1</span> - <span id="hkIslandEnd">10</span> 項，共 <span id="hkIslandTotal">0</span> 項
-                        </div>
-                        <div style="display: flex; gap: 0.5rem;">
-                            <button id="hkIslandPrev" onclick="changePage('hkIsland', -1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
-                                <i class="fas fa-chevron-left"></i> 上一頁
-                            </button>
-                            <div id="hkIslandPageNumbers" style="display: flex; gap: 0.25rem;">
-                                <!-- Page numbers will be generated dynamically -->
-                            </div>
-                            <button id="hkIslandNext" onclick="changePage('hkIsland', 1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
-                                下一頁 <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kowloon Table -->
-                <div style="background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; margin: 2rem 0;">
-                    <div style="background: #FF7A00; color: white; padding: 1rem; font-size: 1.2rem; font-weight: 600;">
-                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>九龍回收點列表
-                        <span id="kowloonCount" style="float: right; font-size: 0.9rem; opacity: 0.9;">0 個回收點</span>
-                    </div>
-                    <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
-                        <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
-                            <thead style="background: #f8f9fa; color: #333;">
-                                <tr>
-                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 200px;">支持機構</th>
-                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 400px;">回收點名稱及地址</th>
-                                </tr>
-                            </thead>
-                            <tbody id="kowloonTableBody">
-                                <!-- Data will be loaded dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <!-- Pagination Controls for Kowloon -->
-                    <div id="kowloonPagination" class="pagination-controls" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
-                        <div style="color: #666; font-size: 0.9rem;">
-                            顯示 <span id="kowloonStart">1</span> - <span id="kowloonEnd">10</span> 項，共 <span id="kowloonTotal">0</span> 項
-                        </div>
-                        <div style="display: flex; gap: 0.5rem;">
-                            <button id="kowloonPrev" onclick="changePage('kowloon', -1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
-                                <i class="fas fa-chevron-left"></i> 上一頁
-                            </button>
-                            <div id="kowloonPageNumbers" style="display: flex; gap: 0.25rem;">
-                                <!-- Page numbers will be generated dynamically -->
-                            </div>
-                            <button id="kowloonNext" onclick="changePage('kowloon', 1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
-                                下一頁 <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- New Territories Table -->
-                <div style="background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; margin: 2rem 0;">
-                    <div style="background: #FF7A00; color: white; padding: 1rem; font-size: 1.2rem; font-weight: 600;">
-                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>新界回收點列表
-                        <span id="newTerritoriesCount" style="float: right; font-size: 0.9rem; opacity: 0.9;">0 個回收點</span>
-                    </div>
-                    <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
-                        <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
-                            <thead style="background: #f8f9fa; color: #333;">
-                                <tr>
-                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 200px;">支持機構</th>
-                                    <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #FF7A00; min-width: 400px;">回收點名稱及地址</th>
-                                </tr>
-                            </thead>
-                            <tbody id="newTerritoriesTableBody">
-                                <!-- Data will be loaded dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <!-- Pagination Controls for New Territories -->
-                    <div id="newTerritoriesPagination" class="pagination-controls" style="padding: 1rem; background: #f8f9fa; border-top: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center;">
-                        <div style="color: #666; font-size: 0.9rem;">
-                            顯示 <span id="newTerritoriesStart">1</span> - <span id="newTerritoriesEnd">10</span> 項，共 <span id="newTerritoriesTotal">0</span> 項
-                        </div>
-                        <div style="display: flex; gap: 0.5rem;">
-                            <button id="newTerritoriesPrev" onclick="changePage('newTerritories', -1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
-                                <i class="fas fa-chevron-left"></i> 上一頁
-                            </button>
-                            <div id="newTerritoriesPageNumbers" style="display: flex; gap: 0.25rem;">
-                                <!-- Page numbers will be generated dynamically -->
-                            </div>
-                            <button id="newTerritoriesNext" onclick="changePage('newTerritories', 1)" style="padding: 0.5rem 1rem; border: 1px solid #ddd; background: white; border-radius: 4px; cursor: pointer; color: #666;" disabled>
-                                下一頁 <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Google Maps Integration -->
-                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 2rem 0;">
-                    <h3 style="text-align: center; color: #FF7A00; margin-bottom: 1.5rem;">
-                        <i class="fas fa-map-marked-alt" style="margin-right: 0.5rem;"></i>
-                         全港回收點位置
-                    </h3>
-                    
-            
-               
-                    
-                    <!-- Map Controls -->
-                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
-                       
-                        <!-- Location Detection Options -->
-                        <div style="margin-top: 1rem;">
-                            <button id="detectLocationBtn" style="background: #28a745; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; margin-right: 0.5rem;">
-                                <i class="fas fa-crosshairs" style="margin-right: 0.5rem;"></i>自動偵測位置
-                            </button>
-
-
-                            <button id="showAllPointsBtn" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; margin-right: 0.5rem;">
-                                <i class="fas fa-globe" style="margin-right: 0.5rem;"></i>顯示所有回收點
-                            </button>
-
-
-                            
-                            <!-- <button id="manualLocationBtn" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
-                                <i class="fas fa-hand-pointer" style="margin-right: 0.5rem;"></i>手動選擇位置
-                            </button> -->
-                            <div id="locationStatus" style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;"></div>
-                            <!-- <div style="font-size: 0.8rem; color: #999; margin-top: 0.5rem;">
-                                💡 提示：如果自動偵測位置不準確，請使用「手動選擇位置」功能
-                            </div> -->
-                        </div>
-
-                     
-                        <!-- <button id="centerHongKongBtn" style="background: #FF9933; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600;">
-                            <i class="fas fa-home" style="margin-right: 0.5rem;"></i>回到香港中心
-                        </button>
-                        <button id="toggleClustersBtn" style="background: #E56717; color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600;">
-                            <i class="fas fa-layer-group" style="margin-right: 0.5rem;"></i>切換群組顯示
-                        </button> -->
-                    </div>
-                    
-                    <!-- Map Legend -->
-                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <div style="width: 20px; height: 20px; background: #FF7A00; border-radius: 50%;"></div>
-                            <span style="color: #666; font-size: 0.9rem;">全港回收點</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <div style="width: 20px; height: 20px; background: #28a745; border-radius: 50%;"></div>
-                            <span style="color: #666; font-size: 0.9rem;">您的位置</span>
-                        </div>
-                    </div>
-
-                         <!-- Map Container -->
-                         <div id="googleMap" style="height: 500px; border-radius: 10px; border: 2px solid #FF7A00; position: relative; overflow: hidden;">
-                            <!-- Google Map will be rendered here -->
-                            <div id="mapLoading" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #FFF9F5 0%, #FFE5D9 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000;">
-                                <i class="fas fa-map-marked-alt" style="font-size: 4rem; color: #FF7A00; margin-bottom: 1rem;"></i>
-                                <h4 style="color: #FF7A00; margin-bottom: 0.5rem;">載入地圖中...</h4>
-                                <p style="color: #666; text-align: center; max-width: 400px;">
-                                    正在載入Google地圖<br>
-                                    將顯示全港493個回收點位置
-                                </p>
-                                <div style="margin-top: 1rem;">
-                                    <div style="width: 40px; height: 40px; border: 4px solid #FF7A00; border-top: 4px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-                                </div>
-                            </div>
-                        </div>
                 </div>
             </div>
         </section>
@@ -3192,8 +2989,8 @@
 
         .popup-content {
             position: relative;
-            max-width: 95%;
-            max-height: 95%;
+            max-width: 98%;
+            max-height: 98%;
             background: white;
             border-radius: 15px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
@@ -3228,7 +3025,7 @@
             width: 100%;
             height: auto;
             display: block;
-            max-height: 85vh;
+            max-height: 95vh;
             object-fit: contain;
         }
 
