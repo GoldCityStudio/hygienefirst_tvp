@@ -291,7 +291,7 @@
         
         .process-timeline-detailed {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin: 0 auto;
         }
@@ -595,6 +595,200 @@
                 bottom: 0 !important;
             }
         }
+        
+        /* Application Link Button Styling */
+        .application-link {
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .application-link .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #FF7A00, #e66a00);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .application-link .btn:hover {
+            background: linear-gradient(135deg, #e66a00, #cc5a00);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 122, 0, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .application-link .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(255, 122, 0, 0.3);
+        }
+        
+        .application-link .btn i {
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Methods Styling */
+        .contact-methods {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #FF7A00;
+        }
+        
+        .contact-methods p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .contact-icon.whatsapp {
+            background: #25D366;
+        }
+        
+        .contact-icon.email {
+            background: #007bff;
+        }
+        
+        .contact-icon.fax {
+            background: #FF7A00;
+        }
+        
+        .contact-info h4 {
+            margin: 0 0 0.25rem 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .contact-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-item {
+                padding: 0.75rem;
+            }
+            
+            .contact-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Remark Box Styling */
+        .remark-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-left: 4px solid #2196f3;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
+        }
+        
+        .remark-icon {
+            color: #2196f3;
+            font-size: 1.2rem;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+        }
+        
+        .remark-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .remark-content strong {
+            color: #1976d2;
+        }
+        
+        /* Document Checklist Styling */
+        .document-checklist {
+            list-style: none;
+            padding-left: 0;
+            margin: 1rem 0;
+        }
+        
+        .document-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        .document-checklist li i {
+            color: #28a745;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        
+        .document-checklist li:hover {
+            color: #FF7A00;
+            transition: color 0.3s ease;
+        }
+        
+        .document-checklist li:hover i {
+            color: #FF7A00;
+            transition: color 0.3s ease;
+        }
     </style>
 </head>
 
@@ -830,122 +1024,139 @@
                     <div class="process-step-detailed">
                         <div class="step-header">
                             <div class="step-icon">
+                                <i class="fas fa-file-signature"></i>
+                            </div>
+                            <div class="step-info">
+                                <h3>1. 申請「醫療廢物產生者地點編碼」</h3>
+                                <span class="step-subtitle">Application Process</span>
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <p>如未持有「地點編碼」,請填寫「環保署 EPD123B1」表格,並遞交至環保署。</p>
+                            <div class="application-link">
+                                <a href="form/epd123b1.pdf" 
+                                   target="_blank" 
+                                   class="btn btn-primary">
+                                    <i class="fas fa-download"></i>
+                                    下載申請表 (EPD123B1)
+                                </a>
+                            </div>
+                          <p>申請成功後會收到環保署發出的「醫療廢物產生者地點編碼」。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step-detailed">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="step-info">
+                                <h3>2. 預備所需文件及簽署服務協議</h3>
+                                <span class="step-subtitle">Service Agreement</span>
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <p>請簽署 Hygiene First 首衛的服務協議,並準備以下文件:</p>
+                            <ul class="document-checklist">
+                                <li><i class="fas fa-check-circle"></i> 已簽署的服務協議</li>
+                                <li><i class="fas fa-check-circle"></i> 商業登記證</li>
+                                <li><i class="fas fa-check-circle"></i> 醫療廢物產生者地點編碼</li>
+                            </ul>
+                            
+                            <div class="contact-methods">
+                                <p><strong>並從以下途徑發送到客服 :</strong></p>
+                                
+                                <div class="contact-grid">
+                                    <div class="contact-item">
+                                        <div class="contact-icon whatsapp">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h4>WhatsApp</h4>
+                                            <p>6503 2873</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-item">
+                                        <div class="contact-icon email">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h4>電郵</h4>
+                                            <p>cw@hygienefirstgroup.com</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-item">
+                                        <div class="contact-icon fax">
+                                            <i class="fas fa-fax"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h4>傳真</h4>
+                                            <p>3520 0472</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step-detailed">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="step-info">
+                                <h3>3. 安排收集日期</h3>
+                                <span class="step-subtitle">Schedule Collection</span>
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <p>Hygiene First 首衛團隊將與客戶協商收集醫療廢物的日期*。</p>
+                            
+                            <div class="remark-box">
+                                <div class="remark-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div class="remark-content">
+                                    <p>* 一般會收到預約後的七個工作天內收集</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step-detailed">
+                        <div class="step-header">
+                            <div class="step-icon">
                                 <i class="fas fa-truck"></i>
                             </div>
                             <div class="step-info">
-                                <h3>1. 預約收集</h3>
-                                <span class="step-subtitle">Scheduled Collection</span>
+                                <h3>4. 等待收集服務</h3>
+                                <span class="step-subtitle">Collection Service</span>
                             </div>
                         </div>
                         <div class="step-content">
-                            <p>客戶通過電話或網上系統預約廢物收集服務，我們會根據廢物類型和數量安排最適合的收集時間。</p>
-                            <ul>
-                                <li>24小時預約熱線</li>
-                                <li>網上預約系統</li>
-                                <li>靈活時間安排</li>
-                            </ul>
+                            <p>Hygiene First 首衛團隊會攜帶政府指定的盛載容器,
+                                並將已繫上鵝頸結的醫療廢物專用袋運走。</p>
                         </div>
                     </div>
                     
                     <div class="process-step-detailed">
                         <div class="step-header">
                             <div class="step-icon">
-                                <i class="fas fa-boxes"></i>
+                                <i class="fas fa-stamp"></i>
                             </div>
                             <div class="step-info">
-                                <h3>2. 現場收集</h3>
-                                <span class="step-subtitle">On-site Collection</span>
+                                <h3>5. 簽署及蓋印</h3>
+                                <span class="step-subtitle">Documentation</span>
                             </div>
                         </div>
                         <div class="step-content">
-                            <p>專業收集團隊準時到達現場，使用專用容器和設備進行安全收集。</p>
-                            <ul>
-                                <li>專用收集容器</li>
-                                <li>專業防護裝備</li>
-                                <li>即時分類檢查</li>
-                            </ul>
+                            <p>雙方於運載記錄(4聯單)簽署及蓋印。</p>
                         </div>
                     </div>
                     
-                    <div class="process-step-detailed">
-                        <div class="step-header">
-                            <div class="step-icon">
-                                <i class="fas fa-clipboard-check"></i>
-                            </div>
-                            <div class="step-info">
-                                <h3>3. 分類驗證</h3>
-                                <span class="step-subtitle">Classification Verification</span>
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <p>在處理設施進行詳細分類和驗證，確保廢物正確分類並符合處理要求。</p>
-                            <ul>
-                                <li>專業人員檢查</li>
-                                <li>分類標準驗證</li>
-                                <li>品質控制程序</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step-detailed">
-                        <div class="step-header">
-                            <div class="step-icon">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <div class="step-info">
-                                <h3>4. 安全處理</h3>
-                                <span class="step-subtitle">Safe Processing</span>
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <p>採用先進的處理技術，包括高溫滅菌、化學消毒等方法，確保廢物無害化。</p>
-                            <ul>
-                                <li>高溫滅菌處理</li>
-                                <li>化學消毒技術</li>
-                                <li>物理破碎處理</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step-detailed">
-                        <div class="step-header">
-                            <div class="step-icon">
-                                <i class="fas fa-file-alt"></i>
-                            </div>
-                            <div class="step-info">
-                                <h3>5. 記錄追蹤</h3>
-                                <span class="step-subtitle">Record Tracking</span>
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <p>詳細記錄整個處理過程，提供完整的追蹤報告，確保可追溯性。</p>
-                            <ul>
-                                <li>全程記錄追蹤</li>
-                                <li>處理報告</li>
-                                <li>合規證明文件</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step-detailed">
-                        <div class="step-header">
-                            <div class="step-icon">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div class="step-info">
-                                <h3>6. 最終處置</h3>
-                                <span class="step-subtitle">Final Disposal</span>
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <p>將處理後的廢物送往指定地點進行最終處置，完成整個處理流程。</p>
-                            <ul>
-                                <li>指定處置地點</li>
-                                <li>環保合規處置</li>
-                                <li>完成確認通知</li>
-                            </ul>
-                        </div>
-                    </div>
+              
                 </div>
                 
                 <div class="process-summary">
