@@ -2575,6 +2575,27 @@
             }
         });
 
+        // Suppress non-critical warnings from third-party libraries
+        const originalConsoleWarn = console.warn;
+        console.warn = function(...args) {
+            const message = args.join(' ');
+            
+            // Suppress iframe resizer deprecation warnings
+            if (message.includes('enablePublicMethods option has been removed') || 
+                message.includes('iFrameSizer') ||
+                message.includes('public methods are now always available')) {
+                return; // Don't show these warnings
+            }
+            
+            // Suppress CORS warnings from extensions
+            if (message.includes('CORS') && message.includes('ipapi.co')) {
+                return; // Don't show CORS warnings from extensions
+            }
+            
+            // Show all other warnings normally
+            originalConsoleWarn.apply(console, args);
+        };
+
         // Initialize Google Map
         window.initMap = function() {
             try {
