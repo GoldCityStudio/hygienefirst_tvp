@@ -1980,9 +1980,9 @@
                         console.log('Processed collection points:', completeCollectionPointsData.length);
                         
                         // Log counts by region
-                        const hkIslandCount = completeCollectionPointsData.filter(item => item.地區 === '香港島').length;
-                        const kowloonCount = completeCollectionPointsData.filter(item => item.地區 === '九龍').length;
-                        const newTerritoriesCount = completeCollectionPointsData.filter(item => item.地區 === '新界').length;
+                        const hkIslandCount = completeCollectionPointsData.filter(item => item.region === '香港島').length;
+                        const kowloonCount = completeCollectionPointsData.filter(item => item.region === '九龍').length;
+                        const newTerritoriesCount = completeCollectionPointsData.filter(item => item.region === '新界').length;
                         
                         console.log('Collection points by region:', {
                             '香港島': hkIslandCount,
@@ -2031,21 +2031,21 @@
                         
                         console.log('Processed collection points:', completeCollectionPointsData.length);
                         console.log('Regional distribution:', {
-                            '香港島': completeCollectionPointsData.filter(item => item.地區 === '香港島').length,
-                            '九龍': completeCollectionPointsData.filter(item => item.地區 === '九龍').length,
-                            '新界': completeCollectionPointsData.filter(item => item.地區 === '新界').length
+                            '香港島': completeCollectionPointsData.filter(item => item.region === '香港島').length,
+                            '九龍': completeCollectionPointsData.filter(item => item.region === '九龍').length,
+                            '新界': completeCollectionPointsData.filter(item => item.region === '新界').length
                         });
                         
                         // Debug: Show first few items from each region
                         console.log('Sample Hong Kong Island points:', 
-                            completeCollectionPointsData.filter(item => item.地區 === '香港島').slice(0, 3));
+                            completeCollectionPointsData.filter(item => item.region === '香港島').slice(0, 3));
                         console.log('Sample Kowloon points:', 
-                            completeCollectionPointsData.filter(item => item.地區 === '九龍').slice(0, 3));
+                            completeCollectionPointsData.filter(item => item.region === '九龍').slice(0, 3));
                         console.log('Sample New Territories points:', 
-                            completeCollectionPointsData.filter(item => item.地區 === '新界').slice(0, 3));
+                            completeCollectionPointsData.filter(item => item.region === '新界').slice(0, 3));
                         
                         // Debug: Show district grouping for New Territories
-                        const newTerritoriesPoints = completeCollectionPointsData.filter(item => item.地區 === '新界');
+                        const newTerritoriesPoints = completeCollectionPointsData.filter(item => item.region === '新界');
                         const districtGroups = {};
                         newTerritoriesPoints.forEach(point => {
                             const district = extractDistrict(point.回收點地址);
@@ -2102,9 +2102,9 @@
         function populateCollectionPointsTables() {
             try {
                 // Separate data by region
-                const hkIslandData = completeCollectionPointsData.filter(item => item.地區 === '香港島');
-                const kowloonData = completeCollectionPointsData.filter(item => item.地區 === '九龍');
-                const newTerritoriesData = completeCollectionPointsData.filter(item => item.地區 === '新界');
+                const hkIslandData = completeCollectionPointsData.filter(item => item.region === '香港島');
+                const kowloonData = completeCollectionPointsData.filter(item => item.region === '九龍');
+                const newTerritoriesData = completeCollectionPointsData.filter(item => item.region === '新界');
                 
                 // Update pagination state
                 paginationState.hkIsland.totalItems = hkIslandData.length;
@@ -2241,11 +2241,11 @@
                 // Get the data for this region
                 let data;
                 if (region === 'hkIsland') {
-                    data = completeCollectionPointsData.filter(item => item.地區 === '香港島');
+                    data = completeCollectionPointsData.filter(item => item.region === '香港島');
                 } else if (region === 'kowloon') {
-                    data = completeCollectionPointsData.filter(item => item.地區 === '九龍');
+                    data = completeCollectionPointsData.filter(item => item.region === '九龍');
                 } else if (region === 'newTerritories') {
-                    data = completeCollectionPointsData.filter(item => item.地區 === '新界');
+                    data = completeCollectionPointsData.filter(item => item.region === '新界');
                 }
                 
                 // Apply district filter if active
@@ -2455,7 +2455,7 @@
             console.log('Available data:', completeCollectionPointsData.length, 'entries');
             
             // Debug: Show sample data for the current region
-            const regionData = completeCollectionPointsData.filter(item => item.地區 === regionName);
+            const regionData = completeCollectionPointsData.filter(item => item.region === regionName);
             console.log(`Sample data for ${regionName}:`, regionData.slice(0, 3));
             
             // Define districts by region for better organization
@@ -2468,7 +2468,7 @@
             // Get districts that have collection points in the current region
             const availableDistricts = [...new Set(
                 completeCollectionPointsData
-                    .filter(item => item.地區 === regionName)
+                    .filter(item => item.region === regionName)
                     .map(item => item.district)
                     .filter(district => district && district.trim() !== '')
             )].sort();
@@ -2492,7 +2492,7 @@
                 
                 // Count collection points for this district
                 const districtCount = completeCollectionPointsData.filter(item => 
-                    item.地區 === regionName && item.district === district
+                    item.region === regionName && item.district === district
                 ).length;
                 
                 // Set button text with count
@@ -2603,10 +2603,10 @@
             let filteredData;
             if (selectedDistrict) {
                 filteredData = completeCollectionPointsData.filter(item => 
-                    item.地區 === regionName && item.district === selectedDistrict
+                    item.region === regionName && item.district === selectedDistrict
                 );
             } else {
-                filteredData = completeCollectionPointsData.filter(item => item.地區 === regionName);
+                filteredData = completeCollectionPointsData.filter(item => item.region === regionName);
             }
             
             // Update pagination state for filtered data
@@ -2646,7 +2646,7 @@
             } else {
                 const currentRegion = getCurrentActiveRegion();
                 const regionName = getRegionNameFromTab(currentRegion);
-                const totalCount = completeCollectionPointsData.filter(item => item.地區 === regionName).length;
+                const totalCount = completeCollectionPointsData.filter(item => item.region === regionName).length;
                 districtCountDiv.innerHTML = `
                     <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
                     ${regionName} 全區：${totalCount} 個回收點
@@ -2943,7 +2943,7 @@
                 return {
                     name: item.回收過期藥物點,
                     address: item.回收點地址,
-                    region: item.地區,
+                    region: item.region,
                     organization: item.支持機構,
                     lat: parseFloat(item.latitude),
                     lng: parseFloat(item.longitude)
