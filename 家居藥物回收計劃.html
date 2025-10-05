@@ -721,9 +721,7 @@
                 <h4 style="color: #333; margin-bottom: 1rem; text-align: center; font-size: 1.1rem;">
                     <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem; color: #FF7A00;"></i>快速選擇地區
                 </h4>
-                <div id="allDistrictsButtons" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; padding: 1rem; background: #f8f9fa; border-radius: 15px; border: 2px solid #e9ecef;">
-                    <!-- All 18 districts will be populated here -->
-                </div>
+          
             </div>
 
             <!-- Dynamic District Filter (for current region) -->
@@ -2465,9 +2463,10 @@
             
             console.log('Available districts in region:', availableDistricts);
             
-            // Create "All Districts" button
+            // Create "All Districts" button with count
+            const allCount = regionData.length;
             const allButton = document.createElement('button');
-            allButton.textContent = '所有地區';
+            allButton.textContent = `所有地區 (${allCount})`;
             allButton.className = 'district-button active';
             allButton.setAttribute('data-district', '');
             allButton.style.cssText = 'background: #FF7A00; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; margin: 0.25rem;';
@@ -2478,7 +2477,14 @@
             const currentRegionDistricts = districtsByRegion[regionName] || [];
             currentRegionDistricts.forEach(district => {
                 const button = document.createElement('button');
-                button.textContent = district;
+                
+                // Count collection points for this district
+                const districtCount = completeCollectionPointsData.filter(item => 
+                    item.地區 === regionName && item.district === district
+                ).length;
+                
+                // Set button text with count
+                button.textContent = `${district} (${districtCount})`;
                 button.className = 'district-button';
                 button.setAttribute('data-district', district);
                 
@@ -2502,33 +2508,7 @@
                 districtButtonsContainer.appendChild(button);
             });
             
-            // Add separator if there are other regions' districts to show
-            const otherRegions = Object.keys(districtsByRegion).filter(region => region !== regionName);
-            if (otherRegions.length > 0) {
-                const separator = document.createElement('div');
-                separator.style.cssText = 'width: 100%; height: 1px; background: #ddd; margin: 1rem 0;';
-                districtButtonsContainer.appendChild(separator);
-                
-                const otherRegionsLabel = document.createElement('div');
-                otherRegionsLabel.textContent = '其他地區';
-                otherRegionsLabel.style.cssText = 'color: #999; font-size: 0.9rem; margin: 0.5rem 0; font-weight: 600;';
-                districtButtonsContainer.appendChild(otherRegionsLabel);
-                
-                // Show districts from other regions (disabled)
-                otherRegions.forEach(region => {
-                    districtsByRegion[region].forEach(district => {
-                        const button = document.createElement('button');
-                        button.textContent = district;
-                        button.className = 'district-button';
-                        button.setAttribute('data-district', district);
-                        button.style.cssText = 'background: #f8f8f8; color: #bbb; border: 1px dashed #ddd; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: not-allowed; font-weight: 600; transition: all 0.3s ease; margin: 0.25rem; opacity: 0.7;';
-                        button.disabled = true;
-                        button.title = `此地區屬於${region}，請先選擇${region}區域`;
-                        districtButtonsContainer.appendChild(button);
-                    });
-                });
-            }
-            
+      
             // Update district count display
             updateDistrictCount();
         }
