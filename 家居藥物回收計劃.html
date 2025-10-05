@@ -2276,7 +2276,7 @@
         }
         
         // Function to show only markers from a specific region
-        function showRegionMarkers(region) {
+        function showRegionMarkers(region, regionMarkers = null) {
             if (!map || !markers.length) return;
             
             // Hide all markers first
@@ -2284,20 +2284,26 @@
                 marker.setMap(null);
             });
             
-            // Show only markers from the selected region
-            const regionMarkers = markers.filter(marker => {
-                const regionName = getRegionNameFromTab(region);
-                return marker.region === regionName;
-            });
+            // Get region markers - either use provided parameter or filter from all markers
+            let markersToShow;
+            if (regionMarkers) {
+                markersToShow = regionMarkers;
+            } else {
+                markersToShow = markers.filter(marker => {
+                    const regionName = getRegionNameFromTab(region);
+                    return marker.region === regionName;
+                });
+            }
             
-            regionMarkers.forEach(marker => {
+            // Show only markers from the selected region
+            markersToShow.forEach(marker => {
                 marker.setMap(map);
             });
             
             // Center map on this region's markers
-            if (regionMarkers.length > 0) {
+            if (markersToShow.length > 0) {
                 const bounds = new google.maps.LatLngBounds();
-                regionMarkers.forEach(marker => {
+                markersToShow.forEach(marker => {
                     bounds.extend(marker.getPosition());
                 });
                 map.fitBounds(bounds);
@@ -2307,7 +2313,7 @@
                     infoWindow.setContent(`
                         <div style="padding: 1rem; max-width: 300px;">
                             <h4 style="margin: 0 0 0.5rem 0; color: #FF7A00;">${getRegionNameFromTab(region)} 回收點</h4>
-                            <p style="margin: 0 0 0.5rem 0; color: #666; font-size: 0.9rem;">共 ${regionMarkers.length} 個回收點</p>
+                            <p style="margin: 0 0 0.5rem 0; color: #666; font-size: 0.9rem;">共 ${markersToShow.length} 個回收點</p>
                             <p style="margin: 0; color: #999; font-size: 0.8rem;">點擊個別標記查看詳情</p>
                         </div>
                     `);
@@ -3354,41 +3360,6 @@
                 lat: latSum / markers.length,
                 lng: lngSum / markers.length
             };
-        }
-
-        function showRegionMarkers(region, regionMarkers) {
-            // Hide all markers first
-            markers.forEach(marker => {
-                marker.setMap(null);
-            });
-
-            // Show only this region's markers
-            regionMarkers.forEach(marker => {
-                marker.setMap(map);
-            });
-
-            // Center map on this region
-            const bounds = new google.maps.LatLngBounds();
-            regionMarkers.forEach(marker => {
-                bounds.extend(marker.getPosition());
-            });
-            map.fitBounds(bounds);
-
-            // Show info about this region
-            infoWindow.setContent(`
-                <div style="padding: 1rem; max-width: 300px;">
-                    <h4 style="margin: 0 0 0.5rem 0; color: #FF7A00;">${region} 回收點</h4>
-                    <p style="margin: 0 0 0.5rem 0; color: #666; font-size: 0.9rem;">共 ${regionMarkers.length} 個回收點</p>
-                    <p style="margin: 0; color: #999; font-size: 0.8rem;">點擊個別標記查看詳情</p>
-                    <div style="margin-top: 0.5rem;">
-                        <button onclick="toggleClusters()" 
-                                style="background: #FF7A00; color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; font-size: 0.8rem;">
-                            <i class="fas fa-layer-group" style="margin-right: 0.3rem;"></i>返回群組顯示
-                        </button>
-                    </div>
-                </div>
-            `);
-            infoWindow.open(map);
         }
 
         // Center map on a specific point
