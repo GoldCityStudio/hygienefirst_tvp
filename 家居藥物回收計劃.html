@@ -2549,12 +2549,31 @@
         }
 
         // Google Maps Integration
+        // Global map variable
         let map;
         let markers = [];
         let userLocationMarker = null;
         let infoWindow = null;
         let isClustered = false;
         let clusterManager = null;
+
+        // Add error handling for CORS issues
+        window.addEventListener('error', function(event) {
+            if (event.message && event.message.includes('CORS')) {
+                console.warn('CORS error detected (likely from browser extension):', event.message);
+                // Don't show error to user as it's not from our code
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        // Add unhandled promise rejection handler for CORS
+        window.addEventListener('unhandledrejection', function(event) {
+            if (event.reason && event.reason.message && event.reason.message.includes('CORS')) {
+                console.warn('CORS promise rejection detected (likely from browser extension):', event.reason.message);
+                event.preventDefault();
+            }
+        });
 
         // Initialize Google Map
         window.initMap = function() {
