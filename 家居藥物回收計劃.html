@@ -621,6 +621,163 @@
             </div>
         </section>
 
+
+   <!-- Collection Points Map and List Section -->
+   <section class="collection-points-section" style="padding: 4rem 0; background: white;">
+    <div class="container">
+        <div class="section-header">
+            <h2 style="color: #FF7A00; text-align: center; margin-bottom: 1rem;">
+                <i class="fas fa-map-marked-alt" style="margin-right: 0.5rem;"></i>回收點地圖及列表
+            </h2>
+            <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 3rem;">
+                查找您附近的藥物回收點
+            </p>
+        </div>
+
+        <!-- Map Section -->
+        <div style="background: #FFF9F5; padding: 2rem; border-radius: 15px; margin-bottom: 3rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+            <h3 style="color: #FF7A00; margin-bottom: 1.5rem; text-align: center;">
+                <i class="fas fa-map" style="margin-right: 0.5rem;"></i>互動地圖
+            </h3>
+            
+            <!-- Map Container -->
+            <div style="position: relative; width: 100%; height: 600px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <!-- Loading Screen -->
+                <div id="mapLoading" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #FFF9F5 0%, #FFE5D9 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: #FF7A00; margin-bottom: 1rem;"></i>
+                        <p style="color: #FF7A00; font-size: 1.2rem; font-weight: 600;">載入地圖中...</p>
+                        <p style="color: #666; font-size: 0.9rem; margin-top: 0.5rem;">請稍候</p>
+                    </div>
+                </div>
+                
+                <!-- Google Map -->
+                <div id="googleMap" style="width: 100%; height: 100%;"></div>
+            </div>
+
+            <!-- Map Controls -->
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <button onclick="detectUserLocation()" style="background: #FF7A00; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(255, 122, 0, 0.3);">
+                    <i class="fas fa-location-arrow" style="margin-right: 0.5rem;"></i>定位我的位置
+                </button>
+                <button onclick="toggleCluster()" style="background: #666; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                    <i class="fas fa-layer-group" style="margin-right: 0.5rem;"></i>切換群組顯示
+                </button>
+            </div>
+        </div>
+
+        <!-- Collection Points List -->
+        <div style="background: #FFF9F5; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+            <h3 style="color: #FF7A00; margin-bottom: 1.5rem; text-align: center;">
+                <i class="fas fa-list" style="margin-right: 0.5rem;"></i>回收點列表
+            </h3>
+
+      
+
+
+            <!-- Tabs for Regions -->
+            <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center;">
+                <button onclick="showRegion('hkIsland')" class="region-tab active" data-region="hkIsland" style="background: #FF7A00; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                    <i class="fas fa-building" style="margin-right: 0.5rem;"></i>香港島 (<span id="hkIslandCount">0</span>)
+                </button>
+                <button onclick="showRegion('kowloon')" class="region-tab" data-region="kowloon" style="background: #e0e0e0; color: #666; border: none; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                    <i class="fas fa-city" style="margin-right: 0.5rem;"></i>九龍 (<span id="kowloonCount">0</span>)
+                </button>
+                <button onclick="showRegion('newTerritories')" class="region-tab" data-region="newTerritories" style="background: #e0e0e0; color: #666; border: none; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                    <i class="fas fa-mountain" style="margin-right: 0.5rem;"></i>新界 (<span id="newTerritoriesCount">0</span>)
+                </button>
+            </div>
+
+   
+            <!-- Hong Kong Island Table -->
+            <div id="hkIslandTable" class="region-table" style="display: block;">
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <thead style="background: #FF7A00; color: white;">
+                            <tr>
+                                <th style="padding: 1rem; text-align: left;">支持機構</th>
+                                <th style="padding: 1rem; text-align: right;">回收點名稱及地址</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hkIslandTableBody">
+                            <tr>
+                                <td colspan="2" style="padding: 2rem; text-align: center; color: #666;">
+                                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #FF7A00; margin-bottom: 0.5rem;"></i>
+                                    <p>載入中...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination for Hong Kong Island -->
+                <div id="hkIslandPagination" class="pagination-controls" style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
+                    <button id="hkIslandPrev" onclick="changePage('hkIsland', -1)" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">上一頁</button>
+                    <span id="hkIslandStart">1</span> - <span id="hkIslandEnd">10</span> / <span id="hkIslandTotal">0</span>
+                    <button id="hkIslandNext" onclick="changePage('hkIsland', 1)" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">下一頁</button>
+                </div>
+            </div>
+
+            <!-- Kowloon Table -->
+            <div id="kowloonTable" class="region-table" style="display: none;">
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <thead style="background: #FF7A00; color: white;">
+                            <tr>
+                                <th style="padding: 1rem; text-align: left;">支持機構</th>
+                                <th style="padding: 1rem; text-align: right;">回收點名稱及地址</th>
+                            </tr>
+                        </thead>
+                        <tbody id="kowloonTableBody">
+                            <tr>
+                                <td colspan="2" style="padding: 2rem; text-align: center; color: #666;">
+                                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #FF7A00; margin-bottom: 0.5rem;"></i>
+                                    <p>載入中...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination for Kowloon -->
+                <div id="kowloonPagination" class="pagination-controls" style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
+                    <button id="kowloonPrev" onclick="changePage('kowloon', -1)" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">上一頁</button>
+                    <span id="kowloonStart">1</span> - <span id="kowloonEnd">10</span> / <span id="kowloonTotal">0</span>
+                    <button id="kowloonNext" onclick="changePage('kowloon', 1)" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">下一頁</button>
+                </div>
+            </div>
+
+            <!-- New Territories Table -->
+            <div id="newTerritoriesTable" class="region-table" style="display: none;">
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <thead style="background: #FF7A00; color: white;">
+                            <tr>
+                                <th style="padding: 1rem; text-align: left;">支持機構</th>
+                                <th style="padding: 1rem; text-align: right;">回收點名稱及地址</th>
+                            </tr>
+                        </thead>
+                        <tbody id="newTerritoriesTableBody">
+                            <tr>
+                                <td colspan="2" style="padding: 2rem; text-align: center; color: #666;">
+                                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #FF7A00; margin-bottom: 0.5rem;"></i>
+                                    <p>載入中...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination for New Territories -->
+                <div id="newTerritoriesPagination" class="pagination-controls" style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 1rem;">
+                    <button id="newTerritoriesPrev" onclick="changePage('newTerritories', -1)" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">上一頁</button>
+                    <span id="newTerritoriesStart">1</span> - <span id="newTerritoriesEnd">10</span> / <span id="newTerritoriesTotal">0</span>
+                    <button id="newTerritoriesNext" onclick="changePage('newTerritories', 1)" style="background: #FF7A00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">下一頁</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
         <!-- Supporting Organizations Section -->
         <section class="about-partners mobile-about-partners">
             <div class="container">
@@ -1226,6 +1383,7 @@
             </div>
         </section> -->
 
+     
   
 
         <!-- FAQ Section -->
@@ -1765,37 +1923,30 @@
                     .then(data => {
                         console.log('Collection points data loaded:', data.length, 'entries');
                         
-                        // Process data and group by region based on JSON structure
-                        let currentRegion = '新界'; // Default region
-                        completeCollectionPointsData = [];
-                        
-                        data.forEach(item => {
-                            // Check if this is a region header
-                            if (item.支持機構 && item.支持機構.includes('：')) {
-                                if (item.支持機構.includes('香港島')) {
-                                    currentRegion = '香港島';
-                                } else if (item.支持機構.includes('九龍')) {
-                                    currentRegion = '九龍';
-                                } else if (item.支持機構.includes('新界')) {
-                                    currentRegion = '新界';
-                                }
-                                return; // Skip region headers
-                            }
-                            
-                            // Only include valid collection points
-                            if (item.支持機構 && 
-                            item.支持機構.trim() !== '' &&
-                                item.回收過期藥物點 && 
+                        // Process data - the JSON already has proper structure with region field
+                        completeCollectionPointsData = data.filter(item => 
+                            item.支持機構 && 
+                            item.回收過期藥物點 && 
+                            item.回收點地址 && 
+                            item.region && // Ensure region field exists
                             item.回收過期藥物點.trim() !== '' &&
-                                item.回收點地址 && 
-                            item.回收點地址.trim() !== '' &&
-                                item.支持機構 !== '支持機構') { // Remove template entry
-                                
-                                completeCollectionPointsData.push({
-                                    ...item,
-                                    地區: currentRegion
-                                });
-                            }
+                            item.支持機構 !== '支持機構' // Remove template entry
+                        ).map(item => ({
+                            ...item,
+                            地區: item.region // Use the region field from JSON
+                        }));
+                        
+                        console.log('Processed collection points:', completeCollectionPointsData.length);
+                        
+                        // Log counts by region
+                        const hkIslandCount = completeCollectionPointsData.filter(item => item.地區 === '香港島').length;
+                        const kowloonCount = completeCollectionPointsData.filter(item => item.地區 === '九龍').length;
+                        const newTerritoriesCount = completeCollectionPointsData.filter(item => item.地區 === '新界').length;
+                        
+                        console.log('Collection points by region:', {
+                            '香港島': hkIslandCount,
+                            '九龍': kowloonCount,
+                            '新界': newTerritoriesCount
                         });
                         
                         // Sort collection points by district within each region
@@ -1880,8 +2031,17 @@
                         errorDiv.innerHTML = `
                             <i class="fas fa-exclamation-triangle" style="margin-right: 0.5rem;"></i>
                             載入回收點資料時發生錯誤，請稍後再試
+                            <br><small style="color: #999;">錯誤: ${error.message}</small>
                         `;
-                        document.querySelector('.collection-points-list').appendChild(errorDiv);
+                        
+                        // Try to append to the collection points section
+                        const collectionSection = document.querySelector('.collection-points-section');
+                        if (collectionSection) {
+                            collectionSection.appendChild(errorDiv);
+                        } else {
+                            // Fallback: append to body
+                            document.body.appendChild(errorDiv);
+                        }
                     });
             } catch (error) {
                 console.error('Error in loadCollectionPointsData:', error);
@@ -1931,6 +2091,18 @@
                 
                 // Initialize search functionality after data is loaded
                 initializeSearchFunctionality();
+                
+                // Set initial active region and populate district dropdown
+                const initialRegion = 'hkIsland'; // Default to Hong Kong Island
+                const initialTab = document.querySelector(`[data-region="${initialRegion}"]`);
+                if (initialTab) {
+                    initialTab.classList.add('active');
+                    initialTab.style.background = '#FF7A00';
+                    initialTab.style.color = 'white';
+                }
+                
+                // Populate district dropdown for the initial region
+                populateDistrictDropdown();
                 
             } catch (error) {
                 console.error('Error populating collection points tables:', error);
@@ -1983,7 +2155,7 @@
             
             row.innerHTML = `
                 <td style="padding: 1rem;">${item.支持機構}</td>
-                <td style="padding: 1rem;">${combinedInfo}</td>
+                <td style="padding: 1rem; text-align: right;" data-district="${item.district || ''}">${combinedInfo}</td>
             `;
             
             return row;
@@ -1994,51 +2166,26 @@
             const endIndex = Math.min(state.currentPage * state.itemsPerPage, state.totalItems);
             
             // Update display text
-            document.getElementById(`${region}Start`).textContent = startIndex;
-            document.getElementById(`${region}End`).textContent = endIndex;
-            document.getElementById(`${region}Total`).textContent = state.totalItems;
+            const startElement = document.getElementById(`${region}Start`);
+            const endElement = document.getElementById(`${region}End`);
+            const totalElement = document.getElementById(`${region}Total`);
+            
+            if (startElement) startElement.textContent = startIndex;
+            if (endElement) endElement.textContent = endIndex;
+            if (totalElement) totalElement.textContent = state.totalItems;
             
             // Update buttons
             const prevButton = document.getElementById(`${region}Prev`);
             const nextButton = document.getElementById(`${region}Next`);
             
-            prevButton.disabled = state.currentPage === 1;
-            nextButton.disabled = state.currentPage === state.totalPages;
-            
-            // Update button styles
-            prevButton.style.opacity = prevButton.disabled ? '0.5' : '1';
-            nextButton.style.opacity = nextButton.disabled ? '0.5' : '1';
-            
-            // Generate page numbers
-            generatePageNumbers(region, state);
-        }
-
-        function generatePageNumbers(region, state) {
-            const container = document.getElementById(`${region}PageNumbers`);
-            container.innerHTML = '';
-            
-            const maxVisiblePages = 5;
-            let startPage = Math.max(1, state.currentPage - Math.floor(maxVisiblePages / 2));
-            let endPage = Math.min(state.totalPages, startPage + maxVisiblePages - 1);
-            
-            if (endPage - startPage + 1 < maxVisiblePages) {
-                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            if (prevButton) {
+                prevButton.disabled = state.currentPage === 1;
+                prevButton.style.opacity = prevButton.disabled ? '0.5' : '1';
             }
             
-            for (let i = startPage; i <= endPage; i++) {
-                const pageButton = document.createElement('button');
-                pageButton.textContent = i;
-                pageButton.style.cssText = `
-                    padding: 0.5rem 0.75rem; 
-                    border: 1px solid #ddd; 
-                    background: ${i === state.currentPage ? '#FF7A00' : 'white'}; 
-                    color: ${i === state.currentPage ? 'white' : '#666'}; 
-                    border-radius: 4px; 
-                    cursor: pointer;
-                    min-width: 40px;
-                `;
-                pageButton.onclick = () => goToPage(region, i);
-                container.appendChild(pageButton);
+            if (nextButton) {
+                nextButton.disabled = state.currentPage === state.totalPages;
+                nextButton.style.opacity = nextButton.disabled ? '0.5' : '1';
             }
         }
 
@@ -2065,6 +2212,283 @@
             const state = paginationState[region];
             const newPage = state.currentPage + direction;
             goToPage(region, newPage);
+        }
+
+        // Function to show/hide region tables
+        function showRegion(region) {
+            // Hide all tables
+            document.getElementById('hkIslandTable').style.display = 'none';
+            document.getElementById('kowloonTable').style.display = 'none';
+            document.getElementById('newTerritoriesTable').style.display = 'none';
+
+            // Show selected table
+            document.getElementById(region + 'Table').style.display = 'block';
+
+            // Update tab styles
+            const tabs = document.querySelectorAll('.region-tab');
+            tabs.forEach(tab => {
+                if (tab.getAttribute('data-region') === region) {
+                    tab.style.background = '#FF7A00';
+                    tab.style.color = 'white';
+                    tab.classList.add('active');
+                } else {
+                    tab.style.background = '#e0e0e0';
+                    tab.style.color = '#666';
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // Show only markers from the selected region on the map
+            showRegionMarkers(region);
+            
+            // Populate district dropdown for the selected region (with a small delay to ensure DOM is updated)
+            setTimeout(() => {
+                populateDistrictDropdown();
+            }, 10);
+        }
+        
+        // Function to show only markers from a specific region
+        function showRegionMarkers(region) {
+            if (!map || !markers.length) return;
+            
+            // Hide all markers first
+            markers.forEach(marker => {
+                marker.setMap(null);
+            });
+            
+            // Show only markers from the selected region
+            const regionMarkers = markers.filter(marker => {
+                const regionName = getRegionNameFromTab(region);
+                return marker.region === regionName;
+            });
+            
+            regionMarkers.forEach(marker => {
+                marker.setMap(map);
+            });
+            
+            // Center map on this region's markers
+            if (regionMarkers.length > 0) {
+                const bounds = new google.maps.LatLngBounds();
+                regionMarkers.forEach(marker => {
+                    bounds.extend(marker.getPosition());
+                });
+                map.fitBounds(bounds);
+                
+                // Show info about this region
+                if (infoWindow) {
+                    infoWindow.setContent(`
+                        <div style="padding: 1rem; max-width: 300px;">
+                            <h4 style="margin: 0 0 0.5rem 0; color: #FF7A00;">${getRegionNameFromTab(region)} 回收點</h4>
+                            <p style="margin: 0 0 0.5rem 0; color: #666; font-size: 0.9rem;">共 ${regionMarkers.length} 個回收點</p>
+                            <p style="margin: 0; color: #999; font-size: 0.8rem;">點擊個別標記查看詳情</p>
+                        </div>
+                    `);
+                    infoWindow.open(map);
+                }
+            }
+        }
+        
+        // Helper function to get region name from tab
+        function getRegionNameFromTab(region) {
+            const regionMap = {
+                'hkIsland': '香港島',
+                'kowloon': '九龍',
+                'newTerritories': '新界'
+            };
+            return regionMap[region] || region;
+        }
+        
+        // Function to populate district buttons
+        function populateDistrictDropdown() {
+            const districtButtonsContainer = document.getElementById('districtButtons');
+            if (!districtButtonsContainer) return;
+            
+            // Check if data is loaded
+            if (!completeCollectionPointsData || completeCollectionPointsData.length === 0) {
+                console.log('No collection points data available yet');
+                return;
+            }
+            
+            // Clear existing buttons
+            districtButtonsContainer.innerHTML = '';
+            
+            // Get all unique districts from the current region
+            const currentRegion = getCurrentActiveRegion();
+            const regionName = getRegionNameFromTab(currentRegion);
+            
+            console.log('Populating districts for region:', regionName);
+            console.log('Available data:', completeCollectionPointsData.length, 'entries');
+            
+            // Debug: Show sample data for the current region
+            const regionData = completeCollectionPointsData.filter(item => item.地區 === regionName);
+            console.log(`Sample data for ${regionName}:`, regionData.slice(0, 3));
+            
+            const districts = [...new Set(
+                completeCollectionPointsData
+                    .filter(item => item.地區 === regionName)
+                    .map(item => item.district)
+                    .filter(district => district && district.trim() !== '')
+            )].sort();
+            
+            console.log('Found districts:', districts);
+            
+            // Create "All Districts" button
+            const allButton = document.createElement('button');
+            allButton.textContent = '所有地區';
+            allButton.className = 'district-button active';
+            allButton.setAttribute('data-district', '');
+            allButton.style.cssText = 'background: #FF7A00; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; margin: 0.25rem;';
+            allButton.onclick = () => selectDistrict('');
+            districtButtonsContainer.appendChild(allButton);
+            
+            // Create district buttons
+            districts.forEach(district => {
+                const button = document.createElement('button');
+                button.textContent = district;
+                button.className = 'district-button';
+                button.setAttribute('data-district', district);
+                button.style.cssText = 'background: #e0e0e0; color: #666; border: none; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; margin: 0.25rem;';
+                button.onclick = () => selectDistrict(district);
+                districtButtonsContainer.appendChild(button);
+            });
+            
+            // Update district count display
+            updateDistrictCount();
+        }
+        
+        // Function to select a district
+        function selectDistrict(district) {
+            // Update button styles
+            const buttons = document.querySelectorAll('.district-button');
+            buttons.forEach(button => {
+                const buttonDistrict = button.getAttribute('data-district');
+                if (buttonDistrict === district) {
+                    button.style.background = '#FF7A00';
+                    button.style.color = 'white';
+                    button.classList.add('active');
+                } else {
+                    button.style.background = '#e0e0e0';
+                    button.style.color = '#666';
+                    button.classList.remove('active');
+                }
+            });
+            
+            // Filter the table and map
+            filterByDistrict(district);
+        }
+        
+        // Function to get current active region
+        function getCurrentActiveRegion() {
+            const activeTab = document.querySelector('.region-tab.active');
+            const region = activeTab ? activeTab.getAttribute('data-region') : 'hkIsland';
+            console.log('Current active region:', region);
+            return region;
+        }
+        
+        // Function to filter by district
+        function filterByDistrict(selectedDistrict = '') {
+            const currentRegion = getCurrentActiveRegion();
+            
+            // Filter table rows based on district
+            const tableBody = document.getElementById(`${currentRegion}TableBody`);
+            if (!tableBody) return;
+            
+            const rows = tableBody.querySelectorAll('tr');
+            let visibleCount = 0;
+            
+            rows.forEach(row => {
+                const districtCell = row.querySelector('td[data-district]');
+                if (districtCell) {
+                    const rowDistrict = districtCell.getAttribute('data-district');
+                    const shouldShow = !selectedDistrict || rowDistrict === selectedDistrict;
+                    row.style.display = shouldShow ? '' : 'none';
+                    if (shouldShow) visibleCount++;
+                }
+            });
+            
+            // Update district count display
+            updateDistrictCount(selectedDistrict, visibleCount);
+            
+            // Update map markers
+            filterMapMarkersByDistrict(selectedDistrict);
+        }
+        
+        // Function to clear district filter
+        function clearDistrictFilter() {
+            // Reset to "All Districts" button
+            selectDistrict('');
+        }
+        
+        // Function to update district count display
+        function updateDistrictCount(selectedDistrict = '', visibleCount = null) {
+            const districtCountDiv = document.getElementById('districtCount');
+            if (!districtCountDiv) return;
+            
+            if (selectedDistrict) {
+                districtCountDiv.innerHTML = `
+                    <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                    ${selectedDistrict} 地區：${visibleCount || 0} 個回收點
+                `;
+            } else {
+                const currentRegion = getCurrentActiveRegion();
+                const regionName = getRegionNameFromTab(currentRegion);
+                const totalCount = completeCollectionPointsData.filter(item => item.地區 === regionName).length;
+                districtCountDiv.innerHTML = `
+                    <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                    ${regionName} 全區：${totalCount} 個回收點
+                `;
+            }
+        }
+        
+        // Function to filter map markers by district
+        function filterMapMarkersByDistrict(district) {
+            if (!map || !markers.length) return;
+            
+            const currentRegion = getCurrentActiveRegion();
+            const regionName = getRegionNameFromTab(currentRegion);
+            
+            // Hide all markers first
+            markers.forEach(marker => {
+                marker.setMap(null);
+            });
+            
+            // Show markers based on district filter
+            const filteredMarkers = markers.filter(marker => {
+                const matchesRegion = marker.region === regionName;
+                const matchesDistrict = !district || marker.pointData.district === district;
+                return matchesRegion && matchesDistrict;
+            });
+            
+            filteredMarkers.forEach(marker => {
+                marker.setMap(map);
+            });
+            
+            // Center map on filtered markers
+            if (filteredMarkers.length > 0) {
+                const bounds = new google.maps.LatLngBounds();
+                filteredMarkers.forEach(marker => {
+                    bounds.extend(marker.getPosition());
+                });
+                map.fitBounds(bounds);
+            }
+        }
+
+        // Function to toggle cluster display on map
+        function toggleCluster() {
+            if (!map) {
+                alert('地圖功能需要有效的Google Maps API金鑰才能使用。');
+                return;
+            }
+
+            if (isClustered) {
+                // Disable clustering - show individual markers
+                disableClustering();
+                isClustered = false;
+            } else {
+                // Enable clustering - group nearby markers
+                enableClustering();
+                isClustered = true;
+            }
         }
 
         function initializeSearchFunctionality() {
@@ -2133,7 +2557,7 @@
         let clusterManager = null;
 
         // Initialize Google Map
-        function initMap() {
+        window.initMap = function() {
             try {
                 // Hide loading screen
                 const loadingElement = document.getElementById('mapLoading');
@@ -2158,6 +2582,11 @@
                 // Create info window
                 infoWindow = new google.maps.InfoWindow();
 
+                console.log('Google Maps initialized successfully');
+
+                // Load collection points data
+                loadCollectionPointsData();
+
                 // Collection points will be loaded after data is fetched
                 // If data is already loaded, load markers now
                 if (completeCollectionPointsData && completeCollectionPointsData.length > 0) {
@@ -2170,7 +2599,7 @@
                 console.error('Google Maps initialization error:', error);
                 showMapError();
             }
-        }
+        };
 
         // Show map error and fallback
         function showMapError() {
@@ -2213,24 +2642,33 @@
             markers.forEach(marker => marker.setMap(null));
             markers = [];
 
-            // Load all collection points from the embedded data
+            // Load all collection points from the JSON data with actual coordinates
             const collectionPoints = completeCollectionPointsData.filter(item =>  
-                item.回收過期藥物點 && item.回收點地址 && item.回收過期藥物點.trim() !== ''
+                item.回收過期藥物點 && 
+                item.回收點地址 && 
+                item.latitude && 
+                item.longitude &&
+                item.回收過期藥物點.trim() !== ''
             ).map(item => {
-                // Generate approximate coordinates based on address patterns
-                const coordinates = getApproximateCoordinates(item.回收點地址, item.地區);
                 return {
                     name: item.回收過期藥物點,
                     address: item.回收點地址,
                     region: item.地區,
                     organization: item.支持機構,
-                    lat: coordinates.lat,
-                    lng: coordinates.lng
+                    lat: parseFloat(item.latitude),
+                    lng: parseFloat(item.longitude)
                 };
             });
 
             // Log the number of collection points loaded
             console.log(`Loading ${collectionPoints.length} collection points on map`);
+            
+            // Log counts by region for debugging
+            const regionCounts = {};
+            collectionPoints.forEach(point => {
+                regionCounts[point.region] = (regionCounts[point.region] || 0) + 1;
+            });
+            console.log('Map markers by region:', regionCounts);
 
             // Create markers for each collection point
             collectionPoints.forEach(point => {
@@ -2249,11 +2687,9 @@
                     }
                 });
 
-                // Store region information for clustering
-                marker.set('region', point.region);
-                marker.set('name', point.name);
-                marker.set('address', point.address);
-                marker.set('organization', point.organization);
+                // Store region information for filtering
+                marker.region = point.region;
+                marker.pointData = point;
 
                 // Add click listener
                 marker.addListener('click', function() {
@@ -2280,6 +2716,28 @@
 
                 markers.push(marker);
             });
+            
+            // Show all markers initially
+            showAllMarkers();
+        }
+        
+        // Function to show all markers
+        function showAllMarkers() {
+            if (!map || !markers.length) return;
+            
+            // Show all markers
+            markers.forEach(marker => {
+                marker.setMap(map);
+            });
+            
+            // Fit map to show all markers
+            if (markers.length > 0) {
+                const bounds = new google.maps.LatLngBounds();
+                markers.forEach(marker => {
+                    bounds.extend(marker.getPosition());
+                });
+                map.fitBounds(bounds);
+            }
         }
 
         // Get region color - unified color for all collection points

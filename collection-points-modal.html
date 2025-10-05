@@ -1,0 +1,1607 @@
+
+        <!-- Collection Points Modal Section -->
+        <section class="collection-points-modal-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>回收點查詢</h2>
+                    <p>點擊下方按鈕查看各區域的回收點詳細資訊</p>
+                </div>
+                <div class="modal-buttons">
+                    <button class="modal-btn hk-island-btn" onclick="openModal('hkIslandModal')">
+                        <i class="fas fa-building"></i>
+                        <span>香港島回收點</span>
+                        <small>50個回收點</small>
+                    </button>
+                    <button class="modal-btn kowloon-btn" onclick="openModal('kowloonModal')">
+                        <i class="fas fa-city"></i>
+                        <span>九龍回收點</span>
+                        <small>80個回收點</small>
+                    </button>
+                    <button class="modal-btn new-territories-btn" onclick="openModal('newTerritoriesModal')">
+                        <i class="fas fa-map"></i>
+                        <span>新界回收點</span>
+                        <small>162個回收點</small>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hong Kong Island Modal -->
+        <div id="hkIslandModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>香港島回收點 (50個)</h2>
+                    <span class="close" onclick="closeModal('hkIslandModal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="table-container">
+                        <table class="collection-table">
+                            <thead>
+                                
+                        <tr>
+                            <th>支持機構</th>
+                            <th>回收點資訊</th>
+                            <th>地區</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>招商局港口控股有限公司</td>
+                            <td>上環信德中心招商局大廈38樓<br><small style="color: #666;">上環干諾道中168-200號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>仲量聯行</td>
+                            <td>美國銀行中心<br><small style="color: #666;">中環夏愨道12號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>夏利文物業管理有限公司</td>
+                            <td>中保集團大廈<br><small style="color: #666;">中環德輔道中141號中保集團大廈</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>雲咸街33號<br><small style="color: #666;">中環雲咸街33號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>蘇長荣議員地區辦事處<br><small style="color: #666;">中區添美道1號中信大廈13樓1316室</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>陳仲尼議員地區辦事處<br><small style="color: #666;">中區添美道1號中信大廈1521室</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>龍漢標議員地區辦事處<br><small style="color: #666;">中環德輔道中19號環球大廈1403室</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>太古灣道14號<br><small style="color: #666;">太古太古城中心第3期</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>太古灣道12號<br><small style="color: #666;">太古太古城中心第4期</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>太古地產</td>
+                            <td>太古城物業管理公司<br><small style="color: #666;">太古太古城道31號太古城金殿台唐宮閣</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>健康村<br><small style="color: #666;">北角七姊妹道176號</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>雋悦<br><small style="color: #666;">北角丹拿道8號</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>明軒<br><small style="color: #666;">北角明園西街16-22號</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>形品<br><small style="color: #666;">北角明園西街38號</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>香港復康會</td>
+                            <td>東區地區康健站<br><small style="color: #666;">北角英皇道663號泓富產業千禧廣場12樓1209室</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>永年物業管理有限公司</td>
+                            <td>華翠園<br><small style="color: #666;">半山干德道62A-62F號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>寶雲閣<br><small style="color: #666;">半山寶雲道11A</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>大學閣 (地下保安控制室)<br><small style="color: #666;">西半山旭龢道42號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>堅城中心<br><small style="color: #666;">西區卑路乍街23號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>尚嶺<br><small style="color: #666;">西營盤山道100號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>眀徳山<br><small style="color: #666;">西營盤西邊街38號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>毓明閣<br><small style="color: #666;">西營盤第三街200-208號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>翠景閣<br><small style="color: #666;">西環水街18號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>禮賢閣<br><small style="color: #666;">西環般咸道80-82號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>漁光村<br><small style="color: #666;">香港仔水塘道28號</small></td>
+                            <td>南區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>漁映樓<br><small style="color: #666;">香港仔石排灣道33號</small></td>
+                            <td>南區</td>
+                        </tr>
+                        <tr>
+                            <td>扶康會</td>
+                            <td>扶康會康晴天地<br><small style="color: #666;">香港仔華富邨華美樓404至412號室</small></td>
+                            <td>南區</td>
+                        </tr>
+                        <tr>
+                            <td>香港路德會社會服務處</td>
+                            <td>黃鎮林伉儷安老院<br><small style="color: #666;">柴灣小西灣邨瑞明樓瑞泰樓地下及一樓</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>國貿中心<br><small style="color: #666;">柴灣祥利街29-31號</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>新翠花園<br><small style="color: #666;">柴灣道233號</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>劉淑燕女士議員<br><small style="color: #666;">柴灣翠灣邨翠寧樓地下3A室</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>協康會</td>
+                            <td>協康會環翠中心<br><small style="color: #666;">柴灣環翠村澤翠樓地下130-141室</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>利民會</td>
+                            <td>友樂坊 (港島東)<br><small style="color: #666;">柴灣環翠邨澤翠樓低層地下1-8室</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>觀龍樓<br><small style="color: #666;">堅尼地城龍華街20號</small></td>
+                            <td>中西區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>淺水灣道127號<br><small style="color: #666;">淺水灣道127號</small></td>
+                            <td>南區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>嘉路連花園<br><small style="color: #666;">跑馬地加路連山道101號</small></td>
+                            <td>灣仔區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>The Genesis<br><small style="color: #666;">黃竹坑道33-35號</small></td>
+                            <td>南區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>明華大廈<br><small style="color: #666;">筲箕灣阿公岩道17號</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>樂融軒<br><small style="color: #666;">筲箕灣道333號</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>勵德邨<br><small style="color: #666;">銅鑼灣大坑勵德邨道16號</small></td>
+                            <td>灣仔區</td>
+                        </tr>
+                        <tr>
+                            <td>香港中華基督教女青年會</td>
+                            <td>鄭傍卿護理安老苑<br><small style="color: #666;">鴨脷洲利東邨東業樓101-108，117-124及201-224</small></td>
+                            <td>南區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>海灣工貿中心 (地下大堂)<br><small style="color: #666;">鴨脷洲利樂街2號</small></td>
+                            <td>南區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>港灣工貿中心 (地下大堂)<br><small style="color: #666;">鴨脷洲利興街10號</small></td>
+                            <td>南區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>林玉珍女士議員辦事處<br><small style="color: #666;">鴨脷洲鴨脷洲邨利澤樓地下32室</small></td>
+                            <td>南區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>深灣軒<br><small style="color: #666;">鴨脷洲鴨脷洲徑3號</small></td>
+                            <td>南區</td>
+                        </tr>
+                        <tr>
+                            <td>永年物業管理有限公司</td>
+                            <td>濱海大廈<br><small style="color: #666;">鰂魚涌海灣街2號</small></td>
+                            <td>東區</td>
+                        </tr>
+                        <tr>
+                            <td>大灣區醫護教師社工協會</td>
+                            <td>港島辦事處<br><small style="color: #666;">灣仔軒尼詩道340-342號國華大廈3樓全層</small></td>
+                            <td>灣仔區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>蘇長荣議員地區辦事處<br><small style="color: #666;">灣仔軒尼詩道395-399號東區商業大廈12樓F室</small></td>
+                            <td>灣仔區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>雅柏苑<br><small style="color: #666;">大潭大潭水塘道7號雅柏苑B座</small></td>
+                            <td>南區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>朗松居<br><small style="color: #666;">深水灣壽山村道31-33號</small></td>
+                            <td>南區</td>
+                        </tr>
+                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kowloon Modal -->
+        <div id="kowloonModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>九龍回收點 (80個)</h2>
+                    <span class="close" onclick="closeModal('kowloonModal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="table-container">
+                        <table class="collection-table">
+                            <thead>
+                                
+                        <tr>
+                            <th>支持機構</th>
+                            <th>回收點資訊</th>
+                            <th>地區</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>金‧御門 (地下大堂)<br><small style="color: #666;">九龍城衙前圍道39號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>御門‧前 (地下大堂)<br><small style="color: #666;">九龍城衙前塱道62號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>真善美村<br><small style="color: #666;">九龍城富寧街21號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>賢文禮士 (地下大堂)<br><small style="color: #666;">九龍塘延文禮士道38號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>雲門（會所）<br><small style="color: #666;">九龍塘義德道5-11號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>香港城市大學</td>
+                            <td>香港城市大學<br><small style="color: #666;">九龍塘達之路83號香港城市大學校務處</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>首衛有限公司</td>
+                            <td>首衛有限公司<br><small style="color: #666;">九龍灣臨樂街19號南豐商業中心18樓12室</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                        <tr>
+                            <td>夏利文物業管理有限公司</td>
+                            <td>夏利文物業管理有限公司
+ (總辦事處)<br><small style="color: #666;">九龍灣灣宏照道33號國際交易中心6樓601室</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                        <tr>
+                            <td>夏利文物業管理有限公司</td>
+                            <td>Bailey Garden<br><small style="color: #666;">土瓜灣庇利街23號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>利哲宏議員辦事處<br><small style="color: #666;">土瓜灣長寧街9號嶺南大廈地下A店</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>欣榮花園<br><small style="color: #666;">土瓜灣馬頭角道33號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>香港路德會社會服務處</td>
+                            <td>市區重建隊<br><small style="color: #666;">土瓜灣新碼頭街38號翔龍灣廣場N122D及N122E</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>樂民新村<br><small style="color: #666;">土瓜灣靠背壟道160號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>彩頤居<br><small style="color: #666;">牛頭角彩霞道55號</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>觀塘花園大廈<br><small style="color: #666;">牛頭角道297號觀塘花園大廈玉蓮臺</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                        <tr>
+                            <td>仲量聯行</td>
+                            <td>力寶太陽廣場<br><small style="color: #666;">尖沙咀廣東道28號</small></td>
+                            <td>油尖旺區</td>
+                        </tr>
+                        <tr>
+                            <td>富城物業</td>
+                            <td>賀龍居<br><small style="color: #666;">何文田山道19號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>雋瓏<br><small style="color: #666;">何文田太子道西313號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>富城物業</td>
+                            <td>君頤峰<br><small style="color: #666;">何文田京士柏衛理道18號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>香港路德會社會服務處</td>
+                            <td>包美達社區中心<br><small style="color: #666;">何文田忠孝街89號一樓至三樓</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>欣圖軒<br><small style="color: #666;">何文田忠孝街93號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>夏利文物業管理有限公司</td>
+                            <td>One Homantin<br><small style="color: #666;">何文田常富街1號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>嗇色園</td>
+                            <td>可榮耆英鄰舍中心<br><small style="color: #666;">秀茂坪寶琳路寶達邨達怡樓C翼地下</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                        <tr>
+                            <td>嗇色園</td>
+                            <td>可旺耆英鄰舍中心<br><small style="color: #666;">旺角登打士街23號嘉興商業中心一字樓</small></td>
+                            <td>油尖旺區</td>
+                        </tr>
+                        <tr>
+                            <td>嗇色園</td>
+                            <td>可頤耆英鄰舍中心<br><small style="color: #666;">東頭邨盛東樓地下</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>鐘聲慈善社</td>
+                            <td>田家炳老人日間護理中心<br><small style="color: #666;">油麻地東莞街12號駿發花園第3座地下</small></td>
+                            <td>油尖旺區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>駿發花園<br><small style="color: #666;">油蔴地眾坊街3號</small></td>
+                            <td>油尖旺區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>周小松議員地區辦事處<br><small style="color: #666;">長沙灣元州邨元禧樓地下3-4號舖</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>環薈中心<br><small style="color: #666;">長沙灣永康街77號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>張德偉議員辦事處<br><small style="color: #666;">長沙灣幸福邨福日樓地下25室</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>瑜悅 (會所)<br><small style="color: #666;">長沙灣東京街28號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>昌隆工業大廈<br><small style="color: #666;">長沙灣長義街10號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>新昌工業大廈<br><small style="color: #666;">長沙灣長義街2-4號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>長江工廠大廈<br><small style="color: #666;">長沙灣長義街6號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>栢裕工業大廈<br><small style="color: #666;">長沙灣長裕街18號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>經達廣場<br><small style="color: #666;">長沙灣長裕街12號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>卓匯中心<br><small style="color: #666;">長沙灣青山道483A號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>協康會</td>
+                            <td>長沙灣中心<br><small style="color: #666;">長沙灣道303號長沙灣政府合署1樓</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>寓‧弍捌 (地下大堂)<br><small style="color: #666;">長沙灣福榮街228-234號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>香港恆生大學</td>
+                            <td>香港恆生大學（分校-西九)<br><small style="color: #666;">恆生大學物管處</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>家維邨<br><small style="color: #666;">紅磡佛光街1號A</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>豐頤居<br><small style="color: #666;">紅磡利工街8號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>寶御<br><small style="color: #666;">紅磡新圍街1號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>鐘聲慈善社</td>
+                            <td>陳守仁長者鄰舍中心<br><small style="color: #666;">紅磡榮光街52號榮輝大廈地下商場9-13及23-27號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>煥然懿居<br><small style="color: #666;">紅磡鶴園街8號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>香港工業中心B&C座<br><small style="color: #666;">荔枝角青山道489-491號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>香港工業中心A座<br><small style="color: #666;">荔枝角青山道489-491號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>曼克頓山<br><small style="color: #666;">荔枝角寶輪街1號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>夏利文物業管理有限公司</td>
+                            <td>Monaco<br><small style="color: #666;">啟德沐泰街12號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>夏利文物業管理有限公司</td>
+                            <td>Oasis Kai Tak<br><small style="color: #666;">啟德沐寧街10號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>夏利文物業管理有限公司</td>
+                            <td>Double Coast<br><small style="color: #666;">啟德承豐道19號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>夏利文物業管理有限公司</td>
+                            <td>Monaco One<br><small style="color: #666;">啟德新區沐泰街10號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>天寰<br><small style="color: #666;">啟德新區沐寧街1號</small></td>
+                            <td>九龍城區</td>
+                        </tr>
+                        <tr>
+                            <td>嗇色園</td>
+                            <td>可健耆英地區中心<br><small style="color: #666;">深水埗西邨路20號榮昌邨榮傑樓地下</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>香港心理衞生會</td>
+                            <td>李鄭屋宿舍<br><small style="color: #666;">深水埗李鄭屋邨孝慈樓B翼地下及2樓</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>鐘聲慈善社</td>
+                            <td>顏劉崑珠社會服務中心<br><small style="color: #666;">深水埗李鄭屋邨和平樓平台315號</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>嗇色園</td>
+                            <td>可澤耆英鄰舍中心<br><small style="color: #666;">深水埗澤安邨榮澤樓1-2及16-20號地下</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>香港中華基督教女青年會</td>
+                            <td>雲華護理安老苑<br><small style="color: #666;">深水埗& 麗安邨麗廉樓及麗榮樓地下(B座及C座)</small></td>
+                            <td>深水埗區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>曉暉花園<br><small style="color: #666;">牛池灣清水灣道豐盛街63號</small></td>
+                            <td>牛池灣</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>豪門（地下大堂）<br><small style="color: #666;">黃大仙沙浦道46號</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>御‧豪門（地下大堂）<br><small style="color: #666;">黃大仙沙浦道83號</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>丘燿誠議員辦事處<br><small style="color: #666;">黃大仙黃大仙上邨啟善樓地下1號舖</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>香港心理衞生會</td>
+                            <td>艾齡樓<br><small style="color: #666;">黃大仙黃大仙下邨龍吉樓地下及2樓</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>雋睿<br><small style="color: #666;">塘延文禮士道18號</small></td>
+                            <td>九龍塘區</td>
+                        </tr>
+                        <tr>
+                            <td>仲量聯行</td>
+                            <td>勤達中心<br><small style="color: #666;">新蒲崗大有街1號</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>Mikiki<br><small style="color: #666;">新蒲崗太子道東638號</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>嗇色園</td>
+                            <td>可富耆英鄰舍中心<br><small style="color: #666;">慈雲山富山邨富禮樓L102地下及富信樓L13-14地下</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>利民會</td>
+                            <td>友樂坊 (黃大仙)<br><small style="color: #666;">慈雲山慈樂邨樂天樓地下</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>嗇色園</td>
+                            <td>可聚耆英地區中心<br><small style="color: #666;">慈雲山慈樂邨樂滿樓C翼地下</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>嗇色園</td>
+                            <td>可平耆英鄰舍中心<br><small style="color: #666;">橫頭磡邨宏耀樓地下2號</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>謝偉俊議員地區辦事處<br><small style="color: #666;">觀塘牛頭角下邨貴亮樓地下9號室</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                        <tr>
+                            <td>夏利文物業管理有限公司</td>
+                            <td>世達中心<br><small style="color: #666;">觀塘巧明街95號世達中心</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>陳沛良議員地區辦事處<br><small style="color: #666;">觀塘秀茂坪邨秀緻樓地下12號</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                        <tr>
+                            <td>鐘聲慈善社</td>
+                            <td>胡陳金枝長者鄰舍中心<br><small style="color: #666;">觀塘和樂邨新安樓底層3號</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                        <tr>
+                            <td>鐘聲慈善社</td>
+                            <td>社會服務統籌處<br><small style="color: #666;">觀塘和樂邨新安樓底層4號</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                        <tr>
+                            <td>鐘聲慈善社</td>
+                            <td>方王換娣長者鄰舍中心<br><small style="color: #666;">觀塘順天邨天琴樓地庫L202-209號</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                        <tr>
+                            <td>香港路德會社會服務處</td>
+                            <td>鳳德安老院<br><small style="color: #666;">鑽石山鳳德邨斑鳳樓銀鳳樓地下及一樓</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>悅庭軒<br><small style="color: #666;">鑽石山龍蟠街1號</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>雷啟蓮議員辦事處<br><small style="color: #666;">彩虹道242號采頤花園地下107號舖</small></td>
+                            <td>黃大仙區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>諸樂為議員辦事處<br><small style="color: #666;">藍田匯景廣場4樓309舖</small></td>
+                            <td>觀塘區</td>
+                        </tr>
+                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Territories Modal -->
+        <div id="newTerritoriesModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>新界回收點 (162個)</h2>
+                    <span class="close" onclick="closeModal('newTerritoriesModal')">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="table-container">
+                        <table class="collection-table">
+                            <thead>
+                                
+                        <tr>
+                            <th>支持機構</th>
+                            <th>回收點資訊</th>
+                            <th>地區</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>銀海峯 (地下大堂)<br><small style="color: #666;">清水灣安寧徑1號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>銀景峯 (地下大堂)<br><small style="color: #666;">清水灣安寧徑2號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>玥廬 (地下大堂)<br><small style="color: #666;">清水灣碧沙路18號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>上水匯<br><small style="color: #666;">上水龍琛路48號</small></td>
+                            <td>北區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>琨崙（會所）<br><small style="color: #666;">小欖青發里8號</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>陳克勤議員地區辦事處<br><small style="color: #666;">大埔太和邨麗和樓地下121室</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>譚鎮國議員辦事處<br><small style="color: #666;">上水新樂街14號地舖</small></td>
+                            <td>北區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>怡雅苑<br><small style="color: #666;">大埔安埔路15號</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>胡綽謙議員辦事處<br><small style="color: #666;">大埔大元邨泰怡樓地下2號</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>嗇色園</td>
+                            <td>可康耆英鄰舍中心<br><small style="color: #666;">大埔大元邨泰欣樓22至29號地下</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>策誠軒<br><small style="color: #666;">大埔公路大埔滘段4105號</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>協康會</td>
+                            <td>協康會雷瑞德夫人中心<br><small style="color: #666;">大埔富善村善翠樓地下1號</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>金獅花園二期（客戶服務部）<br><small style="color: #666;">大圍隔田街1-3號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>金獅花園一期（客戶服務部）<br><small style="color: #666;">大圍翠田街5-7號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>陳建君議員辦事處<br><small style="color: #666;">大埔汀角路29-35號榮暉花園商場地下16號舖</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>浸信會欣悅社會服務處 (大埔浸信會社會服務處)</td>
+                            <td>浸信會欣悅社會服務處<br><small style="color: #666;">大埔浸信會社會服務處</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>胡綽謙議員辦事處<br><small style="color: #666;">大埔富蝶邨喜蝶樓地下G1號</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>胡綽謙議員辦事處<br><small style="color: #666;">大埔頌雅苑頌善閣地下B1室</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>黃碧嬌議員辦事處<br><small style="color: #666;">大埔廣福邨廣祐樓228室</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>香港心理衞生會</td>
+                            <td>賽馬會心薈庭<br><small style="color: #666;">大埔廣福邨廣智樓B翼地下101至108室</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>新界社團總會</td>
+                            <td>新界社團總會辦事處<br><small style="color: #666;">大埔廣福道152-172號大埔商業中心9字樓</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>董健莉議員辦事處<br><small style="color: #666;">大圍美林邨美楓樓B座地下152室</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>林玉華議員辦事處<br><small style="color: #666;">大圍新翠邨新明樓(低座)地下30號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>林松茵議員辦事處<br><small style="color: #666;">大圍顯徑邨顯祐樓地下8號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>黃秋萍議員辦事處<br><small style="color: #666;">大嶼山東涌上嶺皮村壹號東涌鄉事委員會</small></td>
+                            <td>離島區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>李靜儀議員辦事處<br><small style="color: #666;">元朗八鄉錦上路石湖塘村174號地下</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>好順泰大廈 (地下大堂)<br><small style="color: #666;">元朗市中心西菁街10號</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>好順褔大廈<br><small style="color: #666;">元朗市中心壽富街60號</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>RESIDENCE譽88<br><small style="color: #666;">元朗鳳翔路88號</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>林宗賢議員辦事處<br><small style="color: #666;">元朗天水圍天恒邨恒麗樓地下1號室</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>譚德開議員辦事處<br><small style="color: #666;">元朗天水圍天晴邨晴彩樓地下譚德開議員辦事處</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>王曉山議員辦事處<br><small style="color: #666;">元朗天水圍天晴邨晴滿樓地下2號室</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>黃頴灝議員辦事處<br><small style="color: #666;">元朗天水圍天華邨獨立單位1號舖位編號1號</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>陳燕君議員辦事處<br><small style="color: #666;">元朗天水圍天瑞二邨瑞滿樓地下3室</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>文祿星議員辦事處<br><small style="color: #666;">元朗新田大馬路7號</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>何曉雯議員辦事處<br><small style="color: #666;">元朗錦田公路錦田戲院大廈3樓D1室</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>扶康會</td>
+                            <td>天水圍地區支援中心<br><small style="color: #666;">天水圍天澤邨服務設施大樓5樓501室至502號室</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>兆軒苑<br><small style="color: #666;">屯門市中心良運街1號</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>香港聾人福利促進會</td>
+                            <td>新界綜合服務中心 (良景)<br><small style="color: #666;">屯門田景路31號良景邨良賢樓地下18-23</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>博愛醫院</td>
+                            <td>屯門護養院<br><small style="color: #666;">屯門兆麟街2號</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>黎棟國議員地區辦事處<br><small style="color: #666;">屯門和善樓聯合辦事處</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>首衛有限公司</td>
+                            <td>首衛有限公司<br><small style="color: #666;">屯門新合里3號匯賢一號‧雋峰12樓17室</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>康麗花園（商場G/F 客戶服務部）<br><small style="color: #666;">屯門河傍街康麗花園地下</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>恒福花園<br><small style="color: #666;">屯門青山公路333號</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>南岸（地下大堂）<br><small style="color: #666;">屯門青山公路青山灣段116號</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>御海灣<br><small style="color: #666;">屯門海皇路23號</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>景新臺<br><small style="color: #666;">屯門景新徑2號</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>馮鈺鋒議員辦事處<br><small style="color: #666;">屯門湖景邨湖畔樓地下10室</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>葉文斌先生議員辦事處<br><small style="color: #666;">屯門翠寧花園5座地下15室</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>綠怡居<br><small style="color: #666;">屯門藍地褔亨村路138號</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>蘇嘉雯議員辦事處<br><small style="color: #666;">屯門寶田邨4座地下8號</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>黎棟國議員地區辦事處<br><small style="color: #666;">屯門寶田邨聯合辦事處</small></td>
+                            <td>屯門區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>華耀工業中心（地下大堂）<br><small style="color: #666;">火炭坳背灣街30-32號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>華衛工貿中心（地下大堂）<br><small style="color: #666;">火炭坳背灣街38-40號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>華麗工業中心（地下大堂）<br><small style="color: #666;">火炭桂地街10-14號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>華生工業大廈（控制室）<br><small style="color: #666;">火炭黃竹洋街14-18號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>碧霞花園（會所）<br><small style="color: #666;">火炭穗禾路16號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>李家良議員辦事處<br><small style="color: #666;">西貢大街12號地下</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>西貢花園（地下大堂）<br><small style="color: #666;">西貢市中心親民街16號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>對面海邨<br><small style="color: #666;">西貢康健路120號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>翠塘花園<br><small style="color: #666;">西貢翠塘路1號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>俞卓君議員辦事處<br><small style="color: #666;">西貢德隆前街1號地下D1鋪</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>陳克勤議員地區辦事處<br><small style="color: #666;">沙田乙明邨明耀樓地下11號舖</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>乙明邨<br><small style="color: #666;">沙田乙明邨街3號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>綠怡雅苑<br><small style="color: #666;">沙田小瀝源路63號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>愉翠苑<br><small style="color: #666;">沙田牛皮沙街2號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>希爾頓中心（住宅客戶服務部）<br><small style="color: #666;">沙田正街3-9號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>嚴剛議員地區辦事處<br><small style="color: #666;">沙田地區辦事處博康邨博逸樓地下1號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>碧濤花園一期（平台大堂）<br><small style="color: #666;">沙田安景街19-21號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>碧濤花園二期（會所）<br><small style="color: #666;">沙田安景街23號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>碧濤花園三期（地下大堂）<br><small style="color: #666;">沙田安景街25號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>蔡明揚議員辦事處<br><small style="color: #666;">沙田美林邨美桃樓C座地下108室</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>梁家瑋議員辦事處<br><small style="color: #666;">沙田秦石邨石晶樓地下OT1室</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>晴碧花園<br><small style="color: #666;">沙田得怡街6號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>郭宣彤議員辦事處<br><small style="color: #666;">沙田博康邨博逸樓地下1號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>香港復康會</td>
+                            <td>沙田地區康健站<br><small style="color: #666;">沙田鄉事會路138號新城市中央廣場2座15樓1520室</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>潘國山議員辦事處<br><small style="color: #666;">沙田隆亨邨榮心樓地下102室</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>欣廷軒<br><small style="color: #666;">沙田圓洲角翠欣街8號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>嗇色園</td>
+                            <td>可泰耆英鄰舍中心<br><small style="color: #666;">沙田廣源邨廣棉樓B翼地下</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>好運中心（1/F服務台）<br><small style="color: #666;">沙田橫壆街1-15號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>香港心理衞生會</td>
+                            <td>顯徑宿舍<br><small style="color: #666;">沙田顯徑邨顯祐樓B翼地下及2樓</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>沙頭角邨<br><small style="color: #666;">沙頭角</small></td>
+                            <td>北區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>劉淑嫻議員辦事處<br><small style="color: #666;">坪洲永安街60號地下</small></td>
+                            <td>離島區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>葉培基議員辦事處<br><small style="color: #666;">東涌迎東邨迎福樓地下1號舖</small></td>
+                            <td>離島區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>東環<br><small style="color: #666;">東涌迎康街6號</small></td>
+                            <td>離島區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>吳彩華議員辦事處<br><small style="color: #666;">東涌富東邨東馬樓地下2號</small></td>
+                            <td>離島區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>葉培基議員辦事處<br><small style="color: #666;">東涌富東邨東馬樓地下2號</small></td>
+                            <td>離島區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>黎棟國議員地區辦事處<br><small style="color: #666;">東涌逸東二邨傑逸樓D翼地下</small></td>
+                            <td>離島區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>陳志榮議員辦事處<br><small style="color: #666;">青衣四村村公所青衣清心街1號</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>鐘聲慈善社</td>
+                            <td>蔡裕輝老人日間護理中心<br><small style="color: #666;">青衣長安邨安海樓地下118-123號</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>香港路德會社會服務處</td>
+                            <td>梁季彝夫人安老院<br><small style="color: #666;">青衣長安邨安湄樓地下及2樓</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>綠悠雅苑<br><small style="color: #666;">青衣青綠街18號</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>偉景花園<br><small style="color: #666;">青衣青綠街1號</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>陳志榮議員辦事處<br><small style="color: #666;">青衣涌美老屋村村公所:青衣涌美老屋村82A地下</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>陳志榮議員辦事處<br><small style="color: #666;">青衣楓樹窩路九號2樓</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>豪景花園（地下大堂）<br><small style="color: #666;">青龍頭青山公路青龍頭段100號</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>樂翹都匯 - 樂翹樓1座<br><small style="color: #666;">洪水橋洪元路6號</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>樂翹軒I<br><small style="color: #666;">洪水橋洪水橋田心路12號</small></td>
+                            <td>元朗區</td>
+                        </tr>
+                        <tr>
+                            <td>香港中文大學</td>
+                            <td>香港中文大學<br><small style="color: #666;">香港中文大學校務處</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>香港恆生大學</td>
+                            <td>香港恆生大學（主校-沙田）<br><small style="color: #666;">香港恆生大學物管處</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>香港教育大學</td>
+                            <td>香港教育大學<br><small style="color: #666;">香港教育大學物管處</small></td>
+                            <td>大埔區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>安興工貿中心（地下大堂）<br><small style="color: #666;">粉嶺安樂村工業區</small></td>
+                            <td>北區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>樂嶺樓<br><small style="color: #666;">粉嶺百和路72號</small></td>
+                            <td>北區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>威尼斯花園（住宅客戶服務部）<br><small style="color: #666;">粉嶺保榮路1號</small></td>
+                            <td>北區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>安恆工貿中心（地下大堂）<br><small style="color: #666;">粉嶺粉嶺業暢街18號</small></td>
+                            <td>北區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>李國鳳議員辦事處<br><small style="color: #666;">粉嶺聯和墟聯發街3號地下</small></td>
+                            <td>北區</td>
+                        </tr>
+                        <tr>
+                            <td>第一太平戴維斯(香港)有限公司</td>
+                            <td>榮福中心<br><small style="color: #666;">粉嶺聯捷街1號</small></td>
+                            <td>北區</td>
+                        </tr>
+                        <tr>
+                            <td>協康會</td>
+                            <td>大窩口中心(綜合)<br><small style="color: #666;">荃灣大窩口村富賢樓地下</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>豪輝商業中心（客戶服務部）<br><small style="color: #666;">荃灣市中心西樓角路222-224號</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>朱德榮議員辦事處<br><small style="color: #666;">荃灣西樓角路138-168號荃豐中心2樓83舖</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>滿樂大廈<br><small style="color: #666;">荃灣沙咀道141號</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>邱錦平議員辦事處<br><small style="color: #666;">荃灣沙咀道277號2樓</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>寶石大廈<br><small style="color: #666;">荃灣沙咀道328號</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>仲量聯行</td>
+                            <td>嘉達環球中心<br><small style="color: #666;">荃灣沙咀道6號</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>荃錦中心商場<br><small style="color: #666;">荃灣青山公路328-338號</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>陳曉津先生議員辦事處<br><small style="color: #666;">荃灣青山公路644-654號翠濤閣商場2層2G舖</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>金麗苑<br><small style="color: #666;">荃灣青山公路汀九段200號</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>華力工業中心（地下大堂）<br><small style="color: #666;">荃灣青山公路荃灣段459-469號</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>祈德尊新邨<br><small style="color: #666;">荃灣海盛路26號</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>莫遠君議員辦事處<br><small style="color: #666;">荃灣海濱花園B平台116舖</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>觀瀾雅軒<br><small style="color: #666;">馬鞍山恆明街8號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>龔美姿議員辦事處<br><small style="color: #666;">馬鞍山頌安邨頌平樓地下DB01-02室</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>吳啟泰議員辦事處<br><small style="color: #666;">馬鞍山頌安邨頌平樓地下DB01-02室</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>梁振邦議員辦事處<br><small style="color: #666;">馬鞍山福安花園商場地下34號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>迎濤灣（2樓住客會所）<br><small style="color: #666;">馬鞍山鞍駿街23號</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>鄧開荣議員辦事處<br><small style="color: #666;">馬鞍山耀安邨耀和樓2樓235室</small></td>
+                            <td>沙田區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>莊雅婷議員辦事處<br><small style="color: #666;">將軍澳至善街3號SAVANNAH地下G08B舖</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>黃遠康議員辦事處<br><small style="color: #666;">將軍澳尚德邨尚禮樓4樓平台A室</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>祁麗媚議員辦事處<br><small style="color: #666;">將軍澳尚德邨尚禮樓4樓平台B室</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>香港聾人福利促進會</td>
+                            <td>將軍澳綜合服務中心<br><small style="color: #666;">將軍澳唐明街2號尚德邨尚美樓6樓</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>夏利文物業管理有限公司</td>
+                            <td>The Parkside<br><small style="color: #666;">將軍澳唐俊街18號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>海翩滙（地下大堂及會所） (共7個位置)<br><small style="color: #666;">將軍澳唐俊街21號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>將軍澳中心(商場)<br><small style="color: #666;">將軍澳唐德街9號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>施彬彬議員辦事處<br><small style="color: #666;">將軍澳健明邨健華樓地下1號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>樂頤居<br><small style="color: #666;">將軍澳培成里2號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>裕明苑<br><small style="color: #666;">將軍澳常寧路1號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>大灣區醫護教師社工協會</td>
+                            <td>新界辦事處<br><small style="color: #666;">將軍澳景林商場1樓104室</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>茵怡花園<br><small style="color: #666;">將軍澳貿泰路8號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>保良局</td>
+                            <td>保良局莊啟程耆暉中心<br><small style="color: #666;">將軍澳貿泰路8號茵怡花園第一座平臺1樓</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>曾國家議員辦事處<br><small style="color: #666;">將軍澳毓雅里9號慧安商場1樓B26鋪</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>協康會</td>
+                            <td>裕明中心(綜合)<br><small style="color: #666;">將軍澳裕明苑裕昌閣地下</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>陳廣輝議員辦事處<br><small style="color: #666;">將軍澳運亨路1號新都城1期商場地下G89鋪</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>莊元苳議員辦事處<br><small style="color: #666;">將軍澳廣明苑廣瑞閣地下B1室</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>東華三院</td>
+                            <td>東華三院環保村<br><small style="color: #666;">將軍澳環保大道180號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>香港路德會社會服務處</td>
+                            <td>黃鎮林伉儷第二安老院<br><small style="color: #666;">將軍澳寶明苑寶松閣寶柏閣地下及1樓</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>怡心園<br><small style="color: #666;">將軍澳寶康路88號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>東華三院</td>
+                            <td>東華三院呂潤財紀念中學<br><small style="color: #666;">將軍澳寶琳毓雅里8號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>鄭捷彬議員辦事處<br><small style="color: #666;">深井青山公路42號深井陳記廣場後座地下A&B舖</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>夏利文物業管理有限公司</td>
+                            <td>碧堤半島<br><small style="color: #666;">深井青山公路深井段33號</small></td>
+                            <td>荃灣區</td>
+                        </tr>
+                        <tr>
+                            <td>立法會議員辦事處</td>
+                            <td>嚴剛議員地區辦事處<br><small style="color: #666;">愉景灣地區辦事處大嶼山愉景灣海澄湖畔96號辦公室大樓第2座1樓22室</small></td>
+                            <td>離島區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>安泰工貿中心（地下大堂）<br><small style="color: #666;">新界粉嶺粉嶺安全街4號</small></td>
+                            <td>北區</td>
+                        </tr>
+                        <tr>
+                            <td>華懋集團</td>
+                            <td>安匯中心（地下大堂）<br><small style="color: #666;">新界粉嶺粉嶺樂業路25號</small></td>
+                            <td>北區</td>
+                        </tr>
+                        <tr>
+                            <td>聖方濟各大學</td>
+                            <td>聖方濟各大學<br><small style="color: #666;">聖方濟各大學管理處</small></td>
+                            <td>離島區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>彭熠銘議員辦事處<br><small style="color: #666;">葵青區青衣青衣邨宜偉樓地下12號</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>黃淑雯議員辦事處<br><small style="color: #666;">葵涌石蔭邨勇石樓地下B室</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>葵星商場<br><small style="color: #666;">葵涌青山公路412號</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>浩景臺<br><small style="color: #666;">葵涌荔崗街11號</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>華景山莊<br><small style="color: #666;">葵涌華景山路9號</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>康業服務有限公司</td>
+                            <td>華景山莊商場<br><small style="color: #666;">葵涌華景山路9號</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>香港房屋協會</td>
+                            <td>祖堯邨<br><small style="color: #666;">葵涌麗祖路3號</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>陳藹怡議員辦事處<br><small style="color: #666;">葵涌麗瑤邨樂瑤樓115號G樓地下</small></td>
+                            <td>葵青區</td>
+                        </tr>
+                        <tr>
+                            <td>區議員辦事處</td>
+                            <td>張展鵬議員辦事處<br><small style="color: #666;">調景嶺善明邨善禮樓附翼地下1號</small></td>
+                            <td>西貢區</td>
+                        </tr>
+                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal JavaScript -->
+        <script>
+        // Modal functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        });
+        </script>
