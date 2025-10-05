@@ -2248,7 +2248,16 @@
                     data = completeCollectionPointsData.filter(item => item.地區 === '新界');
                 }
                 
-                populateTable(region, data);
+                // Apply district filter if active
+                if (currentDistrictFilter) {
+                    data = data.filter(item => item.district === currentDistrictFilter);
+                }
+                
+                // Use the filtered data to populate table
+                populateTableForRegion(region, data);
+                
+                // Update pagination controls
+                updatePaginationControls(region, state);
             }
         }
 
@@ -2260,6 +2269,9 @@
 
         // Function to show/hide region tables
         function showRegion(region) {
+            // Clear district filter when switching regions
+            currentDistrictFilter = '';
+            
             // Hide all tables
             document.getElementById('hkIslandTable').style.display = 'none';
             document.getElementById('kowloonTable').style.display = 'none';
@@ -2542,29 +2554,74 @@
             return region;
         }
         
+        // Global variable to track current district filter
+        let currentDistrictFilter = '';
+        
+        // Function to populate table for a specific region with filtered data
+        function populateTableForRegion(region, filteredData) {
+            // Use the existing populateTable function but with custom pagination state
+            const tableBody = document.getElementById(`${region}TableBody`);
+            if (!tableBody) return;
+            
+            // Clear existing content
+            tableBody.innerHTML = '';
+            
+            // Calculate pagination for filtered data
+            const state = paginationState[region];
+            const startIndex = (state.currentPage - 1) * state.itemsPerPage;
+            const endIndex = Math.min(startIndex + state.itemsPerPage, filteredData.length);
+            
+            // Add rows for current page
+            for (let i = startIndex; i < endIndex; i++) {
+                const item = filteredData[i];
+                const row = createTableRow(item);
+                tableBody.appendChild(row);
+            }
+            
+            // Show message if no data
+            if (filteredData.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="2" style="padding: 2rem; text-align: center; color: #666;">
+                            <i class="fas fa-info-circle" style="font-size: 2rem; color: #FF7A00; margin-bottom: 0.5rem;"></i>
+                            <p>此地區暫無回收點</p>
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+        
         // Function to filter by district
         function filterByDistrict(selectedDistrict = '') {
             const currentRegion = getCurrentActiveRegion();
+            const regionName = getRegionNameFromTab(currentRegion);
             
-            // Filter table rows based on district
-            const tableBody = document.getElementById(`${currentRegion}TableBody`);
-            if (!tableBody) return;
+            // Update global district filter
+            currentDistrictFilter = selectedDistrict;
             
-            const rows = tableBody.querySelectorAll('tr');
-            let visibleCount = 0;
+            // Get filtered data based on district
+            let filteredData;
+            if (selectedDistrict) {
+                filteredData = completeCollectionPointsData.filter(item => 
+                    item.地區 === regionName && item.district === selectedDistrict
+                );
+            } else {
+                filteredData = completeCollectionPointsData.filter(item => item.地區 === regionName);
+            }
             
-            rows.forEach(row => {
-                const districtCell = row.querySelector('td[data-district]');
-                if (districtCell) {
-                    const rowDistrict = districtCell.getAttribute('data-district');
-                    const shouldShow = !selectedDistrict || rowDistrict === selectedDistrict;
-                    row.style.display = shouldShow ? '' : 'none';
-                    if (shouldShow) visibleCount++;
-                }
-            });
+            // Update pagination state for filtered data
+            paginationState[currentRegion].totalItems = filteredData.length;
+            paginationState[currentRegion].totalPages = Math.ceil(filteredData.length / paginationState[currentRegion].itemsPerPage);
+            paginationState[currentRegion].currentPage = 1; // Reset to first page
+            
+            // Re-populate the table with filtered data
+            populateTableForRegion(currentRegion, filteredData);
+            
+            // Update pagination controls
+            updatePaginationControls(currentRegion, paginationState[currentRegion]);
             
             // Update district count display
-            updateDistrictCount(selectedDistrict, visibleCount);
+            updateDistrictCount(selectedDistrict, filteredData.length);
             
             // Update map markers
             filterMapMarkersByDistrict(selectedDistrict);
