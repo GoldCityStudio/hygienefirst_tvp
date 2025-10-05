@@ -29,6 +29,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Maps API -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQFkghNWGW5jGAaiwzcGhk_vX-LgZwzaY&libraries=places&callback=initMap"></script>
+    
+    <!-- Google Maps API timeout detection -->
+    <script>
+        // Set a timeout to detect if Google Maps API fails to load
+        let mapLoadTimeout;
+        
+        // Start timeout when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            mapLoadTimeout = setTimeout(function() {
+                // Check if initMap was called
+                if (typeof window.map === 'undefined' || !window.map) {
+                    console.error('Google Maps API failed to load within timeout period');
+                    const error = new Error('Google Maps API timeout - API key may be invalid or restricted');
+                    error.name = 'MapTimeoutError';
+                    if (typeof showMapError === 'function') {
+                        showMapError(error);
+                    }
+                }
+            }, 10000); // 10 second timeout
+        });
+        
+        // Clear timeout when map loads successfully
+        window.addEventListener('mapLoaded', function() {
+            if (mapLoadTimeout) {
+                clearTimeout(mapLoadTimeout);
+            }
+        });
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Google Tag Manager -->
@@ -2624,6 +2652,9 @@
 
                 console.log('Google Maps initialized successfully');
 
+                // Dispatch map loaded event to clear timeout
+                window.dispatchEvent(new CustomEvent('mapLoaded'));
+
                 // Load collection points data
                 loadCollectionPointsData();
 
@@ -2637,12 +2668,17 @@
                 initializeMapControls();
             } catch (error) {
                 console.error('Google Maps initialization error:', error);
-                showMapError();
+                console.error('Error details:', {
+                    message: error.message,
+                    name: error.name,
+                    stack: error.stack
+                });
+                showMapError(error);
             }
         };
 
         // Show map error and fallback
-        function showMapError() {
+        function showMapError(error = null) {
             const mapContainer = document.getElementById('googleMap');
             const loadingElement = document.getElementById('mapLoading');
             
@@ -2650,28 +2686,56 @@
                 loadingElement.style.display = 'none';
             }
             
+            // Determine error type and message
+            let errorTitle = '地圖載入失敗';
+            let errorMessage = '無法載入Google地圖，請檢查API密鑰設定或網路連線';
+            let errorDetails = '';
+            
+            if (error) {
+                if (error.message.includes('API key') || error.message.includes('InvalidKeyMapError')) {
+                    errorTitle = 'Google Maps API 密鑰錯誤';
+                    errorMessage = '地圖功能需要有效的Google Maps API金鑰才能使用';
+                    errorDetails = '請檢查API密鑰是否正確設定，或聯繫網站管理員';
+                } else if (error.message.includes('RefererNotAllowedMapError')) {
+                    errorTitle = 'API 密鑰域名限制';
+                    errorMessage = 'API密鑰未授權此域名使用';
+                    errorDetails = '請在Google Cloud Console中將此域名加入允許清單';
+                } else if (error.message.includes('QuotaExceededError')) {
+                    errorTitle = 'API 使用量超限';
+                    errorMessage = 'Google Maps API 使用量已達上限';
+                    errorDetails = '請檢查Google Cloud Console中的使用量設定';
+                } else {
+                    errorDetails = `錯誤詳情: ${error.message}`;
+                }
+            }
+            
             mapContainer.innerHTML = `
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #FFF9F5 0%, #FFE5D9 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem;">
                     <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #FF7A00; margin-bottom: 1rem;"></i>
-                    <h4 style="color: #FF7A00; margin-bottom: 0.5rem;">地圖載入失敗</h4>
+                    <h4 style="color: #FF7A00; margin-bottom: 0.5rem;">${errorTitle}</h4>
                     <p style="color: #666; text-align: center; max-width: 400px; margin-bottom: 1rem;">
-                        無法載入Google地圖，請檢查API密鑰設定或網路連線
+                        ${errorMessage}
                     </p>
+                    ${errorDetails ? `<p style="color: #999; font-size: 0.9rem; margin-bottom: 1rem;">${errorDetails}</p>` : ''}
                     <div style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 500px;">
                         <h5 style="color: #FF7A00; margin-bottom: 1rem;">設定Google Maps API密鑰：</h5>
                         <ol style="color: #666; font-size: 0.9rem; line-height: 1.6; text-align: left;">
                             <li>前往 <a href="https://console.cloud.google.com/" target="_blank" style="color: #FF7A00;">Google Cloud Console</a></li>
                             <li>建立新專案或選擇現有專案</li>
                             <li>啟用「Maps JavaScript API」和「Places API」</li>
-                            <li>建立憑證（API 金鑰）</li>
-                            <li>將第29行的 <code>YOUR_API_KEY</code> 替換為您的實際API金鑰</li>
+                            <li>建立API密鑰並設定域名限制</li>
+                            <li>將密鑰更新到網站程式碼中</li>
                         </ol>
-                        <div style="margin-top: 1rem; padding: 1rem; background: #FFF9F5; border-radius: 5px;">
-                            <p style="margin: 0; color: #666; font-size: 0.8rem;">
-                                <strong>目前狀態：</strong> 使用範例回收點資料，地圖功能需要有效的API金鑰才能運作
-                            </p>
+                        <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 5px;">
+                            <small style="color: #666;">
+                                <strong>目前使用的API密鑰：</strong><br>
+                                AIzaSyDQFkghNWGW5jGAaiwzcGhk_vX-LgZwzaY
+                            </small>
                         </div>
                     </div>
+                    <button onclick="location.reload()" style="background: #FF7A00; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: 600; margin-top: 1rem;">
+                        <i class="fas fa-refresh" style="margin-right: 0.5rem;"></i>重新載入
+                    </button>
                 </div>
             `;
         }
