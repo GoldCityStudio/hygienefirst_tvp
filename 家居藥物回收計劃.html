@@ -2357,15 +2357,12 @@
             const regionData = completeCollectionPointsData.filter(item => item.地區 === regionName);
             console.log(`Sample data for ${regionName}:`, regionData.slice(0, 3));
             
-            // Define all 18 Hong Kong districts
-            const allDistricts = [
-                // Hong Kong Island (4 districts)
-                '中西區', '灣仔區', '東區', '南區',
-                // Kowloon (5 districts)  
-                '油尖旺區', '深水埗區', '九龍城區', '黃大仙區', '觀塘區',
-                // New Territories (9 districts)
-                '北區', '大埔區', '沙田區', '西貢區', '荃灣區', '屯門區', '元朗區', '葵青區', '離島區'
-            ];
+            // Define districts by region for better organization
+            const districtsByRegion = {
+                '香港島': ['中西區', '灣仔區', '東區', '南區'],
+                '九龍': ['油尖旺區', '深水埗區', '九龍城區', '黃大仙區', '觀塘區'],
+                '新界': ['北區', '大埔區', '沙田區', '西貢區', '荃灣區', '屯門區', '元朗區', '葵青區', '離島區']
+            };
             
             // Get districts that have collection points in the current region
             const availableDistricts = [...new Set(
@@ -2386,14 +2383,15 @@
             allButton.onclick = () => selectDistrict('');
             districtButtonsContainer.appendChild(allButton);
             
-            // Create district buttons for all 18 districts, but show availability status
-            allDistricts.forEach(district => {
+            // Show districts for the current region first
+            const currentRegionDistricts = districtsByRegion[regionName] || [];
+            currentRegionDistricts.forEach(district => {
                 const button = document.createElement('button');
                 button.textContent = district;
                 button.className = 'district-button';
                 button.setAttribute('data-district', district);
                 
-                // Check if this district has collection points in the current region
+                // Check if this district has collection points
                 const hasPoints = availableDistricts.includes(district);
                 
                 if (hasPoints) {
@@ -2412,6 +2410,33 @@
                 };
                 districtButtonsContainer.appendChild(button);
             });
+            
+            // Add separator if there are other regions' districts to show
+            const otherRegions = Object.keys(districtsByRegion).filter(region => region !== regionName);
+            if (otherRegions.length > 0) {
+                const separator = document.createElement('div');
+                separator.style.cssText = 'width: 100%; height: 1px; background: #ddd; margin: 1rem 0;';
+                districtButtonsContainer.appendChild(separator);
+                
+                const otherRegionsLabel = document.createElement('div');
+                otherRegionsLabel.textContent = '其他地區';
+                otherRegionsLabel.style.cssText = 'color: #999; font-size: 0.9rem; margin: 0.5rem 0; font-weight: 600;';
+                districtButtonsContainer.appendChild(otherRegionsLabel);
+                
+                // Show districts from other regions (disabled)
+                otherRegions.forEach(region => {
+                    districtsByRegion[region].forEach(district => {
+                        const button = document.createElement('button');
+                        button.textContent = district;
+                        button.className = 'district-button';
+                        button.setAttribute('data-district', district);
+                        button.style.cssText = 'background: #f8f8f8; color: #bbb; border: 1px dashed #ddd; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: not-allowed; font-weight: 600; transition: all 0.3s ease; margin: 0.25rem; opacity: 0.7;';
+                        button.disabled = true;
+                        button.title = `此地區屬於${region}，請先選擇${region}區域`;
+                        districtButtonsContainer.appendChild(button);
+                    });
+                });
+            }
             
             // Update district count display
             updateDistrictCount();
