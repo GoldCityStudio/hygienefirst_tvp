@@ -716,6 +716,21 @@
                 </button>
             </div>
 
+            <!-- All Districts Quick Access -->
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: #333; margin-bottom: 1rem; text-align: center; font-size: 1.1rem;">
+                    <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem; color: #FF7A00;"></i>快速選擇地區
+                </h4>
+                <div id="allDistrictsButtons" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; padding: 1rem; background: #f8f9fa; border-radius: 15px; border: 2px solid #e9ecef;">
+                    <!-- All 18 districts will be populated here -->
+                </div>
+            </div>
+
+            <!-- Dynamic District Filter (for current region) -->
+            <div id="districtButtons" style="margin-bottom: 1.5rem;">
+                <!-- District buttons will be populated dynamically based on selected region -->
+            </div>
+
    
             <!-- Hong Kong Island Table -->
             <div id="hkIslandTable" class="region-table" style="display: block;">
@@ -2046,6 +2061,9 @@
                         // Populate the tables
                         populateCollectionPointsTables();
                         
+                        // Populate all districts quick access buttons
+                        populateAllDistrictsButtons();
+                        
                         // Load collection points on map if map is initialized
                         if (typeof map !== 'undefined' && map) {
                             loadCollectionPointsOnMap();
@@ -2330,6 +2348,79 @@
                 'newTerritories': '新界'
             };
             return regionMap[region] || region;
+        }
+        
+        // Function to populate all districts quick access buttons
+        function populateAllDistrictsButtons() {
+            const allDistrictsContainer = document.getElementById('allDistrictsButtons');
+            if (!allDistrictsContainer) return;
+            
+            // Clear existing buttons
+            allDistrictsContainer.innerHTML = '';
+            
+            // Define all 18 Hong Kong districts with their regions
+            const allDistricts = [
+                // Hong Kong Island (4 districts)
+                { name: '中西區', region: '香港島', regionTab: 'hkIsland' },
+                { name: '灣仔區', region: '香港島', regionTab: 'hkIsland' },
+                { name: '東區', region: '香港島', regionTab: 'hkIsland' },
+                { name: '南區', region: '香港島', regionTab: 'hkIsland' },
+                // Kowloon (5 districts)  
+                { name: '油尖旺區', region: '九龍', regionTab: 'kowloon' },
+                { name: '深水埗區', region: '九龍', regionTab: 'kowloon' },
+                { name: '九龍城區', region: '九龍', regionTab: 'kowloon' },
+                { name: '黃大仙區', region: '九龍', regionTab: 'kowloon' },
+                { name: '觀塘區', region: '九龍', regionTab: 'kowloon' },
+                // New Territories (9 districts)
+                { name: '北區', region: '新界', regionTab: 'newTerritories' },
+                { name: '大埔區', region: '新界', regionTab: 'newTerritories' },
+                { name: '沙田區', region: '新界', regionTab: 'newTerritories' },
+                { name: '西貢區', region: '新界', regionTab: 'newTerritories' },
+                { name: '荃灣區', region: '新界', regionTab: 'newTerritories' },
+                { name: '屯門區', region: '新界', regionTab: 'newTerritories' },
+                { name: '元朗區', region: '新界', regionTab: 'newTerritories' },
+                { name: '葵青區', region: '新界', regionTab: 'newTerritories' },
+                { name: '離島區', region: '新界', regionTab: 'newTerritories' }
+            ];
+            
+            // Create buttons for all districts
+            allDistricts.forEach(district => {
+                const button = document.createElement('button');
+                button.textContent = district.name;
+                button.className = 'all-district-button';
+                button.setAttribute('data-district', district.name);
+                button.setAttribute('data-region', district.region);
+                button.setAttribute('data-region-tab', district.regionTab);
+                
+                // Check if this district has collection points
+                const hasPoints = completeCollectionPointsData && completeCollectionPointsData.some(item => 
+                    item.district === district.name
+                );
+                
+                if (hasPoints) {
+                    // District has collection points - normal styling
+                    button.style.cssText = 'background: #e0e0e0; color: #666; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; margin: 0.1rem; font-size: 0.9rem;';
+                    button.title = `點擊查看${district.name}的回收點 (屬於${district.region})`;
+                } else {
+                    // District has no collection points - disabled styling
+                    button.style.cssText = 'background: #f5f5f5; color: #ccc; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: not-allowed; font-weight: 600; transition: all 0.3s ease; margin: 0.1rem; font-size: 0.9rem; opacity: 0.6;';
+                    button.disabled = true;
+                    button.title = `${district.name}暫無回收點 (屬於${district.region})`;
+                }
+                
+                button.onclick = () => {
+                    if (hasPoints) {
+                        // Switch to the correct region first
+                        showRegion(district.regionTab);
+                        // Then select the district
+                        setTimeout(() => {
+                            selectDistrict(district.name);
+                        }, 100);
+                    }
+                };
+                
+                allDistrictsContainer.appendChild(button);
+            });
         }
         
         // Function to populate district buttons
