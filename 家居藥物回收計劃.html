@@ -3449,18 +3449,35 @@
         document.head.appendChild(style);
     </script>
 
-    <!-- Drug Recovery Poster Popup -->
+    <!-- Drug Recovery Notification Popup -->
     <div id="drugRecoveryPopup" class="popup-overlay">
         <div class="popup-content">
             <button class="popup-close" onclick="closeDrugRecoveryPopup()">&times;</button>
-            <img src="images/popup/HYG022 - 藥物回收海報 - v12 - no englis - RGB.jpg" alt="藥物回收海報" class="popup-image">
+            <div class="notification-content">
+                <h3 class="notification-title">【愛地球-藥物回收收集點啟用通知】</h3>
+                <div class="notification-body">
+                    <p>隨着9月29日的啟動禮儀式結束，本月啟用的「愛地球藥物回收計劃」收集計劃，將會於2025年10月20日陸續投入服務。具體安排將於稍後公布，不便之處，敬請原諒。</p>
+                    
+                    <p>各位可透過以下途徑獲取最新藥物回收安排詳情：</p>
+                    <ul>
+                        <li>計劃官方網站：<a href="https://www.hygienefirstgroup.com/家居藥物回收計劃" target="_blank" style="color: #FF7A00;">https://www.hygienefirstgroup.com/家居藥物回收計劃</a></li>
+                        <li>大灣區醫護教師社工協會社交媒體平台</li>
+                    </ul>
+                    
+                    <p>感謝各位一直以來對本計劃的支持與耐心，籌委會將繼續致力為市民提供安全、便捷的藥物回收服務。</p>
+                    
+                    <div class="notification-footer">
+                        <p><strong>愛地球藥物回收計劃籌委會</strong><br>2025年10月4日</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Floating Button to Show Poster -->
-    <button id="showPosterBtn" class="floating-btn" onclick="showDrugRecoveryPopup()" title="查看藥物回收海報">
-        <i class="fas fa-image"></i>
-        <span class="btn-text">海報</span>
+    <!-- Floating Button to Show Notification -->
+    <button id="showPosterBtn" class="floating-btn" onclick="showDrugRecoveryPopup()" title="查看藥物回收通知">
+        <i class="fas fa-bell"></i>
+        <span class="btn-text">通知</span>
     </button>
 
     <style>
@@ -3519,12 +3536,55 @@
             background: rgba(0, 0, 0, 0.9);
         }
 
-        .popup-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            max-height: 95vh;
-            object-fit: contain;
+        .notification-content {
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        
+        .notification-title {
+            color: #FF7A00;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 1.5rem 0;
+            text-align: center;
+            border-bottom: 2px solid #FF7A00;
+            padding-bottom: 1rem;
+        }
+        
+        .notification-body {
+            color: #333;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .notification-body p {
+            margin: 1rem 0;
+        }
+        
+        .notification-body ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .notification-body li {
+            margin: 0.5rem 0;
+        }
+        
+        .notification-footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            text-align: right;
+            color: #666;
+        }
+        
+        .notification-footer p {
+            margin: 0;
         }
 
         @media (max-width: 768px) {
