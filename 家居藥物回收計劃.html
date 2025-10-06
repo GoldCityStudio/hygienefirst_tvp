@@ -3670,6 +3670,27 @@
             <button class="popup-close" onclick="closeDrugRecoveryPopup()">&times;</button>
             <div class="notification-content">
                 <h3 class="notification-title">【愛地球-藥物回收收集點啟用通知】</h3>
+                
+                <!-- Countdown Timer -->
+                <div class="countdown-container">
+                    <div class="countdown-title">服務啟動倒計時</div>
+                    <div class="countdown-timer" id="countdownTimer">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="daysLeft">--</span>
+                            <span class="countdown-label">天</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hoursLeft">--</span>
+                            <span class="countdown-label">小時</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="minutesLeft">--</span>
+                            <span class="countdown-label">分鐘</span>
+                        </div>
+                    </div>
+                    <div class="countdown-message">距離2025年10月20日服務啟動還有</div>
+                </div>
+                
                 <div class="notification-body">
                     <p>隨着9月29日的啟動禮儀式結束，本月啟用的「愛地球藥物回收計劃」收集計劃，將會於2025年10月20日陸續投入服務。具體安排將於稍後公布，不便之處，敬請原諒。</p>
                     
@@ -3769,6 +3790,89 @@
             text-align: center;
             border-bottom: 2px solid #FF7A00;
             padding-bottom: 1rem;
+        }
+        
+        /* Countdown Timer Styles */
+        .countdown-container {
+            background: linear-gradient(135deg, #FF7A00, #FF9500);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
+        }
+        
+        .countdown-title {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            min-width: 80px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .countdown-label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .countdown-message {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        /* Responsive countdown */
+        @media (max-width: 768px) {
+            .countdown-timer {
+                gap: 1rem;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+                padding: 0.8rem;
+            }
+            
+            .countdown-number {
+                font-size: 2rem;
+            }
+            
+            .countdown-title {
+                font-size: 1.1rem;
+            }
+            
+            .countdown-message {
+                font-size: 1rem;
+            }
         }
         
         .notification-body {
@@ -3895,6 +3999,7 @@
             if (!sessionStorage.getItem('drugRecoveryPopupShown')) {
                 setTimeout(function() {
                     document.getElementById('drugRecoveryPopup').classList.add('show');
+                    initializeCountdown(); // Start countdown when popup is shown
                 }, 1000); // Show popup after 1 second delay
             }
         });
@@ -3905,11 +4010,47 @@
             
             // Mark popup as shown in this session
             sessionStorage.setItem('drugRecoveryPopupShown', 'true');
+            
+            // Stop countdown timer when popup is closed
+            if (window.countdownInterval) {
+                clearInterval(window.countdownInterval);
+            }
+        }
+
+        // Countdown Timer Function
+        function updateCountdown() {
+            const targetDate = new Date('2025-10-20T00:00:00+08:00'); // Hong Kong timezone
+            const now = new Date();
+            const timeLeft = targetDate - now;
+
+            if (timeLeft <= 0) {
+                // Service has started
+                document.getElementById('daysLeft').textContent = '0';
+                document.getElementById('hoursLeft').textContent = '0';
+                document.getElementById('minutesLeft').textContent = '0';
+                document.querySelector('.countdown-message').textContent = '服務已正式啟動！';
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById('daysLeft').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hoursLeft').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutesLeft').textContent = minutes.toString().padStart(2, '0');
+        }
+
+        // Initialize countdown when popup is shown
+        function initializeCountdown() {
+            updateCountdown(); // Initial update
+            window.countdownInterval = setInterval(updateCountdown, 60000); // Update every minute
         }
 
         function showDrugRecoveryPopup() {
             const popup = document.getElementById('drugRecoveryPopup');
             popup.classList.add('show');
+            initializeCountdown(); // Start countdown when popup is shown
         }
 
         // Close popup when clicking outside the image
