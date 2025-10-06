@@ -3687,6 +3687,10 @@
                             <span class="countdown-number" id="minutesLeft">--</span>
                             <span class="countdown-label">分鐘</span>
                         </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="secondsLeft">--</span>
+                            <span class="countdown-label">秒</span>
+                        </div>
                     </div>
                     <div class="countdown-message">距離2025年10月20日服務啟動還有</div>
                 </div>
@@ -3854,16 +3858,18 @@
         /* Responsive countdown */
         @media (max-width: 768px) {
             .countdown-timer {
-                gap: 1rem;
+                gap: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .countdown-item {
-                min-width: 60px;
-                padding: 0.8rem;
+                min-width: 55px;
+                padding: 0.7rem;
             }
             
             .countdown-number {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .countdown-title {
@@ -3872,6 +3878,25 @@
             
             .countdown-message {
                 font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .countdown-timer {
+                gap: 0.5rem;
+            }
+            
+            .countdown-item {
+                min-width: 50px;
+                padding: 0.6rem;
+            }
+            
+            .countdown-number {
+                font-size: 1.6rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.9rem;
             }
         }
         
@@ -4028,6 +4053,7 @@
                 document.getElementById('daysLeft').textContent = '0';
                 document.getElementById('hoursLeft').textContent = '0';
                 document.getElementById('minutesLeft').textContent = '0';
+                document.getElementById('secondsLeft').textContent = '0';
                 document.querySelector('.countdown-message').textContent = '服務已正式啟動！';
                 return;
             }
@@ -4035,16 +4061,18 @@
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
             document.getElementById('daysLeft').textContent = days.toString().padStart(2, '0');
             document.getElementById('hoursLeft').textContent = hours.toString().padStart(2, '0');
             document.getElementById('minutesLeft').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('secondsLeft').textContent = seconds.toString().padStart(2, '0');
         }
 
         // Initialize countdown when popup is shown
         function initializeCountdown() {
             updateCountdown(); // Initial update
-            window.countdownInterval = setInterval(updateCountdown, 60000); // Update every minute
+            window.countdownInterval = setInterval(updateCountdown, 1000); // Update every second
         }
 
         function showDrugRecoveryPopup() {
