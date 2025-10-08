@@ -70,6 +70,78 @@
         body.menu-open {
             overflow: hidden !important;
         }
+        
+        /* Mobile Responsive Styles for Application Scope Section */
+        @media (max-width: 768px) {
+            .application-scope-section .container > div {
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+            
+            .application-scope-section .container > div > div:first-child {
+                order: 1 !important;
+            }
+            
+            .application-scope-section .container > div > div:last-child {
+                order: 2 !important;
+            }
+            
+            .application-scope-section .container > div > div:last-child .scope-header h2,
+            .application-scope-section .container > div > div:last-child .scope-header p {
+                text-align: center !important;
+            }
+            
+            .application-scope-section .container > div > div:last-child .scope-header h2 {
+                font-size: 1.8rem !important;
+            }
+            
+            .application-scope-section .container > div > div:last-child .scope-header p {
+                font-size: 1rem !important;
+            }
+            
+            /* Mobile Responsive Styles for Scientific Proof Section */
+            .scientific-proof-section .container > div {
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+            
+            .scientific-proof-section .container > div > div:first-child {
+                order: 1 !important;
+            }
+            
+            .scientific-proof-section .container > div > div:last-child {
+                order: 2 !important;
+            }
+            
+            .scientific-proof-section .container > div > div:last-child .proof-header h2 {
+                text-align: center !important;
+                font-size: 1.8rem !important;
+            }
+            
+            /* Mobile Responsive Styles for Patent Principles Section */
+            .patent-principles-section .container > div {
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+            
+            .patent-principles-section .container > div > div:first-child {
+                order: 1 !important;
+            }
+            
+            .patent-principles-section .container > div > div:last-child {
+                order: 2 !important;
+            }
+            
+            .patent-principles-section .container > div > div:last-child .section-header h2 {
+                text-align: center !important;
+                font-size: 1.8rem !important;
+            }
+            
+            .patent-principles-section .container > div > div:last-child .section-header p {
+                text-align: center !important;
+                font-size: 1rem !important;
+            }
+        }
     </style>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -245,7 +317,7 @@
                 </div>
                 <div class="hero-image" style="flex: 1; text-align: center; min-width: 500px;">
                     <div style="position: relative; display: inline-block;">
-                        <img src="images\housekeeping\5.jpg" alt="消毒防疫服務" style="width: 500px; height: 500px; border-radius: 50%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <img src="images\housekeeping\Photo 3.JPG" alt="消毒防疫服務" style="width: 500px; height: 500px; border-radius: 50%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                         <div style="position: absolute; bottom: 25px; left: 25px; background: #fff3e0; padding: 1rem 1.2rem; border-radius: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                             <span style="color: #FF7A00; font-weight: bold; font-size: 1rem;">消毒防疫服務
 </span>
@@ -291,80 +363,94 @@
         <!-- Application Scope Section -->
         <section class="application-scope-section">
             <div class="container">
-                <div class="scope-header">
-                    <h2 class="scope-title" style="color: #fff !important;">適用範圍</h2>
-                    <p class="scope-description">SAMBO光自潔系列的專利配方,可以在任何微弱光照下發揮效能, 所以SAMBO光自潔系列適用於大部份室內及室外空間, 達到全方位保護您的生活空間。</p>
-                </div>
-                
-                <div class="application-grid">
-                    <div class="application-item">
-                        <div class="application-icon">
-                            <i class="fas fa-home"></i>
+                <div style="display: flex; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- Left Side - Image (Desktop) -->
+                    <div style="flex: 1; order: 1;">
+                        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <img src="images/housekeeping/Photo 12.jpg" alt="適用範圍" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+                            <!-- Overlay for better text readability if needed -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.1)); height: 50px;"></div>
                         </div>
-                        <span class="application-text">家居</span>
                     </div>
                     
-                    <div class="application-item">
-                        <div class="application-icon">
-                            <i class="fas fa-industry"></i>
+                    <!-- Right Side - Content (Desktop) -->
+                    <div style="flex: 1; order: 2;">
+                        <div class="scope-header">
+                            <h2 class="scope-title" style="color: #fff !important; font-size: 2rem; margin-bottom: 1rem; font-weight: bold;">適用範圍</h2>
+                            <p class="scope-description" style="font-size: 1.1rem; color: #fff; margin-bottom: 2rem; line-height: 1.6;">SAMBO光自潔系列的專利配方,可以在任何微弱光照下發揮效能, 所以SAMBO光自潔系列適用於大部份室內及室外空間, 達到全方位保護您的生活空間。</p>
                         </div>
-                        <span class="application-text">廠房</span>
-                    </div>
-                    
-                    <div class="application-item">
-                        <div class="application-icon">
-                            <i class="fas fa-building"></i>
+                        
+                        <div class="application-grid">
+                            <div class="application-item">
+                                <div class="application-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <span class="application-text">家居</span>
+                            </div>
+                            
+                            <div class="application-item">
+                                <div class="application-icon">
+                                    <i class="fas fa-industry"></i>
+                                </div>
+                                <span class="application-text">廠房</span>
+                            </div>
+                            
+                            <div class="application-item">
+                                <div class="application-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <span class="application-text">辦公室</span>
+                            </div>
+                            
+                            <div class="application-item">
+                                <div class="application-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <span class="application-text">餐廳</span>
+                            </div>
+                            
+                            <div class="application-item">
+                                <div class="application-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <span class="application-text">車廂</span>
+                            </div>
+                            
+                            <div class="application-item">
+                                <div class="application-icon">
+                                    <i class="fas fa-baby"></i>
+                                </div>
+                                <span class="application-text">嬰兒車</span>
+                            </div>
+                            
+                            <div class="application-item">
+                                <div class="application-icon">
+                                    <i class="fas fa-paw"></i>
+                                </div>
+                                <span class="application-text">寵物屋</span>
+                            </div>
+                            
+                            <div class="application-item">
+                                <div class="application-icon">
+                                    <i class="fas fa-school"></i>
+                                </div>
+                                <span class="application-text">學校</span>
+                            </div>
+                            
+                            <div class="application-item">
+                                <div class="application-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <span class="application-text">醫院</span>
+                            </div>
+                            
+                            <div class="application-item">
+                                <div class="application-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <span class="application-text">商場</span>
+                            </div>
                         </div>
-                        <span class="application-text">辦公室</span>
-                    </div>
-                    
-                    <div class="application-item">
-                        <div class="application-icon">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <span class="application-text">餐廳</span>
-                    </div>
-                    
-                    <div class="application-item">
-                        <div class="application-icon">
-                            <i class="fas fa-car"></i>
-                        </div>
-                        <span class="application-text">車廂</span>
-                    </div>
-                    
-                    <div class="application-item">
-                        <div class="application-icon">
-                            <i class="fas fa-baby"></i>
-                        </div>
-                        <span class="application-text">嬰兒車</span>
-                    </div>
-                    
-                    <div class="application-item">
-                        <div class="application-icon">
-                            <i class="fas fa-paw"></i>
-                        </div>
-                        <span class="application-text">寵物屋</span>
-                    </div>
-                    
-                    <div class="application-item">
-                        <div class="application-icon">
-                            <i class="fas fa-school"></i>
-                        </div>
-                        <span class="application-text">學校</span>
-                    </div>
-                    
-                    <div class="application-item">
-                        <div class="application-icon">
-                            <i class="fas fa-hospital"></i>
-                        </div>
-                        <span class="application-text">醫院</span>
-                    </div>
-                    
-                    <div class="application-item">
-                        <div class="application-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <span class="application-text">商場</span>
                     </div>
                 </div>
             </div>
@@ -373,51 +459,65 @@
         <!-- Scientific Proof Section -->
         <section class="scientific-proof-section">
             <div class="container">
-                <div class="proof-header">
-                    <h2 class="proof-title">HYGIENE FIRST x SAMBO光自潔系列經科研實證可高效分解</h2>
-                </div>
-                
-                <div class="proof-grid">
-                    <div class="proof-item">
-                        <div class="proof-icon">
-                            <i class="fas fa-bacteria"></i>
-                        </div>
-                        <h3 class="proof-category">抗菌</h3>
-                    </div>
+                <div style="display: flex; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto;">
+                     <!-- Left Side - Image (Desktop) -->
+                     <div style="flex: 0.6667; order: 1;">
+                         <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                             <img src="images/housekeeping/Photo 13.jpg" alt="科研實證" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+                             <!-- Overlay for better text readability if needed -->
+                             <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.1)); height: 50px;"></div>
+                         </div>
+                     </div>
                     
-                    <div class="proof-item">
-                        <div class="proof-icon">
-                            <i class="fas fa-virus"></i>
+                    <!-- Right Side - Content (Desktop) -->
+                    <div style="flex: 1; order: 2;">
+                        <div class="proof-header">
+                            <h2 class="proof-title" style="font-size: 2rem; margin-bottom: 2rem; font-weight: bold;">HYGIENE FIRST x SAMBO光自潔系列經科研實證可高效分解</h2>
                         </div>
-                        <h3 class="proof-category">殺滅病毒</h3>
-                    </div>
-                    
-                    <div class="proof-item">
-                        <div class="proof-icon">
-                            <i class="fas fa-exclamation-triangle"></i>
+                        
+                        <div class="proof-grid">
+                            <div class="proof-item">
+                                <div class="proof-icon">
+                                    <i class="fas fa-bacteria"></i>
+                                </div>
+                                <h3 class="proof-category">抗菌</h3>
+                            </div>
+                            
+                            <div class="proof-item">
+                                <div class="proof-icon">
+                                    <i class="fas fa-virus"></i>
+                                </div>
+                                <h3 class="proof-category">殺滅病毒</h3>
+                            </div>
+                            
+                            <div class="proof-item">
+                                <div class="proof-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <h3 class="proof-category">分解VOCs</h3>
+                            </div>
+                            
+                            <div class="proof-item">
+                                <div class="proof-icon">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <h3 class="proof-category">分解甲醛</h3>
+                            </div>
+                            
+                            <div class="proof-item">
+                                <div class="proof-icon">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <h3 class="proof-category">消臭</h3>
+                            </div>
+                            
+                            <div class="proof-item">
+                                <div class="proof-icon">
+                                    <i class="fas fa-shield-virus"></i>
+                                </div>
+                                <h3 class="proof-category">防霉</h3>
+                            </div>
                         </div>
-                        <h3 class="proof-category">分解VOCs</h3>
-                    </div>
-                    
-                    <div class="proof-item">
-                        <div class="proof-icon">
-                            <i class="fas fa-flask"></i>
-                        </div>
-                        <h3 class="proof-category">分解甲醛</h3>
-                    </div>
-                    
-                    <div class="proof-item">
-                        <div class="proof-icon">
-                            <i class="fas fa-wind"></i>
-                        </div>
-                        <h3 class="proof-category">消臭</h3>
-                    </div>
-                    
-                    <div class="proof-item">
-                        <div class="proof-icon">
-                            <i class="fas fa-shield-virus"></i>
-                        </div>
-                        <h3 class="proof-category">防霉</h3>
                     </div>
                 </div>
             </div>
@@ -426,41 +526,63 @@
         <!-- Patent Principles Section -->
         <section class="patent-principles-section">
             <div class="container">
-                <div class="section-header">
-                 
-                    <h2 class="section-title">HYGIENE FIRST x SAMBO光自潔技術<br>專利原理</h2>
-                    <p class="section-description">HYGIENE FIRST x SAMBO 光自潔技術的創新專利原理與科學基礎</p>
-                </div>
-                
-                <div class="principles-content">
-                    <!-- Technology Overview -->
-                    <div class="tech-overview">
-                        <div class="overview-card">
-                            <div class="overview-icon">
-                                <i class="fas fa-microchip"></i>
+                <div style="display: flex; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- Left Side - Image Slider (Desktop) -->
+                    <div style="flex: 1; order: 1;">
+                        <div class="patent-slider" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <div class="patent-slider-container" style="display: flex; transition: transform 0.5s ease;">
+                                <div class="patent-slide" style="min-width: 100%;">
+                                    <img src="images/housekeeping/Photo 14.jpg" alt="專利原理" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+                                </div>
+                                <div class="patent-slide" style="min-width: 100%;">
+                                    <img src="images/housekeeping/Photo 17.jpg" alt="專利原理" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+                                </div>
                             </div>
-                            <h3>納米摻雜技術</h3>
-                            <p>通過先進的納米摻雜技術對納米光催化劑進行改性，實現技術突破</p>
-                        </div>
-                        
-                        <div class="overview-card">
-                            <div class="overview-icon">
-                                <i class="fas fa-atom"></i>
+                            <button class="patent-slider-btn prev" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,122,0,0.8); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 24px; color: white; z-index: 10; transition: all 0.3s ease;">‹</button>
+                            <button class="patent-slider-btn next" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(255,122,0,0.8); border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 24px; color: white; z-index: 10; transition: all 0.3s ease;">›</button>
+                            <div class="patent-slider-dots" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10;">
+                                <span class="patent-dot active" style="width: 12px; height: 12px; border-radius: 50%; background: rgba(255,122,0,1); cursor: pointer; transition: all 0.3s ease;"></span>
+                                <span class="patent-dot" style="width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.3s ease;"></span>
                             </div>
-                            <h3>晶格結構改變</h3>
-                            <p>改變光催化劑的晶格結構和能帶間隙，提升光催化性能</p>
-                        </div>
-                        
-                        <div class="overview-card">
-                            <div class="overview-icon">
-                                <i class="fas fa-sun"></i>
-                            </div>
-                            <h3>可見光激活</h3>
-                            <p>在可見光條件下實現高效光催化性能，無需特殊紫外線設備</p>
                         </div>
                     </div>
-           
-                 
+                    
+                    <!-- Right Side - Content (Desktop) -->
+                    <div style="flex: 1; order: 2;">
+                        <div class="section-header" style="text-align: center;">
+                            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1rem; font-weight: bold;">HYGIENE FIRST x SAMBO光自潔技術<br>專利原理</h2>
+                            <p class="section-description" style="font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.6;">HYGIENE FIRST x SAMBO 光自潔技術的創新專利原理與科學基礎</p>
+                        </div>
+                        
+                        <div class="principles-content">
+                            <!-- Technology Overview -->
+                            <div class="tech-overview">
+                                <div class="overview-card" style="text-align: center;">
+                                    <div class="overview-icon">
+                                        <i class="fas fa-microchip"></i>
+                                    </div>
+                                    <h3>納米摻雜技術</h3>
+                                    <p>通過先進的納米摻雜技術對納米光催化劑進行改性，實現技術突破</p>
+                                </div>
+                                
+                                <div class="overview-card" style="text-align: center;">
+                                    <div class="overview-icon">
+                                        <i class="fas fa-atom"></i>
+                                    </div>
+                                    <h3>晶格結構改變</h3>
+                                    <p>改變光催化劑的晶格結構和能帶間隙，提升光催化性能</p>
+                                </div>
+                                
+                                <div class="overview-card" style="text-align: center;">
+                                    <div class="overview-icon">
+                                        <i class="fas fa-sun"></i>
+                                    </div>
+                                    <h3>可見光激活</h3>
+                                    <p>在可見光條件下實現高效光催化性能，無需特殊紫外線設備</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1139,6 +1261,102 @@
         const statsSection = document.querySelector('.statistics-section');
         if (statsSection) {
             observer.observe(statsSection);
+        }
+    });
+
+    // Patent Slider JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+        const patentSliderContainer = document.querySelector('.patent-slider-container');
+        const patentSlides = document.querySelectorAll('.patent-slide');
+        const patentPrevBtn = document.querySelector('.patent-slider-btn.prev');
+        const patentNextBtn = document.querySelector('.patent-slider-btn.next');
+        const patentDots = document.querySelectorAll('.patent-dot');
+        
+        if (!patentSliderContainer || patentSlides.length === 0) return;
+        
+        let currentPatentSlide = 0;
+        const totalPatentSlides = patentSlides.length;
+        
+        // Function to update patent slider position
+        function updatePatentSlider() {
+            patentSliderContainer.style.transform = `translateX(-${currentPatentSlide * 100}%)`;
+            
+            // Update active dot
+            patentDots.forEach((dot, index) => {
+                dot.style.background = index === currentPatentSlide ? 'rgba(255,122,0,1)' : 'rgba(255,255,255,0.7)';
+            });
+        }
+        
+        // Next slide function
+        function nextPatentSlide() {
+            currentPatentSlide = (currentPatentSlide + 1) % totalPatentSlides;
+            updatePatentSlider();
+        }
+        
+        // Previous slide function
+        function prevPatentSlide() {
+            currentPatentSlide = (currentPatentSlide - 1 + totalPatentSlides) % totalPatentSlides;
+            updatePatentSlider();
+        }
+        
+        // Event listeners for buttons
+        if (patentNextBtn) {
+            patentNextBtn.addEventListener('click', nextPatentSlide);
+        }
+        
+        if (patentPrevBtn) {
+            patentPrevBtn.addEventListener('click', prevPatentSlide);
+        }
+        
+        // Event listeners for dots
+        patentDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentPatentSlide = index;
+                updatePatentSlider();
+            });
+        });
+        
+        // Auto-play functionality
+        let patentAutoPlayInterval = setInterval(nextPatentSlide, 4000); // Change slide every 4 seconds
+        
+        // Pause auto-play on hover
+        const patentSlider = document.querySelector('.patent-slider');
+        if (patentSlider) {
+            patentSlider.addEventListener('mouseenter', () => {
+                clearInterval(patentAutoPlayInterval);
+            });
+            
+            patentSlider.addEventListener('mouseleave', () => {
+                patentAutoPlayInterval = setInterval(nextPatentSlide, 4000);
+            });
+        }
+        
+        // Touch/swipe support for mobile
+        let patentStartX = 0;
+        let patentEndX = 0;
+        
+        if (patentSlider) {
+            patentSlider.addEventListener('touchstart', (e) => {
+                patentStartX = e.touches[0].clientX;
+            });
+            
+            patentSlider.addEventListener('touchend', (e) => {
+                patentEndX = e.changedTouches[0].clientX;
+                handlePatentSwipe();
+            });
+        }
+        
+        function handlePatentSwipe() {
+            const swipeThreshold = 50;
+            const diff = patentStartX - patentEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextPatentSlide(); // Swipe left
+                } else {
+                    prevPatentSlide(); // Swipe right
+                }
+            }
         }
     });
     </script>

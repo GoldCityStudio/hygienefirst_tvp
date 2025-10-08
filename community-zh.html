@@ -271,6 +271,55 @@
                         background-color: white;
                     }
 
+                    /* Mobile Responsive Styles for Download Info Section */
+                    @media (max-width: 768px) {
+                        .final-cta-section .container > div {
+                            flex-direction: column !important;
+                            gap: 2rem !important;
+                        }
+                        
+                        .final-cta-section .container > div > div:first-child {
+                            order: 1 !important;
+                        }
+                        
+                        .final-cta-section .container > div > div:last-child {
+                            order: 2 !important;
+                        }
+                        
+                        .final-cta-section .container > div > div:last-child .section-header h2 {
+                            text-align: center !important;
+                            font-size: 1.8rem !important;
+                        }
+                        
+                        .final-cta-section .container > div > div:last-child .section-header p {
+                            text-align: center !important;
+                            font-size: 1rem !important;
+                        }
+                        
+                        /* Mobile Responsive Styles for Participation Section */
+                        .participation-section .container > div {
+                            flex-direction: column !important;
+                            gap: 2rem !important;
+                        }
+                        
+                        .participation-section .container > div > div:first-child {
+                            order: 1 !important;
+                        }
+                        
+                        .participation-section .container > div > div:last-child {
+                            order: 2 !important;
+                        }
+                        
+                        .participation-section .container > div > div:last-child .section-header h2 {
+                            text-align: center !important;
+                            font-size: 1.8rem !important;
+                        }
+                        
+                        .participation-section .container > div > div:last-child .participation-content p {
+                            text-align: center !important;
+                            font-size: 1rem !important;
+                        }
+                    }
 
                 </style>
                 
@@ -294,25 +343,52 @@
 
         <section id="download-info" class="final-cta-section">
             <div class="container">
-                <div class="section-header mobile-section-header">
-                    <h2>想了解社區券服務組合的詳情？</h2>
-                    <p>我們可以根據你的需求，為你和家人建議合適的服務。</p>
+                <div style="display: flex; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- Left Side - Image (Desktop) -->
+                    <div style="flex: 1; order: 1;">
+                        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <img src="images/housekeeping/Photo 18.JPG" alt="社區券服務組合詳情" style="width: 100%; height: 400px; object-fit: cover; object-position: center top; display: block;">
+                            <!-- Overlay for better text readability if needed -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.1)); height: 50px;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side - Content (Desktop) -->
+                    <div style="flex: 1; order: 2;">
+                        <div class="section-header mobile-section-header" style="text-align: center;">
+                            <h2>想了解社區券服務組合的詳情？</h2>
+                            <p>我們可以根據你的需求，為你和家人建議合適的服務。</p>
+                        </div>
+                        <div class="contact-options" style="text-align: center;">
+                            <a href="images/下載單張/首衛CCSV價目表(2025).pdf" class="btn secondary-btn" target="_blank" rel="noopener noreferrer" download="首衛CCSV價目表(2025).pdf">下載單張</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-options" style="text-align: center;">
-                    <a href="images/下載單張/首衛CCSV價目表(2025).pdf" class="btn secondary-btn" target="_blank" rel="noopener noreferrer" download="首衛CCSV價目表(2025).pdf">下載單張</a>
-                   </div>
-              
             </div>
         </section>
 
         <!-- How to Participate Section -->
         <section class="participation-section mobile-participation-section">
             <div class="container">
-                <div class="section-header mobile-section-header">
-                    <h2 class="mobile-section-title">如何參與</h2>
-                </div>
-                <div class="participation-content mobile-participation-content">
-                    <p class="participation-text">只要長者正在中央輪候冊排隊輪候資助社區照顧服務及／或院舍照顧服務而未曾使用過以上服務，並且被政府長者中心或社工評估為身體機能中度或嚴重缺損，就有資格參與計劃。</p>
+                <div style="display: flex; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- Left Side - Image (Desktop) -->
+                    <div style="flex: 1; order: 1;">
+                        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <img src="images/housekeeping/Photo 20.jpg" alt="如何參與社區券計劃" style="width: 100%; height: 400px; object-fit: cover; object-position: center center; display: block;">
+                            <!-- Overlay for better text readability if needed -->
+                            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.1)); height: 50px;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side - Content (Desktop) -->
+                    <div style="flex: 1; order: 2;">
+                        <div class="section-header mobile-section-header" style="text-align: center;">
+                            <h2 class="mobile-section-title">如何參與</h2>
+                        </div>
+                        <div class="participation-content mobile-participation-content" style="text-align: center;">
+                            <p class="participation-text">只要長者正在中央輪候冊排隊輪候資助社區照顧服務及／或院舍照顧服務而未曾使用過以上服務，並且被政府長者中心或社工評估為身體機能中度或嚴重缺損，就有資格參與計劃。</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
