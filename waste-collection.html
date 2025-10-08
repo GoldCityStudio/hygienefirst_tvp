@@ -302,27 +302,7 @@
             </h1>
         </div>
     
-        <!-- Images Section Above Slider -->
-        <section class="images-section" style="padding: 3rem 0; background: #f8f9fa;">
-            <div class="container">
-                <div style="display: flex; gap: 2rem; max-width: 1200px; margin: 0 auto;">
-                    <!-- Left Image -->
-                    <div style="flex: 1;">
-                        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                            <img src="images/housekeeping/Photo 15.jpg" alt="醫療及化學廢物收集服務" style="width: 100%; height: 300px; object-fit: cover; display: block;">
-                        </div>
-                    </div>
-                    
-                    <!-- Right Image -->
-                    <div style="flex: 1;">
-                        <div style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                            <img src="images/housekeeping/Photo 16.jpg" alt="醫療及化學廢物收集服務" style="width: 100%; height: 300px; object-fit: cover; display: block;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-      
+
         
         <!-- Full-width image slider -->
         <div class="full-width-image-slider mobile-image-slider" style="position: relative; overflow: hidden;">
@@ -336,11 +316,19 @@
                 <div class="slide mobile-slide" style="min-width: 100%;">
                     <img src="images/醫療及化學廢物收集服務/5.jpg" alt="醫療及化學廢物收集服務" style="width:100%;height:auto;display:block;">
                 </div>
+                <div class="slide mobile-slide" style="min-width: 100%;">
+                    <img src="images/醫療及化學廢物收集服務/6.jpg" alt="醫療及化學廢物收集服務" style="width:100%;height:auto;display:block;">
+                </div>
+                <div class="slide mobile-slide" style="min-width: 100%;">
+                    <img src="images/醫療及化學廢物收集服務/7.jpg" alt="醫療及化學廢物收集服務" style="width:100%;height:auto;display:block;">
+                </div>
             </div>
             <button class="slider-btn prev mobile-slider-btn mobile-prev-btn" style="display: none; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: var(--primary-color); border: none; border-radius: 50%; width: 70px; height: 70px; cursor: pointer; font-size: 68px; color: white; z-index: 10; transition: all 0.3s ease;">‹</button>
             <button class="slider-btn next mobile-slider-btn mobile-next-btn" style="display: none; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: var(--primary-color); border: none; border-radius: 50%; width: 70px; height: 70px; cursor: pointer; font-size: 68px; color: white; z-index: 10; transition: all 0.3s ease;">›</button>
             <div class="slider-dots mobile-slider-dots">
-                <span class="dot active mobile-dot"></span>
+                <span class="dot mobile-dot"></span>
+                <span class="dot mobile-dot"></span>
+                <span class="dot mobile-dot"></span>
                 <span class="dot mobile-dot"></span>
                 <span class="dot mobile-dot"></span>
             </div>
@@ -502,13 +490,22 @@
             let currentSlide = 0;
             const totalSlides = slides.length;
             
+            // Initialize first dot as active
+            if (dots.length > 0) {
+                dots[0].classList.add('active');
+            }
+            
             // Function to update slider position
             function updateSlider() {
                 sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
                 
-                // Update active dot
+                // Update active dot - use CSS classes instead of inline styles
                 dots.forEach((dot, index) => {
-                    dot.style.opacity = index === currentSlide ? '0.8' : '0.4';
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
                 });
             }
             
