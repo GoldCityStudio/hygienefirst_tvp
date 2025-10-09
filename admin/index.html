@@ -5,6 +5,405 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hygiene First - Content Manager</title>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Ensure CMS is loaded before initializing
+    window.addEventListener('load', function() {
+      if (typeof CMS !== 'undefined') {
+        initializeCMS();
+      } else {
+        console.error('CMS library not loaded');
+      }
+    });
+    
+    function initializeCMS() {
+      CMS.init({
+        config: {
+          backend: {
+            name: 'github',
+            repo: 'GoldCityStudio/hygienefirst_tvp',
+            branch: 'main',
+            site_domain: 'www.hygienefirstgroup.com',
+          },
+          load_config_file: false,
+          media_folder: 'images',
+          public_folder: '/images',
+          collections: [
+            {
+              name: 'services',
+              label: '🏥 Healthcare Services',
+              folder: 'content/services',
+              create: true,
+              slug: '{{slug}}',
+              fields: [
+                {
+                  label: 'Title',
+                  name: 'title',
+                  widget: 'string',
+                  required: true
+                },
+                {
+                  label: 'English Title',
+                  name: 'title_en',
+                  widget: 'string'
+                },
+                {
+                  label: 'Slug',
+                  name: 'slug',
+                  widget: 'string',
+                  required: true,
+                  hint: 'URL-friendly version of title (e.g., elderly-care)'
+                },
+                {
+                  label: 'Description',
+                  name: 'description',
+                  widget: 'text',
+                  required: true
+                },
+                {
+                  label: 'Content',
+                  name: 'body',
+                  widget: 'markdown',
+                  required: true
+                },
+                {
+                  label: 'Featured Image',
+                  name: 'image',
+                  widget: 'image',
+                  required: true
+                },
+                {
+                  label: 'Price',
+                  name: 'price',
+                  widget: 'string',
+                  hint: 'e.g., $500/hour or Contact for pricing'
+                },
+                {
+                  label: 'Category',
+                  name: 'category',
+                  widget: 'select',
+                  options: [
+                    'homecare',
+                    'elderly-care',
+                    'wound-care',
+                    'rehabilitation',
+                    'caregiver-training',
+                    'cancer-care',
+                    'dementia-care',
+                    'post-surgery-care',
+                    'nasogastric-care',
+                    'stroke-care'
+                  ],
+                  required: true
+                },
+                {
+                  label: 'Featured',
+                  name: 'featured',
+                  widget: 'boolean',
+                  default: false
+                },
+                {
+                  label: 'Published',
+                  name: 'published',
+                  widget: 'boolean',
+                  default: true
+                },
+                {
+                  label: 'Publish Date',
+                  name: 'date',
+                  widget: 'datetime',
+                  default: '{{now}}'
+                }
+              ]
+            },
+            {
+              name: 'news',
+              label: '📰 News & Updates',
+              folder: 'content/news',
+              create: true,
+              slug: '{{slug}}',
+              fields: [
+                {
+                  label: 'Title',
+                  name: 'title',
+                  widget: 'string',
+                  required: true
+                },
+                {
+                  label: 'English Title',
+                  name: 'title_en',
+                  widget: 'string'
+                },
+                {
+                  label: 'Slug',
+                  name: 'slug',
+                  widget: 'string',
+                  required: true
+                },
+                {
+                  label: 'Excerpt',
+                  name: 'excerpt',
+                  widget: 'text',
+                  required: true
+                },
+                {
+                  label: 'Content',
+                  name: 'body',
+                  widget: 'markdown',
+                  required: true
+                },
+                {
+                  label: 'Featured Image',
+                  name: 'image',
+                  widget: 'image',
+                  required: true
+                },
+                {
+                  label: 'Category',
+                  name: 'category',
+                  widget: 'select',
+                  options: [
+                    'healthcare-news',
+                    'service-updates',
+                    'health-tips',
+                    'company-news',
+                    'drug-safety',
+                    'caregiver-tips'
+                  ],
+                  required: true
+                },
+                {
+                  label: 'Featured',
+                  name: 'featured',
+                  widget: 'boolean',
+                  default: false
+                },
+                {
+                  label: 'Published',
+                  name: 'published',
+                  widget: 'boolean',
+                  default: true
+                },
+                {
+                  label: 'Publish Date',
+                  name: 'date',
+                  widget: 'datetime',
+                  default: '{{now}}'
+                }
+              ]
+            },
+            {
+              name: 'drugs',
+              label: '💊 Drug Database',
+              folder: 'content/drugs',
+              create: true,
+              slug: '{{slug}}',
+              fields: [
+                {
+                  label: 'Drug Name',
+                  name: 'name',
+                  widget: 'string',
+                  required: true
+                },
+                {
+                  label: 'English Name',
+                  name: 'name_en',
+                  widget: 'string'
+                },
+                {
+                  label: 'Slug',
+                  name: 'slug',
+                  widget: 'string',
+                  required: true
+                },
+                {
+                  label: 'Category',
+                  name: 'category',
+                  widget: 'select',
+                  options: [
+                    'prescription-drugs',
+                    'over-the-counter',
+                    'controlled-substances',
+                    'herbal-medicines',
+                    'supplements',
+                    'medical-devices'
+                  ],
+                  required: true
+                },
+                {
+                  label: 'Description',
+                  name: 'description',
+                  widget: 'text',
+                  required: true
+                },
+                {
+                  label: 'Disposal Instructions',
+                  name: 'disposal',
+                  widget: 'markdown',
+                  required: true
+                },
+                {
+                  label: 'Safety Notes',
+                  name: 'safety',
+                  widget: 'markdown'
+                },
+                {
+                  label: 'Image',
+                  name: 'image',
+                  widget: 'image'
+                },
+                {
+                  label: 'Published',
+                  name: 'published',
+                  widget: 'boolean',
+                  default: true
+                }
+              ]
+            },
+            {
+              name: 'collection-points',
+              label: '📍 Collection Points',
+              folder: 'content/collection-points',
+              create: true,
+              slug: '{{slug}}',
+              fields: [
+                {
+                  label: 'Name',
+                  name: 'name',
+                  widget: 'string',
+                  required: true
+                },
+                {
+                  label: 'English Name',
+                  name: 'name_en',
+                  widget: 'string'
+                },
+                {
+                  label: 'Slug',
+                  name: 'slug',
+                  widget: 'string',
+                  required: true
+                },
+                {
+                  label: 'Address',
+                  name: 'address',
+                  widget: 'string',
+                  required: true
+                },
+                {
+                  label: 'District',
+                  name: 'district',
+                  widget: 'select',
+                  options: [
+                    'Central and Western',
+                    'Eastern',
+                    'Southern',
+                    'Wan Chai',
+                    'Sham Shui Po',
+                    'Yau Tsim Mong',
+                    'Kowloon City',
+                    'Wong Tai Sin',
+                    'Kwun Tong',
+                    'Tsuen Wan',
+                    'Tuen Mun',
+                    'Yuen Long',
+                    'North',
+                    'Tai Po',
+                    'Sha Tin',
+                    'Sai Kung',
+                    'Kwai Tsing',
+                    'Islands'
+                  ],
+                  required: true
+                },
+                {
+                  label: 'Phone',
+                  name: 'phone',
+                  widget: 'string'
+                },
+                {
+                  label: 'Opening Hours',
+                  name: 'hours',
+                  widget: 'string',
+                  hint: 'e.g., Mon-Fri 9:00-18:00'
+                },
+                {
+                  label: 'Latitude',
+                  name: 'lat',
+                  widget: 'number',
+                  step: 0.000001
+                },
+                {
+                  label: 'Longitude',
+                  name: 'lng',
+                  widget: 'number',
+                  step: 0.000001
+                },
+                {
+                  label: 'Description',
+                  name: 'description',
+                  widget: 'text'
+                },
+                {
+                  label: 'Active',
+                  name: 'active',
+                  widget: 'boolean',
+                  default: true
+                }
+              ]
+            },
+            {
+              name: 'pages',
+              label: '📄 Static Pages',
+              folder: 'content/pages',
+              create: true,
+              slug: '{{slug}}',
+              fields: [
+                {
+                  label: 'Title',
+                  name: 'title',
+                  widget: 'string',
+                  required: true
+                },
+                {
+                  label: 'English Title',
+                  name: 'title_en',
+                  widget: 'string'
+                },
+                {
+                  label: 'Slug',
+                  name: 'slug',
+                  widget: 'string',
+                  required: true
+                },
+                {
+                  label: 'Content',
+                  name: 'body',
+                  widget: 'markdown',
+                  required: true
+                },
+                {
+                  label: 'Meta Description',
+                  name: 'meta_description',
+                  widget: 'text'
+                },
+                {
+                  label: 'Featured Image',
+                  name: 'image',
+                  widget: 'image'
+                },
+                {
+                  label: 'Published',
+                  name: 'published',
+                  widget: 'boolean',
+                  default: true
+                }
+              ]
+            }
+          ]
+        }
+      });
+    }
+  </script>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -37,393 +436,5 @@
     <p>Content Management System for Healthcare Services</p>
   </div>
   
-  <script>
-    CMS.init({
-      config: {
-        backend: {
-          name: 'github',
-          repo: 'GoldCityStudio/hygienefirst_tvp',
-          branch: 'main',
-          site_domain: 'www.hygienefirstgroup.com',
-        },
-        load_config_file: false,
-        media_folder: 'images',
-        public_folder: '/images',
-        collections: [
-          {
-            name: 'services',
-            label: '🏥 Healthcare Services',
-            folder: 'content/services',
-            create: true,
-            slug: '{{slug}}',
-            fields: [
-              {
-                label: 'Title',
-                name: 'title',
-                widget: 'string',
-                required: true
-              },
-              {
-                label: 'English Title',
-                name: 'title_en',
-                widget: 'string'
-              },
-              {
-                label: 'Slug',
-                name: 'slug',
-                widget: 'string',
-                required: true,
-                hint: 'URL-friendly version of title (e.g., elderly-care)'
-              },
-              {
-                label: 'Description',
-                name: 'description',
-                widget: 'text',
-                required: true
-              },
-              {
-                label: 'Content',
-                name: 'body',
-                widget: 'markdown',
-                required: true
-              },
-              {
-                label: 'Featured Image',
-                name: 'image',
-                widget: 'image',
-                required: true
-              },
-              {
-                label: 'Price',
-                name: 'price',
-                widget: 'string',
-                hint: 'e.g., $500/hour or Contact for pricing'
-              },
-              {
-                label: 'Category',
-                name: 'category',
-                widget: 'select',
-                options: [
-                  'homecare',
-                  'elderly-care',
-                  'wound-care',
-                  'rehabilitation',
-                  'caregiver-training',
-                  'cancer-care',
-                  'dementia-care',
-                  'post-surgery-care',
-                  'nasogastric-care',
-                  'stroke-care'
-                ],
-                required: true
-              },
-              {
-                label: 'Featured',
-                name: 'featured',
-                widget: 'boolean',
-                default: false
-              },
-              {
-                label: 'Published',
-                name: 'published',
-                widget: 'boolean',
-                default: true
-              },
-              {
-                label: 'Publish Date',
-                name: 'date',
-                widget: 'datetime',
-                default: '{{now}}'
-              }
-            ]
-          },
-          {
-            name: 'news',
-            label: '📰 News & Updates',
-            folder: 'content/news',
-            create: true,
-            slug: '{{slug}}',
-            fields: [
-              {
-                label: 'Title',
-                name: 'title',
-                widget: 'string',
-                required: true
-              },
-              {
-                label: 'English Title',
-                name: 'title_en',
-                widget: 'string'
-              },
-              {
-                label: 'Slug',
-                name: 'slug',
-                widget: 'string',
-                required: true
-              },
-              {
-                label: 'Excerpt',
-                name: 'excerpt',
-                widget: 'text',
-                required: true
-              },
-              {
-                label: 'Content',
-                name: 'body',
-                widget: 'markdown',
-                required: true
-              },
-              {
-                label: 'Featured Image',
-                name: 'image',
-                widget: 'image',
-                required: true
-              },
-              {
-                label: 'Category',
-                name: 'category',
-                widget: 'select',
-                options: [
-                  'healthcare-news',
-                  'service-updates',
-                  'health-tips',
-                  'company-news',
-                  'drug-safety',
-                  'caregiver-tips'
-                ],
-                required: true
-              },
-              {
-                label: 'Featured',
-                name: 'featured',
-                widget: 'boolean',
-                default: false
-              },
-              {
-                label: 'Published',
-                name: 'published',
-                widget: 'boolean',
-                default: true
-              },
-              {
-                label: 'Publish Date',
-                name: 'date',
-                widget: 'datetime',
-                default: '{{now}}'
-              }
-            ]
-          },
-          {
-            name: 'drugs',
-            label: '💊 Drug Database',
-            folder: 'content/drugs',
-            create: true,
-            slug: '{{slug}}',
-            fields: [
-              {
-                label: 'Drug Name',
-                name: 'name',
-                widget: 'string',
-                required: true
-              },
-              {
-                label: 'English Name',
-                name: 'name_en',
-                widget: 'string'
-              },
-              {
-                label: 'Slug',
-                name: 'slug',
-                widget: 'string',
-                required: true
-              },
-              {
-                label: 'Category',
-                name: 'category',
-                widget: 'select',
-                options: [
-                  'prescription-drugs',
-                  'over-the-counter',
-                  'controlled-substances',
-                  'herbal-medicines',
-                  'supplements',
-                  'medical-devices'
-                ],
-                required: true
-              },
-              {
-                label: 'Description',
-                name: 'description',
-                widget: 'text',
-                required: true
-              },
-              {
-                label: 'Disposal Instructions',
-                name: 'disposal',
-                widget: 'markdown',
-                required: true
-              },
-              {
-                label: 'Safety Notes',
-                name: 'safety',
-                widget: 'markdown'
-              },
-              {
-                label: 'Image',
-                name: 'image',
-                widget: 'image'
-              },
-              {
-                label: 'Published',
-                name: 'published',
-                widget: 'boolean',
-                default: true
-              }
-            ]
-          },
-          {
-            name: 'collection-points',
-            label: '📍 Collection Points',
-            folder: 'content/collection-points',
-            create: true,
-            slug: '{{slug}}',
-            fields: [
-              {
-                label: 'Name',
-                name: 'name',
-                widget: 'string',
-                required: true
-              },
-              {
-                label: 'English Name',
-                name: 'name_en',
-                widget: 'string'
-              },
-              {
-                label: 'Slug',
-                name: 'slug',
-                widget: 'string',
-                required: true
-              },
-              {
-                label: 'Address',
-                name: 'address',
-                widget: 'string',
-                required: true
-              },
-              {
-                label: 'District',
-                name: 'district',
-                widget: 'select',
-                options: [
-                  'Central and Western',
-                  'Eastern',
-                  'Southern',
-                  'Wan Chai',
-                  'Sham Shui Po',
-                  'Yau Tsim Mong',
-                  'Kowloon City',
-                  'Wong Tai Sin',
-                  'Kwun Tong',
-                  'Tsuen Wan',
-                  'Tuen Mun',
-                  'Yuen Long',
-                  'North',
-                  'Tai Po',
-                  'Sha Tin',
-                  'Sai Kung',
-                  'Kwai Tsing',
-                  'Islands'
-                ],
-                required: true
-              },
-              {
-                label: 'Phone',
-                name: 'phone',
-                widget: 'string'
-              },
-              {
-                label: 'Opening Hours',
-                name: 'hours',
-                widget: 'string',
-                hint: 'e.g., Mon-Fri 9:00-18:00'
-              },
-              {
-                label: 'Latitude',
-                name: 'lat',
-                widget: 'number',
-                step: 0.000001
-              },
-              {
-                label: 'Longitude',
-                name: 'lng',
-                widget: 'number',
-                step: 0.000001
-              },
-              {
-                label: 'Description',
-                name: 'description',
-                widget: 'text'
-              },
-              {
-                label: 'Active',
-                name: 'active',
-                widget: 'boolean',
-                default: true
-              }
-            ]
-          },
-          {
-            name: 'pages',
-            label: '📄 Static Pages',
-            folder: 'content/pages',
-            create: true,
-            slug: '{{slug}}',
-            fields: [
-              {
-                label: 'Title',
-                name: 'title',
-                widget: 'string',
-                required: true
-              },
-              {
-                label: 'English Title',
-                name: 'title_en',
-                widget: 'string'
-              },
-              {
-                label: 'Slug',
-                name: 'slug',
-                widget: 'string',
-                required: true
-              },
-              {
-                label: 'Content',
-                name: 'body',
-                widget: 'markdown',
-                required: true
-              },
-              {
-                label: 'Meta Description',
-                name: 'meta_description',
-                widget: 'text'
-              },
-              {
-                label: 'Featured Image',
-                name: 'image',
-                widget: 'image'
-              },
-              {
-                label: 'Published',
-                name: 'published',
-                widget: 'boolean',
-                default: true
-              }
-            ]
-          }
-        ]
-      }
-    });
-  </script>
 </body>
 </html>
