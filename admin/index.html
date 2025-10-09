@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hygiene First - Content Manager</title>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -38,10 +38,20 @@
   </div>
   
   <script>
-    CMS.init({
-      config: {
-        load_config_file: true,
-        config_file_path: '/config.yml'
+    // Wait for the CMS library to load
+    window.addEventListener('load', function() {
+      if (typeof CMS !== 'undefined') {
+        CMS.init();
+      } else {
+        console.error('CMS library not loaded');
+        // Retry after a short delay
+        setTimeout(function() {
+          if (typeof CMS !== 'undefined') {
+            CMS.init();
+          } else {
+            console.error('CMS library still not loaded after retry');
+          }
+        }, 1000);
       }
     });
   </script>
