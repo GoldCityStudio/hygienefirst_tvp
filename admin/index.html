@@ -38,7 +38,12 @@
   </div>
   
   <script>
-    CMS.init();
+    CMS.init({
+      config: {
+        load_config_file: true,
+        config_file_path: '/config.yml'
+      }
+    });
   </script>
 </body>
 </html>

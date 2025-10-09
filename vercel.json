@@ -16,5 +16,16 @@
       "source": "/:path*",
       "destination": "/:path*.html"
     }
+  ],
+  "headers": [
+    {
+      "source": "/config.yml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/yaml"
+        }
+      ]
+    }
   ]
 }
