@@ -17,6 +17,10 @@
       "destination": "/admin/cms.html"
     },
     {
+      "source": "/admin/simple-cms",
+      "destination": "/admin/simple-cms.html"
+    },
+    {
       "source": "/家居藥物回收計劃",
       "destination": "/家居藥物回收計劃.html"
     },

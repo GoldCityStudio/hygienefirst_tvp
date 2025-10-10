@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hygiene First - 內容管理系統</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      min-height: 100vh;
+    }
+    
+    .cms-header {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      color: #333;
+    }
+    
+    .cms-header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    
+    .cms-header p {
+      margin: 5px 0 0 0;
+      opacity: 0.8;
+      font-size: 16px;
+    }
+    
+    .cms-container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .content-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+    
+    .content-card h3 {
+      color: #ff6b35;
+      font-size: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .content-card p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .content-card ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+    
+    .content-card ul li {
+      background: #f0f0f0;
+      margin-bottom: 8px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 14px;
+      color: #555;
+    }
+    
+    .btn {
+      background: #ff6b35;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .btn:hover {
+      background: #e55a2b;
+    }
+    
+    .btn-secondary {
+      background: #6c757d;
+    }
+    
+    .btn-secondary:hover {
+      background: #5a6268;
+    }
+    
+    .logout-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #dc3545;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    
+    .logout-btn:hover {
+      background: #c82333;
+    }
+    
+    .user-info {
+      position: absolute;
+      top: 20px;
+      right: 120px;
+      color: #333;
+      font-size: 14px;
+    }
+    
+    .quick-actions {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    
+    .quick-actions h2 {
+      color: #ff6b35;
+      margin-bottom: 20px;
+    }
+    
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .icon {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="cms-header">
+    <h1>🏥 Hygiene First 首衛 - 內容管理系統</h1>
+    <p>歡迎使用內容管理系統，您可以輕鬆更新網站內容</p>
+    
+    <div class="user-info" id="user-info"></div>
+    <a href="#" class="logout-btn" id="logout-btn">登出</a>
+  </div>
+  
+  <div class="cms-container">
+    <div class="quick-actions">
+      <h2>🚀 快速操作</h2>
+      <div class="action-buttons">
+        <a href="/news.html" class="btn" target="_blank">
+          <span class="icon">📰</span>查看新聞頁面
+        </a>
+        <a href="/services.html" class="btn" target="_blank">
+          <span class="icon">🏥</span>查看服務頁面
+        </a>
+        <a href="/collection-points-map.html" class="btn" target="_blank">
+          <span class="icon">📍</span>查看回收點地圖
+        </a>
+        <a href="/drug-classification-search.html" class="btn" target="_blank">
+          <span class="icon">💊</span>查看藥物搜尋
+        </a>
+      </div>
+    </div>
+    
+    <div class="content-grid">
+      <div class="content-card">
+        <h3><span class="icon">📰</span>新聞與更新</h3>
+        <p>管理網站新聞文章和最新消息</p>
+        <ul>
+          <li>新增新聞文章</li>
+          <li>編輯現有文章</li>
+          <li>上傳新聞圖片</li>
+          <li>設定發布日期</li>
+          <li>分類管理</li>
+        </ul>
+        <a href="#" class="btn" onclick="showContentEditor('news')">編輯新聞</a>
+        <a href="/news.html" class="btn btn-secondary" target="_blank">查看頁面</a>
+      </div>
+      
+      <div class="content-card">
+        <h3><span class="icon">🏥</span>醫療護理服務</h3>
+        <p>管理所有醫療服務項目和資訊</p>
+        <ul>
+          <li>新增服務項目</li>
+          <li>更新服務描述</li>
+          <li>設定服務收費</li>
+          <li>上傳服務圖片</li>
+          <li>服務分類管理</li>
+        </ul>
+        <a href="#" class="btn" onclick="showContentEditor('services')">編輯服務</a>
+        <a href="/services.html" class="btn btn-secondary" target="_blank">查看頁面</a>
+      </div>
+      
+      <div class="content-card">
+        <h3><span class="icon">💊</span>藥物資料庫</h3>
+        <p>管理藥物資訊和處理指引</p>
+        <ul>
+          <li>新增藥物資料</li>
+          <li>更新處理指引</li>
+          <li>安全注意事項</li>
+          <li>藥物分類管理</li>
+          <li>上傳藥物圖片</li>
+        </ul>
+        <a href="#" class="btn" onclick="showContentEditor('drugs')">編輯藥物</a>
+        <a href="/drug-classification-search.html" class="btn btn-secondary" target="_blank">查看頁面</a>
+      </div>
+      
+      <div class="content-card">
+        <h3><span class="icon">📍</span>回收點位置</h3>
+        <p>管理藥物回收點位置資訊</p>
+        <ul>
+          <li>新增回收點</li>
+          <li>更新地址資訊</li>
+          <li>設定開放時間</li>
+          <li>GPS座標管理</li>
+          <li>聯絡資訊更新</li>
+        </ul>
+        <a href="#" class="btn" onclick="showContentEditor('collection-points')">編輯回收點</a>
+        <a href="/collection-points-map.html" class="btn btn-secondary" target="_blank">查看頁面</a>
+      </div>
+      
+      <div class="content-card">
+        <h3><span class="icon">📄</span>靜態頁面</h3>
+        <p>編輯關於我們、聯絡我們等頁面</p>
+        <ul>
+          <li>關於我們頁面</li>
+          <li>聯絡資訊更新</li>
+          <li>服務介紹頁面</li>
+          <li>公司資訊管理</li>
+          <li>SEO設定</li>
+        </ul>
+        <a href="#" class="btn" onclick="showContentEditor('pages')">編輯頁面</a>
+        <a href="/about.html" class="btn btn-secondary" target="_blank">查看頁面</a>
+      </div>
+      
+      <div class="content-card">
+        <h3><span class="icon">🖼️</span>圖片管理</h3>
+        <p>管理網站所有圖片資源</p>
+        <ul>
+          <li>上傳新圖片</li>
+          <li>圖片分類管理</li>
+          <li>圖片尺寸調整</li>
+          <li>圖片壓縮優化</li>
+          <li>圖片庫瀏覽</li>
+        </ul>
+        <a href="#" class="btn" onclick="showImageManager()">管理圖片</a>
+        <a href="/images/" class="btn btn-secondary" target="_blank">查看圖片庫</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Check authentication
+    function checkAuth() {
+      const sessionData = localStorage.getItem('cms_session');
+      
+      if (!sessionData) {
+        window.location.href = '/admin/simple-auth.html';
+        return false;
+      }
+      
+      try {
+        const session = JSON.parse(sessionData);
+        
+        if (!session.expires || Date.now() > session.expires) {
+          localStorage.removeItem('cms_session');
+          window.location.href = '/admin/simple-auth.html';
+          return false;
+        }
+        
+        // Show user info
+        document.getElementById('user-info').textContent = `歡迎，${session.username}`;
+        return true;
+      } catch (error) {
+        localStorage.removeItem('cms_session');
+        window.location.href = '/admin/simple-auth.html';
+        return false;
+      }
+    }
+    
+    // Logout function
+    document.getElementById('logout-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('cms_session');
+      window.location.href = '/admin/simple-auth.html';
+    });
+    
+    // Content editor functions
+    function showContentEditor(type) {
+      alert(`即將開啟 ${type} 編輯器...\n\n目前使用簡化版 CMS，如需完整編輯功能，請聯絡技術支援。\n\n您可以直接編輯網站檔案或使用 GitHub 進行內容更新。`);
+    }
+    
+    function showImageManager() {
+      alert('圖片管理功能\n\n目前使用簡化版 CMS，如需上傳圖片，請聯絡技術支援。\n\n圖片會自動上傳到 /images/ 資料夾。');
+    }
+    
+    // Initialize
+    if (checkAuth()) {
+      console.log('CMS loaded successfully');
+    }
+  </script>
+</body>
+</html>

@@ -118,6 +118,11 @@
         return;
       }
       
+      // If authenticated, redirect to simple CMS
+      console.log('Authenticated, redirecting to simple CMS');
+      window.location.href = '/admin/simple-cms.html';
+      return;
+      
       if (testMode) {
         console.log('Test mode enabled, bypassing authentication');
       }
@@ -164,9 +169,10 @@
             branch: 'main',
             base_url: 'https://www.hygienefirstgroup.com',
             auth_type: 'implicit',
-            auth_endpoint: 'https://www.hygienefirstgroup.com/admin/auth.html',
+            auth_endpoint: 'https://www.hygienefirstgroup.com/admin/simple-auth.html',
             disable_auth: true,
-            token: githubToken
+            token: githubToken,
+            site_domain: 'hygienefirstgroup.com'
           },
           media_folder: 'images',
           public_folder: '/images',
