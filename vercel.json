@@ -41,6 +41,10 @@
       "destination": "/news-dynamic.html"
     },
     {
+      "source": "/最新消息",
+      "destination": "/news-dynamic.html"
+    },
+    {
       "source": "/services-dynamic",
       "destination": "/services-dynamic.html"
     },
