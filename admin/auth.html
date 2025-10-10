@@ -99,10 +99,14 @@
       
       // Redirect to GitHub OAuth
       const clientId = 'Ov23liu7Oq6iL7OtQa2s';
-      const redirectUri = encodeURIComponent('https://www.hygienefirstgroup.com/admin/cms.html');
+      const redirectUri = encodeURIComponent('https://www.hygienefirstgroup.com/admin/auth.html');
       const scope = 'repo';
       
+      console.log('Redirecting to GitHub OAuth with:', { clientId, redirectUri, scope });
+      
       const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
+      
+      console.log('GitHub Auth URL:', githubAuthUrl);
       
       window.location.href = githubAuthUrl;
     });
@@ -111,8 +115,14 @@
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     const error = urlParams.get('error');
+    const state = urlParams.get('state');
+    
+    console.log('Page loaded with URL params:', { code, error, state });
+    console.log('Current URL:', window.location.href);
+    console.log('URL search:', window.location.search);
     
     if (error) {
+      console.error('OAuth error:', error);
       document.querySelector('.auth-container').innerHTML = `
         <h1>❌ 認證失敗</h1>
         <p>GitHub 認證過程中發生錯誤：${error}</p>
