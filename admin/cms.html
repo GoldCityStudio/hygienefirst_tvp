@@ -106,8 +106,16 @@
         loadingDiv.style.display = 'none';
       }
       
-      // Initialize Decap CMS
-      CMS.init({
+      // Ensure DOM is ready before initializing CMS
+      setTimeout(() => {
+        console.log('Initializing CMS with delay...');
+        
+        // Initialize Decap CMS
+        console.log('About to initialize CMS...');
+        console.log('CMS object:', CMS);
+        console.log('nc-root element:', document.getElementById('nc-root'));
+        
+        CMS.init({
         config: {
           backend: {
             name: 'github',
@@ -534,27 +542,35 @@
         }
       });
       
-      // Add error handling
-      CMS.on('error', (error) => {
-        console.error('CMS Error:', error);
-        const loadingDiv = document.getElementById('cms-loading');
-        if (loadingDiv) {
-          loadingDiv.innerHTML = `
-            <div class="cms-header">
-              <h1>❌ CMS 載入錯誤</h1>
-              <p>內容管理系統載入失敗，請重新整理頁面或聯絡技術支援</p>
-            </div>
-            <div class="cms-container">
-              <div class="cms-help">
-                <h3>錯誤詳情</h3>
-                <p>${error.message || '未知錯誤'}</p>
-                <button onclick="window.location.reload()" class="github-btn">重新整理</button>
-              </div>
-            </div>
-          `;
-          loadingDiv.style.display = 'block';
+      // Add error handling with try-catch
+      try {
+        if (CMS && typeof CMS.on === 'function') {
+          CMS.on('error', (error) => {
+            console.error('CMS Error:', error);
+            const loadingDiv = document.getElementById('cms-loading');
+            if (loadingDiv) {
+              loadingDiv.innerHTML = `
+                <div class="cms-header">
+                  <h1>❌ CMS 載入錯誤</h1>
+                  <p>內容管理系統載入失敗，請重新整理頁面或聯絡技術支援</p>
+                </div>
+                <div class="cms-container">
+                  <div class="cms-help">
+                    <h3>錯誤詳情</h3>
+                    <p>${error.message || '未知錯誤'}</p>
+                    <button onclick="window.location.reload()" class="github-btn">重新整理</button>
+                  </div>
+                </div>
+              `;
+              loadingDiv.style.display = 'block';
+            }
+          });
         }
-      });
+      } catch (error) {
+        console.warn('Could not set up CMS error handler:', error);
+      }
+      
+      }, 100); // End setTimeout
     }
   </script>
   <style>
