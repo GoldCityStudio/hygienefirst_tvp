@@ -604,15 +604,57 @@
         if (imageFile && imageFile.files.length > 0) {
           try {
             const file = imageFile.files[0];
-            const fileName = `news/${Date.now()}_${file.name}`;
-            const uploadTask = storage.ref(fileName).put(file);
+            
+            // Validate file type
+            if (!file.type.startsWith('image/')) {
+              throw new Error('請選擇圖片文件');
+            }
+            
+            // Validate file size (max 5MB)
+            if (file.size > 5 * 1024 * 1024) {
+              throw new Error('圖片大小不能超過 5MB');
+            }
+            
+            // Create a sanitized filename
+            const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+            const fileName = `news/${Date.now()}_${sanitizedName}`;
+            
+            // Try Firebase Storage upload
+            const uploadTask = storage.ref(fileName).put(file, {
+              contentType: file.type,
+              customMetadata: {
+                uploadedBy: auth.currentUser ? auth.currentUser.email : 'anonymous',
+                uploadDate: new Date().toISOString()
+              }
+            });
             
             const snapshot = await uploadTask;
             const imageUrl = await snapshot.ref.getDownloadURL();
             formData['news-image'] = imageUrl;
+            
+            console.log('News image uploaded successfully:', imageUrl);
           } catch (error) {
             console.error('Image upload error:', error);
-            alert(`⚠️ 圖片上傳失敗：${error.message}\n\n將繼續儲存其他內容。`);
+            
+            // Fallback: Convert to base64 and store in Firestore
+            try {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                formData['news-image'] = e.target.result;
+                console.log('Image stored as base64 fallback');
+              };
+              reader.readAsDataURL(file);
+              
+              // Wait for base64 conversion
+              await new Promise(resolve => {
+                reader.onloadend = resolve;
+              });
+              
+              alert(`⚠️ Firebase Storage 上傳失敗，已使用備用方案儲存圖片\n\n錯誤：${error.message}`);
+            } catch (fallbackError) {
+              console.error('Fallback image handling error:', fallbackError);
+              alert(`⚠️ 圖片處理失敗：${fallbackError.message}\n\n將繼續儲存其他內容。`);
+            }
           }
         }
       } else if (type === 'services') {
@@ -620,15 +662,57 @@
         if (imageFile && imageFile.files.length > 0) {
           try {
             const file = imageFile.files[0];
-            const fileName = `services/${Date.now()}_${file.name}`;
-            const uploadTask = storage.ref(fileName).put(file);
+            
+            // Validate file type
+            if (!file.type.startsWith('image/')) {
+              throw new Error('請選擇圖片文件');
+            }
+            
+            // Validate file size (max 5MB)
+            if (file.size > 5 * 1024 * 1024) {
+              throw new Error('圖片大小不能超過 5MB');
+            }
+            
+            // Create a sanitized filename
+            const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+            const fileName = `services/${Date.now()}_${sanitizedName}`;
+            
+            // Try Firebase Storage upload
+            const uploadTask = storage.ref(fileName).put(file, {
+              contentType: file.type,
+              customMetadata: {
+                uploadedBy: auth.currentUser ? auth.currentUser.email : 'anonymous',
+                uploadDate: new Date().toISOString()
+              }
+            });
             
             const snapshot = await uploadTask;
             const imageUrl = await snapshot.ref.getDownloadURL();
             formData['service-image'] = imageUrl;
+            
+            console.log('Service image uploaded successfully:', imageUrl);
           } catch (error) {
             console.error('Image upload error:', error);
-            alert(`⚠️ 圖片上傳失敗：${error.message}\n\n將繼續儲存其他內容。`);
+            
+            // Fallback: Convert to base64 and store in Firestore
+            try {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                formData['service-image'] = e.target.result;
+                console.log('Image stored as base64 fallback');
+              };
+              reader.readAsDataURL(file);
+              
+              // Wait for base64 conversion
+              await new Promise(resolve => {
+                reader.onloadend = resolve;
+              });
+              
+              alert(`⚠️ Firebase Storage 上傳失敗，已使用備用方案儲存圖片\n\n錯誤：${error.message}`);
+            } catch (fallbackError) {
+              console.error('Fallback image handling error:', fallbackError);
+              alert(`⚠️ 圖片處理失敗：${fallbackError.message}\n\n將繼續儲存其他內容。`);
+            }
           }
         }
       }
