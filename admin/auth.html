@@ -53,6 +53,24 @@
       background: #1a1e22;
     }
     
+    .google-btn {
+      background: #4285f4;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease;
+      margin-bottom: 15px;
+    }
+    
+    .google-btn:hover {
+      background: #3367d6;
+    }
+    
     .loading {
       display: none;
       margin-top: 20px;
@@ -77,7 +95,13 @@
 <body>
   <div class="auth-container">
     <h1>🏥 Hygiene First CMS</h1>
-    <p>請使用您的 GitHub 帳戶登入以管理網站內容</p>
+    <p>請選擇登入方式以管理網站內容</p>
+    
+    <a href="#" id="google-login" class="google-btn">
+      📧 Login with Google
+    </a>
+    
+    <div style="margin: 20px 0; color: #999;">或</div>
     
     <a href="#" id="github-login" class="github-btn">
       🔑 Login with GitHub
@@ -90,6 +114,32 @@
   </div>
 
   <script>
+    // Google OAuth configuration
+    const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID'; // Replace with your Google OAuth Client ID
+    const GOOGLE_REDIRECT_URI = 'https://www.hygienefirstgroup.com/admin/auth.html';
+    
+    // Google OAuth login
+    document.getElementById('google-login').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Show loading
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('google-login').style.display = 'none';
+      document.getElementById('github-login').style.display = 'none';
+      
+      // Google OAuth URL
+      const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?` +
+        `client_id=${GOOGLE_CLIENT_ID}&` +
+        `redirect_uri=${encodeURIComponent(GOOGLE_REDIRECT_URI)}&` +
+        `response_type=code&` +
+        `scope=openid%20email%20profile&` +
+        `access_type=offline`;
+      
+      console.log('Redirecting to Google OAuth:', googleAuthUrl);
+      window.location.href = googleAuthUrl;
+    });
+    
+    // GitHub OAuth login
     document.getElementById('github-login').addEventListener('click', function(e) {
       e.preventDefault();
       
@@ -111,13 +161,14 @@
       window.location.href = githubAuthUrl;
     });
     
-    // Handle OAuth callback
+    // Handle OAuth callback (both Google and GitHub)
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     const error = urlParams.get('error');
     const state = urlParams.get('state');
+    const scope = urlParams.get('scope');
     
-    console.log('Page loaded with URL params:', { code, error, state });
+    console.log('Page loaded with URL params:', { code, error, state, scope });
     console.log('Current URL:', window.location.href);
     console.log('URL search:', window.location.search);
     
@@ -125,32 +176,39 @@
       console.error('OAuth error:', error);
       document.querySelector('.auth-container').innerHTML = `
         <h1>❌ 認證失敗</h1>
-        <p>GitHub 認證過程中發生錯誤：${error}</p>
-        <a href="/admin/cms.html" class="github-btn">重試</a>
+        <p>認證過程中發生錯誤：${error}</p>
+        <a href="/admin/auth.html" class="github-btn">重試</a>
       `;
     } else if (code) {
       console.log('OAuth code received:', code);
       
+      // Determine if this is Google or GitHub based on scope
+      const isGoogleAuth = scope && scope.includes('openid');
+      console.log('Auth provider:', isGoogleAuth ? 'Google' : 'GitHub');
+      
       // For now, we'll simulate a successful auth
       // In production, you'd exchange the code for a token server-side
+      const providerName = isGoogleAuth ? 'Google' : 'GitHub';
       document.querySelector('.auth-container').innerHTML = `
         <h1>✅ 認證成功</h1>
-        <p>正在載入 CMS...</p>
+        <p>已通過 ${providerName} 認證，正在載入 CMS...</p>
         <div class="spinner"></div>
       `;
       
       // Store a mock token (in production, use real token)
-      const token = 'mock_token_' + Date.now();
+      const token = `${isGoogleAuth ? 'google' : 'github'}_token_` + Date.now();
       const expires = Date.now() + 3600000; // 1 hour
       
-      console.log('Storing token:', { token, expires });
+      console.log('Storing token:', { token, expires, provider: providerName });
       
-      localStorage.setItem('github_token', token);
+      localStorage.setItem('github_token', token); // Keep same key for compatibility
       localStorage.setItem('github_token_expires', expires.toString());
+      localStorage.setItem('auth_provider', isGoogleAuth ? 'google' : 'github');
       
       // Verify storage
       console.log('Stored token:', localStorage.getItem('github_token'));
       console.log('Stored expires:', localStorage.getItem('github_token_expires'));
+      console.log('Auth provider:', localStorage.getItem('auth_provider'));
       
       // Redirect to CMS
       setTimeout(() => {
