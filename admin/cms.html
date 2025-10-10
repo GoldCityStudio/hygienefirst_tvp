@@ -4,7 +4,454 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hygiene First - 內容管理系統</title>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Fallback script loading
+    if (typeof CMS === 'undefined') {
+      console.log('Loading Decap CMS from alternative CDN...');
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/decap-cms@3.0.0/dist/decap-cms.js';
+      script.onload = function() {
+        console.log('Decap CMS loaded successfully');
+        initializeCMS();
+      };
+      script.onerror = function() {
+        console.error('Failed to load Decap CMS');
+        document.body.innerHTML = '<div style="text-align:center;padding:50px;color:red;"><h1>CMS Loading Error</h1><p>Please refresh the page or contact support.</p></div>';
+      };
+      document.head.appendChild(script);
+    } else {
+      initializeCMS();
+    }
+    
+    function initializeCMS() {
+      console.log('Initializing CMS...');
+      
+      // Initialize Decap CMS
+      CMS.init({
+        config: {
+          backend: {
+            name: 'github',
+            repo: 'GoldCityStudio/hygienefirst_tvp',
+            branch: 'main',
+            site_domain: 'www.hygienefirstgroup.com'
+          },
+          media_folder: 'images',
+          public_folder: '/images',
+          collections: [
+            {
+              name: 'services',
+              label: '🏥 醫療護理服務',
+              folder: 'content/services',
+              create: true,
+              slug: '{{slug}}',
+              fields: [
+                {
+                  label: '服務標題',
+                  name: 'title',
+                  widget: 'string',
+                  required: true,
+                  hint: '例如：長者護理服務'
+                },
+                {
+                  label: '英文標題',
+                  name: 'title_en',
+                  widget: 'string',
+                  hint: '例如：Elderly Care Services'
+                },
+                {
+                  label: '網址代碼',
+                  name: 'slug',
+                  widget: 'string',
+                  required: true,
+                  hint: '例如：elderly-care-services'
+                },
+                {
+                  label: '服務描述',
+                  name: 'description',
+                  widget: 'text',
+                  required: true,
+                  hint: '簡短描述服務內容'
+                },
+                {
+                  label: '詳細內容',
+                  name: 'body',
+                  widget: 'markdown',
+                  required: true,
+                  hint: '使用 Markdown 格式編寫詳細內容'
+                },
+                {
+                  label: '服務圖片',
+                  name: 'image',
+                  widget: 'image',
+                  required: true,
+                  hint: '建議尺寸：800x600 像素'
+                },
+                {
+                  label: '服務收費',
+                  name: 'price',
+                  widget: 'string',
+                  hint: '例如：$500/小時 或 聯絡查詢'
+                },
+                {
+                  label: '服務類別',
+                  name: 'category',
+                  widget: 'select',
+                  options: [
+                    { label: '居家護理', value: 'homecare' },
+                    { label: '長者護理', value: 'elderly-care' },
+                    { label: '傷口護理', value: 'wound-care' },
+                    { label: '復康護理', value: 'rehabilitation' },
+                    { label: '照顧者培訓', value: 'caregiver-training' },
+                    { label: '癌症護理', value: 'cancer-care' },
+                    { label: '認知障礙症護理', value: 'dementia-care' },
+                    { label: '手術後護理', value: 'post-surgery-care' },
+                    { label: '鼻胃喉管護理', value: 'nasogastric-care' },
+                    { label: '中風護理', value: 'stroke-care' }
+                  ],
+                  required: true
+                },
+                {
+                  label: '精選服務',
+                  name: 'featured',
+                  widget: 'boolean',
+                  default: false,
+                  hint: '是否在首頁顯示為精選服務'
+                },
+                {
+                  label: '發布狀態',
+                  name: 'published',
+                  widget: 'boolean',
+                  default: true,
+                  hint: '是否立即發布到網站'
+                },
+                {
+                  label: '發布日期',
+                  name: 'date',
+                  widget: 'datetime',
+                  default: '{{now}}'
+                }
+              ]
+            },
+            {
+              name: 'news',
+              label: '📰 新聞與更新',
+              folder: 'content/news',
+              create: true,
+              slug: '{{slug}}',
+              fields: [
+                {
+                  label: '新聞標題',
+                  name: 'title',
+                  widget: 'string',
+                  required: true,
+                  hint: '例如：藥物安全處理指南'
+                },
+                {
+                  label: '英文標題',
+                  name: 'title_en',
+                  widget: 'string',
+                  hint: '例如：Drug Safety Handling Guide'
+                },
+                {
+                  label: '網址代碼',
+                  name: 'slug',
+                  widget: 'string',
+                  required: true,
+                  hint: '例如：drug-safety-guide'
+                },
+                {
+                  label: '新聞摘要',
+                  name: 'excerpt',
+                  widget: 'text',
+                  required: true,
+                  hint: '簡短的新聞摘要，會顯示在列表頁面'
+                },
+                {
+                  label: '新聞內容',
+                  name: 'body',
+                  widget: 'markdown',
+                  required: true,
+                  hint: '使用 Markdown 格式編寫新聞內容'
+                },
+                {
+                  label: '新聞圖片',
+                  name: 'image',
+                  widget: 'image',
+                  required: true,
+                  hint: '建議尺寸：800x600 像素'
+                },
+                {
+                  label: '新聞類別',
+                  name: 'category',
+                  widget: 'select',
+                  options: [
+                    { label: '醫療新聞', value: 'healthcare-news' },
+                    { label: '服務更新', value: 'service-updates' },
+                    { label: '健康貼士', value: 'health-tips' },
+                    { label: '公司新聞', value: 'company-news' },
+                    { label: '藥物安全', value: 'drug-safety' },
+                    { label: '照顧者貼士', value: 'caregiver-tips' }
+                  ],
+                  required: true
+                },
+                {
+                  label: '精選新聞',
+                  name: 'featured',
+                  widget: 'boolean',
+                  default: false,
+                  hint: '是否在首頁顯示為精選新聞'
+                },
+                {
+                  label: '發布狀態',
+                  name: 'published',
+                  widget: 'boolean',
+                  default: true,
+                  hint: '是否立即發布到網站'
+                },
+                {
+                  label: '發布日期',
+                  name: 'date',
+                  widget: 'datetime',
+                  default: '{{now}}'
+                }
+              ]
+            },
+            {
+              name: 'drugs',
+              label: '💊 藥物資料庫',
+              folder: 'content/drugs',
+              create: true,
+              slug: '{{slug}}',
+              fields: [
+                {
+                  label: '藥物名稱',
+                  name: 'name',
+                  widget: 'string',
+                  required: true,
+                  hint: '例如：阿士匹靈'
+                },
+                {
+                  label: '英文名稱',
+                  name: 'name_en',
+                  widget: 'string',
+                  hint: '例如：Aspirin'
+                },
+                {
+                  label: '網址代碼',
+                  name: 'slug',
+                  widget: 'string',
+                  required: true,
+                  hint: '例如：aspirin'
+                },
+                {
+                  label: '藥物類別',
+                  name: 'category',
+                  widget: 'select',
+                  options: [
+                    { label: '處方藥物', value: 'prescription-drugs' },
+                    { label: '非處方藥物', value: 'over-the-counter' },
+                    { label: '管制藥物', value: 'controlled-substances' },
+                    { label: '中草藥', value: 'herbal-medicines' },
+                    { label: '保健品', value: 'supplements' },
+                    { label: '醫療器材', value: 'medical-devices' }
+                  ],
+                  required: true
+                },
+                {
+                  label: '藥物描述',
+                  name: 'description',
+                  widget: 'text',
+                  required: true,
+                  hint: '簡短描述藥物用途'
+                },
+                {
+                  label: '處理指引',
+                  name: 'disposal',
+                  widget: 'markdown',
+                  required: true,
+                  hint: '詳細的藥物處理和回收指引'
+                },
+                {
+                  label: '安全注意事項',
+                  name: 'safety',
+                  widget: 'markdown',
+                  hint: '藥物安全使用注意事項'
+                },
+                {
+                  label: '藥物圖片',
+                  name: 'image',
+                  widget: 'image',
+                  hint: '建議尺寸：400x400 像素'
+                },
+                {
+                  label: '發布狀態',
+                  name: 'published',
+                  widget: 'boolean',
+                  default: true
+                }
+              ]
+            },
+            {
+              name: 'collection-points',
+              label: '📍 回收點位置',
+              folder: 'content/collection-points',
+              create: true,
+              slug: '{{slug}}',
+              fields: [
+                {
+                  label: '回收點名稱',
+                  name: 'name',
+                  widget: 'string',
+                  required: true,
+                  hint: '例如：中環政府合署'
+                },
+                {
+                  label: '英文名稱',
+                  name: 'name_en',
+                  widget: 'string',
+                  hint: '例如：Central Government Offices'
+                },
+                {
+                  label: '網址代碼',
+                  name: 'slug',
+                  widget: 'string',
+                  required: true,
+                  hint: '例如：central-government-offices'
+                },
+                {
+                  label: '地址',
+                  name: 'address',
+                  widget: 'string',
+                  required: true,
+                  hint: '完整地址'
+                },
+                {
+                  label: '地區',
+                  name: 'district',
+                  widget: 'select',
+                  options: [
+                    { label: '中西區', value: 'Central and Western' },
+                    { label: '東區', value: 'Eastern' },
+                    { label: '南區', value: 'Southern' },
+                    { label: '灣仔區', value: 'Wan Chai' },
+                    { label: '深水埗區', value: 'Sham Shui Po' },
+                    { label: '油尖旺區', value: 'Yau Tsim Mong' },
+                    { label: '九龍城區', value: 'Kowloon City' },
+                    { label: '黃大仙區', value: 'Wong Tai Sin' },
+                    { label: '觀塘區', value: 'Kwun Tong' },
+                    { label: '荃灣區', value: 'Tsuen Wan' },
+                    { label: '屯門區', value: 'Tuen Mun' },
+                    { label: '元朗區', value: 'Yuen Long' },
+                    { label: '北區', value: 'North' },
+                    { label: '大埔區', value: 'Tai Po' },
+                    { label: '沙田區', value: 'Sha Tin' },
+                    { label: '西貢區', value: 'Sai Kung' },
+                    { label: '葵青區', value: 'Kwai Tsing' },
+                    { label: '離島區', value: 'Islands' }
+                  ],
+                  required: true
+                },
+                {
+                  label: '電話',
+                  name: 'phone',
+                  widget: 'string',
+                  hint: '聯絡電話'
+                },
+                {
+                  label: '開放時間',
+                  name: 'hours',
+                  widget: 'string',
+                  hint: '例如：星期一至五 9:00-18:00'
+                },
+                {
+                  label: '緯度',
+                  name: 'lat',
+                  widget: 'number',
+                  step: 0.000001,
+                  hint: '地圖座標緯度'
+                },
+                {
+                  label: '經度',
+                  name: 'lng',
+                  widget: 'number',
+                  step: 0.000001,
+                  hint: '地圖座標經度'
+                },
+                {
+                  label: '描述',
+                  name: 'description',
+                  widget: 'text',
+                  hint: '額外描述資訊'
+                },
+                {
+                  label: '啟用狀態',
+                  name: 'active',
+                  widget: 'boolean',
+                  default: true,
+                  hint: '是否在網站上顯示'
+                }
+              ]
+            },
+            {
+              name: 'pages',
+              label: '📄 靜態頁面',
+              folder: 'content/pages',
+              create: true,
+              slug: '{{slug}}',
+              fields: [
+                {
+                  label: '頁面標題',
+                  name: 'title',
+                  widget: 'string',
+                  required: true,
+                  hint: '例如：關於我們'
+                },
+                {
+                  label: '英文標題',
+                  name: 'title_en',
+                  widget: 'string',
+                  hint: '例如：About Us'
+                },
+                {
+                  label: '網址代碼',
+                  name: 'slug',
+                  widget: 'string',
+                  required: true,
+                  hint: '例如：about-us'
+                },
+                {
+                  label: '頁面內容',
+                  name: 'body',
+                  widget: 'markdown',
+                  required: true,
+                  hint: '使用 Markdown 格式編寫頁面內容'
+                },
+                {
+                  label: 'SEO 描述',
+                  name: 'meta_description',
+                  widget: 'text',
+                  hint: '搜尋引擎優化描述'
+                },
+                {
+                  label: '頁面圖片',
+                  name: 'image',
+                  widget: 'image',
+                  hint: '建議尺寸：800x600 像素'
+                },
+                {
+                  label: '發布狀態',
+                  name: 'published',
+                  widget: 'boolean',
+                  default: true
+                }
+              ]
+            }
+          ]
+        }
+      });
+    }
+  </script>
   <style>
     /* Custom CMS Styling */
     body {
@@ -88,431 +535,5 @@
       </ul>
     </div>
   </div>
-  
-  <script>
-    // Initialize Decap CMS
-    CMS.init({
-      config: {
-        backend: {
-          name: 'github',
-          repo: 'GoldCityStudio/hygienefirst_tvp',
-          branch: 'main',
-          site_domain: 'www.hygienefirstgroup.com'
-        },
-        media_folder: 'images',
-        public_folder: '/images',
-        collections: [
-          {
-            name: 'services',
-            label: '🏥 醫療護理服務',
-            folder: 'content/services',
-            create: true,
-            slug: '{{slug}}',
-            fields: [
-              {
-                label: '服務標題',
-                name: 'title',
-                widget: 'string',
-                required: true,
-                hint: '例如：長者護理服務'
-              },
-              {
-                label: '英文標題',
-                name: 'title_en',
-                widget: 'string',
-                hint: '例如：Elderly Care Services'
-              },
-              {
-                label: '網址代碼',
-                name: 'slug',
-                widget: 'string',
-                required: true,
-                hint: '例如：elderly-care-services'
-              },
-              {
-                label: '服務描述',
-                name: 'description',
-                widget: 'text',
-                required: true,
-                hint: '簡短描述服務內容'
-              },
-              {
-                label: '詳細內容',
-                name: 'body',
-                widget: 'markdown',
-                required: true,
-                hint: '使用 Markdown 格式編寫詳細內容'
-              },
-              {
-                label: '服務圖片',
-                name: 'image',
-                widget: 'image',
-                required: true,
-                hint: '建議尺寸：800x600 像素'
-              },
-              {
-                label: '服務收費',
-                name: 'price',
-                widget: 'string',
-                hint: '例如：$500/小時 或 聯絡查詢'
-              },
-              {
-                label: '服務類別',
-                name: 'category',
-                widget: 'select',
-                options: [
-                  { label: '居家護理', value: 'homecare' },
-                  { label: '長者護理', value: 'elderly-care' },
-                  { label: '傷口護理', value: 'wound-care' },
-                  { label: '復康護理', value: 'rehabilitation' },
-                  { label: '照顧者培訓', value: 'caregiver-training' },
-                  { label: '癌症護理', value: 'cancer-care' },
-                  { label: '認知障礙症護理', value: 'dementia-care' },
-                  { label: '手術後護理', value: 'post-surgery-care' },
-                  { label: '鼻胃喉管護理', value: 'nasogastric-care' },
-                  { label: '中風護理', value: 'stroke-care' }
-                ],
-                required: true
-              },
-              {
-                label: '精選服務',
-                name: 'featured',
-                widget: 'boolean',
-                default: false,
-                hint: '是否在首頁顯示為精選服務'
-              },
-              {
-                label: '發布狀態',
-                name: 'published',
-                widget: 'boolean',
-                default: true,
-                hint: '是否立即發布到網站'
-              },
-              {
-                label: '發布日期',
-                name: 'date',
-                widget: 'datetime',
-                default: '{{now}}'
-              }
-            ]
-          },
-          {
-            name: 'news',
-            label: '📰 新聞與更新',
-            folder: 'content/news',
-            create: true,
-            slug: '{{slug}}',
-            fields: [
-              {
-                label: '新聞標題',
-                name: 'title',
-                widget: 'string',
-                required: true,
-                hint: '例如：藥物安全處理指南'
-              },
-              {
-                label: '英文標題',
-                name: 'title_en',
-                widget: 'string',
-                hint: '例如：Drug Safety Handling Guide'
-              },
-              {
-                label: '網址代碼',
-                name: 'slug',
-                widget: 'string',
-                required: true,
-                hint: '例如：drug-safety-guide'
-              },
-              {
-                label: '新聞摘要',
-                name: 'excerpt',
-                widget: 'text',
-                required: true,
-                hint: '簡短的新聞摘要，會顯示在列表頁面'
-              },
-              {
-                label: '新聞內容',
-                name: 'body',
-                widget: 'markdown',
-                required: true,
-                hint: '使用 Markdown 格式編寫新聞內容'
-              },
-              {
-                label: '新聞圖片',
-                name: 'image',
-                widget: 'image',
-                required: true,
-                hint: '建議尺寸：800x600 像素'
-              },
-              {
-                label: '新聞類別',
-                name: 'category',
-                widget: 'select',
-                options: [
-                  { label: '醫療新聞', value: 'healthcare-news' },
-                  { label: '服務更新', value: 'service-updates' },
-                  { label: '健康貼士', value: 'health-tips' },
-                  { label: '公司新聞', value: 'company-news' },
-                  { label: '藥物安全', value: 'drug-safety' },
-                  { label: '照顧者貼士', value: 'caregiver-tips' }
-                ],
-                required: true
-              },
-              {
-                label: '精選新聞',
-                name: 'featured',
-                widget: 'boolean',
-                default: false,
-                hint: '是否在首頁顯示為精選新聞'
-              },
-              {
-                label: '發布狀態',
-                name: 'published',
-                widget: 'boolean',
-                default: true,
-                hint: '是否立即發布到網站'
-              },
-              {
-                label: '發布日期',
-                name: 'date',
-                widget: 'datetime',
-                default: '{{now}}'
-              }
-            ]
-          },
-          {
-            name: 'drugs',
-            label: '💊 藥物資料庫',
-            folder: 'content/drugs',
-            create: true,
-            slug: '{{slug}}',
-            fields: [
-              {
-                label: '藥物名稱',
-                name: 'name',
-                widget: 'string',
-                required: true,
-                hint: '例如：阿士匹靈'
-              },
-              {
-                label: '英文名稱',
-                name: 'name_en',
-                widget: 'string',
-                hint: '例如：Aspirin'
-              },
-              {
-                label: '網址代碼',
-                name: 'slug',
-                widget: 'string',
-                required: true,
-                hint: '例如：aspirin'
-              },
-              {
-                label: '藥物類別',
-                name: 'category',
-                widget: 'select',
-                options: [
-                  { label: '處方藥物', value: 'prescription-drugs' },
-                  { label: '非處方藥物', value: 'over-the-counter' },
-                  { label: '管制藥物', value: 'controlled-substances' },
-                  { label: '中草藥', value: 'herbal-medicines' },
-                  { label: '保健品', value: 'supplements' },
-                  { label: '醫療器材', value: 'medical-devices' }
-                ],
-                required: true
-              },
-              {
-                label: '藥物描述',
-                name: 'description',
-                widget: 'text',
-                required: true,
-                hint: '簡短描述藥物用途'
-              },
-              {
-                label: '處理指引',
-                name: 'disposal',
-                widget: 'markdown',
-                required: true,
-                hint: '詳細的藥物處理和回收指引'
-              },
-              {
-                label: '安全注意事項',
-                name: 'safety',
-                widget: 'markdown',
-                hint: '藥物安全使用注意事項'
-              },
-              {
-                label: '藥物圖片',
-                name: 'image',
-                widget: 'image',
-                hint: '建議尺寸：400x400 像素'
-              },
-              {
-                label: '發布狀態',
-                name: 'published',
-                widget: 'boolean',
-                default: true
-              }
-            ]
-          },
-          {
-            name: 'collection-points',
-            label: '📍 回收點位置',
-            folder: 'content/collection-points',
-            create: true,
-            slug: '{{slug}}',
-            fields: [
-              {
-                label: '回收點名稱',
-                name: 'name',
-                widget: 'string',
-                required: true,
-                hint: '例如：中環政府合署'
-              },
-              {
-                label: '英文名稱',
-                name: 'name_en',
-                widget: 'string',
-                hint: '例如：Central Government Offices'
-              },
-              {
-                label: '網址代碼',
-                name: 'slug',
-                widget: 'string',
-                required: true,
-                hint: '例如：central-government-offices'
-              },
-              {
-                label: '地址',
-                name: 'address',
-                widget: 'string',
-                required: true,
-                hint: '完整地址'
-              },
-              {
-                label: '地區',
-                name: 'district',
-                widget: 'select',
-                options: [
-                  { label: '中西區', value: 'Central and Western' },
-                  { label: '東區', value: 'Eastern' },
-                  { label: '南區', value: 'Southern' },
-                  { label: '灣仔區', value: 'Wan Chai' },
-                  { label: '深水埗區', value: 'Sham Shui Po' },
-                  { label: '油尖旺區', value: 'Yau Tsim Mong' },
-                  { label: '九龍城區', value: 'Kowloon City' },
-                  { label: '黃大仙區', value: 'Wong Tai Sin' },
-                  { label: '觀塘區', value: 'Kwun Tong' },
-                  { label: '荃灣區', value: 'Tsuen Wan' },
-                  { label: '屯門區', value: 'Tuen Mun' },
-                  { label: '元朗區', value: 'Yuen Long' },
-                  { label: '北區', value: 'North' },
-                  { label: '大埔區', value: 'Tai Po' },
-                  { label: '沙田區', value: 'Sha Tin' },
-                  { label: '西貢區', value: 'Sai Kung' },
-                  { label: '葵青區', value: 'Kwai Tsing' },
-                  { label: '離島區', value: 'Islands' }
-                ],
-                required: true
-              },
-              {
-                label: '電話',
-                name: 'phone',
-                widget: 'string',
-                hint: '聯絡電話'
-              },
-              {
-                label: '開放時間',
-                name: 'hours',
-                widget: 'string',
-                hint: '例如：星期一至五 9:00-18:00'
-              },
-              {
-                label: '緯度',
-                name: 'lat',
-                widget: 'number',
-                step: 0.000001,
-                hint: '地圖座標緯度'
-              },
-              {
-                label: '經度',
-                name: 'lng',
-                widget: 'number',
-                step: 0.000001,
-                hint: '地圖座標經度'
-              },
-              {
-                label: '描述',
-                name: 'description',
-                widget: 'text',
-                hint: '額外描述資訊'
-              },
-              {
-                label: '啟用狀態',
-                name: 'active',
-                widget: 'boolean',
-                default: true,
-                hint: '是否在網站上顯示'
-              }
-            ]
-          },
-          {
-            name: 'pages',
-            label: '📄 靜態頁面',
-            folder: 'content/pages',
-            create: true,
-            slug: '{{slug}}',
-            fields: [
-              {
-                label: '頁面標題',
-                name: 'title',
-                widget: 'string',
-                required: true,
-                hint: '例如：關於我們'
-              },
-              {
-                label: '英文標題',
-                name: 'title_en',
-                widget: 'string',
-                hint: '例如：About Us'
-              },
-              {
-                label: '網址代碼',
-                name: 'slug',
-                widget: 'string',
-                required: true,
-                hint: '例如：about-us'
-              },
-              {
-                label: '頁面內容',
-                name: 'body',
-                widget: 'markdown',
-                required: true,
-                hint: '使用 Markdown 格式編寫頁面內容'
-              },
-              {
-                label: 'SEO 描述',
-                name: 'meta_description',
-                widget: 'text',
-                hint: '搜尋引擎優化描述'
-              },
-              {
-                label: '頁面圖片',
-                name: 'image',
-                widget: 'image',
-                hint: '建議尺寸：800x600 像素'
-              },
-              {
-                label: '發布狀態',
-                name: 'published',
-                widget: 'boolean',
-                default: true
-              }
-            ]
-          }
-        ]
-      }
-    });
-  </script>
 </body>
 </html>
