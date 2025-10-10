@@ -4,6 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hygiene First - 內容管理系統</title>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+  
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -282,8 +289,33 @@
   </div>
 
   <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBDohkPFBU63W1qiFuR1CvDX7dRCWntT-M",
+      authDomain: "hygienefirst-member-system.firebaseapp.com",
+      projectId: "hygienefirst-member-system",
+      storageBucket: "hygienefirst-member-system.firebasestorage.app",
+      messagingSenderId: "535268528733",
+      appId: "1:535268528733:web:89b150dcbc785d68c873b4",
+      measurementId: "G-NFT58KR02S"
+    };
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+    const storage = firebase.storage();
+    
     // Check authentication
     function checkAuth() {
+      // Check Firebase auth first
+      const user = auth.currentUser;
+      if (user) {
+        document.getElementById('user-info').textContent = `歡迎，${user.email}`;
+        return true;
+      }
+      
+      // Fallback to simple session auth
       const sessionData = localStorage.getItem('cms_session');
       
       if (!sessionData) {
@@ -313,8 +345,17 @@
     // Logout function
     document.getElementById('logout-btn').addEventListener('click', function(e) {
       e.preventDefault();
-      localStorage.removeItem('cms_session');
-      window.location.href = '/admin/simple-auth.html';
+      
+      // Firebase logout
+      if (auth.currentUser) {
+        auth.signOut().then(() => {
+          window.location.href = '/admin/simple-auth.html';
+        });
+      } else {
+        // Simple session logout
+        localStorage.removeItem('cms_session');
+        window.location.href = '/admin/simple-auth.html';
+      }
     });
     
     // Content editor functions
@@ -541,11 +582,28 @@
         formData[input.id] = input.value;
       });
       
-      // Show success message
-      alert(`✅ ${getContentTypeName(type)} 內容已儲存！\n\n注意：這是演示版本，實際內容需要透過技術支援更新到網站。\n\n儲存的資料：\n${JSON.stringify(formData, null, 2)}`);
+      // Add metadata
+      formData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+      formData.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
+      formData.published = true;
       
-      // Close modal
-      document.querySelector('.modal').remove();
+      // Save to Firebase
+      db.collection(type).add(formData)
+        .then((docRef) => {
+          console.log('Document written with ID: ', docRef.id);
+          
+          // Show success message
+          alert(`✅ ${getContentTypeName(type)} 內容已儲存到 Firebase！\n\n文件 ID: ${docRef.id}\n\n內容已即時同步到資料庫。`);
+          
+          // Close modal
+          document.querySelector('.modal').remove();
+        })
+        .catch((error) => {
+          console.error('Error adding document: ', error);
+          
+          // Fallback: show data for manual saving
+          alert(`⚠️ Firebase 儲存失敗，請手動儲存：\n\n${JSON.stringify(formData, null, 2)}\n\n錯誤：${error.message}`);
+        });
     }
     
     function showImageManager() {
@@ -619,9 +677,42 @@
         return;
       }
       
-      alert(`✅ 圖片上傳功能演示\n\n已選擇 ${fileInput.files.length} 張圖片\n描述：${description}\n\n注意：這是演示版本，實際上傳需要技術支援。`);
+      // Upload files to Firebase Storage
+      const files = Array.from(fileInput.files);
+      let uploadPromises = [];
       
-      document.querySelector('.modal').remove();
+      files.forEach((file, index) => {
+        const fileName = `images/${Date.now()}_${index}_${file.name}`;
+        const uploadTask = storage.ref(fileName).put(file);
+        
+        uploadPromises.push(
+          uploadTask.then(snapshot => {
+            return snapshot.ref.getDownloadURL();
+          })
+        );
+      });
+      
+      // Wait for all uploads to complete
+      Promise.all(uploadPromises)
+        .then(urls => {
+          // Save image metadata to Firestore
+          const imageData = {
+            urls: urls,
+            description: description,
+            uploadedAt: firebase.firestore.FieldValue.serverTimestamp(),
+            uploadedBy: auth.currentUser ? auth.currentUser.email : 'anonymous'
+          };
+          
+          return db.collection('images').add(imageData);
+        })
+        .then(docRef => {
+          alert(`✅ 圖片上傳成功！\n\n已上傳 ${files.length} 張圖片\n描述：${description}\n\n圖片已儲存到 Firebase Storage 和 Firestore 資料庫。`);
+          document.querySelector('.modal').remove();
+        })
+        .catch(error => {
+          console.error('Upload error:', error);
+          alert(`⚠️ 圖片上傳失敗：${error.message}\n\n請重試或聯絡技術支援。`);
+        });
     }
     
     // Initialize
