@@ -1,5 +1,5 @@
 ---
-title: "藥物安全處理指南"
+title: "藥物安全處理指南."
 title_en: "Drug Safety Handling Guide"
 slug: "drug-safety-guide"
 excerpt: "了解如何安全處理和回收過期藥物，保護環境和健康"

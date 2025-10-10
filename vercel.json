@@ -5,6 +5,10 @@
       "destination": "/admin/index.html"
     },
     {
+      "source": "/admin/cms",
+      "destination": "/admin/cms.html"
+    },
+    {
       "source": "/家居藥物回收計劃",
       "destination": "/家居藥物回收計劃.html"
     },
@@ -14,11 +18,27 @@
     },
     {
       "source": "/news/drug-safety-guide",
-      "destination": "/news-detail-37.html"
+      "destination": "/news-detail-drug-safety-guide.html"
     },
     {
       "source": "/news/:slug",
       "destination": "/news-detail-:slug.html"
+    },
+    {
+      "source": "/services/:slug",
+      "destination": "/service-:slug.html"
+    },
+    {
+      "source": "/drugs/:slug",
+      "destination": "/drug-:slug.html"
+    },
+    {
+      "source": "/collection-points/:slug",
+      "destination": "/collection-point-:slug.html"
+    },
+    {
+      "source": "/pages/:slug",
+      "destination": "/page-:slug.html"
     },
     {
       "source": "/:path*",
