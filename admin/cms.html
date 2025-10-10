@@ -100,6 +100,12 @@
         console.log('Test mode enabled, bypassing authentication');
       }
       
+      // Hide loading content and show CMS
+      const loadingDiv = document.getElementById('cms-loading');
+      if (loadingDiv) {
+        loadingDiv.style.display = 'none';
+      }
+      
       // Initialize Decap CMS
       CMS.init({
         config: {
@@ -527,6 +533,28 @@
           ]
         }
       });
+      
+      // Add error handling
+      CMS.on('error', (error) => {
+        console.error('CMS Error:', error);
+        const loadingDiv = document.getElementById('cms-loading');
+        if (loadingDiv) {
+          loadingDiv.innerHTML = `
+            <div class="cms-header">
+              <h1>❌ CMS 載入錯誤</h1>
+              <p>內容管理系統載入失敗，請重新整理頁面或聯絡技術支援</p>
+            </div>
+            <div class="cms-container">
+              <div class="cms-help">
+                <h3>錯誤詳情</h3>
+                <p>${error.message || '未知錯誤'}</p>
+                <button onclick="window.location.reload()" class="github-btn">重新整理</button>
+              </div>
+            </div>
+          `;
+          loadingDiv.style.display = 'block';
+        }
+      });
     }
   </script>
   <style>
@@ -594,22 +622,28 @@
   </style>
 </head>
 <body>
-  <div class="cms-header">
-    <h1>🏥 Hygiene First 首衛 - 內容管理系統</h1>
-    <p>歡迎使用內容管理系統，您可以輕鬆更新網站內容</p>
-  </div>
+  <!-- Decap CMS requires this specific div structure -->
+  <div id="nc-root"></div>
   
-  <div class="cms-container">
-    <div class="cms-help">
-      <h3>📋 使用說明</h3>
-      <ul>
-        <li><strong>新聞更新</strong>：點擊「📰 News & Updates」來新增或編輯新聞文章</li>
-        <li><strong>服務管理</strong>：點擊「🏥 Healthcare Services」來管理醫療服務</li>
-        <li><strong>藥物資料</strong>：點擊「💊 Drug Database」來更新藥物資訊</li>
-        <li><strong>回收點</strong>：點擊「📍 Collection Points」來管理回收點位置</li>
-        <li><strong>圖片上傳</strong>：所有圖片會自動上傳到網站</li>
-        <li><strong>即時更新</strong>：儲存後內容會立即在網站上顯示</li>
-      </ul>
+  <!-- Fallback content for when CMS is loading -->
+  <div id="cms-loading">
+    <div class="cms-header">
+      <h1>🏥 Hygiene First 首衛 - 內容管理系統</h1>
+      <p>歡迎使用內容管理系統，您可以輕鬆更新網站內容</p>
+    </div>
+    
+    <div class="cms-container">
+      <div class="cms-help">
+        <h3>📋 使用說明</h3>
+        <ul>
+          <li><strong>新聞更新</strong>：點擊「📰 News & Updates」來新增或編輯新聞文章</li>
+          <li><strong>服務管理</strong>：點擊「🏥 Healthcare Services」來管理醫療服務</li>
+          <li><strong>藥物資料</strong>：點擊「💊 Drug Database」來更新藥物資訊</li>
+          <li><strong>回收點</strong>：點擊「📍 Collection Points」來管理回收點位置</li>
+          <li><strong>圖片上傳</strong>：所有圖片會自動上傳到網站</li>
+          <li><strong>即時更新</strong>：儲存後內容會立即在網站上顯示</li>
+        </ul>
+      </div>
     </div>
   </div>
 </body>
