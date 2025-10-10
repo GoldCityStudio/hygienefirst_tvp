@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hygiene First CMS - Authentication</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    .auth-container {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+    
+    .auth-container h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .auth-container p {
+      color: #666;
+      margin-bottom: 30px;
+    }
+    
+    .github-btn {
+      background: #24292e;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+    
+    .github-btn:hover {
+      background: #1a1e22;
+    }
+    
+    .loading {
+      display: none;
+      margin-top: 20px;
+    }
+    
+    .spinner {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #ff6b35;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <h1>🏥 Hygiene First CMS</h1>
+    <p>請使用您的 GitHub 帳戶登入以管理網站內容</p>
+    
+    <a href="#" id="github-login" class="github-btn">
+      🔑 Login with GitHub
+    </a>
+    
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>正在重定向到 GitHub...</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('github-login').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Show loading
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('github-login').style.display = 'none';
+      
+      // Redirect to GitHub OAuth
+      const clientId = 'Ov23liu7Oq6iL7OtQa2s';
+      const redirectUri = encodeURIComponent('https://www.hygienefirstgroup.com/admin/cms.html');
+      const scope = 'repo';
+      
+      const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
+      
+      window.location.href = githubAuthUrl;
+    });
+    
+    // Handle OAuth callback
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    const error = urlParams.get('error');
+    
+    if (error) {
+      document.querySelector('.auth-container').innerHTML = `
+        <h1>❌ 認證失敗</h1>
+        <p>GitHub 認證過程中發生錯誤：${error}</p>
+        <a href="/admin/cms.html" class="github-btn">重試</a>
+      `;
+    } else if (code) {
+      // Exchange code for token (this would normally be done server-side)
+      document.querySelector('.auth-container').innerHTML = `
+        <h1>✅ 認證成功</h1>
+        <p>正在載入 CMS...</p>
+        <div class="spinner"></div>
+      `;
+      
+      // Redirect to CMS
+      setTimeout(() => {
+        window.location.href = '/admin/cms.html';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
