@@ -119,6 +119,8 @@
         <a href="/admin/cms.html" class="github-btn">重試</a>
       `;
     } else if (code) {
+      console.log('OAuth code received:', code);
+      
       // For now, we'll simulate a successful auth
       // In production, you'd exchange the code for a token server-side
       document.querySelector('.auth-container').innerHTML = `
@@ -128,11 +130,21 @@
       `;
       
       // Store a mock token (in production, use real token)
-      localStorage.setItem('github_token', 'mock_token_' + Date.now());
-      localStorage.setItem('github_token_expires', (Date.now() + 3600000).toString()); // 1 hour
+      const token = 'mock_token_' + Date.now();
+      const expires = Date.now() + 3600000; // 1 hour
+      
+      console.log('Storing token:', { token, expires });
+      
+      localStorage.setItem('github_token', token);
+      localStorage.setItem('github_token_expires', expires.toString());
+      
+      // Verify storage
+      console.log('Stored token:', localStorage.getItem('github_token'));
+      console.log('Stored expires:', localStorage.getItem('github_token_expires'));
       
       // Redirect to CMS
       setTimeout(() => {
+        console.log('Redirecting to CMS...');
         window.location.href = '/admin/cms.html';
       }, 2000);
     }

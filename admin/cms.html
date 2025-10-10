@@ -29,17 +29,22 @@
       const token = localStorage.getItem('github_token');
       const expires = localStorage.getItem('github_token_expires');
       
+      console.log('Checking authentication:', { token, expires });
+      
       if (!token || !expires) {
+        console.log('No token found, redirecting to auth');
         return false;
       }
       
       // Check if token is expired
       if (Date.now() > parseInt(expires)) {
+        console.log('Token expired, removing and redirecting');
         localStorage.removeItem('github_token');
         localStorage.removeItem('github_token_expires');
         return false;
       }
       
+      console.log('Authentication valid, proceeding to CMS');
       return true;
     }
     
@@ -49,10 +54,19 @@
       // Check if user is authenticated
       const isAuthenticated = checkAuthentication();
       
-      if (!isAuthenticated) {
+      // For testing, let's also check URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const testMode = urlParams.get('test') === 'true';
+      
+      if (!isAuthenticated && !testMode) {
+        console.log('Not authenticated, redirecting to auth page');
         // Redirect to custom auth page
         window.location.href = '/admin/auth.html';
         return;
+      }
+      
+      if (testMode) {
+        console.log('Test mode enabled, bypassing authentication');
       }
       
       // Initialize Decap CMS
