@@ -13,6 +13,14 @@
       "destination": "/藥物分類搜尋引擎器.html"
     },
     {
+      "source": "/news/drug-safety-guide",
+      "destination": "/news-detail-37.html"
+    },
+    {
+      "source": "/news/:slug",
+      "destination": "/news-detail-:slug.html"
+    },
+    {
       "source": "/:path*",
       "destination": "/:path*.html"
     }
