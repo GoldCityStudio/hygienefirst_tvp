@@ -41,10 +41,6 @@
       "destination": "/news-dynamic.html"
     },
     {
-      "source": "/最新消息",
-      "destination": "/news-dynamic.html"
-    },
-    {
       "source": "/services-dynamic",
       "destination": "/services-dynamic.html"
     },
@@ -63,6 +59,18 @@
     {
       "source": "/pages/:slug",
       "destination": "/page-:slug.html"
+    },
+    {
+      "source": "/最新消息",
+      "destination": "/news-dynamic.html"
+    },
+    {
+      "source": "/%E6%9C%80%E6%96%B0%E6%B6%88%E6%81%AF",
+      "destination": "/news-dynamic.html"
+    },
+    {
+      "source": "/news-dynamic-chinese",
+      "destination": "/news-dynamic.html"
     },
     {
       "source": "/:path*",
