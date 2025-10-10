@@ -110,10 +110,29 @@
       setTimeout(() => {
         console.log('Initializing CMS with delay...');
         
+        // Check authentication before initializing CMS
+        const token = localStorage.getItem('github_token');
+        const expires = localStorage.getItem('github_token_expires');
+        
+        if (!token || !expires || Date.now() > parseInt(expires)) {
+          console.log('No valid token found, redirecting to auth...');
+          window.location.href = '/admin/auth.html';
+          return;
+        }
+        
+        console.log('Token valid, proceeding with CMS initialization...');
+        
         // Initialize Decap CMS
         console.log('About to initialize CMS...');
         console.log('CMS object:', CMS);
         console.log('nc-root element:', document.getElementById('nc-root'));
+        
+        // Set GitHub token manually
+        const githubToken = localStorage.getItem('github_token');
+        if (githubToken && githubToken.startsWith('mock_token_')) {
+          // For mock tokens, we'll use a placeholder
+          console.log('Using mock token for CMS');
+        }
         
         CMS.init({
         config: {
@@ -124,7 +143,8 @@
             base_url: 'https://www.hygienefirstgroup.com',
             auth_type: 'implicit',
             auth_endpoint: 'https://www.hygienefirstgroup.com/admin/auth.html',
-            disable_auth: false
+            disable_auth: true,
+            token: githubToken
           },
           media_folder: 'images',
           public_folder: '/images',
