@@ -319,11 +319,309 @@
     
     // Content editor functions
     function showContentEditor(type) {
-      alert(`即將開啟 ${type} 編輯器...\n\n目前使用簡化版 CMS，如需完整編輯功能，請聯絡技術支援。\n\n您可以直接編輯網站檔案或使用 GitHub 進行內容更新。`);
+      // Create modal for content editing
+      const modal = document.createElement('div');
+      modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      `;
+      
+      modal.innerHTML = `
+        <div style="
+          background: white;
+          padding: 30px;
+          border-radius: 10px;
+          max-width: 800px;
+          width: 90%;
+          max-height: 80vh;
+          overflow-y: auto;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        ">
+          <h2 style="color: #ff6b35; margin-bottom: 20px;">編輯 ${getContentTypeName(type)}</h2>
+          <div id="editor-content">
+            ${getEditorContent(type)}
+          </div>
+          <div style="margin-top: 20px; text-align: right;">
+            <button onclick="this.closest('.modal').remove()" style="
+              background: #6c757d;
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              margin-right: 10px;
+              cursor: pointer;
+            ">取消</button>
+            <button onclick="saveContent('${type}')" style="
+              background: #ff6b35;
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+            ">儲存</button>
+          </div>
+        </div>
+      `;
+      
+      modal.className = 'modal';
+      document.body.appendChild(modal);
+    }
+    
+    function getContentTypeName(type) {
+      const names = {
+        'news': '新聞文章',
+        'services': '醫療服務',
+        'drugs': '藥物資料',
+        'collection-points': '回收點位置',
+        'pages': '靜態頁面'
+      };
+      return names[type] || type;
+    }
+    
+    function getEditorContent(type) {
+      switch(type) {
+        case 'news':
+          return `
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞標題</label>
+              <input type="text" id="news-title" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" placeholder="輸入新聞標題">
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞摘要</label>
+              <textarea id="news-excerpt" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 80px;" placeholder="輸入新聞摘要"></textarea>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞內容</label>
+              <textarea id="news-content" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 200px;" placeholder="輸入新聞內容"></textarea>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞類別</label>
+              <select id="news-category" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <option value="healthcare-news">醫療新聞</option>
+                <option value="service-updates">服務更新</option>
+                <option value="health-tips">健康貼士</option>
+                <option value="company-news">公司新聞</option>
+                <option value="drug-safety">藥物安全</option>
+                <option value="caregiver-tips">照顧者貼士</option>
+              </select>
+            </div>
+          `;
+        case 'services':
+          return `
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">服務名稱</label>
+              <input type="text" id="service-title" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" placeholder="輸入服務名稱">
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">服務描述</label>
+              <textarea id="service-description" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 100px;" placeholder="輸入服務描述"></textarea>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">服務收費</label>
+              <input type="text" id="service-price" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" placeholder="例如：$500/小時">
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">服務類別</label>
+              <select id="service-category" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <option value="homecare">居家護理</option>
+                <option value="elderly-care">長者護理</option>
+                <option value="wound-care">傷口護理</option>
+                <option value="rehabilitation">復康護理</option>
+                <option value="caregiver-training">照顧者培訓</option>
+                <option value="cancer-care">癌症護理</option>
+                <option value="dementia-care">認知障礙症護理</option>
+                <option value="post-surgery-care">手術後護理</option>
+                <option value="nasogastric-care">鼻胃喉管護理</option>
+                <option value="stroke-care">中風護理</option>
+              </select>
+            </div>
+          `;
+        case 'drugs':
+          return `
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">藥物名稱</label>
+              <input type="text" id="drug-name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" placeholder="輸入藥物名稱">
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">藥物類別</label>
+              <select id="drug-category" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <option value="prescription-drugs">處方藥物</option>
+                <option value="over-the-counter">非處方藥物</option>
+                <option value="controlled-substances">管制藥物</option>
+                <option value="herbal-medicines">中草藥</option>
+                <option value="supplements">保健品</option>
+                <option value="medical-devices">醫療器材</option>
+              </select>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">處理指引</label>
+              <textarea id="drug-disposal" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 150px;" placeholder="輸入藥物處理和回收指引"></textarea>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">安全注意事項</label>
+              <textarea id="drug-safety" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 100px;" placeholder="輸入安全使用注意事項"></textarea>
+            </div>
+          `;
+        case 'collection-points':
+          return `
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">回收點名稱</label>
+              <input type="text" id="point-name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" placeholder="輸入回收點名稱">
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">地址</label>
+              <input type="text" id="point-address" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" placeholder="輸入完整地址">
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">地區</label>
+              <select id="point-district" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <option value="Central and Western">中西區</option>
+                <option value="Eastern">東區</option>
+                <option value="Southern">南區</option>
+                <option value="Wan Chai">灣仔區</option>
+                <option value="Sham Shui Po">深水埗區</option>
+                <option value="Yau Tsim Mong">油尖旺區</option>
+                <option value="Kowloon City">九龍城區</option>
+                <option value="Wong Tai Sin">黃大仙區</option>
+                <option value="Kwun Tong">觀塘區</option>
+                <option value="Tsuen Wan">荃灣區</option>
+                <option value="Tuen Mun">屯門區</option>
+                <option value="Yuen Long">元朗區</option>
+                <option value="North">北區</option>
+                <option value="Tai Po">大埔區</option>
+                <option value="Sha Tin">沙田區</option>
+                <option value="Sai Kung">西貢區</option>
+                <option value="Kwai Tsing">葵青區</option>
+                <option value="Islands">離島區</option>
+              </select>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">電話</label>
+              <input type="text" id="point-phone" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" placeholder="輸入聯絡電話">
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">開放時間</label>
+              <input type="text" id="point-hours" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" placeholder="例如：星期一至五 9:00-18:00">
+            </div>
+          `;
+        case 'pages':
+          return `
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">頁面標題</label>
+              <input type="text" id="page-title" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" placeholder="輸入頁面標題">
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">頁面內容</label>
+              <textarea id="page-content" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 300px;" placeholder="輸入頁面內容"></textarea>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">SEO 描述</label>
+              <textarea id="page-meta" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 80px;" placeholder="輸入搜尋引擎優化描述"></textarea>
+            </div>
+          `;
+        default:
+          return '<p>編輯器載入中...</p>';
+      }
+    }
+    
+    function saveContent(type) {
+      // Collect form data
+      const formData = {};
+      const inputs = document.querySelectorAll('#editor-content input, #editor-content textarea, #editor-content select');
+      
+      inputs.forEach(input => {
+        formData[input.id] = input.value;
+      });
+      
+      // Show success message
+      alert(`✅ ${getContentTypeName(type)} 內容已儲存！\n\n注意：這是演示版本，實際內容需要透過技術支援更新到網站。\n\n儲存的資料：\n${JSON.stringify(formData, null, 2)}`);
+      
+      // Close modal
+      document.querySelector('.modal').remove();
     }
     
     function showImageManager() {
-      alert('圖片管理功能\n\n目前使用簡化版 CMS，如需上傳圖片，請聯絡技術支援。\n\n圖片會自動上傳到 /images/ 資料夾。');
+      const modal = document.createElement('div');
+      modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      `;
+      
+      modal.innerHTML = `
+        <div style="
+          background: white;
+          padding: 30px;
+          border-radius: 10px;
+          max-width: 600px;
+          width: 90%;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        ">
+          <h2 style="color: #ff6b35; margin-bottom: 20px;">🖼️ 圖片管理</h2>
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 10px; font-weight: bold;">上傳圖片</label>
+            <input type="file" id="image-upload" accept="image/*" multiple style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+          </div>
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 10px; font-weight: bold;">圖片描述</label>
+            <textarea id="image-description" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 80px;" placeholder="輸入圖片描述"></textarea>
+          </div>
+          <div style="margin-bottom: 20px;">
+            <p style="color: #666; font-size: 14px;">💡 提示：圖片會自動上傳到 /images/ 資料夾，並可在網站中使用。</p>
+          </div>
+          <div style="text-align: right;">
+            <button onclick="this.closest('.modal').remove()" style="
+              background: #6c757d;
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              margin-right: 10px;
+              cursor: pointer;
+            ">取消</button>
+            <button onclick="uploadImages()" style="
+              background: #ff6b35;
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+            ">上傳圖片</button>
+          </div>
+        </div>
+      `;
+      
+      modal.className = 'modal';
+      document.body.appendChild(modal);
+    }
+    
+    function uploadImages() {
+      const fileInput = document.getElementById('image-upload');
+      const description = document.getElementById('image-description').value;
+      
+      if (fileInput.files.length === 0) {
+        alert('請選擇要上傳的圖片');
+        return;
+      }
+      
+      alert(`✅ 圖片上傳功能演示\n\n已選擇 ${fileInput.files.length} 張圖片\n描述：${description}\n\n注意：這是演示版本，實際上傳需要技術支援。`);
+      
+      document.querySelector('.modal').remove();
     }
     
     // Initialize
