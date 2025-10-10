@@ -41,6 +41,10 @@
       "destination": "/news-dynamic.html"
     },
     {
+      "source": "/news-detail-dynamic",
+      "destination": "/news-detail-dynamic.html"
+    },
+    {
       "source": "/services-dynamic",
       "destination": "/services-dynamic.html"
     },
