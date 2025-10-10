@@ -449,13 +449,17 @@
             <div style="margin-bottom: 15px;">
               <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞類別</label>
               <select id="news-category" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                <option value="healthcare-news">醫療新聞</option>
-                <option value="service-updates">服務更新</option>
-                <option value="health-tips">健康貼士</option>
-                <option value="company-news">公司新聞</option>
-                <option value="drug-safety">藥物安全</option>
-                <option value="caregiver-tips">照顧者貼士</option>
+                <option value="company">公司新聞</option>
+                <option value="services">服務更新</option>
+                <option value="media">媒體中心</option>
+                <option value="awards">獎項殊榮</option>
+                <option value="events">活動資訊</option>
               </select>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞圖片</label>
+              <input type="file" id="news-image-file" accept="image/*" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+              <small style="color: #666; font-size: 12px;">支援 JPG, PNG, GIF 格式，建議尺寸 800x600px</small>
             </div>
           `;
         case 'services':
@@ -486,6 +490,11 @@
                 <option value="nasogastric-care">鼻胃喉管護理</option>
                 <option value="stroke-care">中風護理</option>
               </select>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">服務圖片</label>
+              <input type="file" id="service-image-file" accept="image/*" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+              <small style="color: #666; font-size: 12px;">支援 JPG, PNG, GIF 格式，建議尺寸 800x600px</small>
             </div>
           `;
         case 'drugs':
@@ -576,14 +585,53 @@
       }
     }
     
-    function saveContent(type) {
+    async function saveContent(type) {
       // Collect form data
       const formData = {};
       const inputs = document.querySelectorAll('#editor-content input, #editor-content textarea, #editor-content select');
       
       inputs.forEach(input => {
+        if (input.type === 'file') {
+          // Handle file uploads separately
+          return;
+        }
         formData[input.id] = input.value;
       });
+      
+      // Handle image upload for news and services
+      if (type === 'news') {
+        const imageFile = document.getElementById('news-image-file');
+        if (imageFile && imageFile.files.length > 0) {
+          try {
+            const file = imageFile.files[0];
+            const fileName = `news/${Date.now()}_${file.name}`;
+            const uploadTask = storage.ref(fileName).put(file);
+            
+            const snapshot = await uploadTask;
+            const imageUrl = await snapshot.ref.getDownloadURL();
+            formData['news-image'] = imageUrl;
+          } catch (error) {
+            console.error('Image upload error:', error);
+            alert(`⚠️ 圖片上傳失敗：${error.message}\n\n將繼續儲存其他內容。`);
+          }
+        }
+      } else if (type === 'services') {
+        const imageFile = document.getElementById('service-image-file');
+        if (imageFile && imageFile.files.length > 0) {
+          try {
+            const file = imageFile.files[0];
+            const fileName = `services/${Date.now()}_${file.name}`;
+            const uploadTask = storage.ref(fileName).put(file);
+            
+            const snapshot = await uploadTask;
+            const imageUrl = await snapshot.ref.getDownloadURL();
+            formData['service-image'] = imageUrl;
+          } catch (error) {
+            console.error('Image upload error:', error);
+            alert(`⚠️ 圖片上傳失敗：${error.message}\n\n將繼續儲存其他內容。`);
+          }
+        }
+      }
       
       // Add metadata
       formData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
@@ -591,22 +639,21 @@
       formData.published = true;
       
       // Save to Firebase
-      db.collection(type).add(formData)
-        .then((docRef) => {
-          console.log('Document written with ID: ', docRef.id);
-          
-          // Show success message
-          alert(`✅ ${getContentTypeName(type)} 內容已儲存到 Firebase！\n\n文件 ID: ${docRef.id}\n\n內容已即時同步到資料庫。`);
-          
-          // Close modal
-          document.querySelector('.modal').remove();
-        })
-        .catch((error) => {
-          console.error('Error adding document: ', error);
-          
-          // Fallback: show data for manual saving
-          alert(`⚠️ Firebase 儲存失敗，請手動儲存：\n\n${JSON.stringify(formData, null, 2)}\n\n錯誤：${error.message}`);
-        });
+      try {
+        const docRef = await db.collection(type).add(formData);
+        console.log('Document written with ID: ', docRef.id);
+        
+        // Show success message
+        alert(`✅ ${getContentTypeName(type)} 內容已儲存到 Firebase！\n\n文件 ID: ${docRef.id}\n\n內容已即時同步到資料庫。`);
+        
+        // Close modal
+        document.querySelector('.modal').remove();
+      } catch (error) {
+        console.error('Error adding document: ', error);
+        
+        // Fallback: show data for manual saving
+        alert(`⚠️ Firebase 儲存失敗，請手動儲存：\n\n${JSON.stringify(formData, null, 2)}\n\n錯誤：${error.message}`);
+      }
     }
     
     function showImageManager() {

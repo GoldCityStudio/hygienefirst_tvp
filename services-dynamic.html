@@ -62,6 +62,18 @@
       box-shadow: 0 8px 30px rgba(0,0,0,0.15);
     }
     
+    .service-card .service-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .service-card .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
     .service-card .content {
       padding: 25px;
     }
@@ -221,37 +233,38 @@
             return;
           }
           
-          let html = '<div class="services-grid">';
-          querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            const categoryNames = {
-              'homecare': '居家護理',
-              'elderly-care': '長者護理',
-              'wound-care': '傷口護理',
-              'rehabilitation': '復康護理',
-              'caregiver-training': '照顧者培訓',
-              'cancer-care': '癌症護理',
-              'dementia-care': '認知障礙症護理',
-              'post-surgery-care': '手術後護理',
-              'nasogastric-care': '鼻胃喉管護理',
-              'stroke-care': '中風護理'
-            };
-            
-            html += `
-              <div class="service-card">
-                <div class="content">
-                  <h3>${data['service-title'] || '無標題'}</h3>
-                  <div class="description">${data['service-description'] || '無描述'}</div>
-                  <div class="price">${data['service-price'] || '價格面議'}</div>
-                  <div class="meta">
-                    <span class="category">${categoryNames[data['service-category']] || '未分類'}</span>
-                    <span>${data.createdAt ? new Date(data.createdAt.toDate()).toLocaleDateString('zh-TW') : '未知日期'}</span>
-                  </div>
-                </div>
-              </div>
-            `;
-          });
-          html += '</div>';
+                    let html = '<div class="services-grid">';
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        const categoryNames = {
+                            'homecare': '居家護理',
+                            'elderly-care': '長者護理',
+                            'wound-care': '傷口護理',
+                            'rehabilitation': '復康護理',
+                            'caregiver-training': '照顧者培訓',
+                            'cancer-care': '癌症護理',
+                            'dementia-care': '認知障礙症護理',
+                            'post-surgery-care': '手術後護理',
+                            'nasogastric-care': '鼻胃喉管護理',
+                            'stroke-care': '中風護理'
+                        };
+                        
+                        html += `
+                            <div class="service-card">
+                                ${data['service-image'] ? `<div class="service-image"><img src="${data['service-image']}" alt="${data['service-title'] || '服務圖片'}" loading="lazy"></div>` : ''}
+                                <div class="content">
+                                    <h3>${data['service-title'] || '無標題'}</h3>
+                                    <div class="description">${data['service-description'] || '無描述'}</div>
+                                    <div class="price">${data['service-price'] || '價格面議'}</div>
+                                    <div class="meta">
+                                        <span class="category">${categoryNames[data['service-category']] || '未分類'}</span>
+                                        <span>${data.createdAt ? new Date(data.createdAt.toDate()).toLocaleDateString('zh-TW') : '未知日期'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
           
           container.innerHTML = html;
         })

@@ -380,12 +380,11 @@
                     querySnapshot.forEach((doc) => {
                         const data = doc.data();
                         const categoryNames = {
-                            'healthcare-news': '醫療新聞',
-                            'service-updates': '服務更新',
-                            'health-tips': '健康貼士',
-                            'company-news': '公司新聞',
-                            'drug-safety': '藥物安全',
-                            'caregiver-tips': '照顧者貼士'
+                            'company': '公司新聞',
+                            'services': '服務更新',
+                            'media': '媒體中心',
+                            'awards': '獎項殊榮',
+                            'events': '活動資訊'
                         };
                         
                         html += `
