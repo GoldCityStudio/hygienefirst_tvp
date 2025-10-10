@@ -25,11 +25,33 @@
     }
     
     function checkAuthentication() {
-      // Check if user has GitHub access token
+      // Check for simple session authentication first
+      const sessionData = localStorage.getItem('cms_session');
+      
+      if (sessionData) {
+        try {
+          const session = JSON.parse(sessionData);
+          
+          // Check if session is still valid
+          if (session.expires && Date.now() < session.expires) {
+            console.log('Valid session found for user:', session.username);
+            return true;
+          } else {
+            // Session expired, remove it
+            localStorage.removeItem('cms_session');
+            console.log('Session expired, removed');
+          }
+        } catch (error) {
+          console.error('Error parsing session data:', error);
+          localStorage.removeItem('cms_session');
+        }
+      }
+      
+      // Fallback to GitHub token check
       const token = localStorage.getItem('github_token');
       const expires = localStorage.getItem('github_token_expires');
       
-      console.log('Checking authentication:', { token, expires });
+      console.log('Checking GitHub authentication:', { token, expires });
       
       if (!token || !expires) {
         console.log('No token found, redirecting to auth');
@@ -90,9 +112,9 @@
       const isAuthenticated = checkAuthentication();
       
       if (!isAuthenticated && !testMode) {
-        console.log('Not authenticated, redirecting to auth page');
-        // Redirect to custom auth page
-        window.location.href = '/admin/auth.html';
+        console.log('Not authenticated, redirecting to simple auth page');
+        // Redirect to simple auth page
+        window.location.href = '/admin/simple-auth.html';
         return;
       }
       
@@ -115,8 +137,8 @@
         const expires = localStorage.getItem('github_token_expires');
         
         if (!token || !expires || Date.now() > parseInt(expires)) {
-          console.log('No valid token found, redirecting to auth...');
-          window.location.href = '/admin/auth.html';
+          console.log('No valid token found, redirecting to simple auth...');
+          window.location.href = '/admin/simple-auth.html';
           return;
         }
         

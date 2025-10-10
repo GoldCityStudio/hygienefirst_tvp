@@ -4,10 +4,14 @@
       "source": "/admin",
       "destination": "/admin/index.html"
     },
-    {
-      "source": "/admin/auth",
-      "destination": "/admin/auth.html"
-    },
+        {
+          "source": "/admin/auth",
+          "destination": "/admin/auth.html"
+        },
+        {
+          "source": "/admin/simple-auth",
+          "destination": "/admin/simple-auth.html"
+        },
     {
       "source": "/admin/cms",
       "destination": "/admin/cms.html"

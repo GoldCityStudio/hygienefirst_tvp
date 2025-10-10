@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hygiene First CMS - Simple Login</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    .auth-container {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+    
+    .auth-container h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .auth-container p {
+      color: #666;
+      margin-bottom: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: 500;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: #ff6b35;
+    }
+    
+    .login-btn {
+      background: #ff6b35;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s ease;
+    }
+    
+    .login-btn:hover {
+      background: #e55a2b;
+    }
+    
+    .login-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .error-message {
+      color: #e74c3c;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    
+    .success-message {
+      color: #27ae60;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    
+    .loading {
+      display: none;
+      margin-top: 20px;
+    }
+    
+    .spinner {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #ff6b35;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .backup-login {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .backup-login p {
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 15px;
+    }
+    
+    .backup-btn {
+      background: #6c757d;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+    
+    .backup-btn:hover {
+      background: #5a6268;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <h1>🏥 Hygiene First CMS</h1>
+    <p>請輸入您的登入資料以管理網站內容</p>
+    
+    <form id="login-form">
+      <div class="form-group">
+        <label for="username">用戶名稱</label>
+        <input type="text" id="username" name="username" required placeholder="請輸入用戶名稱">
+      </div>
+      
+      <div class="form-group">
+        <label for="password">密碼</label>
+        <input type="password" id="password" name="password" required placeholder="請輸入密碼">
+      </div>
+      
+      <button type="submit" class="login-btn" id="login-btn">
+        🔑 登入
+      </button>
+      
+      <div id="error-message" class="error-message" style="display: none;"></div>
+      <div id="success-message" class="success-message" style="display: none;"></div>
+    </form>
+    
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>正在驗證登入資料...</p>
+    </div>
+    
+    <div class="backup-login">
+      <p>需要其他登入方式？</p>
+      <a href="/admin/auth.html" class="backup-btn">使用 Google/GitHub 登入</a>
+    </div>
+  </div>
+
+  <script>
+    // Simple authentication credentials
+    // In production, these should be stored securely on the server
+    const VALID_CREDENTIALS = {
+      'admin': 'hygienefirst2024',
+      'client': 'client123',
+      'editor': 'editor456',
+      'manager': 'manager789'
+    };
+    
+    // Session timeout (24 hours)
+    const SESSION_TIMEOUT = 24 * 60 * 60 * 1000;
+    
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const loginBtn = document.getElementById('login-btn');
+      const loading = document.getElementById('loading');
+      const errorMessage = document.getElementById('error-message');
+      const successMessage = document.getElementById('success-message');
+      
+      // Hide previous messages
+      errorMessage.style.display = 'none';
+      successMessage.style.display = 'none';
+      
+      // Show loading
+      loading.style.display = 'block';
+      loginBtn.disabled = true;
+      
+      // Simulate authentication delay
+      setTimeout(() => {
+        // Check credentials
+        if (VALID_CREDENTIALS[username] && VALID_CREDENTIALS[username] === password) {
+          // Success
+          console.log('Login successful for user:', username);
+          
+          // Store session data
+          const sessionData = {
+            username: username,
+            loginTime: Date.now(),
+            expires: Date.now() + SESSION_TIMEOUT
+          };
+          
+          localStorage.setItem('cms_session', JSON.stringify(sessionData));
+          
+          // Show success message
+          successMessage.textContent = `歡迎回來，${username}！正在載入 CMS...`;
+          successMessage.style.display = 'block';
+          
+          // Redirect to CMS after short delay
+          setTimeout(() => {
+            window.location.href = '/admin/cms.html';
+          }, 1500);
+          
+        } else {
+          // Failed
+          console.log('Login failed for user:', username);
+          
+          // Show error message
+          errorMessage.textContent = '用戶名稱或密碼錯誤，請重試';
+          errorMessage.style.display = 'block';
+          
+          // Clear password field
+          document.getElementById('password').value = '';
+          document.getElementById('password').focus();
+        }
+        
+        // Hide loading
+        loading.style.display = 'none';
+        loginBtn.disabled = false;
+        
+      }, 1000); // 1 second delay to simulate server response
+    });
+    
+    // Check if user is already logged in
+    function checkExistingSession() {
+      const sessionData = localStorage.getItem('cms_session');
+      
+      if (sessionData) {
+        try {
+          const session = JSON.parse(sessionData);
+          
+          // Check if session is still valid
+          if (session.expires && Date.now() < session.expires) {
+            console.log('Valid session found for user:', session.username);
+            
+            // Show welcome back message
+            document.getElementById('success-message').textContent = 
+              `歡迎回來，${session.username}！正在載入 CMS...`;
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+            
+            // Redirect to CMS
+            setTimeout(() => {
+              window.location.href = '/admin/cms.html';
+            }, 1500);
+            
+            return true;
+          } else {
+            // Session expired, remove it
+            localStorage.removeItem('cms_session');
+            console.log('Session expired, removed');
+          }
+        } catch (error) {
+          console.error('Error parsing session data:', error);
+          localStorage.removeItem('cms_session');
+        }
+      }
+      
+      return false;
+    }
+    
+    // Check for existing session on page load
+    if (!checkExistingSession()) {
+      // Focus on username field
+      document.getElementById('username').focus();
+    }
+    
+    // Add Enter key support
+    document.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        const activeElement = document.activeElement;
+        if (activeElement.id === 'username') {
+          document.getElementById('password').focus();
+        } else if (activeElement.id === 'password') {
+          document.getElementById('login-form').dispatchEvent(new Event('submit'));
+        }
+      }
+    });
+  </script>
+</body>
+</html>
