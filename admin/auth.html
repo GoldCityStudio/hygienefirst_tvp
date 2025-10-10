@@ -119,12 +119,17 @@
         <a href="/admin/cms.html" class="github-btn">重試</a>
       `;
     } else if (code) {
-      // Exchange code for token (this would normally be done server-side)
+      // For now, we'll simulate a successful auth
+      // In production, you'd exchange the code for a token server-side
       document.querySelector('.auth-container').innerHTML = `
         <h1>✅ 認證成功</h1>
         <p>正在載入 CMS...</p>
         <div class="spinner"></div>
       `;
+      
+      // Store a mock token (in production, use real token)
+      localStorage.setItem('github_token', 'mock_token_' + Date.now());
+      localStorage.setItem('github_token_expires', (Date.now() + 3600000).toString()); // 1 hour
       
       // Redirect to CMS
       setTimeout(() => {

@@ -24,8 +24,36 @@
       initializeCMS();
     }
     
+    function checkAuthentication() {
+      // Check if user has GitHub access token
+      const token = localStorage.getItem('github_token');
+      const expires = localStorage.getItem('github_token_expires');
+      
+      if (!token || !expires) {
+        return false;
+      }
+      
+      // Check if token is expired
+      if (Date.now() > parseInt(expires)) {
+        localStorage.removeItem('github_token');
+        localStorage.removeItem('github_token_expires');
+        return false;
+      }
+      
+      return true;
+    }
+    
     function initializeCMS() {
       console.log('Initializing CMS...');
+      
+      // Check if user is authenticated
+      const isAuthenticated = checkAuthentication();
+      
+      if (!isAuthenticated) {
+        // Redirect to custom auth page
+        window.location.href = '/admin/auth.html';
+        return;
+      }
       
       // Initialize Decap CMS
       CMS.init({
@@ -33,7 +61,11 @@
           backend: {
             name: 'github',
             repo: 'GoldCityStudio/hygienefirst_tvp',
-            branch: 'main'
+            branch: 'main',
+            base_url: 'https://www.hygienefirstgroup.com',
+            auth_type: 'implicit',
+            auth_endpoint: 'https://www.hygienefirstgroup.com/admin/auth.html',
+            disable_auth: false
           },
           media_folder: 'images',
           public_folder: '/images',
