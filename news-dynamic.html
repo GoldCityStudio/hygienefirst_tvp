@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hygiene First - 新聞與更新</title>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: 700;
+    }
+    
+    .header p {
+      margin: 10px 0 0 0;
+      opacity: 0.9;
+      font-size: 18px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .news-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    
+    .news-card .content {
+      padding: 25px;
+    }
+    
+    .news-card h3 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 20px;
+      line-height: 1.4;
+    }
+    
+    .news-card .excerpt {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    
+    .news-card .full-content {
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    
+    .news-card .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+      font-size: 14px;
+      color: #999;
+    }
+    
+    .news-card .category {
+      background: #ff6b35;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #666;
+    }
+    
+    .spinner {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #ff6b35;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+    }
+    
+    .empty-state .icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+    
+    .cms-link {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #28a745;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    
+    .cms-link:hover {
+      background: #218838;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #ff6b35;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <a href="/admin/cms" class="cms-link">📝 管理內容</a>
+  
+  <div class="header">
+    <h1>📰 新聞與更新</h1>
+    <p>最新醫療資訊與服務更新</p>
+  </div>
+  
+  <div class="container">
+    <a href="/" class="back-link">← 返回首頁</a>
+    
+    <div id="news-container">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>載入最新新聞...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBDohkPFBU63W1qiFuR1CvDX7dRCWntT-M",
+      authDomain: "hygienefirst-member-system.firebaseapp.com",
+      projectId: "hygienefirst-member-system",
+      storageBucket: "hygienefirst-member-system.firebasestorage.app",
+      messagingSenderId: "535268528733",
+      appId: "1:535268528733:web:89b150dcbc785d68c873b4",
+      measurementId: "G-NFT58KR02S"
+    };
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    
+    // Load news from Firebase
+    function loadNews() {
+      const container = document.getElementById('news-container');
+      
+      db.collection('news').orderBy('createdAt', 'desc').get()
+        .then((querySnapshot) => {
+          if (querySnapshot.empty) {
+            container.innerHTML = `
+              <div class="empty-state">
+                <div class="icon">📝</div>
+                <h3>尚未有新聞內容</h3>
+                <p>請使用內容管理系統新增新聞文章</p>
+                <a href="/admin/cms" class="cms-link" style="position: static; display: inline-block; margin-top: 20px;">新增新聞</a>
+              </div>
+            `;
+            return;
+          }
+          
+          let html = '<div class="news-grid">';
+          querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const categoryNames = {
+              'healthcare-news': '醫療新聞',
+              'service-updates': '服務更新',
+              'health-tips': '健康貼士',
+              'company-news': '公司新聞',
+              'drug-safety': '藥物安全',
+              'caregiver-tips': '照顧者貼士'
+            };
+            
+            html += `
+              <div class="news-card">
+                <div class="content">
+                  <h3>${data['news-title'] || '無標題'}</h3>
+                  <div class="excerpt">${data['news-excerpt'] || '無摘要'}</div>
+                  <div class="full-content">${data['news-content'] || '無內容'}</div>
+                  <div class="meta">
+                    <span class="category">${categoryNames[data['news-category']] || '未分類'}</span>
+                    <span>${data.createdAt ? new Date(data.createdAt.toDate()).toLocaleDateString('zh-TW') : '未知日期'}</span>
+                  </div>
+                </div>
+              </div>
+            `;
+          });
+          html += '</div>';
+          
+          container.innerHTML = html;
+        })
+        .catch((error) => {
+          console.error('Error loading news:', error);
+          container.innerHTML = `
+            <div class="empty-state">
+              <div class="icon">❌</div>
+              <h3>載入失敗</h3>
+              <p>無法載入新聞內容：${error.message}</p>
+              <a href="/admin/cms" class="cms-link" style="position: static; display: inline-block; margin-top: 20px;">管理內容</a>
+            </div>
+          `;
+        });
+    }
+    
+    // Load news on page load
+    document.addEventListener('DOMContentLoaded', loadNews);
+  </script>
+</body>
+</html>

@@ -37,6 +37,14 @@
       "destination": "/news-detail-:slug.html"
     },
     {
+      "source": "/news-dynamic",
+      "destination": "/news-dynamic.html"
+    },
+    {
+      "source": "/services-dynamic",
+      "destination": "/services-dynamic.html"
+    },
+    {
       "source": "/services/:slug",
       "destination": "/service-:slug.html"
     },
