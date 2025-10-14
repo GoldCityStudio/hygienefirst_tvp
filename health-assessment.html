@@ -29,6 +29,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <style>
+        .staff-tab.active img {
+            filter: blur(0px) !important;
+            transform: scale(1.1) !important;
+        }
+        .staff-tab img {
+            transition: all 0.3s ease;
+        }
+    </style>
+    
         <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -230,7 +240,7 @@
                     </div>
                     <div class="hero-image" style="flex: 1; text-align: center; min-width: 500px;">
                         <div style="position: relative; display: inline-block;">
-                            <img src="images/untitled folder/Photo 1.jpg" alt="健康評估服務" style="width: 500px; height: 500px; border-radius: 50%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <img src="images\health-assessment\photo 7.JPG" alt="健康評估服務" style="width: 500px; height: 500px; border-radius: 50%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                             <div style="position: absolute; bottom: 25px; left: 25px; background: #fff3e0; padding: 1rem 1.2rem; border-radius: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
                                 <span style="color: #FF7A00; font-weight: bold; font-size: 1rem;">專業護理</span>
                             </div>
@@ -485,21 +495,36 @@
                 <h2 class="mobile-section-title">健康評估種類</h2>
             </div>
             
-            <div class="staff-tabs" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
-                <button class="staff-tab active" data-tab="nurse" style="background: #FF7A00; color: white; padding: 1rem 2rem; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="fas fa-user-nurse" style="margin-right: 0.5rem;"></i>註冊護士
+            <div class="staff-tabs" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                <button class="staff-tab active" data-tab="nurse" style="background: transparent; border: none; cursor: pointer; transition: all 0.3s ease; position: relative; padding: 0;">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="images/health-assessment/photo2.jpg" alt="註冊護士" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; filter: blur(2px); transition: all 0.3s ease;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 1.1rem; font-weight: bold; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); line-height: 1.2; width: 100%;">註冊護士</div>
+                    </div>
                 </button>
-                <button class="staff-tab" data-tab="pt" style="background: white; color: #333; padding: 1rem 2rem; border: 2px solid #FF7A00; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="fas fa-walking" style="margin-right: 0.5rem;"></i>物理治療師
+                <button class="staff-tab" data-tab="pt" style="background: transparent; border: none; cursor: pointer; transition: all 0.3s ease; position: relative; padding: 0;">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="images/health-assessment/photo3.jpg" alt="物理治療師" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; filter: blur(2px); transition: all 0.3s ease;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 1.1rem; font-weight: bold; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); line-height: 1.2; width: 100%;">物理治療師</div>
+                    </div>
                 </button>
-                <button class="staff-tab" data-tab="ot" style="background: white; color: #333; padding: 1rem 2rem; border: 2px solid #FF7A00; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="fas fa-tools" style="margin-right: 0.5rem;"></i>職業治療師
+                <button class="staff-tab" data-tab="ot" style="background: transparent; border: none; cursor: pointer; transition: all 0.3s ease; position: relative; padding: 0;">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="images/health-assessment/photo4.JPG" alt="職業治療師" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; filter: blur(2px); transition: all 0.3s ease;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 1.1rem; font-weight: bold; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); line-height: 1.2; width: 100%;">職業治療師</div>
+                    </div>
                 </button>
-                <button class="staff-tab" data-tab="dietitian" style="background: white; color: #333; padding: 1rem 2rem; border: 2px solid #FF7A00; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="fas fa-apple-alt" style="margin-right: 0.5rem;"></i>營養師
+                <button class="staff-tab" data-tab="dietitian" style="background: transparent; border: none; cursor: pointer; transition: all 0.3s ease; position: relative; padding: 0;">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="images/health-assessment/photo5.JPG" alt="營養師" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; filter: blur(2px); transition: all 0.3s ease;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 1.1rem; font-weight: bold; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); line-height: 1.2; width: 100%;">營養師</div>
+                    </div>
                 </button>
-                <button class="staff-tab" data-tab="speech" style="background: white; color: #333; padding: 1rem 2rem; border: 2px solid #FF7A00; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">
-                    <i class="fas fa-comments" style="margin-right: 0.5rem;"></i>言語治療師
+                <button class="staff-tab" data-tab="speech" style="background: transparent; border: none; cursor: pointer; transition: all 0.3s ease; position: relative; padding: 0;">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="images/health-assessment/photo6.JPG" alt="言語治療師" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; filter: blur(2px); transition: all 0.3s ease;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 1.1rem; font-weight: bold; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); line-height: 1.2; width: 100%;">言語治療師</div>
+                    </div>
                 </button>
             </div>
             
@@ -839,19 +864,34 @@
                     
                     // Remove active class from all staff buttons and panes
                     staffTabButtons.forEach(btn => {
-                        btn.style.background = 'white';
-                        btn.style.color = '#333';
-                        btn.style.border = '2px solid #FF7A00';
+                        const img = btn.querySelector('img');
+                        img.style.filter = 'blur(2px)';
+                        img.style.transform = 'scale(1)';
                     });
                     staffContentPanes.forEach(pane => {
                         pane.style.display = 'none';
                     });
                     
                     // Add active class to clicked button and corresponding pane
-                    this.style.background = '#FF7A00';
-                    this.style.color = 'white';
-                    this.style.border = '2px solid #FF7A00';
+                    const activeImg = this.querySelector('img');
+                    activeImg.style.filter = 'blur(0px)';
+                    activeImg.style.transform = 'scale(1.1)';
                     document.getElementById(targetTab).style.display = 'flex';
+                });
+                
+                // Add hover effects
+                button.addEventListener('mouseenter', function() {
+                    const img = this.querySelector('img');
+                    img.style.filter = 'blur(0px)';
+                    img.style.transform = 'scale(1.05)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    const img = this.querySelector('img');
+                    if (!this.classList.contains('active')) {
+                        img.style.filter = 'blur(2px)';
+                        img.style.transform = 'scale(1)';
+                    }
                 });
             });
             
