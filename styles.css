@@ -7107,7 +7107,8 @@ h2 {
 p {
     font-size: 15px !important;
     text-wrap: pretty !important;
-line-height: 1.8 !important;
+    line-height: 1.8 !important;
+    text-align: justify !important;
 }
 
 .section-header h2 {

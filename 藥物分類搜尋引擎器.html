@@ -2258,7 +2258,7 @@
                              <tr>
                                  <th>藥物名稱</th>
                                  <th>分類</th>
-                                 <th>回收指引</th>
+                              
                              </tr>
                          </thead>
                          <tbody>
@@ -2268,11 +2268,7 @@
                                      <strong>${drug.name}</strong>
                                  </td>
                                  <td class="drug-category">${drug.isClassA === 'N' ? '非甲類藥物' : '甲類藥物'}</td>
-                                 <td class="disposal-guidance">
-                                     <span style="color: ${drug.isClassA === 'N' ? 'blue' : '#dc3545'}; font-weight: 600;">
-                                         ${drug.isClassA === 'N' ? '🔵 藍色回收盒' : '🔴 紅色回收盒'}
-                                     </span>
-                                 </td>
+                                
                              </tr>
                              `).join('')}
                          </tbody>
