@@ -317,14 +317,52 @@
     
     // Template functions
     function newsTemplate(data) {
+      let imagesHtml = '';
+      
+      // Handle multiple images
+      if (data['news-images'] && Array.isArray(data['news-images'])) {
+        imagesHtml = `
+          <div style="margin-top: 15px;">
+            <strong>圖片 (${data['news-images'].length} 張)：</strong>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+        `;
+        
+        data['news-images'].forEach((imageUrl, index) => {
+          imagesHtml += `
+            <div style="text-align: center;">
+              <img src="${imageUrl}" style="max-width: 150px; max-height: 100px; border-radius: 5px; border: 1px solid #ddd;" alt="新聞圖片 ${index + 1}">
+              <br>
+              <small style="font-size: 10px; color: #666;">圖片 ${index + 1}</small>
+            </div>
+          `;
+        });
+        
+        imagesHtml += `
+            </div>
+          </div>
+        `;
+      } else if (data['news-image']) {
+        // Fallback for single image (legacy support)
+        imagesHtml = `
+          <div style="margin-top: 15px;">
+            <strong>圖片：</strong>
+            <div style="margin-top: 10px;">
+              <img src="${data['news-image']}" style="max-width: 200px; max-height: 150px; border-radius: 5px; border: 1px solid #ddd;" alt="新聞圖片">
+            </div>
+          </div>
+        `;
+      }
+      
       return `
         <div class="content-item">
           <h3>${data['news-title'] || '無標題'}</h3>
           <p><strong>摘要：</strong>${data['news-excerpt'] || '無摘要'}</p>
           <p><strong>內容：</strong>${data['news-content'] || '無內容'}</p>
           <p><strong>類別：</strong>${data['news-category'] || '未分類'}</p>
+          ${imagesHtml}
           <div class="meta">
             建立時間：${data.createdAt ? new Date(data.createdAt.toDate()).toLocaleString('zh-TW') : '未知'}
+            ${data['news-image-count'] ? ` | 圖片數量：${data['news-image-count']}` : ''}
           </div>
         </div>
       `;

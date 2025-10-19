@@ -62,21 +62,25 @@
     <link rel="alternate" hreflang="zh-HK" href="https://www.hygienefirstgroup.com/news.html">
     <link rel="alternate" hreflang="x-default" href="https://www.hygienefirstgroup.com/news.html">
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NFT58KR02S"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-NFT58KR02S', {
-            page_title: '媒體中心 - Hygiene First 首衛',
-            page_location: 'https://www.hygienefirstgroup.com/news.html',
-            custom_map: {
-                'dimension1': 'user_type',
-                'dimension2': 'service_category',
-                'dimension3': 'booking_step'
-            }
-        });
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBDohkPFBU63W1qiFuR1CvDX7dRCWntT-M",
+            authDomain: "hygienefirst-member-system.firebaseapp.com",
+            projectId: "hygienefirst-member-system",
+            storageBucket: "hygienefirst-member-system.firebasestorage.app",
+            messagingSenderId: "535268528733",
+            appId: "1:535268528733:web:89b150dcbc785d68c873b4",
+            measurementId: "G-NFT58KR02S"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
     </script>
 
     <!-- Structured Data (JSON-LD) -->
@@ -294,20 +298,12 @@
                         <h2><i class="fas fa-newspaper"></i> 最新消息</h2>
                      
                     </div>
-                <div class="news-grid">
-                  
-                    
-                    <!-- Blog 2 -->
-                    <article class="news-card animate-on-scroll" data-category="services">
-                        <div class="news-image">
-                            <img src="images/news/WhatsApp Image 2025-10-01 at 7.49.14 PM (1).jpeg" alt="Hygiene First 首衛 全力支持「過期藥物回收活動」💪" loading="lazy">
-                        </div>
-                        <div class="news-content">
-                            <h3>Hygiene First 首衛 全力支持「過期藥物回收活動」💪</h3>
-                            <p class="news-date">2025年10月1日</p>
-                            <a href="news-detail-2.html" class="read-more">了解更多</a>
-                        </div>
-                    </article>
+                <div class="news-grid" id="dynamic-news-grid">
+                    <!-- Dynamic content will be loaded here -->
+                    <div id="loading-indicator" style="text-align: center; padding: 40px; color: #666;">
+                        <div style="border: 3px solid #f3f3f3; border-top: 3px solid #ff6b35; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+                        <p>載入最新消息中...</p>
+                    </div>
                     
                     <!-- Blog 3 -->
                         <article class="news-card animate-on-scroll" data-category="media">
@@ -597,12 +593,12 @@
                     </div>
                     
                     <!-- Pagination for 最新消息 -->
-                    <div class="pagination" id="latest-news-pagination">
+                    <div class="pagination" id="latest-news-pagination" style="display: none;">
                         <button id="prev-page" class="nav-button" disabled title="上一頁">
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <div id="page-numbers"></div>
-                        <div class="page-info" id="page-info">第 1 頁，共 5 頁</div>
+                        <div class="page-info" id="page-info">第 1 頁，共 1 頁</div>
                         <button id="next-page" class="nav-button" title="下一頁">
                             <i class="fas fa-chevron-right"></i>
                         </button>
@@ -998,9 +994,110 @@
     });
     </script>
     
-    <!-- Pagination JavaScript -->
+    <!-- Dynamic News Loading JavaScript -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Load dynamic news content
+        loadDynamicNews();
+    });
+    
+    async function loadDynamicNews() {
+        const newsGrid = document.getElementById('dynamic-news-grid');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        
+        try {
+            // Load news from Firebase
+            const querySnapshot = await db.collection('news').orderBy('createdAt', 'desc').get();
+            
+            if (querySnapshot.empty) {
+                newsGrid.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #999;">
+                        <div style="font-size: 48px; margin-bottom: 20px;">📰</div>
+                        <p>暫無最新消息</p>
+                        <p style="font-size: 14px; color: #666;">請稍後再來查看</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const docId = doc.id;
+                
+                // Format date
+                const date = data.createdAt ? new Date(data.createdAt.toDate()).toLocaleDateString('zh-TW') : '未知日期';
+                
+                // Handle images
+                let imageHtml = '';
+                if (data['news-images'] && Array.isArray(data['news-images']) && data['news-images'].length > 0) {
+                    imageHtml = `<img src="${data['news-images'][0]}" alt="${data['news-title'] || '新聞圖片'}" loading="lazy">`;
+                } else if (data['news-image']) {
+                    imageHtml = `<img src="${data['news-image']}" alt="${data['news-title'] || '新聞圖片'}" loading="lazy">`;
+                } else {
+                    imageHtml = `<img src="images/news/default-news.jpg" alt="${data['news-title'] || '新聞圖片'}" loading="lazy">`;
+                }
+                
+                // Get category display name
+                const categoryNames = {
+                    'company': '公司新聞',
+                    'services': '服務更新', 
+                    'media': '媒體中心',
+                    'awards': '獎項殊榮',
+                    'events': '活動資訊'
+                };
+                const categoryName = categoryNames[data['news-category']] || '其他';
+                
+                html += `
+                    <article class="news-card animate-on-scroll" data-category="${data['news-category'] || 'other'}" data-doc-id="${docId}">
+                        <div class="news-image">
+                            ${imageHtml}
+                        </div>
+                        <div class="news-content">
+                            <h3>${data['news-title'] || '無標題'}</h3>
+                            <p class="news-excerpt">${data['news-excerpt'] || data['news-content']?.substring(0, 100) + '...' || '無摘要'}</p>
+                            <p class="news-date">${date}</p>
+                            <p class="news-category" style="font-size: 12px; color: #ff6b35; margin: 5px 0;">${categoryName}</p>
+                            <a href="news-detail-dynamic.html?id=${docId}" class="read-more">了解更多</a>
+                        </div>
+                    </article>
+                `;
+            });
+            
+            // Replace loading indicator with content
+            newsGrid.innerHTML = html;
+            
+            // Show pagination if there are many items
+            if (querySnapshot.size > 6) {
+                document.getElementById('latest-news-pagination').style.display = 'flex';
+                initPagination();
+            }
+            
+        } catch (error) {
+            console.error('Error loading news:', error);
+            newsGrid.innerHTML = `
+                <div style="text-align: center; padding: 40px; color: #dc3545;">
+                    <div style="font-size: 48px; margin-bottom: 20px;">❌</div>
+                    <p>載入新聞失敗</p>
+                    <p style="font-size: 14px; color: #666;">錯誤：${error.message}</p>
+                    <button onclick="loadDynamicNews()" style="
+                        background: #ff6b35;
+                        color: white;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 5px;
+                        margin-top: 15px;
+                        cursor: pointer;
+                    ">重試</button>
+                </div>
+            `;
+        }
+    }
+    </script>
+    
+    <!-- Pagination JavaScript -->
+    <script>
+    function initPagination() {
         const newsGrid = document.querySelector('#latest-news .news-grid');
         const newsCards = Array.from(newsGrid.querySelectorAll('.news-card'));
         const pagination = document.getElementById('latest-news-pagination');
@@ -1014,12 +1111,10 @@
         const totalPages = Math.ceil(newsCards.length / itemsPerPage);
         
         // Initialize pagination
-        function initPagination() {
-            updatePageInfo();
-            createPageNumbers();
-            showPage(1);
-            updateButtons();
-        }
+        updatePageInfo();
+        createPageNumbers();
+        showPage(1);
+        updateButtons();
         
         // Update page info display
         function updatePageInfo() {
@@ -1158,9 +1253,7 @@
             goToPage(currentPage + 1);
         });
         
-        // Initialize pagination
-        initPagination();
-    });
+    }
     </script>
     
 

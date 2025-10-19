@@ -215,7 +215,8 @@
           <li>設定發布日期</li>
           <li>分類管理</li>
         </ul>
-        <a href="#" class="btn" onclick="showContentEditor('news')">編輯新聞</a>
+        <a href="#" class="btn" onclick="showContentEditor('news')">新增新聞</a>
+        <a href="#" class="btn" onclick="showContentList('news')" style="background: #17a2b8;">管理新聞</a>
         <a href="/news.html" class="btn btn-secondary" target="_blank">查看頁面</a>
       </div>
       
@@ -229,7 +230,8 @@
           <li>上傳服務圖片</li>
           <li>服務分類管理</li>
         </ul>
-        <a href="#" class="btn" onclick="showContentEditor('services')">編輯服務</a>
+        <a href="#" class="btn" onclick="showContentEditor('services')">新增服務</a>
+        <a href="#" class="btn" onclick="showContentList('services')" style="background: #17a2b8;">管理服務</a>
         <a href="/services.html" class="btn btn-secondary" target="_blank">查看頁面</a>
       </div>
       
@@ -243,7 +245,8 @@
           <li>藥物分類管理</li>
           <li>上傳藥物圖片</li>
         </ul>
-        <a href="#" class="btn" onclick="showContentEditor('drugs')">編輯藥物</a>
+        <a href="#" class="btn" onclick="showContentEditor('drugs')">新增藥物</a>
+        <a href="#" class="btn" onclick="showContentList('drugs')" style="background: #17a2b8;">管理藥物</a>
         <a href="/drug-classification-search.html" class="btn btn-secondary" target="_blank">查看頁面</a>
       </div>
       
@@ -257,7 +260,8 @@
           <li>GPS座標管理</li>
           <li>聯絡資訊更新</li>
         </ul>
-        <a href="#" class="btn" onclick="showContentEditor('collection-points')">編輯回收點</a>
+        <a href="#" class="btn" onclick="showContentEditor('collection-points')">新增回收點</a>
+        <a href="#" class="btn" onclick="showContentList('collection-points')" style="background: #17a2b8;">管理回收點</a>
         <a href="/collection-points-map.html" class="btn btn-secondary" target="_blank">查看頁面</a>
       </div>
       
@@ -271,7 +275,8 @@
           <li>公司資訊管理</li>
           <li>SEO設定</li>
         </ul>
-        <a href="#" class="btn" onclick="showContentEditor('pages')">編輯頁面</a>
+        <a href="#" class="btn" onclick="showContentEditor('pages')">新增頁面</a>
+        <a href="#" class="btn" onclick="showContentList('pages')" style="background: #17a2b8;">管理頁面</a>
         <a href="/about.html" class="btn btn-secondary" target="_blank">查看頁面</a>
       </div>
       
@@ -362,7 +367,7 @@
     });
     
     // Content editor functions
-    function showContentEditor(type) {
+    function showContentEditor(type, existingData = null, docId = null) {
       // Create modal for content editing
       const modal = document.createElement('div');
       modal.style.cssText = `
@@ -378,6 +383,9 @@
         align-items: center;
       `;
       
+      const isEdit = existingData && docId;
+      const title = isEdit ? `編輯 ${getContentTypeName(type)}` : `新增 ${getContentTypeName(type)}`;
+      
       modal.innerHTML = `
         <div style="
           background: white;
@@ -389,9 +397,9 @@
           overflow-y: auto;
           box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         ">
-          <h2 style="color: #ff6b35; margin-bottom: 20px;">編輯 ${getContentTypeName(type)}</h2>
+          <h2 style="color: #ff6b35; margin-bottom: 20px;">${title}</h2>
           <div id="editor-content">
-            ${getEditorContent(type)}
+            ${getEditorContent(type, existingData)}
           </div>
           <div style="margin-top: 20px; text-align: right;">
             <button onclick="this.closest('.modal').remove()" style="
@@ -403,14 +411,14 @@
               margin-right: 10px;
               cursor: pointer;
             ">取消</button>
-            <button onclick="saveContent('${type}')" style="
+            <button onclick="saveContent('${type}', ${isEdit ? `'${docId}'` : 'null'})" style="
               background: #ff6b35;
               color: white;
               padding: 10px 20px;
               border: none;
               border-radius: 5px;
               cursor: pointer;
-            ">儲存</button>
+            ">${isEdit ? '更新' : '儲存'}</button>
           </div>
         </div>
       `;
@@ -430,36 +438,53 @@
       return names[type] || type;
     }
     
-    function getEditorContent(type) {
+    function getEditorContent(type, existingData = null) {
+      const getValue = (key) => existingData ? (existingData[key] || '') : '';
+      
       switch(type) {
         case 'news':
           return `
             <div style="margin-bottom: 15px;">
               <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞標題</label>
-              <input type="text" id="news-title" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" placeholder="輸入新聞標題">
+              <input type="text" id="news-title" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" placeholder="輸入新聞標題" value="${getValue('news-title')}">
             </div>
             <div style="margin-bottom: 15px;">
               <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞摘要</label>
-              <textarea id="news-excerpt" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 80px;" placeholder="輸入新聞摘要"></textarea>
+              <textarea id="news-excerpt" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 80px;" placeholder="輸入新聞摘要">${getValue('news-excerpt')}</textarea>
             </div>
             <div style="margin-bottom: 15px;">
               <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞內容</label>
-              <textarea id="news-content" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 200px;" placeholder="輸入新聞內容"></textarea>
+              <textarea id="news-content" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 200px;" placeholder="輸入新聞內容">${getValue('news-content')}</textarea>
             </div>
             <div style="margin-bottom: 15px;">
               <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞類別</label>
               <select id="news-category" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                <option value="company">公司新聞</option>
-                <option value="services">服務更新</option>
-                <option value="media">媒體中心</option>
-                <option value="awards">獎項殊榮</option>
-                <option value="events">活動資訊</option>
+                <option value="company" ${getValue('news-category') === 'company' ? 'selected' : ''}>公司新聞</option>
+                <option value="services" ${getValue('news-category') === 'services' ? 'selected' : ''}>服務更新</option>
+                <option value="media" ${getValue('news-category') === 'media' ? 'selected' : ''}>媒體中心</option>
+                <option value="awards" ${getValue('news-category') === 'awards' ? 'selected' : ''}>獎項殊榮</option>
+                <option value="events" ${getValue('news-category') === 'events' ? 'selected' : ''}>活動資訊</option>
               </select>
             </div>
             <div style="margin-bottom: 15px;">
-              <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞圖片</label>
-              <input type="file" id="news-image-file" accept="image/*" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-              <small style="color: #666; font-size: 12px;">支援 JPG, PNG, GIF 格式，建議尺寸 800x600px</small>
+              <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞圖片 (可上傳多張)</label>
+              <input type="file" id="news-image-file" accept="image/*" multiple style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+              <small style="color: #666; font-size: 12px;">支援 JPG, PNG, GIF 格式，建議尺寸 800x600px，最多可上傳 10 張圖片</small>
+              ${existingData && existingData['news-images'] ? `
+                <div style="margin-top: 10px;">
+                  <strong>現有圖片 (${existingData['news-images'].length} 張)：</strong>
+                  <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                    ${existingData['news-images'].map((url, index) => `
+                      <div style="text-align: center;">
+                        <img src="${url}" style="max-width: 100px; max-height: 80px; border-radius: 5px; border: 1px solid #ddd;" alt="現有圖片 ${index + 1}">
+                        <br>
+                        <small style="font-size: 10px; color: #666;">圖片 ${index + 1}</small>
+                      </div>
+                    `).join('')}
+                  </div>
+                  <small style="color: #666; font-size: 12px;">💡 上傳新圖片將替換現有圖片</small>
+                </div>
+              ` : ''}
             </div>
           `;
         case 'services':
@@ -585,7 +610,7 @@
       }
     }
     
-    async function saveContent(type) {
+    async function saveContent(type, docId = null) {
       // Collect form data
       const formData = {};
       const inputs = document.querySelectorAll('#editor-content input, #editor-content textarea, #editor-content select');
@@ -602,59 +627,81 @@
       if (type === 'news') {
         const imageFile = document.getElementById('news-image-file');
         if (imageFile && imageFile.files.length > 0) {
-          try {
-            const file = imageFile.files[0];
+          // Validate number of files (max 10)
+          if (imageFile.files.length > 10) {
+            alert('最多只能上傳 10 張圖片');
+            return;
+          }
+          
+          const files = Array.from(imageFile.files);
+          const imageUrls = [];
+          let uploadPromises = [];
+          
+          // Process each file
+          for (let i = 0; i < files.length; i++) {
+            const file = files[i];
             
-            // Validate file type
-            if (!file.type.startsWith('image/')) {
-              throw new Error('請選擇圖片文件');
-            }
-            
-            // Validate file size (max 5MB)
-            if (file.size > 5 * 1024 * 1024) {
-              throw new Error('圖片大小不能超過 5MB');
-            }
-            
-            // Create a sanitized filename
-            const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-            const fileName = `news/${Date.now()}_${sanitizedName}`;
-            
-            // Try Firebase Storage upload
-            const uploadTask = storage.ref(fileName).put(file, {
-              contentType: file.type,
-              customMetadata: {
-                uploadedBy: auth.currentUser ? auth.currentUser.email : 'anonymous',
-                uploadDate: new Date().toISOString()
-              }
-            });
-            
-            const snapshot = await uploadTask;
-            const imageUrl = await snapshot.ref.getDownloadURL();
-            formData['news-image'] = imageUrl;
-            
-            console.log('News image uploaded successfully:', imageUrl);
-          } catch (error) {
-            console.error('Image upload error:', error);
-            
-            // Fallback: Convert to base64 and store in Firestore
             try {
-              const reader = new FileReader();
-              reader.onload = function(e) {
-                formData['news-image'] = e.target.result;
-                console.log('Image stored as base64 fallback');
-              };
-              reader.readAsDataURL(file);
+              // Validate file type
+              if (!file.type.startsWith('image/')) {
+                throw new Error(`第 ${i + 1} 張圖片格式不正確：${file.name}`);
+              }
               
-              // Wait for base64 conversion
-              await new Promise(resolve => {
-                reader.onloadend = resolve;
+              // Validate file size (max 5MB)
+              if (file.size > 5 * 1024 * 1024) {
+                throw new Error(`第 ${i + 1} 張圖片大小超過 5MB：${file.name}`);
+              }
+              
+              // Create a sanitized filename
+              const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+              const fileName = `news/${Date.now()}_${i}_${sanitizedName}`;
+              
+              // Try Firebase Storage upload
+              const uploadTask = storage.ref(fileName).put(file, {
+                contentType: file.type,
+                customMetadata: {
+                  uploadedBy: auth.currentUser ? auth.currentUser.email : 'anonymous',
+                  uploadDate: new Date().toISOString(),
+                  imageIndex: i.toString()
+                }
               });
               
-              alert(`⚠️ Firebase Storage 上傳失敗，已使用備用方案儲存圖片\n\n錯誤：${error.message}`);
-            } catch (fallbackError) {
-              console.error('Fallback image handling error:', fallbackError);
-              alert(`⚠️ 圖片處理失敗：${fallbackError.message}\n\n將繼續儲存其他內容。`);
+              uploadPromises.push(
+                uploadTask.then(async snapshot => {
+                  const imageUrl = await snapshot.ref.getDownloadURL();
+                  console.log(`News image ${i + 1} uploaded successfully:`, imageUrl);
+                  return imageUrl;
+                }).catch(error => {
+                  console.error(`Image ${i + 1} upload error:`, error);
+                  
+                  // Fallback: Convert to base64
+                  return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                      console.log(`Image ${i + 1} stored as base64 fallback`);
+                      resolve(e.target.result);
+                    };
+                    reader.onerror = () => reject(new Error(`Failed to convert image ${i + 1} to base64`));
+                    reader.readAsDataURL(file);
+                  });
+                })
+              );
+            } catch (error) {
+              console.error(`Image ${i + 1} validation error:`, error);
+              alert(`⚠️ 第 ${i + 1} 張圖片處理失敗：${error.message}`);
             }
+          }
+          
+          // Wait for all uploads to complete
+          try {
+            const uploadedUrls = await Promise.all(uploadPromises);
+            formData['news-images'] = uploadedUrls; // Store as array
+            formData['news-image-count'] = uploadedUrls.length;
+            
+            console.log(`All ${uploadedUrls.length} news images uploaded successfully`);
+          } catch (error) {
+            console.error('Multiple image upload error:', error);
+            alert(`⚠️ 部分圖片上傳失敗：${error.message}\n\n將繼續儲存其他內容。`);
           }
         }
       } else if (type === 'services') {
@@ -718,22 +765,63 @@
       }
       
       // Add metadata
-      formData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
       formData.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
       formData.published = true;
       
+      // For new documents, add createdAt
+      if (!docId) {
+        formData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+      }
+      
       // Save to Firebase
       try {
-        const docRef = await db.collection(type).add(formData);
-        console.log('Document written with ID: ', docRef.id);
+        let docRef;
         
-        // Show success message
-        alert(`✅ ${getContentTypeName(type)} 內容已儲存到 Firebase！\n\n文件 ID: ${docRef.id}\n\n內容已即時同步到資料庫。`);
+        if (docId) {
+          // Update existing document
+          await db.collection(type).doc(docId).update(formData);
+          docRef = { id: docId };
+          console.log('Document updated with ID: ', docId);
+          
+          // Show success message
+          alert(`✅ ${getContentTypeName(type)} 內容已更新！\n\n文件 ID: ${docId}\n\n內容已即時同步到資料庫。`);
+        } else {
+          // Create new document
+          docRef = await db.collection(type).add(formData);
+          console.log('Document written with ID: ', docRef.id);
+          
+          // Show success message
+          alert(`✅ ${getContentTypeName(type)} 內容已儲存到 Firebase！\n\n文件 ID: ${docRef.id}\n\n內容已即時同步到資料庫。`);
+        }
         
         // Close modal
         document.querySelector('.modal').remove();
+        
+        // If we're in a content list modal, refresh it
+        const contentListModal = document.querySelector('.modal #content-list');
+        if (contentListModal) {
+          // Find the type from the modal title or context
+          const modalTitle = document.querySelector('.modal h2');
+          if (modalTitle && modalTitle.textContent.includes('管理')) {
+            const typeFromTitle = modalTitle.textContent.match(/管理 (.+)/);
+            if (typeFromTitle) {
+              const typeMap = {
+                '新聞文章': 'news',
+                '醫療服務': 'services',
+                '藥物資料': 'drugs',
+                '回收點位置': 'collection-points',
+                '靜態頁面': 'pages'
+              };
+              const contentType = typeMap[typeFromTitle[1]];
+              if (contentType) {
+                loadContentList(contentType);
+              }
+            }
+          }
+        }
+        
       } catch (error) {
-        console.error('Error adding document: ', error);
+        console.error('Error saving document: ', error);
         
         // Fallback: show data for manual saving
         alert(`⚠️ Firebase 儲存失敗，請手動儲存：\n\n${JSON.stringify(formData, null, 2)}\n\n錯誤：${error.message}`);
@@ -847,6 +935,225 @@
           console.error('Upload error:', error);
           alert(`⚠️ 圖片上傳失敗：${error.message}\n\n請重試或聯絡技術支援。`);
         });
+    }
+    
+    // Content list management functions
+    function showContentList(type) {
+      const modal = document.createElement('div');
+      modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      `;
+      
+      modal.innerHTML = `
+        <div style="
+          background: white;
+          padding: 30px;
+          border-radius: 10px;
+          max-width: 900px;
+          width: 90%;
+          max-height: 80vh;
+          overflow-y: auto;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        ">
+          <h2 style="color: #ff6b35; margin-bottom: 20px;">管理 ${getContentTypeName(type)}</h2>
+          <div id="content-list">
+            <div style="text-align: center; padding: 40px;">
+              <div style="border: 3px solid #f3f3f3; border-top: 3px solid #ff6b35; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+              <p>載入中...</p>
+            </div>
+          </div>
+          <div style="margin-top: 20px; text-align: right;">
+            <button onclick="this.closest('.modal').remove()" style="
+              background: #6c757d;
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              margin-right: 10px;
+              cursor: pointer;
+            ">關閉</button>
+            <button onclick="showContentEditor('${type}')" style="
+              background: #ff6b35;
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+            ">新增${getContentTypeName(type)}</button>
+          </div>
+        </div>
+      `;
+      
+      modal.className = 'modal';
+      document.body.appendChild(modal);
+      
+      // Load content list
+      loadContentList(type);
+    }
+    
+    async function loadContentList(type) {
+      const container = document.getElementById('content-list');
+      
+      try {
+        const querySnapshot = await db.collection(type).orderBy('createdAt', 'desc').get();
+        
+        if (querySnapshot.empty) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 40px; color: #999;">
+              <div style="font-size: 48px; margin-bottom: 20px;">📝</div>
+              <p>尚未有 ${getContentTypeName(type)} 內容</p>
+              <button onclick="showContentEditor('${type}')" style="
+                background: #ff6b35;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                margin-top: 15px;
+                cursor: pointer;
+              ">新增${getContentTypeName(type)}</button>
+            </div>
+          `;
+          return;
+        }
+        
+        let html = '<div style="display: grid; gap: 15px;">';
+        
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          const docId = doc.id;
+          
+          html += `
+            <div style="
+              border: 1px solid #ddd;
+              border-radius: 8px;
+              padding: 20px;
+              background: #f9f9f9;
+            ">
+              <div style="display: flex; justify-content: space-between; align-items: start;">
+                <div style="flex: 1;">
+                  <h3 style="margin: 0 0 10px 0; color: #333;">${getContentTitle(data, type)}</h3>
+                  <p style="margin: 0 0 10px 0; color: #666; font-size: 14px;">${getContentPreview(data, type)}</p>
+                  <div style="font-size: 12px; color: #999;">
+                    建立時間：${data.createdAt ? new Date(data.createdAt.toDate()).toLocaleString('zh-TW') : '未知'}
+                    ${data['news-image-count'] ? ` | 圖片：${data['news-image-count']} 張` : ''}
+                  </div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-left: 20px;">
+                  <button onclick="editContent('${type}', '${docId}')" style="
+                    background: #17a2b8;
+                    color: white;
+                    padding: 8px 12px;
+                    border: none;
+                    border-radius: 4px;
+                    font-size: 12px;
+                    cursor: pointer;
+                  ">編輯</button>
+                  <button onclick="deleteContent('${type}', '${docId}', '${getContentTitle(data, type)}')" style="
+                    background: #dc3545;
+                    color: white;
+                    padding: 8px 12px;
+                    border: none;
+                    border-radius: 4px;
+                    font-size: 12px;
+                    cursor: pointer;
+                  ">刪除</button>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        
+        html += '</div>';
+        container.innerHTML = html;
+        
+      } catch (error) {
+        console.error('Error loading content list:', error);
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px; color: #dc3545;">
+            <div style="font-size: 48px; margin-bottom: 20px;">❌</div>
+            <p>載入失敗：${error.message}</p>
+            <button onclick="loadContentList('${type}')" style="
+              background: #ff6b35;
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              margin-top: 15px;
+              cursor: pointer;
+            ">重試</button>
+          </div>
+        `;
+      }
+    }
+    
+    function getContentTitle(data, type) {
+      switch(type) {
+        case 'news': return data['news-title'] || '無標題';
+        case 'services': return data['service-title'] || '無標題';
+        case 'drugs': return data['drug-name'] || '無名稱';
+        case 'collection-points': return data['point-name'] || '無名稱';
+        case 'pages': return data['page-title'] || '無標題';
+        default: return '無標題';
+      }
+    }
+    
+    function getContentPreview(data, type) {
+      switch(type) {
+        case 'news': return data['news-excerpt'] || data['news-content']?.substring(0, 100) + '...' || '無內容';
+        case 'services': return data['service-description'] || '無描述';
+        case 'drugs': return data['drug-disposal']?.substring(0, 100) + '...' || '無處理指引';
+        case 'collection-points': return data['point-address'] || '無地址';
+        case 'pages': return data['page-content']?.substring(0, 100) + '...' || '無內容';
+        default: return '無內容';
+      }
+    }
+    
+    async function editContent(type, docId) {
+      try {
+        const doc = await db.collection(type).doc(docId).get();
+        
+        if (!doc.exists) {
+          alert('找不到該內容');
+          return;
+        }
+        
+        const data = doc.data();
+        
+        // Show editor with existing data
+        showContentEditor(type, data, docId);
+        
+      } catch (error) {
+        console.error('Error loading content for edit:', error);
+        alert('載入內容失敗：' + error.message);
+      }
+    }
+    
+    async function deleteContent(type, docId, title) {
+      if (!confirm(`確定要刪除「${title}」嗎？\n\n此操作無法復原！`)) {
+        return;
+      }
+      
+      try {
+        await db.collection(type).doc(docId).delete();
+        
+        alert(`✅ 「${title}」已成功刪除！`);
+        
+        // Refresh the content list
+        loadContentList(type);
+        
+      } catch (error) {
+        console.error('Error deleting content:', error);
+        alert('刪除失敗：' + error.message);
+      }
     }
     
     // Initialize
