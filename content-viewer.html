@@ -317,18 +317,34 @@
     
     // Template functions
     function newsTemplate(data) {
-      let imagesHtml = '';
+      let mediaHtml = '';
       
-      // Handle multiple images
-      if (data['news-images'] && Array.isArray(data['news-images'])) {
-        imagesHtml = `
+      // Handle media (images or videos)
+      if (data['media-type'] === 'video' && data['news-video']) {
+        // Display video
+        mediaHtml = `
+          <div style="margin-top: 15px;">
+            <strong>影片：</strong>
+            <div style="margin-top: 10px;">
+              <video controls style="max-width: 300px; max-height: 200px; border-radius: 5px; border: 1px solid #ddd;">
+                <source src="${data['news-video']}" type="video/mp4">
+                您的瀏覽器不支援影片播放。
+              </video>
+              <br>
+              <small style="font-size: 10px; color: #666;">📹 ${data['video-filename'] || '影片檔案'}</small>
+            </div>
+          </div>
+        `;
+      } else if (data['news-images'] && Array.isArray(data['news-images'])) {
+        // Handle multiple images
+        mediaHtml = `
           <div style="margin-top: 15px;">
             <strong>圖片 (${data['news-images'].length} 張)：</strong>
             <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
         `;
         
         data['news-images'].forEach((imageUrl, index) => {
-          imagesHtml += `
+          mediaHtml += `
             <div style="text-align: center;">
               <img src="${imageUrl}" style="max-width: 150px; max-height: 100px; border-radius: 5px; border: 1px solid #ddd;" alt="新聞圖片 ${index + 1}">
               <br>
@@ -337,13 +353,13 @@
           `;
         });
         
-        imagesHtml += `
+        mediaHtml += `
             </div>
           </div>
         `;
       } else if (data['news-image']) {
         // Fallback for single image (legacy support)
-        imagesHtml = `
+        mediaHtml = `
           <div style="margin-top: 15px;">
             <strong>圖片：</strong>
             <div style="margin-top: 10px;">
@@ -359,7 +375,7 @@
           <p><strong>摘要：</strong>${data['news-excerpt'] || '無摘要'}</p>
           <p><strong>內容：</strong>${data['news-content'] || '無內容'}</p>
           <p><strong>類別：</strong>${data['news-category'] || '未分類'}</p>
-          ${imagesHtml}
+          ${mediaHtml}
           <div class="meta">
             建立時間：${data.createdAt ? new Date(data.createdAt.toDate()).toLocaleString('zh-TW') : '未知'}
             ${data['news-image-count'] ? ` | 圖片數量：${data['news-image-count']}` : ''}

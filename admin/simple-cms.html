@@ -466,10 +466,28 @@
                 <option value="events" ${getValue('news-category') === 'events' ? 'selected' : ''}>活動資訊</option>
               </select>
             </div>
-            <div style="margin-bottom: 15px;">
-              <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞圖片 (可上傳多張)</label>
-              <input type="file" id="news-image-file" accept="image/*" multiple style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-              <small style="color: #666; font-size: 12px;">支援 JPG, PNG, GIF 格式，建議尺寸 800x600px，最多可上傳 10 張圖片</small>
+        <div style="margin-bottom: 15px;">
+          <label style="display: block; margin-bottom: 5px; font-weight: bold;">新聞媒體 (圖片或影片)</label>
+          <div style="margin-bottom: 10px;">
+            <label style="display: inline-block; margin-right: 20px;">
+              <input type="radio" name="media-type" value="image" checked onchange="toggleMediaInput()"> 圖片
+            </label>
+            <label style="display: inline-block;">
+              <input type="radio" name="media-type" value="video" onchange="toggleMediaInput()"> 影片
+            </label>
+          </div>
+          
+          <!-- Image Upload -->
+          <div id="image-upload-section">
+            <input type="file" id="news-image-file" accept="image/*" multiple style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <small style="color: #666; font-size: 12px;">支援 JPG, PNG, GIF 格式，建議尺寸 800x600px，最多可上傳 10 張圖片</small>
+          </div>
+          
+          <!-- Video Upload -->
+          <div id="video-upload-section" style="display: none;">
+            <input type="file" id="news-video-file" accept="video/*" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <small style="color: #666; font-size: 12px;">支援 MP4, MOV, AVI 格式，建議解析度 1920x1080px，檔案大小限制 100MB</small>
+          </div>
               ${existingData && existingData['news-images'] ? `
                 <div style="margin-top: 10px;">
                   <strong>現有圖片 (${existingData['news-images'].length} 張)：</strong>
@@ -610,6 +628,20 @@
       }
     }
     
+    function toggleMediaInput() {
+      const mediaType = document.querySelector('input[name="media-type"]:checked').value;
+      const imageSection = document.getElementById('image-upload-section');
+      const videoSection = document.getElementById('video-upload-section');
+      
+      if (mediaType === 'image') {
+        imageSection.style.display = 'block';
+        videoSection.style.display = 'none';
+      } else {
+        imageSection.style.display = 'none';
+        videoSection.style.display = 'block';
+      }
+    }
+    
     async function saveContent(type, docId = null) {
       // Collect form data
       const formData = {};
@@ -623,85 +655,137 @@
         formData[input.id] = input.value;
       });
       
-      // Handle image upload for news and services
+      // Handle media uploads for news (images or videos)
       if (type === 'news') {
-        const imageFile = document.getElementById('news-image-file');
-        if (imageFile && imageFile.files.length > 0) {
-          // Validate number of files (max 10)
-          if (imageFile.files.length > 10) {
-            alert('最多只能上傳 10 張圖片');
-            return;
-          }
-          
-          const files = Array.from(imageFile.files);
-          const imageUrls = [];
-          let uploadPromises = [];
-          
-          // Process each file
-          for (let i = 0; i < files.length; i++) {
-            const file = files[i];
+        const mediaType = document.querySelector('input[name="media-type"]:checked').value;
+        
+        if (mediaType === 'image') {
+          const imageFile = document.getElementById('news-image-file');
+          if (imageFile && imageFile.files.length > 0) {
+            // Validate number of files (max 10)
+            if (imageFile.files.length > 10) {
+              alert('最多只能上傳 10 張圖片');
+              return;
+            }
             
+            const files = Array.from(imageFile.files);
+            const imageUrls = [];
+            let uploadPromises = [];
+            
+            // Process each file
+            for (let i = 0; i < files.length; i++) {
+              const file = files[i];
+              
+              try {
+                // Validate file type
+                if (!file.type.startsWith('image/')) {
+                  throw new Error(`第 ${i + 1} 張圖片格式不正確：${file.name}`);
+                }
+                
+                // Validate file size (max 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                  throw new Error(`第 ${i + 1} 張圖片大小超過 5MB：${file.name}`);
+                }
+                
+                // Create a sanitized filename
+                const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+                const fileName = `news/${Date.now()}_${i}_${sanitizedName}`;
+                
+                // Try Firebase Storage upload
+                const uploadTask = storage.ref(fileName).put(file, {
+                  contentType: file.type,
+                  customMetadata: {
+                    uploadedBy: auth.currentUser ? auth.currentUser.email : 'anonymous',
+                    uploadDate: new Date().toISOString(),
+                    imageIndex: i.toString()
+                  }
+                });
+                
+                uploadPromises.push(
+                  uploadTask.then(async snapshot => {
+                    const imageUrl = await snapshot.ref.getDownloadURL();
+                    console.log(`News image ${i + 1} uploaded successfully:`, imageUrl);
+                    return imageUrl;
+                  }).catch(error => {
+                    console.error(`Image ${i + 1} upload error:`, error);
+                    
+                    // Fallback: Convert to base64
+                    return new Promise((resolve, reject) => {
+                      const reader = new FileReader();
+                      reader.onload = function(e) {
+                        console.log(`Image ${i + 1} stored as base64 fallback`);
+                        resolve(e.target.result);
+                      };
+                      reader.onerror = () => reject(new Error(`Failed to convert image ${i + 1} to base64`));
+                      reader.readAsDataURL(file);
+                    });
+                  })
+                );
+              } catch (error) {
+                console.error(`Image ${i + 1} validation error:`, error);
+                alert(`⚠️ 第 ${i + 1} 張圖片處理失敗：${error.message}`);
+              }
+            }
+            
+            // Wait for all uploads to complete
             try {
+              const uploadedUrls = await Promise.all(uploadPromises);
+              formData['news-images'] = uploadedUrls; // Store as array
+              formData['news-image-count'] = uploadedUrls.length;
+              formData['media-type'] = 'image';
+              
+              console.log(`All ${uploadedUrls.length} news images uploaded successfully`);
+            } catch (error) {
+              console.error('Multiple image upload error:', error);
+              alert(`⚠️ 部分圖片上傳失敗：${error.message}\n\n將繼續儲存其他內容。`);
+            }
+          }
+        } else if (mediaType === 'video') {
+          const videoFile = document.getElementById('news-video-file');
+          if (videoFile && videoFile.files.length > 0) {
+            try {
+              const file = videoFile.files[0];
+              
               // Validate file type
-              if (!file.type.startsWith('image/')) {
-                throw new Error(`第 ${i + 1} 張圖片格式不正確：${file.name}`);
+              if (!file.type.startsWith('video/')) {
+                alert('請選擇有效的影片檔案！');
+                return;
               }
               
-              // Validate file size (max 5MB)
-              if (file.size > 5 * 1024 * 1024) {
-                throw new Error(`第 ${i + 1} 張圖片大小超過 5MB：${file.name}`);
+              // Validate file size (100MB limit)
+              if (file.size > 100 * 1024 * 1024) {
+                alert('影片檔案超過 100MB 大小限制！');
+                return;
               }
               
               // Create a sanitized filename
               const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-              const fileName = `news/${Date.now()}_${i}_${sanitizedName}`;
+              const fileName = `news-videos/${Date.now()}_${sanitizedName}`;
               
-              // Try Firebase Storage upload
+              // Upload to Firebase Storage
               const uploadTask = storage.ref(fileName).put(file, {
                 contentType: file.type,
                 customMetadata: {
                   uploadedBy: auth.currentUser ? auth.currentUser.email : 'anonymous',
                   uploadDate: new Date().toISOString(),
-                  imageIndex: i.toString()
+                  mediaType: 'video'
                 }
               });
               
-              uploadPromises.push(
-                uploadTask.then(async snapshot => {
-                  const imageUrl = await snapshot.ref.getDownloadURL();
-                  console.log(`News image ${i + 1} uploaded successfully:`, imageUrl);
-                  return imageUrl;
-                }).catch(error => {
-                  console.error(`Image ${i + 1} upload error:`, error);
-                  
-                  // Fallback: Convert to base64
-                  return new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                      console.log(`Image ${i + 1} stored as base64 fallback`);
-                      resolve(e.target.result);
-                    };
-                    reader.onerror = () => reject(new Error(`Failed to convert image ${i + 1} to base64`));
-                    reader.readAsDataURL(file);
-                  });
-                })
-              );
+              const snapshot = await uploadTask;
+              const downloadURL = await snapshot.ref.getDownloadURL();
+              
+              formData['news-video'] = downloadURL;
+              formData['media-type'] = 'video';
+              formData['video-filename'] = file.name;
+              formData['video-size'] = file.size;
+              
+              console.log('Video uploaded successfully:', downloadURL);
             } catch (error) {
-              console.error(`Image ${i + 1} validation error:`, error);
-              alert(`⚠️ 第 ${i + 1} 張圖片處理失敗：${error.message}`);
+              console.error('Error uploading video:', error);
+              alert(`影片上傳失敗：${error.message}`);
+              return;
             }
-          }
-          
-          // Wait for all uploads to complete
-          try {
-            const uploadedUrls = await Promise.all(uploadPromises);
-            formData['news-images'] = uploadedUrls; // Store as array
-            formData['news-image-count'] = uploadedUrls.length;
-            
-            console.log(`All ${uploadedUrls.length} news images uploaded successfully`);
-          } catch (error) {
-            console.error('Multiple image upload error:', error);
-            alert(`⚠️ 部分圖片上傳失敗：${error.message}\n\n將繼續儲存其他內容。`);
           }
         }
       } else if (type === 'services') {
