@@ -18,8 +18,6 @@
     <meta name="twitter:description" content="專業的醫療護理服務，包括居家醫療照護、健康評估、專業護理、復健治療和照護人員培訓。安全、專業且可靠的醫療護理解決方案。">
     <meta name="twitter:image" content="https://www.hygienefirst.com/images/twitter-image.jpg">
     <link rel="canonical" href="https://www.hygienefirst.com/zh-tw" />
-    <link rel="alternate" hreflang="en" href="https://www.hygienefirst.com" />
-    <link rel="alternate" hreflang="zh-TW" href="https://www.hygienefirst.com/zh-tw" />
     <title>Hygiene First 首衛 一站式護理支援</title>
 
     <!-- SEO Meta Tags -->
@@ -723,6 +721,57 @@
             }
           });
         </script>
+
+    <!-- Floating Language Switcher -->
+    <div class="floating-lang-switcher">
+        <button class="lang-switcher-btn" id="langSwitcherBtn">
+            <span class="current-lang-code">HK</span>
+            <span class="current-lang-text">中文</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="lang-switcher-dropdown" id="langSwitcherDropdown">
+            <a href="index.html" class="lang-option active" data-lang="zh">
+                <span class="lang-code">HK</span>
+                <span class="lang-text">中文</span>
+            </a>
+            <a href="index-en.html" class="lang-option" data-lang="en">
+                <span class="lang-code">GB</span>
+                <span class="lang-text">English</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Language Switcher Toggle
+        const langSwitcherBtn = document.getElementById('langSwitcherBtn');
+        const langSwitcherDropdown = document.getElementById('langSwitcherDropdown');
+        const chevronIcon = langSwitcherBtn?.querySelector('.fas');
+        
+        if (langSwitcherBtn && langSwitcherDropdown) {
+            langSwitcherBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isOpen = langSwitcherDropdown.classList.toggle('show');
+                if (chevronIcon) {
+                    chevronIcon.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            });
+            
+            // Close when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!langSwitcherBtn.contains(e.target) && !langSwitcherDropdown.contains(e.target)) {
+                    langSwitcherDropdown.classList.remove('show');
+                    if (chevronIcon) {
+                        chevronIcon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+            
+            // Prevent dropdown from closing when clicking inside it
+            langSwitcherDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    </script>
 
     <script src="script.js"></script>
     </main>

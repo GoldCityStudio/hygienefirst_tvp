@@ -41,36 +41,59 @@
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="t8zzq2DovJMgoChag0ygoc_s76A2aTRXv4N78KJkw6I" />
     
-    <!-- Structured Data for Organization -->
+    <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Hygiene First",
-        "url": "https://www.hygienefirst.com",
-        "logo": "https://www.hygienefirst.com/images/HF logo/logo.png",
-        "image": "https://www.hygienefirst.com/images/building.jpg",
-        "description": "Professional medical care services including home medical care, health assessment, professional nursing, rehabilitation therapy, and caregiver training.",
+        "@type": "MedicalBusiness",
+        "name": "Hygiene First 首衛",
+        "alternateName": "Hygiene First Company Limited",
+        "description": "Hygiene First 首衛提供24小時專業醫護人員配對服務，包括上門護理、疫苗注射、過期針藥回收。自2008年以來服務60,000+家庭，用心服務每個家庭。",
+        "url": "https://www.hygienefirstgroup.com/index.html",
+        "logo": "https://www.hygienefirstgroup.com/images/HF%20logo/logo.png",
+        "image": "https://www.hygienefirstgroup.com/images/HF%20logo/logo.png",
+        "telephone": "+852-2827-8889",
+        "email": "careteam@hygienefirstgroup.com",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "123 Clean Street",
-            "addressLocality": "Taipei",
-            "addressRegion": "Taiwan",
-            "postalCode": "10001",
-            "addressCountry": "TW"
+            "streetAddress": "新合里3號匯賢一號雋峰12樓17室",
+            "addressLocality": "屯門",
+            "addressRegion": "新界",
+            "addressCountry": "HK"
         },
-        "telephone": "+886-2-1234-5678",
-        "email": "info@hygienefirst.com",
-        "openingHours": "Mo-Su 08:00-18:00",
-        "priceRange": "$$",
-        "sameAs": [
-            "https://www.facebook.com/hygienefirst",
-            "https://www.instagram.com/hygienefirst",
-            "https://twitter.com/hygienefirst",
-            "https://www.linkedin.com/company/hygienefirst"
-        ]
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "22.3964",
+            "longitude": "113.9725"
+        },
+        "openingHours": "Mo-Su 00:00-23:59",
+        "priceRange": "$",
+        "currenciesAccepted": "HKD",
+        "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Hong Kong"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "60000",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
     }
     </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="enhanced-styles.css">
+    <link rel="stylesheet" href="dropdown-fix.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ 
+
+
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -78,6 +101,8 @@
      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
+    <div class="overlay"></div>
+    <div class="page-transition"></div>
     <header>
         <!-- Promo Banner -->
 
@@ -85,46 +110,70 @@
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="images/HF logo/logo.png" alt="Hygiene First" style="max-height: 50px; width: auto;">
+                    <img src="images/HF logo/logo.png" alt="Hygiene First Company Limited" style="max-height: 50px; width: auto; border-radius: 0px !important;">
                 </a>
             </div>
             <div class="header-icons">
-                <a href="member-account.html" class="header-icon" title="會員中心"><i class="fas fa-user"></i></a>
-                <a href="#" class="header-icon cart-icon" title="購物車"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                <a href="member-account.html" class="header-icon" title="Member Center"><i class="fas fa-user"></i><span></span></a>Member Center
+                <!-- <a href="#" class="header-icon cart-icon" title="Cart"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a> -->
             </div>
             <nav>
                 <ul class="main-menu">
                     <li class="dropdown">
                         <a href="about.html">About Us</a>
                         <div class="dropdown-content">
-                            <a href="#">What Makes Us Different</a>
-                            <a href="#">Customer Reviews</a>
-                            <a href="#">Service Quality Commitment</a>
-                            <a href="#">Media Center</a>
-                            <a href="#">Hygiene First Blog</a>
+                            <a href="about.html">About Us</a>
+                            <a href="news.html">Media Center</a>
+                         
                         </div>
-                    </li>
-                    <li>
-                        <a href="news-en.html">Latest News</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#">Home Cleaning Services</a>
+                        <a href="service.html">Home Care Services</a>
                         <div class="dropdown-content">
-                            <a href="#">Residential Cleaning</a>
-                            <a href="#">Home Sanitization Assessment</a>
-                            <a href="#">Deep Cleaning</a>
-                            <a href="#">Disinfection Services</a>
-                            <a href="#">Cleaner Training</a>
+                            <a href="health-assessment.html">Health Assessment</a>
+                            <a href="elderly-care.html">Elderly Care Services</a>
+                            <a href="accompaniment.html">Accompaniment Services</a>
+                            <a href="wound-care.html">Wound Care</a>
+                            <a href="nasogastric-care.html">Nasogastric Tube Care</a>
+                            <a href="caregiver-training.html">Caregiver Training</a>
+                            <a href="stroke-care.html">Stroke Care & Rehabilitation</a>
+                            <a href="cancer-care.html">Cancer Care Services</a>
+                            <a href="dementia-care.html">Dementia Care Services</a>
+                            <a href="post-surgery-care.html">Post-Surgery Care</a>
+                            <a href="rehabilitation-care.html">Rehabilitation Care</a>
+                      
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="家居藥物回收計劃">Home Medication Collection</a>
+                        <div class="dropdown-content">
+                            <a href="藥物分類搜尋引擎器">Drug Classification Search</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Home Cleaning & Disinfection</a>
+                        <div class="dropdown-content">
+                            <a href="housekeeping-assistant.html">Professional Home Cleaning</a>
+                            <a href="disinfection-epidemic-prevention.html">HYGIENE FIRST x SAMBO
+                                Luminous Self-Cleaning™ Nano Disinfection</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="institutional-care.html">Institutional Care Support</a>
+                      
+                    </li>
+                    <li class="dropdown">
+                        <a href="waste-collection.html">Medical & Chemical Waste Management</a>
+                        <div class="dropdown-content">
+                            <a href="醫療廢棄物處理及管理.html">Medical Waste Management</a>
+                            <a href="化學廢物處理及管理.html">Chemical Waste Management</a>
                         </div>
                     </li>
                     <li>
-                        <a href="#">Community Programs</a>
+                        <a href="community-zh.html">Elderly Community Voucher</a>
                     </li>
                     <li>
-                        <a href="#" class="cta-btn">Book Service</a>
-                    </li>
-                    <li class="nav-language">
-                        <a href="index-zh.html" class="lang-switch"><span role="img" aria-label="中文">🇭🇰</span> 中文</a>
+                        <a href="contact.html">Book Now</a>
                     </li>
                 </ul>
             </nav>
@@ -136,123 +185,222 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>24-Hour Professional Cleaning Staff Matching Service</h1>
-                <h1>Trusted Home Cleaning & Professional Sanitation Services</h1>
-                <p>We can provide quality cleaning services for families with different needs by recruiting professional cleaning staff within 24 hours, so that you can get appropriate care in your safe and comfortable home.</p>
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal" style="display:none;">
+      <div class="cart-modal-content">
+        <span class="close-cart-modal" tabindex="0">&times;</span>
+        <h2>購物車</h2>
+        <div class="cart-modal-body">
+          <div class="cart-items-section">
+            <h3>購物車商品</h3>
+            <div id="cart-items">
+              <p>您的購物車是空的。</p>
+            </div>
+          </div>
+          <div class="cart-summary-section">
+            <div class="cart-modal-footer">
+              <span>總計: <span id="cart-total">$0</span></span>
+              <button id="cart-clear-btn" class="btn btn--secondary">清空購物車</button>
+              <button id="cart-checkout-btn" class="btn btn--primary">結帳</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="main-content" >
+        <!-- Desktop Banner Slider -->
+        <section class="main-banner-slider desktop-banner">
+            <div class="banner-slider-track">
+                <!-- Desktop Images -->
+                <img src="images/HomePage/Banner/HYG002 -Website - MainPageBanneer -  Layout04A.jpg" alt="Banner 1" class="desktop-image" />
+                <img src="images/HomePage/Banner/HYG002 -Website - MainPageBanneer -  Layout04B.jpg" alt="Banner 2" class="desktop-image" />
+                <img src="images/HomePage/Banner/HYG002 -Website - MainPageBanneer -  Layout04C.jpg" alt="Banner 3" class="desktop-image" />
+                <img src="images/HomePage/Banner/HYG002 -Website - MainPageBanneer -  Layout04E.jpg" alt="Banner 5" class="desktop-image" />
+                <img src="images/HomePage/Banner/HYG002 -Website - MainPageBanner -  Layout04G.jpg" alt="Banner 7" class="desktop-image" />
+                <img src="images/HomePage/Banner/HYG002 -Website - MainPageBanner -  Layout04M.jpg" alt="Banner 9" class="desktop-image" />
+                <img src="images/HomePage/Banner/HYG002 -Website - MainPageBanner -  Layout05B_WAP.jpg" alt="Banner 10" class="desktop-image" />
+                <img src="images/HomePage/Banner/HYG002 -Website - Floor -  Layout01 - Our Service.jpg" alt="Banner 11" class="desktop-image" />
+                
+              
+                <div class="banner-slider-overlay">
+                  <div class="banner-slider-content">
+                    <h1 class="banner-title">Hygiene First 首衛<br>Professional Care Support</h1>
+                    <h2 class="banner-subtitle" style="text-align: left !important; color: #fff !important;">20,000+ Professional Medical Staff Matching Service</h2>
+                    <h2  class="banner-text" style="text-align: left !important;"></h2>
+                    <p class="banner-text">Hygiene First provides 24-hour medical personnel support, home nursing, vaccine injections, and expired medication collection, serving every family with care.<br>Since 2008, we have been able to match professional medical personnel for families and institutions with different needs, including nurses, doctors, physical therapists, health care workers, and other medical personnel, providing quality medical care services so you can receive appropriate care in a safe and comfortable environment.</p>
+                
                 <div class="cta-buttons">
-                        <a href="contact.html" class="btn primary-btn">Get Free Consultation</a>
-                        <a href="services.html" class="btn secondary-btn">Get Pricing Details</a>
+                        <a href="https://wa.me/85228278883?text=Hello! I would like to learn more about Hygiene First's pricing details. Could you provide me with more information?" class="btn secondary-btn mobile-cta" target="_blank" rel="noopener noreferrer" style="background: var(--secondary-color);">Learn About Service Plans</a>
+                        <a href="service.html" class="btn primary-btn mobile-cta">Get Pricing Details</a>  
+                      </div>
+                      
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="services">
+     
+        <!-- Mobile Banner Description -->
+        <section class="mobile-banner-description">
         <div class="container">
-            <div class="service-cards">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-home"></i></div>
-                    <h3>Residential Cleaning</h3>
-                    <p>We provide comprehensive cleaning and care services for seniors and those with special needs, from personal care to professional sanitation services.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-medkit"></i></div>
-                    <h3>Specialized Cleaning</h3>
-                    <p>We provide different levels of on-site sanitation services for environments dealing with health concerns, allergens, mold, and cardiovascular disease prevention.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                    <h3>Restoration Cleaning</h3>
-                    <p>Preparing for guests? We can help your family transition smoothly, design a cleaning plan, prevent complications, and restore your living space.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-user-nurse"></i></div>
-                    <h3>Live-in Cleaning Service</h3>
-                    <p>Do your loved ones need more attentive round-the-clock care? Our specialized cleaning staff can meet your family's special hygiene requirements.</p>
+                <div class="mobile-description-content">
+                    <h2 class="mobile-description-title">Professional Medical Care Services</h2>
+                    <span class="mobile-description-text" style="text-align: left !important; font-size: 16px !important;">Hygiene First is committed to providing you with the highest quality medical care services, bringing professional medical care into every home to protect the health of you and your family.</span>
+                    <div class="">
+                        <a href="https://wa.me/85228278883?text=Hello! I would like to learn more about Hygiene First's pricing details. Could you provide me with more information?" class="btn secondary-btn mobile-cta" target="_blank" rel="noopener noreferrer" style="background: var(--secondary-color);">Learn About Service Plans</a>
+                        <a href="service.html" class="btn primary-btn mobile-cta">Get Pricing Details</a>  
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="mission">
+        <!-- Banner Content Section - Mobile Only -->
+        <section class="banner-content-mobile">
+            <div class="banner-content-container">
+                <h1 class="banner-title">Hygiene First 首衛<br>Professional Care Support</h1>
+                <h2 class="banner-subtitle" style="text-align: left !important;">20,000+ Professional Medical Staff Matching Service</h2>
+                <h2 class="banner-description">Hygiene First provides 24-hour medical personnel support, home nursing, vaccine injections, and expired medication collection, serving every family with care.</h2>
+                <p class="banner-text">Since 2008, we have been able to match professional medical personnel for families and institutions with different needs, including nurses, doctors, physical therapists, health care workers, and other medical personnel, providing quality medical care services so you can receive appropriate care in a safe and comfortable environment.</p>
+                <div class="cta-buttons">
+                   
+                    <a href="https://wa.me/85228278883?text=Hello! I would like to learn more about Hygiene First's pricing details. Could you provide me with more information?" class="btn secondary-btn mobile-cta" target="_blank" rel="noopener noreferrer" style="background: var(--secondary-color);">Learn About Service Plans</a>
+                    <a href="service.html" class="btn primary-btn mobile-cta">Get Pricing Details</a>  
+                  </div>
+            </div>
+        </section>
+
+
+
+              <!-- Target Audience Section -->
+              <section class="target-audience mobile-elderly-target-audience" style="padding: 6rem 0; background: white;">
         <div class="container">
-            <h2>Family First, Care With Heart Every Step</h2>
-            <div class="mission-cards">
-                <div class="mission-card">
-                    <h3>For Clients</h3>
-                    <p>We care with our hearts, putting your family first. We treat each client with the same care as we would our own family, ensuring the best results while reducing health risks.</p>
-                    <a href="#" class="link-arrow">Find Cleaning Services →</a>
+                    <div class="section-header mobile-section-header">
+                        <h2 class="mobile-section-title" style="text-align: center !important;">Hygiene First 首衛 Services</h2>
+                    </div>
+                    
+                    <div class="audience-grid mobile-elderly-audience-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
+                        <!-- Medical and Chemical Waste Collection -->
+                        <div class="audience-item" style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #FF7A00, #E56717);"></div>
+                            <div class="audience-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);">
+                                    <i class="fas fa-vials" style="font-size: 2rem; color: white;"></i>
+                                </div>
+                                <h3 style="font-size: 1.5rem; color: #333; font-weight: 700; margin: 0;">Medical and Chemical Waste Collection
+                                </h3>
+                            </div>
+                            <p style="color: #666; line-height: 1.7; font-size: 1.05rem; margin: 0; font-weight: 400;">Licensed medical and chemical waste collectors provide professional waste disposal services, including medical waste collection services such as needle boxes, syringes, and other items, as well as chemical waste collection services covering pills, medicines, and hazardous drugs, ensuring safe and compliant waste disposal processes.</p>
+                        </div>
+                        
+                        <!-- 24-Hour Private Care Support -->
+                        <div class="audience-item" style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #FF7A00, #E56717);"></div>
+                            <div class="audience-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);">
+                                    <i class="fas fa-stethoscope" style="font-size: 2rem; color: white;"></i>
+                                </div>
+                                <h3 style="font-size: 1.5rem; color: #333; font-weight: 700; margin: 0;">24-Hour Private Care Support
+                                </h3>
+                            </div>
+                            <p style="color: #666; line-height: 1.7; font-size: 1.05rem; margin: 0; font-weight: 400;">Patient care services provide comprehensive medical care, including post-operative care, hospital transfer escort, prenatal and postnatal care, home nursing, physical therapy, occupational therapy, and other professional nursing and treatment services, committed to providing patients with a safe, comfortable recovery environment and personalized care.</p>
+                        </div>
+                        
+                        <!-- Medical Institution Staff Support -->
+                        <div class="audience-item" style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #FF7A00, #E56717);"></div>
+                            <div class="audience-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);">
+                                    <i class="fas fa-user-md" style="font-size: 2rem; color: white;"></i>
+                                </div>
+                                <h3 style="font-size: 1.5rem; color: #333; font-weight: 700; margin: 0;">Medical Institution Staff Support                                </h3>
+                            </div>
+                            <p style="color: #666; line-height: 1.7; font-size: 1.05rem; margin: 0; font-weight: 400;">Providing professional medical personnel dispatch services for hospitals, residential care homes, and medical institutions, as well as organizing health lectures, community activity services, and outreach vaccination services, committed to promoting community health education and convenient medical support, ensuring efficient services that meet professional standards.</p>
                 </div>
-                <div class="mission-card">
-                    <h3>For Cleaning Staff</h3>
-                    <p>We understand the importance of family. Therefore, we provide our cleaning staff with flexible work schedules and continuous benefits so they can participate in every important moment of their family while pursuing meaningful work.</p>
-                    <a href="#" class="link-arrow">Find Cleaning Jobs →</a>
+                        
+                        <!--Vaccination -->
+                        <div class="audience-item" style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid rgba(255, 122, 0, 0.1); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #FF7A00, #E56717);"></div>
+                            <div class="audience-header" style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                                <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #FF7A00, #E56717); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3);">
+                                    <i class="fas fa-syringe" style="font-size: 2rem; color: white;"></i>
                 </div>
-                <div class="mission-card">
-                    <h3>For Institutions and Businesses</h3>
-                    <p>Our team has professional cleaning staff to ensure a smooth cleaning process and provide better sanitation services whenever and wherever needed.</p>
-                    <a href="#" class="link-arrow">Find Cleaning Staff →</a>
+                                <h3 style="font-size: 1.5rem; color: #333; font-weight: 700; margin: 0;">Vaccination</h3>
                 </div>
-                <div class="mission-card">
-                    <h3>For Society</h3>
-                    <p>Care creates a ripple effect. We bring people together through activities, seminars, and partnerships to inspire those around us to improve the quality of life for seniors and caregivers.</p>
-                    <a href="#" class="link-arrow">Learn More →</a>
+                            <p style="color: #666; line-height: 1.7; font-size: 1.05rem; margin: 0; font-weight: 400;">Providing comprehensive vaccination services, including flu vaccines, COVID-19 vaccines, hepatitis vaccines, travel vaccines, and other vaccinations, committed to providing convenient and professional immunization protection for individuals and communities to ensure health and safety.</p>
                 </div>
             </div>
+                    
+                </div>
+            </section>
+
+            
+   
+      
+        <section class="mission">
+            <div class="container">
+                <h2 class="mobile-section-title" style=" color: var(--primary-color);">Let the Hygiene First 首衛 team enter the community, and let care be full of respect and warmth.</h2>
+                <p>We uphold the core values of integrity, professionalism, and care, committed to closely connecting professional medical teams with the community, providing flexible and high-quality care solutions for families in need, and ensuring that care truly enters every detail of life.</h3>
         </div>
     </section>
 
     <section class="process">
         <div class="container">
-            <h2>Inquire About Service Plans and Pricing</h2>
-            <p>Whether providing guidance for families new to home cleaning or assessing post-renovation cleaning needs, our cleaning experts can provide you with a personal cleaning plan and professional advice.</p>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <p>Complete and submit the form, and our cleaning specialist will contact you within 24 hours</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <p>Consult with your cleaning expert over the phone so they can better understand your needs and provide suitable options</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <p>Match with a cleaner and prepay for the service</p>
-                </div>
-            </div>
+                <h2 class="mobile-section-title" style="color: var(--primary-color);">Inquire About Medical Care Service Plans and Pricing</h2>
+                <p>Whether providing guidance for families needing medical care services or assessing special medical needs for the elderly, our medical team can create a personalized care plan for you and provide professional and caring advice.</p>
+         
             <div class="cta-center">
-                <a href="contact.html" class="btn primary-btn">Get Free Consultation</a>
-                <p class="subtitle">Responses during business hours!</p>
+                                            <a href="contact.html" class="btn primary-btn">Free Consultation</a>
+                 
             </div>
         </div>
     </section>
 
     <section class="why-choose">
         <div class="container">
-            <h2>Why Choose Hygiene First</h2>
+                <h2 class="mobile-section-title" style="color: var(--primary-color);">Why Choose Hygiene First 首衛</h2>
             <div class="features">
-                <div class="feature">
+                    <div class="feature animate-on-scroll mobile-feature">
                     <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
-                    <h3>Flexible Plans for Different Family Needs</h3>
-                    <p>Whether it's temporary, short-term care or long-term, day/night care, we can provide different plans according to your lifestyle</p>
+                        <h3 class="feature-title">One-Stop Service Support</h3>
+                        <ul class="feature-list">
+                            <li>Private care services</li>
+                            <li>Expired medication disposal</li>
+                            <li>Vaccine support</li>
+                            <li>Staff dispatch</li>
+                            <li>Flexible and effective professional solutions</li>
+                        </ul>
                 </div>
-                <div class="feature">
+                    <div class="feature animate-on-scroll mobile-feature">
                     <div class="feature-icon"><i class="fas fa-medal"></i></div>
-                    <h3>Reliable and Reputable Market Leader</h3>
-                    <p>We are the only cleaning platform in Hong Kong that provides comprehensive human resource solutions for all seven hospital networks.</p>
+                        <h3 class="feature-title">Rigorous Training and Monitoring System</h3>
+                        <ul class="feature-list">
+                            <li>Medical personnel selection</li>
+                            <li>Quarterly training</li>
+                            <li>Service rating mechanism</li>
+                            <li>Quality review mechanism</li>
+                            <li>Professional and reassuring guarantee</li>
+                        </ul>
                 </div>
-                <div class="feature">
+                    <div class="feature animate-on-scroll mobile-feature">
                     <div class="feature-icon"><i class="fas fa-users"></i></div>
-                    <h3>30,000+ Top Home Cleaning Team</h3>
-                    <p>Hygiene First's cleaning service team network covers 18 districts and can provide professional cleaning staff with rich experience anytime, anywhere</p>
+                        <h3 class="feature-title">60,000+ Medical Personnel</h3>
+                        <ul class="feature-list">
+                            <li>Medical service team network</li>
+                          
+                            <li>Experienced professional medical personnel</li>
+                            <li>Available anytime, anywhere</li>
+                        </ul>
                 </div>
-                <div class="feature">
+                    <div class="feature animate-on-scroll mobile-feature">
                     <div class="feature-icon"><i class="fas fa-clock"></i></div>
-                    <h3>24/7 Support Year-round</h3>
-                    <p>Our cleaning team provides 24-hour round-the-clock care 365 days a year, so you don't have to face the most urgent situations alone.</p>
+                        <h3 class="feature-title">24/7 Round-the-Clock Support</h3>
+                        <ul class="feature-list">
+                            <li>Service all year round</li>
+                            <li>24-hour round-the-clock support</li>
+                            <li>Emergency response</li>
+                            <li>Professional medical team</li>
+                        </ul>
                 </div>
             </div>
         </div>
@@ -260,83 +408,129 @@
 
     <section class="stats">
         <div class="container">
-            <div class="stat">
-                <h2>850,000+</h2>
-                <p>Families and patients served</p>
+                <div class="stat animate-on-scroll">
+                    <h2>60,000+</h2>
+                    <p style="text-align: center !important;">Families and customers served</p>
             </div>
-            <div class="stat">
-                <h2>1,000+</h2>
-                <p>Home cleaning services provided monthly</p>
+                <div class="stat animate-on-scroll">
+                    <h2>20000</h2>
+                    <p style="text-align: center !important;">Vaccinations per week</p>
             </div>
-            <div class="stat">
-                <h2>4.7 / 5</h2>
-                <p>Google Rating</p>
+                <div class="stat animate-on-scroll">
+                    <h2>200000</h2>
+                    <p style="text-align: center !important;">Medications collected</p>
             </div>
         </div>
     </section>
 
     <section class="testimonials">
-        <div class="container">
+            <div class="container-card">
             <div class="testimonial-slider">
-                <div class="testimonial">
-                    <p>"Thanks to Hygiene First for providing on-site cleaning for my father's home, solving our urgent needs. Their case managers regularly report my father's situation to us. When I encounter problems, they can respond quickly and give me detailed answers and assistance, so I have no worries."</p>
-                    <h4>Deborah</h4>
+                    <div class="testimonial animate-on-scroll mobile-testimonial">
+                        <p class="testimonial-text">"Hygiene First 首衛's care staff are so attentive, remembering what tea I like to drink and what programs I watch. Really touching! Their volunteer team also visited our home during the lunar New Year, giving us a very practical blessing bag. Very warm."</p>
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="images/HomePage/shutterstock_2285428931.jpg" alt="Mr. Chan" loading="lazy">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Mr. Chan</h4>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial animate-on-scroll mobile-testimonial">
+                        <p class="testimonial-text">"During the peak of the pandemic, we found the licensed Hygiene First to collect medical waste for us. Their team is organized and polite, arriving on time. We will continue to work with Hygiene First long-term."</p>
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="images/HomePage/shutterstock_1842022177.jpg" alt="Mr. Yiu" loading="lazy">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Mr. Yiu</h4>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial animate-on-scroll mobile-testimonial">
+                        <p class="testimonial-text">"Hygiene First 首衛 provided professional home physical therapy services for our elderly family member. Whenever we have questions about her physical condition, the therapist sent to us can always quickly and thoroughly answer, helping us reduce our concerns, and her physical condition has improved significantly. Highly recommended!"</p>
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="images/HomePage/shutterstock_2413751683.jpg" alt="Ms. Wong" loading="lazy">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Ms. Wong</h4>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial animate-on-scroll mobile-testimonial">
+                        <p class="testimonial-text">"We first contacted Hygiene First 首衛 during the first wave of the pandemic. Their medical staff were excellent, providing home testing services for our newborn granddaughter. We had results within 8 hours! The price was also very reasonable. Until now, we are still using Hygiene First's housekeeping assistant services!"</p>
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img style="object-fit: cover; object-position: 40% 50% !important; " src="images/HomePage/2024 - 25.png" alt="Ms. Ng" loading="lazy">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Ms. Ng</h4>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
                 </div>
-                <div class="testimonial">
-                    <p>"I had contacted other cleaning intermediaries for help, but unfortunately their services seemed to lack a human touch, making me feel that the whole cleaning process was like a foreign maid intermediary, purely a transaction. On the contrary, at Hygiene First, I have a dedicated case manager Sandy who regularly reports my situation to my family in the United States, giving them peace of mind."</p>
-                    <h4>Kenneth</h4>
                 </div>
-                <div class="testimonial">
-                    <p>"Since my father experienced a brain injury, Hygiene First's cleaners have been taking care of my father with a positive and caring attitude, helping him recover. Their help has greatly reduced my physical and mental burden."</p>
-                    <h4>Karen</h4>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="founder">
-        <div class="container">
-            <div class="founder-content">
-                <p>As a husband and wife team, our core work revolves around the family. Hygiene First is not only for our parents and grandparents, but also exists to serve your family. At Hygiene First, family always comes first.</p>
-                <h4>John & Lisa Smith</h4>
-                <p>Co-founders</p>
+        <section class="real-stories custom-real-stories-bg">
+            <div class="container real-stories-flex">
+                <div class="real-stories-text">
+                    <div class="real-stories-heading theme-color">Real Life, Real Stories</div>
+                    <div class="real-stories-title" style="text-wrap: nowrap !important;"><strong>Maritime Care Training Workshop and Yacht Experience</strong></div>
+                    <a href="about.html" class="real-stories-btn theme-btn">Reasons why thousands choose Hygiene First</a>
             </div>
-        </div>
-    </section>
-
-    <section class="real-stories">
-        <div class="container">
-            <h2>Real Life, Real Stories</h2>
-            <div class="story-highlight">
-                <h3>Wendy's Home Cleaning Experience</h3>
-                <p>Reasons why tens of thousands of people choose Hygiene First</p>
+                <div class="real-stories-video">
+                    <iframe width="1294" height="736" src="https://www.youtube.com/embed/-Jtbsaf5r80" title="【🛡️Hygiene First 首衛 Maritime Care Training Workshop Highlights】Health Sailing ⋅ Caring Together! Sail To Care" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
     </section>
 
     <section class="target-audiences">
         <div class="container">
-            <div class="audience">
-                <h3>Businesses and Organizations</h3>
-                <p>Want to inquire about business services?</p>
-                <a href="contact.html" class="btn outline-btn">Business Services</a>
+                <div class="audience animate-on-scroll mobile-audience">
+                    <h3 class="audience-title" style="text-align: center !important; color: #FF7A00 !important;">Businesses and Organizations</h3>
+                    <p class="audience-description" style="text-align: center !important;">Interested in business services?</p>
+                    <a href="contact.html" class="btn outline-btn mobile-btn">Business Inquiries</a>
             </div>
-            <div class="audience">
-                <h3>Cleaning Staff</h3>
-                <p>Want to join our cleaning team?</p>
-                <a href="contact.html" class="btn outline-btn">Staff Recruitment</a>
+                <div class="audience animate-on-scroll mobile-audience">
+                    <h3 class="audience-title" style="text-align: center !important; color: #FF7A00 !important;">Join Us</h3>
+                    <p class="audience-description" style="text-align: center !important;">Want to become a member?</p>
+                    <a href="member-account.html" class="btn outline-btn mobile-btn">Member Registration</a>
             </div>
         </div>
     </section>
 
-    <section class="partners">
-        <div class="container">
-            <h3>Our Partners</h3>
-            <div class="partner-logos">
-                <!-- Partner logos would go here -->
-            </div>
-        </div>
-    </section>
+    </main>
 
     <footer class="simple-footer">
         <div class="container">
@@ -344,21 +538,51 @@
                                           <!-- Contact Info -->
                                               <div class="footer-section">
                                <h3 style="color: #FF7A00;">聯絡我們</h3>
-                                               <p style="font-size: 0.8rem;"><i class="fas fa-phone"></i> 電話：<strong>2827 8889</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-fax"></i> 傳真：<strong>3020 1710</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-envelope"></i> 電郵：<strong>careteam@hygienefirstgroup.com</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-building"></i> 總部：<strong>新界屯門新合里3號匯賢一號 · 雋峰12樓17室</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-map-marker-alt"></i> 辦事處：<strong>九龍灣臨樂街19號南豐商業中心18樓12室</strong></p>
+                                        <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-phone" style="color: #FF7A00;"></i> 電話</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">2827 8889</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-fax" style="color: #FF7A00;"></i> 傳真</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">3020 1710</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-envelope" style="color: #FF7A00;"></i> 電郵</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">careteam@hygienefirstgroup.com</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-building" style="color: #FF7A00;"></i> 總部</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem; text-wrap: nowrap !important;">新界屯門新合里3號匯賢一號 · 雋峰12樓17室</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-map-marker-alt" style="color: #FF7A00;"></i> 辦事處</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">九龍灣臨樂街19號南豐商業中心18樓12室</div>
+                    </div>
                        </div>
                        
                                           <!-- License Info -->
                                               <div class="footer-section">
                                <h3 style="color: #FF7A00;">牌照資訊</h3>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-shield-alt"></i> 社會福利署長者社區照顧服務券商：<strong>RSP 11901</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-recycle"></i> 環保署持牌醫療廢物收集商：<strong>0001-423-H0001-L1</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-flask"></i> 環保署持牌化學廢物收集商：<strong>9210-4230H0027-WC</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-briefcase"></i> 勞工處持牌職業介紹所：<strong>79409</strong></p>
-                           <p style="font-size: 0.8rem;"><i class="fas fa-bolt"></i> 電業承辨商註冊號碼：<strong>037517</strong></p>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-shield-alt" style="color: #FF7A00;"></i> 社會福利署長者社區照顧服務券商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">RSP 11901</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-recycle" style="color: #FF7A00;"></i> 環保署持牌醫療廢物收集商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">0001-423-H0001-L1</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-flask" style="color: #FF7A00;"></i> 環保署持牌化學廢物收集商</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">9210-423-H0027-WC</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-briefcase" style="color: #FF7A00;"></i> 勞工處持牌職業介紹所</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">79409</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-bolt" style="color: #FF7A00;"></i> 電業承辨商註冊號碼</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">037517</div>
+                    </div>
                        </div>
                        
                                           <!-- Social Links -->
@@ -368,7 +592,7 @@
                         <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/hygiene.first?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.threads.com/@hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Threads" style="color: #FF7A00;">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
                             <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161" fill="currentColor"/>
                           </svg>
                         </a>
@@ -388,10 +612,6 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Button -->
-        <a href="https://wa.me/85228278883" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
 
         <div id="wechat-modal" class="wechat-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
@@ -416,7 +636,6 @@
         </script>
 
     <script src="script.js"></script>
-    </main>
 
     <!-- Chatbot Component -->
     <div id="chatbot-container" class="chatbot-container">
@@ -450,6 +669,56 @@
         </div>
     </div>
     
+    <!-- Floating Language Switcher -->
+    <div class="floating-lang-switcher">
+        <button class="lang-switcher-btn" id="langSwitcherBtn">
+            <span class="current-lang-code">GB</span>
+            <span class="current-lang-text">English</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="lang-switcher-dropdown" id="langSwitcherDropdown">
+            <a href="index.html" class="lang-option" data-lang="zh">
+                <span class="lang-code">HK</span>
+                <span class="lang-text">中文</span>
+            </a>
+            <a href="index-en.html" class="lang-option active" data-lang="en">
+                <span class="lang-code">GB</span>
+                <span class="lang-text">English</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Language Switcher Toggle
+        const langSwitcherBtn = document.getElementById('langSwitcherBtn');
+        const langSwitcherDropdown = document.getElementById('langSwitcherDropdown');
+        const chevronIcon = langSwitcherBtn?.querySelector('.fas');
+        
+        if (langSwitcherBtn && langSwitcherDropdown) {
+            langSwitcherBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isOpen = langSwitcherDropdown.classList.toggle('show');
+                if (chevronIcon) {
+                    chevronIcon.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            });
+            
+            // Close when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!langSwitcherBtn.contains(e.target) && !langSwitcherDropdown.contains(e.target)) {
+                    langSwitcherDropdown.classList.remove('show');
+                    if (chevronIcon) {
+                        chevronIcon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+            
+            // Prevent dropdown from closing when clicking inside it
+            langSwitcherDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    </script>
 
 </body>
 </html> 
