@@ -1,3 +1,6 @@
+// Mark that JS is enabled
+document.documentElement.classList.add('js-enabled');
+
 document.addEventListener('DOMContentLoaded', function() {
     // Banner Slider functionality
     function setupBannerSlider() {
@@ -96,18 +99,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Handle page load transition
-    if (performance.navigation.type !== 1) { // Not a page refresh
-        pageTransition.classList.add('active');
-        pageTransition.classList.add('exit');
-        
-        setTimeout(() => {
-            pageTransition.classList.remove('active');
-            setTimeout(() => {
-                pageTransition.classList.remove('exit');
-            }, 600);
-        }, 500);
-    }
+    // Mark body as loaded to prevent flickering
+    // Use requestAnimationFrame to ensure DOM is fully ready
+    requestAnimationFrame(function() {
+        document.body.classList.add('loaded');
+    });
+    
+    // Also mark as loaded on window load (images, fonts, etc.)
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
+    
+    // Handle page load transition - Disabled to prevent flicker
+    // Page transitions are now handled via CSS only
+    // if (performance.navigation.type !== 1) { // Not a page refresh
+    //     pageTransition.classList.add('active');
+    //     pageTransition.classList.add('exit');
+    //     
+    //     setTimeout(() => {
+    //         pageTransition.classList.remove('active');
+    //         setTimeout(() => {
+    //             pageTransition.classList.remove('exit');
+    //         }, 600);
+    //     }, 500);
+    // }
 
     // Enhanced Navbar functionality
     function enhanceNavigation() {

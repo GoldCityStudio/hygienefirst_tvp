@@ -3561,16 +3561,43 @@
                     };
                 }
                 
-                // Parse customer info from message
+                // Parse customer info from message - Handle both multi-line and single-line formats
                 if (message.includes('姓名') || message.includes('電話') || message.includes('地址')) {
+                    // Try multi-line format first
                     const lines = userMessage.split('\n');
+                    let foundMultiLine = false;
+                    
                     for (const line of lines) {
                         if (line.includes('姓名：') || line.includes('姓名:')) {
                             chatbotBookingData.customer.name = (line.split('：')[1] || line.split(':')[1] || '').trim();
+                            foundMultiLine = true;
                         } else if (line.includes('電話：') || line.includes('電話:')) {
                             chatbotBookingData.customer.phone = (line.split('：')[1] || line.split(':')[1] || '').trim();
+                            foundMultiLine = true;
                         } else if (line.includes('地址：') || line.includes('地址:')) {
                             chatbotBookingData.customer.address = (line.split('：')[1] || line.split(':')[1] || '').trim();
+                            foundMultiLine = true;
+                        }
+                    }
+                    
+                    // If multi-line parsing didn't work, try single-line format
+                    if (!foundMultiLine || lines.length === 1) {
+                        // Handle single-line format: "姓名:陳大文 電話:9123 4567 地址:香港九龍..."
+                        const nameMatch = userMessage.match(/姓名[：:]\s*([^\s電話]+)/);
+                        if (nameMatch) {
+                            chatbotBookingData.customer.name = nameMatch[1].trim();
+                        }
+                        
+                        // Extract phone - handle both with and without spaces (8 digits)
+                        const phoneMatch = userMessage.match(/電話[：:]\s*([\d\s]{8,})/);
+                        if (phoneMatch) {
+                            chatbotBookingData.customer.phone = phoneMatch[1].replace(/\s+/g, ' ').trim();
+                        }
+                        
+                        // Extract address - everything after "地址:" or "地址："
+                        const addressMatch = userMessage.match(/地址[：:]\s*(.+)/);
+                        if (addressMatch) {
+                            chatbotBookingData.customer.address = addressMatch[1].trim();
                         }
                     }
                     
@@ -3588,27 +3615,27 @@
                     }
                 }
                 
-                // Handle unstructured input (fallback)
+                // Handle unstructured input (fallback) - improved regex
                 if (userMessage.length > 5) {
-                    // Try to extract phone number (8 digits)
-                    const phoneMatch = userMessage.match(/\d{8}/);
+                    // Try to extract phone number (8 digits, with or without spaces)
+                    const phoneMatch = userMessage.match(/(\d{4}\s?\d{4}|\d{8})/);
                     if (phoneMatch) {
-                        chatbotBookingData.customer.phone = phoneMatch[0];
+                        chatbotBookingData.customer.phone = phoneMatch[0].replace(/\s+/g, ' ').trim();
                     }
                     
-                    // Try to extract name (first few characters before phone)
-                    if (phoneMatch) {
-                        const namePart = userMessage.substring(0, phoneMatch.index).trim();
-                        if (namePart.length > 0) {
-                            chatbotBookingData.customer.name = namePart;
-                        }
+                    // Try to extract name (text before phone, after "姓名:" if present)
+                    const nameBeforePhone = userMessage.substring(0, phoneMatch ? phoneMatch.index : userMessage.length);
+                    const nameMatch = nameBeforePhone.match(/姓名[：:]\s*([^\s電話]+)/) || nameBeforePhone.match(/([^\d\s電話：:]+)/);
+                    if (nameMatch) {
+                        chatbotBookingData.customer.name = nameMatch[1].trim();
                     }
                     
-                    // Try to extract address (after phone)
+                    // Try to extract address (after phone, or everything after "地址:")
                     if (phoneMatch) {
-                        const addressPart = userMessage.substring(phoneMatch.index + 8).trim();
-                        if (addressPart.length > 0) {
-                            chatbotBookingData.customer.address = addressPart;
+                        const addressPart = userMessage.substring(phoneMatch.index + phoneMatch[0].length).trim();
+                        const addressMatch = addressPart.match(/地址[：:]\s*(.+)/) || addressPart.match(/(.+)/);
+                        if (addressMatch && addressMatch[1].trim().length > 5) {
+                            chatbotBookingData.customer.address = addressMatch[1].trim();
                         }
                     }
                     

@@ -1,9 +1,49 @@
 /* Global Styles */
 
+/* Prevent Flickering - Critical CSS */
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Body loading state - prevent flicker */
+/* Fallback: show body if JS is disabled (no .loaded class means JS disabled) */
+body:not(.loaded) {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Only hide if JS is enabled and hasn't loaded yet */
+.js-enabled body:not(.loaded) {
+    visibility: hidden;
+    opacity: 0;
+}
+
+body.loaded {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
 /* Hide mobile banner content on desktop */
 .banner-content-mobile {
     display: none;
 }
+
+/* Prevent overlay from causing flicker */
+.overlay {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Ensure page-transition doesn't cause flicker */
+.page-transition {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
 :root {
     --primary-color: #FF7A00; /* Main orange color */
     --secondary-color: #FF9933; /* Lighter orange */
