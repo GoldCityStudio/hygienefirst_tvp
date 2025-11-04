@@ -741,6 +741,7 @@
         </div>
     </div>
 
+    <script src="language-persistence.js"></script>
     <script>
         // Language Switcher Toggle
         const langSwitcherBtn = document.getElementById('langSwitcherBtn');
@@ -764,6 +765,29 @@
                         chevronIcon.style.transform = 'rotate(0deg)';
                     }
                 }
+            });
+            
+            // Handle language switching with persistence
+            const langOptions = langSwitcherDropdown.querySelectorAll('.lang-option');
+            langOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetLang = this.getAttribute('data-lang');
+                    const targetUrl = this.getAttribute('href');
+                    
+                    // Store language preference
+                    if (window.languagePersistence) {
+                        window.languagePersistence.storeLanguage(targetLang);
+                    } else {
+                        localStorage.setItem('preferredLanguage', targetLang);
+                    }
+                    
+                    // Mark that we're switching languages to prevent redirect loop
+                    sessionStorage.setItem('languageSwitching', 'true');
+                    
+                    // Navigate to the target page
+                    window.location.href = targetUrl;
+                });
             });
             
             // Prevent dropdown from closing when clicking inside it

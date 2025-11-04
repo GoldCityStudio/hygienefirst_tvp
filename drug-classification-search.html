@@ -999,6 +999,81 @@
     </script>
 
     <script src="script.js"></script>
+
+    <!-- Floating Language Switcher -->
+    <div class="floating-lang-switcher">
+        <button class="lang-switcher-btn" id="langSwitcherBtn">
+            <span class="current-lang-code">HK</span>
+            <span class="current-lang-text">中文</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="lang-switcher-dropdown" id="langSwitcherDropdown">
+            <a href="drug-classification-search.html" class="lang-option active" data-lang="zh">
+                <span class="lang-code">HK</span>
+                <span class="lang-text">中文</span>
+            </a>
+            <a href="drug-classification-search-en.html" class="lang-option" data-lang="en">
+                <span class="lang-code">GB</span>
+                <span class="lang-text">English</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="language-persistence.js"></script>
+    <script>
+        // Language Switcher Toggle
+        const langSwitcherBtn = document.getElementById('langSwitcherBtn');
+        const langSwitcherDropdown = document.getElementById('langSwitcherDropdown');
+        const chevronIcon = langSwitcherBtn?.querySelector('.fas');
+        
+        if (langSwitcherBtn && langSwitcherDropdown) {
+            langSwitcherBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isOpen = langSwitcherDropdown.classList.toggle('show');
+                if (chevronIcon) {
+                    chevronIcon.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            });
+            
+            // Close when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!langSwitcherBtn.contains(e.target) && !langSwitcherDropdown.contains(e.target)) {
+                    langSwitcherDropdown.classList.remove('show');
+                    if (chevronIcon) {
+                        chevronIcon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+            
+            // Handle language switching with persistence
+            const langOptions = langSwitcherDropdown.querySelectorAll('.lang-option');
+            langOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetLang = this.getAttribute('data-lang');
+                    const targetUrl = this.getAttribute('href');
+                    
+                    // Store language preference
+                    if (window.languagePersistence) {
+                        window.languagePersistence.storeLanguage(targetLang);
+                    } else {
+                        localStorage.setItem('preferredLanguage', targetLang);
+                    }
+                    
+                    // Mark that we're switching languages to prevent redirect loop
+                    sessionStorage.setItem('languageSwitching', 'true');
+                    
+                    // Navigate to the target page
+                    window.location.href = targetUrl;
+                });
+            });
+            
+            // Prevent dropdown from closing when clicking inside it
+            langSwitcherDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    </script>
 </body>
 </html>
 
