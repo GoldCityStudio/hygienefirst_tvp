@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download the Hygiene First mobile app to book professional care services anytime, anywhere. View service records and manage your member account. Available for iOS and Android.">
+    <meta name="keywords" content="Hygiene First app,care service app,medical app,download app,iOS,Android">
+    <title>Download Hygiene First Mobile App | App Download</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content="Download Hygiene First Mobile App">
+    <meta property="og:description" content="Download the Hygiene First mobile app to book professional care services anytime, anywhere.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.hygienefirstgroup.com/app-download-en.html">
+    <meta property="og:image" content="https://www.hygienefirstgroup.com/images/HF%20logo/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="enhanced-styles.css">
+    <link rel="stylesheet" href="dropdown-fix.css">
+    <link rel="stylesheet" href="mobile-enhancements.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .app-hero {
+            background: linear-gradient(135deg, #FF7A00 0%, #FF9933 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .app-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .app-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .app-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .app-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+        
+        .app-download-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .app-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 18px 35px;
+            background: white;
+            color: #FF7A00;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .app-download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .app-download-btn i {
+            font-size: 2.5rem;
+        }
+        
+        .app-download-btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .app-download-btn-text small {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .app-features {
+            padding: 80px 0;
+            background: #fff;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: #FFF9F5;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 122, 0, 0.15);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FF7A00, #FF9933);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .feature-card h3 {
+            color: #FF7A00;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .app-screenshots {
+            padding: 80px 0;
+            background: #FFF9F5;
+        }
+        
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .screenshot-item {
+            text-align: center;
+        }
+        
+        .screenshot-placeholder {
+            width: 100%;
+            max-width: 300px;
+            height: 600px;
+            background: linear-gradient(135deg, #FF7A00, #FF9933);
+            border-radius: 25px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            flex-direction: column;
+        }
+        
+        .app-cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #FF7A00 0%, #FF9933 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .app-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .app-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        @media (max-width: 768px) {
+            .app-hero {
+                padding: 100px 0 60px;
+            }
+            
+            .app-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .app-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .app-download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .app-download-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .screenshot-placeholder {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body class="en">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index-en.html">
+                    <img src="images/HF logo/logo.png" alt="Hygiene First Company Limited" style="max-height: 50px; width: auto; border-radius: 0px !important;">
+                </a>
+            </div>
+            <div class="header-icons">
+                <a href="member-account-en.html" class="header-icon" title="Member Center"><i class="fas fa-user"></i><span></span></a>Member Center
+            </div>
+            <nav>
+                <ul class="main-menu">
+                    <li><a href="index-en.html">Home</a></li>
+                    <li><a href="about-en.html">About</a></li>
+                    <li><a href="service-en.html">Services</a></li>
+                    <li><a href="contact-en.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="app-hero">
+            <div class="container">
+                <div class="app-hero-content">
+                    <h1>Hygiene First Mobile App</h1>
+                    <p>Book professional care services anytime, anywhere. Manage your health needs with ease</p>
+                    <div class="app-download-buttons">
+                        <a href="https://apps.apple.com/app/hygiene-first" class="app-download-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-apple"></i>
+                            <div class="app-download-btn-text">
+                                <span>Download on</span>
+                                <strong>App Store</strong>
+                            </div>
+                        </a>
+                        <a href="app-landing/app-release.apk" class="app-download-btn" download>
+                            <i class="fab fa-android"></i>
+                            <div class="app-download-btn-text">
+                                <span>Download on</span>
+                                <strong>Google Play</strong>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="app-features">
+            <div class="container">
+                <div class="section-header" style="text-align: center;">
+                    <h2 style="color: #FF7A00;">App Features</h2>
+                    <p style="color: #666; font-size: 1.1rem;">Experience convenient care service management</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Quick Booking</h3>
+                        <p>Book care services anytime, anywhere. View service schedules and get instant booking confirmations</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>Service Records</h3>
+                        <p>View complete service history including care reports, medication records, and health assessments</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>Member Center</h3>
+                        <p>Manage your profile, view points, coupons, and exclusive member benefits</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>Real-time Notifications</h3>
+                        <p>Receive service reminders, booking confirmations, and important health information</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3>Secure Payment</h3>
+                        <p>Multiple payment methods supported with secure and convenient online payment</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Contact customer service anytime for professional assistance and immediate support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots Section -->
+        <section class="app-screenshots">
+            <div class="container">
+                <div class="section-header" style="text-align: center;">
+                    <h2 style="color: #FF7A00;">App Screenshots</h2>
+                    <p style="color: #666; font-size: 1.1rem;">Explore the app interface and features</p>
+                </div>
+                <div class="screenshots-grid">
+                    <div class="screenshot-item">
+                        <div class="screenshot-placeholder">
+                            <i class="fas fa-mobile-alt" style="font-size: 3rem;"></i>
+                            <div style="margin-top: 1rem;">Home Screen</div>
+                        </div>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="screenshot-placeholder">
+                            <i class="fas fa-mobile-alt" style="font-size: 3rem;"></i>
+                            <div style="margin-top: 1rem;">Book Service</div>
+                        </div>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="screenshot-placeholder">
+                            <i class="fas fa-mobile-alt" style="font-size: 3rem;"></i>
+                            <div style="margin-top: 1rem;">Service Records</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="app-cta">
+            <div class="container">
+                <h2>Download Now and Get Started</h2>
+                <p>Join thousands of users enjoying convenient care service experience</p>
+                <div class="app-download-buttons">
+                    <a href="https://apps.apple.com/app/hygiene-first" class="app-download-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-apple"></i>
+                        <div class="app-download-btn-text">
+                            <span>Download on</span>
+                            <strong>App Store</strong>
+                        </div>
+                    </a>
+                    <a href="app-landing/app-release.apk" class="app-download-btn" download>
+                        <i class="fab fa-android"></i>
+                        <div class="app-download-btn-text">
+                            <span>Download on</span>
+                            <strong>Google Play</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="simple-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 style="color: #FF7A00;">Contact Us</h3>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-phone" style="color: #FF7A00;"></i> Phone</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">2827 8889</div>
+                    </div>
+                    <div style="font-size: 0.8rem; margin-bottom: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;"><i class="fas fa-envelope" style="color: #FF7A00;"></i> Email</div>
+                        <div style="font-weight: bold; margin-left: 1.5rem;">careteam@hygienefirstgroup.com</div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 style="color: #FF7A00;">Follow Us</h3>
+                    <div class="social-icons" style="font-size: 0.8rem;">
+                        <a href="https://www.facebook.com/hygienefirstgroup?locale=zh_HK" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/hygiene.first" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UC9TLXQ6bz97kcY94QDkitJA" class="social-icon" target="_blank" rel="noopener noreferrer" style="color: #FF7A00;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>©2025 Hygiene First Company Limited</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Language Switcher -->
+    <div class="floating-lang-switcher">
+        <button class="lang-switcher-btn" id="langSwitcherBtn">
+            <span class="current-lang-code">GB</span>
+            <span class="current-lang-text">English</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="lang-switcher-dropdown" id="langSwitcherDropdown">
+            <a href="app-download.html" class="lang-option" data-lang="zh">
+                <span class="lang-code">HK</span>
+                <span class="lang-text">中文</span>
+            </a>
+            <a href="app-download-en.html" class="lang-option active" data-lang="en">
+                <span class="lang-code">GB</span>
+                <span class="lang-text">English</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="language-persistence.js"></script>
+    <script>
+        // Language Switcher Toggle
+        const langSwitcherBtn = document.getElementById('langSwitcherBtn');
+        const langSwitcherDropdown = document.getElementById('langSwitcherDropdown');
+        
+        if (langSwitcherBtn && langSwitcherDropdown) {
+            langSwitcherBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isOpen = langSwitcherDropdown.classList.toggle('show');
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!langSwitcherBtn.contains(e.target) && !langSwitcherDropdown.contains(e.target)) {
+                    langSwitcherDropdown.classList.remove('show');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
