@@ -118,6 +118,17 @@
      * Check and redirect if language preference doesn't match current page
      */
     function checkAndRedirect() {
+        // Prevent redirect loops - check if we're already redirecting
+        if (sessionStorage.getItem('languageSwitching') === 'true') {
+            return false;
+        }
+        
+        // Prevent multiple redirects in the same session
+        const redirectKey = 'langRedirect_' + window.location.pathname;
+        if (sessionStorage.getItem(redirectKey)) {
+            return false;
+        }
+        
         const storedLang = getStoredLanguage();
         const currentLang = getCurrentLanguage();
         
@@ -127,10 +138,18 @@
             const fileName = currentPath.split('/').pop() || 'index.html';
             const newFileName = convertToOppositeLanguage(fileName);
             
-            // Only redirect if we can convert the URL
+            // Only redirect if we can convert the URL and it's different
             if (newFileName && newFileName !== fileName) {
                 const newPath = currentPath.replace(fileName, newFileName);
-                window.location.href = newPath;
+                
+                // Mark that we're redirecting to prevent loops
+                sessionStorage.setItem('languageSwitching', 'true');
+                sessionStorage.setItem(redirectKey, 'true');
+                
+                // Redirect after a small delay to ensure sessionStorage is set
+                setTimeout(function() {
+                    window.location.href = newPath;
+                }, 50);
                 return true;
             }
         }
@@ -147,20 +166,47 @@
      * Initialize language persistence on page load
      */
     function initLanguagePersistence() {
+        // Clear redirect flags on successful page load (after a short delay)
+        setTimeout(function() {
+            sessionStorage.removeItem('languageSwitching');
+            // Clear redirect keys older than 5 seconds
+            Object.keys(sessionStorage).forEach(function(key) {
+                if (key.startsWith('langRedirect_')) {
+                    sessionStorage.removeItem(key);
+                }
+            });
+        }, 2000);
+        
         // Don't redirect if we're already in the process of switching
         if (sessionStorage.getItem('languageSwitching') === 'true') {
-            sessionStorage.removeItem('languageSwitching');
             return;
         }
         
-        checkAndRedirect();
+        // Only check and redirect once per page load
+        if (document.body && document.body.dataset.langChecked) {
+            return;
+        }
+        
+        const willRedirect = checkAndRedirect();
+        
+        // Mark that we've checked to prevent duplicate checks
+        if (document.body && !willRedirect) {
+            document.body.dataset.langChecked = 'true';
+        }
     }
     
-    // Run on page load
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initLanguagePersistence);
-    } else {
+    // Run on page load - only once
+    let initCalled = false;
+    function runInit() {
+        if (initCalled) return;
+        initCalled = true;
         initLanguagePersistence();
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', runInit);
+    } else {
+        runInit();
     }
     
     
