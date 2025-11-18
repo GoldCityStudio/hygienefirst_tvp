@@ -652,8 +652,37 @@
           // Handle file uploads separately
           return;
         }
-        formData[input.id] = input.value;
+        // Only add fields with valid, non-empty IDs
+        if (input.id && input.id.trim() !== '') {
+          formData[input.id] = input.value;
+        }
       });
+      
+      // Clean formData: remove any fields with empty keys or invalid field names
+      const keysToDelete = [];
+      const cleanedFormData = {};
+      
+      for (const key in formData) {
+        // Check for invalid keys (empty strings, null, undefined, or non-string types)
+        if (!key || key.trim() === '' || typeof key !== 'string') {
+          keysToDelete.push(key);
+          continue;
+        }
+        
+        // Firestore field name validation: must not start with __, and should be valid
+        const trimmedKey = key.trim();
+        if (trimmedKey.startsWith('__')) {
+          keysToDelete.push(key);
+          continue;
+        }
+        
+        // Keep valid keys
+        cleanedFormData[trimmedKey] = formData[key];
+      }
+      
+      // Replace formData with cleaned version
+      Object.keys(formData).forEach(key => delete formData[key]);
+      Object.assign(formData, cleanedFormData);
       
       // Handle media uploads for news (images or videos)
       if (type === 'news') {
