@@ -1314,7 +1314,8 @@ a[href^="tel:"]:hover {
     overflow: hidden;
 }
 
-.news-image img {
+.news-image img,
+.news-image video {
     position: absolute;
     top: 0;
     left: 0;
@@ -1324,7 +1325,8 @@ a[href^="tel:"]:hover {
     transition: transform 0.3s ease;
 }
 
-.news-card:hover .news-image img {
+.news-card:hover .news-image img,
+.news-card:hover .news-image video {
     transform: scale(1.05);
 }
 

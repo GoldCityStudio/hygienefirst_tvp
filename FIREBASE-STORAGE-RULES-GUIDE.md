@@ -21,7 +21,13 @@ service firebase.storage {
     // Allow write access for authenticated users
     match /news/{fileName} {
       allow write: if request.auth != null || 
-        (resource == null && request.resource.size < 5 * 1024 * 1024);
+        (resource == null && request.resource.size < 100 * 1024 * 1024); // 100MB for videos
+    }
+    
+    // Allow write access for news-videos folder (for video uploads)
+    match /news-videos/{fileName} {
+      allow write: if request.auth != null || 
+        (resource == null && request.resource.size < 100 * 1024 * 1024); // 100MB limit for videos
     }
     
     match /services/{fileName} {
@@ -103,8 +109,9 @@ To test the fix:
 ### 7. File Size Limits
 
 The CMS now enforces:
-- Maximum file size: 5MB
-- Allowed file types: Images only (image/*)
+- Maximum file size for images: 5MB
+- Maximum file size for videos: 100MB
+- Allowed file types: Images (image/*) and Videos (video/*)
 - Filename sanitization: Removes special characters
 
 ### 8. Monitoring

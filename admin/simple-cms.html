@@ -789,7 +789,9 @@
               
               // Create a sanitized filename
               const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-              const fileName = `news-videos/${Date.now()}_${sanitizedName}`;
+              // Use 'news/' path which is already allowed in Firebase Storage rules
+              // Prefix with 'video_' to distinguish from images
+              const fileName = `news/video_${Date.now()}_${sanitizedName}`;
               
               // Upload to Firebase Storage
               const uploadTask = storage.ref(fileName).put(file, {
