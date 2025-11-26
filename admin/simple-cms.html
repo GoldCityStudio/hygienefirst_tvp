@@ -479,8 +479,18 @@
           
           <!-- Image Upload -->
           <div id="image-upload-section">
-            <input type="file" id="news-image-file" accept="image/*" multiple style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <input type="file" id="news-image-file" accept="image/*" multiple style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" onchange="if(window.previewUploadedImages) { window.previewUploadedImages(event); } else { console.error('previewUploadedImages not found'); }">
             <small style="color: #666; font-size: 12px;">支援 JPG, PNG, GIF 格式，建議尺寸 800x600px，最多可上傳 10 張圖片</small>
+            
+            <!-- Image Preview and Cover Selection -->
+            <div id="image-preview-container" style="margin-top: 15px; display: none;">
+              <label style="display: block; margin-bottom: 10px; font-weight: bold; color: #ff6b35;">選擇封面圖片：</label>
+              <div id="image-preview-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-bottom: 10px;"></div>
+              <small style="color: #666; font-size: 12px;">💡 點擊圖片設為封面，封面圖片會顯示在新聞列表和詳情頁面</small>
+            </div>
+            
+            <!-- Hidden input to store cover image index -->
+            <input type="hidden" id="cover-image-index" value="0">
           </div>
           
           <!-- Video Upload -->
@@ -491,16 +501,25 @@
               ${existingData && existingData['news-images'] ? `
                 <div style="margin-top: 10px;">
                   <strong>現有圖片 (${existingData['news-images'].length} 張)：</strong>
-                  <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
-                    ${existingData['news-images'].map((url, index) => `
-                      <div style="text-align: center;">
-                        <img src="${url}" style="max-width: 100px; max-height: 80px; border-radius: 5px; border: 1px solid #ddd;" alt="現有圖片 ${index + 1}">
-                        <br>
-                        <small style="font-size: 10px; color: #666;">圖片 ${index + 1}</small>
-                      </div>
-                    `).join('')}
+                  <div id="existing-images-preview" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 10px;">
+                    ${existingData['news-images'].map((url, index) => {
+                      const isCover = existingData['cover-image-index'] === index || (!existingData['cover-image-index'] && index === 0);
+                      return `
+                        <div style="position: relative; border: 3px solid ${isCover ? '#ff6b35' : '#ddd'}; border-radius: 8px; overflow: hidden; cursor: pointer; transition: all 0.3s ease;" 
+                             data-existing-image-index="${index}"
+                             onclick="event.preventDefault(); event.stopPropagation(); if(window.setExistingCoverImage) { window.setExistingCoverImage(${index}); } else { console.error('setExistingCoverImage not found'); }"
+                             onmouseover="if(!${isCover}) { this.style.borderColor = '#ff6b35'; this.style.transform = 'scale(1.05)'; }"
+                             onmouseout="if(!${isCover}) { this.style.borderColor = '#ddd'; this.style.transform = 'scale(1)'; }">
+                          <img src="${url}" style="width: 100%; height: 120px; object-fit: cover; display: block; pointer-events: none;" alt="現有圖片 ${index + 1}">
+                          <div style="position: absolute; top: 5px; right: 5px; background: ${isCover ? '#ff6b35' : 'rgba(0,0,0,0.6)'}; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; pointer-events: none;">
+                            ${isCover ? '✓ 封面' : `圖片 ${index + 1}`}
+                          </div>
+                        </div>
+                      `;
+                    }).join('')}
                   </div>
-                  <small style="color: #666; font-size: 12px;">💡 上傳新圖片將替換現有圖片</small>
+                  <small style="color: #666; font-size: 12px;">💡 點擊圖片可更改封面，上傳新圖片將替換現有圖片</small>
+                  <input type="hidden" id="existing-cover-index" value="${existingData['cover-image-index'] || 0}">
                 </div>
               ` : ''}
             </div>
@@ -639,7 +658,169 @@
       } else {
         imageSection.style.display = 'none';
         videoSection.style.display = 'block';
+        // Clear image preview when switching to video
+        const previewContainer = document.getElementById('image-preview-container');
+        if (previewContainer) {
+          previewContainer.style.display = 'none';
+          document.getElementById('image-preview-grid').innerHTML = '';
+          document.getElementById('cover-image-index').value = '0';
+        }
       }
+    }
+    
+    // Preview uploaded images and allow cover selection - make it globally accessible
+    window.previewUploadedImages = function(event) {
+      const files = event.target.files;
+      const previewContainer = document.getElementById('image-preview-container');
+      const previewGrid = document.getElementById('image-preview-grid');
+      
+      if (!previewContainer || !previewGrid) return;
+      
+      if (files.length === 0) {
+        previewContainer.style.display = 'none';
+        previewGrid.innerHTML = '';
+        const coverInput = document.getElementById('cover-image-index');
+        if (coverInput) coverInput.value = '0';
+        return;
+      }
+      
+      previewContainer.style.display = 'block';
+      previewGrid.innerHTML = '';
+      
+      // Reset cover to first image
+      const coverInput = document.getElementById('cover-image-index');
+      if (coverInput) coverInput.value = '0';
+      
+      Array.from(files).forEach((file, index) => {
+        if (!file.type.startsWith('image/')) return;
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imgDiv = document.createElement('div');
+          imgDiv.style.cssText = `
+            position: relative;
+            border: 3px solid ${index === 0 ? '#ff6b35' : '#ddd'};
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f5f5f5;
+          `;
+          
+          imgDiv.innerHTML = `
+            <img src="${e.target.result}" style="width: 100%; height: 120px; object-fit: cover; display: block; pointer-events: none;">
+            <div style="position: absolute; top: 5px; right: 5px; background: ${index === 0 ? '#ff6b35' : 'rgba(0,0,0,0.6)'}; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; pointer-events: none;">
+              ${index === 0 ? '✓ 封面' : `圖片 ${index + 1}`}
+            </div>
+          `;
+          
+          // Store index as data attribute for reliable access
+          imgDiv.setAttribute('data-image-index', index);
+          
+          imgDiv.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const clickedIndex = parseInt(this.getAttribute('data-image-index'));
+            if (window.setCoverImage) {
+              window.setCoverImage(clickedIndex);
+            } else {
+              console.error('setCoverImage function not found');
+            }
+          };
+          
+          imgDiv.onmouseover = function() {
+            const currentCover = parseInt(document.getElementById('cover-image-index').value) || 0;
+            if (index !== currentCover) {
+              this.style.borderColor = '#ff6b35';
+              this.style.transform = 'scale(1.05)';
+            }
+          };
+          
+          imgDiv.onmouseout = function() {
+            const currentCover = parseInt(document.getElementById('cover-image-index').value) || 0;
+            if (index !== currentCover) {
+              this.style.borderColor = '#ddd';
+              this.style.transform = 'scale(1)';
+            }
+          };
+          
+          previewGrid.appendChild(imgDiv);
+        };
+        
+        reader.readAsDataURL(file);
+      });
+    };
+    
+    // Set cover image for new uploads - make it globally accessible
+    window.setCoverImage = function(index) {
+      console.log('Setting cover image to index:', index);
+      const coverInput = document.getElementById('cover-image-index');
+      if (coverInput) {
+        coverInput.value = index.toString();
+        console.log('Cover index updated to:', coverInput.value);
+      }
+      
+      // Update visual indicators
+      const previewGrid = document.getElementById('image-preview-grid');
+      if (!previewGrid) {
+        console.error('Preview grid not found');
+        return;
+      }
+      
+      const imageDivs = previewGrid.querySelectorAll('div[data-image-index]');
+      console.log('Found', imageDivs.length, 'image divs');
+      
+      imageDivs.forEach((div) => {
+        const divIndex = parseInt(div.getAttribute('data-image-index'));
+        const isSelected = divIndex === index;
+        const borderColor = isSelected ? '#ff6b35' : '#ddd';
+        const labelText = isSelected ? '✓ 封面' : `圖片 ${divIndex + 1}`;
+        const labelBg = isSelected ? '#ff6b35' : 'rgba(0,0,0,0.6)';
+        
+        div.style.borderColor = borderColor;
+        div.style.transform = isSelected ? 'scale(1.02)' : 'scale(1)';
+        
+        const label = div.querySelector('div');
+        if (label) {
+          label.textContent = labelText;
+          label.style.background = labelBg;
+        }
+      });
+    };
+    
+    // Set cover image for existing images - make it globally accessible
+    window.setExistingCoverImage = function(index) {
+      const coverIndexInput = document.getElementById('existing-cover-index');
+      if (coverIndexInput) {
+        coverIndexInput.value = index.toString();
+      }
+      
+      // Also update the hidden input for new uploads
+      const newCoverInput = document.getElementById('cover-image-index');
+      if (newCoverInput) {
+        newCoverInput.value = index.toString();
+      }
+      
+      // Update visual indicators
+      const previewGrid = document.getElementById('existing-images-preview');
+      if (!previewGrid) return;
+      
+      const imageDivs = previewGrid.querySelectorAll('div');
+      
+      imageDivs.forEach((div, i) => {
+        const borderColor = i === index ? '#ff6b35' : '#ddd';
+        const labelText = i === index ? '✓ 封面' : `圖片 ${i + 1}`;
+        const labelBg = i === index ? '#ff6b35' : 'rgba(0,0,0,0.6)';
+        
+        div.style.borderColor = borderColor;
+        div.style.transform = i === index ? 'scale(1.02)' : 'scale(1)';
+        
+        const label = div.querySelector('div');
+        if (label) {
+          label.textContent = labelText;
+          label.style.background = labelBg;
+        }
+      });
     }
     
     async function saveContent(type, docId = null) {
@@ -763,10 +944,46 @@
               formData['news-image-count'] = uploadedUrls.length;
               formData['media-type'] = 'image';
               
+              // Store cover image index (check both new and existing cover inputs)
+              const newCoverIndex = document.getElementById('cover-image-index') ? parseInt(document.getElementById('cover-image-index').value) : null;
+              const existingCoverIndex = document.getElementById('existing-cover-index') ? parseInt(document.getElementById('existing-cover-index').value) : null;
+              const coverIndex = newCoverIndex !== null ? newCoverIndex : (existingCoverIndex !== null ? existingCoverIndex : 0);
+              
+              formData['cover-image-index'] = coverIndex;
+              formData['news-cover-image'] = uploadedUrls[coverIndex] || uploadedUrls[0]; // Store cover image URL
+              
               console.log(`All ${uploadedUrls.length} news images uploaded successfully`);
+              console.log(`Cover image set to index ${coverIndex}`);
             } catch (error) {
               console.error('Multiple image upload error:', error);
               alert(`⚠️ 部分圖片上傳失敗：${error.message}\n\n將繼續儲存其他內容。`);
+            }
+          } else {
+            // No new images uploaded, check if we're editing existing post
+            // Preserve existing images and cover selection
+            const existingImagesPreview = document.getElementById('existing-images-preview');
+            if (existingImagesPreview) {
+              const existingImages = Array.from(existingImagesPreview.querySelectorAll('img')).map(img => img.src);
+              if (existingImages.length > 0) {
+                formData['news-images'] = existingImages;
+                formData['news-image-count'] = existingImages.length;
+                
+                // Get cover image index (check both inputs)
+                const existingCoverIndex = document.getElementById('existing-cover-index') ? parseInt(document.getElementById('existing-cover-index').value) : null;
+                const newCoverIndex = document.getElementById('cover-image-index') ? parseInt(document.getElementById('cover-image-index').value) : null;
+                const coverIndex = existingCoverIndex !== null ? existingCoverIndex : (newCoverIndex !== null ? newCoverIndex : 0);
+                
+                formData['cover-image-index'] = coverIndex;
+                formData['news-cover-image'] = existingImages[coverIndex] || existingImages[0];
+                
+                console.log(`Preserved ${existingImages.length} existing images, cover set to index ${coverIndex}`);
+              }
+            } else {
+              // Check if cover was changed even without existing preview
+              const existingCoverIndex = document.getElementById('existing-cover-index') ? parseInt(document.getElementById('existing-cover-index').value) : null;
+              if (existingCoverIndex !== null) {
+                formData['cover-image-index'] = existingCoverIndex;
+              }
             }
           }
         } else if (mediaType === 'video') {

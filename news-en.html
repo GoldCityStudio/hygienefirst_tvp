@@ -1057,7 +1057,10 @@
                         </div>
                     `;
                 } else if (data['news-images'] && Array.isArray(data['news-images']) && data['news-images'].length > 0) {
-                    imageHtml = `<img src="${data['news-images'][0]}" alt="${data['news-title'] || '新聞圖片'}" loading="lazy">`;
+                    // Use cover image if specified, otherwise use first image
+                    const coverIndex = data['cover-image-index'] !== undefined ? data['cover-image-index'] : 0;
+                    const coverImageUrl = data['news-cover-image'] || data['news-images'][coverIndex] || data['news-images'][0];
+                    imageHtml = `<img src="${coverImageUrl}" alt="${data['news-title'] || '新聞圖片'}" loading="lazy">`;
                 } else if (data['news-image']) {
                     imageHtml = `<img src="${data['news-image']}" alt="${data['news-title'] || '新聞圖片'}" loading="lazy">`;
                 } else {
