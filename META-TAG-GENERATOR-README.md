@@ -161,7 +161,7 @@ The generator includes pre-configured settings for key pages:
 ## Service Keywords
 
 ### **Core Services**
-- 上門健康評估 (Health Assessment)
+- 上門健康評估 (Health screening)
 - 長者照顧服務 (Elderly Care)
 - 傷口護理 (Wound Care)
 - 陪診護送服務 (Accompaniment)

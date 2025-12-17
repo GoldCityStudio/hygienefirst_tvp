@@ -18,7 +18,7 @@ const CONFIG = {
         {
             id: 'health-assessment',
             name: '上門健康評估',
-            englishName: 'Home Health Assessment',
+            englishName: 'Home Health screening',
             keywords: ['health', 'assessment', 'home', 'nurse', 'medical', 'checkup']
         },
         {

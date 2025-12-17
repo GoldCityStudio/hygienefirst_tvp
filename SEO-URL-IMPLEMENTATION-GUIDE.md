@@ -128,7 +128,7 @@ function preSelectServiceFromUrl() {
 ## Service-Specific URLs
 
 ### Available Services
-1. **Health Assessment**: `/book/health-assessment`
+1. **Health screening**: `/book/health-assessment`
 2. **Elderly Care**: `/book/elderly-care`
 3. **Wound Care**: `/book/wound-care`
 4. **Medical Escort**: `/book/accompaniment`
@@ -139,7 +139,7 @@ function preSelectServiceFromUrl() {
 
 ### URL Parameters
 Each service URL can include parameters for pre-selection:
-- `?service=health-assessment` - Pre-select health assessment
+- `?service=health-assessment` - Pre-select Health screening
 - `?date=2025-01-27` - Pre-select date
 - `?time=14:00` - Pre-select time
 

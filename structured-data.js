@@ -40,14 +40,14 @@
             name: isChinesePage ? '基本醫療護理服務' : 'Basic Healthcare Service',
             description: isChinesePage ? 
                 '我們的基本醫療護理服務包括基礎健康評估、生活協助和個人衛生護理，確保您得到必要的照顧。' : 
-                'Our basic healthcare service includes fundamental health assessments, daily living assistance, and personal hygiene care to ensure you receive necessary care.',
+                'Our basic healthcare service includes fundamental Health screenings, daily living assistance, and personal hygiene care to ensure you receive necessary care.',
             price: '$100'
         },
         advancedCare: {
             name: isChinesePage ? '進階醫療護理服務' : 'Advanced Healthcare Service',
             description: isChinesePage ? 
                 '我們的進階醫療護理服務由專業醫護人員提供，包括專業健康評估、傷口護理和藥物管理。' : 
-                'Our advanced healthcare service is provided by professional medical staff, including comprehensive health assessments, wound care, and medication management.',
+                'Our advanced healthcare service is provided by professional medical staff, including comprehensive Health screenings, wound care, and medication management.',
             price: '$200'
         },
         specializedCare: {
@@ -208,7 +208,7 @@
                         "@type": "Answer",
                         "text": isChinesePage ? 
                             "我們的醫療護理服務包括基礎健康評估、藥物管理、傷口護理、復健輔助和全天候專業照護。我們提供基本照護、進階護理和專業醫療服務選項。" : 
-                            "Our healthcare services include basic health assessments, medication management, wound care, rehabilitation assistance, and round-the-clock professional care. We offer basic, advanced, and specialized healthcare options."
+                            "Our healthcare services include basic Health screenings, medication management, wound care, rehabilitation assistance, and round-the-clock professional care. We offer basic, advanced, and specialized healthcare options."
                     }
                 },
                 {

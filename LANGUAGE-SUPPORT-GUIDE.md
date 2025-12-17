@@ -130,7 +130,7 @@ const responseText = languageManager.currentLanguage === 'en'
 ### Services
 | Key | zh-TW | zh-CN | en |
 |-----|-------|-------|-----|
-| `healthAssessment` | 健康評估 | 健康评估 | Health Assessment |
+| `healthAssessment` | 健康評估 | 健康评估 | Health screening |
 | `elderlyCare` | 長者照顧 | 长者照顾 | Elderly Care |
 | `woundCare` | 傷口護理 | 伤口护理 | Wound Care |
 | `housekeeping` | 家居清潔 | 家居清洁 | Housekeeping |
