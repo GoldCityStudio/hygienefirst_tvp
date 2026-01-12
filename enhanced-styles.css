@@ -7764,7 +7764,7 @@ header .main-menu li:first-child .dropdown-content {
 
 /* DISABLE WHATSAPP BUTTON AND CHATBOT */
 .whatsapp-button {
-    display: none !important;
+    display: block !important;
 }
 
 .chatbot-container {

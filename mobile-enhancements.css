@@ -5526,7 +5526,7 @@ background: transparent !important;
             grid-template-columns: repeat(2, 1fr) !important;
         }
     }
-}
+
 
 /* ===== MOBILE BANNER SLIDER STYLES ===== */
 
@@ -5887,7 +5887,7 @@ background: transparent !important;
 
 /* DISABLE WHATSAPP BUTTON AND CHATBOT */
 .whatsapp-button {
-    display: none !important;
+    display: block !important;
 }
 
 .chatbot-container {

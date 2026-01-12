@@ -1954,7 +1954,7 @@ footer .container {
     .whatsapp-button {
         width: 56px !important;
         height: 56px !important;
-        bottom: 20px !important;
+        bottom: 282x !important;
         right: 20px !important;
         border-radius: 50% !important;
         box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4) !important;
@@ -3795,7 +3795,7 @@ header.sticky .logo a {
 /* WhatsApp Button Styles */
 .whatsapp-button {
     position: fixed;
-    bottom: 30px;
+    bottom: 82px;
     right: 20px;
     background-color: #25D366;
     color: white;
@@ -3845,7 +3845,7 @@ header.sticky .logo a {
 @media (max-width: 768px) {
     .whatsapp-button {
         bottom: 20px;
-        right: 20px;
+        right: 82px;
         width: 50px;
         height: 50px;
     }
@@ -7736,7 +7736,7 @@ text-justify:inter-ideograph !important;
 
 /* DISABLE WHATSAPP BUTTON AND CHATBOT */
 .whatsapp-button {
-    display: none !important;
+    display: block !important;
 }
 
 .chatbot-container {
