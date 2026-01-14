@@ -3814,55 +3814,27 @@ header.sticky .logo a {
 }
 
 .whatsapp-button i {
-    font-size: 32px;
+    position: fixed !important;
+    font-size: 32px !important;
+    /* bottom: 82px; */
     line-height: 1;
-    margin: 0;
-    padding: 0;
+    margin: 0px 12px !important;
+    padding: 8px;
+    border-radius: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #25D366;
+    background: white !important;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
-.whatsapp-button:hover i {
-    color: #20BD5C;
-}
 
-.whatsapp-button i::before {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    line-height: 1;
-    margin: 0;
-    padding: 0;
-}
 
-@media (max-width: 768px) {
-    .whatsapp-button {
-        bottom: 20px !important;
-        right: 20px !important;
-        width: 56px !important;
-        height: 56px !important;
-    }
-    
-    .whatsapp-button i {
-        font-size: 28px;
-    }
-    
-    .whatsapp-button i::before {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        line-height: 1;
-        margin: 0;
-        padding: 0;
-    }
-}
+
+
+
 
 /* Chatbot Styles - Global */
 .chatbot-container {
