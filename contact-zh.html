@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -532,7 +532,15 @@
                 <!-- 右側表單 -->
                 <div class="contact-form-card" style="margin-top: 32px;">
                     <h2>給我們發送電子郵件</h2>
-                    <form class="contact-form">
+                    <form class="contact-form"
+                          action="https://formsubmit.co/ajax/goldcityventure@gmail.com"
+                          method="POST"
+                          data-success-message="提交成功！我們會盡快回覆您。"
+                          data-error-message="抱歉，提交失敗。請稍後再試，或直接電郵我們。"
+                          data-loading-text="提交中...">
+                        <input type="hidden" name="_subject" value="Hygiene First - Contact Form">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
                         <div class="form-group">
                             <label for="name">姓名 *</label>
                             <input type="text" id="name" name="name" required>
@@ -559,7 +567,15 @@
             <!-- 所屬機構資料表單 -->
             <div class="organization-form-section">
                 <h2>所屬機構資料</h2>
-                <form class="organization-form">
+                <form class="organization-form"
+                      action="https://formsubmit.co/ajax/goldcityventure@gmail.com"
+                      method="POST"
+                      data-success-message="提交成功！我們會盡快跟進。"
+                      data-error-message="抱歉，提交失敗。請稍後再試，或直接電郵我們。"
+                      data-loading-text="提交中...">
+                    <input type="hidden" name="_subject" value="Hygiene First - Organization Form">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
                     <div class="form-group">
                         <label for="org-name">機構名稱 *</label>
                         <input type="text" id="org-name" name="org-name" required>

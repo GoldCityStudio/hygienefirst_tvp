@@ -466,46 +466,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Form validation and submission
     const contactForm = document.querySelector('.contact-form');
-    
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Basic form validation
-            const requiredFields = this.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.style.borderColor = '#dc3545';
-                    field.style.boxShadow = '0 0 0 3px rgba(220, 53, 69, 0.1)';
-                } else {
-                    field.style.borderColor = '#e0e0e0';
-                    field.style.boxShadow = 'none';
-                }
-            });
-            
-            if (isValid) {
-                // Show success message
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                
-                submitBtn.textContent = '提交中...';
-                submitBtn.disabled = true;
-                
-                // Simulate form submission
-                setTimeout(() => {
-                    submitBtn.textContent = '提交成功！';
-                    submitBtn.style.background = '#28a745';
-                    
-                    setTimeout(() => {
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                        submitBtn.style.background = '';
-                        this.reset();
-                    }, 2000);
-                }, 1000);
+            if (validateForm(this)) {
+                submitForm(this);
             }
         });
     }
@@ -935,46 +900,100 @@ function showFieldSuccess(formGroup, message) {
     formGroup.appendChild(successDiv);
 }
 
-function submitForm(form) {
-    const submitBtn = form.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
-    
+async function submitForm(form) {
+    const submitBtn =
+        form.querySelector('.submit-btn') ||
+        form.querySelector('button[type="submit"]') ||
+        form.querySelector('input[type="submit"]');
+
+    const originalText = submitBtn ? submitBtn.textContent : '';
+    const loadingText =
+        (submitBtn && submitBtn.getAttribute('data-loading-text')) ||
+        (form && form.getAttribute('data-loading-text')) ||
+        (originalText && /[^\x00-\x7F]/.test(originalText) ? '提交中...' : 'Submitting...');
+
     // Show loading state
-    submitBtn.classList.add('loading');
-    submitBtn.textContent = '提交中...';
-    submitBtn.disabled = true;
-    
-    // Simulate form submission (replace with actual submission logic)
-    setTimeout(() => {
-        // Show success message
-        showFormSuccess(form);
-        
-        // Reset form
-        form.reset();
-        
-        // Reset button
-        submitBtn.classList.remove('loading');
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        
-        // Remove success message after 5 seconds
-        setTimeout(() => {
-            const successMessage = document.querySelector('.form-success-message');
-            if (successMessage) {
-                successMessage.remove();
+    if (submitBtn) {
+        submitBtn.classList.add('loading');
+        submitBtn.textContent = loadingText;
+        submitBtn.disabled = true;
+    }
+
+    // If the form has an action, attempt a real submission via fetch (AJAX).
+    const action = form.getAttribute('action');
+    const method = (form.getAttribute('method') || 'POST').toUpperCase();
+    const hasEndpoint = !!action && /^https?:\/\//i.test(action);
+
+    try {
+        if (hasEndpoint) {
+            const formData = new FormData(form);
+
+            // Prefer JSON for endpoints that support it (e.g. formsubmit.co/ajax).
+            let response;
+            if (/formsubmit\.co\/ajax\//i.test(action)) {
+                const payload = {};
+                formData.forEach((value, key) => {
+                    payload[key] = value;
+                });
+
+                response = await fetch(action, {
+                    method,
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+            } else {
+                response = await fetch(action, {
+                    method,
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
+                });
             }
-        }, 5000);
-    }, 2000);
+
+            if (!response.ok) {
+                throw new Error(`Form submit failed: ${response.status}`);
+            }
+
+            showFormSuccess(form);
+            form.reset();
+        } else {
+            // Fallback: old simulated submission
+            await new Promise(resolve => setTimeout(resolve, 800));
+            showFormSuccess(form);
+            form.reset();
+        }
+    } catch (err) {
+        console.error('Form submission error:', err);
+        showFormError(form);
+    } finally {
+        // Reset button
+        if (submitBtn) {
+            submitBtn.classList.remove('loading');
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+
+        // Remove status message after 6 seconds
+        setTimeout(() => {
+            const msg = form.querySelector('.form-success-message, .form-error-message');
+            if (msg) msg.remove();
+        }, 6000);
+    }
 }
 
 function showFormSuccess(form) {
-    // Remove existing success message
-    const existingMessage = document.querySelector('.form-success-message');
-    if (existingMessage) {
-        existingMessage.remove();
-    }
-    
-    // Create success message
+    // Remove existing messages in this form
+    const existingMessage = form.querySelector('.form-success-message, .form-error-message');
+    if (existingMessage) existingMessage.remove();
+
+    const message =
+        form.getAttribute('data-success-message') ||
+        (document.documentElement.lang && document.documentElement.lang.toLowerCase().startsWith('en')
+            ? 'Submitted! We will get back to you soon.'
+            : '提交成功！我們會盡快回覆您。');
+
     const successDiv = document.createElement('div');
     successDiv.className = 'form-success-message';
     successDiv.style.cssText = `
@@ -990,14 +1009,43 @@ function showFormSuccess(form) {
     `;
     successDiv.innerHTML = `
         <span style="font-size: 1.2rem;">✓</span>
-        <span>表單提交成功！我們會盡快回覆您。</span>
+        <span>${message}</span>
     `;
-    
-    // Insert at the beginning of the form
+
     form.insertBefore(successDiv, form.firstChild);
-    
-    // Scroll to success message
     successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function showFormError(form) {
+    const existingMessage = form.querySelector('.form-success-message, .form-error-message');
+    if (existingMessage) existingMessage.remove();
+
+    const message =
+        form.getAttribute('data-error-message') ||
+        (document.documentElement.lang && document.documentElement.lang.toLowerCase().startsWith('en')
+            ? 'Sorry — submission failed. Please try again or email us.'
+            : '抱歉，提交失敗。請稍後再試，或直接電郵我們。');
+
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'form-error-message';
+    errorDiv.style.cssText = `
+        background: #f8d7da;
+        color: #721c24;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        border: 1px solid #f5c6cb;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    `;
+    errorDiv.innerHTML = `
+        <span style="font-size: 1.2rem;">✕</span>
+        <span>${message}</span>
+    `;
+
+    form.insertBefore(errorDiv, form.firstChild);
+    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 // Add the booking modal functionality
