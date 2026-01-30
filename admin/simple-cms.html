@@ -879,10 +879,9 @@
             }
             
             const files = Array.from(imageFile.files);
-            const imageUrls = [];
-            let uploadPromises = [];
+            const rawUrls = [];
             
-            // Process each file
+            // Upload each file sequentially to avoid Storage "permission denied" on concurrent anonymous writes
             for (let i = 0; i < files.length; i++) {
               const file = files[i];
               
@@ -897,49 +896,43 @@
                   throw new Error(`第 ${i + 1} 張圖片大小超過 5MB：${file.name}`);
                 }
                 
-                // Create a sanitized filename
+                // Create a sanitized filename (unique per file to avoid path collision)
                 const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
                 const fileName = `news/${Date.now()}_${i}_${sanitizedName}`;
                 
-                // Try Firebase Storage upload
-                const uploadTask = storage.ref(fileName).put(file, {
-                  contentType: file.type,
-                  customMetadata: {
-                    uploadedBy: auth.currentUser ? auth.currentUser.email : 'anonymous',
-                    uploadDate: new Date().toISOString(),
-                    imageIndex: i.toString()
-                  }
-                });
-                
-                uploadPromises.push(
-                  uploadTask.then(async snapshot => {
-                    const imageUrl = await snapshot.ref.getDownloadURL();
-                    console.log(`News image ${i + 1} uploaded successfully:`, imageUrl);
-                    return imageUrl;
-                  }).catch(error => {
-                    console.error(`Image ${i + 1} upload error:`, error);
-                    
-                    // Fallback: Convert to base64
-                    return new Promise((resolve, reject) => {
-                      const reader = new FileReader();
-                      reader.onload = function(e) {
-                        console.log(`Image ${i + 1} stored as base64 fallback`);
-                        resolve(e.target.result);
-                      };
-                      reader.onerror = () => reject(new Error(`Failed to convert image ${i + 1} to base64`));
-                      reader.readAsDataURL(file);
-                    });
-                  })
-                );
+                // Upload one at a time so Storage rules and auth work reliably
+                try {
+                  const uploadTask = storage.ref(fileName).put(file, {
+                    contentType: file.type,
+                    customMetadata: {
+                      uploadedBy: auth.currentUser ? auth.currentUser.email : 'anonymous',
+                      uploadDate: new Date().toISOString(),
+                      imageIndex: i.toString()
+                    }
+                  });
+                  const snapshot = await uploadTask;
+                  const imageUrl = await snapshot.ref.getDownloadURL();
+                  console.log(`News image ${i + 1} uploaded successfully:`, imageUrl);
+                  rawUrls.push(imageUrl);
+                } catch (uploadErr) {
+                  console.error(`Image ${i + 1} upload error:`, uploadErr);
+                  // Fallback: base64 (only for single-image or if we must; filtered out later if too many)
+                  const dataUrl = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.onerror = () => reject(new Error(`Failed to convert image ${i + 1} to base64`));
+                    reader.readAsDataURL(file);
+                  });
+                  console.log(`Image ${i + 1} stored as base64 fallback`);
+                  rawUrls.push(dataUrl);
+                }
               } catch (error) {
                 console.error(`Image ${i + 1} validation error:`, error);
                 alert(`⚠️ 第 ${i + 1} 張圖片處理失敗：${error.message}`);
               }
             }
             
-            // Wait for all uploads to complete
             try {
-              const rawUrls = await Promise.all(uploadPromises);
               // Only keep Firebase download URLs (http/https) - avoid storing base64 in Firestore (1MB doc limit)
               const uploadedUrls = rawUrls.filter(u => u && typeof u === 'string' && (u.startsWith('http://') || u.startsWith('https://')));
               if (uploadedUrls.length === 0) {
