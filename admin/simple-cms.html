@@ -939,24 +939,35 @@
             
             // Wait for all uploads to complete
             try {
-              const uploadedUrls = await Promise.all(uploadPromises);
-              formData['news-images'] = uploadedUrls; // Store as array
+              const rawUrls = await Promise.all(uploadPromises);
+              // Only keep Firebase download URLs (http/https) - avoid storing base64 in Firestore (1MB doc limit)
+              const uploadedUrls = rawUrls.filter(u => u && typeof u === 'string' && (u.startsWith('http://') || u.startsWith('https://')));
+              if (uploadedUrls.length === 0) {
+                alert('⚠️ 圖片上傳失敗（Storage 無法使用或全部失敗）。請檢查網路與 Firebase Storage 規則後重試。');
+                return;
+              }
+              if (uploadedUrls.length < rawUrls.length) {
+                console.warn(`${rawUrls.length - uploadedUrls.length} 張圖片未成功上傳至 Storage，已略過。`);
+              }
+              formData['news-images'] = uploadedUrls;
               formData['news-image-count'] = uploadedUrls.length;
               formData['media-type'] = 'image';
               
-              // Store cover image index (check both new and existing cover inputs)
-              const newCoverIndex = document.getElementById('cover-image-index') ? parseInt(document.getElementById('cover-image-index').value) : null;
-              const existingCoverIndex = document.getElementById('existing-cover-index') ? parseInt(document.getElementById('existing-cover-index').value) : null;
-              const coverIndex = newCoverIndex !== null ? newCoverIndex : (existingCoverIndex !== null ? existingCoverIndex : 0);
+              // Store cover image index - clamp to valid range so Firestore never gets out-of-bounds
+              const newCoverIndex = document.getElementById('cover-image-index') ? parseInt(document.getElementById('cover-image-index').value, 10) : null;
+              const existingCoverIndex = document.getElementById('existing-cover-index') ? parseInt(document.getElementById('existing-cover-index').value, 10) : null;
+              let coverIndex = newCoverIndex !== null && !isNaN(newCoverIndex) ? newCoverIndex : (existingCoverIndex !== null && !isNaN(existingCoverIndex) ? existingCoverIndex : 0);
+              coverIndex = Math.max(0, Math.min(coverIndex, uploadedUrls.length - 1));
               
               formData['cover-image-index'] = coverIndex;
-              formData['news-cover-image'] = uploadedUrls[coverIndex] || uploadedUrls[0]; // Store cover image URL
+              formData['news-cover-image'] = uploadedUrls[coverIndex];
               
               console.log(`All ${uploadedUrls.length} news images uploaded successfully`);
               console.log(`Cover image set to index ${coverIndex}`);
             } catch (error) {
               console.error('Multiple image upload error:', error);
-              alert(`⚠️ 部分圖片上傳失敗：${error.message}\n\n將繼續儲存其他內容。`);
+              alert(`⚠️ 部分圖片上傳失敗：${error.message}\n\n請重試或減少圖片數量。`);
+              return;
             }
           } else {
             // No new images uploaded, check if we're editing existing post
@@ -968,13 +979,14 @@
                 formData['news-images'] = existingImages;
                 formData['news-image-count'] = existingImages.length;
                 
-                // Get cover image index (check both inputs)
-                const existingCoverIndex = document.getElementById('existing-cover-index') ? parseInt(document.getElementById('existing-cover-index').value) : null;
-                const newCoverIndex = document.getElementById('cover-image-index') ? parseInt(document.getElementById('cover-image-index').value) : null;
-                const coverIndex = existingCoverIndex !== null ? existingCoverIndex : (newCoverIndex !== null ? newCoverIndex : 0);
+                // Get cover image index (check both inputs) - clamp to valid range
+                const existingCoverIndex = document.getElementById('existing-cover-index') ? parseInt(document.getElementById('existing-cover-index').value, 10) : null;
+                const newCoverIndex = document.getElementById('cover-image-index') ? parseInt(document.getElementById('cover-image-index').value, 10) : null;
+                let coverIndex = existingCoverIndex !== null && !isNaN(existingCoverIndex) ? existingCoverIndex : (newCoverIndex !== null && !isNaN(newCoverIndex) ? newCoverIndex : 0);
+                coverIndex = Math.max(0, Math.min(coverIndex, existingImages.length - 1));
                 
                 formData['cover-image-index'] = coverIndex;
-                formData['news-cover-image'] = existingImages[coverIndex] || existingImages[0];
+                formData['news-cover-image'] = existingImages[coverIndex];
                 
                 console.log(`Preserved ${existingImages.length} existing images, cover set to index ${coverIndex}`);
               }
@@ -1104,6 +1116,14 @@
       if (!docId) {
         formData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
       }
+      
+      // Remove undefined values and ensure arrays have no holes (Firestore rejects undefined)
+      if (Array.isArray(formData['news-images'])) {
+        formData['news-images'] = formData['news-images'].filter(u => u != null && u !== '');
+      }
+      Object.keys(formData).forEach(key => {
+        if (formData[key] === undefined) delete formData[key];
+      });
       
       // Save to Firebase
       try {
