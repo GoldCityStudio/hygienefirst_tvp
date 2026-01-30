@@ -464,16 +464,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form validation and submission
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (validateForm(this)) {
-                submitForm(this);
+    // Form validation and submission (supports native + AJAX modes)
+    const forms = document.querySelectorAll('form.contact-form, form.organization-form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            // If invalid, block submission
+            if (!validateForm(this)) {
+                e.preventDefault();
+                return;
             }
+
+            const action = this.getAttribute('action') || '';
+            const submitMode = (this.getAttribute('data-submit-mode') || '').toLowerCase();
+            const isFormSubmit = /formsubmit\.co/i.test(action);
+
+            // Default for FormSubmit: use native POST (more reliable on deployment/adblock/CORS)
+            const shouldUseNative = isFormSubmit ? submitMode !== 'ajax' : submitMode === 'native';
+
+            if (shouldUseNative) {
+                // allow normal browser form submission
+                return;
+            }
+
+            // Otherwise, use AJAX submit
+            e.preventDefault();
+            submitForm(this);
         });
-    }
+    });
     
     // Animate elements on scroll
     const observerOptions = {
@@ -831,6 +848,8 @@ function validateField(field) {
     const formGroup = field.parentElement;
     const errorMessage = formGroup.querySelector('.error-message');
     const successMessage = formGroup.querySelector('.success-message');
+    const isEnglish =
+        (document.documentElement.lang || '').toLowerCase().startsWith('en');
     
     // Remove existing messages
     if (errorMessage) errorMessage.remove();
@@ -846,7 +865,7 @@ function validateField(field) {
     
     // Required field validation
     if (required && !value) {
-        showFieldError(formGroup, '此欄位為必填項目');
+        showFieldError(formGroup, isEnglish ? 'This field is required.' : '此欄位為必填項目');
         return false;
     }
     
@@ -854,7 +873,7 @@ function validateField(field) {
     if (type === 'email' && value) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) {
-            showFieldError(formGroup, '請輸入有效的電子郵件地址');
+            showFieldError(formGroup, isEnglish ? 'Please enter a valid email address.' : '請輸入有效的電子郵件地址');
             return false;
         }
     }
@@ -863,22 +882,30 @@ function validateField(field) {
     if (field.name === 'phone' && value) {
         const phoneRegex = /^[\d\s\-\+\(\)]+$/;
         if (!phoneRegex.test(value) || value.length < 8) {
-            showFieldError(formGroup, '請輸入有效的電話號碼');
+            showFieldError(formGroup, isEnglish ? 'Please enter a valid phone number.' : '請輸入有效的電話號碼');
             return false;
         }
     }
     
     // Textarea validation
+    // Only enforce minimum length when the textarea is required or explicitly configured.
     if (field.tagName === 'TEXTAREA' && value) {
-        if (value.length < 10) {
-            showFieldError(formGroup, '訊息內容至少需要10個字符');
+        const minLengthAttr = field.getAttribute('data-min-length');
+        const minLength = minLengthAttr ? parseInt(minLengthAttr, 10) : (required ? 10 : 0);
+        if (minLength && value.length < minLength) {
+            showFieldError(
+                formGroup,
+                isEnglish
+                    ? `Message must be at least ${minLength} characters.`
+                    : `訊息內容至少需要${minLength}個字符`
+            );
             return false;
         }
     }
     
     // Show success state
     if (value) {
-        showFieldSuccess(formGroup, '格式正確');
+        showFieldSuccess(formGroup, isEnglish ? 'Looks good.' : '格式正確');
     }
     
     return true;
