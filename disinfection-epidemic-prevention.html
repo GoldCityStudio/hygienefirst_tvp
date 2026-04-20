@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -754,6 +754,36 @@
 
      
 
+        <!-- Online payment (Stripe Checkout) -->
+        <section class="stripe-products-section" id="online-payment-section" style="padding: 4rem 0; background: linear-gradient(180deg, #fafafa 0%, #fff 100%);">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
+                    <h2 class="section-title" style="font-size: 2rem; margin-bottom: 0.75rem;">線上購買服務</h2>
+                    <p class="section-description" style="font-size: 1.05rem; color: #555;">選擇方案後將前往安全付款頁面（Stripe）以信用卡完成付款。</p>
+                </div>
+                <p id="stripe-checkout-message" style="display:none; text-align:center; padding:1rem 1.25rem; border-radius:8px; margin-bottom:1.5rem; max-width:640px; margin-left:auto; margin-right:auto;"></p>
+                <div style="max-width: 520px; margin: 0 auto 2rem;">
+                    <label for="checkout-email" style="display:block; font-size:0.9rem; color:#444; margin-bottom:0.5rem;">電郵<span style="color:#888;font-weight:normal;">（選填，用於收據）</span></label>
+                    <input type="email" id="checkout-email" name="checkout-email" autocomplete="email" placeholder="name@example.com" style="width:100%; padding:0.75rem 1rem; border:1px solid #ddd; border-radius:8px; font-size:1rem; box-sizing:border-box;">
+                </div>
+                <div class="stripe-product-grid" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; max-width: 900px; margin: 0 auto;">
+                    <div class="stripe-product-card" style="flex: 1; min-width: 280px; max-width: 400px; background: #fff; border-radius: 16px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.08); border: 1px solid #eee;">
+                        <h3 style="color: #333; font-size: 1.35rem; margin-bottom: 0.5rem;">標準方案</h3>
+                        <p style="color: #666; font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.5;">適合一般家居空間，每單位起計。</p>
+                        <div style="font-size: 1.75rem; font-weight: 700; color: #FF7A00; margin-bottom: 1.5rem;">HK$ 800<span style="font-size: 0.95rem; font-weight: 500; color: #888;"> 起</span></div>
+                        <button type="button" class="btn primary-btn stripe-pay-btn" data-product="standard" style="width: 100%; border: none; cursor: pointer;">前往付款</button>
+                    </div>
+                    <div class="stripe-product-card" style="flex: 1; min-width: 280px; max-width: 400px; background: #fff; border-radius: 16px; padding: 2rem; box-shadow: 0 8px 32px rgba(0,0,0,0.08); border: 1px solid #eee;">
+                        <h3 style="color: #333; font-size: 1.35rem; margin-bottom: 0.5rem;">深度方案</h3>
+                        <p style="color: #666; font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.5;">較大面積或較高要求之專業消毒。</p>
+                        <div style="font-size: 1.75rem; font-weight: 700; color: #FF7A00; margin-bottom: 1.5rem;">HK$ 2,800</div>
+                        <button type="button" class="btn primary-btn stripe-pay-btn" data-product="premium" style="width: 100%; border: none; cursor: pointer;">前往付款</button>
+                    </div>
+                </div>
+                <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 1.5rem;">付款由 Stripe 處理。如需報價或自訂服務，請 <a href="contact.html" style="color: #FF7A00;">聯絡我們</a>。</p>
+            </div>
+        </section>
+
         <!-- FAQ Section -->
         <section class="faq-section">
             <div class="container">
@@ -1329,6 +1359,63 @@
             }
         }
     });
+    </script>
+
+    <!-- Stripe Checkout: set window.HF_API_BASE if the API is on another origin (e.g. local dev: 'http://localhost:5000') -->
+    <script>
+    (function () {
+        var API_BASE = typeof window.HF_API_BASE !== 'undefined' ? window.HF_API_BASE : '';
+        var msgEl = document.getElementById('stripe-checkout-message');
+        function showMsg(text, ok) {
+            if (!msgEl) return;
+            msgEl.style.display = 'block';
+            msgEl.textContent = text;
+            msgEl.style.background = ok ? '#e8f5e9' : '#ffebee';
+            msgEl.style.color = ok ? '#2e7d32' : '#c62828';
+        }
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('paid') === '1') {
+            showMsg('付款成功，感謝您的購買！我們會盡快與您確認。', true);
+        }
+        if (params.get('canceled') === '1') {
+            showMsg('已取消付款。如需協助請聯絡客服。', false);
+        }
+        document.querySelectorAll('.stripe-pay-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var productId = btn.getAttribute('data-product');
+                var emailEl = document.getElementById('checkout-email');
+                var customerEmail = emailEl && emailEl.value ? emailEl.value.trim() : '';
+                btn.disabled = true;
+                fetch(API_BASE + '/api/payment/create-checkout-session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        productId: productId,
+                        customerEmail: customerEmail || undefined
+                    })
+                })
+                    .then(function (r) {
+                        return r.json().then(function (data) {
+                            if (!r.ok) {
+                                throw new Error(data.message || ('HTTP ' + r.status));
+                            }
+                            return data;
+                        });
+                    })
+                    .then(function (data) {
+                        if (data.url) {
+                            window.location.href = data.url;
+                            return;
+                        }
+                        throw new Error(data.message || '無法開始付款');
+                    })
+                    .catch(function (err) {
+                        alert(err.message || '付款連線失敗');
+                        btn.disabled = false;
+                    });
+            });
+        });
+    })();
     </script>
 
     <script src="script.js"></script>

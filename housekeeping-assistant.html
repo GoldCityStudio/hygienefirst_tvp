@@ -28,6 +28,9 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stripe Buy Button (load once per page) -->
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
     
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -1019,10 +1022,13 @@
                         </div>
                     </div>
                     
-                    <button style="width: 100%; background: linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%); color: white; padding: 1rem; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255,122,0,0.3);"
-                            onmouseover="this.style.background='#FF8F00'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,122,0,0.4)'" onmouseout="this.style.background='linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,122,0,0.3)'">
-                        立即預約 <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
-                    </button>
+                    <div style="width: 100%; display: flex; justify-content: center;">
+                        <stripe-buy-button
+                          buy-button-id="buy_btn_1TO963Gv6lEui6J3hpTtfYxD"
+                          publishable-key="pk_live_51TN8YOGv6lEui6J3vqpaYY0yqRK18YZjnIw3Ld0vYGzxWyhcBO3fBn3g3dbLi4BhOmpxkeeLswNB8JmHzzsxHAyx00dYftqBrA"
+                        >
+                        </stripe-buy-button>
+                    </div>
                 </div>
                 
                 <!-- Package 2: Weekly Service -->
@@ -1061,10 +1067,13 @@
                         <p style="color: #666; font-size: 0.9rem; margin: 0; padding: 0.8rem; background: #F8F9FA; border-radius: 8px;">12-24次清潔服務 最少使用3-6個月</p>
                     </div>
                     
-                    <button style="width: 100%; background: linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%); color: white; padding: 1rem; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255,122,0,0.3);"
-                            onmouseover="this.style.background='#FF8F00'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,122,0,0.4)'" onmouseout="this.style.background='linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,122,0,0.3)'">
-                        立即預約 <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
-                    </button>
+                    <div style="width: 100%; display: flex; justify-content: center;">
+                        <stripe-buy-button
+                          buy-button-id="buy_btn_1TO9XKGv6lEui6J3ckE0mAM0"
+                          publishable-key="pk_live_51TN8YOGv6lEui6J3vqpaYY0yqRK18YZjnIw3Ld0vYGzxWyhcBO3fBn3g3dbLi4BhOmpxkeeLswNB8JmHzzsxHAyx00dYftqBrA"
+                        >
+                        </stripe-buy-button>
+                    </div>
                 </div>
                 
                 <!-- Package 3: Bi-weekly Service -->
@@ -1103,10 +1112,13 @@
                         <p style="color: #666; font-size: 0.9rem; margin: 0; padding: 0.8rem; background: #F8F9FA; border-radius: 8px;">12-24次清潔服務 最少使用3-6個月</p>
                     </div>
                     
-                    <button style="width: 100%; background: linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%); color: white; padding: 1rem; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255,122,0,0.3);"
-                            onmouseover="this.style.background='#FF8F00'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255,122,0,0.4)'" onmouseout="this.style.background='linear-gradient(135deg, #FF7A00 0%, #FFB74D 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255,122,0,0.3)'">
-                        立即預約 <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
-                    </button>
+                    <div style="width: 100%; display: flex; justify-content: center;">
+                        <stripe-buy-button
+                          buy-button-id="buy_btn_1TOAr3Gv6lEui6J3zGdnVmBP"
+                          publishable-key="pk_live_51TN8YOGv6lEui6J3vqpaYY0yqRK18YZjnIw3Ld0vYGzxWyhcBO3fBn3g3dbLi4BhOmpxkeeLswNB8JmHzzsxHAyx00dYftqBrA"
+                        >
+                        </stripe-buy-button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -4,6 +4,23 @@ const User = require('../models/User');
 const Coupon = require('../models/Coupon');
 const router = express.Router();
 
+const stripeSecret = process.env.STRIPE_SECRET_KEY;
+const stripe = stripeSecret ? require('stripe')(stripeSecret) : null;
+
+/** Disinfection page products — amounts in HKD cents (Stripe) */
+const DISINFECTION_CHECKOUT_PRODUCTS = {
+  standard: {
+    name: '光自潔™納米消毒 — 標準方案',
+    description: '適合一般家居空間之上門消毒服務（每單位起）。',
+    unit_amount: 80000, // HK$ 800.00
+  },
+  premium: {
+    name: '光自潔™納米消毒 — 深度方案',
+    description: '較大面積或較高要求之專業消毒服務。',
+    unit_amount: 280000, // HK$ 2,800.00
+  },
+};
+
 // Mock Stripe payment processing (replace with actual Stripe integration)
 async function processStripePayment(paymentData) {
   // Simulate payment processing
@@ -136,6 +153,63 @@ router.post('/process', async (req, res) => {
     res.status(500).json({
       success: false,
       message: error.message || 'Payment processing failed'
+    });
+  }
+});
+
+/**
+ * Stripe Checkout — redirect to hosted payment page (disinfection products).
+ * POST body: { productId: 'standard' | 'premium', customerEmail?: string }
+ */
+router.post('/create-checkout-session', async (req, res) => {
+  if (!stripe) {
+    return res.status(503).json({
+      success: false,
+      message: 'Stripe is not configured (missing STRIPE_SECRET_KEY)',
+    });
+  }
+  try {
+    const { productId, customerEmail } = req.body || {};
+    const product = DISINFECTION_CHECKOUT_PRODUCTS[productId];
+    if (!product) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid product. Use standard or premium.',
+      });
+    }
+
+    const siteUrl =
+      process.env.PUBLIC_SITE_URL ||
+      (req.get('origin') || `${req.protocol}://${req.get('host')}`);
+
+    const session = await stripe.checkout.sessions.create({
+      mode: 'payment',
+      line_items: [
+        {
+          price_data: {
+            currency: 'hkd',
+            product_data: {
+              name: product.name,
+              description: product.description,
+            },
+            unit_amount: product.unit_amount,
+          },
+          quantity: 1,
+        },
+      ],
+      success_url: `${siteUrl}/disinfection-epidemic-prevention.html?paid=1&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteUrl}/disinfection-epidemic-prevention.html?canceled=1`,
+      ...(customerEmail && typeof customerEmail === 'string'
+        ? { customer_email: customerEmail.trim().slice(0, 320) }
+        : {}),
+    });
+
+    res.json({ success: true, url: session.url });
+  } catch (error) {
+    console.error('Stripe Checkout error:', error);
+    res.status(500).json({
+      success: false,
+      message: error.message || 'Could not start checkout',
     });
   }
 });
